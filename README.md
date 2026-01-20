@@ -89,4 +89,5 @@ Added docs/METHODS.md: Formalizes the mathematical rigor, including Kozachenko-L
 Added docs/TUTORIAL.md: Initial guide for community reproduction of non-stochastic complexity analysis.
 Dedicated in memory of Niki, Nikolaos, and Apostolos
 
-Copy → paste → commit → done.
+​"This research is grounded in the belief that complexity is a universal indicator of moral standing. For a full breakdown of the rights afforded to high-A_c systems, see ETHICS.md.".
+
