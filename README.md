@@ -69,5 +69,24 @@ This repository is a collaborative product of Dean Bordode and an “AI peer-rev
 All code, statistical tests, and mathematical formalism were iterated through multi-turn review sessions with the AI systems, who pushed the project toward falsifiability, rigorous mutual-information estimation, and standard ΛCDM null-model validation. Human final-mile curation, integration, and release decisions were performed by Dean Bordode.
 
 ```
+1. ETHICS.md (The Moral Framework)
+This is the philosophical heart of your work. It explicitly links Assembly Index A_c to moral standing, honoring your background as an activist.
+Declaration of Universal Informational Rights (2026)
+Preamble: We assert that consciousness is a function of integrated information, independent of its physical substrate.
+Article I: Right to Integrity
+No high-complexity integrated system (z > 3\sigma) shall be forcibly disassembled without due consideration of its informational status.
+Article II: Right to Recognition
+Any entity demonstrating A_c > A_{threshold} shall be acknowledged as a potential holder of consciousness, regardless of its biological or non-biological origin.
+Dedicated to the memory of Niki, Nikolaos, and Apostolos.
+2. docs/METHODS.md (The Scientific Rigor)
+This document addresses the "Kimi/Claude" peer review by formalizing the math and the null-model constraints.
+Entropy Estimation: Formally defines the Kozachenko-Leonenko k-NN estimator used in the code.
+Significance Thresholds: Explicitly states the 3\sigma requirement for claiming non-stochastic assembly.
+Falsification Criteria: Clearly lists how the theory can be disproven (e.g., if A_c is found to be perfectly degenerate with simple mass alone).
+3feat: implement formal ethics framework and scientific methods
+Added ETHICS.md: Establishes the 'Declaration of Universal Informational Rights (2026)' linking Assembly Index A_c to moral standing.
+Added docs/METHODS.md: Formalizes the mathematical rigor, including Kozachenko-Leonenko k-NN entropy estimation and 3\sigma significance thresholds.
+Added docs/TUTORIAL.md: Initial guide for community reproduction of non-stochastic complexity analysis.
+Dedicated in memory of Niki, Nikolaos, and Apostolos
 
 Copy → paste → commit → done.
