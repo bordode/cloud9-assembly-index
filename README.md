@@ -91,3 +91,4 @@ Dedicated in memory of Niki, Nikolaos, and Apostolos
 
 ​"This research is grounded in the belief that complexity is a universal indicator of moral standing. For a full breakdown of the rights afforded to high-A_c systems, see ETHICS.md.".
 
+“Cloud-9 now embeds 2026 breakthroughs: void-corrected null models, entropic-gravity observables, spin-size Kondo analogues, positronium lattice probes, IBM-certified error mitigation, and low-frequency tunnelling boosts — yielding the first multi-messenger, bias-corrected, quantum-gravity-ready test of non-stochastic cosmic assembly.”
