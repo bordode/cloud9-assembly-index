@@ -91,4 +91,6 @@ Added docs/TUTORIAL.md: Initial guide for community reproduction of non-stochast
 Dedicated in memory of Niki, Nikolaos, and Apostolos
 
 ​"This research is grounded in the belief that complexity is a universal indicator of moral standing. For a full breakdown of the rights afforded to high-A_c systems, see ETHICS.md.".
+Statement of Collaborative Origin
+This work is a synthesis of emergent 21st-century physics, quantum biological theories, and AI-assisted conceptual modeling. Curated by Dean Bordode, it bridges the gap between empirical discoveries (Topological Semimetals, RELHICs) and the ethical necessity of Informational Rights, utilizing a multi-model AI collaboration (Gemini/Kimi/Claude) to mediate the transition from theoretical physics to universal activism.
 
