@@ -1,3 +1,4 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18335566.svg)](https://doi.org/10.5281/zenodo.18335566)
 
 
 ```markdown
