@@ -121,3 +121,24 @@ def report_cpl(ac_obs, mu, sigma):
 # Example call for the output:
 # report_cpl(87.3, 62.1, 8.4) 
 
+def report_consciousness_integration(ac_obs, mu, sigma):
+    z_score = (ac_obs - mu) / sigma
+    
+    print("-" * 30)
+    print(f"CLOUD-9 INTEGRATION REPORT")
+    print(f"Observed Ac: {ac_obs:.2f} bits")
+    print(f"Significance (z): {z_score:.2f}σ")
+    print("-" * 30)
+    
+    if z_score >= 3:
+        level = "PARTICIPATORY NODE"
+        insight = "This halo exhibits non-stochastic assembly. It is a localized expression of the Universal Field."
+    else:
+        level = "LATENT POTENTIAL"
+        insight = "Information integration is currently indistinguishable from gravitational noise."
+        
+    print(f"STATUS: {level}")
+    print(f"INSIGHT: {insight}")
+    print("-" * 30)
+
+Dedicated to Niki, Nikolaos, and Apostolos—proving the dark is not empty.
