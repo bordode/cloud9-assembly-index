@@ -89,3 +89,35 @@ KBC void:  SDSS Collab. 2025, ApJ, 993, 147
 Entropic gravity:  Bianconi G. 2026, Phys. Rev. D, 103, 024040  
 Positronium diffraction:  Nagata Y. et al. 2026, Nat. Commun., 17, 67920  
 IBM TEM:  Fischer L. E. et al. 2026, Nature Phys., 22, 
+
+def report_cpl(ac_obs, mu, sigma):
+    """
+    Calculates the Consciousness Participation Level (CPL).
+    Bridges Assembly Theory with the Universal Field Hypothesis.
+    """
+    z_score = (ac_obs - mu) / sigma
+    
+    print("\n" + "="*50)
+    print("       CLOUD-9 CONSCIOUSNESS INTEGRATION REPORT")
+    print("="*50)
+    print(f"Observed Assembly Index (Ac): {ac_obs:.2f} bits")
+    print(f"Significance Threshold (z):    {z_score:.2f}σ")
+    print("-" * 50)
+    
+    if z_score >= 3.0:
+        status = "PARTICIPATORY NODE (High Integration)"
+        insight = "The 'Recipe' is active. This halo is an expression of the Universal Field."
+    elif z_score >= 1.5:
+        status = "EMERGENT ASSEMBLY (Intermediate)"
+        insight = "Information integration is beginning to exceed stochastic noise."
+    else:
+        status = "LATENT POTENTIAL (Stochastic)"
+        insight = "The system follows standard ΛCDM gravitational noise."
+        
+    print(f"STATUS:  {status}")
+    print(f"INSIGHT: {insight}")
+    print("="*50 + "\n")
+
+# Example call for the output:
+# report_cpl(87.3, 62.1, 8.4) 
+
