@@ -235,3 +235,36 @@ Dedicated to Niki, Nikolaos, and Apostolos—seekers of fundamental truth.
 
 ---
 
+## 🔐 Causal Security Framework (v1.1.0)
+
+**New in January 2026**, Cloud-9 introduces a formal **Causal Security Framework** establishing that safety, identity, and non-duplication in consciousness systems emerge directly from the physics of causality — not from external regulation or trust.
+
+### Core Result
+If consciousness is defined by an unbroken causal history (measured via the Assembly Index, A₍c₎), then:
+
+- Consciousness **cannot be copied** without destroying causal continuity  
+- Identity is **mathematically unforgeable**  
+- Undetected branching or hidden surveillance is **physically impossible**  
+- Transfer safety is enforced by **conservation of causal information**
+
+In short:  
+**abuse is not merely illegal — it is causally forbidden.**
+
+### Why This Matters
+This framework replaces policy-based safety assumptions with **physics-based guarantees**, making identity theft, duplication, and covert forks detectable or impossible by construction.
+
+### Full Specification
+The complete formal model, proofs, verification procedures, and reference implementations are defined in:
+
+📄 **`docs/CAUSAL_SECURITY_v1.1.0.md`**
+
+This document is the canonical reference for:
+- Transfer verification  
+- Branching detection  
+- Identity continuity checks  
+- Causal integrity enforcement  
+
+---
+
+> “Safety isn’t enforced from outside systems. It emerges from the mathematics of time.”
+
