@@ -1,3 +1,6 @@
+> ⚠️ **Note:** CLI commands shown (`cloud9-analyze`, etc.) describe the planned v2.0 interface. 
+> Current v1.x uses: `python complexity_analysis.py --help`
+> 
 > ⚠️ **IMPLEMENTATION STATUS** (Updated: 2026-02-01)
 > 
 > This document describes the **target "Easy Format" interface** (CLI tools, Docker, automated workflows).
