@@ -1,3 +1,6 @@
+[![Easy Format Guide](https://img.shields.io/badge/docs-easy%20format-brightgreen)](EASY_FORMAT.md)
+[![Technical Docs](https://img.shields.io/badge/docs-technical-blue)](README.md)
+
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18335567.svg)](https://doi.org/10.5281/zenodo.18335567)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
