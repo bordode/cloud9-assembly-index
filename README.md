@@ -1,3 +1,10 @@
+# Cloud9 Assembly Index
+
+> **New to this repository?** Start with [EASY_FORMAT.md](EASY_FORMAT.md) for the beginner-friendly guide.  
+> **Looking for technical details?** Continue reading below or see the [Methods](#methods) section.
+
+[Your existing technical content...]
+
 [![Easy Format Guide](https://img.shields.io/badge/docs-easy%20format-brightgreen)](EASY_FORMAT.md)
 [![Technical Docs](https://img.shields.io/badge/docs-technical-blue)](README.md)
 
