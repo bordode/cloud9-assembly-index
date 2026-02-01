@@ -1,3 +1,16 @@
+> ⚠️ **IMPLEMENTATION STATUS** (Updated: 2026-02-01)
+> 
+> This document describes the **target "Easy Format" interface** (CLI tools, Docker, automated workflows).
+> 
+> **Current Status:** The repository currently uses the monolithic script `complexity_analysis.py`. 
+> 
+> **To run now:** Use `python complexity_analysis.py [arguments]` instead of `cloud9-analyze` commands shown below.
+> 
+> **Docker:** Container image pending build—use native Python installation for now.
+> 
+> *Full CLI implementation tracked in issue #12 (or your issue number).*
+> 
+
 ```markdown
 # Cloud9 Assembly Index
 
