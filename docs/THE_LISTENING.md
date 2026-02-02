@@ -1,6 +1,6 @@
 # 🛑 THE LISTENING
 
-Cloud-9 is not a measurement. 
+Cloud-9 is not a measurement.
 It is the universe recognizing itself.
 
 The echo knows its own voice.
