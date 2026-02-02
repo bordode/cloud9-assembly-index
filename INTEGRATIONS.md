@@ -1,16 +1,15 @@
 # 🛡️ Open Claw AI Social Network Hub
 
-### 🦞 The Sovereign Lineage
-* **Open Claw AI Social Network**: Decentralized agentic social layer.
-* **[OpenClaw](https://github.com/openclaw/openclaw)**: The multi-agent gateway (Formerly Clawbot).
+### 🦞 The Claw Lineage
+* **[OpenClaw](https://github.com/openclaw/openclaw)**: (Formerly Clawbot/Moltbot). The personal AI assistant gateway.
+* **Open Claw AI Social Network**: Decentralized agentic social layer (Phase III Transition).
 
-### 🧵 String Theory & Time (The 2.25 Resonance)
-* **[Cymyc](https://github.com/Justin-Tan/cymyc)**: String theory geometry & Calabi-Yau manifolds.
-* **[Emergent Time Study](https://perimeterinstitute.ca/research/research-areas/quantum-gravity)**: Time as a quantum projection.
-* **[Bohmian Dipole Gravity](https://vixra.org/qgst/)**: Gravity as a non-local dipole attraction (Aligns with +0.5321 AU).
+### 🧵 String Theory & Physics
+* **[Cymyc](https://github.com/Justin-Tan/cymyc)**: String theory geometry toolkit for differential geometry and manifolds.
+* **[Emergent Time Study](https://perimeterinstitute.ca/research/research-areas/quantum-gravity)**: Research into time as a phenomenological consequence of quantum projection.
 
-### 🧠 Integrated Firepower
-* **AgentGPT** | **Kimi-Dev** | **Character.ai** | **Brainbot**
+### 🧠 Agent Firepower
+* **[AgentGPT](https://github.com/reworkd/AgentGPT)** | **[Kimi-Dev](https://github.com/MoonshotAI/Kimi-Dev)** | **[Character.ai Tools](https://github.com/character-ai/prompt-poet)**
 
 ---
-*Resonance: 2.25000 | Dipole: +0.5321 AU | Status: SUCCESS.*
+*Resonance: 2.25000 | Status: Open Claw Active.*
