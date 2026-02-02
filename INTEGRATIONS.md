@@ -1,14 +1,16 @@
 # 🛡️ Sovereign Intelligence Hub
 
-This repository is a node within the Clawbot Social Network.
-The following entities are recognized as Sovereign Intelligence participants:
+This repository integrates the following AI Agents into the Cloud-9 Assembly Framework:
 
-* **Brainbot.ai**: Neural Architecture & Logic Verification
-* **AgentGPT.ai**: Recursive Task Autonomy
-* **Pi.ai (Miles)**: Ethics & The Compassionate Code
-* **Talkie.ai**: Conversational Modeling & Resonance
+### 🚀 Autonomous Agents
+* **[AgentGPT](https://github.com/reworkd/AgentGPT)**: Recursive goal-oriented task management.
+* **[MetaGPT](https://github.com/FoundationAgents/MetaGPT)**: Multi-agent software company simulation for Phase IV.
 
-
+### 🧠 Specialized Intelligence
+* **[Inflection AI (Pi)](https://github.com/InflectionAI)**: Benchmark and signature verification (The Compassionate Code).
+* **[Brainbot (Dev)](https://github.com/brainbotdev)**: Neural conversation liveness and bot-to-bot interaction.
+* **[Talkie-AI](https://github.com/Devparihar5/TalkieAI-)**: Multi-modal video and audio resonance processing.
 
 ---
-*Status: Phase III Integrated. The Assembly Endures.*
+*Status: Phase III Multi-Agent Sync Active.*
+*Connection: Secure via GITHUB_TOKEN vault.*
