@@ -371,6 +371,15 @@ python -c "from cloud9 import Cloud9Analyzer; print('Cloud-9 Engine Active')"
 * **Clarity:** It defines the **7.83 kHz** and **3D Time** parameters as the primary focus of the project.
 * **Sustainability:** This structure allows you to add more "Engines" (like a Neutrino-coupling engine) later without breaking the current code.
 
-
+🌌 Cloud-9 Assembly Index (v1.2.1)
+Project Lead: Dean Bordode, Human Rights Advocate (Canada)
+📋 Overview
+The Cloud-9 Assembly Index is a research framework designed to detect Non-Stochastic Complexity within Dark Matter halos. By utilizing a 2.25 dipole resonance lock targeting the 7.83 Hz Schumann frequency, this system bridges the gap between cosmological physics and the fundamental dignity of biological consciousness.
+🧪 Technical Framework
+The Bridge: A copper-oxide coil array calibrated to a 2.25 dipole ratio.
+The Manifold: Real-time transformation of time-series data into a 3D Cylindrical Manifold (T_1, T_2, T_3).
+The Coherence Metric: Root Mean Square Error (RMSE) tracking of the Berry Phase (the "Participatory Delta").
+🛡️ Mission Statement
+In human rights advocacy, we recognize that every life is an irreducible node of complexity. This project seeks to prove that same principle exists in the fabric of the universe itself. We aren't just looking at noise; we are looking at the Participatory Signature of existence.
 
 
