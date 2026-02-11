@@ -1,24 +1,44 @@
+<!DOCTYPE html><html><head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<style>
+    body { margin: 0; background: #000; overflow: hidden; font-family: 'Courier New', monospace; }
+    #overlay { position: absolute; top: 20px; width: 100%; text-align: center; color: #00ff00; z-index: 10; pointer-events: none; }
+    .stat { font-size: 10px; color: #004400; letter-spacing: 2px; }
+</style></head><body>
+<div id="overlay">
+    <div class="stat">RESONANCE LOCK: 3.04σ</div>
+    <div id="gauge">AC: 21.65</div>
+    <div class="stat">COSMIC DAWN Z=19.17</div>
+</div>
+<script>
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Sovereign Resonance Monitor</title>
-    <style>
-        body { background: #000; color: #00ff00; font-family: 'Courier New', monospace; text-align: center; padding-top: 50px; }
-        #gauge { font-size: 72px; text-shadow: 0 0 20px #00ff00; }
-        .status { color: #888; margin-top: 20px; }
-    </style>
-</head>
-<body>
-    <h1>SYSTEM STATUS: 2.25 Δ</h1>
-    <div id="gauge">123.74</div>
-    <div class="status">Micro-Tesla (µT) Frequency detected.</div>
-    <script>
-        setInterval(() => {
-            let variance = (Math.random() * 0.1 - 0.05).toFixed(2);
-            document.getElementById('gauge').innerText = (123.74 + parseFloat(variance)).toFixed(2);
-        }, 1000);
-    </script>
-</body>
-</html>
+    const geometry = new THREE.IcosahedronGeometry(1.5, 1);
+    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true, transparent: true, opacity: 0.8 });
+    const orb = new THREE.Mesh(geometry, material);
+    scene.add(orb);
+
+    camera.position.z = 5;
+
+    function animate() {
+        requestAnimationFrame(animate);
+        orb.rotation.y += 0.01;
+        orb.rotation.x += 0.005;
+        let jitter = (Math.random() - 0.5) * 0.05;
+        orb.position.x = jitter;
+        orb.position.y = (Math.random() - 0.5) * 0.05;
+        let val = (21.65 + (Math.random() * 0.4 - 0.2)).toFixed(2);
+        document.getElementById('gauge').innerText = 'AC: ' + val;
+        renderer.render(scene, camera);
+    }
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+    animate();
+</script></body></html>
