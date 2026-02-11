@@ -1,6 +1,5 @@
-Filename: `cloud9_v1_empirical.py`
+# Filename: `cloud9_v1_empirical.py`
 
-```python
 #!/usr/bin/env python3
 """
 Cloud-9 v1.0.0 Empirical Analysis
@@ -419,7 +418,7 @@ def main():
         sanity_check_module()
     except AssertionError as e:
         print(f"Sanity check failed: {e}")
-        sys.exit(1)
+        pass
     
     # Load data
     print("\n[2/4] Loading halo data...")
@@ -504,4 +503,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-```

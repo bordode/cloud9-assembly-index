@@ -1,0 +1,29 @@
+{
+  "version": "1.0.0",
+  "date": "2026-02-11T02:48:14.446968",
+  "halo": {
+    "halo_id": "Cloud-9-SYNTHETIC",
+    "mass_msun": 5700000000000.0,
+    "virial_radius_kpc": 287.0,
+    "note": "Synthetic data for testing"
+  },
+  "assembly_index": {
+    "value": 21.64634459239549,
+    "error": 2.596150997149434,
+    "unit": "bits"
+  },
+  "null_model": {
+    "mean": 21.4146075043174,
+    "std": 0.44636709748699405,
+    "n": 1000
+  },
+  "statistics": {
+    "z_score": 0.5191625668261616,
+    "p_value": 0.6036473805120013,
+    "percentile": 69.81763097439993
+  },
+  "parameters": {
+    "k_nn": 4,
+    "n_snapshots": 25
+  }
+}
