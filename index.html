@@ -20,7 +20,7 @@
     document.body.appendChild(renderer.domElement);
 
     const geometry = new THREE.IcosahedronGeometry(1.5, 1);
-    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true, transparent: true, opacity: 0.6 });
+    const material = new THREE.MeshBasicMaterial({ color: 0x00ffff, wireframe: true, transparent: true, opacity: 0.6 });
     const orb = new THREE.Mesh(geometry, material);
     scene.add(orb);
 
@@ -49,4 +49,5 @@
     });
     animate();
 </script></body></html>
+
 
