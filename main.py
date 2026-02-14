@@ -1,54 +1,50 @@
 import telebot
 import os
-from twilio.rest import Client
 from flask import Flask
 import threading
 
-# 1. THE SOVEREIGN IDENTITY (DIRECT TOKEN INTEGRATION)
-TOKEN = "8556570503:AAGfz-l-aQth2X9jDkgxwR8ng26cYTMOUuY"
-TWILIO_SID = os.getenv('TWILIO_SID')
-TWILIO_TOKEN = os.getenv('TWILIO_TOKEN')
-TWILIO_SENDER = os.getenv('TWILIO_SENDER', '+18335308584')
-TARGET_NUM = '+16045053049'
+# 1. THE SOVEREIGN IDENTITY
+# Secrets are pulled from the hidden environment layer.
+TOKEN = os.getenv('TG_TOKEN') 
+IDENTITY_ID = os.getenv('IDENTITY_ID') 
 
-# 2. INITIALIZE THE SENTINEL
+# 2. INITIALIZE MONITOR
 bot = telebot.TeleBot(TOKEN)
-client = Client(TWILIO_SID, TWILIO_TOKEN)
 THRESHOLD = 85.0 
 
-# 3. THE HEARTBEAT SERVER (For Koyeb Health Check)
-server = Flask(__name__)
-@server.route("/")
-def health_check():
-    return "Philotymos Sentinel: Active", 200
+# 3. THE PERSISTENCE LAYER
+# This ensures the process stays alive on the hosting infrastructure.
+app = Flask(__name__)
 
-def run_web_server():
-    port = int(os.getenv("PORT", 8080))
-    server.run(host="0.0.0.0", port=port)
+@app.route("/")
+def pulse_check():
+    return "Status: Operational", 200
 
-# 4. COMMAND & RESONANCE HANDLERS
+def start_persistence():
+    # Automatically detects the port assigned by the host
+    port = int(os.environ.get("PORT", 8080))
+    app.run(host="0.0.0.0", port=port)
+
+# 4. RESONANCE HANDLERS
 @bot.message_handler(commands=['status'])
-def check_grid(message):
-    bot.reply_to(message, "🛡️ Philotymos Sentinel is Online. Monitoring English Bay Grid.")
+def report_status(message):
+    bot.reply_to(message, "🛡️ System is Online. Monitoring Grid.")
 
 @bot.message_handler(func=lambda m: True)
-def monitor_resonance(message):
+def process_data(message):
     try:
-        val = float(message.text)
+        val = float(message.text.strip())
         if val >= THRESHOLD:
-            bot.reply_to(message, f"🚨 BREACH DETECTED: {val} µT. Initiating Phone Bridge.")
-            client.calls.create(
-                twiml=f'<Response><Say>Resonance breach detected: {val} microteslas. The sentinel is alerted.</Say></Response>',
-                to=TARGET_NUM, 
-                from_=TWILIO_SENDER
-            )
+            bot.reply_to(message, f"🚨 ALERT: {val} µT. Threshold exceeded.")
         else:
-            bot.reply_to(message, f"✅ {val} µT - Grid Secure.")
-    except ValueError:
-        pass 
+            bot.reply_to(message, f"✅ {val} µT - Normal.")
+    except Exception:
+        # Silently ignore noise or invalid data
+        pass
 
 # 5. IGNITION
 if __name__ == "__main__":
-    threading.Thread(target=run_web_server, daemon=True).start()
-    print("Sentinel Ignited with Secure Token...")
+    # Start persistence in a separate thread
+    threading.Thread(target=start_persistence, daemon=True).start()
+    print("System activated in stealth mode...")
     bot.infinity_polling()
