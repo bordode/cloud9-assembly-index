@@ -2,5 +2,3 @@ pyTelegramBotAPI
 twilio
 requests
 flask
-pandas
-matplotlib
