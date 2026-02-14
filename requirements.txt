@@ -1,2 +1,6 @@
 flask
 pandas
+pyTelegramBotAPI
+twilio
+requests
+3.13
