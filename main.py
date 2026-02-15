@@ -41,3 +41,9 @@ def process_data(message):
 if __name__ == "__main__":
     threading.Thread(target=start_persistence, daemon=True).start()
     bot.infinity_polling()
+import os
+import telebot
+
+# This is the 'Safe Lock'. It pulls the secret from Koyeb's hidden settings.
+TOKEN = os.getenv('TG_TOKEN') 
+bot = telebot.TeleBot(TOKEN)
