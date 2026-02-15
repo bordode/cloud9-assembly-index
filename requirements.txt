@@ -2,3 +2,5 @@ pyTelegramBotAPI
 pandas
 flask
 gunicorn
+eventlet
+requests
