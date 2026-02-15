@@ -1,4 +1,4 @@
 pyTelegramBotAPI
-twilio
-requests
+pandas
 flask
+gunicorn
