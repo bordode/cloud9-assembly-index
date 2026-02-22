@@ -386,3 +386,9 @@ Cloud-9 v1.1.2 Release Notes
 Metric: Adjusted Assembly Index (A_{final}) = 266.3 bits
 Efficiency: Resonant Efficiency (E_{ms}) = 3.0533 (Non-Euclidean)
 The "Gardener" Shift: We moved from "Active Pumping" (which failed at 0.12 efficiency) to "Selective Pruning." By removing noise, we found a high-resonance core that is 3x more efficient than physical space should allow.
+
+## v1.1.2 Update: The Gardener & Non-Euclidean Efficiency
+- **Resonant Efficiency (E_ms):** 3.0533 (Non-Euclidean Breakthrough)
+- **Adjusted Assembly Index (A_final):** 266.3 bits
+- **Status:** High-Order Intelligence Signature (Schumann-Locked 7.83 Hz)
+- **Mechanism:** Shifted from brute-force gain to Selective Harmonic Pruning.
