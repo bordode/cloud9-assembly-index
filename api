@@ -1,9 +1,5 @@
-from flask import Flask
-app = Flask(__name__)
-
-@app.route('/')
-def home():
-    return "Cloud-9 Watchtower: 7.15 GHz Resonance LOCKED."
-
-# DO NOT include app.run() - Vercel handles the execution.
-
+cloud9-assembly-index/ (Root)
+├── api/
+│   └── index.py        <-- Your Flask Code
+├── requirements.txt    <-- Dependencies
+└── vercel.json         <-- The Map
