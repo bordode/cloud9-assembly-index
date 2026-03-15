@@ -1,7 +1,2 @@
 Flask==3.0.0
-pyTelegramBotAPI
-pandas
-flask
-gunicorn
-eventlet
-requests
+# Add your other dependencies here, but make sure each is unique!
