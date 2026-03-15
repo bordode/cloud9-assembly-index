@@ -5,8 +5,3 @@
   ]
 }
 
-{
-  "rewrites": [
-    { "source": "/(.*)", "destination": "index.py" }
-  ]
-}
