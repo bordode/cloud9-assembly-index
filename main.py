@@ -18,7 +18,9 @@ except Exception as e:
 
 def fetch_data():
     url = f'https://drive.google.com/uc?export=download&id={FILE_ID}'
-    r = requests.get(url, timeout=10, verify=False)
+    session = requests.Session()
+    session.verify = True
+    r = session.get(url, timeout=15, allow_redirects=True)
     r.raise_for_status()
     return pd.read_csv(io.StringIO(r.text))
 
@@ -31,7 +33,7 @@ if bot:
             status = "🚨 DANGER" if peak_val > THRESHOLD else "✅ STABLE"
             bot.reply_to(message, f"📊 CLOUD REPORT\nPeak: {peak_val} µT\nStatus: {status}")
         except Exception as e:
-            bot.reply_to(message, f"❌ Sync Error: {e}")
+            bot.reply_to(message, f"❌ Error: {type(e).__name__}: {e}")
 
     @bot.message_handler(func=lambda m: True)
     def process_manual_input(message):
@@ -52,8 +54,12 @@ def health_check():
 def webhook():
     if not bot:
         abort(500, "Bot not initialized")
-    update = telebot.types.Update.de_json(request.get_json())
-    bot.process_new_updates([update])
+    try:
+        json_data = request.get_json(force=True)
+        update = telebot.types.Update.de_json(json_data)
+        bot.process_new_updates([update])
+    except Exception as e:
+        print(f"Webhook error: {e}")
     return "OK", 200
 
 if __name__ == "__main__":
