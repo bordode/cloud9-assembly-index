@@ -21,12 +21,22 @@ def bianconi_functional(rho_m, phi_g):
     I_QB = np.sum(rho_m_flat * np.log(rho_m_flat)) - np.sum(rho_m_flat * np.log(rho_g_flat))
     return I_QB / np.log(2)
 
-def report_consciousness_integration(ac_obs, mu, sigma):
+def compute_gravitational_potential(density_field):
+    """
+    Simplified Poisson solver for demonstration.
+    In production: use FFT-based solver on 128^3 grid.
+    """
+    # Mock potential: phi ~ -log(rho) for demonstration
+    return -np.log(density_field + 1e-10)
+
+def report_consciousness_integration(ac_obs, mu, sigma, i_qb=None):
     z_score = (ac_obs - mu) / sigma
     
     print("-" * 50)
     print("CLOUD-9 CONSCIOUSNESS INTEGRATION REPORT")
     print(f"Observed Ac: {ac_obs:.2f} bits")
+    if i_qb is not None:
+        print(f"Entropic Gravity (I_QB): {i_qb:.2f} bits")
     print(f"Null Mean:   {mu:.2f} bits")
     print(f"Sigma:       {sigma:.2f}")
     print(f"Significance (z): {z_score:.2f}")
@@ -55,25 +65,36 @@ def simulate_assembly_data(n_samples=2000, seed=42):
     return complexities
 
 def main():
-    print("=== Cloud-9 Assembly Index Analysis ===")
-    print("Loading synthetic halo data...")
+    print("=== Cloud-9 Assembly Index Analysis v2.2 ===")
+    print("Loading synthetic halo data (128^3 grid)...")
     
+    # Simulate density field (128^3 flattened to 2M for demo)
+    np.random.seed(42)
+    density_field = np.random.lognormal(0, 0.5, (128, 128, 128))
+    density_field /= density_field.sum()
+    
+    # Compute gravitational potential (Poisson)
+    print("Computing gravitational potential...")
+    phi_g = compute_gravitational_potential(density_field)
+    
+    # Calculate Bianconi entropic-gravity observable
+    print("Calculating quantum-relative entropy (I_QB)...")
+    i_qb = bianconi_functional(density_field, phi_g)
+    
+    # Assembly Index from complexity time series
     complexities = simulate_assembly_data()
-    
     ac_obs = np.mean(complexities)
     sigma = np.std(complexities)
     mu = 62.1  # Null model mean from literature
     
-    print(f"Raw Assembly Index: {ac_obs:.2f}")
+    print(f"\nRaw Assembly Index: {ac_obs:.2f}")
+    print(f"Void-corrected Ac:  {void_bias_correction(ac_obs, z=0.1):.2f}")
+    print(f"Entropic Gravity:   {i_qb:.2f} bits")
     
-    # Apply void bias correction (example redshift z=0.1)
-    ac_corrected = void_bias_correction(ac_obs, z=0.1)
-    print(f"Void-corrected Ac:  {ac_corrected:.2f}")
+    # Generate integrated report
+    report_consciousness_integration(ac_obs, mu, sigma, i_qb)
     
-    # Generate report
-    report_consciousness_integration(ac_corrected, mu, sigma)
-    
-    # Create visualization
+    # Visualization
     fig, axes = plt.subplots(2, 2, figsize=(12, 10))
     
     axes[0,0].hist(complexities, bins=30, alpha=0.7, color='skyblue', edgecolor='black')
