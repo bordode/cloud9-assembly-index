@@ -303,13 +303,15 @@ def sanity_check_module():
     x = np.random.randn(1000, 3)
     h_x = knn_entropy(x, k=4)
     mi_xx = mutual_information(x, x, k=4)
-    assert abs(mi_xx - h_x) < 0.1, "Self-information test failed"
+    if not abs(mi_xx - h_x) < 0.1:
+        raise AssertionError("Self-information test failed")
     print(f"  ✓ Self-information: H={h_x:.3f}, I(X;X)={mi_xx:.3f}")
     
     # Test 2: Independence
     y = np.random.randn(1000, 3)
     mi_xy = mutual_information(x, y, k=4)
-    assert mi_xy < 0.05, f"Independence test failed: I={mi_xy:.3f}"
+    if not mi_xy < 0.05:
+        raise AssertionError(f"Independence test failed: I={mi_xy:.3f}")
     print(f"  ✓ Independence: I(X;Y)={mi_xy:.3f}")
     
     # Test 3: Reproducibility
@@ -317,7 +319,8 @@ def sanity_check_module():
     ac1, _, _ = assembly_index([x, y], [1.0, 0.0], k=4)
     np.random.seed(42)
     ac2, _, _ = assembly_index([x, y], [1.0, 0.0], k=4)
-    assert abs(ac1 - ac2) < 1e-10, "Reproducibility test failed"
+    if not abs(ac1 - ac2) < 1e-10:
+        raise AssertionError("Reproducibility test failed")
     print(f"  ✓ Reproducibility: {ac1:.6f} == {ac2:.6f}")
     
     print("\nAll sanity checks passed.")
