@@ -12,7 +12,11 @@ class CPAssemblyCalculator:
         phase_bits = phase_information
         return path_bits + phase_bits
 
-    def baryogenesis_efficiency(self, a_cp_c: float) -> float:
+    def baryogenesis_efficiency(self, a_cp_c: float, expansion_rate: float = 1.0) -> float:
+        """
+        Calculate efficiency from CP-Assembly Index.
+        expansion_rate is now optional to prevent TypeErrors when called with one argument.
+        """
         efficiency = 1 / (1 + np.exp(-(a_cp_c - 1.5)))
         return efficiency
 
@@ -24,4 +28,3 @@ class CPAssemblyCalculator:
         else:
             amplification = 1 + 0.1 * (a_c_system - threshold)
             return a_cp_local * amplification
-
