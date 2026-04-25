@@ -422,3 +422,7 @@ Confidence: >1000 \sigma (Deep-Stacked Bayesian result).
 - **Significance**: 100.23$\sigma$ (Sovereign Regime)
 - **Verification**: 10 Major Merger Events identified via MPB traversal (8.73 bits/unit).
 - **Status**: ARCHIVED | THE GARRISON HAS THE WATCH.
+
+
+## Research Pillars
+- [C9-2026-CP-BARYOGENESIS-001](research/pillars/C9-2026-CP-BARYOGENESIS-001.md): CP-Assembly Bridge Analysis.
