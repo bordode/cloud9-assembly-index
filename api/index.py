@@ -1,2 +1,3 @@
-from main import *
-# This file directs the server to your main.py logic
+from main import app
+
+# Vercel serverless entry point
