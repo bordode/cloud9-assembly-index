@@ -1,0 +1,265 @@
+{
+  "generation_timestamp": "2026-05-19T10:39:52.960050",
+  "pipeline": "Cloud-9 Full Integration",
+  "sources": {
+    "forrest_2026": "Nature Astronomy, 2026 (arXiv:2508.10987)",
+    "pikovski_2026": "Physical Review Letters 136, 163602 (2026)",
+    "behroozi_2026": "arXiv:2604.18683 (2026)"
+  },
+  "xmm_vid1_2075": {
+    "catalog_id": "XMM-VID1-2075",
+    "c9_entry_id": "C9-2026-GALAXY-001",
+    "layer": 1,
+    "redshift": 3.449,
+    "cosmic_age_gyr": 1.8,
+    "stellar_mass_msun": 330000000000.0,
+    "stellar_mass_uncertainty": {
+      "lower": 30000000000.0,
+      "upper": 10000000000.0
+    },
+    "star_formation_rate_msun_per_yr": {
+      "value": "<1",
+      "upper_limit": 1.0
+    },
+    "velocity_dispersion_kms": {
+      "central": 500,
+      "within_re": 387,
+      "uncertainty": 22
+    },
+    "spin_parameter_lambda_re": {
+      "value": 0.101,
+      "uncertainty": 0.018,
+      "classification": "slow_rotator"
+    },
+    "velocity_offsets_kms": {
+      "max_abs": 100,
+      "median_abs_dev": 26,
+      "all_bins_v_sigma_lt_1": true
+    },
+    "morphology": {
+      "sersic_index": 3.97,
+      "sersic_uncertainty": 0.06,
+      "half_light_radius_kpc": 2.0,
+      "axis_ratio": 0.89,
+      "inclination_deg": 28,
+      "classification": "elliptical",
+      "asymmetries": "low_surface_brightness_features_NE",
+      "merger_signatures": true
+    },
+    "emission_lines": {
+      "detected": [
+        "NII_6584",
+        "NeIII_3869",
+        "SII",
+        "Halpha"
+      ],
+      "not_detected": [
+        "OIII_5007",
+        "Hbeta"
+      ],
+      "agn_indicators": "weak_LINER-like_NII_Halpha_ratio",
+      "agn_radio_detection": false,
+      "agn_alma_detection": false
+    },
+    "formation_scenarios": [
+      {
+        "name": "counter_rotating_major_merger",
+        "probability": "favored_by_morphology",
+        "evidence": "low_surface_brightness_asymmetry_NE"
+      },
+      {
+        "name": "isotropic_gas_infall_quenching",
+        "probability": "plausible_simulation_supported",
+        "evidence": "magneticum_sim_z3.42_slow_rotators_gas_infall"
+      },
+      {
+        "name": "dry_minor_merger_post_quenching",
+        "probability": "subsequent_event",
+        "evidence": "deposit_stars_outskirts_increase_size"
+      }
+    ],
+    "tng100_analogue_search_template": {
+      "snapshot_target": 99,
+      "snapshot_z3_5": 25,
+      "mass_threshold_msun": 100000000000.0,
+      "velocity_dispersion_threshold_kms": 300,
+      "spin_parameter_max": 0.2,
+      "sersic_index_min": 3.5,
+      "star_formation_rate_max": 1.0,
+      "half_light_radius_kpc_max": 3.0
+    },
+    "a_c_relevance": {
+      "assembly_proxy_estimate": 65,
+      "causal_closure": true,
+      "temporal_anomaly": "mature_morphology_at_1.8_Gyr",
+      "framework_test": "complexity_necessary_but_insufficient_causal_closure_discriminator"
+    }
+  },
+  "pikovski_2026": {
+    "catalog_id": "PRL.136.163602",
+    "c9_entry_id": "C9-2026-QTIME-001",
+    "layer": 2,
+    "title": "Quantum Signatures of Proper Time in Optical Ion Clocks",
+    "authors": [
+      "Gabriel Sorci",
+      "Joshua Foo",
+      "Dietrich Leibfried",
+      "Christian Sanner",
+      "Igor Pikovski"
+    ],
+    "journal": "Physical Review Letters",
+    "volume": 136,
+    "issue": 16,
+    "article_id": "163602",
+    "publication_date": "2026-04-20",
+    "doi": "10.1103/PhysRevLett.136.163602",
+    "experimental_platform": "trapped_ion_optical_clocks",
+    "target_ions": [
+      "aluminum",
+      "ytterbium"
+    ],
+    "key_prediction": "proper_time_superposition_quantum_entanglement",
+    "observables": {
+      "vSODS": {
+        "name": "vacuum_second_order_doppler_shift",
+        "origin": "quantum_ground_state_fluctuations",
+        "temperature": "absolute_zero",
+        "scale": "sub_hertz"
+      },
+      "sqSODS": {
+        "name": "squeezing_induced_SODS",
+        "origin": "squeezed_motional_states",
+        "requirement": "squeezed_vacuum_manipulation"
+      },
+      "qSODS": {
+        "name": "quantum_corrected_SODS",
+        "origin": "proper_time_entanglement_internal_external",
+        "significance": "direct_quantum_gravity_probe"
+      }
+    },
+    "theoretical_context": {
+      "twin_paradox_extension": "single_clock_two_timeflows",
+      "proper_time_status": "quantum_observable_not_classical_parameter",
+      "gravity_connection": "kinematic_only_no_curvature",
+      "qbox_relation": "distinct_from_hyperdecoherence"
+    },
+    "a_c_relevance": {
+      "complexity_contribution": "quantum_entropy_proper_time_entanglement",
+      "layer_2_status": "testable_speculative_not_fiction",
+      "framework_test": "quantum_time_assembly_index_component"
+    }
+  },
+  "tng_search_spec": {
+    "project": "Cloud-9 Assembly Project",
+    "validation_suite": "tng_validation_suite.py",
+    "search_name": "XMM-VID1-2075 Analogue Search",
+    "search_id": "TNG-SEARCH-2026-001",
+    "target_redshift": 3.45,
+    "target_cosmic_age_gyr": 1.8,
+    "tng100_snapshot_mapping": {
+      "note": "TNG100 snapshots are spaced in scale factor; z~3.5 corresponds to snapshot ~25-28",
+      "recommended_snapshots": [
+        25,
+        26,
+        27,
+        28
+      ],
+      "scale_factor_range": [
+        0.22,
+        0.25
+      ]
+    },
+    "filter_criteria": {
+      "stellar_mass_msun": {
+        "min": 100000000000.0,
+        "max": 500000000000.0
+      },
+      "velocity_dispersion_kms": {
+        "min": 300,
+        "max": 600
+      },
+      "spin_parameter": {
+        "max": 0.2
+      },
+      "sersic_index": {
+        "min": 3.0
+      },
+      "star_formation_rate_msun_yr": {
+        "max": 5.0
+      },
+      "half_light_radius_kpc": {
+        "max": 4.0
+      },
+      "color_uvj": "quiescent_region"
+    },
+    "bootstrap_significance": {
+      "null_hypothesis": "TNG100 produces zero slow_rotators_at_z3.5",
+      "test_statistic": "count_of_analogues_per_2000_halos",
+      "significance_threshold": 3.0
+    },
+    "expected_tension": {
+      "prediction": "TNG100_will_produce_few_or_zero_analogues",
+      "reason": "standard_feedback_prescription_does_not_quench_fast_enough_at_high_mass",
+      "implication_for_ac": "high_assembly_index_objects_appear_earlier_than_hierarchical_assembly_predicts"
+    }
+  },
+  "cross_layer_patterns": [
+    {
+      "pattern_id": "XP-2026-TIME-001",
+      "name": "Temporal_Acceleration_Across_Scales",
+      "layer_1_manifestation": "XMM-VID1-2075_mature_at_1.8_Gyr",
+      "layer_2_manifestation": "Pikovski_proper_time_superposition",
+      "layer_3_extension": "Time_as_emergent_from_entangled_clock_network",
+      "layer_4_integration": "A_c_assembly_rate_invariant_under_temporal_redefinition",
+      "mathematical_hook": "If_proper_time_is_quantum_superposable_then_cosmic_age_is_observable_dependent"
+    },
+    {
+      "pattern_id": "XP-2026-CLOSURE-002",
+      "name": "Causal_Closure_vs_Complexity_Early_Universe",
+      "layer_1_manifestation": "XMM-VID1-2075_quenched_dispersion_dominated_structured",
+      "layer_2_manifestation": "QBox_hyperdecoherence_requires_causal_structure",
+      "layer_3_extension": "Closed_timelike_curves_as_assembly_index_maximizers",
+      "layer_4_integration": "DNA_causal_closure_>AI_text_despite_lower_assembly_proxy",
+      "mathematical_hook": "A_c_formalism_must_weight_causal_closure_higher_than_structural_complexity"
+    },
+    {
+      "pattern_id": "XP-2026-MERGER-003",
+      "name": "Merger_as_Kinematic_Transformation",
+      "layer_1_manifestation": "Counter_rotating_major_merger_removes_angular_momentum",
+      "layer_2_manifestation": "Pikovski_entanglement_internal_external_degrees_of_freedom",
+      "layer_3_extension": "Galaxy_merger_as_macroscopic_decoherence_event",
+      "layer_4_integration": "KiSS-SIDM_scattering_kernel_maps_to_merger_dynamics",
+      "mathematical_hook": "7.83_kHz_Schumann_resonance_in_copper_oxide_mirrors_galactic_merger_frequency_scale"
+    }
+  ],
+  "action_items": {
+    "immediate": [
+      "Add C9-2026-GALAXY-001 to Terrestrial Validation Cases",
+      "Add C9-2026-QTIME-001 to Layer 2 Reference Database",
+      "Run TNG-SEARCH-2026-001 via tng_validation_suite.py on snapshots 25-28",
+      "Draft cross-reference document: QBox_vs_Pikovski_kinematic_regime"
+    ],
+    "short_term": [
+      "Compute A_c for XMM-VID1-2075 using TNG100 halo merger trees",
+      "Model star-formation efficiency evolution: compare Behroozi et al. (2026) SFE~2-3% at z=10-12 vs Forrest et al. rapid quenching",
+      "Implement squeezed-state ion trap module in neuromorphic simulation cluster (Cluster 6)"
+    ],
+    "medium_term": [
+      "Test whether A_c formalism predicts 'mature early' objects as inevitable or contingent",
+      "Develop quantum entropy contribution to A_c from proper time entanglement",
+      "Submit INRC application update citing Pikovski et al. as near-term experimental target"
+    ]
+  },
+  "assembly_index_calculation": {
+    "A_c": 0.975,
+    "components": {
+      "structure": 0.909,
+      "causal_closure": 0.5,
+      "topological_complexity": 0.899,
+      "temporal_anomaly": 3.571,
+      "quantum_entropy": 0.1,
+      "redundancy": 0.2
+    },
+    "interpretation": "High A_c due to causal closure + temporal anomaly despite moderate structure"
+  }
+}
