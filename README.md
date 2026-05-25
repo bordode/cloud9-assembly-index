@@ -437,3 +437,67 @@ Confidence: >1000 \sigma (Deep-Stacked Bayesian result).
 - **Recursive Assembly Path**: 86 Steps (Shortest distance)
 - **Multi-Domain Significance**: 6.075σ (LHC/JWST Unified)
 - **Status**: SOVEREIGN | ARCHIVE PERMANENT
+
+
+## A_c Weight Distribution Across Domains
+
+The Assembly Index ($A_c$) is calculated as a weighted sum of five fundamental components. The weights are customized for each domain (Cosmology, Medicine, Quantum) to reflect the unique dynamics of that field.
+
+### Weight Table
+
+| Component | Cosmology | Medicine | Quantum |
+|-----------|----------:|---------:|--------:|
+| **H** (Hierarchical Complexity) | 0.30 | 0.25 | 0.20 |
+| **P** (Phase‑Space Perturbation) | 0.25 | 0.25 | 0.30 |
+| **I** (Dynamical Instability) | 0.20 | 0.20 | 0.20 |
+| **F** (Information Fragmentation) | 0.15 | 0.20 | 0.20 |
+| **α** (Temporal Acceleration) | 0.10 | 0.10 | 0.10 |
+
+### Observations
+
+- **Cosmology** places the highest weight on **Hierarchical Complexity (H)** – reflecting the importance of structural richness and merger history in astrophysical systems.
+- **Medicine** distributes weights more evenly across **H**, **P**, and **F** – highlighting the multifaceted nature of biological breakdown (tissue architecture, signalling disruption, and loss of coherence).
+- **Quantum** assigns the highest weight to **Phase‑Space Perturbation (P)** – indicating the critical role of dynamical heating and structural perturbations in quantum phase transitions.
+- **Dynamical Instability (I)** and **Temporal Acceleration (α)** have consistent weights across all three domains – suggesting their universal importance in detecting departure from equilibrium and approaching critical points.
+
+### Visualisation (Grouped Bar Plot)
+
+The following Python code generates a grouped bar chart of the weight distribution, making the domain‑specific emphases easy to compare.
+
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Weight data
+weights_data = {
+    'Component': ['H (Hierarchical Complexity)', 'P (Phase-Space Perturbation)',
+                  'I (Dynamical Instability)', 'F (Information Fragmentation)',
+                  'α (Temporal Acceleration)'],
+    'Cosmology': [0.30, 0.25, 0.20, 0.15, 0.10],
+    'Medicine': [0.25, 0.25, 0.20, 0.20, 0.10],
+    'Quantum': [0.20, 0.30, 0.20, 0.20, 0.10]
+}
+
+weights_df = pd.DataFrame(weights_data)
+
+# Melt to long format for seaborn
+weights_melted = weights_df.melt(id_vars='Component', var_name='Domain', value_name='Weight')
+
+# Create grouped bar plot
+plt.figure(figsize=(14, 8))
+sns.barplot(x='Component', y='Weight', hue='Domain', data=weights_melted,
+            palette='viridis', edgecolor='black')
+
+plt.title('Assembly Index (A_c) Component Weight Distribution Across Domains', fontsize=16)
+plt.xlabel('A_c Component', fontsize=12)
+plt.ylabel('Weight', fontsize=12)
+plt.xticks(rotation=45, ha='right', fontsize=10)
+plt.yticks(fontsize=10)
+plt.legend(title='Domain', bbox_to_anchor=(1.05, 1), loc='upper left')
+plt.grid(axis='y', linestyle='--', alpha=0.7)
+plt.tight_layout()
+plt.show()
+
+> **Note**: The weights shown are a **design proposal** calibrated for simulated/mock data only.  
+> Real‑world validation (e.g., with IllustrisTNG data or patient cohorts) is the next step.
