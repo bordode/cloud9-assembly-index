@@ -300,8 +300,8 @@ The documentation and data within this index are permanently dedicated to the me
  * Nikolaos
  * Apostolos
 🛠️ Verification
-To verify the authenticity of the files in this repository, use the following command with the public GPG key 0195D1712254F968:
-gpg --verify [filename].asc [filename]
+To verify the authenticity of the files in this repository, use the following command with the public 
+ --verify [filename].asc [filename]
 
 
 🌌 The Cloud-9 Manifesto: A Unified Field of Information and Justice
