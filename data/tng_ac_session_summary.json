@@ -1,0 +1,223 @@
+{
+  "metadata": {
+    "project": "Cloud-9 Assembly Index Validation",
+    "simulation": "TNG100-1",
+    "snapshot": 99,
+    "timestamp": "2026-05-31T09:19:59.445858",
+    "n_halos_total": 100,
+    "api_endpoint": "https://www.tng-project.org/api/",
+    "session_id": "tng_ac_validation_2026-05-30"
+  },
+  "data_acquisition": {
+    "status": "successful",
+    "fetch_method": "TNG API with urllib3 retry adapter",
+    "dns_resolution_fix": "switched from illustris-tng.org to tng-project.org",
+    "properties_fetched": [
+      "pos_x",
+      "pos_y",
+      "pos_z",
+      "mass",
+      "mass_dm",
+      "mass_stars",
+      "mass_gas",
+      "vmax",
+      "veldisp",
+      "halfmassrad",
+      "spin",
+      "sfr",
+      "vel_x",
+      "vel_y",
+      "vel_z",
+      "gasmetallicitysfrweighted"
+    ]
+  },
+  "outlier_detection": {
+    "method": "Interquartile Range (IQR) on cm_x and cm_y",
+    "k_factor": 1.5,
+    "n_outliers_detected": 8,
+    "outlier_fraction": 0.08,
+    "spatial_characteristics": {
+      "outlier_mean_cm_x": "~37,500 ckpc/h (bimodal: 0-1,500 and 68,000-75,000)",
+      "outlier_mean_cm_y": "~26,500 ckpc/h",
+      "inlier_mean_cm_x": "~800 ckpc/h",
+      "inlier_clustering": "tight central cluster"
+    }
+  },
+  "assembly_index_framework": {
+    "name": "Cloud-9 A_c",
+    "version": "3.0",
+    "components": {
+      "C_topo": {
+        "description": "Topological complexity \u2014 density profile gradient irregularity",
+        "proxy": "veldisp/vmax disturbance ratio",
+        "weight": 0.25
+      },
+      "C_info": {
+        "description": "Information complexity \u2014 Shannon entropy of mass components",
+        "proxy": "mass_dm, mass_stars, mass_gas fractions",
+        "weight": 0.25
+      },
+      "C_quant": {
+        "description": "Quantum-inspired complexity \u2014 von Neumann entropy proxy",
+        "proxy": "vmax/veldisp anisotropy (v2) | spin (v1, deprecated)",
+        "weight": 0.25
+      },
+      "C_int": {
+        "description": "Integrated information \u2014 Phi-like merger/activity proxy",
+        "proxy": "log-mass + SFR + dynamical deviation (v2) | mass threshold 1e14 (v1, deprecated)",
+        "weight": 0.25
+      }
+    },
+    "formula_evolution": {
+      "v1_original": {
+        "bugs": [
+          "C_int dead: mass threshold 1e14Msun too high for TNG100-1 halos",
+          "C_quant saturated: spin values ~0.03 produce identical eigenvalues"
+        ],
+        "outlier_mean_ac": 0.3671,
+        "inlier_mean_ac": 0.3772,
+        "mann_whitney_p": 0.5118,
+        "verdict": "No significant deficit"
+      },
+      "v2_recalibrated": {
+        "fixes": [
+          "C_int: log-mass scaling centered at 1e10 Msun",
+          "C_quant: vmax/veldisp anisotropy instead of spin",
+          "C_topo: veldisp/vmax disturbance proxy"
+        ],
+        "outlier_mean_ac": 0.4517,
+        "inlier_mean_ac": 0.4553,
+        "mann_whitney_p": 0.9851,
+        "verdict": "No significant deficit"
+      }
+    }
+  },
+  "discovery_tests": {
+    "test_1_mass_gap": {
+      "description": "Welch's t-test and Mann-Whitney U on mass distribution",
+      "outlier_mean_mass_msun": 30410000000.0,
+      "inlier_mean_mass_msun": 293400000000.0,
+      "mass_ratio_inlier_to_outlier": 9.6,
+      "welch_t": -11.6,
+      "welch_p": 3.88e-18,
+      "cohens_d": 1.42,
+      "effect_size": "HUGE",
+      "interpretation": "Outliers are systematically under-massive by an order of magnitude"
+    },
+    "test_2_box_edge_effect": {
+      "description": "Proximity to periodic box boundaries",
+      "box_size_ckpc_h": 75000,
+      "edge_threshold_ckpc_h": 5000,
+      "outliers_near_edge": "6/8",
+      "inliers_near_edge": "variable",
+      "interpretation": "Most outliers sit at simulation box boundaries \u2014 periodic truncation artifacts"
+    },
+    "test_3_kinematic_coldness": {
+      "description": "Bulk velocity vs velocity dispersion",
+      "outlier_mean_v_total_kms": 402.3,
+      "inlier_mean_v_total_kms": 140.5,
+      "outlier_mean_veldisp_kms": 133.8,
+      "inlier_mean_veldisp_kms": 183.9,
+      "ttest_p": 0.0,
+      "interpretation": "Higher bulk velocity + lower dispersion = backsplash/infall signature"
+    },
+    "test_4_size_mass_residuals": {
+      "description": "Deviation from size-mass relation",
+      "outlier_resid_mean": -0.019,
+      "inlier_resid_mean": 0.0,
+      "interpretation": "Some outliers compact (tidally stripped), others puffy"
+    },
+    "test_5_ac_deficit": {
+      "description": "Mann-Whitney U test on A_c by outlier status",
+      "v1_result": {
+        "p": 0.5118,
+        "verdict": "No significant deficit"
+      },
+      "v2_result": {
+        "p": 0.9851,
+        "verdict": "No significant deficit"
+      },
+      "interpretation": "Spatial outliers are NOT low-complexity halos"
+    }
+  },
+  "inverted_test_mass_normalized": {
+    "description": "Find low-A_c halos first, then check spatial properties",
+    "method": "Quartic mass trend removal, then 25th percentile A_c cutoff",
+    "n_low_ac": 25,
+    "n_high_ac": 75,
+    "low_ac_characteristics": {
+      "mean_mass_msun": 16600000000000.0,
+      "spatial_outliers": "1/25 (4%)",
+      "mean_pairwise_distance_ckpc_h": 7309,
+      "mean_cm_x_ckpc_h": 785,
+      "physical_identity": "Massive, relaxed, virialized cluster centers"
+    },
+    "high_ac_characteristics": {
+      "mean_mass_msun": 1500000000000.0,
+      "spatial_outliers": "7/75 (9%)",
+      "mean_pairwise_distance_ckpc_h": 12435,
+      "mean_cm_x_ckpc_h": 4496,
+      "physical_identity": "Lower-mass, dispersed, dynamically active halos"
+    },
+    "key_finding": "Simple halos are 11x more massive, centrally clustered, and NOT at box edges. Complex halos are dispersed and more likely edge outliers.",
+    "mass_controlled_residual_correlations": {
+      "veldisp": {
+        "r": 0.113,
+        "p": 0.264
+      },
+      "vmax": {
+        "r": -0.031,
+        "p": 0.759
+      },
+      "spin": {
+        "r": -0.036,
+        "p": 0.725
+      },
+      "sfr": {
+        "r": 0.157,
+        "p": 0.12
+      },
+      "halfmassrad": {
+        "r": -0.086,
+        "p": 0.392
+      },
+      "gasmetallicity": {
+        "r": 0.067,
+        "p": 0.505
+      }
+    }
+  },
+  "cosmological_interpretation": {
+    "what_ac_actually_measures": "Dynamical maturity at z=0, not total assembly history",
+    "massive_relaxed_halos": {
+      "ac_signature": "LOW",
+      "reason": "Early formation, efficient merging, long relaxation time \u2014 smooth profiles, isotropic kinematics"
+    },
+    "low_mass_active_halos": {
+      "ac_signature": "HIGH",
+      "reason": "Recent infall, tidal harassment, radial orbits \u2014 disturbed profiles, anisotropic kinematics"
+    },
+    "implication_for_cloud9": "A_c successfully separates populations, but measures instantaneous dynamical state rather than cumulative assembly complexity. Reframing or adding historical component (merger trees) recommended."
+  },
+  "next_steps": {
+    "recommended": [
+      "Fetch TNG sublink merger trees for actual n_mergers_major/minor",
+      "Test A_c correlation with formation_redshift",
+      "Add C_time component for historical assembly weight",
+      "Validate against IllustrisTNG published halo catalogs"
+    ],
+    "optional": [
+      "Scale to full 2048-halo sample",
+      "Apply certified randomness (ETH-Zurich style) to bootstrap confidence",
+      "Cross-domain pattern match with cancer progression data (79% similarity target)"
+    ]
+  },
+  "files_generated": [
+    "/content/halo_assembly_enriched.csv",
+    "/content/halo_assembly_real.csv",
+    "/content/discovery_ac_dashboard.png",
+    "/content/ac_real_data.png",
+    "/content/ac_v1_vs_v2.png",
+    "/content/inverted_ac_analysis.png"
+  ]
+}
