@@ -1,0 +1,429 @@
+{
+  "metadata": {
+    "project": "Cloud-9 Assembly Project",
+    "version": "2.1.0",
+    "date": "2026-05-24",
+    "status": "Draft for Repository Integration",
+    "classification": "Cross-Domain Framework Expansion"
+  },
+  "executive_summary": {
+    "description": "Cloud-9 Assembly Project expands from cosmological complexity detection into two intersecting domains: Physics Track (light-matter equivalence breakthroughs) and Medical Track (pre-symptomatic disease detection via biological complexity breakdown).",
+    "unifying_principle": "Complexity itself is the signal — whether detecting anomalous structure in dark matter halos or pre-symptomatic cellular disorganization."
+  },
+  "physics_track": {
+    "new_validation_cases": [
+      {
+        "entry_id": "C9-2026-LIGHT-001",
+        "title": "Breit-Wheeler Pair Production",
+        "phenomenon": "Direct observation of photon-photon collision producing electron-positron pairs in controlled laboratory conditions. First unambiguous demonstration of E=mc² as reversible, engineerable process.",
+        "significance_for_ac": [
+          "Validates treating Assembly Index as phase-transition-sensitive: complexity spikes when energy configurations decohere into stable particulate structure",
+          "Provides laboratory-accessible analogue to Big Bang nucleosynthesis and radiation-matter equality epoch",
+          "Suggests A_c formalism must be extensible to pure field configurations (pre-matter complexity)"
+        ],
+        "cross_layer_pattern": {
+          "pattern_id": "XP-2026-004",
+          "name": "Condensation Complexity",
+          "description": "Complexity spikes when energy fields decohere into stable particulate structure",
+          "domains_linked": [
+            "Big Bang nucleosynthesis",
+            "Breit-Wheeler lab",
+            "quark-gluon plasma"
+          ]
+        },
+        "source_reference": "Breit-Wheeler process, first direct laboratory observation (2020s)"
+      },
+      {
+        "entry_id": "C9-2026-PHOTON-001",
+        "title": "Quantum Fluid Crystallization / Frozen Light",
+        "phenomenon": "Polariton condensates and strongly coupled light-matter systems exhibiting solid-like ordered quantum states. Light particles interacting with matter form ordered, crystalline patterns under extreme coupling conditions.",
+        "significance_for_ac": [
+          "Demonstrates that even massless particles can exhibit non-random, ordered structure",
+          "Expands domain of 'assemblable' entities beyond baryonic matter",
+          "Raises question: can dark sector particles (axions, dark photons) form analogous crystalline structures in early universe or compact object environments?",
+          "Reinforces that strong coupling can freeze dynamical systems into low-entropy configurations"
+        ],
+        "cross_layer_pattern": {
+          "pattern_id": "XP-2026-005",
+          "name": "Coupling-Induced Order",
+          "description": "Strong matter-field coupling creates ordered, low-entropy configurations",
+          "domains_linked": [
+            "Polariton condensates",
+            "neutron star crusts",
+            "biological membranes"
+          ]
+        },
+        "source_reference": "Carusotto & Ciuti (2013), Reviews of Modern Physics; subsequent polariton condensate experiments"
+      }
+    ],
+    "layer_2_references": [
+      {
+        "entry_id": "QTIME-2026-002",
+        "title": "Laboratory Big Bang Analogues",
+        "phenomenon": "Breit-Wheeler process as reproducible energy-to-matter phase transition",
+        "cosmological_connection": [
+          "Provides empirical anchor for early universe simulations where photon-photon scattering dominated",
+          "Suggests future cosmological codes (TNG successors) should track photon-photon scattering channels more explicitly at high redshift",
+          "Bridges laboratory physics with cosmic evolution"
+        ]
+      }
+    ],
+    "cross_layer_patterns": [
+      {
+        "pattern_id": "XP-2026-004",
+        "name": "Condensation Complexity",
+        "description": "Complexity spikes when energy fields decohere into stable particulate structure",
+        "domains_linked": [
+          "Big Bang nucleosynthesis",
+          "Breit-Wheeler lab",
+          "quark-gluon plasma"
+        ]
+      },
+      {
+        "pattern_id": "XP-2026-005",
+        "name": "Coupling-Induced Order",
+        "description": "Strong matter-field coupling freezes dynamical systems into ordered configurations",
+        "domains_linked": [
+          "Polariton condensates",
+          "neutron star crusts",
+          "biological membranes"
+        ]
+      },
+      {
+        "pattern_id": "XP-2026-006",
+        "name": "Energy as Substrate",
+        "description": "Matter is not fundamental; energy configurations are. A_c definable for pure field states",
+        "domains_linked": [
+          "Quantum electrodynamics",
+          "cosmological dark energy models"
+        ]
+      }
+    ],
+    "action_items": [
+      {
+        "priority": "Immediate",
+        "action": "Add C9-2026-LIGHT-001 and C9-2026-PHOTON-001 to validation suite",
+        "timeline": "v2.0.2",
+        "deliverable": "Updated tng_validation_suite.py"
+      },
+      {
+        "priority": "Short-term",
+        "action": "Extend A_c formalism to gauge field configurations (pre-matter complexity)",
+        "timeline": "v2.1.0",
+        "deliverable": "Mathematical white paper"
+      },
+      {
+        "priority": "Medium-term",
+        "action": "Investigate dark sector particle crystallization analogues",
+        "timeline": "Research note",
+        "deliverable": "arXiv preprint"
+      }
+    ]
+  },
+  "medical_track": {
+    "core_thesis": "Disease is a breakdown in biological assembly rules. Just as cosmological A_c detects when dark matter halos deviate from expected random structure, A_c^bio detects when cellular and tissue networks deviate from healthy organizational complexity before functional symptoms emerge.",
+    "physics_parallels": [
+      {
+        "physics_discovery": "Light crystallizing into ordered structures under strong coupling",
+        "biological_parallel": "Healthy cells maintaining ordered structure through strong molecular coupling (membranes, cytoskeleton)"
+      },
+      {
+        "physics_discovery": "Energy → matter phase transition",
+        "biological_parallel": "Metabolic energy → cellular structure maintenance"
+      },
+      {
+        "physics_discovery": "Breit-Wheeler: energy condensing into particle pairs",
+        "biological_parallel": "Mitochondrial energy metabolism driving cellular assembly and repair"
+      }
+    ],
+    "key_insight": "If matter is 'condensed energy,' then disease may be understood as a failure of condensation — a breakdown in the energy-to-structure coupling that maintains healthy complexity.",
+    "formal_definition": {
+      "equation": "A_c^bio(tissue, t) = f(T(t), Φ(t), S(t), D(t), σ(t))",
+      "components": [
+        {
+          "symbol": "T(t)",
+          "name": "Topological Complexity",
+          "description": "Persistent homology of cell-cell interaction graph. Captures multi-scale topological features (connected components, loops, voids) that characterize tissue architecture.",
+          "evidence": "Persistent homology outperforms traditional morphological summaries in predicting disease-free survival in glioblastoma and distinguishes cancer subtypes in breast, prostate, and colorectal tissues."
+        },
+        {
+          "symbol": "Φ(t)",
+          "name": "Information Integration",
+          "description": "Integrated information measure adapted from Tononi's IIT, quantifying how much a biological network integrates information beyond the sum of its parts.",
+          "evidence": "Loss of integration precedes functional breakdown in neural and cellular networks."
+        },
+        {
+          "symbol": "S(t)",
+          "name": "Metabolic Entropy Production",
+          "description": "Entropy production rate from metabolic networks.",
+          "evidence": "Healthy tissues operate far from equilibrium with characteristic entropy signatures; disease disrupts these."
+        },
+        {
+          "symbol": "D(t)",
+          "name": "Developmental Trajectory Deviation",
+          "description": "Deviation from a healthy reference atlas (e.g., Human Cell Atlas) across spatial scales.",
+          "evidence": "Single-cell atlases provide baselines for healthy cellular organization."
+        },
+        {
+          "symbol": "σ(t)",
+          "name": "Temporal Stability",
+          "description": "Temporal stability of organizational patterns.",
+          "evidence": "Healthy complexity patterns are robust; pre-disease states show increasing fluctuation before collapse."
+        }
+      ]
+    },
+    "early_detection_mechanism": {
+      "step_1": {
+        "name": "BASELINE",
+        "description": "Map A_c^bio for healthy tissue across scales: single cell → neighborhood → tissue → organ"
+      },
+      "step_2": {
+        "name": "MONITOR",
+        "description": "Track A_c^bio in patient samples over time"
+      },
+      "step_3": {
+        "name": "DETECT",
+        "description": "Flag when A_c^bio deviates from healthy distribution BEFORE clinical markers cross threshold"
+      },
+      "step_4": {
+        "name": "LOCALIZE",
+        "description": "Use topological persistence to identify which tissue regions are losing organizational complexity first"
+      }
+    },
+    "validation_pathways": [
+      {
+        "domain": "Topological Data Analysis in Oncology",
+        "status": "Established",
+        "findings": [
+          "Persistent homology identifies tumor shape features correlated with poor prognosis in brain cancer, outperforming gene expression and volumetric summaries",
+          "TDA distinguishes breast cancer subtypes (Basal, Luminal A, Luminal B, HER2) with ~4x improvement over standard classifiers",
+          "Topological features classify hepatic tumors (HCC, metastatic, hemangioma) with 74-85% accuracy from MRI",
+          "Prostate cancer histology clustered by Gleason patterns using persistence intensity diagrams",
+          "Colorectal cancer whole-slide images segmented using persistent homology profiles with better precision than CNNs"
+        ]
+      },
+      {
+        "domain": "Single-Cell & Pre-Symptomatic Detection",
+        "status": "Emerging",
+        "findings": [
+          "Single-cell RNA-seq enables high-resolution cellular atlases",
+          "Cell-free RNA tests show promise for early pancreatic cancer detection in high-risk patients",
+          "Spatial transcriptomics captures cell-cell interaction topology",
+          "Organizational breakdown (topology) precedes gene expression changes detectable by traditional methods"
+        ]
+      }
+    ],
+    "disease_targets": [
+      {
+        "disease": "Type 1 Diabetes",
+        "pre_symptomatic_window": "Months to years (autoantibody phase)",
+        "data_source": "Single-cell islet transcriptomics",
+        "ac_bio_application": "Detect β-cell network disorganization before insulin deficiency"
+      },
+      {
+        "disease": "Lynch Syndrome Cancers",
+        "pre_symptomatic_window": "Years (polyps → carcinoma)",
+        "data_source": "Colonoscopy histology + cfDNA",
+        "ac_bio_application": "Topological deviation in mucosal architecture"
+      },
+      {
+        "disease": "Glioblastoma",
+        "pre_symptomatic_window": "Weeks to months (before imaging)",
+        "data_source": "MRI radiomics + liquid biopsy",
+        "ac_bio_application": "Shape complexity decline predicts recurrence"
+      },
+      {
+        "disease": "Alzheimer's Disease",
+        "pre_symptomatic_window": "Decades (preclinical biomarker phase)",
+        "data_source": "PET amyloid + single-cell brain atlas",
+        "ac_bio_application": "Synaptic network integration loss (Φ measure)"
+      }
+    ],
+    "action_items": [
+      {
+        "priority": "Immediate",
+        "action": "Formalize A_c^bio equation with explicit terms",
+        "timeline": "v2.0.2-medical",
+        "deliverable": "Mathematical specification"
+      },
+      {
+        "priority": "Short-term",
+        "action": "Partner with Human Cell Atlas for baseline data",
+        "timeline": "Q3 2026",
+        "deliverable": "Data access agreement"
+      },
+      {
+        "priority": "Short-term",
+        "action": "Identify 2-3 diseases with documented pre-symptomatic windows for pilot",
+        "timeline": "Q3 2026",
+        "deliverable": "Validation protocol"
+      },
+      {
+        "priority": "Medium-term",
+        "action": "Prototype Lava SNN pipeline for real-time A_c^bio computation",
+        "timeline": "Q4 2026",
+        "deliverable": "Working demo"
+      },
+      {
+        "priority": "Medium-term",
+        "action": "Publish proof-of-concept on single-cell topological cancer detection",
+        "timeline": "Q1 2027",
+        "deliverable": "Peer-reviewed manuscript"
+      }
+    ]
+  },
+  "intersection": {
+    "unified_complexity_framework": {
+      "description": "Both tracks share a common epistemological structure for detecting anomalous complexity.",
+      "mapping": [
+        {
+          "component": "System",
+          "cosmological": "Dark matter halo",
+          "biological": "Tissue/organ"
+        },
+        {
+          "component": "Particles",
+          "cosmological": "Dark matter particles",
+          "biological": "Cells"
+        },
+        {
+          "component": "Interactions",
+          "cosmological": "Gravity",
+          "biological": "Cell signaling, metabolism"
+        },
+        {
+          "component": "Baseline",
+          "cosmological": "TNG simulation (random structure)",
+          "biological": "Human Cell Atlas (healthy reference)"
+        },
+        {
+          "component": "Anomaly",
+          "cosmological": "Non-random complexity spike",
+          "biological": "Organizational breakdown"
+        },
+        {
+          "component": "Detection",
+          "cosmological": "Bootstrap significance vs. simulation",
+          "biological": "Deviation from healthy distribution"
+        },
+        {
+          "component": "Precedent",
+          "cosmological": "Merger history before halo collapse",
+          "biological": "Cellular disorganization before symptom onset"
+        },
+        {
+          "component": "Hardware",
+          "cosmological": "Lava SNN for gravitational dynamics",
+          "biological": "Lava SNN for real-time biomarker processing"
+        }
+      ]
+    },
+    "cross_domain_patterns": [
+      {
+        "pattern_id": "XP-2026-004",
+        "physics_manifestation": "Energy → matter condensation (Breit-Wheeler)",
+        "biological_manifestation": "Metabolic energy → cellular structure maintenance"
+      },
+      {
+        "pattern_id": "XP-2026-005",
+        "physics_manifestation": "Polariton crystallization under strong coupling",
+        "biological_manifestation": "Membrane/cytoskeleton order under molecular coupling"
+      },
+      {
+        "pattern_id": "XP-2026-006",
+        "physics_manifestation": "Field configuration complexity",
+        "biological_manifestation": "Gene regulatory network complexity"
+      },
+      {
+        "pattern_id": "XP-2026-007",
+        "physics_manifestation": "Merger-driven halo assembly",
+        "biological_manifestation": "Cell division/differentiation-driven tissue development"
+      },
+      {
+        "pattern_id": "XP-2026-008",
+        "physics_manifestation": "Cosmic ray disruption of halo structure",
+        "biological_manifestation": "Inflammation/disruption of tissue architecture"
+      }
+    ]
+  },
+  "implementation_roadmap": {
+    "integration_milestones": [
+      {
+        "milestone": "M1",
+        "description": "Unified mathematical framework paper bridging cosmological and biological A_c",
+        "target": "Q4 2026"
+      },
+      {
+        "milestone": "M2",
+        "description": "Repository v3.0.0 with dual-track validation suite",
+        "target": "Q1 2027"
+      },
+      {
+        "milestone": "M3",
+        "description": "INRC application incorporating cross-domain neuromorphic computing",
+        "target": "Q1 2027"
+      },
+      {
+        "milestone": "M4",
+        "description": "First empirical validation of A_c^bio on pre-symptomatic cohort",
+        "target": "Q2 2027"
+      }
+    ]
+  },
+  "repository_structure": {
+    "directories": [
+      {
+        "path": "cloud-9-assembly/cosmology/",
+        "contents": [
+          "tng_validation_suite.py",
+          "ac_formalism.py",
+          "validation_cases/C9-2026-GALAXY-001.md",
+          "validation_cases/C9-2026-LEGACY-001.md",
+          "validation_cases/C9-2026-LIGHT-001.md",
+          "validation_cases/C9-2026-PHOTON-001.md"
+        ]
+      },
+      {
+        "path": "cloud-9-assembly/medical/",
+        "contents": [
+          "ac_bio_formalism.py",
+          "topology_pipeline.py",
+          "validation_protocols/type1_diabetes.md",
+          "validation_protocols/lynch_syndrome.md",
+          "validation_protocols/glioblastoma.md",
+          "data_interfaces/human_cell_atlas.py",
+          "data_interfaces/spatial_transcriptomics.py"
+        ]
+      },
+      {
+        "path": "cloud-9-assembly/shared/",
+        "contents": [
+          "complexity_measures.py",
+          "snn_lava_backend.py",
+          "cross_layer_patterns.md"
+        ]
+      },
+      {
+        "path": "cloud-9-assembly/docs/",
+        "contents": [
+          "physics_white_paper.md",
+          "medical_white_paper.md",
+          "intersection_framework.md"
+        ]
+      }
+    ],
+    "root_files": [
+      "README.md"
+    ]
+  },
+  "conclusion": {
+    "unifying_insight": "Order emerges from coupling, and complexity is the signature of that emergence.",
+    "core_methodology": [
+      "Define healthy baseline complexity",
+      "Measure organizational structure across scales",
+      "Detect statistically significant deviation",
+      "Localize the source of breakdown"
+    ],
+    "final_statement": "The Solar System and the human body are different scales of the same problem: understanding how complexity assembles, maintains itself, and fails."
+  }
+}
