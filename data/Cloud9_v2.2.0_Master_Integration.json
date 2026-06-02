@@ -1,0 +1,146 @@
+{
+  "project": "Cloud-9 Assembly Project",
+  "version": "2.2.0",
+  "date": "2026-05-29",
+  "status": "Active development \u2014 7 new entries integrated",
+  "theoretical_clusters": {
+    "C1_Quantum_Foundations": {
+      "topics": [
+        "Darwinism",
+        "QBism",
+        "Consistent Histories",
+        "Atomic Uniqueness (NEW)"
+      ],
+      "entries": [
+        "C9-2026-QF-001",
+        "C9-2026-QM-001",
+        "C9-2026-LEGACY-002"
+      ],
+      "status": "Expanded with Raizen test proposal"
+    },
+    "C2_Quantum_Gravity": {
+      "topics": [
+        "Causal Set Theory",
+        "CDT",
+        "Asymptotic Safety",
+        "Nowacki Topology (NEW)"
+      ],
+      "entries": [
+        "C9-2026-QG-002",
+        "C9-2026-TOPO-001"
+      ],
+      "status": "Topology module integrated"
+    },
+    "C3_Quantum_Info_Complexity": {
+      "topics": [
+        "Susskind complexity",
+        "Holography",
+        "Scrambling",
+        "Loeb Scale Bridge (NEW)"
+      ],
+      "entries": [
+        "C9-2026-QI-003",
+        "C9-2026-ISO-001"
+      ],
+      "status": "ISO classification module active"
+    },
+    "C4_Complexity_Science": {
+      "topics": [
+        "Spin glasses",
+        "Edge of chaos",
+        "Active inference",
+        "Galaxy Merger Dynamics (NEW)"
+      ],
+      "entries": [
+        "C9-2026-CS-004",
+        "C9-2026-ASTRO-001"
+      ],
+      "status": "MW-Andromeda merger integrated"
+    },
+    "C5_Topological_Systems": {
+      "topics": [
+        "Anyons",
+        "TDA",
+        "Non-Hermitian physics",
+        "Nowacki 18-manifolds (NEW)"
+      ],
+      "entries": [
+        "C9-2026-TDA-005",
+        "C9-2026-TOPO-001"
+      ],
+      "status": "Flat 3-manifold classification complete"
+    },
+    "C6_Neuromorphic_Computing": {
+      "topics": [
+        "Reservoir computing",
+        "PINNs",
+        "Digital twins",
+        "Galileo SNN Bridge (NEW)",
+        "Shellear Biomimetic (NEW)"
+      ],
+      "entries": [
+        "C9-2026-NEURO-001",
+        "C9-2026-OBS-001",
+        "C9-2026-BIO-001"
+      ],
+      "status": "5 enhancement pathways defined"
+    },
+    "C7_Quantum_Thermodynamics": {
+      "topics": [
+        "Resource theories",
+        "Entropy production",
+        "Atomic identity thermodynamics (NEW)"
+      ],
+      "entries": [
+        "C9-2026-QT-007",
+        "C9-2026-QM-001"
+      ],
+      "status": "Linked to Raizen proposal"
+    },
+    "C8_Consciousness_Studies": {
+      "topics": [
+        "IIT",
+        "Global workspace",
+        "Extended mind"
+      ],
+      "entries": [
+        "C9-2026-CON-008"
+      ],
+      "status": "Stable \u2014 no new entries this cycle"
+    }
+  },
+  "terrestrial_validation_cases": {
+    "C9-2026-LEGACY-001": "Fujitsu Kozuchi COBOL modernization (97% time reduction)",
+    "C9-2026-LEGACY-002": "Raizen Atomic Uniqueness Tests (pending experimental)",
+    "C9-2026-BIO-001": "Shellear Fish Friction Enhancers (biomimetic neuromorphic)"
+  },
+  "cross_domain_metrics": {
+    "halo_cancer_similarity": 0.79,
+    "new_patterns_identified": 7,
+    "total_patterns_v2.1.1": 12,
+    "test_priority_queue": [
+      "3I/ATLAS enhanced observation (Loeb Scale L5/L6 boundary)",
+      "Nowacki topology CMB constraint search",
+      "Raizen atomic uniqueness proof-of-concept",
+      "Galileo SNN trajectory prediction deployment",
+      "TNG100-1 K-dwarf convergence at scale (2000+ halos)"
+    ]
+  },
+  "github_repos_tracked": [
+    "anthropic/claude-code (PR #45721)",
+    "thewaltero/mythos-router",
+    "kyegomez/OpenMythos",
+    "cran/multiCA",
+    "multica-ai/multica"
+  ],
+  "github_topic": "claude-mythos",
+  "next_milestones": {
+    "v2.3.0_target": "2026-06-15",
+    "v2.3.0_goals": [
+      "Complete TNG100-1 2000-halo validation run",
+      "Deploy A_c scoring module on Galileo Project testbed",
+      "Publish Nowacki topology-CMB correlation paper",
+      "Submit INRC application (v1.0.0 ready since Feb 2026)"
+    ]
+  }
+}
