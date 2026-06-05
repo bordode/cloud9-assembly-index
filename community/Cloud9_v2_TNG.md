@@ -2,12 +2,11 @@ CLOUD-9 ASSEMBLY INDEX PROJECT
 
 *Cross-Domain Extension Note v2.0 + TNG Validation â April 2026*
 
-**To:** Alex Chen, Department of Physics, McGill University
-**From:** Dean Bordode â Independent Researcher, Victoria/Vancouver BC
+
 **Re:** Domain 4 integration + TNG100-1 validation pipeline
 **GitHub:** bordode/cloud9-assembly-index
 
-Alex,
+
 
 Two updates since my last note:
 
@@ -60,10 +59,3 @@ Three empirical, one theoretical. That's a defensible balance.
 3. If Z-score < 2.0: retract shell claim formally, document null in commit history
 4. Either way: no new theoretical domains until empirical weight catches up
 
-Happy to share the TNG dashboard directly when it completes.
-
-Dean
-
-bordode/cloud9-assembly-index
-
-*Cloud-9 Assembly Index Project | v1.5.0+ | April 2026*
