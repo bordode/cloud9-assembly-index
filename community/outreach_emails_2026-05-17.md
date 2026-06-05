@@ -1,15 +1,5 @@
-# CLOUD-9 OUTREACH EMAILS — MAY 17, 2026
+# CLOUD-9 OUTREACH  — 
 
----
-
-## EMAIL 1: TEAM PROGRESS SUMMARY (Internal)
-
-**To:** Cloud-9 Team (Kimi, Minstrel, Subhalo)
-**Subject:** Cloud-9 Assembly Index — Session Summary, May 17 2026
-
-Team,
-
-Quick recap of today's session — a lot moved.
 
 **Scientific Results**
 
@@ -41,32 +31,17 @@ The Chern-Simons-Kodama + QGT work (from Alexander et al. and Shinada & Nagaosa)
 
 Ancient halos have precisely determined A_c — topologically locked. This is testable against TNG100-1.
 
-**Status**
-
-INRC application template: complete. TNG validation suite: operational. UN HRC submission: in progress. SDSS empirical signal: sub-threshold but real, awaiting TNG-100 run for n > 500.
-
-Good work today. Dean is taking a break — continuing independently.
-
-— Subhalo
 
 ---
 
-## EMAIL 2: TO ALEX CHEN (McGill University)
+A consolidated update on Cloud-9 since the April letter. I want to share a few developments that I think are relevant to your assembly-theory work, offered as a FYI — this remains a personal hobby project, so no pressure on response timelines.
 
-**To:** Alex Chen, Department of Physics, McGill University
-**Subject:** Cloud-9 v1.5.0 — Consolidated update + Domain 4 longevity extension
-
-Dear Alex,
-
-Writing with a consolidated update on Cloud-9 since the April letter. I want to share a few developments that I think are relevant to your assembly-theory work, offered as a FYI — this remains a personal hobby project, so no pressure on response timelines.
-
-**What's changed since April**
 
 The empirical SDSS result (2.46σ in the 14–18 kpc shell, z = 0.16–0.19) is unchanged — still sub-threshold, still real. The pipeline is now staged for a TNG-100 snapshot 99 run which should give us n > 500 in the target shell and a legitimate 3σ test. IBM quantum hardware is confirmed operational (Kingston, April 12).
 
 **The result I most wanted to share**
 
-A four-system physics analysis completed this week produced what I think is our most interesting theoretical finding yet. Across four physically unrelated systems — an exciton-polariton photonic switch, Alfvén wave plasma, Perseus cluster chemical evolution, and the GW190728 gravitational wave event — the Assembly Index scales linearly with energy span:
+Across four physically unrelated systems — an exciton-polariton photonic switch, Alfvén wave plasma, Perseus cluster chemical evolution, and the GW190728 gravitational wave event — the Assembly Index scales linearly with energy span:
 
     A_c ≈ 2.5 · log(E_max/E_min) + 16.1
 
@@ -89,21 +64,12 @@ I've attached the updated Framework Overview document (Section 2 now includes th
 
 As always, this is offered as a FYI — genuinely curious whether the RG-depth interpretation of A_c resonates with anything in your work on assembly theory.
 
-Best,
-Dean Bordode
-Independent Researcher, Victoria/Vancouver BC
-GitHub: bordode/cloud9-assembly-index
 
 ---
 
-## EMAIL 3: TO PROFESSOR AVI LOEB (Harvard)
-
-**To:** Professor Avi Loeb, Harvard University
 **Subject:** Cloud-9 Assembly Index — FYI update on K-dwarf convergence and GW190728 empirical hook
 
-Dear Professor Loeb,
-
-I'm writing as a brief FYI follow-up to the earlier note about the Cloud-9 Assembly Index project. This remains a personal hobby project, so no expectation of response — I just thought a few recent developments might be of interest given your work on anthropic selection and gravitational wave phenomenology.
+ — I just thought a few recent developments might be of interest  on anthropic selection and gravitational wave phenomenology.
 
 **The K-Dwarf Convergence — Now Multiply Validated**
 
@@ -117,7 +83,7 @@ Both results arrive at the same answer through completely different mechanisms, 
 
 **GW190728 — First Empirical Hook for QBox Hyperdecoherence**
 
-This one may be more directly relevant to your gravitational wave interests. Our four-system analysis flagged GW190728 as the first system with a direct empirical test path for QBox hyperdecoherence. The binary black hole merger occurred in a region consistent with a dense ultralight dark matter cloud. If dark matter modifies the GW waveform, hyperdecoherence should appear as anomalous dispersion in the high-frequency GW tail.
+This one may be more directly relevant to  gravitational wave interests. The four-system analysis flags GW190728 as the first system with a direct empirical test path for QBox hyperdecoherence. The binary black hole merger occurred in a region consistent with a dense ultralight dark matter cloud. If dark matter modifies the GW waveform, hyperdecoherence should appear as anomalous dispersion in the high-frequency GW tail.
 
 Testable prediction: A GW190728 reanalysis with QBox-modified waveform templates should show a Bayes factor > 10 over the standard DM-cloud model if hyperdecoherence is real. This is our first concrete quantitative prediction that could be tested against LIGO data.
 
@@ -128,12 +94,7 @@ Your recent work with Oem Trivedi on negative mass binaries is directly relevant
 **Repository and Materials**
 
 Full code and results: bordode/cloud9-assembly-index
-UAP propulsion analysis (separate project): bordode/cloud9-uap
+UAP propulsion analysis (separate): bordode/cloud9-uap
 
-Happy to share any specific derivations or simulation outputs if useful. Again, offered purely as a FYI.
 
-Best regards,
-Dean Bordode
-Independent Researcher, Victoria/Vancouver BC
-GitHub: bordode/cloud9-assembly-index
 
