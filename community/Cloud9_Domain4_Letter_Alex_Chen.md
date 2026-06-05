@@ -1,14 +1,3 @@
-CLOUD-9 ASSEMBLY INDEX PROJECT
-
-*Cross-Domain Extension Note â April 2026*
-
-**To:** Alex Chen, Department of Physics, McGill University
-**From:** Dean Bordode â Independent Researcher, Victoria/Vancouver BC
-**Re:** Domain 4 integration â Biological longevity as a Îº-phase transition
-**GitHub:** bordode/cloud9-assembly-index
-
-Alex,
-
 This is a brief technical follow-up to the v1.5.0 letter I sent earlier. I want to flag a parallel extension of the Cloud-9 Îº-framework into a fourth domain â one that does not alter any of our existing empirical results, but strengthens the claim that the phase-transition formalism is truly universal.
 
 A recent discussion of "longevity escape velocity" in the medical futurist literature (Kurzweil et al., 2024â2026) turns out to map exactly onto our Recovery-vs-Damage formalism. Rather than treating this as pop-science, I worked out the quantitative isomorphism. The math holds. Here is the derivation.
@@ -85,10 +74,5 @@ I suggest adding this as **Domain 4** in the Framework Overview document (Sectio
 
 I have written a standalone Python module, `domain_4_longevity.py`, that runs the longevity phase-transition sweep using the same engine as `sim.py`. It is available in the repo under `/extensions/` if you want to verify the sigmoidal fit yourself.
 
-As always, happy to walk through the equations or adjust the framing.
-
-Dean
-
-bordode/cloud9-assembly-index
 
 *Cloud-9 Assembly Index Project | v1.5.0+ | April 2026*
