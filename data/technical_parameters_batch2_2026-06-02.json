@@ -1,0 +1,84 @@
+{
+  "metadata": {
+    "extracted_date": "2026-06-02",
+    "batch": 2,
+    "source_count": 3,
+    "domains": [
+      "astrophysics",
+      "quantum_computing",
+      "quantum_optics_theory"
+    ]
+  },
+  "pair_instability_supernova": {
+    "source": "arXiv:2605.16487 (via Science X)",
+    "event": "SN 2023vbw",
+    "detector": "Zwicky Transient Facility",
+    "detection_date": "2023-10",
+    "distance_Gly": 1.3,
+    "host_type": "metal-poor_dwarf_galaxy",
+    "host_metallicity_solar_fraction": 0.1,
+    "classification": "pair_instability_supernova_candidate",
+    "light_curve": {
+      "peak_day": 190,
+      "decline_start_day": 190,
+      "decline_end_day": 230,
+      "post_decline_phase": "slowly_declining_plateau_tail"
+    },
+    "total_radiated_energy_erg": 3e+50,
+    "energy_ratio_vs_normal_TypeII": 10,
+    "ejecta_mass_Msun_range": [
+      170,
+      350
+    ],
+    "kinetic_energy_ratio_vs_max_iron_core_collapse": [
+      60,
+      130
+    ],
+    "progenitor": {
+      "type": "blue_supergiant",
+      "formation_channel": "binary_merger_hypothesis",
+      "initial_mass_range_Msun_for_PISN": [
+        140,
+        260
+      ]
+    },
+    "remnant": "none_expected",
+    "nucleosynthesis": "explosive_nucleosynthesis",
+    "future_surveys": [
+      "Vera_Rubin_Observatory",
+      "Nancy_Grace_Roman_Space_Telescope"
+    ],
+    "key_researcher": "Daichi Hiramatsu"
+  },
+  "quantum_computing_roadmap": {
+    "source": "TechRadar Pro / BBC interview (late 2024)",
+    "speaker": "Sundar Pichai",
+    "company": "Alphabet/Google",
+    "quote": "Quantum is where AI was five years ago",
+    "milestone": {
+      "date": "2024-12",
+      "achievement": "below_threshold_error_correction",
+      "meaning": "adding_qubits_reduces_errors_not_increases"
+    },
+    "target": "fully_fault_tolerant_quantum_computer",
+    "analogy": "quantum_computing_chatgpt_moment_within_5_years",
+    "key_challenge": "error_correction_sustainability"
+  },
+  "photon_truncation_theory": {
+    "source": "Physical Review Letters (2026)",
+    "authors": "Johannes Skaar et al.",
+    "title": "Truncated photon",
+    "arXiv": "2510.21636",
+    "phenomenon": "optical_shutter_photon_truncation",
+    "setup": "single_photon_passing_through_fast_optical_shutter",
+    "classical_expectation": "two_half_photons",
+    "quantum_result": "infinite_superposition_of_photon_number_states",
+    "mechanism": "vacuum_fluctuations_disturbed_by_shutter_create_spontaneous_photons",
+    "local_appearance": "deceptively_normal_single_photon_one_side_vacuum_other",
+    "future_work": [
+      "multi_photon_scenarios",
+      "extension_to_electrons"
+    ],
+    "fundamental_implication": "quantum_particles_behave_differently_from_everyday_objects"
+  }
+}
