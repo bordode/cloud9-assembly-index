@@ -1,0 +1,218 @@
+{
+  "metadata": {
+    "project": "Cloud-9 Assembly Project",
+    "date": "2026-06-02",
+    "total_sources": 8,
+    "batches": 2,
+    "domains": [
+      "cosmology",
+      "quantum_optics",
+      "terahertz_engineering",
+      "astrophysics",
+      "quantum_optics_theory",
+      "astronomy",
+      "quantum_computing"
+    ]
+  },
+  "batch_1": {
+    "metadata": {
+      "extracted_date": "2026-06-02",
+      "source_count": 5,
+      "domains": [
+        "quantum_optics",
+        "cosmology",
+        "astronomy",
+        "terahertz_engineering",
+        "astrophysics"
+      ]
+    },
+    "quantum_optics": {
+      "source": "Nature (via Interesting Engineering)",
+      "institution": "East China Normal University",
+      "pi": "Jian Wu",
+      "phenomenon": "bright_squeezed_vacuum",
+      "enhancement_factor": 20,
+      "energy_per_pulse_nJ": 300,
+      "process": "tunneling_ionization",
+      "target": "sodium_atoms",
+      "tunable_parameter": "quantum_statistical_properties",
+      "damage_risk": "reduced",
+      "applications": [
+        "attosecond_physics",
+        "high_harmonic_generation",
+        "ultrafast_imaging"
+      ]
+    },
+    "cosmology_black_hole": {
+      "source": "Nature (via Earth.com)",
+      "object": "Abell2744-QSO1",
+      "class": "Little_Red_Dot",
+      "instrument": "JWST_NIRSpec",
+      "redshift_epoch": "700_Myr_post_Big_Bang",
+      "bh_mass_solar_masses": 50000000.0,
+      "object_diameter_ly": 1300,
+      "mass_ratio_bh_to_total": 0.67,
+      "metallicity_solar_fraction": 0.005,
+      "gas_motion": "Keplerian",
+      "elements_detected": [
+        "H",
+        "He"
+      ],
+      "elements_absent": [
+        "O"
+      ],
+      "formation_scenarios": [
+        "direct_collapse",
+        "primordial_bh"
+      ],
+      "key_researcher": "Roberto Maiolino (Cambridge)"
+    },
+    "terahertz_detector": {
+      "source": "Advanced Photonics (via ScienceDaily)",
+      "institution": "Cambridge / Swansea",
+      "pi": "Wladislaw Michailow",
+      "mechanism": "in_plane_photoelectric_effect",
+      "platform": "2D_electron_gas",
+      "architecture": "metasurface_PETS",
+      "pattern": "brickwork",
+      "responsivity_A_W": 2.7,
+      "quantum_efficiency_percent": 2.1,
+      "operating_temp_K": 10,
+      "frequency_THz": 1.9,
+      "bias_condition": "zero_source_drain_bias",
+      "dark_current": "eliminated",
+      "improvement_factor": 20,
+      "fabrication_compatibility": "standard_semiconductor_FET_process"
+    },
+    "microlensing_candidate": {
+      "source": "arXiv (via IFLScience)",
+      "object_name": "Phoebe",
+      "instrument": "DECam",
+      "target_field": "Large_Magellanic_Cloud",
+      "event_duration_hr": 1,
+      "lensing_optical_depth_analysis": "5_orders_more_likely_MW_halo",
+      "mass_estimate": "3x_lunar_mass",
+      "alternative_mass_if_LMC": "0.1_solar_masses",
+      "candidate_type": "primordial_black_hole",
+      "dark_matter_connection": "population_of_compact_lunar_mass_objects",
+      "theoretical_basis": "Carr_&_Hawking"
+    },
+    "interstellar_comet": {
+      "source": "Astrophysical Journal Letters (via BBC Sky at Night)",
+      "object": "3I/ATLAS",
+      "instrument": "JWST_MIRI",
+      "observation_dates": [
+        "2025-12-15",
+        "2025-12-27"
+      ],
+      "distances_from_sun_Mkm": [
+        329,
+        379
+      ],
+      "age_estimate_Gyr": 10,
+      "first_detection": "2025-07-01",
+      "key_detection": "methane_first_interstellar_object",
+      "chemical_signature": {
+        "methane_to_water": "surprisingly_high",
+        "co2_to_water": "much_higher_than_solar_system_comets",
+        "trend": "declining_gas_production_post_perihelion"
+      },
+      "formation_environment": "chemically_distinct_from_Solar_System"
+    }
+  },
+  "batch_2": {
+    "metadata": {
+      "extracted_date": "2026-06-02",
+      "batch": 2,
+      "source_count": 3,
+      "domains": [
+        "astrophysics",
+        "quantum_computing",
+        "quantum_optics_theory"
+      ]
+    },
+    "pair_instability_supernova": {
+      "source": "arXiv:2605.16487 (via Science X)",
+      "event": "SN 2023vbw",
+      "detector": "Zwicky Transient Facility",
+      "detection_date": "2023-10",
+      "distance_Gly": 1.3,
+      "host_type": "metal-poor_dwarf_galaxy",
+      "host_metallicity_solar_fraction": 0.1,
+      "classification": "pair_instability_supernova_candidate",
+      "light_curve": {
+        "peak_day": 190,
+        "decline_start_day": 190,
+        "decline_end_day": 230,
+        "post_decline_phase": "slowly_declining_plateau_tail"
+      },
+      "total_radiated_energy_erg": 3e+50,
+      "energy_ratio_vs_normal_TypeII": 10,
+      "ejecta_mass_Msun_range": [
+        170,
+        350
+      ],
+      "kinetic_energy_ratio_vs_max_iron_core_collapse": [
+        60,
+        130
+      ],
+      "progenitor": {
+        "type": "blue_supergiant",
+        "formation_channel": "binary_merger_hypothesis",
+        "initial_mass_range_Msun_for_PISN": [
+          140,
+          260
+        ]
+      },
+      "remnant": "none_expected",
+      "nucleosynthesis": "explosive_nucleosynthesis",
+      "future_surveys": [
+        "Vera_Rubin_Observatory",
+        "Nancy_Grace_Roman_Space_Telescope"
+      ],
+      "key_researcher": "Daichi Hiramatsu"
+    },
+    "quantum_computing_roadmap": {
+      "source": "TechRadar Pro / BBC interview (late 2024)",
+      "speaker": "Sundar Pichai",
+      "company": "Alphabet/Google",
+      "quote": "Quantum is where AI was five years ago",
+      "milestone": {
+        "date": "2024-12",
+        "achievement": "below_threshold_error_correction",
+        "meaning": "adding_qubits_reduces_errors_not_increases"
+      },
+      "target": "fully_fault_tolerant_quantum_computer",
+      "analogy": "quantum_computing_chatgpt_moment_within_5_years",
+      "key_challenge": "error_correction_sustainability"
+    },
+    "photon_truncation_theory": {
+      "source": "Physical Review Letters (2026)",
+      "authors": "Johannes Skaar et al.",
+      "title": "Truncated photon",
+      "arXiv": "2510.21636",
+      "phenomenon": "optical_shutter_photon_truncation",
+      "setup": "single_photon_passing_through_fast_optical_shutter",
+      "classical_expectation": "two_half_photons",
+      "quantum_result": "infinite_superposition_of_photon_number_states",
+      "mechanism": "vacuum_fluctuations_disturbed_by_shutter_create_spontaneous_photons",
+      "local_appearance": "deceptively_normal_single_photon_one_side_vacuum_other",
+      "future_work": [
+        "multi_photon_scenarios",
+        "extension_to_electrons"
+      ],
+      "fundamental_implication": "quantum_particles_behave_differently_from_everyday_objects"
+    }
+  },
+  "cross_batch_patterns": {
+    "mass_energy_range": "35_orders_of_magnitude",
+    "common_theme": "phase_transitions_at_critical_thresholds",
+    "destruction_operator_needed": true,
+    "vacuum_assembly_recognized": true,
+    "new_entries": [
+      "C9-2026-ASTRO-002",
+      "C9-2026-QUANT-001",
+      "C9-2026-QUANT-002"
+    ]
+  }
+}
