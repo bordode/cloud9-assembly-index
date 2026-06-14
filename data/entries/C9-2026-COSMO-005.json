@@ -1,0 +1,118 @@
+{
+  "entry_id": "C9-2026-COSMO-005",
+  "title": "GLIMPSE-17775: Spectroscopic Confirmation of a Black Hole Star (Dense Gas Cocoon Enshrouding Early-Universe SMBH)",
+  "date": "2026-06-10",
+  "layer": 1,
+  "layer_name": "Established Physics",
+  "audit_score": 0.94,
+  "source": {
+    "authors": [
+      "Vasily Kokorev",
+      "et al."
+    ],
+    "affiliation": "University of Texas at Austin",
+    "journal": "The Astrophysical Journal",
+    "year": 2026,
+    "doi": "10.3847/1538-4357/ae4ed7",
+    "observatory": "JWST + HST",
+    "instruments": [
+      "NIRSpec/IFU",
+      "Frontier Fields",
+      "BUFFALO"
+    ],
+    "primary_data_type": "Spectroscopy + Photometry"
+  },
+  "phenomenology": {
+    "object_name": "GLIMPSE-17775",
+    "object_class": "Little Red Dot (LRD)",
+    "redshift": 3.5,
+    "lookback_time_gyr": 1.8,
+    "gravitational_lensing": {
+      "cluster": "Abell S1063",
+      "magnification_factor": "Equivalent to 80 hours from 30 hours of exposure"
+    },
+    "key_observables": [
+      "40+ resolved spectral lines",
+      "Electron-scattering broadening of H, O, He lines",
+      "16-line 'iron forest' requiring high-energy ionizing continuum",
+      "Helium fluorescence and absorption",
+      "Suppressed X-ray flux (cocoon absorption)",
+      "Weak Balmer break (host galaxy contamination)"
+    ],
+    "model": "BH* (Black Hole Star): rapidly accreting SMBH enveloped in dense, partially ionized gas cocoon"
+  },
+  "assembly_index_relevance": {
+    "core_question": "How does a SMBH assemble a sufficiently massive, dense cocoon by z=3.5 while maintaining rapid accretion?",
+    "complexity_marker": "The cocoon is a macroscopic dissipative structure — multi-phase, stratified, electron-scattering dominated — mediating energy/information transfer between event horizon and host galaxy.",
+    "formal_role": "High-complexity boundary layer; observable signature of far-from-equilibrium assembly"
+  },
+  "cross_cluster_integration": [
+    {
+      "cluster_id": 1,
+      "cluster_name": "Quantum Foundations",
+      "connection": "Black hole thermodynamics; accretion as irreversible process with entropy production; cocoon as classical analog of Hawking-like information-transfer membrane",
+      "strength": "Medium"
+    },
+    {
+      "cluster_id": 3,
+      "cluster_name": "Quantum Information & Complexity",
+      "connection": "Iron forest and 40+ spectral lines encode scrambled accretion-disk information re-emitted via thermal reprocessing. Cocoon acts as decohering environment for BH radiative output. Time-domain variability probes scrambling timescales.",
+      "strength": "Strong"
+    },
+    {
+      "cluster_id": 5,
+      "cluster_name": "Topological Systems",
+      "connection": "Gravitational lensing by Abell S1063 is a spacetime topology effect (caustic magnification). Lensing geometry provides natural amplifier enabling high-resolution spectroscopy of unresolved source — topological coupling between observer and target.",
+      "strength": "Medium"
+    },
+    {
+      "cluster_id": 6,
+      "cluster_name": "Neuromorphic Computing",
+      "connection": "Spectral deconvolution of 40+ blended lines from single unresolved source is a high-dimensional inverse problem. Analysis pipeline (line identification, multi-component model fitting, Bayesian parameter estimation) mirrors structured inference challenges in SNN-based sensor processing.",
+      "strength": "Medium"
+    }
+  ],
+  "meta_patterns": [
+    {
+      "pattern_name": "Reprocessed Emission from a Hidden Engine",
+      "pattern_id": "MP-2026-001",
+      "description": "A dominant local process generates an optically thick or noisy envelope that obscures the primary source. The observable signal is the reprocessed, filtered, or structured remnant. Detecting the engine requires spectral deconvolution, spatial mapping, or temporal interference cancellation.",
+      "linked_entries": [
+        "C9-2026-NEURO-001",
+        "C9-2026-COSMO-003",
+        "C9-2026-COSMO-005"
+      ]
+    }
+  ],
+  "cloud_9_detection_principle": "High-complexity systems often self-shield their core processes; the Assembly Index must be computed from boundary-layer observables, not direct core emission.",
+  "validation_priorities": [
+    {
+      "priority": 1,
+      "task": "Time-domain spectroscopy",
+      "description": "Search for line-ratio variability in GLIMPSE-17775 on month-year timescales to probe cocoon stratification and turbulence via accretion-disk dynamical time",
+      "instrument": "JWST (Cycle 4/5 repeat spectroscopy)"
+    },
+    {
+      "priority": 2,
+      "task": "X-ray stacking",
+      "description": "Deep Chandra or Athena stacking of z~3.5 LRDs to measure statistical X-ray suppression factor and test Compton-thick prediction (NH > 1e24 cm^-2)",
+      "instrument": "Chandra / Athena"
+    },
+    {
+      "priority": 3,
+      "task": "TNG/Illustris counterpart search",
+      "description": "Identify simulated halos at z~3.5 with SMBH accretion rates and gas densities matching BH* model. Compute A_c for simulated gas cocoon and compare to observed spectral complexity.",
+      "instrument": "TNG100-1 snapshot 99"
+    },
+    {
+      "priority": 4,
+      "task": "SNN emulation",
+      "description": "Use Lava-based SNN to model cocoon as reservoir: accretion disk drives reservoir, emergent spectrum is readout. Train SNN to predict line ratios from accretion-rate inputs.",
+      "instrument": "Cloud-9 Lava SNN pipeline"
+    }
+  ],
+  "collection_membership": "C9-COLLECTION-2026-0608-SCIENCENEWS",
+  "entry_status": "Active",
+  "last_updated": "2026-06-10T14:31:00Z",
+  "curator_notes": "Strongest empirical anchor for LRD population to date. Gravitational lensing amplification is a critical observational advantage. Host galaxy detection is novel for LRDs and may revise formation models."
+}
