@@ -1,0 +1,15 @@
+{
+  "next_url": "https://www.tng-project.org/api/TNG100-1/snapshots/99/subhalos/",
+  "params": {
+    "limit": 10,
+    "sfr__gt": 0.0,
+    "mass_stars__gt": 0.01
+  },
+  "pages_done": 0,
+  "target_pages": 3,
+  "sim": "TNG100-1",
+  "snapshot": 99,
+  "field": "gasmetallicity",
+  "error": "HTTPSConnectionPool(host='www.tng-project.org', port=443): Max retries exceeded with url: /api/TNG100-1/snapshots/99/subhalos/?limit=10&sfr__gt=0.0&mass_stars__gt=0.01 (Caused by NameResolutionError(\"HTTPSConnection(host='www.tng-project.org', port=443): Failed to resolve 'www.tng-project.org' ([Errno -3] Temporary failure in name resolution)\"))",
+  "note": "Network timeout during fetch \u2014 data valid up to pages_done. Re-run tng_gas_metallicity_fetcher.py to resume."
+}
