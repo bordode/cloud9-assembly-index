@@ -1,0 +1,186 @@
+{
+  "n_hosts": 1000,
+  "top_type_by_mean_habitability": "G",
+  "summary_by_type": [
+    {
+      "stellar_type": "G",
+      "count": 280,
+      "mean_habitability": 0.8281464928883303,
+      "mean_stellar_metallicity": 0.01747495585109791,
+      "mean_gas_metallicity": 0.01761889101887795
+    },
+    {
+      "stellar_type": "K",
+      "count": 312,
+      "mean_habitability": 0.8158859366007887,
+      "mean_stellar_metallicity": 0.017104000527956346,
+      "mean_gas_metallicity": 0.017408436608834787
+    },
+    {
+      "stellar_type": "F",
+      "count": 369,
+      "mean_habitability": 0.8096264829089138,
+      "mean_stellar_metallicity": 0.017235078686707164,
+      "mean_gas_metallicity": 0.017502204824863494
+    },
+    {
+      "stellar_type": "M",
+      "count": 39,
+      "mean_habitability": 0.7764318844666406,
+      "mean_stellar_metallicity": 0.017349465291838152,
+      "mean_gas_metallicity": 0.0168505350138177
+    }
+  ],
+  "top_15_hosts": [
+    {
+      "rank": 1,
+      "host_id": 864,
+      "stellar_type": "G",
+      "stellar_mass_msun": 1.0385146296160819,
+      "age_gyr": 8.04819767968205,
+      "stellar_metallicity": 0.05,
+      "gas_metallicity": 0.06,
+      "habitability_score": 0.9015793765391186
+    },
+    {
+      "rank": 2,
+      "host_id": 776,
+      "stellar_type": "G",
+      "stellar_mass_msun": 1.0955524697366976,
+      "age_gyr": 6.593831741472225,
+      "stellar_metallicity": 0.05,
+      "gas_metallicity": 0.04344843419709889,
+      "habitability_score": 0.8928562616362009
+    },
+    {
+      "rank": 3,
+      "host_id": 828,
+      "stellar_type": "G",
+      "stellar_mass_msun": 0.9484512527781775,
+      "age_gyr": 9.117632495598171,
+      "stellar_metallicity": 0.03926361329390926,
+      "gas_metallicity": 0.040648003329290534,
+      "habitability_score": 0.8925571217043655
+    },
+    {
+      "rank": 4,
+      "host_id": 54,
+      "stellar_type": "G",
+      "stellar_mass_msun": 0.8660158679143954,
+      "age_gyr": 10.890260290117833,
+      "stellar_metallicity": 0.05,
+      "gas_metallicity": 0.04943493121668697,
+      "habitability_score": 0.891446458014982
+    },
+    {
+      "rank": 5,
+      "host_id": 337,
+      "stellar_type": "K",
+      "stellar_mass_msun": 0.7393283612679344,
+      "age_gyr": 6.937105557012405,
+      "stellar_metallicity": 0.05,
+      "gas_metallicity": 0.04818267112095076,
+      "habitability_score": 0.891190605178732
+    },
+    {
+      "rank": 6,
+      "host_id": 980,
+      "stellar_type": "F",
+      "stellar_mass_msun": 1.2210555861838115,
+      "age_gyr": 6.977337048934614,
+      "stellar_metallicity": 0.04736493731635412,
+      "gas_metallicity": 0.053205757487293795,
+      "habitability_score": 0.8884610952717983
+    },
+    {
+      "rank": 7,
+      "host_id": 365,
+      "stellar_type": "G",
+      "stellar_mass_msun": 0.9452989392860713,
+      "age_gyr": 5.240626949714878,
+      "stellar_metallicity": 0.05,
+      "gas_metallicity": 0.05377863930071569,
+      "habitability_score": 0.8880429486294489
+    },
+    {
+      "rank": 8,
+      "host_id": 998,
+      "stellar_type": "G",
+      "stellar_mass_msun": 1.0560442387737434,
+      "age_gyr": 5.816919961163585,
+      "stellar_metallicity": 0.04811348719545954,
+      "gas_metallicity": 0.04637239843103748,
+      "habitability_score": 0.8875742425930494
+    },
+    {
+      "rank": 9,
+      "host_id": 288,
+      "stellar_type": "G",
+      "stellar_mass_msun": 1.0238909832298921,
+      "age_gyr": 5.953532578299267,
+      "stellar_metallicity": 0.04684130622893386,
+      "gas_metallicity": 0.05502315519323013,
+      "habitability_score": 0.8874320922761426
+    },
+    {
+      "rank": 10,
+      "host_id": 62,
+      "stellar_type": "G",
+      "stellar_mass_msun": 0.8601071852461555,
+      "age_gyr": 8.908100362914917,
+      "stellar_metallicity": 0.035489262008796554,
+      "gas_metallicity": 0.03656589144964269,
+      "habitability_score": 0.8847780878334105
+    },
+    {
+      "rank": 11,
+      "host_id": 650,
+      "stellar_type": "K",
+      "stellar_mass_msun": 0.8388622435307854,
+      "age_gyr": 4.611722877708669,
+      "stellar_metallicity": 0.04961973127605933,
+      "gas_metallicity": 0.05000566603852977,
+      "habitability_score": 0.8836737268285827
+    },
+    {
+      "rank": 12,
+      "host_id": 827,
+      "stellar_type": "G",
+      "stellar_mass_msun": 1.0140100081743533,
+      "age_gyr": 7.721059415922891,
+      "stellar_metallicity": 0.03767985232024319,
+      "gas_metallicity": 0.04283097301637886,
+      "habitability_score": 0.8832049622303496
+    },
+    {
+      "rank": 13,
+      "host_id": 427,
+      "stellar_type": "F",
+      "stellar_mass_msun": 1.4356436119351799,
+      "age_gyr": 7.64885412476996,
+      "stellar_metallicity": 0.04301257727708757,
+      "gas_metallicity": 0.04554117927499587,
+      "habitability_score": 0.8814654970838264
+    },
+    {
+      "rank": 14,
+      "host_id": 229,
+      "stellar_type": "K",
+      "stellar_mass_msun": 0.6811590082809854,
+      "age_gyr": 7.119080741232333,
+      "stellar_metallicity": 0.0447451063892481,
+      "gas_metallicity": 0.049073534511238255,
+      "habitability_score": 0.8808012192483605
+    },
+    {
+      "rank": 15,
+      "host_id": 43,
+      "stellar_type": "K",
+      "stellar_mass_msun": 0.741204014565776,
+      "age_gyr": 7.39713269074301,
+      "stellar_metallicity": 0.03910587218482229,
+      "gas_metallicity": 0.03421971845965356,
+      "habitability_score": 0.8784870652775998
+    }
+  ]
+}
