@@ -1,0 +1,39 @@
+{
+  "source": "Cloud-9 Habitability Simulation \u2014 1000 stellar hosts",
+  "generated": "2026-06-27",
+  "n_hosts": 1000,
+  "top_type": "G",
+  "summary_by_type": [
+    {
+      "type": "G",
+      "count": 280,
+      "mean_habitability": 0.8281,
+      "note": "Highest mean habitability"
+    },
+    {
+      "type": "K",
+      "count": 312,
+      "mean_habitability": 0.8159
+    },
+    {
+      "type": "F",
+      "count": 369,
+      "mean_habitability": 0.8096
+    },
+    {
+      "type": "M",
+      "count": 39,
+      "mean_habitability": 0.7764,
+      "note": "Flare penalty dominant"
+    }
+  ],
+  "top_host": {
+    "rank": 1,
+    "host_id": 864,
+    "type": "G",
+    "habitability_score": 0.9016,
+    "age_gyr": 8.05,
+    "stellar_metallicity": 0.05
+  },
+  "assembly_note": "High habitability correlates with older G/K stars (>6 Gyr) at moderate metallicity (Z~0.017-0.05). Consistent with C9 Assembly Index prediction: complexity accumulates with system age."
+}
