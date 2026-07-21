@@ -1,0 +1,40 @@
+{
+  "exp": 8,
+  "label": "Biological Longevity Escape Velocity (Domain 4 v2.0)",
+  "domain": "longevity",
+  "n_samples": 50000,
+  "kappa_critical": 1.0,
+  "gamma": 1.0,
+  "crossover_year_mean_kappa": 2032,
+  "crossover_year_prob_50pct": 2032,
+  "kappa_2024": 0.2999,
+  "kappa_2030": 0.8348,
+  "kappa_2035": 1.2987,
+  "kappa_2040": 1.5667,
+  "escape_fraction_2030": 0.2525,
+  "steepness_k": 8.0,
+  "yield_function": "sigmoidal",
+  "model": "logistic_medical + Gompertz_RLE",
+  "expert_anchors": {
+    "Kurzweil": {
+      "year": 2032,
+      "kappa": 1.0,
+      "steepness": 0.35
+    },
+    "de_Grey": {
+      "year": 2036,
+      "kappa": 1.0,
+      "steepness": 0.28
+    },
+    "Church": {
+      "year": 2050,
+      "kappa": 1.0,
+      "steepness": 0.18
+    }
+  },
+  "historical_calibration": "WHO 1900-2023",
+  "status": "SUGGESTIVE \u2014 expert prediction ensemble, not empirical",
+  "timestamp": "2026-04-30",
+  "framework_version": "1.5.0+",
+  "module_version": "2.0"
+}

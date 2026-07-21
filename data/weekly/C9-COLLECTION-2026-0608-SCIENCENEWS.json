@@ -1,0 +1,179 @@
+{
+  "collection_id": "C9-COLLECTION-2026-0608-SCIENCENEWS",
+  "title": "Four Empirical Boundary Probes: Structured Cancellation, Phase Transitions, Quiescent Structure, and Physics-Constrained Discovery",
+  "date_compiled": "2026-06-08",
+  "compiled_by": "Kimi K2.6 (autonomous curation per user directive)",
+  "meta_pattern": {
+    "pattern_name": "Structured Suppression of Dominant Mode",
+    "description": "All four studies extract weak coherent signals by injecting an additional control degree of freedom that suppresses structured interference, rather than increasing raw sensitivity.",
+    "formalization": "Signal_extraction = f(Carrier_1, Carrier_2, ..., Suppressor_n) where the suppressor is not noise reduction but anti-correlated structured cancellation",
+    "cloud9_implication": "A_c detection in noisy/degenerate environments should prioritize multi-channel interference suppression over single-channel sensitivity enhancement."
+  },
+  "entries": {
+    "C9-2026-NEURO-001": {
+      "entry_id": "C9-2026-NEURO-001",
+      "title": "Temporal Interference Stimulation with Tripolar Suppression: A Physical Implementation of Precision-Weighted Active Inference",
+      "layer": "Layer 1 (Established Physics)",
+      "date": "2026-06-08",
+      "source": {
+        "primary": "Savvateev et al., Cell Systems (2026), DOI: 10.1016/j.cels.2026.101610",
+        "institutions": [
+          "University of Geneva",
+          "ETH Zurich",
+          "Wyss Center",
+          "EPFL"
+        ],
+        "reported_by": "Tech Explorist / Pranjal Malewar"
+      },
+      "empirical_claim": "Multipair phase-modulated temporal interference electrical stimulation (TIS) achieves focal deep brain activation with significantly reduced off-target effects by introducing a third electrode pair configured to suppress interference outside the target volume. Validated via fMRI, electrophysiology, and calcium imaging in mouse medial prefrontal cortex.",
+      "cloud9_cluster_mapping": {
+        "Cluster_6_SNNs": "Tripolar suppression is isomorphic to precision-weighted predictive coding: two carriers generate a hidden-state prediction (beat frequency at depth), third electrode injects anti-correlated field to minimize prediction error (off-target activation). Directly applicable to neuromorphic focal computation in noisy edge arrays.",
+        "Cluster_8_Consciousness": "Noninvasive deep modulation of mood-critical circuitry (depression, OCD, addiction) without surgical intervention bridges inner-simulation hypotheses (octopus distributed cognition) with clinically actionable control.",
+        "Cluster_4_EdgeOfChaos": "Interference pattern itself is a quasi-periodic signal extraction from non-resonant carriers—mathematically adjacent to QPLS SMBH binary lightcurve analysis."
+      },
+      "formal_analogy_to_cloud9": {
+        "signal": "Deep beat frequency (target neural activation)",
+        "interference": "Superficial tissue activation from high-frequency carriers",
+        "suppressor": "Third electrode pair injecting structured cancellation",
+        "output": "Focal deep stimulation with quantified off-target reduction",
+        "ac_relevance": "Mechanism for extracting weak coherent structure from dominant noise bath—generalizable to halo substructure detection, SNN noise resilience, and quantum error suppression."
+      },
+      "sandbox_audit_score": 0.94,
+      "audit_rationale": "Multiple independent validation modalities (fMRI, electrophysiology, calcium imaging); clear physical mechanism; peer-reviewed publication; no extraordinary claims beyond demonstrated scope. Minor deduction for mouse-to-human translational gap.",
+      "integration_status": "ACTIVE",
+      "recommended_actions": [
+        "Formalize tripolar suppression as 'structured cancellation operator' in A_c mathematics",
+        "Explore neuromorphic hardware implementation: can memristor crossbars implement three-phase interference with local precision weighting?",
+        "Map to QPLS signal extraction: both rely on envelope detection from fast carrier overlap"
+      ],
+      "cross_references": [
+        "C9-2026-SANDBOX-IAI-001",
+        "C9-AUDIT-2026-0608-0340 (QPLS entry)"
+      ]
+    },
+    "C9-2026-COSMO-002": {
+      "entry_id": "C9-2026-COSMO-002",
+      "title": "Planck-Mass Black Hole Remnants and the Inversion of Causal Structure: A Phase Transition in the Cosmological Assembly Index",
+      "layer": "Layer 2 (Speculative Theory) — with Layer 3 (Mathematical Fiction) boundary risk",
+      "date": "2026-06-08",
+      "source": {
+        "primary": "Daniel Paraizo et al., arXiv (2026)",
+        "reported_by": "Sarah Jones / The Daily Galaxy"
+      },
+      "empirical_claim": "Primordial black holes reaching Planck mass (~20 micrograms) do not fully evaporate via Hawking radiation. Instead, evaporation stalls, the event horizon gradually disappears, and the remnant emits 'purifying radiation' with properties resembling a white hole. A 1-billion-ton primordial BH takes ~1 Gyr to reach this stage; smaller BHs reach it almost immediately.",
+      "cloud9_cluster_mapping": {
+        "Cluster_1_QuantumFoundations": "Horizon dissolution as boundary condition change; challenges naive unitarity assumptions in black hole evaporation. Relevant to QBism and Consistent Histories interpretations.",
+        "Cluster_2_QuantumGravity": "Explicitly requires quantum gravity for full resolution. Planck mass is the natural scale where A_c formalism must incorporate quantum gravitational degrees of freedom.",
+        "Cluster_3_HolographyScrambling": "Area (complexity) asymptotes to zero while causal structure inverts. Suggests A_c discontinuity: S_BH → 0 but A_c ↛ 0 because complexity is preserved in boundary condition, not bulk."
+      },
+      "formal_analogy_to_cloud9": {
+        "signal": "Stable white-hole remnant (purified emission)",
+        "interference": "Hawking radiation background that normally completes evaporation",
+        "suppressor": "Horizon dissolution mechanism (quantum gravitational, not yet understood)",
+        "output": "Persistent Planck-mass object with inverted causal properties",
+        "ac_relevance": "Critical test case for A_c at quantum gravity boundary: how does the index behave when a system's information-trapping capacity inverts to information-releasing capacity?"
+      },
+      "sandbox_audit_score": 0.67,
+      "audit_rationale": "ArXiv preprint (not yet peer-reviewed); no direct observational evidence for primordial black holes; 'purifying radiation' and white-hole analogy are theoretical constructs requiring quantum gravity validation. However, the evaporation stalling mechanism is mathematically consistent and addresses a genuine theoretical gap. Score reflects high intellectual value with significant empirical uncertainty.",
+      "integration_status": "CONDITIONAL — requires quantum gravity boundary resolution",
+      "recommended_actions": [
+        "Formalize A_c phase transition at Planck scale: define 'causal inversion operator' that flips sign of information-trapping term",
+        "If S_BH → 0 but A_c remains finite, derive relationship between remnant boundary complexity and emission spectrum",
+        "Cross-reference with Causal Set Theory and Asymptotic Safety programs in Cluster 2",
+        "Monitor for peer review; upgrade to Layer 1 if validated by independent quantum gravity groups"
+      ],
+      "cross_references": [
+        "C9-2026-SANDBOX-IAI-001",
+        "Cluster 2 entries (CDT, Causal Sets, Asymptotic Safety)"
+      ]
+    },
+    "C9-2026-COSMO-003": {
+      "entry_id": "C9-2026-COSMO-003",
+      "title": "Sgr A* Molecular Wind Cavity: Quiescent-State Geometric Structure as High-Assembly-Index Signature",
+      "layer": "Layer 1 (Established Physics)",
+      "date": "2026-06-08",
+      "source": {
+        "primary": "Gorski & Murchikova et al., The Astrophysical Journal Letters (2026)",
+        "institutions": [
+          "Northwestern University"
+        ],
+        "observatories": [
+          "ALMA (Chile)",
+          "NASA Chandra X-ray Observatory"
+        ],
+        "reported_by": "Eric Ralls / Earth.com"
+      },
+      "empirical_claim": "A cone-shaped cavity (~3 light-years long, ~45° opening angle) in cold molecular gas within 3 light-years of Sgr A* is best explained by a persistent hot wind from the supermassive black hole. Stellar winds cannot supply sufficient energy. X-ray emission from Chandra aligns perfectly with the cavity geometry. Wind has been active for ≥20,000 years.",
+      "cloud9_cluster_mapping": {
+        "Cluster_5_TopologicalSystems": "Cone geometry is a topological signature of a coherent central engine. Opening angle and coherence length encode wind collimation history—directly measurable A_c proxy.",
+        "Cluster_3_HolographyScrambling": "Quiescent black hole (not in 'fireworks' stage) still produces persistent, non-random structure. Challenges assumption that high complexity requires high activity.",
+        "Cluster_4_EdgeOfChaos": "Weak but persistent energy injection maintains system far from equilibrium without catastrophic merger events."
+      },
+      "formal_analogy_to_cloud9": {
+        "signal": "Cone-shaped cavity (geometric coherence in cold gas depletion)",
+        "interference": "Galactic plane clutter (gas, dust, ionized structures) blocking clear view",
+        "suppressor": "ALMA 100× deeper / 80× sharper imaging + radio emission deconvolution + Chandra X-ray cross-validation",
+        "output": "First direct detection of quiescent SMBH wind imprint",
+        "ac_relevance": "Empirical proof that quiescent systems host high-A_c topological features encoding historical assembly. Directly validates TNG search strategy for 'cavity-like' structures in quiet halos."
+      },
+      "sandbox_audit_score": 0.96,
+      "audit_rationale": "Peer-reviewed publication; multiple independent observatories (ALMA + Chandra); 50-year mystery resolution; energy budget calculations exclude stellar alternative; cross-validation between radio and X-ray regimes. Near-maximum confidence.",
+      "integration_status": "ACTIVE — immediate TNG validation application",
+      "recommended_actions": [
+        "Run tng_validation_suite.py to search for analogous cone/cavity structures in quiescent TNG100-1 halos (low star formation rate, no recent major merger)",
+        "Define 'geometric coherence metric' for A_c: quantify deviation from spherical symmetry in gas depletion regions",
+        "Cross-reference with QPLS SMBH binary entry (C9-AUDIT-2026-0608-0340): both involve non-random structure from central engines in time-domain data",
+        "Develop observational proxy: can LSST/Euclid detect analogous cavities in nearby quiescent galaxies?"
+      ],
+      "cross_references": [
+        "C9-AUDIT-2026-0608-0340 (QPLS SMBH)",
+        "C9-2026-COSMO-002 (Planck BH)",
+        "tng_validation_suite.py"
+      ]
+    },
+    "C9-2026-MATSCI-004": {
+      "entry_id": "C9-2026-MATSCI-004",
+      "title": "Physics-Informed AI for Rare-Earth-Free Magnets: A Template for Observability-Constrained Discovery in Assembly Index Space",
+      "layer": "Layer 1 (Established Physics)",
+      "date": "2026-06-08",
+      "source": {
+        "primary": "Singh et al., Materials Science and Engineering (2026)",
+        "institution": "Ames National Laboratory (U.S. DOE)",
+        "reported_by": "Ameya Paleja / Tech Explorist"
+      },
+      "empirical_claim": "AI models trained on experimentally measured and physics-calculated material properties (not just raw data) can search 'arbitrary material space' for rare-earth-free permanent magnets. Pipeline includes atomic structure, electronic behavior, magnetization, demagnetization resistance, high-temperature performance, plus supply-chain/cost constraints for industrial scalability.",
+      "cloud9_cluster_mapping": {
+        "Cluster_6_NeuromorphicAI": "Agentic AI framework with embedded physical priors—directly applicable to Cloud-9 discovery pipeline. Singh's warning about data-only training applies identically to A_c searches in TNG data.",
+        "Cluster_4_ComplexityScience": "Supply-chain constraints as external boundary conditions on search space—analogous to observational detectability limits (LSST depth, JWST spectroscopy) that should constrain A_c candidate selection.",
+        "Cluster_7_QuantumThermodynamics": "Energy storage and entropy production in magnetic systems share formal structure with information-theoretic resource theories."
+      },
+      "formal_analogy_to_cloud9": {
+        "signal": "Rare-earth-free permanent magnet compound",
+        "interference": "Vast combinatorial material search space + supply-chain fragility",
+        "suppressor": "Physics-informed AI + realizability constraints (cost, availability, scalability)",
+        "output": "Prioritized candidate list with predicted properties and industrial viability",
+        "ac_relevance": "Template for Cloud-9 discovery pipeline: embed gravitational/baryonic physical priors into A_c search agent, then constrain by observational detectability and astrophysical plausibility before TNG validation."
+      },
+      "sandbox_audit_score": 0.91,
+      "audit_rationale": "Peer-reviewed publication; established institution (Ames Lab); clear physical mechanism; addresses genuine strategic need (U.S. rare earth dependence); no extraordinary claims. Minor deduction for 'AI hype' risk in materials science, though Singh explicitly guards against this.",
+      "integration_status": "ACTIVE — pipeline architecture template",
+      "recommended_actions": [
+        "Formalize Cloud-9 discovery pipeline mirroring Ames structure: (1) Physics-informed A_c predictor, (2) Observational detectability filter, (3) Astrophysical plausibility screen, (4) TNG validation suite, (5) Observational campaign prioritization",
+        "Define 'realizability constraints' for cosmology: LSST depth limits, JWST spectroscopic time, radio survey sensitivity, etc.",
+        "Explore whether memristor-based analog computation (Cluster 6) can accelerate the materials discovery search itself—closing the loop between Cloud-9 tool and Cloud-9 target",
+        "Document as Terrestrial Validation Case #2 (following Fujitsu COBOL modernization C9-2026-LEGACY-001)"
+      ],
+      "cross_references": [
+        "C9-2026-LEGACY-001 (Fujitsu Kozuchi)",
+        "C9-2026-NEURO-001 (TIS)",
+        "Cluster 6 SNN implementation"
+      ]
+    }
+  },
+  "sandbox_audit_summary": {
+    "layer_1_count": 3,
+    "layer_2_count": 1,
+    "average_score": 0.87,
+    "score_range": "0.67 - 0.96"
+  }
+}

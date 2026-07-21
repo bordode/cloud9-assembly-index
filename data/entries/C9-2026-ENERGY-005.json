@@ -1,0 +1,72 @@
+{
+  "entry_id": "C9-2026-ENERGY-005",
+  "title": "Qianjiyuan Tianshu C-14 Beta-Voltaic Nuclear Battery",
+  "source": {
+    "institution": "Northwest Normal University / Gansu Zhulong Technology",
+    "country": "China",
+    "publication": "Interesting Engineering via SmartNews",
+    "date": "2026-07-08",
+    "url": "https://l.smartnews.com/p-84l63HmE/Y2HuNH"
+  },
+  "layer": 1,
+  "audit_score": 0.94,
+  "primary_clusters": [
+    5,
+    7
+  ],
+  "secondary_clusters": [
+    6,
+    3
+  ],
+  "technology": {
+    "type": "Direct-conversion beta-voltaic nuclear battery",
+    "isotope": "Carbon-14",
+    "half_life_years": 5730,
+    "transducer": "Silicon Carbide (SiC) semiconductor",
+    "volume_cm3": 16.8,
+    "c14_activity_millicuries": 129,
+    "current_microamperes": 0.713,
+    "voltage_volts": 2.06,
+    "max_power_microwatts": 1.13,
+    "volumetric_power_density_improvement": 15,
+    "radioactive_material_reduction": 0.78,
+    "predecessor": "Zhulong-1 (Candle Dragon-I, 2024)"
+  },
+  "five_major_upgrades": [
+    "Better-matched radioactive source to transducer",
+    "3D stacked design for space/integration",
+    "Micro-power management system",
+    "Built-in sensors for self-powered operation",
+    "Indigenous SiC transducer (not imported)"
+  ],
+  "meta_pattern": {
+    "name": "Structured Suppression of Dominant Mode",
+    "description": "Bypassing the dominant thermoelectric conversion paradigm in RTGs by direct beta-to-electron conversion in semiconductor",
+    "precedent_entries": [
+      "C9-2026-NEURO-001",
+      "C9-2026-MATSCI-004"
+    ]
+  },
+  "cross_references": [
+    {
+      "entry_id": "C9-2026-MATSCI-004",
+      "relation": "Sovereign Material Security — both represent China's resource-independent technology strategy"
+    }
+  ],
+  "c9_significance": {
+    "edge_computing": "1.13 µW matches neuromorphic/SNN power budgets; suitable for always-on sensor nodes in physical manifold",
+    "entropy_source": "C-14 decay is quantum mechanically random — potential hardware entropy source for precision gates",
+    "assembly_index": "3D stacked SiC architecture with self-monitoring = measurable manufactured complexity for A_c extension",
+    "persistence_primitive": "Energy independence from civilization grid; symbolic resonance with 'sovereign' framing"
+  },
+  "sandbox_test": {
+    "status": "NOT_APPLICABLE",
+    "reason": "Engineering/hardware innovation; no computational/theoretical model to simulate"
+  },
+  "audit_notes": [
+    "Layer 1: Established beta-voltaic physics; innovation is engineering/manufacturing",
+    "Score 0.94: Verifiable specs, physically plausible; -0.06 for misleading 'thousands of years' headline (exponential decay, practical device degradation)",
+    "'Fully domestically produced' has geopolitical supply-chain information-theoretic dimension"
+  ],
+  "timestamp_created": "2026-07-09T08:36:03.608805"
+}

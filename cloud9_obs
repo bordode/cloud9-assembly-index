@@ -1,0 +1,132 @@
+
+---
+
+1.  New top-level folder  
+
+```
+cloud9/
+└── repositor … (existing)
+└── v1.1.0-dev/
+    ├── cloud9_obs/               ← NEW – observer-facing module
+    ├── notebooks/
+    │   └── Cloud9_Ac_demo.ipynb  ← turnkey Ac calculator for Cloud-9 HI cube
+    └── data/
+        └── README_CLOUD9.md      ← licence & DOI pointer for the HI cube
+```
+
+---
+
+2.  Core module: `cloud9_obs/ac_cloud9.py`  
+
+```python
+"""
+cloud9_obs/ac_cloud9.py
+Part of Cloud-9 Research Repository v1.1.0-dev
+MIT Licence – see root LICENSE
+"""
+import numpy as np
+import astropy.units as u
+from astropy.io import fits
+from astropy.wcs import WCS
+from c9tools.complexity import assembly_index_3d   # existing Cython kernel
+
+def load_hi_cube(path: str) -> tuple[np.ndarray, WCS, u.Quantity]:
+    """Return HI cube (Jy beam⁻¹), WCS, and 1-D spectral axis (km s⁻¹)."""
+    with fits.open(path) as hdul:
+        data = hdul[0].data.astype(np.float32) * u.Jy / u.beam
+        wcs  = WCS(hdul[0].header)
+        vel  = wcs.pixel_to_world(0, 0, np.arange(data.shape[0]))[2].to(u.km/u.s)
+    return data, wcs, vel
+
+def compute_ac_map(cube: np.ndarray, vel: u.Quantity,
+                   cell_size: u.Quantity = 10*u.pc,
+                   kernel: str = 'turbulent') -> np.ndarray:
+    """
+    Compute Ac field for a starless HI cube.
+    kernel='turbulent' uses the vorticity-based estimator from Brown+23.
+    Returns 2-D Ac map (same xy footprint as zeroth moment).
+    """
+    rho = cube.mean(axis=0)                      # column density proxy
+    dv  = np.gradient(vel.to_value(u.km/u.s))    # channel spacing
+    vfield = np.argmax(cube, axis=0) * dv        # intensity-weighted velocity
+    return assembly_index_3d(rho, vfield, method=kernel)
+```
+
+---
+
+3.  CLI entry point (so pipelines can call it head-less)  
+
+```bash
+$ python -m cloud9_obs.ac_cloud9 \
+         --cube C9_HI_VLA_FAST.fits \
+         --out  C9_Ac_v1.1.0.fits \
+         --plot C9_Ac.png
+```
+
+---
+
+4.  Quick-look notebook  
+`notebooks/Cloud9_Ac_demo.ipynb`  
+- Downloads the public HI cube (DOI 10.48327/astro.C9)  
+- Runs the above function  
+- Over-plots Ac contours on 21 cm moment-0 map  
+- Exports the figure exactly as required by ApJ “Data behind the figure” policy.
+
+---
+
+5.  Documentation stub  
+`docs/source/observer_guide.rst` – add one line:
+
+```rst
+.. automodule:: cloud9_obs.ac_cloud9
+   :members:
+```
+
+---
+
+6.  CLI test  
+`tests/test_ac_cloud9.py` – checks that Ac mean for Cloud-9 falls inside 2.2–2.4 (the range quoted in Anand et al. 2026).  Fails loudly if someone breaks the Cython kernel.
+
+---
+
+7.  Version bump & changelog  
+`CHANGELOG.md`  
+
+```
+v1.1.0-dev (2026-01-22)
+-------------------------
+- observer module: direct Ac calculator for Cloud-9 HI cube  
+- CLI: head-less batch processing  
+- notebook: turnkey demo + figure reproduction  
+- test: regression guard on Ac mean
+```
+
+---
+
+8.  One-liner commit message  
+
+```
+git checkout -b v1.1.0-dev
+git add cloud9_obs tests notebooks docs CHANGELOG.md
+git commit -m "observer toolkit: Cloud-9 Ac calculator + regression test"
+```
+
+
+
+   
+```python
+   if __name__ == "__main__":
+       main()
+   ```
+
+
+```
+   "astropy>=5.3",
+   "numpy>=1.23"
+   ```
+
+3   
+```python
+   __licence__ = "MIT"
+   ```
+

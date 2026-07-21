@@ -1,0 +1,62 @@
+cff-version: 1.2.0
+message: "If you use this research brief or analysis code, please cite it as below."
+type: software
+title: "Cloud-9 Assembly Research: 3I/ATLAS Interstellar Comet Analysis"
+abstract: >
+  Integrated analysis of JWST MIRI volatile detections (methane, CO2, CO) on 
+  interstellar comet 3I/ATLAS, and the ISO contribution to galactic dark matter 
+  density (Horns et al. 2026). Includes reproducible Jupyter notebooks, 
+  governance sandbox state machines, and artificiality assessment updates 
+  within the Cloud-9 Assembly Index framework.
+authors:
+  - family-names: "Cloud-9 Assembly"
+    given-names: "Research Interface"
+    affiliation: "Subhalo 5 Heritage / TNG Validation Suite"
+repository-code: "https://github.com/[your-username]/cloud-9-assembly"
+version: "2.1.2"
+date-released: 2026-06-07
+keywords:
+  - interstellar comets
+  - 3I/ATLAS
+  - JWST MIRI
+  - dark matter
+  - interstellar objects
+  - SETI governance
+  - Cloud-9 Assembly
+  - artificiality assessment
+  - volatile chemistry
+  - protoplanetary disks
+license: MIT
+references:
+  - type: article
+    authors:
+      - family-names: "Belyakov"
+        given-names: "Matthew"
+        affiliation: "California Institute of Technology"
+    title: "JWST MIRI Observations of Interstellar Comet 3I/ATLAS: Methane, Carbon Dioxide, and Thermal Evolution"
+    year: 2026
+    journal: "The Astrophysical Journal Letters"
+    volume: "in press"
+  - type: article
+    authors:
+      - family-names: "Horns"
+        given-names: "Dieter"
+        affiliation: "University of Hamburg"
+    title: "Contribution of interstellar objects to local dark matter density"
+    year: 2026
+    journal: "arXiv preprint"
+    doi: "10.48550/arxiv.2605.04801"
+  - type: article
+    authors:
+      - family-names: "Cooper"
+        given-names: "Keith"
+    title: "Interstellar comet 3I/ATLAS is blasting out a bunch of methane. Here's why that's weird"
+    year: 2026
+    journal: "Universe Today"
+  - type: article
+    authors:
+      - family-names: "Tomaswick"
+        given-names: "Andy"
+    title: "Could the Milky Way's missing mass be hiding in a swarm of interstellar comets?"
+    year: 2026
+    journal: "Universe Today / USA Today"

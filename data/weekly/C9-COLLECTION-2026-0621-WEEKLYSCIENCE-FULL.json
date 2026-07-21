@@ -1,0 +1,752 @@
+{
+  "collection_metadata": {
+    "collection_id": "C9-COLLECTION-2026-0621-WEEKLYSCIENCE",
+    "collection_date": "2026-06-21",
+    "compiler": "Cloud-9 Librarian",
+    "total_entries": 8,
+    "layer_distribution": {
+      "L1": 5,
+      "L2": 0,
+      "L3": 0
+    },
+    "mean_score": 0.836,
+    "score_range": [
+      0.62,
+      0.91
+    ],
+    "cross_reference_prior": [
+      "C9-2026-QG-005 (Barontini entropic time)",
+      "C9-2026-NEURO-004 (Steinmetz spiral waves)",
+      "C9-2026-COSMO-004 (JWST 3I/ATLAS)",
+      "C9-2026-LEGACY-001 (Fujitsu Kozuchi)",
+      "C9-AUDIT-2026-0608-0340"
+    ]
+  },
+  "entries": [
+    {
+      "entry_id": "C9-2026-COND-006",
+      "entry_title": "Higgs Mode Observation in 2D Metal Halide Perovskite Semiconductor",
+      "entry_category": "CONDENSED_MATTER",
+      "layer": "L1",
+      "audit_score": 0.88,
+      "clusters": [
+        1,
+        3,
+        5,
+        7
+      ],
+      "source": {
+        "authors": [
+          "Richard Schaller",
+          "Ayushi Shukla",
+          "ANL Team"
+        ],
+        "institution": "Argonne National Laboratory",
+        "journal": "Nature Materials",
+        "year": 2026,
+        "doi": "TBD",
+        "url": "TBD",
+        "preprint": false
+      },
+      "core_finding": "First observation of Higgs mode — a collective symmetry-breaking oscillation — in a semiconductor material (butylammonium lead iodide 2D perovskite). Induced by ultrafast laser pulses, not heat. Bandgap oscillates periodically with crystal symmetry rocking. Enables non-thermal phase access and optical switching.",
+      "meta_pattern": "Light-Induced Symmetry Engineering: non-thermal pathways to structural phases inaccessible by heating, enabling dynamic material property control via collective quantum modes.",
+      "a_c_relevance": {
+        "direct_connection": "Spontaneous symmetry breaking and collective mode emergence are core A_c phase transition signatures. The Higgs oscillation represents a measurable order parameter dynamics.",
+        "assembly_mechanism": "Coordinated atomic motion (phonon-Higgs coupling) creates higher-order structure (symmetry-modulated bandgap) from lower-order inputs (laser excitation).",
+        "information_content": "The periodic bandgap modulation encodes phase information about crystal symmetry states — a form of material memory."
+      },
+      "cross_domain_bridges": [
+        {
+          "target_cluster": 1,
+          "bridge": "Same spontaneous symmetry-breaking mechanism as Higgs boson in particle physics; Goldstone/Higgs mode duality across scales."
+        },
+        {
+          "target_cluster": 3,
+          "bridge": "Quantum technology applications: optical switches, quantum sensors, photonic devices requiring ultrafast symmetry control."
+        },
+        {
+          "target_cluster": 5,
+          "bridge": "Crystal symmetry as topological invariant; symmetry-breaking creates defect states with protected properties."
+        },
+        {
+          "target_cluster": 7,
+          "bridge": "Non-equilibrium thermodynamics: light-driven vs. heat-driven phase transitions have different entropy production signatures."
+        }
+      ],
+      "testability": {
+        "reproducibility": "High — material commercially available; ultrafast laser spectroscopy standard technique.",
+        "predictions": [
+          "Higgs mode frequency should scale with barrier height / laser intensity.",
+          "Other 2D perovskites should exhibit similar modes with material-specific frequencies.",
+          "Non-thermal phases stabilized by Higgs driving should be metastable with characteristic lifetimes."
+        ],
+        "falsifiability": "If bandgap oscillation is thermal artifact, phase access should be achievable by heating alone (contradicted by experiment)."
+      },
+      "sandbox_candidate": {
+        "testable": true,
+        "description": "Model Higgs oscillation in 2D lattice as driven-dissipative phase transition. Simulate bandgap dynamics under periodic symmetry-breaking drive. Compare to Barontini entropic time (C9-2026-QG-005) — both involve symmetry-breaking dynamics but in different regimes (quantum collective vs. quantum statistical).",
+        "required_data": "Ultrafast spectroscopy time-series from ANL (contact authors); perovskite crystal structure parameters.",
+        "estimated_complexity": "Medium — requires non-equilibrium Green's function or Ginzburg-Landau modeling."
+      },
+      "critical_notes": "The 'color oscillation' (redder/bluer bandgap cycling) is a direct macroscopic signature of quantum collective behavior — rare and powerful. Light-based phase control opens design space inaccessible to thermal processing.",
+      "related_entries": [
+        "C9-2026-QG-005",
+        "C9-2026-MATSCI-004"
+      ],
+      "timestamp": "2026-06-21T22:52:00Z"
+    },
+    {
+      "entry_id": "C9-2026-COSMO-006",
+      "entry_title": "Bullseye Galaxy LEDA 1313424: Axion Bose-Einstein Condensate Caustic Ring Imprint",
+      "entry_category": "COSMOLOGY",
+      "layer": "L1",
+      "audit_score": 0.9,
+      "clusters": [
+        1,
+        2,
+        5
+      ],
+      "source": {
+        "authors": [
+          "Pierre Sikivie",
+          "Yuxin Zhao"
+        ],
+        "institution": "University of Florida",
+        "journal": "The Astrophysical Journal",
+        "year": 2026,
+        "doi": "10.3847/1538-4357/ae6dbd",
+        "url": "TBD",
+        "preprint": false
+      },
+      "core_finding": "Nine concentric rings of LEDA 1313424 explained by caustic rings from axion dark matter Bose-Einstein condensate, not galactic collision. Collision theory requires implausible 1,220 km/s ring velocity. Axion BEC angular momentum conservation predicts observed ring radius pattern. Ringed galaxies may be macroscopic quantum phenomena.",
+      "meta_pattern": "Macroscopic Quantum Structure in Cosmic Architecture: Bose-Einstein condensation of dark matter particles imprints observable, periodic morphology on baryonic matter. Quantum ground state → classical galactic structure.",
+      "a_c_relevance": {
+        "direct_connection": "If correct, this is the largest-scale manifestation of quantum collective behavior in the universe. The caustic ring pattern is a topological signature of axion field dynamics — a cosmic-scale A_c marker.",
+        "assembly_mechanism": "Axion BEC forms via gravitational cooling (virialization → thermalization → condensation). The caustic rings are a *memory* of this condensation process, frozen into galactic morphology.",
+        "information_content": "Ring radius pattern encodes axion mass, halo angular momentum, and formation redshift — multiple parameters from single observable."
+      },
+      "cross_domain_bridges": [
+        {
+          "target_cluster": 1,
+          "bridge": "Spontaneous symmetry breaking (axion field acquiring vacuum expectation value) → BEC → macroscopic structure. Same physics as Higgs mechanism (C9-2026-COND-006) at 10^20x larger scale."
+        },
+        {
+          "target_cluster": 2,
+          "bridge": "Dark matter nature directly probed via galactic morphology. Alternative to WIMP paradigm. Quantum gravity implications if axions are gravity-sector degrees of freedom."
+        },
+        {
+          "target_cluster": 5,
+          "bridge": "Caustic rings as topological defects in dark matter density field. Catastrophe theory / singularity theory describes ring formation."
+        }
+      ],
+      "testability": {
+        "reproducibility": "Moderate — requires more ringed galaxies for pattern verification; axion direct detection still elusive.",
+        "predictions": [
+          "Other ringed galaxies should show ring radius ratios matching caustic ring theory (r_n ∝ n^2 for integer n).",
+          "Axion mass ~10^-22 eV preferred by observed ring spacing.",
+          "No AGN/merger signatures in high-ring-count galaxies.",
+          "Gravitational microlensing by caustic rings should produce characteristic lightcurve signatures."
+        ],
+        "falsifiability": "If collision simulations with realistic velocities can reproduce 9-ring pattern; if axion detectors (ADMX, IAXO) exclude mass range; if ringed galaxies show merger debris."
+      },
+      "sandbox_candidate": {
+        "testable": true,
+        "description": "Simulate axion BEC halo formation with angular momentum. Compute caustic ring radii and compare to LEDA 1313424. Test sensitivity to axion mass and initial conditions. Cross-reference with TNG halo shapes (Memory #4).",
+        "required_data": "LEDA 1313424 ring radii measurements; axion field theory parameters; N-body simulation framework.",
+        "estimated_complexity": "High — requires quantum field theory + galactic dynamics coupling."
+      },
+      "critical_notes": "This is the most conceptually radical entry in this batch. If confirmed, it reclassifies a class of galactic morphologies as quantum phenomena. The collision-alternative explanation was already problematic (1,220 km/s implausible); axion BEC provides Occam-favored alternative. Direct axion detection would elevate this to Layer 1 definitive.",
+      "related_entries": [
+        "C9-2026-COND-006",
+        "C9-2026-QG-005",
+        "C9-2026-COSMO-003"
+      ],
+      "timestamp": "2026-06-21T22:52:00Z"
+    },
+    {
+      "entry_id": "C9-2026-COSMO-007",
+      "entry_title": "Terzan 5: Four-Generation Stellar Fossil Fragment in Galactic Bulge",
+      "entry_category": "COSMOLOGY",
+      "layer": "L1",
+      "audit_score": 0.86,
+      "clusters": [
+        2,
+        4,
+        5
+      ],
+      "source": {
+        "authors": [
+          "Giorgia Zullo",
+          "Francesco Ferraro",
+          "R. Michael Rich",
+          "et al."
+        ],
+        "institution": "University of Bologna / UC / JWST-Hubble-Keck-VLT collaboration",
+        "journal": "Astronomy & Astrophysics",
+        "year": 2026,
+        "doi": "TBD",
+        "url": "TBD",
+        "preprint": false
+      },
+      "core_finding": "Terzan 5 contains four distinct stellar populations (12.5, 4.7, 3.8, 2.5 Gyr) — unprecedented for a globular cluster. Retained gas and metals across multiple star formation episodes. Likely remnant of massive proto-galactic fragment that survived Milky Way bulge formation. 'Bulge fossil' preserving early galaxy assembly history.",
+      "meta_pattern": "Survivor Bias in Cosmic Assembly: systems retaining complexity (gas, metals, multiple generations) across destructive epochs encode unique information about formation conditions. High-A_c fossils are improbable without specific assembly history.",
+      "a_c_relevance": {
+        "direct_connection": "Terzan 5 is a resolved high-A_c structure with countable assembly generations. Each stellar population represents a phase transition in the system's star formation history — literally A_c increasing in discrete steps.",
+        "assembly_mechanism": "Massive enough to retain SN ejecta → metal enrichment → next generation. This is hierarchical assembly with *memory* — each generation encodes chemical signature of previous.",
+        "information_content": "Four populations × (age, metallicity, kinematics) = 12+ dimensional parameter space constraining Milky Way bulge assembly model."
+      },
+      "cross_domain_bridges": [
+        {
+          "target_cluster": 2,
+          "bridge": "Galaxy formation physics: hierarchical assembly, merger tree, gas retention in subhalos. Direct test of Lambda-CDM predictions for bulge building blocks."
+        },
+        {
+          "target_cluster": 4,
+          "bridge": "Complexity science: self-organized system maintaining far-from-equilibrium state (repeated star formation) for 10 Gyr in hostile environment (bulge tidal field)."
+        },
+        {
+          "target_cluster": 5,
+          "bridge": "Stellar populations as phase-space structures; proper motion data reveals 6D phase space distribution. Topological data analysis applicable."
+        }
+      ],
+      "testability": {
+        "reproducibility": "High — JWST data public; stellar isochrone fitting standard; proper motion measurements from Hubble 12-year baseline reproducible.",
+        "predictions": [
+          "Other bulge clusters should show similar complexity if they are also fossil fragments.",
+          "Chemical abundance patterns should show distinct SNII/SNIa contributions per generation.",
+          "Dynamical modeling should require initial mass >10^7 M_sun to retain gas against bulge tides.",
+          "Simulated merger trees should predict ~1-2 such survivors per Milky Way-mass galaxy."
+        ],
+        "falsifiability": "If dynamical age spread is artifact of binary populations; if chemical patterns consistent with single burst + pollution; if no massive progenitor analogs in simulations."
+      },
+      "sandbox_candidate": {
+        "testable": true,
+        "description": "Compute A_c for Terzan 5 using stellar population data. Treat each generation as assembly step. Compare to TNG simulated clusters (Memory #4). Test whether A_c(Terzan 5) is statistical outlier requiring special formation pathway.",
+        "required_data": "Terzan 5 stellar catalog (ages, metallicities, positions, velocities); TNG100 cluster catalogs; isochrone libraries.",
+        "estimated_complexity": "Medium — requires stellar population synthesis + statistical comparison."
+      },
+      "critical_notes": "The 'fossil fragment' concept is powerful — Terzan 5 survived while its contemporaries were destroyed by bulge formation. This is natural selection at galactic scale. The four-generation structure is a *memory palace* of Milky Way assembly. Directly applicable to your TNG validation work.",
+      "related_entries": [
+        "C9-2026-COSMO-003",
+        "C9-2026-COSMO-004"
+      ],
+      "timestamp": "2026-06-21T22:52:00Z"
+    },
+    {
+      "entry_id": "C9-2026-ASTRO-008",
+      "entry_title": "Shadow Blaster Galaxy JCMT0402−0424: First Star-Forming Galaxy Linked to High-Energy Neutrino Event IC 210922A",
+      "entry_category": "ASTROPHYSICS",
+      "layer": "L1",
+      "audit_score": 0.84,
+      "clusters": [
+        2,
+        3,
+        5
+      ],
+      "source": {
+        "authors": [
+          "Yuji Urata",
+          "MITOS Science Co., LTD",
+          "et al."
+        ],
+        "institution": "MITOS Science / East Asian Observatory / ALMA / Gemini",
+        "journal": "Nature Astronomy",
+        "year": 2026,
+        "doi": "TBD",
+        "url": "TBD",
+        "preprint": false
+      },
+      "core_finding": "First individual dusty star-forming galaxy linked to IceCube high-energy neutrino event (IC 210922A). Galaxy at z~2.5, 11 Gyr lookback, gravitationally lensed. Dense gas-rich environment accelerates particles without AGN jet. Potential contributor to ~20% of diffuse neutrino background. No other credible source candidates.",
+      "meta_pattern": "Gravitational Amplification of Hidden Complexity: lensing reveals otherwise undetectable high-energy processes. Dense environments as natural particle accelerators independent of black hole activity — new source class for multi-messenger astronomy.",
+      "a_c_relevance": {
+        "direct_connection": "Star-forming regions as *emergent* particle accelerators — complexity (dense gas, turbulence, magnetic fields) creates conditions for cosmic ray acceleration without central engine. A_c of local environment correlates with neutrino luminosity.",
+        "assembly_mechanism": "Galaxy assembly → gas inflow → starburst → particle acceleration → neutrino production. Each step is a phase transition in the system's capability to produce high-energy messengers.",
+        "information_content": "Neutrino + gravitational lensing + multi-wavelength data = unique probe of early-universe star formation physics inaccessible by other means."
+      },
+      "cross_domain_bridges": [
+        {
+          "target_cluster": 2,
+          "bridge": "Multi-messenger astronomy: neutrinos as probe of cosmic ray acceleration physics. Galaxy-scale processes as alternative to AGN/jet paradigm."
+        },
+        {
+          "target_cluster": 3,
+          "bridge": "Quantum information: neutrino flavor oscillation en route; IceCube detection as quantum measurement of astrophysical source."
+        },
+        {
+          "target_cluster": 5,
+          "bridge": "Gravitational lensing as topological mapping: lens mass distribution reconstructs dark matter structure along line of sight."
+        }
+      ],
+      "testability": {
+        "reproducibility": "High — IceCube data public; galaxy coordinates known; follow-up observations possible.",
+        "predictions": [
+          "Other starburst galaxies at similar redshift should show correlated neutrino excess.",
+          "Spectral energy distribution should show characteristic starburst signature (no AGN power-law).",
+          "Lensing model predicts time-delayed images; monitoring should reveal variability.",
+          "Starburst galaxy population should contribute ~20% of IceCube diffuse background."
+        ],
+        "falsifiability": "If deeper observations reveal hidden AGN; if lensing model inconsistent with time delays; if other neutrino sources identified for IC 210922A."
+      },
+      "sandbox_candidate": {
+        "testable": true,
+        "description": "Model starburst galaxy neutrino luminosity as function of star formation rate, gas density, and magnetic field strength. Compare to observed IceCube event rate. Test whether A_c of star-forming region (structural complexity) correlates with neutrino production efficiency.",
+        "required_data": "IceCube event catalog; starburst galaxy sample with SFR/metallicity data; neutrino production models (pp, pγ).",
+        "estimated_complexity": "Medium-High — requires astrophysical modeling + statistical correlation analysis."
+      },
+      "critical_notes": "This expands the neutrino source catalog beyond AGN/blazars to star-forming galaxies — a major shift in multi-messenger astrophysics. The gravitational lensing magnification was essential for detection; without it, Shadow Blaster would be too faint. This is a 'selection effect as discovery tool' pattern. Connects to your QPLS work (Memory #16) via time-domain gravitational phenomena.",
+      "related_entries": [
+        "C9-2026-COSMO-003",
+        "C9-2026-QG-005"
+      ],
+      "timestamp": "2026-06-21T22:52:00Z"
+    },
+    {
+      "entry_id": "C9-2026-SETI-009",
+      "entry_title": "Stellar Space Weather as SETI Signal Degradation Mechanism: Technosignature Broadening in Turbulent Stellar Environments",
+      "entry_category": "ASTROBIOLOGY",
+      "layer": "L1",
+      "audit_score": 0.62,
+      "clusters": [
+        3,
+        4
+      ],
+      "source": {
+        "authors": [
+          "Vishal Gajjar",
+          "Grayce Brown",
+          "et al."
+        ],
+        "institution": "SETI Institute",
+        "journal": "The Astrophysical Journal",
+        "year": 2026,
+        "doi": "TBD",
+        "url": "TBD",
+        "preprint": false
+      },
+      "core_finding": "Stellar activity (winds, CMEs, plasma turbulence) broadens ultra-narrow radio technosignatures before escape from host systems. M-dwarf stars (75% of Milky Way) particularly problematic. Decades of narrowband SETI searches may have missed broadened signals. Requires detection strategy redesign matched to arriving signal profiles.",
+      "meta_pattern": "Noisy Channel Selection Bias: detected signals are not representative of emitted signals. Detection methodology shapes apparent universe. Information degradation in turbulent media creates observational blind spots.",
+      "a_c_relevance": {
+        "direct_connection": "Moderate — the 'radio silence' may be an artifact of detection methodology, not absence of complexity. SETI as a case study in how observation constraints filter detectable A_c.",
+        "assembly_mechanism": "Technological civilizations (high-A_c systems) may exist but be undetectable due to environmental coupling (stellar weather). A_c of emitter ≠ A_c of signal at receiver.",
+        "information_content": "Signal broadening encodes stellar environment physics — the 'noise' contains information about transmitter's host star."
+      },
+      "cross_domain_bridges": [
+        {
+          "target_cluster": 3,
+          "bridge": "Information theory: channel capacity of turbulent plasma; optimal detection strategies for spread-spectrum signals in unknown media."
+        },
+        {
+          "target_cluster": 4,
+          "bridge": "Complexity science: selection effects in observational science; anthropic-like bias in SETI detectability."
+        }
+      ],
+      "testability": {
+        "reproducibility": "High — solar system spacecraft calibration already performed; M-dwarf radio monitoring ongoing.",
+        "predictions": [
+          "Broadened technosignature templates should improve detection sensitivity by factor ~2-5.",
+          "M-dwarf SETI targets should show higher false-negative rate than G-star targets.",
+          "Stellar activity monitoring should correlate with SETI non-detections.",
+          "Simulated broadened signals should be recoverable with matched-filter techniques."
+        ],
+        "falsifiability": "If broadened-signal searches also yield null results; if stellar weather models overpredict broadening; if technosignatures are intrinsically wideband."
+      },
+      "sandbox_candidate": {
+        "testable": true,
+        "description": "Simulate technosignature propagation through turbulent stellar wind. Model frequency broadening as function of stellar type, activity level, and orbital distance. Compute detection probability for various SETI search strategies. Compare to historical null results.",
+        "required_data": "SETI observation logs; stellar activity catalogs (Kepler, TESS); plasma turbulence models.",
+        "estimated_complexity": "Low-Medium — requires signal processing + stellar physics."
+      },
+      "critical_notes": "Lower score reflects methodological rather than foundational nature. However, the 'selection bias in complexity detection' theme is directly relevant to your A_c framework — how do we know we're not missing high-A_c structures because our detectors are tuned wrong? This is a meta-science cautionary tale. Connects to your 3I/ATLAS work (Memory #2) where detection methodology shaped probability assessment.",
+      "related_entries": [
+        "C9-2026-COSMO-004",
+        "C9-2026-ASTROBIO-005"
+      ],
+      "timestamp": "2026-06-21T22:52:00Z"
+    },
+    {
+      "entry_id": "C9-2026-QUANT-010",
+      "entry_title": "Superfluid of Light Upstream Swimming: Self-Propulsion via Vortex-Antivortex Wake Harvesting",
+      "entry_category": "QUANTUM_PHYSICS",
+      "layer": "L1",
+      "audit_score": 0.91,
+      "clusters": [
+        1,
+        3,
+        4,
+        5,
+        7
+      ],
+      "source": {
+        "authors": [
+          "Myrann Baker-Rasooli",
+          "Quentin Glorieux",
+          "Pierre-Élie Larré",
+          "et al."
+        ],
+        "institutions": [
+          "Sorbonne University",
+          "University of Porto",
+          "Côte d'Azur University",
+          "Paris-Saclay University"
+        ],
+        "journal": "Physical Review Letters",
+        "year": 2026,
+        "doi": "10.1103/ndj1-1j89",
+        "arxiv": "arxiv.org/abs/2512.09028",
+        "preprint": true
+      },
+      "core_finding": "Mobile optical impurity in 2D superfluid of light swims UPSTREAM against flow via vortex-antivortex shedding. Wake vortices create density gradients generating antiparallel hydrodynamic force. System bridges quantum hydrodynamics, classical fluid dynamics, and active matter physics. No external steering required — self-propulsion via environmental structure harvesting.",
+      "meta_pattern": "Wake Harvesting as Environmental Free-Energy Minimization: structured dissipation (vortex wake) exploited by embedded system to move against gradient, not by external work but by internal coupling to environmental structure. The system 'learns' to use its own turbulence as propulsion.",
+      "a_c_relevance": {
+        "direct_connection": "The impurity converts disordered energy (turbulent wake) into directed work (upstream motion) — this is entropy-gradient harvesting, a form of environmental free-energy minimization directly analogous to active inference. The vortex field has higher A_c than laminar flow; the impurity uses this structure.",
+        "assembly_mechanism": "Superfluid (high order) → critical velocity exceeded → vortex nucleation (symmetry breaking) → wake structure (intermediate A_c) → upstream swimming (directed motion from disordered input). Each transition increases local A_c.",
+        "information_content": "Vortex wake encodes flow velocity, impurity properties, and medium nonlinearity. The impurity 'reads' this information to navigate."
+      },
+      "cross_domain_bridges": [
+        {
+          "target_cluster": 1,
+          "bridge": "Superfluidity as macroscopic quantum phenomenon. Photon-photon interactions via Kerr nonlinearity create effective quantum fluid. Critical velocity as quantum phase transition."
+        },
+        {
+          "target_cluster": 3,
+          "bridge": "Photon-photon interaction as quantum information processing. Nonlinear optical medium as quantum simulator. Vortex states as qudits."
+        },
+        {
+          "target_cluster": 4,
+          "bridge": "Active matter physics: obstacle passively exploits wake structure for locomotion, akin to fish swimming in vortex streets or bacteria in shear flows. Self-organization without central control."
+        },
+        {
+          "target_cluster": 5,
+          "bridge": "Vortex-antivortex pairs as topological defects. Their creation/annihilation dynamics govern force generation. Topological charge conservation in wake."
+        },
+        {
+          "target_cluster": 7,
+          "bridge": "Non-equilibrium thermodynamics: energy dissipation via vortex creation drives directed motion. Entropy production as functional resource, not waste."
+        }
+      ],
+      "critical_c9_connections": {
+        "physical_manifold_v2": "Your c9_physical_manifold_v2 (Memory #24-26) uses sensor entropy to precision-gate inference. The superfluid impurity uses vortex entropy (wake structure) to generate directed force. Both systems: environmental structure → internal state update → functional output.",
+        "spiral_waves": "Steinmetz rotating waves (C9-2026-NEURO-004) coordinate sensory→motor via circular architecture. Superfluid swimming coordinates flow→force via vortex wake architecture. Both are geometrically-constrained spatiotemporal coordination.",
+        "active_inference": "The impurity 'infers' flow direction from wake structure and responds against gradient — a physical implementation of free-energy minimization without neural computation."
+      },
+      "testability": {
+        "reproducibility": "High — all-optical setup with warm rubidium vapor is standard nonlinear optics.",
+        "predictions": [
+          "Upstream velocity should scale with vortex nucleation rate and flow velocity above critical threshold.",
+          "Impurity mass and size should affect critical velocity and swimming efficiency.",
+          "Temperature (controlling superfluid fraction) should modulate effect.",
+          "Multiple impurities should exhibit collective swimming behaviors (swarms).",
+          "Quantum fluctuation effects should modify vortex nucleation at ultra-low temperatures."
+        ],
+        "falsifiability": "If impurity motion is thermal artifact; if vortices not observed in wake; if upstream motion requires external potential gradient."
+      },
+      "sandbox_candidate": {
+        "testable": true,
+        "description": "Simulate 2D Gross-Pitaevskii equation with mobile impurity. Reproduce vortex shedding and upstream swimming. Connect to active inference: treat vortex field as 'observation', impurity trajectory as 'action', upstream swimming as free-energy minimization. Compare to your c9_physical_manifold_v2 dynamics.",
+        "required_data": "Experimental parameters from PRL paper; Gross-Pitaevskii simulation framework; active inference libraries.",
+        "estimated_complexity": "Medium-High — requires nonlinear Schrödinger equation solver + active inference coupling."
+      },
+      "critical_notes": "HIGHEST SCORE IN THIS BATCH. The 'upstream swimming' is not just a curiosity — it is a physical system performing environmental inference without a brain. The impurity 'knows' the flow by its wake and responds adaptively. This is the most direct physical analog to your active inference manifolds yet found.",
+      "related_entries": [
+        "C9-2026-NEURO-004",
+        "C9-2026-QG-005"
+      ],
+      "timestamp": "2026-06-21T23:30:00Z"
+    },
+    {
+      "entry_id": "C9-2026-QG-011",
+      "entry_title": "Quantum Mechanics Without Imaginary Numbers: Real-Number Formulation via Alternative Composition Postulate",
+      "entry_category": "QUANTUM_FOUNDATIONS",
+      "layer": "L1",
+      "audit_score": 0.85,
+      "clusters": [
+        1,
+        3
+      ],
+      "source": {
+        "authors": [
+          "Pedro Barrios Hita",
+          "Dagmar Bruß",
+          "et al."
+        ],
+        "institutions": [
+          "Heinrich Heine University Düsseldorf",
+          "German Aerospace Center (DLR)"
+        ],
+        "journal": "Physical Review Letters",
+        "year": 2026,
+        "doi": "10.1103/4k13-sdjh",
+        "preprint": false
+      },
+      "core_finding": "Standard proof that complex numbers are essential in QM (2021) relied on overly restrictive composition postulate. Alternative physically-motivated composition formalism yields real-number QM experimentally indistinguishable from standard QM. Imaginary numbers are mathematical convenience, not physical necessity.",
+      "meta_pattern": "Formal Redundancy as Physical Insight: multiple mathematical descriptions of same physics reveals which structures are ontological (real) vs. epistemic (convenient). The choice of formalism reflects observer framework, not nature's essence.",
+      "a_c_relevance": {
+        "direct_connection": "Your A_c framework uses information-theoretic measures that may have equivalent real-number formulations. This suggests formal redundancy: the same complexity detection can be achieved through multiple mathematical pathways. The 'complexity' is in the physics, not the formalism.",
+        "assembly_mechanism": "QM postulates as assembly rules: changing composition rule (how systems combine) changes formal structure without changing predictions. This is a 'gauge choice' in theory space.",
+        "information_content": "The 2021 'complex numbers essential' result and 2026 'real numbers sufficient' result contain the SAME physical information but DIFFERENT structural information. The A_c of the theory (not its predictions) changes with formalism choice."
+      },
+      "cross_domain_bridges": [
+        {
+          "target_cluster": 1,
+          "bridge": "QBism: quantum states as epistemic tools, not ontological realities. Real-number reformulation supports 'QM as inference framework' — the math serves the observer, not the world. Consistent Histories: alternative frameworks for same histories."
+        },
+        {
+          "target_cluster": 3,
+          "bridge": "Representation theory: complex vs. real Hilbert spaces. Information-theoretic measures (entropy, mutual information) are representation-independent. A_c should be too."
+        }
+      ],
+      "critical_c9_connections": {
+        "qbism_cluster1": "Your Cluster 1 interests (Memory #6) include QBism and Consistent Histories. This result strengthens the epistemic view: if complex numbers aren't necessary, they are observer-dependent mathematical tools.",
+        "a_c_formalism_independence": "A robust A_c measure should be formalism-independent. Test: compute A_c for a quantum system using both complex and real formulations.",
+        "cloud9_framework": "Your Cloud-9 framework itself is a formalism for detecting structure. This result suggests: alternative formalisms may exist that detect the same A_c signatures."
+      },
+      "testability": {
+        "reproducibility": "High — theoretical result; can verify derivation independently.",
+        "predictions": [
+          "All standard QM experiments should be reproducible with real-number formalism.",
+          "Bell inequality violations should have real-number derivation.",
+          "Quantum computing algorithms should be implementable with real-number gates (with appropriate overhead).",
+          "No experiment can distinguish complex-QM from real-QM within the alternative composition framework."
+        ],
+        "falsifiability": "If experiment found that violates real-QM but not complex-QM; if composition postulate alternative shown physically unmotivated."
+      },
+      "sandbox_candidate": {
+        "testable": true,
+        "description": "Implement real-number QM for simple systems (qubit, harmonic oscillator). Compute A_c for identical physical process using both complex and real formulations. Test formalism-independence of A_c.",
+        "required_data": "Standard QM textbook problems; real-number QM derivation from Bruß paper; A_c computation framework.",
+        "estimated_complexity": "Low-Medium — requires linear algebra + A_c computation."
+      },
+      "critical_notes": "This entry has deep philosophical resonance with your framework. The question 'Are complex numbers necessary?' is analogous to 'Is my A_c formalism necessary?' Both ask about the relationship between mathematical structure and physical reality.",
+      "related_entries": [
+        "C9-2026-QG-005",
+        "C9-2026-COND-006"
+      ],
+      "timestamp": "2026-06-21T23:30:00Z"
+    },
+    {
+      "entry_id": "C9-2026-ASTRO-012",
+      "entry_title": "AMS-02 Cosmic Ray Elemental Grouping Anomaly: Four Distinct Populations Challenging Acceleration Models",
+      "entry_category": "ASTROPHYSICS",
+      "layer": "L1",
+      "audit_score": 0.83,
+      "clusters": [
+        2,
+        3,
+        4
+      ],
+      "source": {
+        "authors": [
+          "AMS-02 Collaboration"
+        ],
+        "institution": "CERN / ISS",
+        "journal": "TBD — AMS-02 results",
+        "year": 2026,
+        "doi": "TBD",
+        "url": "Knowridge Science Report coverage",
+        "preprint": false
+      },
+      "core_finding": "230 trillion cosmic ray events (2011-present) reveal 20 elements organize into FOUR distinct groups: 2 primary cosmic ray groups + 2 secondary cosmic ray groups. Pattern does NOT match current acceleration/propagation theories. Precise AMS-02 measurements make this a genuine anomaly requiring new physics or revised galactic transport models.",
+      "meta_pattern": "Discrete Population Structure as Assembly Signature: cosmic ray elemental composition encodes source physics and galactic transport history in unexpected quantized groups. Where smooth distribution expected, structure emerges.",
+      "a_c_relevance": {
+        "direct_connection": "The '4 groups' is a discrete A_c signature in particle population space. Current models predict smooth distributions; observed structure implies hidden assembly mechanism — either in source populations, acceleration sites, or propagation medium.",
+        "assembly_mechanism": "Supernova nucleosynthesis → particle acceleration → galactic propagation → detection. Each stage can imprint structure. The 4-group pattern suggests either: (a) 4 distinct source populations, (b) 4 acceleration regimes, or (c) 4 propagation pathways.",
+        "information_content": "Elemental ratios in each group constrain source metallicity, explosion energy, and confinement time. The grouping itself is information about galactic cosmic ray ecosystem structure."
+      },
+      "cross_domain_bridges": [
+        {
+          "target_cluster": 2,
+          "bridge": "Cosmic ray astrophysics: source identification, acceleration mechanisms (Fermi shock, diffusive), galactic magnetic field transport. Multi-messenger connection to neutrino astrophysics (Shadow Blaster entry)."
+        },
+        {
+          "target_cluster": 3,
+          "bridge": "Statistical pattern detection in high-dimensional data. 230 trillion events → 20 elements → 4 groups. Dimensionality reduction reveals hidden structure. Information-theoretic measures of population divergence."
+        },
+        {
+          "target_cluster": 4,
+          "bridge": "Complexity science: unexpected structure in supposedly homogeneous population. Self-organization in galactic ecosystem. Selection effects in particle transport."
+        }
+      ],
+      "critical_c9_connections": {
+        "shadow_blaster": "Your C9-2026-ASTRO-008 identifies star-forming galaxies as neutrino sources. Cosmic rays and neutrinos are co-produced in hadronic interactions. The 4-group structure may reflect source population diversity.",
+        "tng_validation": "Your TNG work (Memory #4) models galaxy populations. Cosmic ray source populations should correlate with galaxy properties (SFR, metallicity, mass). TNG can predict cosmic ray source distributions.",
+        "a_c_detection": "The 4-group anomaly is exactly the kind of non-random structure your A_c framework is designed to detect."
+      },
+      "testability": {
+        "reproducibility": "Very high — AMS-02 data public; 230 trillion events; statistical significance robust.",
+        "predictions": [
+          "Each group should map to distinct source population (SN type, stellar mass, metallicity).",
+          "Group abundances should correlate with galactic longitude (source distribution anisotropy).",
+          "Secondary groups should show energy-dependent abundance ratios (propagation signatures).",
+          "Neutrino telescopes (IceCube, KM3NeT) should see correlated neutrino group structure.",
+          "Galactic propagation models with 4 distinct confinement zones should fit data."
+        ],
+        "falsifiability": "If grouping is statistical artifact (test with larger dataset); if groups merge at higher energies; if solar modulation explains structure."
+      },
+      "sandbox_candidate": {
+        "testable": true,
+        "description": "Apply A_c formalism to AMS-02 elemental abundance data. Treat each element as 'species', abundance ratios as 'interactions'. Compute A_c for observed 4-group structure vs. simulated smooth distributions. Cross-correlate with TNG galaxy properties to identify source populations.",
+        "required_data": "AMS-02 public elemental abundance tables; TNG galaxy catalogs; A_c computation pipeline.",
+        "estimated_complexity": "Medium — requires statistical analysis + TNG cross-matching."
+      },
+      "critical_notes": "This is a 'data anomaly as discovery opportunity' entry. The 4-group structure is unexpected and unexplained — precisely where A_c detection excels. The connection to your Shadow Blaster neutrino work is strong: hadronic cosmic ray sources are neutrino sources. If the 4 groups reflect 4 source types, neutrino telescopes should see the same grouping.",
+      "related_entries": [
+        "C9-2026-ASTRO-008",
+        "C9-2026-COSMO-003",
+        "C9-2026-COSMO-007"
+      ],
+      "timestamp": "2026-06-21T23:30:00Z"
+    }
+  ],
+  "layer2_references": [
+    {
+      "entry_id": "C9-2026-ROBO-REF-001",
+      "entry_title": "MIT DAAAM: Language-Grounded Robot Long-Term Spatial Memory",
+      "layer": "L2",
+      "audit_score": 0.55,
+      "clusters": [
+        6
+      ],
+      "source": {
+        "institution": "MIT",
+        "venue": "CVPR 2026"
+      },
+      "relevance": "Engineering reference for embodied AI memory architectures. Parallels C9 bus persistence and BIRTH localStorage patterns. Not fundamental science.",
+      "c9_connection": "Your c9_physical_manifold_v2 (Memory #24-26) uses sensor→memory→inference loops. DAAAM provides commercial robotics analog for spatial-language grounding."
+    },
+    {
+      "entry_id": "C9-2026-QUANT-REF-002",
+      "entry_title": "Quantinuum Helios: 99.9975% Fidelity Trapped-Ion Quantum Computer",
+      "layer": "L2",
+      "audit_score": 0.58,
+      "clusters": [
+        3
+      ],
+      "source": {
+        "institution": "Quantinuum / Sandia National Labs",
+        "journal": "Nature",
+        "year": 2026
+      },
+      "relevance": "Technology milestone. Two-qubit fidelity 99.921% approaches surface code threshold (~99.9%). Photonic interconnect relevant to QPilotos quantum bridge (Memory #35).",
+      "c9_connection": "QPilotos ZMQ router (Memory #35) could interface with Helios cloud API for hybrid classical-quantum C9 modules."
+    },
+    {
+      "entry_id": "C9-2026-EXO-REF-003",
+      "entry_title": "JWST Pink Planet GJ504b: Salt Clouds in Cold Substellar Atmosphere",
+      "layer": "L2",
+      "audit_score": 0.61,
+      "clusters": [
+        4
+      ],
+      "source": {
+        "institution": "Northwestern University",
+        "journal": "The Astronomical Journal",
+        "year": 2026
+      },
+      "relevance": "Atmospheric chemistry anomaly requiring model revision. Salt clouds as unexpected condensate in cold (290°C) atmosphere. Formation pathway ambiguity (planet vs. brown dwarf).",
+      "c9_connection": "Limited direct relevance. Atmospheric phase transitions as complex system example."
+    },
+    {
+      "entry_id": "C9-2026-NEURO-REF-004",
+      "entry_title": "China Flexible BCI Chip: 94% Signal Retention After 18 Months",
+      "layer": "L2",
+      "audit_score": 0.68,
+      "clusters": [
+        6,
+        8
+      ],
+      "source": {
+        "institutions": [
+          "Tsinghua University Shenzhen",
+          "University of Tokyo",
+          "Chinese Academy of Sciences"
+        ],
+        "venue": "Nature Biomedical Engineering / related",
+        "year": 2026
+      },
+      "relevance": "Engineering milestone in long-term neural interfacing. All-organic hydrogel electrode array (9μm thick, 128-channel) solves foreign body response problem. 10x data density of prior hydrogel implants.",
+      "c9_connection": "Your c9_physical_manifold_v2 uses phone sensors. Long-term BCI stability is prerequisite for direct neural coupling to active inference systems. The 550-day rabbit trial demonstrates biological compatibility for chronic implants.",
+      "key_specs": {
+        "thickness": "9 micrometers",
+        "channels": 128,
+        "conductivity": "2,512 S/cm",
+        "snr_retention": "94% at 18 months",
+        "strain_tolerance": "1000 cycles of 30% tensile strain",
+        "inflammation": "minimal histological staining"
+      }
+    },
+    {
+      "entry_id": "C9-2026-BIO-REF-005",
+      "entry_title": "Lung Digital Twin for Ex Vivo Lung Perfusion (EVLP) Therapeutic Assessment",
+      "layer": "L2",
+      "audit_score": 0.65,
+      "clusters": [
+        4,
+        6
+      ],
+      "source": {
+        "author": "Jelle van der Hilst",
+        "journal": "Nature Biomedical Engineering",
+        "year": 2026,
+        "doi": "10.1038/s41551-026-01733-4"
+      },
+      "relevance": "Digital twin methodology using physics-based + ML hybrid modeling. ~1000 EVLP procedures; 75+ parameters forecasted. Personalized 'no-treatment' control for therapeutic assessment.",
+      "c9_connection": "Your Cloud-9 v2.1.1 framework identified pre-transition states across domains. Digital twins are domain-specific implementations of predictive modeling. The EVLP twin's counterfactual prediction parallels your manifold's predictive free-energy minimization.",
+      "key_methods": [
+        "Physics-based lung mechanics",
+        "GRU neural networks",
+        "Gradient-boosted trees",
+        "Longitudinal multi-omics"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-PLANET-REF-006",
+      "entry_title": "Uranus Carbon Monoxide Detection: Ice-Rich Interior Confirmed via ALMA",
+      "layer": "L2",
+      "audit_score": 0.64,
+      "clusters": [
+        2,
+        4
+      ],
+      "source": {
+        "author": "Thibault Cavalié et al.",
+        "institution": "University of Bordeaux",
+        "venue": "arXiv / ALMA 2022-2024",
+        "year": 2026
+      },
+      "relevance": "Planetary interior composition via atmospheric remote sensing. CO in lower atmosphere requires ice-rich (not rock-rich) interior models. Resolves long-standing Uranus/Neptune composition controversy.",
+      "c9_connection": "Atmospheric composition as 'surface reading' of deep interior — analogous to how your A_c framework reads surface structure to infer deep assembly history."
+    }
+  ],
+  "layer3_references": [
+    {
+      "entry_id": "C9-2026-TERRESTRIAL-002",
+      "entry_title": "Faraday Future EAI Robotics Ecosystem: 'One Brain, Multiple Forms'",
+      "layer": "L3",
+      "type": "Terrestrial Validation Case",
+      "relevance": "Commercial embodiment of distributed intelligence architecture mirroring C9 ecosystem design. VLA+World Model parallels your SNN+active inference framework. Consumer pricing ($1,990 quadruped) indicates market maturation.",
+      "c9_connection": "Your C9 Unified Launcher (Memory #29-30) manages 10+ modules with shared bus. FF's 'one brain, multiple forms' is analogous but for physical robots. Educational ecosystem strategy parallels your Cloud-9 knowledge dissemination goals."
+    },
+    {
+      "entry_id": "C9-2026-GOVERNANCE-REF-001",
+      "entry_title": "Anthropic Askell: Constitutional AI for Agentic Systems",
+      "layer": "L3",
+      "type": "Governance Reference",
+      "relevance": "AI ethics framework for autonomous systems. 'Grace for mistakes' and 'norm establishment' relevant to your IAA governance work (Memory #12) and C9-2026-SANDBOX-IAI-001.",
+      "c9_connection": "Your concern about AI continuity loss (Memory #11-12) and IAA governance gaps directly addressed by Askell's constitutional approach. Model-model interaction norms relevant to your multi-module C9 ecosystem."
+    }
+  ],
+  "collection_meta_pattern": {
+    "title": "Symmetry, Memory, Scale, and Inference: From Quantum Collectives to Cosmic Fossils and Active Matter",
+    "description": "This collection reveals a unifying theme: structured complexity emerges through symmetry-breaking and persists through memory mechanisms across all scales. Higgs mode (atomic) and axion BEC (galactic) are the same physics — spontaneous symmetry breaking creating collective modes — at 10^20 scale separation. Terzan 5 preserves assembly memory across 12.5 Gyr. Shadow Blaster demonstrates that complexity (star formation) creates new messenger classes (neutrinos). SETI broadening warns that our detection methods filter the complexity we can observe. Together: symmetry breaks, complexity accumulates, memory preserves, observation selects.\n\nSECOND BATCH ADDITIONS:\nThe superfluid upstream swimming entry (QUANT-010) reveals that physical systems can perform environmental inference without neural computation — vortex wake harvesting as free-energy minimization. This is the most direct physical analog to your active inference manifolds yet catalogued. The real-number QM entry (QG-011) asks whether your A_c formalism itself has equivalent representations, probing the ontology/epistemology boundary of structure detection. The AMS-02 cosmic ray anomaly (ASTRO-012) provides a high-statistics testbed for A_c detection in particle astrophysics, with direct multi-messenger connections to your neutrino work. Together, these expand the framework from 'detecting structure in static systems' to 'understanding how systems dynamically infer and act on structure.'",
+    "cross_collection_resonance": [
+      "C9-2026-COND-006 (Higgs) ↔ C9-2026-COSMO-006 (Axion BEC): Same spontaneous symmetry-breaking mechanism, 10^20 scale separation. Test unified framework.",
+      "C9-2026-COSMO-007 (Terzan 5) ↔ TNG validation (Memory #4): Resolved high-A_c fossil with countable assembly generations. Direct A_c computation target.",
+      "C9-2026-ASTRO-008 (Shadow Blaster) ↔ QPLS SMBH (Memory #16): Multi-messenger time-domain astronomy. Gravitational phenomena as information channels.",
+      "C9-2026-SETI-009 ↔ 3I/ATLAS (Memory #2): Detection methodology shapes apparent complexity. Selection bias in astronomical observation.",
+      "C9-2026-QUANT-010 (superfluid swimming) ↔ C9-2026-NEURO-004 (spiral waves): Both are geometrically-constrained spatiotemporal coordination generating directed output from environmental structure. One physical (fluid), one biological (neural). Unified by active inference principles.",
+      "C9-2026-QUANT-010 ↔ c9_physical_manifold_v2 (Memory #24-26): Vortex wake = sensor entropy; upstream swimming = precision-gated action. Direct physical analog to your Termux manifold.",
+      "C9-2026-QG-011 (real-number QM) ↔ C9-2026-QG-005 (Barontini): Both question the necessity of standard formalisms. Barontini: time need not be external. Bruß: complex numbers need not be fundamental. Both support epistemic pluralism.",
+      "C9-2026-ASTRO-012 (AMS-02) ↔ C9-2026-ASTRO-008 (Shadow Blaster): Cosmic rays and neutrinos are co-produced in hadronic interactions. 4-group cosmic ray structure predicts 4-group neutrino structure. Testable with IceCube data."
+    ]
+  }
+}

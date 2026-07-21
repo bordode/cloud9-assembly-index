@@ -1,0 +1,53 @@
+<!DOCTYPE html><html><head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<style>
+    body { margin: 0; background: #000; overflow: hidden; font-family: 'Courier New', monospace; }
+    #overlay { position: absolute; top: 20px; width: 100%; text-align: center; color: #00ff00; z-index: 10; pointer-events: none; }
+    .stat { font-size: 10px; color: #004400; letter-spacing: 2px; }
+    #status-bar { position: absolute; bottom: 20px; width: 100%; text-align: center; color: #006600; font-size: 9px; }
+</style></head><body>
+<div id="overlay">
+    <div class="stat">SENTINEL NODE: ACTIVE [V3]</div>
+    <div id="gauge">AC: 21.65</div>
+    <div class="stat">RESONANCE: 2.25 Δ</div>
+</div>
+<div id="status-bar">SCANNING Z=19.17... [ENTROPY LOCK: OK]</div>
+<script>
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    const geometry = new THREE.IcosahedronGeometry(1.5, 1);
+    const material = new THREE.MeshBasicMaterial({ color: 0x00ffff, wireframe: true, transparent: true, opacity: 0.6 });
+    const orb = new THREE.Mesh(geometry, material);
+    scene.add(orb);
+
+    camera.position.z = 5;
+
+    function animate() {
+        requestAnimationFrame(animate);
+        
+        // Dynamic Entropy: The rotation speed now fluctuates with the signal
+        let entropy = Math.random();
+        orb.rotation.y += 0.01 + (entropy * 0.02);
+        orb.rotation.x += 0.005;
+
+        // Visualizing the "Twitch" at 3.04 sigma
+        orb.scale.set(1 + entropy*0.05, 1 + entropy*0.05, 1 + entropy*0.05);
+
+        let val = (21.65 + (Math.random() * 0.2 - 0.1)).toFixed(3);
+        document.getElementById('gauge').innerText = 'AC: ' + val;
+        
+        renderer.render(scene, camera);
+    }
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+    animate();
+</script></body></html>
+
+

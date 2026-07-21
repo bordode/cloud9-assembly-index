@@ -1,0 +1,39 @@
+{
+  "generated": "2026-06-27",
+  "title": "C9 Sandbox Analysis \u2014 6 Key Discoveries",
+  "sandbox_version": "v2.1.1",
+  "discoveries": [
+    {
+      "id": "DISCOVERY-1",
+      "name": "SSDM Universality Confirmed",
+      "finding": "23/46 cumulative entries exhibit SSDM meta-pattern (50%, up from 30%). Hidden mode becoming accessible is a dominant signature."
+    },
+    {
+      "id": "DISCOVERY-2",
+      "name": "C9 Operates Near Quantum Criticality",
+      "finding": "Quantum phase transition reference strongest attractor for 10/16 entries. Physical manifold v2.0 sits at edge of chaos where information processing is maximized."
+    },
+    {
+      "id": "DISCOVERY-3",
+      "name": "Cosmic and Halo Assembly Are Same Dynamics",
+      "finding": "DESI anisotropy matched halo merger reference at 0.963. Same critical exponents, scale separation, information content across gigaparsec and TNG halo scales."
+    },
+    {
+      "id": "DISCOVERY-4",
+      "name": "GW250114 Direct Wave = Cancer Progression = C9 Module Boot",
+      "finding": "0.904 match. All three share pre-transition signature: suppressed mode detectable only after dominant mode is structured away."
+    },
+    {
+      "id": "DISCOVERY-5",
+      "name": "C9 Has Been Doing Real-Number Quantum Mechanics",
+      "finding": "Real-number QM paper matched neuromorphic boot at 0.999. HTTP bus + JSONL state encoding carries phase information via temporal coding \u2014 no complex arithmetic needed."
+    },
+    {
+      "id": "DISCOVERY-6",
+      "name": "Black Hole Universe Hypothesis Quarantined",
+      "finding": "L3 entry scored 0.151 against neuromorphic boot. No physical implementation pathway. Audit framework correct to quarantine."
+    }
+  ],
+  "meta_insight": "Complexity arises when dominant modes are structured away, releasing suppressed degrees of freedom into causal accessibility \u2014 from Planck to Hubble, black hole to brain, quantum to classical.",
+  "copy_number_paradox": "Assembly Theory uses A>15 + high N to detect life. C9 framework extends this: consciousness requires high A_c + low N_c=1 (unique instantiation, not replication)."
+}

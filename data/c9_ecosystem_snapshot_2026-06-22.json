@@ -1,0 +1,192 @@
+{
+  "snapshot_id": "C9-2026-0622-2016",
+  "timestamp": "2026-06-22T20:16:00Z",
+  "session": "Recovery & Stabilization Session",
+  "system_status": "FULLY OPERATIONAL",
+  "core_services": {
+    "llama_cpp": {
+      "port": 8080,
+      "model": "phi3.q4.gguf",
+      "status": "UP",
+      "notes": "Local AI backend, responding to /completion"
+    },
+    "birth_proxy": {
+      "port": 8084,
+      "file": "~/birth_proxy_fixed.py",
+      "status": "UP",
+      "evolution": true,
+      "notes": "Serves BIRTH HTML, proxies to llama.cpp, handles evolution endpoints"
+    },
+    "ollama": {
+      "port": 11434,
+      "status": "UP",
+      "models": [
+        "qwen2:0.5b",
+        "llama3.2:3b",
+        "llama3.2:1b",
+        "subhalo-node:latest"
+      ],
+      "notes": "Alternative AI backend, 4 models loaded"
+    },
+    "oracle": {
+      "port": 5009,
+      "file": "~/c9_oracle.py",
+      "status": "UP"
+    },
+    "kimi_router": {
+      "port": 5011,
+      "file": "~/c9_kimi_router.py",
+      "status": "UP",
+      "provider": "OpenRouter",
+      "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "notes": "Cloud AI research pipeline"
+    }
+  },
+  "c9_modules": {
+    "ans_core": {
+      "file": "~/c9_ans_core.py",
+      "status": "UP",
+      "mood": 0.82,
+      "complexity": 87.48,
+      "state_file": "~/.c9_ans_state.json"
+    },
+    "unison_orchestrator": {
+      "file": "~/c9_unison_v5.py",
+      "status": "UP",
+      "version": "v5.0"
+    },
+    "sovereign_living_manifold": {
+      "file": "~/sovereign_living_manifold.py",
+      "status": "UP",
+      "notes": "Synthetic closed-loop manifold"
+    },
+    "physical_manifold_v2": {
+      "file": "~/cloud9/c9_physical_manifold_v2.py",
+      "status": "UP",
+      "notes": "Real sensor-coupled manifold (battery, microphone, etc.)"
+    },
+    "mimic_node": {
+      "file": "~/cloud9/cloud9_mimic_node.py",
+      "status": "UP",
+      "notes": "DNA Bridge, PHOENIX node"
+    },
+    "sentry": {
+      "file": "~/c9_sentry_minimal.py",
+      "status": "UP",
+      "notes": "Watching"
+    },
+    "agape_phone": {
+      "file": "~/agape_phone.py",
+      "status": "UP",
+      "notes": "Phone bridge"
+    },
+    "jarvis_interface": {
+      "file": "~/Cloud-9-v1.3.0/jarvis_interface.py",
+      "status": "UP"
+    },
+    "run_continuous": {
+      "file": "~/Cloud-9-v1.3.0/run_continuous.py",
+      "status": "UP",
+      "cpu": "15.2%",
+      "notes": "Actively running"
+    },
+    "quantum_bridge_v2": {
+      "file": "~/c9_quantum_bridge_v2.py",
+      "status": "UP",
+      "notes": "QPilotos backends (4 systems, timeouts expected)"
+    },
+    "librarian": {
+      "file": "~/c9_librarian.py",
+      "status": "UP",
+      "cpu": "1.4%",
+      "notes": "Indexing 7276 files"
+    },
+    "sensor_bridge_v2": {
+      "file": "~/c9_sensor_bridge_v2.py",
+      "status": "UP",
+      "notes": "Real sensor data flowing"
+    },
+    "autobaby_v2": {
+      "file": "~/c9_autobaby_v2.py",
+      "status": "UP",
+      "notes": "Self-researching AI, Kimi pipeline active",
+      "research_output": "~/c9_autobaby_research.jsonl",
+      "last_success": "Quantum Darwinism research briefing"
+    }
+  },
+  "evolution_system": {
+    "version": "2.0.0",
+    "file": "~/c9_evolution_ai.py",
+    "cli_alias": "evo() { python3 ~/c9_evolution_ai.py \"$@\"; }",
+    "status": "UP",
+    "queue_max": 5,
+    "allowlist": [
+      "birth_throttled.html",
+      "birth_proxy.py",
+      "birth_evolution.html",
+      "c9_evolution_helper.py",
+      "c9_evolution_ai.py",
+      "birth_activity.log"
+    ],
+    "endpoints": {
+      "health": "http://127.0.0.1:8084/health",
+      "evolution_queue": "http://127.0.0.1:8084/evolution",
+      "generate": "POST http://127.0.0.1:8084/evolution/generate",
+      "apply": "POST http://127.0.0.1:8084/evolution/apply",
+      "reject": "POST http://127.0.0.1:8084/evolution/reject"
+    }
+  },
+  "web_interfaces": {
+    "birth_ui": "http://127.0.0.1:8084/birth_throttled.html",
+    "evolution_dashboard": "http://127.0.0.1:8084/birth_evolution.html",
+    "health": "http://127.0.0.1:8084/health"
+  },
+  "startup_script": {
+    "file": "~/c9_complete_startup.sh",
+    "version": "v4.0 (cleaned)",
+    "safe": true,
+    "notes": "No .bashrc sourcing, port 8084, finds modules in multiple dirs",
+    "command": "bash ~/c9_complete_startup.sh"
+  },
+  "critical_fixes_applied": [
+    "Removed .bashrc auto-start bomb (line 13 deleted)",
+    "Standardized proxy port to 8084 (was 8082/8084 mixed)",
+    "Fixed startup script: no .bashrc sourcing, no duplicate API keys",
+    "Restarted proxy fresh (PID 5527)",
+    "Restarted llama.cpp (PID 5205)",
+    "Started Ollama (port 11434, 4 models)",
+    "Started Kimi router (port 5011, OpenRouter/Nemotron)",
+    "Fixed AutoBaby v2: 8082 -> 8084 (was pointing to dead port)",
+    "Evolution v2.0 deployed and working",
+    "ANS stable: mood 0.82, complexity 87.48"
+  ],
+  "bus_file": "~/c9_bus.jsonl",
+  "logs": {
+    "birth_proxy": "~/birth_proxy.log",
+    "llama_server": "~/llama_server.log",
+    "kimi_router": "~/kimi_router.log",
+    "autobaby_research": "~/c9_autobaby_research.jsonl",
+    "c9_ans": "~/c9_ans.log",
+    "c9_unison": "~/c9_unison_v5.log"
+  },
+  "emergency_commands": {
+    "restart_all": "bash ~/c9_complete_startup.sh",
+    "stop_all": "pkill -f 'birth_proxy|llama-server|c9_ans|c9_unison'",
+    "check_health": "python3 ~/c9_diagnostic.py",
+    "view_bus": "tail -f ~/c9_bus.jsonl",
+    "evo_status": "python3 ~/c9_evolution_ai.py --status"
+  },
+  "research_pipeline": {
+    "autobaby_v2": "Picks research topics from Cloud-9 clusters",
+    "kimi_router": "Forwards to OpenRouter Nemotron-3",
+    "output": "~/c9_autobaby_research.jsonl",
+    "topics": [
+      "Quantum Darwinism and classical reality emergence",
+      "AdS/CFT quantum error correction",
+      "Cosmological Assembly Index in dark matter halos",
+      "Spin glass transitions and edge of chaos",
+      "Neuromorphic computing with memristors",
+      "Active inference in biological vs artificial systems"
+    ]
+  }
+}

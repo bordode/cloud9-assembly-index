@@ -1,0 +1,106 @@
+{
+  "metadata": {
+    "extracted_date": "2026-06-02",
+    "source_count": 5,
+    "domains": [
+      "quantum_optics",
+      "cosmology",
+      "astronomy",
+      "terahertz_engineering",
+      "astrophysics"
+    ]
+  },
+  "quantum_optics": {
+    "source": "Nature (via Interesting Engineering)",
+    "institution": "East China Normal University",
+    "pi": "Jian Wu",
+    "phenomenon": "bright_squeezed_vacuum",
+    "enhancement_factor": 20,
+    "energy_per_pulse_nJ": 300,
+    "process": "tunneling_ionization",
+    "target": "sodium_atoms",
+    "tunable_parameter": "quantum_statistical_properties",
+    "damage_risk": "reduced",
+    "applications": [
+      "attosecond_physics",
+      "high_harmonic_generation",
+      "ultrafast_imaging"
+    ]
+  },
+  "cosmology_black_hole": {
+    "source": "Nature (via Earth.com)",
+    "object": "Abell2744-QSO1",
+    "class": "Little_Red_Dot",
+    "instrument": "JWST_NIRSpec",
+    "redshift_epoch": "700_Myr_post_Big_Bang",
+    "bh_mass_solar_masses": 50000000.0,
+    "object_diameter_ly": 1300,
+    "mass_ratio_bh_to_total": 0.67,
+    "metallicity_solar_fraction": 0.005,
+    "gas_motion": "Keplerian",
+    "elements_detected": [
+      "H",
+      "He"
+    ],
+    "elements_absent": [
+      "O"
+    ],
+    "formation_scenarios": [
+      "direct_collapse",
+      "primordial_bh"
+    ],
+    "key_researcher": "Roberto Maiolino (Cambridge)"
+  },
+  "terahertz_detector": {
+    "source": "Advanced Photonics (via ScienceDaily)",
+    "institution": "Cambridge / Swansea",
+    "pi": "Wladislaw Michailow",
+    "mechanism": "in_plane_photoelectric_effect",
+    "platform": "2D_electron_gas",
+    "architecture": "metasurface_PETS",
+    "pattern": "brickwork",
+    "responsivity_A_W": 2.7,
+    "quantum_efficiency_percent": 2.1,
+    "operating_temp_K": 10,
+    "frequency_THz": 1.9,
+    "bias_condition": "zero_source_drain_bias",
+    "dark_current": "eliminated",
+    "improvement_factor": 20,
+    "fabrication_compatibility": "standard_semiconductor_FET_process"
+  },
+  "microlensing_candidate": {
+    "source": "arXiv (via IFLScience)",
+    "object_name": "Phoebe",
+    "instrument": "DECam",
+    "target_field": "Large_Magellanic_Cloud",
+    "event_duration_hr": 1,
+    "lensing_optical_depth_analysis": "5_orders_more_likely_MW_halo",
+    "mass_estimate": "3x_lunar_mass",
+    "alternative_mass_if_LMC": "0.1_solar_masses",
+    "candidate_type": "primordial_black_hole",
+    "dark_matter_connection": "population_of_compact_lunar_mass_objects",
+    "theoretical_basis": "Carr_&_Hawking"
+  },
+  "interstellar_comet": {
+    "source": "Astrophysical Journal Letters (via BBC Sky at Night)",
+    "object": "3I/ATLAS",
+    "instrument": "JWST_MIRI",
+    "observation_dates": [
+      "2025-12-15",
+      "2025-12-27"
+    ],
+    "distances_from_sun_Mkm": [
+      329,
+      379
+    ],
+    "age_estimate_Gyr": 10,
+    "first_detection": "2025-07-01",
+    "key_detection": "methane_first_interstellar_object",
+    "chemical_signature": {
+      "methane_to_water": "surprisingly_high",
+      "co2_to_water": "much_higher_than_solar_system_comets",
+      "trend": "declining_gas_production_post_perihelion"
+    },
+    "formation_environment": "chemically_distinct_from_Solar_System"
+  }
+}

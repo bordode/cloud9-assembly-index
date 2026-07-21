@@ -1,0 +1,305 @@
+{
+  "schema_version": "2.1.1",
+  "manifest_type": "Cloud-9 Assembly Module",
+  "entry_id": "C9-2026-ASTRO-002",
+  "module_name": "Bayesian LPT Classification Engine",
+  "module_description": "Hierarchical Bayesian mixture model for Long-Period Radio Transient (LPT) classification, integrating multi-wavelength observables (radio, X-ray, optical) to identify accreting white dwarf binaries, pulsars, and unknown populations. Serves as the astrophysical validation counterpart to the cosmological Assembly Index halo classifier.",
+  "status": "experimental",
+  "created": "2026-06-02T20:53:00Z",
+  "authors": [
+    "Cloud-9 Assembly Project"
+  ],
+  "theoretical_cluster": {
+    "primary": "Complexity Science",
+    "secondary": [
+      "Neuromorphic Computing",
+      "Quantum Information & Complexity"
+    ],
+    "cross_domain_links": [
+      {
+        "target_entry": "C9-2026-LEGACY-001",
+        "relation": "terrestrial_validation_analog",
+        "description": "Fujitsu Kozuchi RAG modernization (97% time reduction) demonstrates how hierarchical Bayesian pruning of legacy codepaths mirrors mixture-model class pruning in LPT populations."
+      },
+      {
+        "target_module": "tng_validation_suite",
+        "relation": "inference_engine_isomorphism",
+        "description": "Halo classification via A_c and bootstrap significance maps directly to LPT class posterior probabilities. Both use hierarchical mixture models with missing-data imputation."
+      }
+    ]
+  },
+  "domain": {
+    "name": "Astrophysical Transient Phenomenology",
+    "layer_in_sandbox": "established_physics",
+    "observational_wavelengths": [
+      "radio",
+      "xray",
+      "optical"
+    ],
+    "reference_source": {
+      "name": "ASKAP J1745",
+      "type": "accreting_white_dwarf_binary",
+      "significance": "Rosetta stone for LPT population — first source with radio+X-ray+optical orbital phase-locking",
+      "bayes_factor_vs_pulsar": ">1e10",
+      "bayes_factor_vs_unknown": ">1e10"
+    }
+  },
+  "mathematical_framework": {
+    "model_type": "Hierarchical Bayesian Mixture Model",
+    "levels": [
+      {
+        "level": 0,
+        "name": "Population",
+        "variables": {
+          "pi": {
+            "type": "Dirichlet",
+            "parameters": {
+              "alpha": [
+                2.0,
+                1.5,
+                1.5
+              ]
+            },
+            "description": "Mixture weights for K=3 physical classes"
+          }
+        }
+      },
+      {
+        "level": 1,
+        "name": "Source",
+        "variables": {
+          "z_i": {
+            "type": "Categorical",
+            "parameters": "pi",
+            "description": "Latent class indicator for source i"
+          }
+        }
+      },
+      {
+        "level": 2,
+        "name": "Observation",
+        "variables": {
+          "x_ij": {
+            "type": "Normal",
+            "parameters": {
+              "mu": "mu_{z_i,j}",
+              "sigma2": "sigma2_{z_i,j}"
+            },
+            "observables": [
+              "log10(period_hr)",
+              "log10(L_radio_erg_s)",
+              "log10(Xray_Radio_ratio)",
+              "orbital_modulation_amplitude"
+            ]
+          }
+        }
+      }
+    ],
+    "inference_engine": "Gibbs sampler with class-specific Normal-Inverse-Gamma priors",
+    "missing_data_handling": "Posterior predictive imputation during sampling"
+  },
+  "physical_classes": [
+    {
+      "class_id": 0,
+      "name": "Accreting White Dwarf Binary",
+      "short_name": "WD_Binary",
+      "prototype": "ASKAP J1745",
+      "distinguishing_features": {
+        "period_log10": {
+          "mean_prior": 0.5,
+          "precision_prior": 0.5
+        },
+        "L_radio_log10": {
+          "mean_prior": 32.0,
+          "precision_prior": 0.5
+        },
+        "Xray_Radio_ratio_log10": {
+          "mean_prior": -0.5,
+          "precision_prior": 0.8
+        },
+        "modulation_amplitude": {
+          "mean_prior": 0.8,
+          "precision_prior": 2.0
+        }
+      },
+      "physical_mechanism": "Roche lobe overflow onto magnetized white dwarf; radio from synchrotron in binary magnetosphere; X-ray from accretion shock; orbital modulation from aspect-dependent beaming",
+      "analogy_to_cosmology": "Analogous to 'merging halo' class in TNG — both show strong multi-wavelength correlation and non-random phase coherence."
+    },
+    {
+      "class_id": 1,
+      "name": "Isolated Ultra-Long-Period Pulsar",
+      "short_name": "Pulsar",
+      "distinguishing_features": {
+        "period_log10": {
+          "mean_prior": 1.2,
+          "precision_prior": 0.5
+        },
+        "L_radio_log10": {
+          "mean_prior": 31.0,
+          "precision_prior": 0.5
+        },
+        "Xray_Radio_ratio_log10": {
+          "mean_prior": -3.5,
+          "precision_prior": 0.8
+        },
+        "modulation_amplitude": {
+          "mean_prior": 0.02,
+          "precision_prior": 5.0
+        }
+      },
+      "physical_mechanism": "Rotational emission from magnetized neutron star; no accretion disk; X-ray from polar cap heating only; no orbital modulation",
+      "analogy_to_cosmology": "Analogous to 'relaxed halo' class — quiescent, low entropy production, minimal environmental interaction."
+    },
+    {
+      "class_id": 2,
+      "name": "Unknown / Unclassified",
+      "short_name": "Unknown",
+      "distinguishing_features": {
+        "period_log10": {
+          "mean_prior": 0.85,
+          "precision_prior": 0.3
+        },
+        "L_radio_log10": {
+          "mean_prior": 31.4,
+          "precision_prior": 0.3
+        },
+        "Xray_Radio_ratio_log10": {
+          "mean_prior": -2.0,
+          "precision_prior": 0.3
+        },
+        "modulation_amplitude": {
+          "mean_prior": 0.3,
+          "precision_prior": 0.5
+        }
+      },
+      "physical_mechanism": "Placeholder for unmodeled physics or hybrid systems",
+      "analogy_to_cosmology": "Analogous to 'anomalous high-A_c halo' class — requires further investigation, may indicate new physics."
+    }
+  ],
+  "validation_framework": {
+    "metrics": [
+      "MAP_classification_accuracy",
+      "posterior_class_entropy",
+      "bayes_factor_decisiveness",
+      "population_fraction_recovery"
+    ],
+    "cross_validation": {
+      "method": "leave_one_out_with_informative_priors",
+      "expected_accuracy": ">0.85",
+      "askap_j1745_bayes_factor_threshold": ">1000"
+    },
+    "bootstrap_significance": {
+      "description": "Analogous to tng_validation_suite.py bootstrap tests",
+      "null_hypothesis": "All LPTs belong to single class (no population structure)",
+      "test_statistic": "log_bayes_factor_vs_single_class"
+    }
+  },
+  "integration_with_assembly_index": {
+    "description": "LPT classification provides a controlled astrophysical testbed for the Assembly Index formalism. The multi-wavelength correlation structure of ASKAP J1745 is a high-A_c signature in observable space.",
+    "formal_mapping": {
+      "A_c_halo": "Complexity of dark matter merger tree",
+      "A_c_lpt": "Complexity of multi-wavelength lightcurve correlation structure",
+      "shared_property": "Both measure deviation from random (Poisson/thermal) baseline via cross-domain pattern coherence"
+    },
+    "pipeline": [
+      "Compute A_c for each LPT lightcurve (radio, X-ray, optical phase-aligned)",
+      "Compare A_c distribution across inferred Bayesian classes",
+      "Validate that WD Binary class has significantly higher A_c than Pulsar class (predicted: accretion geometry adds structural complexity)",
+      "Feed A_c as additional observable into Bayesian model (Level 2.5: complexity feature)"
+    ]
+  },
+  "neuromorphic_extension": {
+    "description": "Lava-based SNN implementation for real-time LPT classification in radio survey pipelines",
+    "architecture": {
+      "input_layer": "4 neurons (period, L_radio, Xray_ratio, modulation)",
+      "hidden_layer": "12 neurons encoding class-conditional likelihoods",
+      "output_layer": "3 neurons representing posterior class probabilities",
+      "inference": "Stochastic Gibbs sampling approximated by membrane potential dynamics with Poisson spiking"
+    },
+    "target_hardware": "Intel Loihi 2 / INRC",
+    "expected_speedup": "1000x vs CPU Gibbs sampler for streaming transient detection"
+  },
+  "data_schema": {
+    "source_record": {
+      "source_id": "string",
+      "coordinates": {
+        "ra": "float",
+        "dec": "float",
+        "l": "float",
+        "b": "float"
+      },
+      "observables": {
+        "radio": {
+          "burst_times": "list[float]",
+          "flux_density": "float",
+          "spectral_index": "float",
+          "period_hr": "float",
+          "period_error": "float"
+        },
+        "xray": {
+          "flux_erg_s_cm2": "float",
+          "hardness_ratio": "float",
+          "orbital_phase": "float",
+          "detection_flag": "bool"
+        },
+        "optical": {
+          "magnitude": "float",
+          "modulation_amplitude": "float",
+          "color_index": "float",
+          "detection_flag": "bool"
+        }
+      },
+      "posterior": {
+        "P_WD_Binary": "float [0,1]",
+        "P_Pulsar": "float [0,1]",
+        "P_Unknown": "float [0,1]",
+        "MAP_class": "int {0,1,2}",
+        "bayes_factor_vs_next_best": "float"
+      },
+      "complexity_metrics": {
+        "A_c_lightcurve": "float",
+        "entropy_of_burst_intervals": "float",
+        "multiwavelength_correlation_coefficient": "float"
+      }
+    }
+  },
+  "implementation": {
+    "language": "Python",
+    "core_dependencies": [
+      "numpy",
+      "scipy",
+      "matplotlib"
+    ],
+    "optional_dependencies": [
+      "jax",
+      "numpyro",
+      "pymc"
+    ],
+    "file_locations": {
+      "gibbs_sampler": "cloud9/lpt/bayesian_gibbs.py",
+      "visualization": "cloud9/lpt/plot_classification.py",
+      "data_loader": "cloud9/lpt/load_askap_catalog.py",
+      "validation_suite": "cloud9/lpt/validate_classification.py"
+    },
+    "tests": [
+      "test_askap_j1745_decisive_classification",
+      "test_missing_data_imputation",
+      "test_population_fraction_recovery",
+      "test_cross_domain_A_c_correlation"
+    ]
+  },
+  "references": [
+    {
+      "citation": "Rose et al. 2026, Nature Astronomy (ASKAP J1745 discovery)",
+      "relevance": "Prototype source defining WD Binary class signature"
+    },
+    {
+      "citation": "Cloud-9 Research Repository v1.0.0, INRC Application Template",
+      "relevance": "Neuromorphic implementation framework and A_c formalism"
+    },
+    {
+      "citation": "tng_validation_suite.py (user memory 2026-05-01)",
+      "relevance": "Bootstrap significance testing and halo classification methodology"
+    }
+  ]
+}

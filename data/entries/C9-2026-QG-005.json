@@ -1,0 +1,34 @@
+{
+  "entry_id": "C9-2026-QG-005",
+  "title": "Testing the Problem of Time with Cold Atoms: Entropic Time Emergence in a Mini-Universe",
+  "source": "Barontini, G. Physical Review Research 8, L022047 (2026); arXiv:2509.07745",
+  "date_added": "2026-06-12",
+  "audit_score": 0.94,
+  "layer": 1,
+  "clusters": [
+    1,
+    2,
+    3,
+    7
+  ],
+  "domains": [
+    "Quantum Foundations",
+    "Quantum Gravity",
+    "Quantum Information & Complexity",
+    "Quantum Thermodynamics"
+  ],
+  "key_claim": "A hermetically sealed Bose-Einstein condensate of ~24,000 ultracold 87Rb atoms can self-order its dynamics using an internally constructed 'entropic time' derived from coarse-grained entropy flow between observed ('bright') and unobserved ('dark') sectors, without reference to external laboratory clocks, and follows an effective Schrodinger equation parameterized by this internal time.",
+  "empirical_status": "Controlled laboratory experiment with repeated Big Bang/Big Crunch cycles; quantitative reproduction of mean-field evolution using entropic time; negligible dissipation on experimental timescale (~100 ms)",
+  "methodology": "Magneto-optical trap; crossed optical dipole trap (1070 nm + 1550 nm, ~2π×(25,70,70) Hz); digital micromirror device barrier (675 nm, ~8 μm width); effective non-Hermitian Gross-Pitaevskii Hamiltonian; entropic time definition τ(λ) = (σ/k_B) ∫_λ |dS/dφ| |dφ|",
+  "cross_layer_patterns": [
+    "Internal Entropy as Clock (subsystem coarse-graining drives temporal ordering)",
+    "Structured Suppression of Dominant Mode (external laboratory clock eliminated)",
+    "Big Bang / Big Crunch Cyclicity (bright sector expansion and recollapse)"
+  ],
+  "snn_analog": "Bright/dark sector partitioning mirrors neuromorphic reservoir/dark-sector architectures; entropy flow between subsystems acts as an internal clock analogous to free-energy minimization time in active inference systems",
+  "integration_notes": "Provides first controlled experimental testbed for relational-time constructions in the Wheeler-DeWitt framework. The entropic time definition is formally similar to semiclassical WKB time but uses thermodynamic entropy rather than a Hamilton-Jacobi function. Directly extensible to more complex systems including black-hole analogues and false-vacuum decay experiments.",
+  "references": [
+    "Barontini, G. (2026). Testing the problem of time with cold atoms. Phys. Rev. Research 8, L022047.",
+    "Wheeler, B. S. & DeWitt, B. S. (1967). Battle of the giants: the quantum theory of gravity. Phys. Rev. 160, 1113."
+  ]
+}
