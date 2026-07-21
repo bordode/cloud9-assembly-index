@@ -1,0 +1,16 @@
+{
+    "mission_id": "CLOUD-9-V2.0-SYNTHESIS",
+    "timestamp": "2026-04-18T23:05:23.171418",
+    "calibration_metrics": {
+        "tng_mean_ac": 3.117,
+        "sdss_mean_ac": 2.667,
+        "causal_surplus_bits": 0.451,
+        "sovereign_threshold": 3.5
+    },
+    "hardware_witness": {
+        "backend": "ibm_kingston",
+        "job_id": "d7a4o6bc6das739jlpcg",
+        "status": "VERIFIED"
+    },
+    "state": "SOVEREIGN"
+}

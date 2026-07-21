@@ -1,0 +1,19 @@
+{
+  "exp": 8,
+  "label": "Biological Longevity (Domain 4)",
+  "domain": "longevity",
+  "n_samples": 100000,
+  "kappa_critical": 1.0,
+  "gamma": 1.0,
+  "crossover_year_mean_kappa": null,
+  "crossover_year_prob_50pct": null,
+  "kappa_2026": 0.0605,
+  "kappa_2040": 0.256,
+  "kappa_2050": 0.3851,
+  "escape_fraction_2026": 0.0,
+  "steepness_k": 8.0,
+  "yield_function": "sigmoidal",
+  "status": "SUGGESTIVE \u2014 parameter uncertainty in \u039b(t) model",
+  "timestamp": "2026-04-29",
+  "framework_version": "1.5.0+"
+}

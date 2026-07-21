@@ -1,0 +1,171 @@
+{
+  "cloud9_repository": {
+    "name": "Cloud-9 Assembly Project",
+    "version": "v2.1.1",
+    "description": "Cosmological Assembly Index (A_c) framework for detecting non-random high-complexity structures across domains",
+    "repository_url": "TBD_GITHUB_URL",
+    "last_updated": "2026-06-21T23:45:00Z"
+  },
+  "collections": [
+    {
+      "collection_id": "C9-COLLECTION-2026-0608-SCIENCENEWS",
+      "date": "2026-06-08",
+      "entries": 4,
+      "mean_score": 0.87,
+      "layer_dist": {
+        "L1": 4,
+        "L2": 0,
+        "L3": 0
+      },
+      "entry_ids": [
+        "C9-2026-NEURO-001",
+        "C9-2026-COSMO-002",
+        "C9-2026-COSMO-003",
+        "C9-2026-MATSCI-004"
+      ],
+      "status": "published",
+      "memory_ref": "#19"
+    },
+    {
+      "collection_id": "C9-COLLECTION-2026-0614-WEEKLYSCIENCE",
+      "date": "2026-06-14",
+      "entries": 3,
+      "mean_score": 0.84,
+      "layer_dist": {
+        "L1": 3,
+        "L2": 0,
+        "L3": 0
+      },
+      "entry_ids": [
+        "C9-2026-ASTROBIO-005",
+        "C9-2026-NEURO-002",
+        "C9-2026-COSMO-004"
+      ],
+      "status": "published",
+      "memory_ref": "#39-41"
+    },
+    {
+      "collection_id": "C9-COLLECTION-2026-0621-WEEKLYSCIENCE",
+      "date": "2026-06-21",
+      "entries": 8,
+      "mean_score": 0.836,
+      "layer_dist": {
+        "L1": 5,
+        "L2": 0,
+        "L3": 0
+      },
+      "entry_ids": [
+        "C9-2026-COND-006",
+        "C9-2026-COSMO-006",
+        "C9-2026-COSMO-007",
+        "C9-2026-ASTRO-008",
+        "C9-2026-SETI-009",
+        "C9-2026-QUANT-010",
+        "C9-2026-QG-011",
+        "C9-2026-ASTRO-012"
+      ],
+      "status": "ready_for_upload",
+      "memory_ref": "current"
+    }
+  ],
+  "terrestrial_validation_cases": [
+    {
+      "entry_id": "C9-2026-LEGACY-001",
+      "title": "Fujitsu Kozuchi COBOL Modernization",
+      "date_added": "2026-04-05",
+      "memory_ref": "#7"
+    },
+    {
+      "entry_id": "C9-2026-TERRESTRIAL-002",
+      "title": "Faraday Future EAI Robotics Ecosystem",
+      "date_added": "2026-06-21",
+      "memory_ref": "current"
+    }
+  ],
+  "governance_references": [
+    {
+      "entry_id": "C9-2026-SANDBOX-IAI-001",
+      "title": "AI Continuity Loss and IAA Governance Gaps",
+      "date_added": "2026-06-07",
+      "memory_ref": "#12"
+    },
+    {
+      "entry_id": "C9-2026-GOVERNANCE-REF-001",
+      "title": "Anthropic Constitutional AI for Agentic Systems",
+      "date_added": "2026-06-21",
+      "memory_ref": "current"
+    }
+  ],
+  "cluster_coverage": {
+    "1_Quantum_Foundations": [
+      "C9-2026-COND-006",
+      "C9-2026-COSMO-006",
+      "C9-2026-QG-005",
+      "C9-2026-QG-011",
+      "C9-2026-QUANT-010"
+    ],
+    "2_Quantum_Gravity": [
+      "C9-2026-ASTRO-008",
+      "C9-2026-ASTRO-012",
+      "C9-2026-COSMO-002",
+      "C9-2026-COSMO-003",
+      "C9-2026-COSMO-006",
+      "C9-2026-COSMO-007",
+      "C9-2026-QG-005"
+    ],
+    "3_Quantum_Info_Complexity": [
+      "C9-2026-ASTRO-008",
+      "C9-2026-ASTRO-012",
+      "C9-2026-NEURO-001",
+      "C9-2026-QG-005",
+      "C9-2026-QG-011",
+      "C9-2026-QUANT-010",
+      "C9-2026-QUANT-REF-002",
+      "C9-2026-SETI-009"
+    ],
+    "4_Complexity_Science": [
+      "C9-2026-ASTRO-012",
+      "C9-2026-COSMO-007",
+      "C9-2026-EXO-REF-003",
+      "C9-2026-QUANT-010",
+      "C9-2026-SETI-009"
+    ],
+    "5_Topological_Systems": [
+      "C9-2026-ASTRO-008",
+      "C9-2026-COND-006",
+      "C9-2026-COSMO-006",
+      "C9-2026-COSMO-007",
+      "C9-2026-QUANT-010"
+    ],
+    "6_Neuromorphic_Computing": [
+      "C9-2026-NEURO-001",
+      "C9-2026-NEURO-002",
+      "C9-2026-NEURO-004",
+      "C9-2026-ROBO-REF-001"
+    ],
+    "7_Quantum_Thermodynamics": [
+      "C9-2026-COND-006",
+      "C9-2026-QG-005",
+      "C9-2026-QUANT-010"
+    ],
+    "8_Consciousness_Studies": [
+      "C9-2026-NEURO-002",
+      "C9-2026-NEURO-004"
+    ]
+  },
+  "sandbox_status": {
+    "completed": [
+      "C9-2026-NEURO-002 (frontal aslant dissociation, PASS 4/4)"
+    ],
+    "queued": [
+      "C9-2026-COND-006 (Higgs oscillation modeling)",
+      "C9-2026-COSMO-006 (axion BEC caustic ring simulation)",
+      "C9-2026-COSMO-007 (Terzan 5 A_c computation)",
+      "C9-2026-ASTRO-008 (starburst neutrino luminosity correlation)",
+      "C9-2026-QUANT-010 (Gross-Pitaevskii + active inference coupling)",
+      "C9-2026-QG-011 (real-number QM A_c formalism independence test)",
+      "C9-2026-ASTRO-012 (AMS-02 elemental A_c + TNG cross-match)"
+    ],
+    "pending_resources": "TNG API access confirmed (Memory #4); JWST data public; ANL contact for Higgs spectroscopy data."
+  }
+}

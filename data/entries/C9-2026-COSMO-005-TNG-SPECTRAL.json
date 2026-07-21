@@ -1,0 +1,52 @@
+{
+  "entry_id": "C9-2026-COSMO-005-TNG-SPECTRAL",
+  "title": "TNG100-1 Spectral Analysis: 200 Quiescent Halos \u2014 Universal Harmonic Architecture",
+  "date": "2026-07-12",
+  "layer": 1,
+  "audit_score": 0.79,
+  "primary_clusters": [
+    2,
+    3,
+    4,
+    5
+  ],
+  "dataset": "IllustrisTNG TNG100-1 Snapshot 99",
+  "sample_size": 200,
+  "population_statistics": {
+    "mean_phase_coherence": 0.8521,
+    "std_dev": 0.0116,
+    "min": 0.8225,
+    "max": 0.8784,
+    "structured_pct": 100.0
+  },
+  "null_test": {
+    "null_mean_coherence": 0.9062,
+    "cohens_d": -3.29,
+    "conclusion": "NFW intrinsically stable \u2014 need residual deviation A_c metric, not global coherence"
+  },
+  "dominant_scale_kpc": 1.0,
+  "fibonacci_node_hypothesis": "15.4 kpc nodes as primary UOS signature \u2014 solo violin in cosmic orchestra",
+  "A_c_merger_correlation": {
+    "R": -0.969,
+    "p_value": 0.031,
+    "N": 4,
+    "interpretation": "A_c = complexity of assembly path. Many small mergers > few giant mergers for A_c."
+  },
+  "top_halos": [
+    {
+      "id": 145,
+      "coherence": 0.8784
+    },
+    {
+      "id": 205,
+      "coherence": 0.8781
+    }
+  ],
+  "key_finding": "Null test paradox reveals need for node-based local coherence metric. A_c vs MaxMassJump: R=-0.969, p=0.031 \u2014 statistically significant with N=4.",
+  "next_steps": [
+    "NFW residual metric",
+    "50-halo scaling to p<0.001",
+    "Fibonacci node extraction at 15.4 kpc",
+    "JWST follow-up halos 145+205"
+  ]
+}

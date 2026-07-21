@@ -1,0 +1,90 @@
+{
+  "entry_id": "C9-2026-NEURO-003",
+  "timestamp": "2026-06-29T02:33:00Z",
+  "source": {
+    "title": "Plasticity and language in the anaesthetized human hippocampus",
+    "authors": [
+      "Katlowitz KA",
+      "Cole ER",
+      "Mickiewicz EA",
+      "Shah S",
+      "Franch M",
+      "Adkinson JA",
+      "Belanger JL",
+      "Mathura RK",
+      "Meszéna D",
+      "McGinley M",
+      "Muñoz W",
+      "Banks GP",
+      "Cash SS",
+      "Hsu CW",
+      "Paulk AC",
+      "Provenza NR",
+      "Watrous AJ",
+      "Williams Z",
+      "Goldman AM",
+      "Krishnan V",
+      "Maheshwari A",
+      "Heilbronner SR",
+      "Kim R",
+      "Rungratsameetaweemana N",
+      "Hayden BY",
+      "Sheth SA"
+    ],
+    "journal": "Nature",
+    "year": 2026,
+    "volume": "654",
+    "issue": "8119",
+    "pages": "714-723",
+    "doi": "10.1038/s41586-026-10448-0",
+    "url": "https://doi.org/10.1038/s41586-026-10448-0"
+  },
+  "c9_audit": {
+    "score": 0.94,
+    "layer": 1,
+    "clusters": [
+      1,
+      3,
+      6,
+      8
+    ],
+    "sandbox_status": "PENDING",
+    "confidence": "HIGH"
+  },
+  "findings": {
+    "method": "Neuropixels probes in human hippocampus under propofol anesthesia (n=7, 651 neurons)",
+    "key_results": [
+      "Hippocampal neurons detect auditory oddballs with improving accuracy over time (plasticity under anesthesia)",
+      "Real-time semantic encoding: 85.6% of units selective for 12 semantic categories",
+      "Syntactic encoding: 80% of units distinguish nouns vs non-nouns; 69.1% encode full POS taxonomy",
+      "Predictive coding: future-word decoding strength comparable to past-word (τ_future=0.840 vs τ_past=0.868)",
+      "Surprisal modulation present (contextual word probability affects firing rates)",
+      "Performance comparable to or exceeding awake EMU recordings on microwire electrodes"
+    ],
+    "model": "E-I recurrent neural network reproduces emergent oddball plasticity via local circuit dynamics"
+  },
+  "c9_integration": {
+    "cluster_1_quantum_foundations": "Local computation without global integration mirrors decoherence-free subspaces",
+    "cluster_3_quantum_info": "Predictive coding as effective information transfer; surprisal as local entropy production",
+    "cluster_6_neuromorphic": "E-I RNN validates SNN/reservoir approach; hippocampus as biological reservoir",
+    "cluster_8_consciousness": "Empirical support for IIT (Φ requires integration) and Global Workspace (consciousness = broadcasting)"
+  },
+  "limitations": [
+    "Single anesthetic (propofol) — may not generalize to sleep, coma, ketamine, dexmedetomidine",
+    "Single region (hippocampus only) — no PFC, thalamus, or brainstem recordings",
+    "Epilepsy cohort — drug-resistant TLE may alter baseline physiology",
+    "Prediction vs contextualization ambiguity — future-word decoding may reflect statistical co-occurrence rather than active generation"
+  ],
+  "implications": [
+    "Sophisticated cognition can proceed without consciousness",
+    "Consciousness arises from inter-regional communication, not local computation",
+    "Validates 'layered autonomy' model: subsystems maintain competence when integrating layer is disrupted",
+    "Speech prosthetic potential for stroke/damage patients using hippocampal signals"
+  ],
+  "meta": {
+    "c9_framework_version": "v2026.06.09",
+    "bus_compatible": true,
+    "oracle_indexable": true,
+    "librarian_tagged": true
+  }
+}

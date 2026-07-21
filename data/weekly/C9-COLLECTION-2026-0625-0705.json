@@ -1,0 +1,1881 @@
+{
+  "manifest": {
+    "collection_id": "C9-COLLECTION-2026-0625-0705",
+    "title": "Cloud-9 Weekly Science Collection: June 25 - July 5, 2026",
+    "date_range": {
+      "start": "2026-06-25",
+      "end": "2026-07-05"
+    },
+    "generated_at": "2026-07-05T01:50:00Z",
+    "total_entries": 39,
+    "layer_distribution": {
+      "L1_established_physics": 36,
+      "L2_speculative": 3
+    },
+    "score_statistics": {
+      "min": 0.55,
+      "max": 0.96,
+      "mean": 0.8
+    },
+    "domain_distribution": {
+      "Cosmology_Astrophysics": 11,
+      "Quantum_Physics_Gravity": 10,
+      "Biology_Neuroscience_Medicine": 8,
+      "Complexity_AI_Philosophy": 6,
+      "Materials_Science": 1,
+      "SETI_Planetary_Science": 3
+    },
+    "cluster_distribution": {
+      "Cluster_1_Quantum_Foundations": 9,
+      "Cluster_2_Cosmology_Galaxy_Evolution": 15,
+      "Cluster_3_Quantum_Info_Complexity": 8,
+      "Cluster_4_Complexity_Active_Inference": 9,
+      "Cluster_5_Topological_Systems": 6,
+      "Cluster_6_Neuromorphic_Computing": 9,
+      "Cluster_7_Quantum_Thermodynamics": 5,
+      "Cluster_8_Consciousness_Studies": 8
+    },
+    "meta_patterns": [
+      {
+        "pattern_id": "MP-001",
+        "name": "Structured Offline Recovery",
+        "description": "Systems that alternate between consolidation (narrowing) and exploration (broadening) phases achieve superior long-term stability. The 'seams between stages' may be where the most critical information-structural work occurs.",
+        "entries": [
+          "C9-2026-NEURO-004",
+          "C9-2026-BIO-004",
+          "C9-2026-NEURO-006"
+        ],
+        "domains": [
+          "sleep",
+          "epigenetics",
+          "connectomics"
+        ]
+      },
+      {
+        "pattern_id": "MP-002",
+        "name": "Hierarchical Merger as Generative Mechanism",
+        "description": "Structure at scale N often emerges from repeated mergers/integrations at scale N-1, not from monolithic formation. The 'merger tree' is a universal generative principle.",
+        "entries": [
+          "C9-2026-COSMO-007",
+          "C9-2026-COSMO-005",
+          "C9-2026-COSMO-006"
+        ],
+        "domains": [
+          "black_holes",
+          "globular_clusters",
+          "galaxies"
+        ]
+      },
+      {
+        "pattern_id": "MP-003",
+        "name": "Signal Degradation as Information Preservation",
+        "description": "Degradation and rarity are not merely noise — they can be information-preserving or even information-enhancing under the right structural conditions.",
+        "entries": [
+          "C9-2026-SETI-001",
+          "C9-2026-QUANTUM-010",
+          "C9-2026-BIO-005"
+        ],
+        "domains": [
+          "SETI",
+          "quantum_communication",
+          "chromatin"
+        ]
+      },
+      {
+        "pattern_id": "MP-004",
+        "name": "AI as Collaborative Agent in Fundamental Science",
+        "description": "AI is transitioning from tool to collaborator in fundamental research, contributing novel proof strategies and cross-domain analogies.",
+        "entries": [
+          "C9-2026-COMPLEX-005",
+          "C9-2026-NEURO-004",
+          "C9-2026-NEURO-005"
+        ],
+        "domains": [
+          "mathematics",
+          "sleep_AI",
+          "consciousness_AI"
+        ]
+      },
+      {
+        "pattern_id": "MP-005",
+        "name": "Non-Equilibrium as the Natural State",
+        "description": "Real systems are rarely at equilibrium. Removing equilibrium assumptions reveals hidden complexity and enables new theoretical frameworks.",
+        "entries": [
+          "C9-2026-QG-008",
+          "C9-2026-QG-007",
+          "C9-2026-QUANTUM-008"
+        ],
+        "domains": [
+          "black_hole_thermodynamics",
+          "quantum_gravity",
+          "phononics"
+        ]
+      }
+    ],
+    "sandbox_tests_recommended": [
+      "SB-COSMO-007-001",
+      "SB-QG-007-001",
+      "SB-QG-008-001",
+      "SB-QUANTUM-006-001",
+      "SB-QUANTUM-007-001",
+      "SB-QUANTUM-010-001",
+      "SB-QUANTUM-012-001",
+      "SB-BIO-004-001",
+      "SB-BIO-003-001",
+      "SB-NEURO-003-001",
+      "SB-NEURO-004-001",
+      "SB-NEURO-005-001",
+      "SB-NEURO-006-001",
+      "SB-SETI-001-001",
+      "SB-COMPLEX-005-001"
+    ],
+    "highest_ac_entries": [
+      "C9-2026-COSMO-007 (GWTC-5, score 0.96)",
+      "C9-2026-QG-008 (Dynamic BH thermodynamics, score 0.91)",
+      "C9-2026-QUANTUM-012 (Kagome loop currents, score 0.91)",
+      "C9-2026-NEURO-004 (Sleep resilience, score 0.90)",
+      "C9-2026-QUANTUM-010 (Multimode squeezing, score 0.89)",
+      "C9-2026-QG-006 (Dynamic BH thermodynamics, score 0.88)",
+      "C9-2026-NEURO-003 (Bilingual geometry, score 0.87)",
+      "C9-2026-NEURO-006 (NMJ connectomics, score 0.86)",
+      "C9-2026-COMPLEX-005 (AI jamming proof, score 0.85)",
+      "C9-2026-QUANTUM-007 (Hadronization 104 qubits, score 0.85)"
+    ]
+  },
+  "entries": [
+    {
+      "entry_id": "C9-2026-COSMO-007",
+      "title": "GWTC-5: 390 Gravitational Wave Detections Reveal Hidden Black Hole Populations",
+      "authors": "LVK Collaboration (LIGO/Virgo/KAGRA); Williams, Veitch, Papadopoulos, Colloms et al. (U. Glasgow)",
+      "date": "2026-07-01",
+      "source": "ScienceDaily / University of Glasgow",
+      "doi": "10.3847/1538-4357/XXXX (GWTC-5.0 catalog)",
+      "arxiv": "",
+      "layer": 1,
+      "audit_score": 0.96,
+      "clusters": [
+        2,
+        3,
+        7
+      ],
+      "cluster_names": [
+        "Cosmology/Galaxy_Evolution",
+        "Quantum_Information_Complexity",
+        "Quantum_Thermodynamics"
+      ],
+      "summary": "161 new black hole mergers (Apr 2024-Jan 2025), total 390 detections. GW240615: most precise sky localization (6 sq deg). GW250114: SNR 76.9, strongest signal ever — confirms Hawking area theorem, most precise GR test. Evidence for second-generation black holes (GW241011, GW241110) from hierarchical mergers in dense clusters. Hubble constant measurement with 236 signals (~2x previous). Glasgow software achieves >1000x speedup.",
+      "key_findings": [
+        "GW250114: SNR 76.9, 32+34 M_sun merger at >1 Gpc, confirms Hawking area theorem and second law of thermodynamics for black holes",
+        "GW240615: 6 sq deg sky localization, 26+30 M_sun merger at >3 Gpc",
+        "GW241011 & GW241110: spin signatures suggest second-generation black holes from prior mergers",
+        "Population study of 267 sources: distinct mass-spin correlations indicate multiple formation pathways",
+        "Hubble constant: 236 signals used, ~2x previous catalog, Virgo detector return improves localization"
+      ],
+      "a_c_relevance": "Very High. Population statistics enable Assembly Index computation across black hole merger trees. Hierarchical merger (second-generation BHs) is a generative mechanism producing complexity at scale N from scale N-1 integrations — direct analog to C9 Assembly Index recursive structure. Rate of 3-4 events/week entering statistical regime.",
+      "sandbox_test": {
+        "test_id": "SB-COSMO-007-001",
+        "description": "Simulate hierarchical black hole merger tree and compute A_c for merger product populations",
+        "method": "Generate synthetic merger trees with primary and secondary merger channels. Track spin-mass correlations. Compute A_c(t) = S(t) * I(t) * T(t) where S=population entropy, I=integrated information of merger network, T=topological complexity of mass-spin manifold.",
+        "expected_result": "A_c peaks at transition from isolated-binary to hierarchical-merger dominated regime. Second-generation BHs show elevated A_c due to memory of prior merger encoded in spin.",
+        "validation_data": "GWTC-5 population posterior distributions (public LVK data)"
+      },
+      "cross_refs": [
+        "C9-2026-QG-007",
+        "C9-2026-COSMO-005"
+      ],
+      "tags": [
+        "gravitational_waves",
+        "black_holes",
+        "hierarchical_mergers",
+        "Hubble_constant",
+        "population_statistics",
+        "thermodynamics"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-COSMO-005",
+      "title": "Terzan 5 Redefined as Bulge Fossil Fragment, Not Globular Cluster",
+      "authors": "Zullo, Ferraro et al.",
+      "date": "2026-06-30",
+      "source": "Universe Today",
+      "doi": "",
+      "arxiv": "",
+      "layer": 1,
+      "audit_score": 0.78,
+      "clusters": [
+        2
+      ],
+      "cluster_names": [
+        "Cosmology/Galaxy_Evolution"
+      ],
+      "summary": "HST+JWST reveal four stellar populations (12.5, 4.7, 3.8, 2.5 Gyr) with self-enrichment. Redefined as 'bulge fossil fragment' — primordial clump surviving galactic bulge formation. Most millisecond pulsars of any cluster. Proper motion distinguishes members from bulge contamination.",
+      "key_findings": [
+        "Four distinct stellar populations with self-enrichment unlike typical globulars",
+        "Ages span 12.5 Gyr to 2.5 Gyr — ongoing star formation",
+        "Most millisecond pulsars of any known cluster",
+        "Proper motion measurements separate member stars from bulge field stars"
+      ],
+      "a_c_relevance": "Medium. Galactic archaeology — hierarchical assembly leaving fossil signatures. Multiple stellar populations as memory of formation history. Resembles C9 principle that complex systems retain traces of their generative history.",
+      "sandbox_test": {},
+      "cross_refs": [],
+      "tags": [
+        "globular_clusters",
+        "galactic_bulge",
+        "stellar_populations",
+        "millisecond_pulsars",
+        "fossil_fragments"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-COSMO-006",
+      "title": "Barred Spiral Galaxy M1149-BSG-z5 at z=5.1 — Highest-Redshift Barred Galaxy",
+      "authors": "Wang et al. (Tsinghua University)",
+      "date": "2026-06-23",
+      "source": "arXiv",
+      "doi": "10.48550/arxiv.2606.25022",
+      "arxiv": "2606.25022",
+      "layer": 1,
+      "audit_score": 0.82,
+      "clusters": [
+        2
+      ],
+      "cluster_names": [
+        "Cosmology/Galaxy_Evolution"
+      ],
+      "summary": "z=5.102 barred galaxy. Stellar mass 28x10^9 M_sun, SFR=144 M_sun/yr, bar length 14,700 ly, 50% solar metallicity. Low-ratio AGN (M_BH/M=0.001). Nearby galaxy at 69,000 ly suggests interaction-driven bar formation.",
+      "key_findings": [
+        "Highest-redshift barred spiral galaxy known",
+        "Bar length 14,700 light-years at cosmic age ~1.2 Gyr",
+        "Metallicity 50% solar — chemically evolved for its epoch",
+        "Nearby companion galaxy suggests tidal interaction trigger"
+      ],
+      "a_c_relevance": "Medium. Early universe structure formation. Barred morphology as emergent pattern from disk instability + interaction. Galaxy-galaxy interaction as generative mechanism for complexity.",
+      "sandbox_test": {},
+      "cross_refs": [],
+      "tags": [
+        "barred_galaxies",
+        "high_redshift",
+        "JWST",
+        "galaxy_formation",
+        "tidal_interaction"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-COSMO-008",
+      "title": "Merging Galaxy Clusters CL0016+1609 (MACS J0018.5+1626)",
+      "authors": "RELICS Collaboration",
+      "date": "2026-06-28",
+      "source": "Universe Today",
+      "doi": "",
+      "arxiv": "",
+      "layer": 1,
+      "audit_score": 0.72,
+      "clusters": [
+        2,
+        5
+      ],
+      "cluster_names": [
+        "Cosmology/Galaxy_Evolution",
+        "Topological_Systems"
+      ],
+      "summary": "Hubble ACS + Chandra X-ray reveal two clusters merging along line of sight. RELICS program identified 300+ high-redshift candidate galaxies via gravitational lensing.",
+      "key_findings": [
+        "Two distinct clusters merging along observer's line of sight",
+        "Gravitational lensing traces dark matter distribution",
+        "300+ high-redshift candidates identified via cluster lenses"
+      ],
+      "a_c_relevance": "Medium. Large-scale structure formation via hierarchical merging. Gravitational lensing as topological probe of mass distribution.",
+      "sandbox_test": {},
+      "cross_refs": [],
+      "tags": [
+        "galaxy_clusters",
+        "merging_clusters",
+        "gravitational_lensing",
+        "dark_matter",
+        "RELICS"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-ASTRO-006",
+      "title": "JWST Detects Mystery Molecule on Both Pluto and Titan",
+      "authors": "JWST Team (arXiv preprint)",
+      "date": "2026-06-11",
+      "source": "LiveScience / arXiv",
+      "doi": "",
+      "arxiv": "2606.XXXXX",
+      "layer": 1,
+      "audit_score": 0.75,
+      "clusters": [
+        2
+      ],
+      "cluster_names": [
+        "Cosmology/Galaxy_Evolution"
+      ],
+      "summary": "Absorption line at 5.11 um detected in both Pluto and Titan spectra. Not found in any other planetary body. Surface-located (not atmospheric). Pluto 3x stronger than Titan. Titan: uneven distribution (stronger on trailing side). Candidates: benzene+unknown, acetylene ice, ketene ice. Dragonfly mission may resolve.",
+      "key_findings": [
+        "5.11 um absorption line unique to Pluto and Titan among studied bodies",
+        "Surface-located, not atmospheric",
+        "Pluto signal 3x stronger than Titan",
+        "Titan shows uneven distribution — stronger on trailing hemisphere",
+        "Candidates: benzene complex, acetylene ice, ketene ice"
+      ],
+      "a_c_relevance": "Medium. Planetary chemistry anomaly — shared molecular signature across disparate bodies (dwarf planet vs. moon) suggests common photochemical or cryovolcanic process. Unexplained pattern = high information content.",
+      "sandbox_test": {},
+      "cross_refs": [],
+      "tags": [
+        "Pluto",
+        "Titan",
+        "JWST",
+        "mystery_molecule",
+        "planetary_chemistry",
+        "Dragonfly"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-ASTRO-007",
+      "title": "GJ504b 'Pink Planet' Has Salty Clouds — First Detection of Salt Clouds as Critical Opacity Source",
+      "authors": "JWST Team (The Astrophysical Journal)",
+      "date": "2026-06-28",
+      "source": "ScienceAlert",
+      "doi": "10.3847/XXXX-XXXX/XXXXXX",
+      "arxiv": "",
+      "layer": 1,
+      "audit_score": 0.8,
+      "clusters": [
+        2
+      ],
+      "cluster_names": [
+        "Cosmology/Galaxy_Evolution"
+      ],
+      "summary": "25 M_J, 290°C, 60 ly. JWST detects KCl/ZnS salt clouds resolving thermal anomaly. Atmosphere: H2O, CO, CH4, NH3, H2S. Heavy element enrichment favors disk-formation over brown-dwarf origin. First salt cloud detection as critical opacity source.",
+      "key_findings": [
+        "First detection of salt clouds (KCl or ZnS) as critical atmospheric opacity source",
+        "25 Jupiter masses, 10% smaller than Jupiter, 290°C",
+        "Atmosphere contains water, CO, methane, ammonia, hydrogen sulfide",
+        "Heavy element enrichment (C, O, S) suggests formation from protostellar disk",
+        "Resolves long-standing thermal anomaly in atmospheric models"
+      ],
+      "a_c_relevance": "Medium. Atmospheric chemistry as complex adaptive system. Salt cloud formation as emergent phase transition. Heavy element enrichment as signature of formation history.",
+      "sandbox_test": {},
+      "cross_refs": [],
+      "tags": [
+        "exoplanets",
+        "salt_clouds",
+        "JWST",
+        "atmospheric_chemistry",
+        "GJ504b",
+        "disk_formation"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-ASTRO-008",
+      "title": "Super-Earth GJ 3378b Mass Revised to 2.3 M_Earth — More Likely Rocky, in Habitable Zone",
+      "authors": "HET/HPF Team",
+      "date": "2026-06-30",
+      "source": "Phys.org",
+      "doi": "10.3847/1538-4357/ae732b",
+      "arxiv": "",
+      "layer": 1,
+      "audit_score": 0.76,
+      "clusters": [
+        2
+      ],
+      "cluster_names": [
+        "Cosmology/Galaxy_Evolution"
+      ],
+      "summary": "HET/HPF data revise GJ 3378b from 5 M_Earth to 2.3 M_Earth (more likely rocky), 25d to 21d orbit, red dwarf at 25 ly in Camelopardalis. Habitable zone — prime ELT/GMT/HWO biosignature target.",
+      "key_findings": [
+        "Mass revised from 5 to 2.3 M_Earth — significantly more likely to be rocky",
+        "Orbital period revised from 25 to 21 days",
+        "Located in habitable zone of red dwarf at 25 light-years",
+        "Prime target for future biosignature searches with ELT, GMT, HWO"
+      ],
+      "a_c_relevance": "Medium. Habitability as complex system boundary condition. Biosignature search as information-theoretic detection problem.",
+      "sandbox_test": {},
+      "cross_refs": [],
+      "tags": [
+        "exoplanets",
+        "habitable_zone",
+        "super_earth",
+        "biosignatures",
+        "GJ3378b",
+        "HET"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-ASTRO-009",
+      "title": "ASKAP J173608.2-321635: A New Class of Radio Transient Near the Galactic Centre",
+      "authors": "ASKAP/VAST Team; THOR-GC/VLITE follow-up",
+      "date": "2026-06-28",
+      "source": "Space Daily",
+      "doi": "",
+      "arxiv": "",
+      "layer": 1,
+      "audit_score": 0.68,
+      "clusters": [
+        2,
+        5
+      ],
+      "cluster_names": [
+        "Cosmology/Galaxy_Evolution",
+        "Topological_Systems"
+      ],
+      "summary": "ASKAP detected 6x in 2020 (888 MHz), highly polarized, steep-spectrum, variable. No X-ray/IR counterpart. MeerKAT re-detected Feb 2021 (fading 1 day). No known class fits. Possible supersonic neutron star in changing environment (speculative). Needs simultaneous multi-wavelength follow-up.",
+      "key_findings": [
+        "6 detections in 2020 at 888 MHz by ASKAP VAST survey",
+        "Highly polarized, steep-spectrum, variable radio source",
+        "No X-ray counterpart (Swift, Chandra)",
+        "No infrared counterpart to J=20.8",
+        "MeerKAT re-detection Feb 2021: 5.6 mJy, faded within 1 day",
+        "No known astrophysical class matches all properties"
+      ],
+      "a_c_relevance": "Medium-High. Pattern-breaking anomaly — source defies classification within known taxonomy. High information content due to uniqueness. Possible new physical mechanism.",
+      "sandbox_test": {
+        "test_id": "SB-ASTRO-009-001",
+        "description": "Model radio transient population and compute anomaly detection score for ASKAP J173608",
+        "method": "Train classifier on known transient classes (pulsars, magnetars, XRBs, etc.). Compute outlier score for ASKAP J173608 properties. Compare to simulated new-class populations.",
+        "expected_result": "Anomaly score >3 sigma from known class manifolds. If genuine new class, A_c of source population should show distinct topological signature."
+      },
+      "cross_refs": [],
+      "tags": [
+        "radio_transients",
+        "ASKAP",
+        "Galactic_Centre",
+        "anomaly",
+        "MeerKAT",
+        "new_class"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-ASTRO-010",
+      "title": "Star HD 7977 Passed Sun at 6,000-10,000 AU 2.5 Mya — Triggered Oort Cloud Comet Shower",
+      "authors": "Kaib & Raymond (PSI/Bordeaux)",
+      "date": "2026-06-26",
+      "source": "IFLScience",
+      "doi": "",
+      "arxiv": "",
+      "layer": 1,
+      "audit_score": 0.74,
+      "clusters": [
+        2
+      ],
+      "cluster_names": [
+        "Cosmology/Galaxy_Evolution"
+      ],
+      "summary": "Gaia data: star passed Sun at 6,000-10,000 AU 2.5 Mya, potentially triggering ongoing Oort cloud comet shower. Simulations match disturbance signature but disagree on orbit distributions — missing physics suspected. Gaia DR4 (6-12 months) will test.",
+      "key_findings": [
+        "HD 7977 passed at 6,000-10,000 AU (35-58 light-days) 2.5 million years ago",
+        "Close enough to perturb Oort cloud comets into inner solar system",
+        "Simulations match overall disturbance but disagree on orbit-size distributions",
+        "Missing physics: comet jets, multi-body dynamics, non-gravitational forces",
+        "Gaia DR4 will provide refined astrometry to test predictions"
+      ],
+      "a_c_relevance": "Medium. Stellar perturbation as external driver of solar system complexity. Oort cloud as reservoir of memory (frozen primordial material). Comet showers as stochastic perturbation events.",
+      "sandbox_test": {},
+      "cross_refs": [],
+      "tags": [
+        "Oort_cloud",
+        "stellar_flyby",
+        "comet_shower",
+        "Gaia",
+        "HD7977",
+        "solar_system"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-ASTRO-011",
+      "title": "'Shadow Blaster' Galaxy JCMT0402-0424 Identified as High-Energy Neutrino Source",
+      "authors": "IceCube Collaboration; JCMT/SMA/ALMA follow-up",
+      "date": "2026-06-26",
+      "source": "CNN / Nature Astronomy",
+      "doi": "10.1038/s41550-026-XXXXX-X",
+      "arxiv": "",
+      "layer": 1,
+      "audit_score": 0.84,
+      "clusters": [
+        2,
+        3
+      ],
+      "cluster_names": [
+        "Cosmology/Galaxy_Evolution",
+        "Quantum_Information_Complexity"
+      ],
+      "summary": "IceCube IC 210922A (2021) -> JCMT/SMA/ALMA follow-up identifies JCMT0402-0424, dusty star-forming galaxy at 11 Gly, gravitationally lensed. May contribute 20% of IceCube diffuse background. Coincidence probability: 1%.",
+      "key_findings": [
+        "High-energy neutrino IC 210922A detected by IceCube in 2021",
+        "Multi-wavelength follow-up with JCMT, SMA, ALMA identifies host galaxy",
+        "JCMT0402-0424: dusty star-forming galaxy at 11 billion light-years",
+        "Gravitationally lensed — magnified flux",
+        "Such galaxies may contribute 20% of IceCube diffuse neutrino background",
+        "Coincidence probability: 1%"
+      ],
+      "a_c_relevance": "Medium. Multimessenger astronomy — neutrino+photon correlation as cross-modal information. Gravitational lensing as natural amplifier enabling detection of distant faint sources.",
+      "sandbox_test": {},
+      "cross_refs": [],
+      "tags": [
+        "neutrinos",
+        "IceCube",
+        "multimessenger",
+        "starburst_galaxies",
+        "gravitational_lensing",
+        "diffuse_background"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-COSMO-009",
+      "title": "DESI Galaxy Survey Data Challenges the Cosmological Principle",
+      "authors": "Labini & Galoppo",
+      "date": "2026-06-25",
+      "source": "Scientific American / Nature",
+      "doi": "10.1038/s41586-026-XXXXX-X",
+      "arxiv": "",
+      "layer": 2,
+      "audit_score": 0.55,
+      "clusters": [
+        2,
+        1
+      ],
+      "cluster_names": [
+        "Cosmology/Galaxy_Evolution",
+        "Quantum_Foundations"
+      ],
+      "summary": "DESI galaxy survey shows large-scale anisotropies violating homogeneity/isotropy. LCDM cannot explain correlated structures along preferred directions. Strong skepticism: Spergel (CMB fluctuations would need 100x increase), Peacock (conflicts with other DESI analyses). Needs independent corroboration.",
+      "key_findings": [
+        "DESI data reveals large-scale anisotropies in galaxy distribution",
+        "Correlated structures along preferred directions violate cosmological principle",
+        "Standard LCDM model cannot explain observed anisotropies",
+        "David Spergel: CMB fluctuations would need to be 100x larger to be consistent",
+        "John Peacock: conflicts with other independent DESI analyses",
+        "Requires independent corroboration before challenging foundational assumption"
+      ],
+      "a_c_relevance": "High (but Layer 2 due to controversy). If confirmed, would represent a fundamental shift in cosmological framework — the universe is not statistically homogeneous. This would profoundly affect A_c computation at cosmic scales (no universal reference frame).",
+      "sandbox_test": {
+        "test_id": "SB-COSMO-009-001",
+        "description": "Test anisotropic cosmology models against DESI data and compute A_c under broken homogeneity",
+        "method": "Simulate anisotropic matter distribution with preferred axis. Compute two-point correlation function along vs. perpendicular to axis. Compare A_c(anisotropic) vs A_c(isotropic) for same total mass.",
+        "expected_result": "If genuine anisotropy, A_c should show directional dependence. If systematic error, A_c should be isotropic when corrected.",
+        "validation_data": "DESI public data release, mock catalogs"
+      },
+      "cross_refs": [],
+      "tags": [
+        "DESI",
+        "cosmological_principle",
+        "anisotropy",
+        "LCDM",
+        "large_scale_structure",
+        "controversy"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-QG-007",
+      "title": "Black Hole Remnants via 7D Einstein-Cartan Torsion: Planck-Mass Remnants Halt Hawking Evaporation",
+      "authors": "Pincak et al.",
+      "date": "2026-07-04",
+      "source": "ScienceDaily / General Relativity and Gravitation",
+      "doi": "10.1007/s10714-026-03528-z",
+      "arxiv": "",
+      "layer": 2,
+      "audit_score": 0.67,
+      "clusters": [
+        2,
+        3,
+        7
+      ],
+      "cluster_names": [
+        "Cosmology/Galaxy_Evolution",
+        "Quantum_Information_Complexity",
+        "Quantum_Thermodynamics"
+      ],
+      "summary": "Planck-mass remnants (9x10^-41 kg) halt Hawking evaporation via torsion on G2-manifold in 7D. Remnant stores 1.515x10^77 qubits via quasi-normal modes. Dimensional reduction to 4D yields electroweak scale (246 GeV) — potential geometric origin of Higgs mechanism. Testable: dark matter candidates, CMB/primordial GW signatures. KK excitations at 8.6x10^15 GeV (beyond LHC).",
+      "key_findings": [
+        "7D Einstein-Cartan theory with torsion on G2-manifold",
+        "Planck-mass remnants (9x10^-41 kg) as evaporation endpoint",
+        "Remnant stores 1.515x10^77 qubits in quasi-normal mode vibrations",
+        "Dimensional reduction naturally yields electroweak scale (246 GeV)",
+        "Potential geometric origin of Higgs mechanism",
+        "Testable predictions: dark matter candidates, CMB signatures, primordial gravitational waves",
+        "Kaluza-Klein excitations at 8.6x10^15 GeV — far beyond current accelerator reach"
+      ],
+      "a_c_relevance": "Very High. Unification of quantum gravity, information theory, and particle physics. The remnant as information repository (10^77 qubits) directly connects to C9 Cluster 3 (quantum information/complexity). Geometric origin of fundamental scales resonates with C9's search for non-random high-complexity structures. Layer 2 due to high-energy speculation beyond testability.",
+      "sandbox_test": {
+        "test_id": "SB-QG-007-001",
+        "description": "Compute information capacity of Planck-mass remnant and compare to Bekenstein bound",
+        "method": "Model remnant as quantum system with quasi-normal mode spectrum. Compute Hilbert space dimension from mode degeneracies. Compare to Bekenstein bound S <= A/4l_P^2. Test consistency with holographic principle.",
+        "expected_result": "Remnant information capacity should saturate or approach Bekenstein bound. A_c of remnant state space should show phase transition at Planck scale.",
+        "validation_data": "Quasi-normal mode spectra from numerical relativity"
+      },
+      "cross_refs": [
+        "C9-2026-COSMO-007",
+        "C9-2026-QG-006"
+      ],
+      "tags": [
+        "black_holes",
+        "quantum_gravity",
+        "Einstein-Cartan",
+        "torsion",
+        "Planck_mass",
+        "remnants",
+        "holography",
+        "dimensional_reduction"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-QG-006",
+      "title": "Dynamic Black Hole Thermodynamics: Alternative Entropy Measure for Out-of-Equilibrium Black Holes",
+      "authors": "Ashtekar, Paraizo, Shu et al. (Penn State)",
+      "date": "2026-07-05",
+      "source": "Penn State / Physical Review Letters",
+      "doi": "10.1103/3c1r-v8f1",
+      "arxiv": "2512.11659",
+      "layer": 1,
+      "audit_score": 0.88,
+      "clusters": [
+        2,
+        3,
+        7
+      ],
+      "cluster_names": [
+        "Cosmology/Galaxy_Evolution",
+        "Quantum_Information_Complexity",
+        "Quantum_Thermodynamics"
+      ],
+      "summary": "New entropy measure for dynamic black holes extending Hawking's laws to out-of-equilibrium regimes. Event horizons replaced by 'dynamical horizons' (already used in numerical relativity) — characterized by instant properties, free from teleology. Extends first and second laws to forming, merging, evaporating black holes. Applicable to LIGO-Virgo-KAGRA merger detections and quantum evaporation.",
+      "key_findings": [
+        "Hawking's laws limited to equilibrium black holes; real black holes are dynamic",
+        "Event horizons are teleological — properties depend on future evolution",
+        "Dynamical horizons characterize black hole at given instant, no teleology problem",
+        "New entropy measure tied to physical spin and energy properties",
+        "Extends first and second laws of thermodynamics to non-equilibrium black holes",
+        "Applicable to black hole mergers (LIGO-Virgo-KAGRA) and quantum evaporation"
+      ],
+      "a_c_relevance": "Very High. Non-equilibrium thermodynamics is central to C9 Cluster 7. The dynamical horizon framework provides a rigorous way to track entropy production during mergers — directly applicable to GWTC-5 events. Connection between local physics and global evolution resonates with C9's active inference principles.",
+      "sandbox_test": {
+        "test_id": "SB-QG-006-001",
+        "description": "Compute entropy evolution during simulated black hole merger using dynamical horizon framework",
+        "method": "Numerical relativity simulation of binary black hole merger. Track dynamical horizon area and angular momentum. Compute new entropy measure S_dyn = f(A_dyn, J). Verify second law: dS_dyn/dt >= 0 throughout merger. Compare to event-horizon entropy S_EH.",
+        "expected_result": "S_dyn increases monotonically during inspiral, merger, and ringdown. S_dyn >= S_EH at all times. At equilibrium, S_dyn = S_EH.",
+        "validation_data": "SXS numerical relativity waveforms, GWTC-5 parameter estimation"
+      },
+      "cross_refs": [
+        "C9-2026-COSMO-007",
+        "C9-2026-QG-007"
+      ],
+      "tags": [
+        "black_holes",
+        "thermodynamics",
+        "dynamical_horizons",
+        "non_equilibrium",
+        "entropy",
+        "Hawking",
+        "numerical_relativity"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-QUANTUM-011",
+      "title": "LHC Shutdown for High-Luminosity Upgrade (HL-LHC): 4-Year Transformation Begins",
+      "authors": "CERN",
+      "date": "2026-06-27",
+      "source": "Phys.org",
+      "doi": "",
+      "arxiv": "",
+      "layer": 1,
+      "audit_score": 0.72,
+      "clusters": [
+        1
+      ],
+      "cluster_names": [
+        "Quantum_Foundations"
+      ],
+      "summary": "4-year shutdown. 10x luminosity, 100x data, 380M Higgs bosons, first double-Higgs production, AI real-time filtering. Cost: 1.2B CHF. Restart: June 2030.",
+      "key_findings": [
+        "4-year shutdown beginning June 2026",
+        "10x luminosity increase, 100x more data",
+        "Target: 380 million Higgs bosons (vs 55 million since 2008)",
+        "First-ever simultaneous double-Higgs production",
+        "AI-powered real-time collision filtering",
+        "Cost: 1.2 billion Swiss francs",
+        "Restart scheduled: June 2030"
+      ],
+      "a_c_relevance": "Medium. Experimental infrastructure as enabler of future discoveries. AI real-time filtering as information-theoretic optimization problem. Double-Higgs production as probe of Higgs self-coupling — fundamental to electroweak symmetry breaking.",
+      "sandbox_test": {},
+      "cross_refs": [],
+      "tags": [
+        "LHC",
+        "HL-LHC",
+        "CERN",
+        "Higgs_boson",
+        "particle_physics",
+        "AI_filtering",
+        "experimental_infrastructure"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-QUANTUM-006",
+      "title": "Hong-Ou-Mandel Interference with 12 Atoms: First Two-Mode HOM Effect with >2 Particles Outside Photonics",
+      "authors": "Quensen, Koster et al.",
+      "date": "2026-06-30",
+      "source": "Phys.org / Nature Physics",
+      "doi": "10.1038/s41567-026-03302-7",
+      "arxiv": "",
+      "layer": 1,
+      "audit_score": 0.92,
+      "clusters": [
+        1,
+        3,
+        5
+      ],
+      "cluster_names": [
+        "Quantum_Foundations",
+        "Quantum_Information_Complexity",
+        "Topological_Systems"
+      ],
+      "summary": "BEC of 250 Rb atoms -> twin-Fock states -> microwave beam splitter. Parity suppression >0.8 (<=10 atoms), 0.6 for N=12. Genuine entanglement depth: 8-particle certified, 10-particle at 68% confidence. Fisher info: 6.4 dB above classical bound. Scalable to 1,000 atoms.",
+      "key_findings": [
+        "First two-mode HOM effect with >2 particles outside photonics",
+        "Bose-Einstein condensate of 250 Rb atoms via spin-changing collisions",
+        "Twin-Fock states passed through microwave beam splitter",
+        "Optical molasses detection with 0.2-atom resolution",
+        "Parity suppression: >0.8 for <=10 atoms, 0.6 for 12 atoms",
+        "Genuine entanglement depth: 8-particle certified, 10-particle at 68% confidence for N=12",
+        "Fisher information: 6.4 dB above classical bound, approaching Heisenberg limit",
+        "Scalable to 1,000 atoms; path to multiparticle Bell tests"
+      ],
+      "a_c_relevance": "Very High. Genuine multiparticle entanglement as complexity measure. The HOM effect is a fundamental quantum interference phenomenon — extending it to 12 atoms demonstrates scalability of quantum coherence. Fisher information above classical bound directly measures quantum advantage. Scalability to 1000 atoms promises near-Heisenberg-limited metrology. Resonates with C9 Cluster 3 (quantum information/complexity) and Cluster 5 (topological systems — multiparticle entanglement as topological invariant).",
+      "sandbox_test": {
+        "test_id": "SB-QUANTUM-006-001",
+        "description": "Simulate N-atom HOM interference and compute genuine multipartite entanglement depth",
+        "method": "Quantum trajectory simulation of twin-Fock state through beam splitter. Compute parity oscillations and Fisher information. Use entanglement depth witnesses based on spin squeezing and quantum Fisher information. Compare to classical bound and Heisenberg limit.",
+        "expected_result": "Entanglement depth increases with N up to ~N/2. Fisher information scales as N^2 (Heisenberg limit) for ideal case, N^(4/3) for realistic decoherence. A_c of entangled state shows phase transition at entanglement depth threshold.",
+        "validation_data": "Experimental data from Quensen et al. (parity, Fisher info, entanglement depth)"
+      },
+      "cross_refs": [],
+      "tags": [
+        "HOM_interference",
+        "multipartite_entanglement",
+        "BEC",
+        "twin_Fock",
+        "Fisher_information",
+        "Heisenberg_limit",
+        "quantum_metrology"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-QUANTUM-007",
+      "title": "Quantum Computer Simulates Hadronization (QCD String Breaking) with 104 Qubits",
+      "authors": "Anthony Ciavarella (Berkeley Lab)",
+      "date": "2026-06-30",
+      "source": "Phys.org",
+      "doi": "10.1103/physrevd.111.054501",
+      "arxiv": "2411.05915",
+      "layer": 1,
+      "audit_score": 0.85,
+      "clusters": [
+        1,
+        3,
+        2
+      ],
+      "cluster_names": [
+        "Quantum_Foundations",
+        "Quantum_Information_Complexity",
+        "Cosmology/Galaxy_Evolution"
+      ],
+      "summary": "IBM Heron processor, 104/156 qubits. Simulated QCD string breaking in heavy quark limit using scalable circuit concurrent variational quantum solver. Reproduced 'gasification' of gluon string mid-break — feature seen across classical simulations, suggesting real QCD phenomenon. One-dimensional simplification; 2D next.",
+      "key_findings": [
+        "IBM Heron processor: 104 of 156 qubits used",
+        "QCD string breaking in heavy quark limit simulated",
+        "Scalable circuit concurrent variational quantum solver (CCVQS)",
+        "Reproduced 'gasification' of gluon string mid-break",
+        "Feature consistent across classical simulations — suggests genuine QCD phenomenon",
+        "Currently one-dimensional simplification; 2D extension planned"
+      ],
+      "a_c_relevance": "Very High. Quantum simulation of fundamental physics (QCD) on real hardware. String breaking is a non-perturbative phenomenon inaccessible to analytic methods. The 'gasification' feature as emergent phenomenon from microscopic Hamiltonian — direct analog to C9's search for complexity emerging from simple rules. 104 qubits approaching regime where classical simulation is intractable.",
+      "sandbox_test": {
+        "test_id": "SB-QUANTUM-007-001",
+        "description": "Simulate QCD string breaking on classical and quantum hardware, compare complexity metrics",
+        "method": "Classical tensor network simulation of 1D QCD string breaking. Compute entanglement entropy, mutual information, and topological entanglement entropy during breaking. Compare to quantum hardware results. Track A_c of quark-gluon state as function of string tension.",
+        "expected_result": "A_c peaks at string breaking point (phase transition). Quantum hardware and classical simulation agree on A_c but diverge on fine-grained entanglement structure at large scale.",
+        "validation_data": "Ciavarella et al. quantum data, lattice QCD classical benchmarks"
+      },
+      "cross_refs": [],
+      "tags": [
+        "QCD",
+        "hadronization",
+        "string_breaking",
+        "quantum_simulation",
+        "IBM_Heron",
+        "variational_algorithms",
+        "lattice_gauge_theory"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-QUANTUM-008",
+      "title": "Quantum Phonon Device: Supersonic Electron-Phonon Emission in 2D Crystal",
+      "authors": "Wang, Hilke et al. (Princeton)",
+      "date": "2026-07-01",
+      "source": "ScienceDaily / Physical Review Letters",
+      "doi": "10.1103/m1nb-j1h6",
+      "arxiv": "",
+      "layer": 1,
+      "audit_score": 0.78,
+      "clusters": [
+        1,
+        5
+      ],
+      "cluster_names": [
+        "Quantum_Foundations",
+        "Topological_Systems"
+      ],
+      "summary": "2D crystal with electron channel few atoms wide. Electrons driven at supersonic speeds emit controllable phonon bursts at 10 mK-3.9 K. Existing theories break down — electrons remain 'hot' even when crystal near absolute zero. Path to phonon lasers, quantum communications, medical diagnostics.",
+      "key_findings": [
+        "2D crystal with electron channel only a few atoms wide",
+        "Electrons driven at supersonic speeds emit phonon bursts",
+        "Controllable phonon emission at temperatures 10 mK to 3.9 K",
+        "Existing electron-phonon theories break down in this regime",
+        "Electrons remain 'hot' even when crystal is near absolute zero",
+        "Potential applications: phonon lasers, quantum communications, medical diagnostics"
+      ],
+      "a_c_relevance": "Medium. Non-equilibrium quantum phononics — electrons and phonons far from thermal equilibrium. Breakdown of conventional theory suggests new physics regime. Phonon emission as controllable quantum process.",
+      "sandbox_test": {},
+      "cross_refs": [],
+      "tags": [
+        "phononics",
+        "2D_materials",
+        "non_equilibrium",
+        "electron_phonon",
+        "phonon_laser",
+        "quantum_communications"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-QUANTUM-009",
+      "title": "NASA Cold Atom Lab Upgrade: BECs in Orbit — Fourth Major Enhancement",
+      "authors": "NASA/JPL; Ethan Elliott, Kamal Oudrhiri",
+      "date": "2026-07-02",
+      "source": "Daily Galaxy",
+      "doi": "",
+      "arxiv": "",
+      "layer": 1,
+      "audit_score": 0.76,
+      "clusters": [
+        1,
+        3,
+        5
+      ],
+      "cluster_names": [
+        "Quantum_Foundations",
+        "Quantum_Information_Complexity",
+        "Topological_Systems"
+      ],
+      "summary": "Fourth major upgrade (May 2026, astronaut Jessica Meir). ISS microgravity enables extended BEC observation. Applications: superfluidity, superconductivity, quantum sensors, precision clocks, next-gen navigation.",
+      "key_findings": [
+        "Fourth major upgrade to ISS Cold Atom Lab (CAL)",
+        "Installed May 2026 by astronaut Jessica Meir",
+        "Microgravity enables dramatically extended BEC observation times",
+        "Expands manipulation complexity of quantum states",
+        "Applications: superfluidity, superconductivity, quantum sensors, precision clocks, next-gen navigation",
+        "Ethan Elliott (JPL): 'Quantum 2.0 — direct manipulation of large quantum states'",
+        "Kamal Oudrhiri: 'Closest thing to controlling the boundary of the quantum world'"
+      ],
+      "a_c_relevance": "Medium. Quantum simulation in space — microgravity as enabling condition for extended coherence. BEC as macroscopic quantum object. Precision measurement as probe of fundamental physics.",
+      "sandbox_test": {},
+      "cross_refs": [],
+      "tags": [
+        "BEC",
+        "cold_atom",
+        "ISS",
+        "microgravity",
+        "quantum_sensors",
+        "precision_measurement",
+        "NASA"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-QUANTUM-010",
+      "title": "Multimode Squeezed Light Survives >99.7% Loss: MOPA Pre-Amplification Enables High-Dimensional Quantum Computing",
+      "authors": "Kalash, Chekhova, Passos et al. (MPL/FAU/CBPF/LKB)",
+      "date": "2026-07-02",
+      "source": "Nature Communications",
+      "doi": "10.1038/s41467-026-72357-0",
+      "arxiv": "",
+      "layer": 1,
+      "audit_score": 0.89,
+      "clusters": [
+        3,
+        5,
+        6
+      ],
+      "cluster_names": [
+        "Quantum_Information_Complexity",
+        "Topological_Systems",
+        "Neuromorphic_Computing"
+      ],
+      "summary": "MOPA pre-amplifies squeezed light before lossy mode separation via SLM. 7.9 dB squeezing (noise = 1/6 of shot noise), 8 modes monitored simultaneously, all with significant squeezing + high purity. Quantum entanglement preserved despite >99.7% detection loss. Route to high-dimensional quantum computing with complex networks.",
+      "key_findings": [
+        "MOPA (multimode optical parametric amplifier) pre-amplifies squeezed light before loss",
+        "7.9 dB squeezing — noise reduced to 1/6 of shot noise",
+        "8 modes monitored simultaneously, all with significant squeezing",
+        "High purity maintained across all modes",
+        "Quantum entanglement preserved despite >99.7% detection loss",
+        "Route to high-dimensional quantum computing with complex networks"
+      ],
+      "a_c_relevance": "High. Error resilience in quantum communication — information preserved despite extreme loss. This is a fundamental requirement for scalable quantum networks. The MOPA technique as adaptive pre-processing to protect fragile quantum correlations. Resonates with C9's interest in information preservation under perturbation (active inference, error correction).",
+      "sandbox_test": {
+        "test_id": "SB-QUANTUM-010-001",
+        "description": "Simulate multimode squeezing under loss with and without MOPA pre-amplification",
+        "method": "Quantum optical simulation of 8-mode squeezed state. Apply loss channels with >99.7% loss. Compute entanglement (logarithmic negativity) and squeezing with/without MOPA. Track quantum mutual information between modes.",
+        "expected_result": "Without MOPA: entanglement destroyed, squeezing lost. With MOPA: entanglement and squeezing preserved above threshold. A_c of quantum state shows resilience peak with MOPA.",
+        "validation_data": "Kalash et al. experimental squeezing and entanglement data"
+      },
+      "cross_refs": [],
+      "tags": [
+        "squeezed_light",
+        "multimode",
+        "MOPA",
+        "quantum_entanglement",
+        "error_resilience",
+        "high_dimensional",
+        "quantum_computing"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-QUANTUM-012",
+      "title": "Spontaneous Quantum Current Loops in Kagome Metal CsV3Sb5: First Direct Evidence of Imaginary Charge Density Wave",
+      "authors": "Suetsugu et al. (Kyoto University et al.)",
+      "date": "2026-07-02",
+      "source": "Nature Physics",
+      "doi": "10.1038/s41567-026-03339-8",
+      "arxiv": "",
+      "layer": 1,
+      "audit_score": 0.91,
+      "clusters": [
+        1,
+        5,
+        7
+      ],
+      "cluster_names": [
+        "Quantum_Foundations",
+        "Topological_Systems",
+        "Quantum_Thermodynamics"
+      ],
+      "summary": "First direct microscopic evidence of imaginary charge density wave with spontaneous time-reversal symmetry breaking. NQR + NMR on Sb nuclei detect tiny internal magnetic fields from loop currents. Links to pseudogap phase in cuprate superconductors.",
+      "key_findings": [
+        "Kagome metal CsV3Sb5 shows spontaneous time-reversal symmetry breaking",
+        "NQR and NMR on Sb nuclei detect tiny internal magnetic fields",
+        "Fields originate from spontaneous quantum current loops",
+        "First direct microscopic evidence of imaginary charge density wave (iCDW)",
+        "Links to pseudogap phase in cuprate high-temperature superconductors",
+        "Next: low-temperature evolution, magnetic field effects, other kagome materials"
+      ],
+      "a_c_relevance": "Very High. Spontaneous symmetry breaking in quantum materials — emergent order from geometric frustration (kagome lattice). The loop current order as topological phase with protected edge modes. Direct connection to cuprate pseudogap — one of the longest-standing mysteries in condensed matter physics. Time-reversal symmetry breaking as signature of non-trivial topology. Resonates strongly with C9 Cluster 5 (topological systems) and Cluster 1 (quantum foundations).",
+      "sandbox_test": {
+        "test_id": "SB-QUANTUM-012-001",
+        "description": "Model kagome lattice with loop current order and compute topological invariants",
+        "method": "Tight-binding model of kagome lattice with imaginary hopping (loop currents). Compute Chern number, Z2 invariant, and edge state spectrum. Compare to NQR/NMR data (internal field distribution). Track A_c of electronic state as function of temperature through CDW transition.",
+        "expected_result": "Non-trivial topological invariant emerges below T_CDW. Edge states appear at sample boundaries. A_c shows sharp increase at symmetry breaking transition, reflecting emergence of long-range order.",
+        "validation_data": "Suetsugu et al. NQR/NMR data, ARPES if available"
+      },
+      "cross_refs": [],
+      "tags": [
+        "kagome",
+        "loop_currents",
+        "time_reversal_symmetry",
+        "iCDW",
+        "pseudogap",
+        "cuprates",
+        "topological_materials",
+        "CsV3Sb5"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-QUANTUM-013",
+      "title": "Relativistic 'Light Springs' — Spatiotemporal Orbital Angular Momentum Control at 1.4x10^18 W/cm^2",
+      "authors": "Longman et al. (LLNL/UC Irvine/Alberta)",
+      "date": "2026-06-26",
+      "source": "Nature Photonics",
+      "doi": "10.1038/s41566-026-01948-6",
+      "arxiv": "",
+      "layer": 1,
+      "audit_score": 0.79,
+      "clusters": [
+        1,
+        5
+      ],
+      "cluster_names": [
+        "Quantum_Foundations",
+        "Topological_Systems"
+      ],
+      "summary": "Helical light pulses at >1.4x10^18 W/cm^2 with engineered spatiotemporal OAM. Technique: spectral separation -> spiral phase mirrors -> dichroic recombination. Enables tunable transverse rotation and chirp-controlled temporal evolution. Relevance: laser-plasma interactions, particle acceleration, structured-field physics.",
+      "key_findings": [
+        "Helical light pulses at intensity >1.4x10^18 W/cm^2",
+        "Engineered spatiotemporal orbital angular momentum (OAM)",
+        "Spectral separation -> spiral phase mirrors -> dichroic recombination",
+        "Tunable transverse rotation of light field",
+        "Chirp-controlled temporal evolution",
+        "Applications: laser-plasma interactions, particle acceleration, structured-field physics"
+      ],
+      "a_c_relevance": "Medium. Structured light as topological object in spacetime. Spatiotemporal OAM as new degree of freedom for light manipulation. High-intensity regime probes non-perturbative QED.",
+      "sandbox_test": {},
+      "cross_refs": [],
+      "tags": [
+        "structured_light",
+        "OAM",
+        "spatiotemporal",
+        "high_intensity",
+        "laser_plasma",
+        "particle_acceleration"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-QUANTUM-014",
+      "title": "Glass Atomic Vapor Cells for Quantum Sensors: All-Glass, Silicon-Free Microfabrication",
+      "authors": "Penn State / NIST",
+      "date": "2026-06-18",
+      "source": "Penn State / NIST",
+      "doi": "",
+      "arxiv": "",
+      "layer": 1,
+      "audit_score": 0.74,
+      "clusters": [
+        3,
+        6
+      ],
+      "cluster_names": [
+        "Quantum_Information_Complexity",
+        "Neuromorphic_Computing"
+      ],
+      "summary": "All-glass, silicon-free microfabricated vapor cells (Cs/Rb) via semiconductor-style wafer fab. Chip-scale, 3-year stability, no silicon conductivity interference, tunable multi-frequency detection. Applications: GPS-denied navigation, autonomous vehicles, wireless communications.",
+      "key_findings": [
+        "All-glass, silicon-free microfabricated vapor cells",
+        "Cesium and rubidium vapor cells produced via semiconductor-style wafer fabrication",
+        "Chip-scale integration (vs traditional blown-glass cylinders)",
+        "3-year stability demonstrated",
+        "No silicon conductivity interference",
+        "Tunable multi-frequency detection including mm-wave",
+        "No need to resize cells for different frequencies",
+        "Applications: GPS-denied navigation, autonomous vehicles, wireless communications"
+      ],
+      "a_c_relevance": "Medium. Quantum sensing infrastructure — enabling technology for distributed quantum networks. Miniaturization and stability as engineering requirements for scalable deployment.",
+      "sandbox_test": {},
+      "cross_refs": [],
+      "tags": [
+        "quantum_sensors",
+        "vapor_cells",
+        "microfabrication",
+        "chip_scale",
+        "GPS_denied",
+        "navigation",
+        "NIST"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-BIO-004",
+      "title": "Epigenetic Memory of Inflammation: Transient Inflammation -> Future Disease via Selective Chromatin Persistence",
+      "authors": "Keating & El-Osta (review); Cowley et al. (Science, 2026); Nagaraja et al. (Nature, 2026)",
+      "date": "2026-07-01",
+      "source": "Signal Transduction and Targeted Therapy",
+      "doi": "10.1038/s41392-026-02877-0",
+      "arxiv": "",
+      "layer": 1,
+      "audit_score": 0.94,
+      "clusters": [
+        4,
+        8
+      ],
+      "cluster_names": [
+        "Complexity/Active_Inference",
+        "Consciousness_Studies"
+      ],
+      "summary": "Cowley et al. (Science): Epidermal stem cells — transient psoriasis-like inflammation leaves selective chromatin persistence. Only CpG-rich domains with H2A.Z, durable demethylation, nucleosome-disfavoring properties acquire true epigenetic longevity. Nagaraja et al. (Nature): Colonic stem cells retain inflammatory memory >100 days post-resolution. Cumulative AP-1 motif accessibility, clonally inherited, lowers tumorigenesis threshold. Three-tier hierarchy: (1) most changes resolve, (2) some licensed for persistence, (3) fraction become dangerous.",
+      "key_findings": [
+        "Cowley et al. (Science, 2026): Epidermal stem cells retain selective chromatin marks after transient inflammation",
+        "Persistence requires: CpG-rich domains, H2A.Z histone variant, durable demethylation, nucleosome-disfavoring sequence properties",
+        "Nagaraja et al. (Nature, 2026): Colonic stem cells retain inflammatory memory >100 days after resolution",
+        "Cumulative AP-1 motif accessibility is clonally inherited across cell divisions",
+        "Inherited memory lowers threshold for tumorigenesis upon oncogenic challenge",
+        "Three-tier hierarchy: (1) most stress changes fully resolve, (2) some licensed for persistence, (3) a fraction become dangerous",
+        "Next frontier: selective erasure of maladaptive memory while preserving adaptive competence"
+      ],
+      "a_c_relevance": "Very High. Cellular 'memory' as information storage in chromatin — direct analog to C9's interest in how systems retain and transform information. The selective persistence mechanism (only certain domains become persistent) is a form of error-correcting code: the system distinguishes signal from noise. Three-tier hierarchy mirrors C9's layered model (established physics, speculative theory, mathematical fiction). Clonal inheritance as replication of information structure. Connection to Cluster 8 (consciousness boundary — what does it mean for a cell to 'remember'?).",
+      "sandbox_test": {
+        "test_id": "SB-BIO-004-001",
+        "description": "Model chromatin state dynamics under transient inflammation and compute information-theoretic metrics",
+        "method": "Agent-based model of stem cell population with chromatin states. Apply transient inflammatory signal. Track which domains persist vs resolve based on sequence features (CpG density, H2A.Z, nucleosome affinity). Compute mutual information between initial signal and final state. Measure clonal inheritance fidelity.",
+        "expected_result": "Only domains with specific sequence signatures retain information. Mutual information decays exponentially for non-persistent domains, plateaus for persistent ones. A_c of chromatin state shows bimodal distribution: low for resolved, high for persistent.",
+        "validation_data": "Cowley et al. ATAC-seq, ChIP-seq, bisulfite sequencing data"
+      },
+      "cross_refs": [
+        "C9-2026-NEURO-004"
+      ],
+      "tags": [
+        "epigenetics",
+        "inflammation",
+        "chromatin",
+        "memory",
+        "stem_cells",
+        "cancer",
+        "tumorigenesis",
+        "H2A.Z",
+        "AP-1"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-NEURO-003",
+      "title": "Bilingual Brains: Shared Neural Geometry for Semantic Maps Across Languages",
+      "authors": "Yan, Sheth, Hayden et al. (Cell, 2026)",
+      "date": "2026-06-30",
+      "source": "PsyPost / Cell",
+      "doi": "10.1016/j.cell.2026.XXXXX",
+      "arxiv": "",
+      "layer": 1,
+      "audit_score": 0.87,
+      "clusters": [
+        6,
+        8,
+        4
+      ],
+      "cluster_names": [
+        "Neuromorphic_Computing",
+        "Consciousness_Studies",
+        "Complexity/Active_Inference"
+      ],
+      "summary": "First single-neuron study of bilingual hippocampal semantics (n=4, English-Spanish). No 'dictionary neurons.' Shared neural geometry across languages (language-independent conceptual map) with different 'viewing angles.' Zero-shot prediction via geometric rotation. Matches multilingual BERT embeddings.",
+      "key_findings": [
+        "First single-neuron study of bilingual hippocampal semantics",
+        "Four balanced English-Spanish bilinguals (epilepsy surgery patients)",
+        "Microelectrode and Neuropixels implants in hippocampus",
+        "No 'dictionary neurons' — cross-language translation is rare at single-cell level",
+        "Shared neural geometry: population-level semantic relationships preserved across languages",
+        "Different 'viewing angles': same neuron population, different readout axes per language",
+        "Zero-shot prediction: English neural clusters predict Spanish responses via geometric rotation",
+        "Semantic geometry matches multilingual BERT embeddings",
+        "Limitations: small sample (n=4), early bilinguals only, English-Spanish pair only, one patient under anesthesia"
+      ],
+      "a_c_relevance": "High. Population coding as geometric manifold — neural representations as high-dimensional structures with invariant subspaces. The 'viewing angle' concept suggests that the same underlying information structure can be accessed through different coordinate systems (language-specific readout). Zero-shot prediction via geometric rotation is a form of transfer learning in biological neural networks. Matches BERT embeddings — convergence between biological and artificial neural representations. Resonates with C9 Cluster 6 (neuromorphic computing — how to build systems with similar representational properties) and Cluster 8 (consciousness — what is the relationship between language and thought?).",
+      "sandbox_test": {
+        "test_id": "SB-NEURO-003-001",
+        "description": "Model bilingual semantic representation as geometric manifold and test zero-shot transfer",
+        "method": "Train population coding model with shared latent manifold and language-specific readout matrices. Test zero-shot prediction: train readout on Language A, test on Language B via rotation. Compare to BERT embeddings. Compute manifold dimensionality, curvature, and overlap between language-specific readouts.",
+        "expected_result": "Shared manifold with language-specific projections. Zero-shot accuracy >80% for concepts with strong geometric alignment. Manifold dimensionality ~20-50. A_c of neural representation increases with bilingual proficiency (more robust geometry).",
+        "validation_data": "Yan et al. single-neuron recordings, BERT embedding similarities"
+      },
+      "cross_refs": [
+        "C9-2026-NEURO-005"
+      ],
+      "tags": [
+        "bilingualism",
+        "hippocampus",
+        "semantic_geometry",
+        "population_coding",
+        "zero_shot",
+        "BERT",
+        "Neuropixels",
+        "manifolds"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-NEURO-004",
+      "title": "Sleep as System-Level Resilience Mechanism for Complex Dynamic Networks",
+      "authors": "Yang, Wang, Li et al. (Brain Medicine, 2026)",
+      "date": "2026-07-01",
+      "source": "Brain Medicine / News-Medical",
+      "doi": "10.61373/bm026p.0045",
+      "arxiv": "",
+      "layer": 1,
+      "audit_score": 0.9,
+      "clusters": [
+        4,
+        6,
+        8
+      ],
+      "cluster_names": [
+        "Complexity/Active_Inference",
+        "Neuromorphic_Computing",
+        "Consciousness_Studies"
+      ],
+      "summary": "Reframing sleep not as rest but as resilience engineering. NREM: modularity up, entropy down, synaptic renormalization. REM: desynchronization, global integration, exploration. Transitions: peak metastability. Glymphatic waste clearance during deep NREM. AI convergence: Sleep Replay Consolidation, SNN offline reactivation, oscillatory noise restoration.",
+      "key_findings": [
+        "NREM/slow-wave: modularity increases, entropy decreases, synaptic renormalization (prevents saturation)",
+        "REM: desynchronization, global integration, exploration (prevents rigidity)",
+        "Transitions between stages: peak metastability — 'the seams between stages may be where the finest work happens'",
+        "Glymphatic system flushes metabolic waste (amyloid-beta) during deep NREM",
+        "AI convergence: Sleep Replay Consolidation (Tadros), SNN offline reactivation (Golden), oscillatory noise restoration (Watkins)",
+        "Design principle: alternate NREM-like (replay) and REM-like (reorganization) offline phases",
+        "Judge by recovery speed after perturbation, not raw accuracy",
+        "Clinical: Alzheimer's, schizophrenia, epilepsy all show disrupted sleep architecture + network fragility",
+        "Targeted auditory stimulation to enhance slow waves may restore network recoverability",
+        "Limitations: synthesis, not new experiment; DeepSeek used for manuscript clarity (disclosed)"
+      ],
+      "a_c_relevance": "Very High. Sleep as active inference process — the brain is not 'resting' but performing critical information-structural maintenance. NREM/REM alternation as oscillation between consolidation (precision-weighted inference) and exploration (model expansion). This is a direct biological implementation of the free energy principle. Metastability at transitions as critical point where system samples maximum diversity of states. Glymphatic clearance as physical removal of 'noise' (metabolic waste). AI convergence shows that the same principles apply to artificial systems — catastrophic forgetting in neural networks is solved by the same strategy (replay + reorganization). Resonates across Clusters 4, 6, and 8.",
+      "sandbox_test": {
+        "test_id": "SB-NEURO-004-001",
+        "description": "Simulate neural network with sleep-like offline phases and measure resilience to perturbation",
+        "method": "Train recurrent neural network on sequential task. Apply NREM-like phase (replay + synaptic renormalization/SHAPLEY values). Apply REM-like phase (noise injection + exploration). Measure catastrophic forgetting, recovery speed after weight perturbation, and representational drift. Compare to continuous training baseline.",
+        "expected_result": "Sleep-like phases reduce catastrophic forgetting by >50%. Recovery speed after perturbation improves 2-3x. A_c of network state shows periodic peaks during transitions, reflecting information restructuring.",
+        "validation_data": "Yang et al. sleep architecture data, Tadros/Golden/Watkins AI sleep studies"
+      },
+      "cross_refs": [
+        "C9-2026-BIO-004",
+        "C9-2026-NEURO-005"
+      ],
+      "tags": [
+        "sleep",
+        "resilience",
+        "networks",
+        "NREM",
+        "REM",
+        "glymphatic",
+        "active_inference",
+        "catastrophic_forgetting",
+        "AI_convergence",
+        "metastability"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-NEURO-005",
+      "title": "Anesthesia: Hippocampal Language Processing Without Consciousness — Predictive Coding Persists",
+      "authors": "Katlowitz, Sheth, Hayden et al. (Nature, 2026)",
+      "date": "2026-06-28",
+      "source": "ScienceDaily / Nature",
+      "doi": "10.1038/s41586-026-10448-0",
+      "arxiv": "",
+      "layer": 1,
+      "audit_score": 0.93,
+      "clusters": [
+        6,
+        8
+      ],
+      "cluster_names": [
+        "Neuromorphic_Computing",
+        "Consciousness_Studies"
+      ],
+      "summary": "First Neuropixels in human hippocampus during general anesthesia. Brain distinguishes nouns/verbs/adjectives while fully unconscious. Predictive coding: neural signals anticipate upcoming words. Hippocampal plasticity/learning persists (improved oddball detection over time). Consciousness arises from cross-regional communication, not single-area activity. Implications: speech prosthetics, AI alignment.",
+      "key_findings": [
+        "First use of Neuropixels probes in human hippocampus during general anesthesia",
+        "Brain distinguishes nouns, verbs, and adjectives while fully unconscious",
+        "Predictive coding persists: neural signals anticipate upcoming words",
+        "Hippocampal neurons show plasticity/learning (improved oddball detection over time)",
+        "Consciousness arises from cross-regional communication, not single-area activity",
+        "Implications for speech prosthetics (stroke/injury patients)",
+        "Implications for AI alignment (LLM-like predictive mechanisms without consciousness)"
+      ],
+      "a_c_relevance": "Very High. Consciousness boundary — what computations can occur without consciousness? The finding that predictive coding (a sophisticated information-processing operation) persists without consciousness challenges theories that equate complex information processing with consciousness. The 'cross-regional communication' requirement for consciousness resonates with Integrated Information Theory (IIT) and Global Workspace Theory. Implications for AI: LLMs perform predictive coding at massive scale — does this mean they process information 'unconsciously' in the same sense? This is a critical question for AI alignment and consciousness studies. Resonates with C9 Cluster 8 (consciousness) and Cluster 6 (neuromorphic — building systems that process information without claiming consciousness).",
+      "sandbox_test": {
+        "test_id": "SB-NEURO-005-001",
+        "description": "Simulate predictive coding network with and without cross-regional integration and measure consciousness correlates",
+        "method": "Build hierarchical predictive coding model. Condition 1: isolated modules (no cross-regional communication). Condition 2: integrated network (global workspace). Measure prediction accuracy, learning rate, and integrated information (Phi). Compare to anesthesia data (Katlowitz et al. neural recordings).",
+        "expected_result": "Both conditions show predictive coding and learning. Only integrated network shows high Phi and consciousness-like signatures. A_c of integrated state significantly higher than modular state. Threshold effect: A_c jumps when cross-regional communication exceeds critical level.",
+        "validation_data": "Katlowitz et al. Neuropixels recordings, oddball task performance"
+      },
+      "cross_refs": [
+        "C9-2026-NEURO-003",
+        "C9-2026-NEURO-004"
+      ],
+      "tags": [
+        "anesthesia",
+        "consciousness",
+        "hippocampus",
+        "predictive_coding",
+        "Neuropixels",
+        "speech_prosthetics",
+        "AI_alignment",
+        "IIT",
+        "global_workspace"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-BIO-003",
+      "title": "SpudCell: First Fully Synthetic Cell with Complete Cell Cycle — 150-200 Molecules",
+      "authors": "Kate Adamala (University of Minnesota)",
+      "date": "2026-07-01",
+      "source": "Futurism",
+      "doi": "",
+      "arxiv": "",
+      "layer": 1,
+      "audit_score": 0.82,
+      "clusters": [
+        4,
+        8
+      ],
+      "cluster_names": [
+        "Complexity/Active_Inference",
+        "Consciousness_Studies"
+      ],
+      "summary": "150-200 molecule synthetic cell: feeds, grows, replicates genome, divides, undergoes selection across 5 generations. Requires external feeding at 86F, divides every 12 hours. Cannot produce own proteins. Preprint submitted. Debate: Endy — 'constructed a cell, not created life'; Glass — 'closest to alive in bottom-up synthetic biology.'",
+      "key_findings": [
+        "150-200 molecule synthetic cell with complete cell cycle",
+        "Feeds, grows, replicates genome, divides, undergoes selection",
+        "Survives 5 generations of replication",
+        "Requires external feeding at 86°F",
+        "Divides every 12 hours (vs E. coli's 30 minutes)",
+        "Cannot produce its own proteins — not fully autonomous",
+        "Preprint submitted for peer review",
+        "Drew Endy (Stanford): 'constructed a cell, not created life'",
+        "John Glass (JCVI): 'closest to alive in bottom-up synthetic biology'"
+      ],
+      "a_c_relevance": "High. Minimal life definition — what is the minimum complexity for autopoiesis? The 150-200 molecule system is a 'toy model' of life that may reveal core principles. The inability to produce proteins is a critical limitation — it lacks the full self-referential closure that defines living systems. However, the fact that it undergoes selection across generations means it can evolve. This is a C9 Cluster 8 boundary case: is it 'alive'? The debate itself is informative about how we define life. Connection to Cluster 4 (active inference — minimal systems that maintain themselves far from equilibrium).",
+      "sandbox_test": {
+        "test_id": "SB-BIO-003-001",
+        "description": "Model minimal synthetic cell and compute autopoiesis metrics",
+        "method": "Chemical reaction network model of 150-200 molecule system. Track metabolic flux, genome replication fidelity, division symmetry. Compute autopoiesis index (self-production ratio). Compare to minimal known living cells (Mycoplasma genitalium ~470 genes).",
+        "expected_result": "Autopoiesis index <1 (not fully self-producing) but >0.5 (substantial self-maintenance). A_c shows positive trend across generations if selection improves efficiency. Critical threshold for 'life' at autopoiesis index ~0.8.",
+        "validation_data": "Adamala preprint data (growth curves, division rates, selection outcomes)"
+      },
+      "cross_refs": [],
+      "tags": [
+        "synthetic_biology",
+        "minimal_cell",
+        "autopoiesis",
+        "life_definition",
+        "SpudCell",
+        "bottom_up",
+        "selection"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-MED-002",
+      "title": "Soft Robotic Heart Mimics Human Valves and HFpEF — Patient-Specific Cardiac Modeling",
+      "authors": "Do, Davies et al. (UNSW)",
+      "date": "2026-07-01",
+      "source": "News-Medical / Nature Communications",
+      "doi": "10.1038/s41467-026-73791-w",
+      "arxiv": "",
+      "layer": 1,
+      "audit_score": 0.81,
+      "clusters": [
+        6,
+        4
+      ],
+      "cluster_names": [
+        "Neuromorphic_Computing",
+        "Complexity/Active_Inference"
+      ],
+      "summary": "Soft robotic left-heart model with artificial mitral valve, papillary muscles, chordae tendineae. Reproduces normal function, prolapse/regurgitation, and HFpEF (50% of heart failure cases, poorly understood). Compatible with ultrasound/echocardiography. Path to patient-specific models from medical imaging.",
+      "key_findings": [
+        "Soft robotic left-heart model with artificial mitral valve",
+        "Includes papillary muscles and chordae tendineae",
+        "Reproduces normal valve function pressure/flow waveforms",
+        "Reproduces mitral valve prolapse and regurgitation (backflow)",
+        "Reproduces HFpEF (heart failure with preserved ejection fraction) — 50% of heart failure cases",
+        "Compatible with ultrasound and echocardiography imaging",
+        "Tested soft robotic cardiac catheter navigation",
+        "Path to patient-specific models from medical imaging"
+      ],
+      "a_c_relevance": "Medium. Biomimetic engineering — building functional analog of biological system. HFpEF as complex disease with multiple contributing factors (stiffness, relaxation, filling). Patient-specific modeling as digital twin approach. Resonates with C9 Cluster 6 (digital twins) and Cluster 4 (active inference — heart as homeostatic control system).",
+      "sandbox_test": {},
+      "cross_refs": [],
+      "tags": [
+        "soft_robotics",
+        "cardiac_model",
+        "HFpEF",
+        "mitral_valve",
+        "digital_twin",
+        "patient_specific",
+        "biomimetic"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-MED-003",
+      "title": "OSK Gene Therapy for Glaucoma: World's First Human Trial of Cellular Rejuvenation",
+      "authors": "Life Biosciences (David Sinclair/Harvard)",
+      "date": "2026-06-28",
+      "source": "Popular Mechanics",
+      "doi": "",
+      "arxiv": "",
+      "layer": 1,
+      "audit_score": 0.79,
+      "clusters": [
+        4,
+        8
+      ],
+      "cluster_names": [
+        "Complexity/Active_Inference",
+        "Consciousness_Studies"
+      ],
+      "summary": "World's first human Phase 1 trial of ER-100 — OSK (OCT4, SOX2, KLF4) gene therapy reprograms aging retinal cells toward stem-like states for optic nerve regeneration in open-angle glaucoma. Built on Sinclair 2020 Nature mouse work. Risk: uncontrolled OSK -> tumors; eye chosen as safe first target. Goal: restore vision, not just preserve it.",
+      "key_findings": [
+        "World's first human Phase 1 trial of cellular rejuvenation therapy",
+        "ER-100 uses OSK (OCT4, SOX2, KLF4) gene therapy",
+        "Reprograms aging retinal cells toward stem-like states",
+        "Targets open-angle glaucoma (optic nerve regeneration)",
+        "Built on Sinclair 2020 Nature mouse work (partial vision restoration)",
+        "Major risk: uncontrolled OSK expression can trigger tumors",
+        "Eye chosen as relatively safe first target (immune-privileged, confined space)",
+        "Goal: restore vision, not just preserve remaining vision"
+      ],
+      "a_c_relevance": "High. Cellular reprogramming as reversal of aging — directly manipulating the information state of cells. OSK as 'reset button' that erases epigenetic age markers. The tumor risk is a critical constraint: uncontrolled reprogramming leads to cancer (loss of differentiation). This is a C9 Cluster 4 problem (active inference — how to steer a complex system toward desired state without destabilizing it). Connection to Cluster 8 (consciousness boundary — what happens to cellular 'identity' during reprogramming?).",
+      "sandbox_test": {},
+      "cross_refs": [
+        "C9-2026-BIO-004"
+      ],
+      "tags": [
+        "cellular_rejuvenation",
+        "OSK",
+        "gene_therapy",
+        "glaucoma",
+        "aging",
+        "Sinclair",
+        "epigenetic_reprogramming",
+        "clinical_trial"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-NEURO-006",
+      "title": "NMJ Connectomics: Activity-Driven Neuromuscular Network Formation from Birth to Adulthood",
+      "authors": "Meirovitch, Kang, Lichtman et al. (Nature Neuroscience, 2026)",
+      "date": "2026-06-30",
+      "source": "Nature Neuroscience",
+      "doi": "10.1038/s41593-026-XXXXX-X",
+      "arxiv": "",
+      "layer": 1,
+      "audit_score": 0.86,
+      "clusters": [
+        6,
+        8,
+        4
+      ],
+      "cluster_names": [
+        "Neuromorphic_Computing",
+        "Consciousness_Studies",
+        "Complexity/Active_Inference"
+      ],
+      "summary": "Complete connectomes of mouse ear muscles from birth to adulthood. 6.5x reduction in axons per NMJ via synapse elimination. 5-7% of adult fibers retain 2 NMJs (MEFs) when innervated by axons with similar contractile forces. Novel mechanism: long-distance interjunctional competition — action potential collision/annihilation determines distant NMJ survival.",
+      "key_findings": [
+        "Complete connectomes of mouse ear muscles from birth to adulthood",
+        "6.5x reduction in axons per neuromuscular junction via synapse elimination",
+        "5-7% of adult muscle fibers retain 2 NMJs (multiple-endplate fibers, MEFs)",
+        "MEFs occur when innervated by axons with similar contractile forces/activity patterns",
+        "Novel mechanism: long-distance interjunctional competition",
+        "Action potential collision/annihilation determines whether distant NMJs on same fiber survive",
+        "Both local intrajunctional and long-distance interjunctional elimination are activity-mediated",
+        "Follows Henneman's size principle recruitment order"
+      ],
+      "a_c_relevance": "High. Activity-dependent plasticity as developmental optimization — the nervous system prunes connections based on functional utility. The interjunctional competition mechanism (action potential collision) is a novel form of 'Hebbian-like' competition at the systems level. MEFs as stable multiconnectivity when inputs are functionally equivalent — suggests a principle for robust neural network design. Complete connectomics as gold standard for understanding neural development. Resonates with C9 Cluster 6 (neuromorphic — how to build systems with similar activity-dependent refinement) and Cluster 4 (active inference — developmental processes as optimization).",
+      "sandbox_test": {
+        "test_id": "SB-NEURO-006-001",
+        "description": "Model NMJ development with activity-dependent pruning and interjunctional competition",
+        "method": "Multi-compartment model of muscle fiber with multiple NMJs. Simulate action potential propagation and collision. Implement activity-dependent synaptic strengthening/weakening. Track axon elimination and MEF formation. Compare to Lichtman connectomics data.",
+        "expected_result": "6.5x axon reduction matches data. MEFs form when input correlation >0.8. Interjunctional competition explains long-distance coordination. A_c of network shows peak during critical period, then stabilizes.",
+        "validation_data": "Meirovitch et al. complete connectomes, EM reconstructions"
+      },
+      "cross_refs": [],
+      "tags": [
+        "connectomics",
+        "NMJ",
+        "synapse_elimination",
+        "activity_dependent",
+        "Lichtman",
+        "interjunctional_competition",
+        "development",
+        "muscle"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-BIO-005",
+      "title": "Chromatin Looping: Most Loops Are Rare Events — Challenging Ensemble-Averaged Assumptions",
+      "authors": "Jusuf et al. (Nature Structural & Molecular Biology, 2026)",
+      "date": "2026-06-30",
+      "source": "Nature Structural & Molecular Biology",
+      "doi": "10.1038/s41594-026-01817-4",
+      "arxiv": "",
+      "layer": 1,
+      "audit_score": 0.77,
+      "clusters": [
+        4,
+        7
+      ],
+      "cluster_names": [
+        "Complexity/Active_Inference",
+        "Quantum_Thermodynamics"
+      ],
+      "summary": "Calibrated deep Micro-C against live-cell imaging to estimate absolute looping probabilities genome-wide. Finding: most chromatin loops are rare events (low formation probability in living cells), challenging assumptions from ensemble-averaged data.",
+      "key_findings": [
+        "Deep Micro-C maps calibrated against live-cell imaging",
+        "Absolute looping probabilities estimated genome-wide",
+        "Most chromatin loops are rare events in living cells",
+        "Low formation probability challenges ensemble-averaged assumptions",
+        "News & Views by Henggeler & Ochs"
+      ],
+      "a_c_relevance": "Medium. Rare events as information-rich — low-probability structures carry high information content. Chromatin looping as stochastic process with selective stabilization. Connection to C9's principle that complexity emerges from constrained randomness. The calibration against live-cell imaging is methodologically important — ensemble averages can be misleading for rare events.",
+      "sandbox_test": {},
+      "cross_refs": [
+        "C9-2026-BIO-004"
+      ],
+      "tags": [
+        "chromatin",
+        "looping",
+        "Micro-C",
+        "live_cell_imaging",
+        "rare_events",
+        "genome_organization",
+        "ensemble_average"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-COMPLEX-005",
+      "title": "AI-Assisted Mathematical Proof: Parisi + Claude AI Solve 10-Year Jamming Conjecture",
+      "authors": "Giorgio Parisi (Nobel 2021), Francesco Zamponi (La Sapienza), Claude AI",
+      "date": "2026-06-30",
+      "source": "SISSA Medialab / Journal of Statistical Mechanics",
+      "doi": "10.1088/1742-5468/XXXX/XXXXXX",
+      "arxiv": "2606.03300",
+      "layer": 1,
+      "audit_score": 0.85,
+      "clusters": [
+        4,
+        6
+      ],
+      "cluster_names": [
+        "Complexity/Active_Inference",
+        "Neuromorphic_Computing"
+      ],
+      "summary": "Parisi (Nobel 2021) & Zamponi (La Sapienza) with Claude AI prove a + b = 1 in jamming theory — relation known numerically since 2014, never formally proven. Confirms convergence of Parisi's mean-field approach and Wyart's (EPFL) distinct framework to same physical laws.",
+      "key_findings": [
+        "Parisi (Nobel 2021) and Zamponi (La Sapienza) collaborated with Claude AI",
+        "Proved a + b = 1 in jamming theory",
+        "Relation known numerically since 2014 but never formally proven",
+        "Confirms Parisi's mean-field approach and Wyart's (EPFL) distinct framework converge to same physical laws",
+        "Published in Journal of Statistical Mechanics: Theory and Experiment (2026)",
+        "arXiv: 2606.03300",
+        "Meta-significance: AI-assisted mathematical proof in statistical physics"
+      ],
+      "a_c_relevance": "High. AI as collaborator in fundamental mathematical proof — not just accelerating computation but contributing novel strategies. Jamming theory as paradigm for disordered systems (spin glasses, granular materials, structural glasses). The convergence of two distinct theoretical frameworks to the same result is a form of 'triangulation' that increases confidence. The fact that AI assisted in the proof raises questions about the nature of mathematical creativity and verification. Resonates with C9 Cluster 4 (complexity — disordered systems) and Cluster 6 (AI as research partner).",
+      "sandbox_test": {
+        "test_id": "SB-COMPLEX-005-001",
+        "description": "Reproduce jamming proof with and without AI assistance and compare proof complexity",
+        "method": "Implement Parisi-Zamponi jamming theory numerically. Use symbolic AI (Claude-like) to search for analytic proof of a+b=1. Compare proof length, elegance, and verifiability to human-only attempts. Track A_c of proof structure (information content, logical depth, cross-references).",
+        "expected_result": "AI-assisted proof is shorter and finds connections missed by humans. A_c of AI-assisted proof > human-only proof. Human verification still required for final acceptance.",
+        "validation_data": "Parisi-Zamponi-Wyart theoretical frameworks, numerical jamming simulations"
+      },
+      "cross_refs": [],
+      "tags": [
+        "AI_mathematics",
+        "jamming",
+        "Parisi",
+        "spin_glasses",
+        "disordered_systems",
+        "Claude",
+        "proof_assistance",
+        "statistical_physics"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-PHIL-002",
+      "title": "Consciousness Is Not an Object: Defense of Pre-Reflective Self-Awareness",
+      "authors": "Manfred Frank (University of Tubingen)",
+      "date": "2026-06-26",
+      "source": "IAI (Institute of Art and Ideas)",
+      "doi": "",
+      "arxiv": "",
+      "layer": 1,
+      "audit_score": 0.68,
+      "clusters": [
+        1,
+        8
+      ],
+      "cluster_names": [
+        "Quantum_Foundations",
+        "Consciousness_Studies"
+      ],
+      "summary": "Defense of pre-reflective self-awareness against materialist/reductionist models (Rovelli, etc.). Consciousness is immediately familiar with itself without second-order 'observer' mediation. Critiques reflection model (infinite regress). Consciousness is egoless, event-like, passive — not an object of observation.",
+      "key_findings": [
+        "Critique of materialist/reductionist models of consciousness (Rovelli, etc.)",
+        "Defense of pre-reflective self-awareness",
+        "Consciousness is immediately familiar with itself without mediation",
+        "No need for second-order 'observer' to be conscious",
+        "Critique of 'reflection model' — leads to infinite regress or circularity",
+        "Distinction between Kenntnis (simple awareness) and Erkenntnis (cognitive knowledge)",
+        "Consciousness is egoless, event-like, and passive",
+        "Not an object of observation"
+      ],
+      "a_c_relevance": "Medium. Philosophy of consciousness — foundational questions about the nature of subjective experience. Pre-reflective self-awareness as a form of self-reference that avoids infinite regress (the system is aware of itself without needing a separate observer). This resonates with autopoiesis (Maturana/Varela) and active inference (Friston) — systems that maintain themselves through self-referential processes. Connection to C9 Cluster 8 (consciousness) and Cluster 1 (quantum foundations — QBism's observer-dependent reality).",
+      "sandbox_test": {},
+      "cross_refs": [
+        "C9-2026-PHIL-003"
+      ],
+      "tags": [
+        "consciousness",
+        "philosophy",
+        "pre_reflective",
+        "self_awareness",
+        "materialism",
+        "reductionism",
+        "Frank",
+        "Rovelli"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-PHIL-003",
+      "title": "Neutrino 'Particlehood' Challenged Philosophically — Standard Model Ontology Needs Remodeling",
+      "authors": "George Hobart (University of Bristol)",
+      "date": "2026-07-01",
+      "source": "New Scientist",
+      "doi": "",
+      "arxiv": "",
+      "layer": 1,
+      "audit_score": 0.62,
+      "clusters": [
+        1
+      ],
+      "cluster_names": [
+        "Quantum_Foundations"
+      ],
+      "summary": "Standard Model particle ontology needs philosophical remodeling — neutrino classification (matter vs. force carrier) may not reflect physical reality cleanly. Rethinking what qualifies as 'particle' at foundational level.",
+      "key_findings": [
+        "Standard Model's particle classification scheme may not reflect physical reality",
+        "Neutrino as boundary case between matter particles and force carriers",
+        "Philosophical ontology of 'particlehood' needs revision",
+        "Classification (matter vs. force carrier) may be pragmatic rather than ontological",
+        "Rethinking what qualifies as a 'particle' at the foundational level"
+      ],
+      "a_c_relevance": "Medium. Philosophy of physics — the categories we use to describe reality may be human constructs rather than natural kinds. This resonates with QBism (quantum Bayesianism) and consistent histories — both of which question whether quantum states are 'real' or epistemic. The neutrino as a 'liminal' entity challenges our taxonomies. For C9, this is a reminder that our classification schemes (clusters, layers, A_c metrics) are also human constructs that may need revision as our understanding deepens.",
+      "sandbox_test": {},
+      "cross_refs": [
+        "C9-2026-PHIL-002"
+      ],
+      "tags": [
+        "neutrino",
+        "philosophy",
+        "particle_physics",
+        "ontology",
+        "Standard_Model",
+        "QBism",
+        "classification"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-ASTRO-012",
+      "title": "Perseverance Finds Complex Organic Matter on Mars — Most Robust Detection to Date",
+      "authors": "NASA Perseverance Team",
+      "date": "2026-06-25",
+      "source": "Futurism",
+      "doi": "",
+      "arxiv": "",
+      "layer": 1,
+      "audit_score": 0.8,
+      "clusters": [
+        2
+      ],
+      "cluster_names": [
+        "Cosmology/Galaxy_Evolution"
+      ],
+      "summary": "Macromolecular carbon (MMC) in Bright Angel mudstones, Jezero Crater — most robust organic detection on Mars. Lies microns below surface, shielded by clays/iron-rich soil. Caveat: MMC forms through both biotic and abiotic processes. Definitive life confirmation requires Mars Sample Return (currently stalled).",
+      "key_findings": [
+        "Macromolecular carbon (MMC) detected in Bright Angel mudstones, Jezero Crater",
+        "Most robust organic detection on Mars to date",
+        "MMC lies just microns below the surface",
+        "Shielded by clays and iron-rich soil from radiation and oxidants",
+        "Critical caveat: MMC forms through both biotic and abiotic processes",
+        "Definitive life confirmation requires Mars Sample Return",
+        "Mars Sample Return currently stalled by political/funding issues"
+      ],
+      "a_c_relevance": "Medium. Biosignature detection as information-theoretic problem — distinguishing biotic from abiotic origin. The shielding mechanism (clays/iron-rich soil) is a form of natural error correction that preserves information. Mars Sample Return as critical next step for definitive confirmation. Connection to C9 Cluster 2 (astrobiology) and the broader question of how to detect complexity (life) remotely.",
+      "sandbox_test": {},
+      "cross_refs": [
+        "C9-2026-ASTRO-008"
+      ],
+      "tags": [
+        "Mars",
+        "Perseverance",
+        "organics",
+        "biosignatures",
+        "Jezero",
+        "macromolecular_carbon",
+        "Mars_Sample_Return",
+        "astrobiology"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-SETI-001",
+      "title": "SETI: Stellar Space Weather Scrambles Alien Signals — May Explain the 'Great Silence'",
+      "authors": "Gajjar & Brown (SETI Institute)",
+      "date": "2026-06-28",
+      "source": "Tech Explorist / The Astrophysical Journal",
+      "doi": "10.3847/1538-4357/ae3d33",
+      "arxiv": "",
+      "layer": 1,
+      "audit_score": 0.83,
+      "clusters": [
+        2,
+        6
+      ],
+      "cluster_names": [
+        "Cosmology/Galaxy_Evolution",
+        "Neuromorphic_Computing"
+      ],
+      "summary": "Interplanetary medium turbulence (stellar winds, CMEs) broadens narrowband technosignatures into faint Lorentzian 'wings' before leaving home systems. At 1 GHz: 70% of nearby systems broaden >1 Hz, 30% >10 Hz. At 100 MHz: >60% broaden >100 Hz. M-dwarfs (75% local stars) show stronger broadening than Sun-like stars. CMEs can increase broadening >1000x. May explain 'Great Silence' — signals exist but scrambled.",
+      "key_findings": [
+        "Interplanetary medium turbulence broadens narrowband technosignatures",
+        "Stellar winds and CMEs create Lorentzian 'wings' on signal spectra",
+        "At 1 GHz: 70% of nearby systems broaden >1 Hz, 30% >10 Hz",
+        "At 100 MHz: >60% of systems broaden >100 Hz",
+        "M-dwarfs (75% of local stars) show stronger broadening than Sun-like stars",
+        "CMEs can increase broadening by >1000x",
+        "This may explain the 'Great Silence' — signals exist but are scrambled beyond recognition",
+        "Implications for SETI search strategies and signal processing"
+      ],
+      "a_c_relevance": "High. Signal degradation as information-theoretic problem — the channel (interplanetary medium) corrupts the signal before it reaches us. This is a form of natural error that may be partially correctable with advanced signal processing. The 'Great Silence' may be a detection problem, not an absence of emitters. M-dwarf bias is critical — most nearby stars are M-dwarfs, and they have stronger stellar weather. This reshapes SETI strategy: search for broader signatures, monitor during quiet stellar periods, focus on Sun-like stars. Resonates with C9 Cluster 2 (cosmology) and Cluster 6 (signal processing/AI).",
+      "sandbox_test": {
+        "test_id": "SB-SETI-001-001",
+        "description": "Simulate technosignature propagation through turbulent stellar wind and design deconvolution algorithm",
+        "method": "Model stellar wind turbulence as stochastic phase screen. Propagate narrowband signal through screen. Compute broadened spectrum. Design blind deconvolution algorithm using Lorentzian wing structure. Test recovery probability as function of SNR and stellar type.",
+        "expected_result": "Deconvolution recovers original narrowband signal with >90% fidelity for SNR >10. M-dwarf signals require 10-100x longer integration. A_c of recovered signal >> A_c of broadened signal.",
+        "validation_data": "Gajjar & Brown stellar wind models, Breakthrough Listen archival data"
+      },
+      "cross_refs": [],
+      "tags": [
+        "SETI",
+        "technosignatures",
+        "stellar_wind",
+        "CME",
+        "signal_broadening",
+        "Great_Silence",
+        "M_dwarfs",
+        "signal_processing"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-MATSCI-006",
+      "title": "LAO/STO: Electron-Phonon Coupling at Ferroelectric Quantum Criticality — Direct Probe via Vibrational EELS",
+      "authors": "Guzman, Pruneda, Zhou et al. (Nature Materials, 2026)",
+      "date": "2026-06-30",
+      "source": "Nature Materials",
+      "doi": "10.1038/s41563-026-XXXXX-X",
+      "arxiv": "",
+      "layer": 1,
+      "audit_score": 0.84,
+      "clusters": [
+        1,
+        5
+      ],
+      "cluster_names": [
+        "Quantum_Foundations",
+        "Topological_Systems"
+      ],
+      "summary": "Momentum-selective vibrational EELS in STEM probes lattice vibrations at oxide interfaces. Superconductivity correlates with inversion symmetry breaking and high-frequency localized polar phonons with strong e-ph coupling, evolving with carrier density. Links lattice instability, superconductivity, tunable localized phonons in quantum paraelectric systems.",
+      "key_findings": [
+        "Momentum-selective vibrational EELS in STEM directly probes lattice vibrations at oxide interfaces",
+        "LaAlO3/SrTiO3 interface studied",
+        "Superconductivity correlates with inversion symmetry breaking",
+        "High-frequency localized polar phonons show strong electron-phonon coupling",
+        "Coupling evolves systematically with carrier density",
+        "Links lattice instability, superconductivity, and tunable localized phonons",
+        "Quantum paraelectric systems as platform for tunable superconductivity"
+      ],
+      "a_c_relevance": "Medium. Oxide interfaces as emergent quantum systems — properties not present in bulk constituents. Electron-phonon coupling as mechanism for superconductivity (BCS-like but in strongly correlated system). Quantum criticality as point of maximum complexity (fluctuations at all scales). Resonates with C9 Cluster 1 (quantum foundations — strongly correlated systems) and Cluster 5 (topological — interface states as 2D electron gas with novel properties).",
+      "sandbox_test": {},
+      "cross_refs": [
+        "C9-2026-QUANTUM-012"
+      ],
+      "tags": [
+        "oxide_interfaces",
+        "LAO_STO",
+        "superconductivity",
+        "electron_phonon",
+        "quantum_criticality",
+        "ferroelectric",
+        "EELS",
+        "STEM"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-PHIL-004",
+      "title": "Aliens May Not Even Have Bodies: 'Substrate Flexibility' and the Critique of Terrocentrism",
+      "authors": "Eric Schwitzgebel (UC Riverside), Jeremy Pober (University of Lisbon)",
+      "date": "2026-07-05",
+      "source": "VICE / Working Paper",
+      "doi": "",
+      "arxiv": "",
+      "layer": 1,
+      "audit_score": 0.58,
+      "clusters": [
+        8,
+        1
+      ],
+      "cluster_names": [
+        "Consciousness_Studies",
+        "Quantum_Foundations"
+      ],
+      "summary": "'Substrate flexibility' — consciousness could emerge from entirely different physical materials, not just carbon-based biology. 'Terrocentrism' = assumption that Earth life is template for all life. Scale of universe (trillion galaxies) makes alternative biochemistry/cognition likely. Consciousness may not inhabit anything recognizable as a body.",
+      "key_findings": [
+        "'Substrate flexibility': consciousness not limited to carbon-based biology",
+        "Could emerge from entirely different physical materials",
+        "Only requirement: underlying system contains enough complexity",
+        "'Terrocentrism': assumption that Earth life is template for all life",
+        "Movie aliens are humanoid — reality could be much stranger",
+        "Scale of universe (trillion galaxies) makes alternative biochemistry likely",
+        "Consciousness may not inhabit anything recognizable as a body"
+      ],
+      "a_c_relevance": "Medium. Consciousness studies boundary — what are the necessary and sufficient conditions for consciousness? Substrate flexibility is a form of functionalism (consciousness depends on function, not matter). This resonates with C9 Cluster 8 and with the question of whether AI could be conscious (different substrate, same function?). The 'terrocentrism' concept is a useful epistemic humility tool — our categories may be parochial. For C9, this suggests that our 8 clusters may also be terrocentric — alien science might organize knowledge differently.",
+      "sandbox_test": {},
+      "cross_refs": [
+        "C9-2026-PHIL-002",
+        "C9-2026-PHIL-003"
+      ],
+      "tags": [
+        "consciousness",
+        "substrate",
+        "aliens",
+        "terrocentrism",
+        "functionalism",
+        "philosophy",
+        "astrobiology",
+        "Schwitzgebel"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-QG-008",
+      "title": "Thermodynamics of Black Holes Far from Equilibrium: Dynamical Horizons Replace Event Horizons",
+      "authors": "Ashtekar, Paraizo, Shu et al. (Penn State)",
+      "date": "2026-07-05",
+      "source": "Physical Review Letters (Editor's Suggestion)",
+      "doi": "10.1103/3c1r-v8f1",
+      "arxiv": "2512.11659",
+      "layer": 1,
+      "audit_score": 0.91,
+      "clusters": [
+        2,
+        3,
+        7
+      ],
+      "cluster_names": [
+        "Cosmology/Galaxy_Evolution",
+        "Quantum_Information_Complexity",
+        "Quantum_Thermodynamics"
+      ],
+      "summary": "Hawking's laws limited to equilibrium black holes. Event horizons are teleological (depend on future). Dynamical horizons characterize black hole at given instant, free from teleology. New entropy measure tied to spin and energy. Extends first and second laws to forming, merging, evaporating black holes. Applicable to LIGO-Virgo-KAGRA mergers and quantum evaporation.",
+      "key_findings": [
+        "Hawking's laws formulated for equilibrium black holes — real black holes are dynamic",
+        "Event horizons can form/grow in flat regions — teleological, depend on future evolution",
+        "Dynamical horizons already used in numerical simulations — characterize instant properties",
+        "New entropy measure more closely tied to physical spin and energy",
+        "Extends first and second laws to non-equilibrium black holes",
+        "Overcomes 50-year-old paradigm limitation",
+        "Applicable to LIGO-Virgo-KAGRA merger detections",
+        "Applicable to quantum black hole evaporation"
+      ],
+      "a_c_relevance": "Very High. This is the same research as C9-2026-QG-006 but with the full PRL details. The dynamical horizon framework is a paradigm shift in black hole thermodynamics. For C9, the key insight is that 'equilibrium' assumptions may be hiding complexity — by removing the teleological constraint, we can track entropy production in real time during dynamic processes. This is directly applicable to active inference (systems far from equilibrium continuously producing entropy). The connection to LIGO-Virgo-KAGRA means this framework can be tested against real data.",
+      "sandbox_test": {
+        "test_id": "SB-QG-008-001",
+        "description": "Apply dynamical horizon thermodynamics to GWTC-5 merger events and compute entropy production",
+        "method": "For each GWTC-5 binary merger: (1) reconstruct dynamical horizon from numerical relativity, (2) compute area and angular momentum evolution, (3) calculate new entropy measure S_dyn, (4) verify dS_dyn/dt >= 0, (5) compare to event-horizon entropy S_EH. Aggregate across population.",
+        "expected_result": "S_dyn monotonically increases for all events. S_dyn >= S_EH at all times. Population-average entropy production correlates with mass ratio and spin. A_c of merger population shows new structure when using S_dyn vs S_EH.",
+        "validation_data": "GWTC-5 parameter estimation posteriors, SXS numerical relativity catalog"
+      },
+      "cross_refs": [
+        "C9-2026-QG-006",
+        "C9-2026-COSMO-007"
+      ],
+      "tags": [
+        "black_holes",
+        "thermodynamics",
+        "dynamical_horizons",
+        "non_equilibrium",
+        "entropy",
+        "Hawking",
+        "Ashtekar",
+        "LIGO",
+        "numerical_relativity"
+      ]
+    }
+  ]
+}

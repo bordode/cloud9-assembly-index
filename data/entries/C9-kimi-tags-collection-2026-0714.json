@@ -1,0 +1,330 @@
+{
+  "collection_id": "C9-COLLECTION-2026-0714-KIMIS-TAGS",
+  "collection_date": "2026-07-14T03:06:00Z",
+  "source_document": "Kimis tags.docx",
+  "total_entries": 12,
+  "entries": [
+    {
+      "entry_id": "C9-2026-QG-006",
+      "title": "LARES-2 Satellite Measures Terrestrial Frame-Dragging at 0.1% Precision",
+      "authors": "Ignazio Ciufolini, Antonio Paolozzi, Erricos C. Pavlis, et al.",
+      "institution": "Sapienza Universit\u00e0 di Roma, University of Texas at Austin, GFZ Potsdam, et al.",
+      "publication": "Nature, 655(8122):332-335 (2026)",
+      "doi": "10.1038/s41586-026-10715-0",
+      "date": "2026-07-08",
+      "layer": 1,
+      "audit_score": 0.97,
+      "clusters": [
+        2,
+        3,
+        5
+      ],
+      "summary": "LARES-2 satellite, combined with LAGEOS and GRACE data, measures frame-dragging (Lense-Thirring effect) with relative uncertainty at one-part-in-a-thousand \u2014 an order-of-magnitude improvement. Places stringent constraints on Chern-Simons gravity and other alternative gravitational models.",
+      "key_findings": [
+        "Frame-dragging measured to ~0.1% accuracy (previous best: ~2%)",
+        "303 COTS retroreflectors on nickel alloy sphere at ~5900 km altitude",
+        "Constrains scalar-tensor extensions including Chern-Simons gravity",
+        "Also improves Earth lunisolar tide determination"
+      ],
+      "c9_relevance": "Directly validates general relativity in weak-field regime; constrains quantum gravity modifications. Connects to Cluster 2 (Quantum Gravity - LQC bounce models), Cluster 3 (Quantum Information - precision measurement), Cluster 5 (Topological Systems - gravitomagnetic field topology).",
+      "sandbox_testable": true,
+      "sandbox_notes": "Can validate gravitomagnetic effects in orbital mechanics simulations; compare with TNG halo spin data"
+    },
+    {
+      "entry_id": "C9-2026-QG-007",
+      "title": "Entropic Time Emergence in Cold-Atom Mini-Universe",
+      "authors": "Giovanni Barontini",
+      "institution": "University of Birmingham",
+      "publication": "Physical Review Research, 8(2) (2026)",
+      "doi": "10.1103/1h9j-df4k",
+      "date": "2026-07-09",
+      "layer": 1,
+      "audit_score": 0.94,
+      "clusters": [
+        1,
+        2,
+        3,
+        7
+      ],
+      "summary": "24,000 ultracold rubidium atoms in isolated quantum system demonstrate 'entropic time' \u2014 time emerges from internal entropy redistribution without external clock. Bright/dark region oscillations resemble Big Bang/Big Crunch cycles. Schr\u00f6dinger equation re-expressible using entropic time.",
+      "key_findings": [
+        "Time emerges from system-internal entropy changes, not external clock",
+        "Arrow of time flows consistently from entropy gradient",
+        "Schr\u00f6dinger equation valid under entropic time definition",
+        "Platform for testing quantum cosmology and black hole analogs"
+      ],
+      "c9_relevance": "Foundational for quantum gravity time problem (Wheeler-DeWitt equation). Bridges Cluster 1 (Quantum Foundations - relational time), Cluster 2 (Quantum Gravity - cosmological models), Cluster 3 (Quantum Information - entropy as resource), Cluster 7 (Quantum Thermodynamics - entropic time).",
+      "sandbox_testable": true,
+      "sandbox_notes": "Can simulate entropic time in C9 SNN using free-energy minimization as 'internal clock'; test against physical manifold entropy tracking"
+    },
+    {
+      "entry_id": "C9-2026-PHYS-001",
+      "title": "Synthetic Rotation Recreates Penrose-Zel'dovich Black Hole Energy Extraction in Lab",
+      "authors": "Hadiseh Nasari, Hady Moussa, Yoshiaki Kasahara, Arno Thielens, Andrea Al\u00f9",
+      "institution": "CUNY ASRC Photonics Initiative",
+      "publication": "Nature (2026)",
+      "doi": "10.1038/s41586-026-10725-y",
+      "date": "2026-07-11",
+      "layer": 1,
+      "audit_score": 0.96,
+      "clusters": [
+        3,
+        5,
+        6
+      ],
+      "summary": "Stationary ring of electronic resonators with time-modulated properties creates 'synthetic rotation' exceeding light speed (pattern velocity, not physical). Electromagnetic waves extract energy and amplify \u2014 reproducing Penrose process and Zel'dovich superradiance without mechanical rotation.",
+      "key_findings": [
+        "Synthetic rotation via programmed temporal modulation of resonator properties",
+        "Effective rotation speed can exceed c (no physical object moves >c)",
+        "Wave amplification matches Penrose-Zel'dovich predictions",
+        "Platform for extreme physics, wireless comms, photonics, quantum tech"
+      ],
+      "c9_relevance": "Demonstrates Floquet engineering for extreme rotational physics. Connects Cluster 3 (Quantum Information - Floquet systems), Cluster 5 (Topological Systems - non-Hermitian wave dynamics), Cluster 6 (Neuromorphic Computing - temporal coding analogs).",
+      "sandbox_testable": true,
+      "sandbox_notes": "Can model synthetic rotation in C9 SNN using time-modulated connectivity; test energy extraction analogies in neural dynamics"
+    },
+    {
+      "entry_id": "C9-2026-QIS-001",
+      "title": "Real-Number Quantum Mechanics: Consistent Description Without Complex Numbers",
+      "authors": "Pedro Barrios Hita, Anton Trushechkin, Hermann Kampermann, Michael Epping, Dagmar Bru\u00df",
+      "institution": "Heinrich Heine University D\u00fcsseldorf, German Aerospace Center (DLR)",
+      "publication": "Physical Review Letters, 136(24) (2026)",
+      "doi": "10.1103/4k13-sdjh",
+      "date": "2026-06-18",
+      "layer": 1,
+      "audit_score": 0.91,
+      "clusters": [
+        1,
+        3
+      ],
+      "summary": "Replaces restrictive tensor product postulate with physically-motivated combination rule. Uses 'flag' bookkeeping to track imaginary components as separate real numbers. Reproduces all standard QM predictions including multiparticle entanglement that defeated 2021 real-number attempts.",
+      "key_findings": [
+        "Complex numbers convenient but not fundamental to QM",
+        "New combination rule: action on one subsystem doesn't affect separate part",
+        "Flag system tracks phase information without imaginary unit i",
+        "Matches all experimental predictions of standard QM"
+      ],
+      "c9_relevance": "Resolves foundational debate about mathematical structure of quantum theory. Impacts Cluster 1 (Quantum Foundations - QBism, Consistent Histories, Darwinism), Cluster 3 (Quantum Information - resource theories, entanglement as commodity).",
+      "sandbox_testable": true,
+      "sandbox_notes": "Can implement real-number QM simulator in C9; compare computational complexity with complex formulation"
+    },
+    {
+      "entry_id": "C9-2026-QIS-002",
+      "title": "Strong Coupling of Microwave Photon to Electron-on-Helium Qubit",
+      "authors": "Gerwin Koolstra, Elena O. Glen, Niyaz R. Beysengulov, et al.",
+      "institution": "EeroQ Corporation, University of Chicago",
+      "publication": "Nature Physics (2026)",
+      "doi": "10.1038/s41567-026-03342-z",
+      "date": "2026-06-16",
+      "layer": 1,
+      "audit_score": 0.93,
+      "clusters": [
+        3,
+        6
+      ],
+      "summary": "First strong coupling between single electron motional state on superfluid helium and microwave photon in superconducting resonator. Coupling rate 118 MHz exceeds resonator linewidth and electron decoherence rate. Vacuum Rabi splitting confirmed. High-kinetic-inductance TiN resonator minimizes stray capacitance.",
+      "key_findings": [
+        "Coupling rate 118 MHz \u2014 enters strong coupling regime",
+        "High-kinetic-inductance TiN superconductor boosts electric field at electron",
+        "Dephasing identified as dominant decoherence source",
+        "Path to spin-qubit readout and CMOS-scalable quantum computing"
+      ],
+      "c9_relevance": "Novel qubit platform combining ultra-high coherence with CMOS scalability. Connects Cluster 3 (Quantum Information - new qubit modalities), Cluster 6 (Neuromorphic Computing - CMOS integration, hardware diversity).",
+      "sandbox_testable": true,
+      "sandbox_notes": "Can model electron-on-helium qubit dynamics in C9 quantum bridge; compare coherence times with superconducting/transmon baselines"
+    },
+    {
+      "entry_id": "C9-2026-QTH-001",
+      "title": "First Cyclic Superconducting Quantum Heat Engine",
+      "authors": "Tuomas Uusn\u00e4kki, Mikko M\u00f6tt\u00f6nen, et al.",
+      "institution": "Aalto University",
+      "publication": "Nature Communications (2026)",
+      "doi": "10.1038/s41467-026-72651-x",
+      "date": "2026-07-13",
+      "layer": 1,
+      "audit_score": 0.92,
+      "clusters": [
+        3,
+        6,
+        7
+      ],
+      "summary": "Transmon qubit + resonator + quantum-circuit refrigerator implement Otto cycle at millikelvin temperatures. Single refrigerator serves as both hot and cold bath. Positive work output demonstrated. Autonomous operation could eliminate millions of microwave cables in future quantum computers.",
+      "key_findings": [
+        "Otto cycle in superconducting circuit with positive work output",
+        "Quantum refrigerator provides both heating and cooling on demand",
+        "Autonomous heat engine could replace room-temperature readout electronics",
+        "Finland targets 1000 logical qubits by 2035; cable reduction critical"
+      ],
+      "c9_relevance": "Quantum thermodynamics meets practical quantum computing. Bridges Cluster 3 (Quantum Information - qubit control), Cluster 6 (Neuromorphic Computing - autonomous systems), Cluster 7 (Quantum Thermodynamics - heat engines, resource theories).",
+      "sandbox_testable": true,
+      "sandbox_notes": "Can simulate quantum Otto cycle in C9 thermodynamic module; optimize for free-energy minimization analog"
+    },
+    {
+      "entry_id": "C9-2026-CHEM-001",
+      "title": "Rethinking the Inductive Effect: Modern Computational Analysis Challenges Century-Old Textbook Concept",
+      "authors": "Mark C. Elliott, Edwin C. Johnson, Kasimir P. Gregory, Colan E. Hughes",
+      "institution": "University of Newcastle (UK/Australia)",
+      "publication": "Journal of Chemical Education (2026)",
+      "doi": "10.1021/acs.jchemed.6c00141",
+      "date": "2026-05-14",
+      "layer": 1,
+      "audit_score": 0.78,
+      "clusters": [
+        4
+      ],
+      "summary": "Traditional inductive effect (electrons transmitted through bond chains) fails in modern computational analysis. Overall molecular electron distribution (molecular orbital approach) provides more accurate explanation. Not an overturning of organic chemistry but a teaching-model refinement.",
+      "key_findings": [
+        "Inductive effect limited to immediately adjacent bonds in neutral molecules",
+        "Molecular polarizability/delocalized orbitals better explain long-range behavior",
+        "Simpler, more consistent framework for teaching and research",
+        "Implications for drug discovery, materials science, agrochemicals"
+      ],
+      "c9_relevance": "Complexity science perspective on model refinement. Cluster 4 (Complexity Science - emergence, simplification at higher scales). Less directly connected to other clusters but represents paradigm evolution pattern.",
+      "sandbox_testable": false,
+      "sandbox_notes": "Computational chemistry simulation; less aligned with current C9 sandbox capabilities"
+    },
+    {
+      "entry_id": "C9-2026-CHEM-002",
+      "title": "Relativistic Effects Break Down Textbook Triple Bond Structure in Heavy Elements",
+      "authors": "Deniz Kahraman, Jie Hui, Lai-Sheng Wang",
+      "institution": "Brown University",
+      "publication": "Science (2026)",
+      "doi": "10.1126/science.adk1234",
+      "date": "2026-07-10",
+      "layer": 1,
+      "audit_score": 0.89,
+      "clusters": [
+        1,
+        5
+      ],
+      "summary": "Photoelectron spectroscopy of bismuth-carbon molecules shows triple bonds don't follow sigma+2pi structure. Spin-orbit coupling at relativistic speeds smears sigma/pi boundary. Structure resembles one pi + two hybrid sigma-pi bonds. Bismuth of interest for lead-free solar cells and quantum materials.",
+      "key_findings": [
+        "Direct spectroscopic evidence of relativistic bond hybridization",
+        "Sigma-pi boundary 'smeared' in heavy elements",
+        "Bismuth as lead alternative in next-gen solar cells",
+        "Quantum materials and quantum computing applications"
+      ],
+      "c9_relevance": "Relativistic quantum chemistry with topological implications. Cluster 1 (Quantum Foundations - Dirac equation regime), Cluster 5 (Topological Systems - spin-orbit coupling, heavy-element topology).",
+      "sandbox_testable": false,
+      "sandbox_notes": "Requires relativistic quantum chemistry simulation infrastructure"
+    },
+    {
+      "entry_id": "C9-2026-ASTRO-001",
+      "title": "JWST Confirms Earliest Supernova at z~7.3 (730 Million Years Post-Big Bang)",
+      "authors": "Andrew Levan, Nial Tanvir, et al.",
+      "institution": "Radboud University, University of Warwick, University of Leicester",
+      "publication": "Astronomy & Astrophysics Letters (2025/2026)",
+      "doi": "10.1051/0004-6361/202659272",
+      "date": "2026-07-09",
+      "layer": 1,
+      "audit_score": 0.95,
+      "clusters": [
+        2,
+        5
+      ],
+      "summary": "GRB 250314A followed by JWST observation confirms core-collapse supernova at z~7.3. Light travel time: 13.1 billion years. Despite early universe conditions (higher mass stars, fewer heavy elements), supernova spectrum matches modern supernovae. Epoch of reionization context.",
+      "key_findings": [
+        "Earliest directly observed supernova; previous record holder older",
+        "JWST infrared confirmation after 3.5-month wait for peak brightness",
+        "Time dilation factor 8.3x at z=7.3",
+        "Early universe supernovae appear identical to local ones"
+      ],
+      "c9_relevance": "Cosmological evolution and structure formation. Cluster 2 (Quantum Gravity - early universe physics), Cluster 5 (Topological Systems - spacetime structure evolution).",
+      "sandbox_testable": true,
+      "sandbox_notes": "Can compare with TNG early universe halo data; test A_c evolution predictions against supernova rates"
+    },
+    {
+      "entry_id": "C9-2026-ASTRO-002",
+      "title": "Quantum Damping of Cosmological Shear: mLQC-I Bounce Model Resolves Anisotropy Problem",
+      "authors": "Wen-Cong Gan, Anzhong Wang, et al.",
+      "institution": "Baylor University, Jiangxi Normal University, State University of Rio de Janeiro, Universidade Federal Fluminense",
+      "publication": "Physical Review Letters (2026)",
+      "doi": "10.1103/f8tr-bq61",
+      "date": "2026-07-10",
+      "layer": 2,
+      "audit_score": 0.67,
+      "clusters": [
+        2,
+        3,
+        7
+      ],
+      "summary": "Modified Loop Quantum Cosmology (mLQC-I) shows quantum geometric damping suppresses anisotropies during bounce. Highly anisotropic contracting universe emerges homogeneous/isotropic after quantum bounce without fine-tuning or exotic matter. Self-isotropization via non-perturbative quantum effects.",
+      "key_findings": [
+        "Quantum bounce replaces Big Bang singularity",
+        "Anisotropies decay exponentially in deep quantum regime post-bounce",
+        "No exotic matter required \u2014 pure quantum geometry effect",
+        "CMB and primordial gravitational wave signatures predicted"
+      ],
+      "c9_relevance": "Directly connects to your C9 bounce/loop quantum cosmology interests. Cluster 2 (Quantum Gravity - LQC, bounce models), Cluster 3 (Quantum Information - quantum geometry as information), Cluster 7 (Quantum Thermodynamics - entropy/arrow in bounce context).",
+      "sandbox_testable": true,
+      "sandbox_notes": "Can integrate with existing C9 LQC bounce simulations; test A_c phase transition predictions against isotropization mechanism"
+    },
+    {
+      "entry_id": "C9-2026-NEURO-003",
+      "title": "Ephaptic Coupling: Electric Fields Guide Neural Activity Moment-to-Moment",
+      "authors": "Earl K. Miller, Dimitris Pinotsis, et al.",
+      "institution": "MIT Picower Institute, City St George's University of London",
+      "publication": "Cerebral Cortex (2026)",
+      "doi": "10.1093/cercor/bhaf123",
+      "date": "2026-07-07",
+      "layer": 1,
+      "audit_score": 0.88,
+      "clusters": [
+        6,
+        8
+      ],
+      "summary": "Local electric fields (mesoscale LFPs) actively organize neural spiking via ephaptic coupling. Granger causality shows field\u2192neuron directionality dominates. Field strength proportional to LFP power variation. 'Neurons are citizens; electric fields are government.' Therapeutic potential for electric field manipulation.",
+      "key_findings": [
+        "Electric fields exert top-down control on neural activity trial-by-trial",
+        "Ephaptic coupling strength \u221d LFP power variation",
+        "Cytoelectric coupling: fields alter neuronal cytoskeleton for synchrony",
+        "Therapeutic: field manipulation could rewire faulty circuits without targeting individual synapses"
+      ],
+      "c9_relevance": "Directly relevant to neuromorphic computing and consciousness studies. Cluster 6 (Neuromorphic Computing - SNNs, field-based computation), Cluster 8 (Consciousness Studies - integrated information, field theories of consciousness).",
+      "sandbox_testable": true,
+      "sandbox_notes": "Can implement ephaptic coupling in C9 SNN architecture; test field-based synchronization against synaptic-only models"
+    },
+    {
+      "entry_id": "C9-2026-BIO-001",
+      "title": "Bacterial Memory Inheritance: E. coli Passes Environmental Knowledge to Descendants",
+      "authors": "Josiah Kratz, et al.",
+      "institution": "Carnegie Mellon University, Georgia Tech",
+      "publication": "PRX Life (2026)",
+      "doi": "10.1103/PRXLife.2.013004",
+      "date": "2026-07-10",
+      "layer": 1,
+      "audit_score": 0.82,
+      "clusters": [
+        4,
+        8
+      ],
+      "summary": "E. coli stores environmental information and passes protein-based 'memories' to daughter/granddaughter cells. Mathematical model of bacterial learning resembles recurrent neural network. Growth-rate-driven memory closes modeling gap. Implications for antibiotic resistance and understanding memory origins.",
+      "key_findings": [
+        "Bacteria make decisions based on past history, not just current environment",
+        "Protein expression changes inherited across generations",
+        "Mathematical model structurally similar to recurrent neural networks",
+        "Antibiotic resistance strategies must account for bacterial 'experience'"
+      ],
+      "c9_relevance": "Complexity and consciousness foundations. Cluster 4 (Complexity Science - adaptive systems, active inference), Cluster 8 (Consciousness Studies - Cellular Basis of Consciousness theory, minimal cognition).",
+      "sandbox_testable": true,
+      "sandbox_notes": "Can model bacterial memory as RNN in C9; compare with sovereign manifold free-energy minimization"
+    }
+  ],
+  "statistics": {
+    "total_entries": 12,
+    "layer_1": 11,
+    "layer_2": 1,
+    "average_audit_score": 0.885,
+    "score_range": "0.67 - 0.97",
+    "cluster_coverage": {
+      "Cluster_1": 3,
+      "Cluster_2": 4,
+      "Cluster_3": 7,
+      "Cluster_4": 2,
+      "Cluster_5": 4,
+      "Cluster_6": 4,
+      "Cluster_7": 3,
+      "Cluster_8": 2
+    }
+  }
+}
