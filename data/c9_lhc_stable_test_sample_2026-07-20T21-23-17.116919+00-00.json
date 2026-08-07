@@ -1,0 +1,12 @@
+{
+  "run_id": "2026-07-20T21-23-17.116919+00-00",
+  "dataset": "stable_test_sample.root",
+  "channel": "Z -> mumu (Test Data)",
+  "timestamp": "2026-07-20T22:28:19.099422+00:00",
+  "status": "completed",
+  "events_processed": 2304,
+  "c9_metadata": {
+    "assembly_index_estimate": 1.0,
+    "priority_flag": true
+  }
+}
