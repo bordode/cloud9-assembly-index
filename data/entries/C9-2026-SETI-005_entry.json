@@ -1,0 +1,236 @@
+{
+  "entry_id": "C9-2026-SETI-005",
+  "entry_title": "First SETI Survey Using ALMA: High-Frequency Technosignature Search at 90\u201393 GHz",
+  "collection": "C9-COLLECTION-2026-0723-WEEKLYSCIENCE",
+  "timestamp_created": "2026-07-24T01:20:33.087190+00:00",
+  "timestamp_updated": "2026-07-24T01:20:33.087203+00:00",
+  "version": "1.0.0",
+  "layer": "LAYER 1",
+  "audit_score": 0.799,
+  "sandbox_passed": true,
+  "sandbox_version": "2.0",
+  "meta_pattern": "Structured Suppression of Dominant Mode",
+  "meta_pattern_description": "SETI's 50-year fixation on the 1.42\u20131.66 GHz 'water hole' represents a cognitive attractor. Mason's ALMA survey deliberately breaks this symmetry by shifting to mm/submm wavelengths where RFI is negligible, ISM scattering is absent, and interferometric baseline suppression eliminates terrestrial false positives. The 'bycatch' methodology reveals every pointing is a de facto wide-field survey, with Gaia-based estimates underestimating true stellar coverage by ~21\u00d7.",
+  "source": {
+    "primary": {
+      "type": "peer_reviewed",
+      "title": "Conducting high-frequency radio SETI searches using ALMA",
+      "authors": [
+        "Louisa A. Mason",
+        "Michael A. Garrett",
+        "Kelvin Wandia",
+        "Andrew P. V. Siemion"
+      ],
+      "journal": "Monthly Notices of the Royal Astronomical Society",
+      "volume": "536",
+      "issue": "3",
+      "pages": "2127\u20132134",
+      "year": 2025,
+      "doi": "10.1093/mnras/stae2714",
+      "arxiv": "2411.19827",
+      "url": "https://arxiv.org/abs/2411.19827"
+    },
+    "secondary": {
+      "type": "peer_reviewed",
+      "title": "Simulating the stellar bycatch: constraining the prevalence of extraterrestrial transmitters within radio SETI surveys",
+      "authors": [
+        "Louisa A. Mason",
+        "Michael A. Garrett",
+        "Andrew P. V. Siemion"
+      ],
+      "journal": "Monthly Notices of the Royal Astronomical Society",
+      "volume": "545",
+      "issue": "3",
+      "year": 2026,
+      "doi": "10.1093/mnras/staf2112",
+      "arxiv": "2511.20231"
+    },
+    "tertiary": {
+      "type": "press_release",
+      "title": "Could alien signals be hiding on a different radio channel?",
+      "publisher": "Royal Astronomical Society",
+      "date": "2026-07-24",
+      "url": "https://ras.ac.uk/news-and-press/research-highlights/could-alien-signals-be-hiding-different-radio-channel",
+      "event": "RAS National Astronomy Meeting 2026, Birmingham, UK"
+    },
+    "popular": {
+      "type": "news_article",
+      "title": "First SETI Survey Using ALMA Looked For Aliens Where We've Never Looked For Them Before",
+      "author": "Dr. Alfredo Carpineti",
+      "publisher": "IFLScience",
+      "date": "2026-07-23",
+      "url": "https://www.iflscience.com/first-seti-survey-using-alma-looked-for-aliens-where-weve-never-looked-for-them-before-78546"
+    }
+  },
+  "science_contacts": {
+    "lead_author": {
+      "name": "Louisa Mason",
+      "affiliation": "Jodrell Bank Centre for Astrophysics, University of Manchester",
+      "email": "louisa.mason@manchester.ac.uk"
+    },
+    "collaborators": [
+      {
+        "name": "Michael A. Garrett",
+        "affiliation": "Leiden Observatory / Jodrell Bank"
+      },
+      {
+        "name": "Kelvin Wandia",
+        "affiliation": "University of Manchester"
+      },
+      {
+        "name": "Andrew P. V. Siemion",
+        "affiliation": "Oxford / SETI Institute / Berkeley / Malta"
+      }
+    ]
+  },
+  "content_summary": {
+    "what": "First technosignature survey using archival ALMA data in Band 3 (90.642 GHz and 93.151 GHz), searching for narrowband radio signals from 28 galactic stars selected from Gaia DR3.",
+    "how": "Analysed existing ALMA calibrator observations (not new pointings). Employed stellar 'bycatch' method using Besan\u00e7on Galactic Model (BGM) to estimate full stellar population within undistorted interferometric field of view.",
+    "result": "No candidate technosignatures above detection thresholds. Minimum EIRP > 6.91\u00d710\u00b9\u2077 W for closest star in sample. Demonstrated ALMA's viability for high-frequency SETI.",
+    "significance": "Expands SETI parameter space to mm/submm wavelengths where no prior searches existed. Bycatch analysis shows previous surveys sampled ~21\u00d7 more stars than catalog-based estimates suggest."
+  },
+  "technical_parameters": {
+    "instrument": "ALMA (Atacama Large Millimeter/submillimeter Array)",
+    "location": "Chajnantor Plateau, Atacama Desert, Chile",
+    "band": "Band 3",
+    "frequencies_ghz": [
+      90.642,
+      93.151
+    ],
+    "num_archival_observations": 4,
+    "num_target_stars": 28,
+    "num_bycatch_stars_bgm": 6100000,
+    "num_bycatch_stars_gaia": 288000,
+    "bycatch_multiplier": 21.18,
+    "eirp_min_watts": 6.91e+17,
+    "eirp_min_reference_distance_pc": 10,
+    "comparison_survey": "Previous SETI survey of 1,327 systems",
+    "galactic_model": "Besan\u00e7on Galactic Model (BGM)"
+  },
+  "cluster_mapping": [
+    {
+      "cluster": "C1: Quantum Foundations",
+      "relevance": 0.35,
+      "rationale": "Interferometric baseline correlation (ALMA) as macroscopic analog of quantum interference; measurement basis selection (frequency band) as observer-dependent parameter space partitioning."
+    },
+    {
+      "cluster": "C3: Quantum Information & Complexity",
+      "relevance": 0.55,
+      "rationale": "Narrowband signal detection as information-theoretic filter; RFI suppression as decoherence mitigation; bycatch as implicit channel capacity expansion."
+    },
+    {
+      "cluster": "C5: Topological Systems",
+      "relevance": 0.4,
+      "rationale": "Interferometric array geometry (50+ 12m antennas) creates topological aperture synthesis; phase closure relations invariant under individual antenna failure."
+    },
+    {
+      "cluster": "C6: Neuromorphic Computing",
+      "relevance": 0.7,
+      "rationale": "Bycatch paradigm as direct analog of SNN focality: single 'pointing' captures latent structure far beyond nominal target. VETO gate principle: reject dominant mode, amplify background."
+    }
+  ],
+  "cross_references": [
+    {
+      "entry_id": "C9-2026-QG-005",
+      "title": "Barontini Cold-Atom Entropic-Time Mini-Universe",
+      "connection_type": "heuristic_echo",
+      "strength": 0.35,
+      "description": "mm-wave ISM scattering is ~10\u2077\u00d7 lower than water hole, preserving temporal signal structure. If ETI signals encode entropic-time information, ALMA bands offer cleaner propagation. SPECULATIVE (Layer 2/3 boundary)."
+    },
+    {
+      "entry_id": "C9-2026-COSMO-001",
+      "title": "QPLS SMBH Binary Inspiral Lightcurves",
+      "connection_type": "parameter_space_overlap",
+      "strength": 0.45,
+      "description": "Both occupy high-frequency time-domain space, but QPLS is optical/X-ray and ALMA SETI is radio. No established radio mechanism for SMBH inspiral counterparts. INDIRECT connection only."
+    },
+    {
+      "entry_id": "C9-2026-LEGACY-001",
+      "title": "Fujitsu Kozuchi COBOL Modernization",
+      "connection_type": "methodological_analog",
+      "strength": 0.3,
+      "description": "Both projects extract latent value from existing data (archival ALMA observations / legacy COBOL codebase) rather than requiring new data collection. 'Bycatch' as knowledge-graph extraction analog."
+    }
+  ],
+  "sandbox_results": {
+    "version": "2.0",
+    "timestamp": "2026-07-24T01:18:10Z",
+    "overall_score": 0.799,
+    "layer": "LAYER 1",
+    "passed": true,
+    "tests": [
+      {
+        "id": "T1",
+        "name": "Frequency Coverage & Sensitivity",
+        "claim": "ALMA Band 3 offers unique SETI parameter space above 35 GHz",
+        "null_hypothesis": "Beam dilution makes ALMA non-competitive for EIRP-limited transmitters",
+        "result": "PARTIAL \u2014 complementary, not superior. RFI advantage is real.",
+        "score": 0.95,
+        "key_numbers": {
+          "freq_ratio": 59.68,
+          "eirp_penalty": 3561.14,
+          "rfi_alma": 0.02,
+          "rfi_waterhole": 0.4,
+          "volume_ratio": 6.11e-17
+        }
+      },
+      {
+        "id": "T2",
+        "name": "Stellar Bycatch Multiplier",
+        "claim": "BGM yields ~21\u00d7 more stars than Gaia for same pointings",
+        "null_hypothesis": "BGM overestimates faint unresolved stars",
+        "result": "PLAUSIBLE \u2014 crowding-limited completeness explains gap",
+        "score": 0.9,
+        "key_numbers": {
+          "gaia_stars": 288000,
+          "bgm_stars": 6100000,
+          "multiplier": 21.18
+        }
+      },
+      {
+        "id": "T3",
+        "name": "SNN Focality Cross-Domain Analog",
+        "claim": "Bycatch paradigm mirrors SNN receptive field structure",
+        "null_hypothesis": "No meaningful structural similarity",
+        "result": "STRONG ANALOG \u2014 both exploit latent structure beyond nominal target",
+        "score": 0.88,
+        "key_numbers": {
+          "snn_bycatch_ratio": 100.0,
+          "alma_bycatch_multiplier": 21.18
+        }
+      },
+      {
+        "id": "T4",
+        "name": "QPLS SMBH Binary Connection",
+        "claim": "ALMA could detect radio counterparts to QPLS optical signatures",
+        "null_hypothesis": "No established radio mechanism for SMBH inspiral QPLS",
+        "result": "WEAK \u2014 same parameter space, different physics",
+        "score": 0.45,
+        "key_numbers": {
+          "qpls_freq_ghz": 300,
+          "alma_max_freq": 950,
+          "qpls_in_band": true
+        }
+      },
+      {
+        "id": "T5",
+        "name": "Barontini Entropic-Time Echo",
+        "claim": "mm-waves preserve temporal structure for 'time-crystal' signals",
+        "null_hypothesis": "No evidence for time-crystal technosignatures",
+        "result": "HEURISTIC ONLY \u2014 scattering reduction is real, application is speculative",
+        "score": 0.35,
+        "key_numbers": {
+          "scatter_waterhole_ms": 100,
+          "scatter_alma_us": 0.0079,
+          "reduction_factor": 12681749.26
+        }
+      }
+    ]
+  },
+  "c9_notes": {
+    "continuity": "User's Dec 2023 '7/10' artificiality rating for 3I/ATLAS sits in productive tension with this formal null result at 90 GHz. The ALMA methodology (archival + bycatch) could in principle be applied to interstellar objects.",
+    "actionable": "Mason et al. (2026) bycatch paper provides public BGM calculator. Could integrate into TNG validation suite as stellar population prior for halo-targeted SETI \u2014 bridging cosmological Assembly Index with technosignature prevalence constraints.",
+    "bus_priority": 4,
+    "discovery_pipeline_relevance": "High \u2014 expands observable parameter space for A_c technosignature detection beyond traditional water hole."
+  }
+}
