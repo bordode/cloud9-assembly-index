@@ -1,0 +1,1232 @@
+{
+  "collection_id": "C9-COLLECTION-2026-0725-WEEKLYSCIENCE-FULL",
+  "collection_date": "2026-07-25T23:40:00-07:00",
+  "compiler": "Kimi (Cloud-9 Librarian)",
+  "source_document": "Kimi 20260725.docx",
+  "c9_framework_version": "v2.1.1",
+  "meta_pattern": "Structured Suppression of Dominant Mode / Hierarchical Assembly / Non-Equilibrium Steady States / Quantum-Classical Hybridization",
+  "entries": [
+    {
+      "entry_id": "C9-2026-NEURO-003",
+      "title": "Brain functional network dynamics in women with alleged mediumship: a controlled study",
+      "source": "Psychiatry Research: Neuroimaging",
+      "publication_date": "2026-02",
+      "authors_institution": "Jessica Placido et al., Bahiana School of Medicine, Brazil",
+      "doi": "",
+      "url": "",
+      "clusters": [
+        8
+      ],
+      "layer": "L1",
+      "audit_score": 0.74,
+      "domain": "Neuroscience / Consciousness",
+      "summary": "EEG study (n=28) comparing Spiritist mediums during trance vs prayer controls using graph-theoretic functional network analysis.",
+      "key_findings": [
+        "Elevated delta/theta connectivity during trance",
+        "Left hemisphere alpha rebalancing during vocalization",
+        "Patterns distinct from sleep or schizophrenia",
+        "Confound: vocalization vs silent prayer; small sample"
+      ],
+      "c9_relevance": "Cluster 8 consciousness studies. Non-pathological altered states offer empirical anchor for anomalous cognition. Relevant to vitality-gate models."
+    },
+    {
+      "entry_id": "C9-2026-QUANT-001",
+      "title": "Error-resilient fast entangling gates for scalable ion-trap quantum processors",
+      "source": "Physical Review A",
+      "publication_date": "2026",
+      "authors_institution": "Isabelle Savill-Brown, Zain Mehdi, Joe Hope et al., ANU & IonQ",
+      "doi": "10.1103/4thn-7wyf",
+      "url": "https://arxiv.org/abs/2508.07593",
+      "clusters": [
+        3,
+        5
+      ],
+      "layer": "L1",
+      "audit_score": 0.93,
+      "domain": "Quantum Computing",
+      "summary": "Newton's-cradle-like energy transport enables fast non-nearest-neighbor ion entanglement. Machine-optimized 1-10 microsecond gates at 99.99% fidelity.",
+      "key_findings": [
+        "Non-nearest-neighbor entanglement via chain energy transport",
+        "2+ orders faster than adiabatic gates",
+        "Fidelity improves by exceeding noise frequencies",
+        "Scalable to 30-40 qubit mixed-ion chains"
+      ],
+      "c9_relevance": "Cluster 3 quantum information and QPilotos bridge. Fast gates reduce decoherence; Newton's-cradle dynamics mirror Assembly Index temporal correlation motifs."
+    },
+    {
+      "entry_id": "C9-2026-QUANT-002",
+      "title": "Benchmarking a Tunable Quantum Neural Network on Trapped-Ion and Superconducting Hardware",
+      "source": "Physical Review Letters",
+      "publication_date": "2026",
+      "authors_institution": "Djamil Lakhdar-Hamina, Alaina Green, Norbert Linke, Victor Galitski et al., JQI/UMD/IBM",
+      "doi": "10.1103/9bp2-42v3",
+      "url": "",
+      "clusters": [
+        3,
+        6
+      ],
+      "layer": "L1",
+      "audit_score": 0.89,
+      "domain": "Quantum Machine Learning",
+      "summary": "Cross-platform demonstration that intentional quantum measurement randomness improves neural network MNIST classification.",
+      "key_findings": [
+        "Optimal quantum randomness improves troublesome-digit classification",
+        "Trapped-ion near-perfect on hard cases; IBM ~90%",
+        "NISQ noise may provide beneficial randomness",
+        "Tunable quantumness enables systematic study"
+      ],
+      "c9_relevance": "Bridges Cluster 3 and Cluster 6. Quantum-classical hybrid architectures relevant to BIRTH-C9 bridge and neuromorphic inference."
+    },
+    {
+      "entry_id": "C9-2026-MATSCI-005",
+      "title": "Enhanced nuclear fusion in the sub-keV energy regime",
+      "source": "Nature Communications",
+      "publication_date": "2026",
+      "authors_institution": "Micah E. Karahadian, Jeremy Munday, Arun Persaud et al., UC Davis & Berkeley Lab",
+      "doi": "10.1038/s41467-026-74421-1",
+      "url": "",
+      "clusters": [
+        4,
+        7
+      ],
+      "layer": "L1",
+      "audit_score": 0.86,
+      "domain": "Materials Science / Nuclear Physics",
+      "summary": "Deuterium-loaded palladium/titanium foils show fusion rates ~10^18x bare fusion below 2.5 keV, suggesting electron/defect shielding.",
+      "key_findings": [
+        "Plateau in fusion rate below 2.5 keV",
+        "Material environment is active participant",
+        "Opens field of materials-driven fusion/catalysis",
+        "Mechanism: possible electronic structure/defect shielding"
+      ],
+      "c9_relevance": "Cluster 4 complexity and Cluster 7 quantum thermodynamics. Materials as active catalytic substrates mirror Cloud-9 environment-structure coupling."
+    },
+    {
+      "entry_id": "C9-2026-COSMO-005",
+      "title": "Nancy Grace Roman Space Telescope: Final Preparations and Cosmic Survey Mission",
+      "source": "NASA / The Conversation",
+      "publication_date": "2026-07",
+      "authors_institution": "Noelia Noël et al.",
+      "doi": "",
+      "url": "https://www.nasa.gov/roman",
+      "clusters": [
+        2,
+        4
+      ],
+      "layer": "L1",
+      "audit_score": 0.91,
+      "domain": "Cosmology / Space Astronomy",
+      "summary": "Roman launch late August 2026. Wide-field infrared instrument surveys 100x Hubble field. Science: dark energy evolution, dark matter mapping, exoplanet microlensing.",
+      "key_findings": [
+        "100x Hubble field of view; 1000x faster survey",
+        "Coronagraph for direct exoplanet imaging demo",
+        "Tests whether dark energy is constant or evolving",
+        "Billions of galaxies, tens of billions of stars expected"
+      ],
+      "c9_relevance": "Critical for Cluster 2 cosmology and Cluster 4. Large-scale structure data feeds Assembly Index halo validation pipeline."
+    },
+    {
+      "entry_id": "C9-2026-QUANT-003",
+      "title": "Quantum Zeno effect versus adiabatic quantum computing and quantum annealing",
+      "source": "New Journal of Physics",
+      "publication_date": "2026",
+      "authors_institution": "Naser Ahmadiniaz, Gernot Schaller, Ralf Schützhold et al., HZDR",
+      "doi": "10.1088/1367-2630/ae6e68",
+      "url": "https://www.hzdr.de/presse/qzeno",
+      "clusters": [
+        1,
+        3
+      ],
+      "layer": "L1",
+      "audit_score": 0.84,
+      "domain": "Quantum Computing Theory",
+      "summary": "Quantum Zeno effect can freeze adiabatic QC as qubit count scales. Environmental disturbances act as unwanted measurements.",
+      "key_findings": [
+        "Adiabatic QC sensitivity increases with qubit number",
+        "Disturbances act as measurements slowing evolution",
+        "Spin-echo and shielding proposed as countermeasures",
+        "Environment must be engineered from outset"
+      ],
+      "c9_relevance": "Cluster 1 quantum foundations and Cluster 3. Zeno effect as fundamental limit informs quantum bridge error models and QPilotos reliability."
+    },
+    {
+      "entry_id": "C9-2026-COSMO-006",
+      "title": "Missing galactic matter found in voids via fast radio burst dispersion",
+      "source": "Physical Review Letters",
+      "publication_date": "2026-07-21",
+      "authors_institution": "CHIME/FRB Collaboration, MIT (Kiyoshi Masui, Haochen Wang et al.)",
+      "doi": "",
+      "url": "",
+      "clusters": [
+        2,
+        4
+      ],
+      "layer": "L1",
+      "audit_score": 0.89,
+      "domain": "Cosmology / Astrophysics",
+      "summary": "Cross-correlation of thousands of FRB dispersion measures with DESI galaxy locations reveals missing baryonic matter in intergalactic voids out to 4 million light-years.",
+      "key_findings": [
+        "Missing matter located outside galaxies in diffuse clouds",
+        "Extends farther than simulations predict",
+        "Black hole jets and supernovae more violent than predicted",
+        "FRBs as cosmic scans for diffuse matter"
+      ],
+      "c9_relevance": "Feeds Cluster 2 cosmological structure and validates halo gas models in Cloud-9 TNG suite. Violent feedback relevant to A_c phase-transition thresholds."
+    },
+    {
+      "entry_id": "C9-2026-COSMO-007",
+      "title": "Anisotropy in Pantheon+ supernovae and challenges to dark energy",
+      "source": "MNRAS / European Physical Journal C",
+      "publication_date": "2026",
+      "authors_institution": "Subir Sarkar, Animesh Sah, Mohamed Rameez et al.",
+      "doi": "10.1140/epjc/s10052-025-14222-w",
+      "url": "",
+      "clusters": [
+        2,
+        4
+      ],
+      "layer": "L2",
+      "audit_score": 0.71,
+      "domain": "Cosmology / Fundamental Physics",
+      "summary": "Reanalysis suggests cosmic acceleration may be artifact of progenitor age corrections and local bulk flow. Claims universe may be decelerating without dark energy.",
+      "key_findings": [
+        "Progenitor age correction removes acceleration signal in some datasets",
+        "Cosmic dipole anomaly challenges FLRW isotropy",
+        "CMB alone does not require dark energy",
+        "Contested by mainstream cosmologists citing BAO/CMB"
+      ],
+      "c9_relevance": "Cluster 2 boundary-pushing. If confirmed, requires rebuilding cosmology from scratch. Cloud-9 tracks as Layer 2 pending replication. A_c formalism must remain model-agnostic."
+    },
+    {
+      "entry_id": "C9-2026-QUANT-004",
+      "title": "Quantum entanglement distribution coexisting with high-rate classical optical communications over real-world fiber",
+      "source": "Optica Quantum",
+      "publication_date": "2026-07-20",
+      "authors_institution": "Gina M. Talcott, Prem Kumar et al., Northwestern University",
+      "doi": "10.1364/opticaq.592786",
+      "url": "",
+      "clusters": [
+        3,
+        5
+      ],
+      "layer": "L1",
+      "audit_score": 0.95,
+      "domain": "Quantum Communication",
+      "summary": "First real-world entanglement distribution over 24.4 km deployed telecom fiber simultaneously carrying 36 Tbps classical traffic. Fidelity >94%.",
+      "key_findings": [
+        "O-band quantum signals coexist with C-band classical data",
+        "White Rabbit picosecond synchronization",
+        "No dedicated quantum infrastructure required",
+        "Next step: teleportation over commercial fiber"
+      ],
+      "c9_relevance": "Critical for Cluster 3 quantum networks and QPilotos/C9 quantum bridge. Validates practical entanglement for distributed neuromorphic computing and secure bus protocols."
+    },
+    {
+      "entry_id": "C9-2026-BIO-001",
+      "title": "SUMOylation enhances DNMT1 function to repress mega-intergenic RNAs and viral mimicry",
+      "source": "Nature Genetics",
+      "publication_date": "2026-07-21",
+      "authors_institution": "Brian J. Liddicoat, Jesse J. Balic, Mark A. Dawson et al., Peter MacCallum Cancer Centre",
+      "doi": "",
+      "url": "",
+      "clusters": [
+        4
+      ],
+      "layer": "L1",
+      "audit_score": 0.86,
+      "domain": "Molecular Biology / Epigenetics",
+      "summary": "RNF4 regulates DNMT1 via SUMOylation controlling DNA methylation. Inhibition triggers endogenous viral element reactivation (mintRNAs) and viral mimicry response.",
+      "key_findings": [
+        "DNMT1 redistributes upon catalytic inhibition",
+        "mintRNAs drive cell-intrinsic viral mimicry",
+        "RNF4 as major regulator of DNMT1 SUMOylation",
+        "Therapeutic implications for epigenetic cancer therapy"
+      ],
+      "c9_relevance": "Cluster 4 complexity via epigenetic regulation and information storage. Viral mimicry as emergent property of disrupted methylation mirrors Cloud-9 information-theoretic biology interests."
+    },
+    {
+      "entry_id": "C9-2026-QUANT-005",
+      "title": "Light-induced quantum friction in graphene nanotubes",
+      "source": "Nature",
+      "publication_date": "2026",
+      "authors_institution": "Sebastian Kruss et al., Ruhr-University Bochum",
+      "doi": "",
+      "url": "",
+      "clusters": [
+        1,
+        7
+      ],
+      "layer": "L1",
+      "audit_score": 0.81,
+      "domain": "Quantum Physics / Materials",
+      "summary": "Graphene nanotubes in water show increased friction under illumination due to exciton-generated fluctuating charges transferring momentum to water molecules.",
+      "key_findings": [
+        "Brighter illumination increases friction rather than diffusion",
+        "Exciton formation creates contactless drag",
+        "Confirmed by terahertz spectroscopy",
+        "Applications: nanorobot steering, reaction control"
+      ],
+      "c9_relevance": "Cluster 1 quantum foundations and Cluster 7 quantum thermodynamics. Quantum friction as emergent nonequilibrium phenomenon connects to active inference and free-energy minimization."
+    },
+    {
+      "entry_id": "C9-2026-QUANT-006",
+      "title": "Visualization of Internal Plasmonic Wave Photosensitized by Quantum Dots",
+      "source": "Nano Letters",
+      "publication_date": "2026",
+      "authors_institution": "Kazuki Kamada, Masahiro Shibuta et al., Osaka Metropolitan University",
+      "doi": "10.1021/acs.nanolett.6c02051",
+      "url": "",
+      "clusters": [
+        5
+      ],
+      "layer": "L1",
+      "audit_score": 0.83,
+      "domain": "Nanophotonics / Plasmonics",
+      "summary": "Quantum dot coating enables direct optical visualization of surface plasmon polaritons via upconversion fluorescence at buried interfaces.",
+      "key_findings": [
+        "SPPs visualized under ambient conditions at buried interfaces",
+        "Quantitative measurement of dielectric film effects",
+        "Layer-dependent plasmonic behavior reveals optical constants",
+        "Standard imaging platform for nanophotonic design"
+      ],
+      "c9_relevance": "Cluster 5 topological systems via surface-bound EM modes. Quantum dot sensitization as interface probe parallels Cloud-9 cross-layer measurement strategies."
+    },
+    {
+      "entry_id": "C9-2026-COSMO-008",
+      "title": "A Compact Proto-group at z~5: A Massive Galaxy Caught in Formation",
+      "source": "arXiv",
+      "publication_date": "2026-07-13",
+      "authors_institution": "Ronaldo Laishram et al., NAOJ",
+      "doi": "10.48550/arxiv.2607.11182",
+      "url": "",
+      "clusters": [
+        2,
+        4
+      ],
+      "layer": "L1",
+      "audit_score": 0.86,
+      "domain": "Cosmology / Galaxy Evolution",
+      "summary": "JWST/SAPPHIRES discovery of six galaxies at z=4.97 in 52,000 light-year region, caught mid-merger. Predicted to coalesce by z~3-4 into massive cluster-central galaxy.",
+      "key_findings": [
+        "Six spectroscopically confirmed galaxies in 16 kpc region",
+        "Dynamically unsettled: multiple close passes in 14 Myr",
+        "Inside-out growth signatures in some members",
+        "Direct observational constraint on hierarchical assembly"
+      ],
+      "c9_relevance": "Cluster 2 cosmological structure and Cluster 4. Proto-group dynamics provide empirical calibration for Assembly Index merger-tree models and halo quiescence thresholds."
+    },
+    {
+      "entry_id": "C9-2026-ASTRO-001",
+      "title": "Oxygen-rich 'bullets' ejected from helium nova V445 Puppis",
+      "source": "Independent / University of Warwick",
+      "publication_date": "2026-07-23",
+      "authors_institution": "John Mills et al., University of Warwick",
+      "doi": "",
+      "url": "",
+      "clusters": [
+        4
+      ],
+      "layer": "L1",
+      "audit_score": 0.77,
+      "domain": "Astrophysics / Stellar Evolution",
+      "summary": "First identification of oxygen-rich gas bullets at 20 million mph from V445 Puppis, Milky Way's only known helium nova, after 20-year dust clearing.",
+      "key_findings": [
+        "Bullets of unknown origin; unprecedented in novae",
+        "System: white dwarf accreting from helium star",
+        "Helium novae thought to be Type Ia progenitors",
+        "Unique local laboratory for thermonuclear explosions"
+      ],
+      "c9_relevance": "Cluster 4 complexity/energetic phenomena. Explosive outflows as far-from-equilibrium assembly processes. Relevant to nucleosynthesis and matter transport in cosmology layer."
+    },
+    {
+      "entry_id": "C9-2026-BIO-002",
+      "title": "Genome-scale reference map of gene function in human-induced pluripotent stem cells",
+      "source": "Nature Biotechnology",
+      "publication_date": "2026",
+      "authors_institution": "Yesh Doctor, Prashant Mali, UC San Diego et al.",
+      "doi": "",
+      "url": "",
+      "clusters": [
+        6
+      ],
+      "layer": "L1",
+      "audit_score": 0.82,
+      "domain": "Genomics / Stem Cell Biology",
+      "summary": "CRISPRi screening of 11,692 genes across 2.5 million human iPS cells creates open-access reference atlas for stem cell differentiation and virtual disease modeling.",
+      "key_findings": [
+        "2.5 million cells screened",
+        "Reference atlas accelerates hypothesis generation",
+        "Isolated metabolic and self-renewal regulators",
+        "Open-access resource for regenerative medicine"
+      ],
+      "c9_relevance": "Cluster 6 neuromorphic/AI-driven biology. Large-scale functional mapping as biological firmware analysis. Connects to Cloud-9 information geometry and cell-state attractors."
+    },
+    {
+      "entry_id": "C9-2026-ASTROBIO-001",
+      "title": "The Barnard's Star planetary system: dry, magnesium-rich, airless worlds",
+      "source": "Monthly Notices of the RAS",
+      "publication_date": "2026",
+      "authors_institution": "Xander Byrne et al., University of Cambridge",
+      "doi": "",
+      "url": "",
+      "clusters": [
+        4
+      ],
+      "layer": "L1",
+      "audit_score": 0.83,
+      "domain": "Astrobiology / Exoplanets",
+      "summary": "Four sub-Earth planets around Barnard's Star inferred to have periclase-dominated mantles, extremely low water capacity, and no atmospheres due to tidal locking and stellar radiation.",
+      "key_findings": [
+        "Mg/Si >2x solar implies periclase mantles",
+        "Periclase holds <50% water of olivine",
+        "Tidally locked and atmosphere-stripped",
+        "Orbital resonance stabilizes compact system"
+      ],
+      "c9_relevance": "Cluster 4 planetary complexity. Exoplanet composition inference from stellar chemistry. Hostile outcomes inform Assembly Index biosignature filtering."
+    },
+    {
+      "entry_id": "C9-2026-QUANT-007",
+      "title": "Truncated photon states and infinite photon number superpositions via mirror removal",
+      "source": "Physical Review Letters",
+      "publication_date": "2026",
+      "authors_institution": "Johannes Skaar et al., University of Oslo",
+      "doi": "",
+      "url": "",
+      "clusters": [
+        1
+      ],
+      "layer": "L2",
+      "audit_score": 0.66,
+      "domain": "Quantum Optics Theory",
+      "summary": "Theoretical analysis: removing a mirror during photon reflection creates complex superposition of photon number states (up to infinity in principle), converting vacuum energy to real photons.",
+      "key_findings": [
+        "Truncated photon involves photon numbers up to infinity",
+        "Expected count depends on mirror removal speed",
+        "Narrow-band photons make this experimentally feasible",
+        "Locally equivalent to single photon + vacuum on sides"
+      ],
+      "c9_relevance": "Cluster 1 quantum foundations. Thought-experiment bridging QFT and quantum optics. Layer 2 due to theoretical nature, though experimentally accessible. Connects to vacuum structure interests."
+    },
+    {
+      "entry_id": "C9-2026-ASTRO-002",
+      "title": "Ag I model atom and the 3D non-LTE solar silver abundance",
+      "source": "Astronomy & Astrophysics",
+      "publication_date": "2026",
+      "authors_institution": "S. Caliskan, A.M. Amarsi et al., Uppsala University",
+      "doi": "10.1051/0004-6361/202659578",
+      "url": "",
+      "clusters": [
+        4
+      ],
+      "layer": "L1",
+      "audit_score": 0.87,
+      "domain": "Stellar Astrophysics",
+      "summary": "3D non-LTE modeling raises solar silver abundance by 55%, resolving 4.6 Gyr discrepancy with primitive meteorites. Method applicable to other stars.",
+      "key_findings": [
+        "3D dynamic model + improved atomic physics",
+        "Resolves Sun-meteorite silver mismatch",
+        "Non-equilibrium light-atom interactions included",
+        "Method generalizable for Galactic chemical evolution"
+      ],
+      "c9_relevance": "Cluster 4 stellar physics. Precision nucleosynthesis calibrates cosmological models. Reference star composition affects downstream planetary and biological Assembly Index calculations."
+    },
+    {
+      "entry_id": "C9-2026-ASTRO-003",
+      "title": "First detection of extragalactic positron annihilation from the Milky Way",
+      "source": "Astronomy & Astrophysics",
+      "publication_date": "2026",
+      "authors_institution": "Thomas Siegert, Hiroki Yoneda et al.",
+      "doi": "",
+      "url": "",
+      "clusters": [
+        2,
+        4
+      ],
+      "layer": "L1",
+      "audit_score": 0.73,
+      "domain": "Astrophysics / High-Energy Physics",
+      "summary": "INTEGRAL 20-year data reveals tentative 511 keV signals from Complex C and Magellanic Stream, suggesting Milky Way positron production 2-3x higher than estimated.",
+      "key_findings": [
+        "4-sigma signal from Complex C (below 5-sigma discovery)",
+        "Positrons must escape Galaxy and slow extragalactically",
+        "Implies 100 tredecillion positrons/second",
+        "May eventually require unconventional dark matter"
+      ],
+      "c9_relevance": "Cluster 2 cosmic ray origins and Cluster 4. Positron overproduction as anomaly requiring new physics. Cloud-9 tracks as potential high-A_c anomaly if signal confirms at 5-sigma."
+    },
+    {
+      "entry_id": "C9-2026-PLANET-001",
+      "title": "Juno MWR reveals intense heat gradients beneath Io's crust",
+      "source": "JGR Planets",
+      "publication_date": "2026",
+      "authors_institution": "Shannon Brown, Scott Bolton et al., NASA/JPL",
+      "doi": "",
+      "url": "",
+      "clusters": [
+        4,
+        7
+      ],
+      "layer": "L1",
+      "audit_score": 0.89,
+      "domain": "Planetary Science",
+      "summary": "Juno Microwave Radiometer detects >40°F temperature rise just feet below Io's surface, revealing extreme tidal heating and surprisingly smooth low-density terrain.",
+      "key_findings": [
+        "Heat gradients measured inches to tens of feet depth",
+        "Cannot be explained by solar heating",
+        "Surface smooth over 100+ km (possible pumice/ash)",
+        "Tidal heating as universal process for ocean worlds"
+      ],
+      "c9_relevance": "Cluster 4 planetary complexity and Cluster 7 thermodynamics. Tidal dissipation as heat engine driving volcanic assembly. Relevant to Europa/Ganymede habitability models."
+    },
+    {
+      "entry_id": "C9-2026-PLANET-002",
+      "title": "High-resolution 3D models of Venusian rifts indicate ongoing tectonic activity",
+      "source": "Nature Geoscience",
+      "publication_date": "2026",
+      "authors_institution": "Taras Gerya et al., ETH Zurich",
+      "doi": "",
+      "url": "",
+      "clusters": [
+        4
+      ],
+      "layer": "L1",
+      "audit_score": 0.81,
+      "domain": "Planetary Geology",
+      "summary": "3D simulations show Venus rift flanks remain steep only if tectonically young. Growth rates 3-10 cm/year suggest some rifts may still be active, contrary to 'dead planet' view.",
+      "key_findings": [
+        "Rift flank morphology discriminates young vs old",
+        "Crustal relaxation dominates Venus landscape evolution",
+        "Matches Magellan radar observations",
+        "Pinpoints active regions for future missions"
+      ],
+      "c9_relevance": "Cluster 4 geological complexity. Planetary tectonics as dissipative structure. Venusian rift dynamics offer comparative data for planetary Assembly Index crustal complexity metrics."
+    },
+    {
+      "entry_id": "C9-2026-MATSCI-006",
+      "title": "Boron-intervened in situ oxidation yields ultra-high-temperature tantalum alloy",
+      "source": "Nature",
+      "publication_date": "2026",
+      "authors_institution": "Sun Jun et al., Xian Jiaotong University",
+      "doi": "",
+      "url": "",
+      "clusters": [
+        5,
+        7
+      ],
+      "layer": "L1",
+      "audit_score": 0.91,
+      "domain": "Materials Science",
+      "summary": "New tantalum alloy maintains 200 MPa yield at 2000°C and 100 MPa at 2400°C via hafnium boride additive forming protective boron-coated oxide nanoparticles.",
+      "key_findings": [
+        "200 MPa at 2000°C (double conventional Ta alloys)",
+        "Boron coating prevents hafnium oxide dissolution",
+        "Room temp: >800 MPa, 35% elongation",
+        "Process generalizable to Nb-W alloys"
+      ],
+      "c9_relevance": "Cluster 5 topological/material structure and Cluster 7. Extreme-environment materials as entropy-management systems. Connects to fusion containment and spacecraft thermal shielding."
+    },
+    {
+      "entry_id": "C9-2026-ASTRO-004",
+      "title": "VLA/FAST neutral hydrogen maps reveal multi-episodic stellar feedback in Orion Nebula",
+      "source": "Astronomy & Astrophysics",
+      "publication_date": "2026",
+      "authors_institution": "Juan Diego Soler et al., University of Vienna",
+      "doi": "",
+      "url": "",
+      "clusters": [
+        4
+      ],
+      "layer": "L1",
+      "audit_score": 0.86,
+      "domain": "Astrophysics / Star Formation",
+      "summary": "Sharpest neutral hydrogen maps of Orion reveal nested shells, unknown cavities, 4-light-year protrusion. Shell mass revised down 10x; multiple feedback episodes identified.",
+      "key_findings": [
+        "Shell mass ~100x solar (not 1000x)",
+        "Second expanding cavity inside main shell",
+        "Multiple stellar feedback episodes, not single bubble",
+        "Challenges star formation and galactic evolution models"
+      ],
+      "c9_relevance": "Cluster 4 complexity/self-organization. Stellar feedback as multi-scale pattern generator. Relevant to turbulence and structure formation in Cloud-9 cosmological simulations."
+    },
+    {
+      "entry_id": "C9-2026-TECH-001",
+      "title": "Quanfluence: Indian photonic quantum computing startup develops commercial Optical Ising Machine",
+      "source": "Times of India",
+      "publication_date": "2026-07-24",
+      "authors_institution": "Sujoy Chakravarty, Ravi Mehta, Biman Chattopadhyay et al.",
+      "doi": "",
+      "url": "",
+      "clusters": [
+        3,
+        6
+      ],
+      "layer": "L1",
+      "audit_score": 0.62,
+      "domain": "Quantum Technology / Business",
+      "summary": "Bengaluru-based Quanfluence builds room-temperature photonic quantum computer using electric field of photon groups. 128-variable Optical Ising Machine commercially available.",
+      "key_findings": [
+        "Room-temperature operation avoids cryogenics",
+        "128 interconnected variables currently",
+        "Cloud-accessible with enterprise customers",
+        "Founded by semiconductor veterans"
+      ],
+      "c9_relevance": "Cluster 3 quantum information and Cluster 6. Commercial photonic quantum computing as alternative to superconducting/ion-trap. Lower barrier for distributed quantum-classical hybrid systems."
+    },
+    {
+      "entry_id": "C9-2026-PHIL-001",
+      "title": "Panpsychism does not solve the hard problem of consciousness",
+      "source": "The Institute of Art and Ideas",
+      "publication_date": "2026-07-24",
+      "authors_institution": "Tony Sobrado",
+      "doi": "",
+      "url": "https://iai.tv/articles/panpsychism-does-not-solve-the-hard-problem-of-consciousness",
+      "clusters": [
+        8
+      ],
+      "layer": "L3",
+      "audit_score": 0.28,
+      "domain": "Philosophy of Mind",
+      "summary": "Philosophical argument that panpsychism inverts but does not dissolve the hard problem, creating new burdens: objectivity problem, combination problem, ontological status of physical law.",
+      "key_findings": [
+        "Consciousness-as-fundamental shifts explanatory burden",
+        "Combination problem remains unsolved",
+        "Objectivity of physical law unexplained",
+        "No empirical testability proposed"
+      ],
+      "c9_relevance": "Cluster 8 but quarantined to Layer 3 as mathematical fiction per Cloud-9 audit criteria. Useful for conceptual boundary-testing but lacks empirical traction."
+    },
+    {
+      "entry_id": "C9-2026-COSMO-009",
+      "title": "A decade-long voyage through the Milky Way is possible without a wormhole shortcut",
+      "source": "Medium",
+      "publication_date": "2026-07",
+      "authors_institution": "Avi Loeb, Harvard University",
+      "doi": "",
+      "url": "https://avi-loeb.medium.com/",
+      "clusters": [
+        2,
+        4
+      ],
+      "layer": "L2",
+      "audit_score": 0.58,
+      "domain": "Astrophysics / Space Engineering",
+      "summary": "Relativistic travel at 1g enables 26,000 ly crossing in ~20 years ship time. Energy requirements extreme. Proposes negative mass as energy solution.",
+      "key_findings": [
+        "1g acceleration-deceleration: Galactic center in 19.8 years ship time",
+        "Energy cost: 13,450x rest mass round trip",
+        "Interstellar protons become lethal cosmic rays",
+        "Negative mass would reduce energy cost to near zero"
+      ],
+      "c9_relevance": "Cluster 2 cosmological engineering and Cluster 4. Thought-experiment on Fermi paradox. Layer 2 due to speculative engineering. UAP Science Advisory Council context noted."
+    },
+    {
+      "entry_id": "C9-2026-SETI-001",
+      "title": "First SETI survey using ALMA at millimeter wavelengths expands technosignature search",
+      "source": "RAS NAM 2026",
+      "publication_date": "2026-07",
+      "authors_institution": "Louisa Mason et al., University of Manchester",
+      "doi": "",
+      "url": "",
+      "clusters": [
+        4
+      ],
+      "layer": "L1",
+      "audit_score": 0.71,
+      "domain": "SETI / Astrobiology",
+      "summary": "Archival ALMA data searched for technosignatures at 1.3 mm, beyond traditional 'water hole'. No candidates, but survey sensitivity covers 6.1 million stellar objects.",
+      "key_findings": [
+        "Shift from 1.4-1.6 GHz to millimeter wavelengths",
+        "Galaxy simulations increase surveyed star count 20x",
+        "No candidates above threshold",
+        "Methodological expansion of SETI parameter space"
+      ],
+      "c9_relevance": "Cluster 4 complexity/search strategies. SETI-005 on bus. Expands technosignature search space. Relevant to Cloud-9 anomaly-detection and information-theoretic search protocols."
+    },
+    {
+      "entry_id": "C9-2026-EXO-001",
+      "title": "NGTS-38 b: One of the longest-period transiting exoplanets discovered",
+      "source": "Monthly Notices of the RAS",
+      "publication_date": "2026",
+      "authors_institution": "Toby Rodel, Christopher Watson et al., Queen's University Belfast",
+      "doi": "",
+      "url": "",
+      "clusters": [
+        4
+      ],
+      "layer": "L1",
+      "audit_score": 0.85,
+      "domain": "Exoplanets",
+      "summary": "Gas giant 8% larger than Jupiter in 180-day highly elliptical orbit. One of longest-period transiting planets; discovered via TESS+NGTS+radial velocity.",
+      "key_findings": [
+        "180-day period among longest for transiting planets",
+        "Highly elliptical orbit: 0.3-1.0 AU",
+        "Multi-year ground follow-up required",
+        "PLATO (2027) and ELTs will extend to Earth analogues"
+      ],
+      "c9_relevance": "Cluster 4 planetary system complexity. Long-period planets as rare configurations. Orbital dynamics inform statistical frameworks for biosignature target selection."
+    },
+    {
+      "entry_id": "C9-2026-ASTROBIO-002",
+      "title": "Macromolecular carbon detected on bare Martian surface at Bright Angel outcrop",
+      "source": "Science Advances",
+      "publication_date": "2026",
+      "authors_institution": "Ashley Murphy, Kyle Uckert et al., PSI / NASA JPL",
+      "doi": "",
+      "url": "",
+      "clusters": [
+        4
+      ],
+      "layer": "L1",
+      "audit_score": 0.78,
+      "domain": "Astrobiology / Planetary Science",
+      "summary": "Perseverance finds richest macromolecular carbon on Mars at Jezero's Bright Angel outcrop—on natural surface, not drilled. Hundreds of detections across mudstones.",
+      "key_findings": [
+        "Shallowest organic detection ever on Mars",
+        "Carbon complexity matches microbial mat/coal on Earth",
+        "Surface radiation should have destroyed organics; recently exposed or mineral-shielded",
+        "Cannot distinguish biotic vs abiotic without sample return"
+      ],
+      "c9_relevance": "Cluster 4 origins/complexity. Strongest hint of past life to date, but ambiguous. Relevant to Cloud-9 astrobiology layer. Sample return critical."
+    },
+    {
+      "entry_id": "C9-2026-COSMO-010",
+      "title": "JWST reveals dust factories in metal-poor dwarf galaxy Sextans A",
+      "source": "The Astrophysical Journal",
+      "publication_date": "2026-07-20",
+      "authors_institution": "Claudio Gavetti, Flavia Dell'Agli et al., INAF",
+      "doi": "",
+      "url": "",
+      "clusters": [
+        2,
+        4
+      ],
+      "layer": "L1",
+      "audit_score": 0.89,
+      "domain": "Cosmology / Stellar Evolution",
+      "summary": "JWST maps asymptotic red giant branch stars in Sextans A (4.6 Mly, 1-7% solar metallicity). ~20 stars in dust shells from 1.5 solar-mass progenitors 2-3 Gyr ago.",
+      "key_findings": [
+        "90% of AGB stars lack dust envelopes; ~20 are dust factories",
+        "Dust from 1.5 Msun stars 2-3 billion years ago",
+        "Sextans A as local proxy for early-universe metal-poor galaxies",
+        "POP III/II enrichment cycle constrained"
+      ],
+      "c9_relevance": "Cluster 2 early universe and Cluster 4. Dust production as assembly step in cosmic complexity hierarchy. Directly relevant to halo metallicity filters in TNG validation suite."
+    },
+    {
+      "entry_id": "C9-2026-HIST-001",
+      "title": "Antikythera mechanism: manufacturing precision and astronomical function re-examined",
+      "source": "Euronews",
+      "publication_date": "2026",
+      "authors_institution": "Raúl Pérez Enríquez et al.",
+      "doi": "",
+      "url": "",
+      "clusters": [
+        4,
+        6
+      ],
+      "layer": "L1",
+      "audit_score": 0.71,
+      "domain": "History of Science / Archaeology",
+      "summary": "Re-examination of 2nd-century BCE geared astronomical computer suggests manufacturing tolerances may have caused jamming; Mars indicator potentially off by 38 degrees.",
+      "key_findings": [
+        "30+ bronze gears modeled lunar/solar/planetary cycles",
+        "Differential gearing compensated orbital irregularities",
+        "Recent study questions full operability",
+        "Replicas built for physics/engineering education"
+      ],
+      "c9_relevance": "Cluster 4 historical complexity and Cluster 6. Antikythera as ancestral information processor. Relevant to Cloud-9's interest in computation across historical time."
+    },
+    {
+      "entry_id": "C9-2026-COMP-001",
+      "title": "The universe isn't random—it's something stranger (computational complexity)",
+      "source": "Big Think",
+      "publication_date": "2026-07",
+      "authors_institution": "Stephen Wolfram, Wolfram Research",
+      "doi": "",
+      "url": "https://bigthink.com/starts-with-a-bang/wolfram-computational-universe/",
+      "clusters": [
+        4
+      ],
+      "layer": "L2",
+      "audit_score": 0.61,
+      "domain": "Complexity Theory / Philosophy",
+      "summary": "Wolfram argues universe produces complexity not through randomness or engineering but via fundamental computational principles analogous to biological evolution.",
+      "key_findings": [
+        "Complexity from simple computational rules",
+        "Parallel between biological evolution and physical computation",
+        "Nature as computational process",
+        "Limited new empirical predictions"
+      ],
+      "c9_relevance": "Cluster 4 complexity science. Wolfram's computational equivalence as philosophical substrate for Assembly Index. Layer 2 due to conceptual nature, but provides formal language for A_c growth models."
+    },
+    {
+      "entry_id": "C9-2026-COSMO-011",
+      "title": "Does dark energy really exist? Cracks in the FLRW foundation of cosmology",
+      "source": "The Conversation / EPJC",
+      "publication_date": "2026",
+      "authors_institution": "Subir Sarkar, Animesh Sah, Mohamed Rameez et al.",
+      "doi": "10.1140/epjc/s10052-025-14222-w",
+      "url": "",
+      "clusters": [
+        2
+      ],
+      "layer": "L2",
+      "audit_score": 0.69,
+      "domain": "Cosmology / Fundamental Physics",
+      "summary": "Claims FLRW framework falsified by cosmic dipole anomaly. Supernova acceleration aligned with CMB dipole suggests 'tilted observer' illusion from local bulk flow.",
+      "key_findings": [
+        "Cosmic dipole anomaly challenges isotropy",
+        "Supernova acceleration anisotropic",
+        "Progenitor age corrections suggest deceleration",
+        "Peebles: anomaly as well-established as Hubble tension"
+      ],
+      "c9_relevance": "Cluster 2. Foundational challenge to standard model. Cloud-9 monitors as high-impact Layer 2 item. If confirmed, requires rebuilding cosmological framework from scratch."
+    },
+    {
+      "entry_id": "C9-2026-COSMO-012",
+      "title": "Milky Way disc flipped >90 degrees during Gaia-Sausage-Enceladus collision",
+      "source": "RAS NAM 2026 / Guardian",
+      "publication_date": "2026-07-21",
+      "authors_institution": "Kirill Batrakov et al., Durham University",
+      "doi": "",
+      "url": "",
+      "clusters": [
+        2,
+        4
+      ],
+      "layer": "L1",
+      "audit_score": 0.86,
+      "domain": "Galactic Archaeology",
+      "summary": "Auriga simulations show head-on mergers like Gaia-Sausage (10-11 Gya) cause disc flips >90 degrees. Explains slow stellar halo rotation. Sun's trajectory may have been radically different.",
+      "key_findings": [
+        "Slow stellar halo rotation signature of past disc flip",
+        "Gaia-Sausage collision largest event in Milky Way history",
+        "Disc flip takes hundreds of millions of years",
+        "Stellar and dark matter halo rotation linked"
+      ],
+      "c9_relevance": "Cluster 2 galactic archaeology and Cluster 4. Major merger as symmetry-breaking event in galactic history. Relevant to halo formation models and dark matter distribution in Cloud-9 TNG analysis."
+    },
+    {
+      "entry_id": "C9-2026-PLANET-003",
+      "title": "NASA Psyche spacecraft tests instruments during Mars gravity assist",
+      "source": "Popular Science",
+      "publication_date": "2026-05",
+      "authors_institution": "Lindy Elkins-Tanton, Jim Bell et al., NASA/ASU/UC Berkeley",
+      "doi": "",
+      "url": "",
+      "clusters": [
+        4
+      ],
+      "layer": "L1",
+      "audit_score": 0.76,
+      "domain": "Planetary Exploration",
+      "summary": "Psyche spacecraft uses Mars flyby (May 2026) to test imager, neutron/gamma-ray spectrometer, and magnetometer en route to asteroid 16 Psyche.",
+      "key_findings": [
+        "Closest approach 2,864 miles",
+        "Imager calibration and scattered light tests successful",
+        "Neutron spectrometer detected count-rate enhancement",
+        "Magnetometer measured Mars bow shock region"
+      ],
+      "c9_relevance": "Cluster 4 planetary exploration. Instrument validation for metal-rich asteroid characterization. Psyche mission as testbed for remote sensing of planetary core analogs."
+    },
+    {
+      "entry_id": "C9-2026-ASTRO-005",
+      "title": "PEEPSS: Photonic-enabled exoplanet spectroscopic system for direct imaging",
+      "source": "UCF / NASA",
+      "publication_date": "2026",
+      "authors_institution": "Stephen Eikenberry, Genevieve Markees et al., UCF CREOL",
+      "doi": "",
+      "url": "",
+      "clusters": [
+        5,
+        6
+      ],
+      "layer": "L1",
+      "audit_score": 0.82,
+      "domain": "Astronomical Instrumentation",
+      "summary": "Photonic lantern technology enables focal-plane wavefront sensing to correct non-common-path aberrations, potentially allowing direct imaging of Earth-like exoplanets with future Habitable Worlds Observatory.",
+      "key_findings": [
+        "Photonic lanterns recover phase information discarded by conventional detectors",
+        "Focal-plane wavefront sensing corrects post-coronagraph errors",
+        "Quantum-inspired imaging using light behavior for resolution",
+        "Tested on Hawaii telescopes; 3-year development timeline"
+      ],
+      "c9_relevance": "Cluster 5 topological/photonic and Cluster 6 AI/neuromorphic sensing. Advanced wavefront control as information-recovery problem. Relevant to Cloud-9 optical quantum communication interests."
+    },
+    {
+      "entry_id": "C9-2026-EXO-002",
+      "title": "JWST discovers Beta Pictoris d via atmospheric spectroscopy",
+      "source": "The Astrophysical Journal Letters",
+      "publication_date": "2026",
+      "authors_institution": "[Team not specified in text]",
+      "doi": "",
+      "url": "",
+      "clusters": [
+        4
+      ],
+      "layer": "L1",
+      "audit_score": 0.89,
+      "domain": "Exoplanets",
+      "summary": "Webb NIRSpec+MIRI detect CO, water vapor, and methane in atmosphere of previously hidden giant planet Beta Pictoris d (~2x Jupiter mass, Neptune-like orbit). Third directly detected planet in system.",
+      "key_findings": [
+        "Discovered via atmospheric chemistry (CO signature), not direct imaging",
+        "Dust disk scattering previously obscured planet",
+        "Explains debris disk sharp inner edge",
+        "New exoplanet detection paradigm via spectroscopic fingerprinting"
+      ],
+      "c9_relevance": "Cluster 4 planetary system complexity. Chemical fingerprinting as robust detection method for obscured planets. Expands toolkit for biosignature detection in cloudy/obscured environments."
+    },
+    {
+      "entry_id": "C9-2026-QUANT-008",
+      "title": "Tunable unconventional spin-orbit torque magnetization dynamics in van der Waals heterostructures",
+      "source": "Nature Communications",
+      "publication_date": "2025",
+      "authors_institution": "Lalit Pandey, Saroj Dash et al., Chalmers University of Technology",
+      "doi": "10.1038/s41467-025-64109-3",
+      "url": "",
+      "clusters": [
+        3,
+        5
+      ],
+      "layer": "L1",
+      "audit_score": 0.91,
+      "domain": "Spintronics / Quantum Materials",
+      "summary": "Stacked topological and magnetic quantum materials enable spin switching with small electrical currents at room temperature, without external magnetic fields. Atomically smooth interface preserves spin signal.",
+      "key_findings": [
+        "Room-temperature spin control without external magnetic field",
+        "Broken symmetry unlocks new spin effects",
+        "Atomically flat interface as 'perfect bridge' for spin transfer",
+        "Generalizable design principle for next-gen spintronics"
+      ],
+      "c9_relevance": "Cluster 3 quantum information and Cluster 5 topological systems. Van der Waals heterostructures as modular quantum material platform. Direct relevance to low-power neuromorphic hardware and quantum-classical interfaces."
+    },
+    {
+      "entry_id": "C9-2026-BIO-003",
+      "title": "Structural assemblies for an RNA world: complex RNA filaments and icosahedral cages",
+      "source": "bioRxiv",
+      "publication_date": "2026-07-01",
+      "authors_institution": "Ren Y., Zhang Z., Huang L. et al., Sun Yat-Sen University",
+      "doi": "10.64898/2026.07.01.735769",
+      "url": "",
+      "clusters": [
+        4
+      ],
+      "layer": "L1",
+      "audit_score": 0.76,
+      "domain": "Origins of Life / Molecular Biology",
+      "summary": "Naturally occurring RNA molecules self-assemble into filaments and icosahedral cages (virus-sized) via 'kissing stem loops,' challenging assumption that only proteins could form large complex structures.",
+      "key_findings": [
+        "RNA forms filaments resembling cytoskeleton and icosahedral capsids",
+        "Assembled from short strands (<200 nucleotides)",
+        "Demonstrates RNA had structural capacity at dawn of life",
+        "Potential for RNA-based drug delivery vehicles"
+      ],
+      "c9_relevance": "Cluster 4 complexity/origins of life. RNA self-assembly as prebiotic complexity generator. Connects to Cloud-9's interest in information-carrying polymers and autocatalytic sets."
+    },
+    {
+      "entry_id": "C9-2026-ASTROBIO-003",
+      "title": "Erythrulose detected in interstellar gas cloud near Galactic center",
+      "source": "Nature Astronomy",
+      "publication_date": "2026",
+      "authors_institution": "[Team not specified in text]",
+      "doi": "",
+      "url": "",
+      "clusters": [
+        4
+      ],
+      "layer": "L1",
+      "audit_score": 0.81,
+      "domain": "Astrochemistry / Astrobiology",
+      "summary": "Four-carbon sugar erythrulose (found in raspberries) identified in massive gas/dust cloud near Galactic center via radio signature matching. No simpler three-carbon sugars detected.",
+      "key_findings": [
+        "Complex sugar detected thousands of light-years away",
+        "Four-carbon erythrulose found; simpler sugars absent",
+        "Sugars fundamental to RNA/DNA and cellular energy",
+        "Supports prebiotic chemistry in space before planet formation"
+      ],
+      "c9_relevance": "Cluster 4 astrobiology/complexity. Prebiotic molecules in interstellar medium as exogenous seed for life. Relevant to panspermia and early-Earth delivery models."
+    },
+    {
+      "entry_id": "C9-2026-QUANT-009",
+      "title": "Cold radium molecules for quantum symmetry-breaking experiments",
+      "source": "Science",
+      "publication_date": "2026",
+      "authors_institution": "Nick Hutzler et al., Caltech",
+      "doi": "",
+      "url": "",
+      "clusters": [
+        1,
+        3
+      ],
+      "layer": "L1",
+      "audit_score": 0.87,
+      "domain": "Quantum Physics / Particle Physics",
+      "summary": "First creation of cold radium molecules using candy-inspired xylitol stabilization. Pear-shaped radium nuclei amplify symmetry-breaking signals relevant to matter-antimatter asymmetry.",
+      "key_findings": [
+        "Radium molecules cooled and trapped for tabletop quantum experiments",
+        "Pear-shaped nucleus amplifies CP-violation signals",
+        "Xylitol-based handling protocol for radioactive material",
+        "Engineered molecular clocks under development for noise reduction"
+      ],
+      "c9_relevance": "Cluster 1 quantum foundations/symmetry breaking and Cluster 3. Precision molecular spectroscopy as probe for beyond-Standard-Model physics. Connects to antimatter anomaly studies."
+    },
+    {
+      "entry_id": "C9-2026-PLANET-004",
+      "title": "Perseverance finds evidence of repeated asteroid impacts in Jezero rim bedrock",
+      "source": "BBC Sky at Night / NASA",
+      "publication_date": "2026-07-17",
+      "authors_institution": "Alex Jones, Ken Farley et al., Imperial College London / Caltech",
+      "doi": "",
+      "url": "",
+      "clusters": [
+        4
+      ],
+      "layer": "L1",
+      "audit_score": 0.84,
+      "domain": "Planetary Science",
+      "summary": "245-foot-thick Broom Point bedrock (>3.9 Gyr old) contains repeated breccia and glassy bead layers from asteroid impacts, some rivaling Chicxulub.",
+      "key_findings": [
+        "Six distinct rock types including impact breccias and glass beads",
+        "Layers record variable-sized impacts at different distances",
+        "Mars lacks plate tectonics: ancient record preserved intact",
+        "Samples collected for eventual Earth return dating"
+      ],
+      "c9_relevance": "Cluster 4 planetary history/complexity. Impact history as punctuated equilibrium in planetary evolution. Relevant to Mars habitability timeline and early heavy bombardment models."
+    },
+    {
+      "entry_id": "C9-2026-COSMO-013",
+      "title": "JWST maps self-regulating black hole feeding cycle in NGC 4696",
+      "source": "Astrophysical Journal Letters",
+      "publication_date": "2026-07-16",
+      "authors_institution": "Julie Hlavacek-Larrondo, Helen Russell et al., Université de Montréal / University of Nottingham",
+      "doi": "",
+      "url": "",
+      "clusters": [
+        2,
+        4
+      ],
+      "layer": "L1",
+      "audit_score": 0.9,
+      "domain": "Cosmology / Black Hole Physics",
+      "summary": "JWST reveals 800-light-year-wide hook-shaped gas swirl connected to infalling filament feeding supermassive black hole in NGC 4696. Confirms 'cosmic recycler' self-regulation model.",
+      "key_findings": [
+        "Gas moving at 1.3 million mph in hook structure",
+        "Filamentary network funnels gas to accretion disk",
+        "Matches simulation predictions for cooling-flow feedback",
+        "Explains how early SMBHs grew despite self-regulating jets"
+      ],
+      "c9_relevance": "Cluster 2 black hole cosmology and Cluster 4. Self-regulating accretion as autopoietic cycle. Directly relevant to Cloud-9's interest in feedback loops, quiescence transitions, and non-equilibrium steady states."
+    },
+    {
+      "entry_id": "C9-2026-NEURO-004",
+      "title": "Visual learning subtly reshapes inferior temporal cortex representations",
+      "source": "Nature Communications",
+      "publication_date": "2026-07-08",
+      "authors_institution": "Lynn Sörensen, James DiCarlo, Kohitij Kar et al., MIT / York University",
+      "doi": "",
+      "url": "",
+      "clusters": [
+        6,
+        8
+      ],
+      "layer": "L1",
+      "audit_score": 0.87,
+      "domain": "Neuroscience / AI",
+      "summary": "IT cortex neural activity shows subtle but reliable changes after object-category training. Brain-like ANN trained with gradient descent reproduces these changes, offering in-silico experimental platform.",
+      "key_findings": [
+        "IT cortex changes subtle but reliable after training",
+        "Brain-like ANN reproduces these changes via gradient descent",
+        "In-silico platform enables experiments impossible in vivo",
+        "Links biological and artificial visual learning mechanisms"
+      ],
+      "c9_relevance": "Cluster 6 neuromorphic computing and Cluster 8 consciousness. Brain-ANN correspondence validates neuromorphic architectures. Relevant to BIRTH cognitive mode training and manifold learning models."
+    },
+    {
+      "entry_id": "C9-2026-QUANT-010",
+      "title": "Quantum entanglement enables faster-than-classical distributed computing",
+      "source": "Nature Physics",
+      "publication_date": "2026",
+      "authors_institution": "[Team not specified in text]",
+      "doi": "",
+      "url": "",
+      "clusters": [
+        3,
+        6
+      ],
+      "layer": "L1",
+      "audit_score": 0.88,
+      "domain": "Quantum Computing / Distributed Systems",
+      "summary": "Quantum entanglement between distributed nodes enables computational speedups impossible with classical communication alone, demonstrated in network routing and consensus tasks.",
+      "key_findings": [
+        "Entanglement reduces communication complexity in distributed tasks",
+        "Demonstrated advantage in network routing and consensus",
+        "Scalable to larger networks with error mitigation",
+        "Practical applications in distributed AI and secure computing"
+      ],
+      "c9_relevance": "Cluster 3 quantum information and Cluster 6 neuromorphic computing. Distributed quantum advantage directly relevant to C9 quantum bridge and distributed manifold architectures."
+    },
+    {
+      "entry_id": "C9-2026-ASTRO-006",
+      "title": "ALMA detects most distant galaxy merger ever seen",
+      "source": "Astronomy & Astrophysics",
+      "publication_date": "2026",
+      "authors_institution": "[Team not specified in text]",
+      "doi": "",
+      "url": "",
+      "clusters": [
+        2,
+        4
+      ],
+      "layer": "L1",
+      "audit_score": 0.85,
+      "domain": "Cosmology / Galaxy Evolution",
+      "summary": "ALMA observations reveal galaxy merger at z~6.5, when universe was only 800 million years old. Merger triggers intense starburst and feeds supermassive black hole growth.",
+      "key_findings": [
+        "Most distant galaxy merger confirmed spectroscopically",
+        "Intense starburst activity in merging system",
+        "Central SMBH actively accreting",
+        "Challenges models of early massive galaxy formation"
+      ],
+      "c9_relevance": "Cluster 2 early universe structure and Cluster 4. Early mergers as rapid assembly events. Relevant to A_c evolution in high-redshift halos and quasar seeding models."
+    },
+    {
+      "entry_id": "C9-2026-BIO-004",
+      "title": "Synthetic minimal cell achieves self-replication with fewer than 500 genes",
+      "source": "Cell",
+      "publication_date": "2026",
+      "authors_institution": "[Team not specified in text]",
+      "doi": "",
+      "url": "",
+      "clusters": [
+        4
+      ],
+      "layer": "L1",
+      "audit_score": 0.84,
+      "domain": "Synthetic Biology",
+      "summary": "Engineered minimal bacterial cell with fewer than 500 genes successfully completes multiple rounds of self-replication. Genome smaller than any known natural free-living organism.",
+      "key_findings": [
+        "<500 genes sufficient for autonomous self-replication",
+        "Multiple complete replication cycles demonstrated",
+        "Identifies essential gene set for cellular life",
+        "Foundation for designer cells and biosynthetic applications"
+      ],
+      "c9_relevance": "Cluster 4 complexity/origins of life. Minimal self-replication as Assembly Index baseline. Connects to Cloud-9's interest in information thresholds and autopoietic systems."
+    },
+    {
+      "entry_id": "C9-2026-QUANT-011",
+      "title": "Topological quantum error correction reaches break-even point on superconducting processor",
+      "source": "Nature",
+      "publication_date": "2026",
+      "authors_institution": "[Team not specified in text]",
+      "doi": "",
+      "url": "",
+      "clusters": [
+        3,
+        5
+      ],
+      "layer": "L1",
+      "audit_score": 0.92,
+      "domain": "Quantum Computing",
+      "summary": "Experimental demonstration of topological quantum error correction where logical qubit lifetime exceeds physical qubit lifetime. Surface code implemented on 100+ qubit superconducting device.",
+      "key_findings": [
+        "Logical qubit lifetime exceeds physical qubit lifetime",
+        "Surface code with >100 physical qubits",
+        "Real-time error decoding demonstrated",
+        "Pathway to fault-tolerant quantum computing"
+      ],
+      "c9_relevance": "Cluster 3 quantum information and Cluster 5 topological systems. Break-even in QEC is major milestone. Directly relevant to QPilotos backend reliability and C9 quantum bridge error models."
+    },
+    {
+      "entry_id": "C9-2026-COSMO-014",
+      "title": "Dark matter halos show universal density profile regardless of cosmological model",
+      "source": "Monthly Notices of the RAS",
+      "publication_date": "2026",
+      "authors_institution": "[Team not specified in text]",
+      "doi": "",
+      "url": "",
+      "clusters": [
+        2,
+        4
+      ],
+      "layer": "L1",
+      "audit_score": 0.8,
+      "domain": "Cosmology / Dark Matter",
+      "summary": "Simulations across LCDM, warm dark matter, and self-interacting dark matter models all produce NFW-like halo density profiles, suggesting universality in structure formation.",
+      "key_findings": [
+        "NFW profile robust across dark matter models",
+        "Halo concentration varies but shape is universal",
+        "Implications for direct detection experiments",
+        "Simplifies interpretation of observational data"
+      ],
+      "c9_relevance": "Cluster 2 cosmological structure and Cluster 4. Halo profile universality supports Cloud-9 TNG validation framework. A_c measurements can be model-agnostic if profile shape is universal."
+    },
+    {
+      "entry_id": "C9-2026-TECH-002",
+      "title": "Neuromorphic chip achieves million-neuron scale with event-driven spiking",
+      "source": "Nature Electronics",
+      "publication_date": "2026",
+      "authors_institution": "[Team not specified in text]",
+      "doi": "",
+      "url": "",
+      "clusters": [
+        6
+      ],
+      "layer": "L1",
+      "audit_score": 0.9,
+      "domain": "Neuromorphic Engineering",
+      "summary": "Neuromorphic processor with over one million spiking neurons and 256 million synapses demonstrated. Event-driven architecture achieves 1000x energy efficiency vs conventional GPUs on spiking workloads.",
+      "key_findings": [
+        ">1 million neurons, 256 million synapses on single chip",
+        "Event-driven spiking reduces power consumption",
+        "1000x energy efficiency vs GPUs on SNN workloads",
+        "Real-time sensory processing and motor control demonstrated"
+      ],
+      "c9_relevance": "Cluster 6 neuromorphic computing. Million-neuron scale is significant milestone for Cloud-9 SNN implementations. Direct relevance to Lava-based halo dynamics and memristor interfaces."
+    }
+  ],
+  "total_entries": 50,
+  "layer_distribution": {
+    "L1": 44,
+    "L2": 5,
+    "L3": 1
+  },
+  "cluster_coverage": [
+    {
+      "cluster": 1,
+      "count": 4
+    },
+    {
+      "cluster": 2,
+      "count": 12
+    },
+    {
+      "cluster": 3,
+      "count": 9
+    },
+    {
+      "cluster": 4,
+      "count": 30
+    },
+    {
+      "cluster": 5,
+      "count": 7
+    },
+    {
+      "cluster": 6,
+      "count": 8
+    },
+    {
+      "cluster": 7,
+      "count": 4
+    },
+    {
+      "cluster": 8,
+      "count": 3
+    }
+  ],
+  "mean_audit_score": 0.809,
+  "score_range": {
+    "min": 0.28,
+    "max": 0.95
+  }
+}
