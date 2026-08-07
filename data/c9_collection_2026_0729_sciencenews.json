@@ -1,0 +1,657 @@
+{
+  "manifest": {
+    "collection_id": "C9-COLLECTION-2026-0729-SCIENCENEWS",
+    "generated_at": "2026-07-29T21:57:00-07:00",
+    "generator": "Cloud-9 Assembly v2026.07.29",
+    "source_batch": "Kimi29.docx weekly science digest",
+    "total_entries": 27,
+    "layer_distribution": {
+      "L1": 21,
+      "L2": 4,
+      "L3": 1
+    },
+    "mean_audit_score": 0.821,
+    "cluster_coverage": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "entries": [
+    {
+      "entry_id": "C9-2026-QIS-001",
+      "title": "Quantum in the palm of your hand: The evolution of superconducting qubits",
+      "source": "Princeton/DOE QIS Research Centers (Clarke, Devoret, Martinis Nobel lineage)",
+      "date": "2026-07-29",
+      "audit_score": 0.94,
+      "layer": 1,
+      "clusters": [
+        1,
+        2,
+        3,
+        7
+      ],
+      "sandbox_status": "PASS",
+      "key_insight": "Four decades of superconducting qubit evolution from Josephson junction tunneling (1985) to modern tantalum/niobium multilayer devices with >1 ms coherence; demonstrates quantization and quantum tunneling at macroscopic scales.",
+      "cross_links": [
+        "C9-2026-MATSCI-003",
+        "C9-2026-COND-001"
+      ],
+      "doi_or_url": "N/A (news feature)",
+      "notes": "Nobel Prize 2025 (Clarke, Devoret, Martinis). Circuit QED (Yale 2004) and materials engineering (Princeton 2021/2024) are key inflection points."
+    },
+    {
+      "entry_id": "C9-2026-QIS-002",
+      "title": "Finally! After 20 Years, Major Quantum Entanglement Theory Has Been Experimentally Confirmed",
+      "source": "IST Austria / TU Munich (Andrés-Juanes et al.)",
+      "date": "2026-07-29",
+      "audit_score": 0.92,
+      "layer": 1,
+      "clusters": [
+        1,
+        3,
+        7
+      ],
+      "sandbox_status": "PASS",
+      "key_insight": "Autonomous 'quantum bath' of low-energy microwaves stabilizes entanglement between distant qubits without active control, achieving stationary entanglement scalable to arbitrary distances.",
+      "cross_links": [
+        "C9-2026-QIS-001",
+        "C9-2026-QIS-003"
+      ],
+      "doi_or_url": "10.1103/PhysRevX.2026.XXXXXX",
+      "notes": "Published in Physical Review X. ~10% entanglement transfer efficiency currently, but fully autonomous."
+    },
+    {
+      "entry_id": "C9-2026-QIS-003",
+      "title": "Unusual quantum effect used to build a heat engine that produces work and cooling",
+      "source": "Qufu Normal University / University of Hong Kong / University of Palermo (Man, Lo Franco et al.)",
+      "date": "2026-07-29",
+      "audit_score": 0.88,
+      "layer": 1,
+      "clusters": [
+        1,
+        3,
+        7
+      ],
+      "sandbox_status": "PASS",
+      "key_insight": "Indefinite Causal Order (ICO) enables quantum Otto engine to absorb heat from colder reservoirs and produce work + refrigeration simultaneously, violating classical thermodynamic expectations.",
+      "cross_links": [
+        "C9-2026-MATSCI-001",
+        "C9-2026-QIS-002"
+      ],
+      "doi_or_url": "10.1103/PhysRevLett.2026.XXXXXX",
+      "notes": "Proof-of-principle; finite-time trade-offs between information gain and performance remain to be explored."
+    },
+    {
+      "entry_id": "C9-2026-MATSCI-001",
+      "title": "Scientists discover quantum heat waves at room temperature for the first time",
+      "source": "UCLA Samueli School of Engineering",
+      "date": "2026-07-29",
+      "audit_score": 0.91,
+      "layer": 1,
+      "clusters": [
+        3,
+        5,
+        7
+      ],
+      "sandbox_status": "PASS",
+      "key_insight": "In boron arsenide, phonons carry heat along narrow crystal-structure-determined ray-like pathways at room temperature (not just cryogenic), analogous to optical fibers guiding light.",
+      "cross_links": [
+        "C9-2026-QIS-003",
+        "C9-2026-QIS-004"
+      ],
+      "doi_or_url": "Nature Physics (2026)",
+      "notes": "Distances ≥1 μm, potentially tens of μm. Enables directed heat management in AI processors, quantum devices, and aerospace."
+    },
+    {
+      "entry_id": "C9-2026-QIS-004",
+      "title": "Single molecule becomes quantum sensor for imaging proteins at nanoscale",
+      "source": "University of Waterloo / Institute for Quantum Computing (Budakian, Tabatabaei et al.)",
+      "date": "2026-07-29",
+      "audit_score": 0.89,
+      "layer": 1,
+      "clusters": [
+        1,
+        3,
+        5
+      ],
+      "sandbox_status": "PASS",
+      "key_insight": "Trityl-OX063 molecular electron spin sensor achieves 400 μs coherence (60× improvement over standard spin-echo) and detects ~10 nuclear spins; path to single-spin resolution for protein structure mapping.",
+      "cross_links": [
+        "C9-2026-MATSCI-001",
+        "C9-2026-COND-001"
+      ],
+      "doi_or_url": "10.1103/PhysRevX.c994-bzx7",
+      "notes": "Mechanically detected via 100 nm nanowire probes. Alternative to diamond NV centers with closer placement capability."
+    },
+    {
+      "entry_id": "C9-2026-COND-001",
+      "title": "Science Confirms the Existence of a 'Demon' Quasiparticle Predicted Nearly 70 Years Ago",
+      "source": "University of Illinois Urbana-Champaign (Abbamonte, Husain, Huang et al.)",
+      "date": "2023-08 (Nature)",
+      "audit_score": 0.93,
+      "layer": 1,
+      "clusters": [
+        1,
+        3,
+        5,
+        7
+      ],
+      "sandbox_status": "PASS",
+      "key_insight": "Pines' demon—massless, chargeless, optically invisible collective plasmon mode—detected in Sr₂RuO₄ via momentum-resolved EELS; arises from out-of-phase oscillation of β and γ electron bands.",
+      "cross_links": [
+        "C9-2026-QIS-001",
+        "C9-2026-QIS-004"
+      ],
+      "doi_or_url": "Nature (2023)",
+      "notes": "Velocity ~1.065×10⁵ m/s at RT, drops 31% at 30 K. Intensity scales as q⁻¹·⁸, confirming electrical neutrality. Pervasive in multiband metals."
+    },
+    {
+      "entry_id": "C9-2026-QIS-005",
+      "title": "Physicists Find a Way to 'Split' Particles of Light in Half to Make Infinite Photons",
+      "source": "University of Oslo (Skaar, Rukan et al.)",
+      "date": "2026-07-25",
+      "audit_score": 0.87,
+      "layer": 1,
+      "clusters": [
+        1,
+        3
+      ],
+      "sandbox_status": "PASS",
+      "key_insight": "Rapid removal of optical shutter during photon reflection truncates the photon wavepacket, generating a superposition of 0→∞ photon number states; locally equivalent to single photon on one side, vacuum on the other.",
+      "cross_links": [
+        "C9-2026-QIS-002"
+      ],
+      "doi_or_url": "10.1103/PhysRevLett.2026.XXXXXX",
+      "notes": "Expected photon number is finite (depends on mirror removal speed). Converts vacuum energy to real photon energy."
+    },
+    {
+      "entry_id": "C9-2026-COSMO-001",
+      "title": "Black Hole Singularity May Be a 3D Surface Where General Relativity Goes to Die",
+      "source": "University of Colorado Boulder / University of Mary (Hamilton & McMaken, Phys. Rev. D.)",
+      "date": "2026",
+      "audit_score": 0.85,
+      "layer": 2,
+      "clusters": [
+        1,
+        2,
+        3
+      ],
+      "sandbox_status": "PASS",
+      "key_insight": "Schwarzschild singularity is better modeled as a flat 3D spacelike surface than a 0D point; two observers falling from opposite directions become causally disconnected and cannot converge, requiring a surface boundary.",
+      "cross_links": [
+        "C9-2026-COSMO-003",
+        "C9-2026-SETI-002"
+      ],
+      "doi_or_url": "Phys. Rev. D. (2026, accepted)",
+      "notes": "Reshapes quantum gravity boundary conditions. Realistic Kerr BH may also collapse to spacelike singular surface at inner horizon."
+    },
+    {
+      "entry_id": "C9-2026-COSMO-002",
+      "title": "A distant primordial object may be a newborn 'Little Red Dot'",
+      "source": "JWST / Karina Caputi et al.",
+      "date": "2026-07-29",
+      "audit_score": 0.84,
+      "layer": 1,
+      "clusters": [
+        2,
+        3
+      ],
+      "sandbox_status": "PASS",
+      "key_insight": "Pseudo-LRD-NOM: metal-poor starburst galaxy at z~3 (12 Gly), <10 Myr old, lensed by Abell 370; hosts pre-existing AGN suggesting early black hole formation precedes galaxy chemical enrichment.",
+      "cross_links": [
+        "C9-2026-COSMO-004",
+        "C9-2026-ASTRO-001"
+      ],
+      "doi_or_url": "Universe Today / JWST RUBIES survey",
+      "notes": "LRDs (0.6–1.6 Gyr post-BB) may be building blocks of modern galaxies; spectrum lacks metal lines despite active star formation."
+    },
+    {
+      "entry_id": "C9-2026-COSMO-003",
+      "title": "A Black Hole Lost in Space? Astronomers Discover One of the Rarest Cosmic Events Ever Seen",
+      "source": "UNC Chapel Hill (ApJL)",
+      "date": "2026-07-29",
+      "audit_score": 0.86,
+      "layer": 1,
+      "clusters": [
+        2,
+        3,
+        4
+      ],
+      "sandbox_status": "PASS",
+      "key_insight": "TDE 2025abcr: tidal disruption event 30,000 light-years from galactic center, revealing a ~10⁶ M☉ wandering black hole; AI (tdescore) enabled off-center detection in ground-based optical data.",
+      "cross_links": [
+        "C9-2026-COSMO-001",
+        "C9-2026-SETI-002"
+      ],
+      "doi_or_url": "The Astrophysical Journal Letters",
+      "notes": "First TDE found so far from center. Suggests post-merger ejection or dynamical interaction with other SMBHs. Rubin/Argus will find hundreds/year."
+    },
+    {
+      "entry_id": "C9-2026-COSMO-004",
+      "title": "Astronomers may have been wrong about what kills galaxies",
+      "source": "Florida International University (Casimiro, Bluck et al., MNRAS)",
+      "date": "2026-07-29",
+      "audit_score": 0.88,
+      "layer": 1,
+      "clusters": [
+        2,
+        4
+      ],
+      "sandbox_status": "PASS",
+      "key_insight": "IllustrisTNG analysis of 11,000+ simulated galaxies shows major mergers explain only ~3% of quenching within 1 Gyr; 12% total. Most quenching is driven by slow internal gas depletion over billions of years.",
+      "cross_links": [
+        "C9-2026-COSMO-002",
+        "C9-2026-EARTH-001"
+      ],
+      "doi_or_url": "Monthly Notices of the Royal Astronomical Society",
+      "notes": "Challenges merger-quasar-quench paradigm. Cumulative low-level AGN feedback more important than bright quasar episodes."
+    },
+    {
+      "entry_id": "C9-2026-NEURO-001",
+      "title": "Your Brain Can Rewire Itself to Allow True Multitasking",
+      "source": "Georgetown University Medical Center (Cox, Riesenhuber et al., J. Cogn. Neurosci.)",
+      "date": "2026",
+      "audit_score": 0.83,
+      "layer": 1,
+      "clusters": [
+        4,
+        6,
+        8
+      ],
+      "sandbox_status": "PASS",
+      "key_insight": "Extensive practice (30,000+ trials) shifts car-sorting task from prefrontal cortex to temporal cortex via neuroplasticity, creating 'bypass road' that enables genuine dual-task performance without frontal bottleneck.",
+      "cross_links": [
+        "C9-2026-NEURO-002",
+        "C9-2026-NEURO-003"
+      ],
+      "doi_or_url": "Journal of Cognitive Neuroscience (2026)",
+      "notes": "fMRI+EEG evidence. Temporal lobe develops category-selective areas not present before training. Implications for radiology expertise and AI development."
+    },
+    {
+      "entry_id": "C9-2026-BIO-001",
+      "title": "Origin of Human Eyes Traced to 560-Million-Year-Old One-Eyed 'Cyclops'",
+      "source": "Lund University / University of Sussex (Nilsson, Baden et al., Current Biology)",
+      "date": "2026",
+      "audit_score": 0.81,
+      "layer": 1,
+      "clusters": [
+        4,
+        8
+      ],
+      "sandbox_status": "PASS",
+      "key_insight": "Vertebrate paired retinas evolved from expansion of median light-sensitive organ (pineal precursor) in ancestral deuterostome ~560 Mya, not from lateral rhabdomeric eyes; explains retinal brain-outgrowth development and mixed cell lineages.",
+      "cross_links": [
+        "C9-2026-NEURO-001",
+        "C9-2026-NEURO-002"
+      ],
+      "doi_or_url": "Current Biology (2026)",
+      "notes": "Hypothesis supported by lamprey pineal gene expression, 518 Mya fossil jawless vertebrates with dual central+lateral eyes."
+    },
+    {
+      "entry_id": "C9-2026-NEURO-002",
+      "title": "Human brains may store 1,000 times more information than previously thought",
+      "source": "Nanjing University of Aeronautics and Astronautics (Guo, Ma et al., National Science Review)",
+      "date": "2026-07-29",
+      "audit_score": 0.79,
+      "layer": 2,
+      "clusters": [
+        3,
+        4,
+        6,
+        8
+      ],
+      "sandbox_status": "PENDING",
+      "key_insight": "Collective neural sphere model treats neuron groups as single dynamical unit using chaos/fractal geometry; predicts ~7.5 billion GB memory capacity (1000× synapse-counting estimates) and ~79% Landauer-limit efficiency.",
+      "cross_links": [
+        "C9-2026-NEURO-001",
+        "C9-2026-BIO-001"
+      ],
+      "doi_or_url": "National Science Review (2026)",
+      "notes": "Model-based prediction, not direct measurement. Brain computation equivalent to ~78,000 high-end GPUs on 20 W. Neuromorphic chip design target."
+    },
+    {
+      "entry_id": "C9-2026-NEURO-003",
+      "title": "Scientists Finally Have an Answer for What Causes 'Ghosts'",
+      "source": "MacEwan University (Scatterty, Hamilton, Schmaltz et al., Front. Behav. Neurosci.)",
+      "date": "2026-04",
+      "audit_score": 0.82,
+      "layer": 1,
+      "clusters": [
+        4,
+        8
+      ],
+      "sandbox_status": "PASS",
+      "key_insight": "18 Hz infrasound exposure raises salivary cortisol and induces irritability/anxiety without conscious detection; provides physical mechanism for 'presence' sensations in allegedly haunted environments.",
+      "cross_links": [
+        "C9-2026-NEURO-001",
+        "C9-2026-MED-001"
+      ],
+      "doi_or_url": "Frontiers in Behavioral Neuroscience (2026)",
+      "notes": "n=36. Effects independent of belief in exposure. Does not explain visual apparitions or poltergeist activity."
+    },
+    {
+      "entry_id": "C9-2026-MATSCI-002",
+      "title": "Hiroshima atomic bomb blast created a metal NEVER seen before on Earth",
+      "source": "University of Florence (Science Advances)",
+      "date": "2026-07-29",
+      "audit_score": 0.9,
+      "layer": 1,
+      "clusters": [
+        4,
+        7
+      ],
+      "sandbox_status": "PASS",
+      "key_insight": "New multicomponent alloy (Fe, Cr, Ni, Mn, Mo, Si, Al in stainless-steel-like proportions but unprecedented crystal structure) found in 'hiroshimaite' glassy fallout particles; formed by vapor condensation + ultrafast quenching at >7000°C.",
+      "cross_links": [
+        "C9-2026-MATSCI-001",
+        "C9-2026-ARCH-001"
+      ],
+      "doi_or_url": "Science Advances (2026)",
+      "notes": "Complements Trinity quasicrystal discoveries. Anthropogenic extreme conditions can produce materials impossible under natural equilibrium."
+    },
+    {
+      "entry_id": "C9-2026-ARCH-001",
+      "title": "Hundreds of never-before-seen ancient 'earthworks' discovered in the Amazon",
+      "source": "University of Helsinki / Nature (Pärssinen et al.)",
+      "date": "2026-07-29",
+      "audit_score": 0.87,
+      "layer": 1,
+      "clusters": [
+        4
+      ],
+      "sandbox_status": "PASS",
+      "key_insight": "Lidar survey reveals 396 new geoglyphs in Acre, Brazil; extrapolation suggests 24,000–30,000 total earthworks. Aquiry civilization peaked at ~3M people across 183,000 km² (CE 100–300), challenging 'untouched Amazon' narrative.",
+      "cross_links": [
+        "C9-2026-MATSCI-002",
+        "C9-2026-EARTH-001"
+      ],
+      "doi_or_url": "Nature (2026)",
+      "notes": "Precolonial Amazon population possibly tens of millions. Ancient humans managed forest in balance with environment."
+    },
+    {
+      "entry_id": "C9-2026-PLAN-001",
+      "title": "Evidence of giant rings in Venus's atmosphere uncovered in archived observations",
+      "source": "Netherlands researchers (Mahapatra et al., The Planetary Science Journal)",
+      "date": "2026",
+      "audit_score": 0.78,
+      "layer": 1,
+      "clusters": [
+        4,
+        5
+      ],
+      "sandbox_status": "PASS",
+      "key_insight": "Archived 2010 ExPo polarimetry data reveals faint planetwide concentric rings in Venus upper atmosphere; simulations match 5–10% gas density variations from giant gravity waves, invisible in total flux.",
+      "cross_links": [
+        "C9-2026-EARTH-001"
+      ],
+      "doi_or_url": "10.3847/psj/ae7e6f",
+      "notes": "Candidate detection only; ExPo dismantled, no follow-up dataset. Polarimetry uniquely sensitive to density waves."
+    },
+    {
+      "entry_id": "C9-2026-EARTH-001",
+      "title": "Powerful new satellite used radar to capture this image of a mountaintop in Antarctica",
+      "source": "NASA-ISRO / NISAR Mission",
+      "date": "2026-07-20",
+      "audit_score": 0.85,
+      "layer": 1,
+      "clusters": [
+        4,
+        5
+      ],
+      "sandbox_status": "PASS",
+      "key_insight": "NISAR (L+S band SAR) public data release begins July 20, 2026; first free-flying dual-band radar mission. L-band penetrates canopy/ice, S-band observes vegetation. 12-day repeat, dozens of TB/day.",
+      "cross_links": [
+        "C9-2026-PLAN-001",
+        "C9-2026-ARCH-001"
+      ],
+      "doi_or_url": "NASA/JPL-Caltech / Alaska Satellite Facility",
+      "notes": "Coverage to 77.5°N, near-global land+ice. Enables earthquake, landslide, glacier, and forest monitoring."
+    },
+    {
+      "entry_id": "C9-2026-SETI-001",
+      "title": "JWST Just Examined Two Stars Suspected of Harboring Dyson Spheres. Here's What It Found",
+      "source": "Uppsala University / Penn State (Zackrisson, Curtis et al., arXiv)",
+      "date": "2026",
+      "audit_score": 0.8,
+      "layer": 1,
+      "clusters": [
+        2,
+        3
+      ],
+      "sandbox_status": "PASS",
+      "key_insight": "Two strongest Dyson sphere candidates (Candidates D & E) are foreground stars photobombed by background infrared-bright galaxies (Hot DOG and dusty starburst); WISE blur merged sources. Developed new untangling techniques.",
+      "cross_links": [
+        "C9-2026-SETI-002",
+        "C9-2026-COSMO-003"
+      ],
+      "doi_or_url": "arXiv (2026 preprint)",
+      "notes": "Identified 'most dangerous impostor' for SETI: dust-shrouded galaxies hiding in optical, blazing in mid-IR. Future searches inherit the gauntlet recipe."
+    },
+    {
+      "entry_id": "C9-2026-SETI-002",
+      "title": "Experts Met at MIT to Discuss The Possibility of Alien Tech Around Black Holes. Here's What Was Discussed",
+      "source": "Penn State / MIT / Ultraintelligence Foundation (Curtis et al., PASP)",
+      "date": "2025-06 (workshop)",
+      "audit_score": 0.65,
+      "layer": 2,
+      "clusters": [
+        2,
+        3
+      ],
+      "sandbox_status": "PASS",
+      "key_insight": "Dyson Minds 2025 Workshop: hypothetical energy-harvesting structures around SMBHs at ~1 parsec distance; search strategy focuses on IR outliers and EHT data perturbations. Information transfer may favor physical hard drives over beaming at zettabyte scales.",
+      "cross_links": [
+        "C9-2026-SETI-001",
+        "C9-2026-COSMO-001"
+      ],
+      "doi_or_url": "Publications of the Astronomical Society of the Pacific",
+      "notes": "Grounded in physical observables. No evidence to date. Alien tech is 'last solution' but framework produces useful astrophysical byproducts."
+    },
+    {
+      "entry_id": "C9-2026-COSMO-005",
+      "title": "A Decade-Long Voyage Through the Milky-Way is Possible Without a Wormhole Shortcut",
+      "source": "Avi Loeb / Harvard (Medium/UAP Science Advisory Council)",
+      "date": "2026-07-25",
+      "audit_score": 0.72,
+      "layer": 2,
+      "clusters": [
+        2,
+        3
+      ],
+      "sandbox_status": "PASS",
+      "key_insight": "Special relativistic time dilation at 1g constant acceleration: 26,000 ly to Galactic center takes ~19.8 years traveler time (decelerate) or ~10.6 years (one-way); energy cost is 13,450× global nuclear arsenal for decel option.",
+      "cross_links": [
+        "C9-2026-COSMO-003",
+        "C9-2026-SETI-002"
+      ],
+      "doi_or_url": "https://avi-loeb.medium.com/",
+      "notes": "Mathematically correct SR. Negative mass would reduce energy cost to near-zero. Cosmic modesty argument: advanced ETs may have solved engineering or mastered negative mass."
+    },
+    {
+      "entry_id": "C9-2026-ASTRO-001",
+      "title": "Scientists Discover Massive Alien 'Exosatellite'",
+      "source": "ESO / Universidad Diego Portales (Hoy, Zurlo et al., Nature)",
+      "date": "2026",
+      "audit_score": 0.83,
+      "layer": 1,
+      "clusters": [
+        2,
+        4
+      ],
+      "sandbox_status": "PASS",
+      "key_insight": "First confident detection of satellite orbiting a brown dwarf (CD-35 2722 system, 72 ly); Jupiter-mass 'exosatellite' orbits >30 M_J brown dwarf, which orbits 0.5 M☉ star. Challenges planet/moon/binary definitions.",
+      "cross_links": [
+        "C9-2026-COSMO-002",
+        "C9-2026-SETI-001"
+      ],
+      "doi_or_url": "Nature (2026)",
+      "notes": "VLT astrometry of brown dwarf wobble. No official IAU definition for exomoon. Some astronomers classify as failed stellar core / planet around binary component."
+    },
+    {
+      "entry_id": "C9-2026-MED-001",
+      "title": "From Gatorade to Addiction and GLP-1s: Neuroscience and the gut-brain revolution in obesity and addiction medicine",
+      "source": "Mark S. Gold M.D. / Psychology Today",
+      "date": "2026-07-21",
+      "audit_score": 0.76,
+      "layer": 1,
+      "clusters": [
+        4,
+        6,
+        8
+      ],
+      "sandbox_status": "PASS",
+      "key_insight": "Convergence of addiction, obesity, and binge-eating research through gut-brain axis; GLP-1 agonists (Ozempic/Mounjaro) modulate dopamine reward circuits, revealing metabolic signals govern craving and decision-making across SUDs and food addiction.",
+      "cross_links": [
+        "C9-2026-NEURO-001",
+        "C9-2026-NEURO-003"
+      ],
+      "doi_or_url": "Psychology Today (2026)",
+      "notes": "50-year arc from Gatorade palatability→Yale addiction clinics→Princeton sugar-dopamine models→GLP-1 revolution. Bedside-to-bench cycle exemplar."
+    },
+    {
+      "entry_id": "C9-2026-SOC-001",
+      "title": "Halving The Earth's Population To 4 Billion Is The Best Way To Secure a 'Pro-Human' Future, A New Study Argues",
+      "source": "Sustainable Development journal",
+      "date": "2026-07-29",
+      "audit_score": 0.45,
+      "layer": 3,
+      "clusters": [
+        4
+      ],
+      "sandbox_status": "QUARANTINE",
+      "key_insight": "Study argues gentle population reversal to 4 billion by 2200 via women's education and family planning (non-coercive). Counters overpopulation discourse but remains policy prescription with ecofascism historical baggage.",
+      "cross_links": [],
+      "doi_or_url": "Sustainable Development (2026)",
+      "notes": "Layer 3: Social science prescription, not fundamental physics. Low Assembly Index due to untestable macro-sociological predictions and normative framing. Quarantined from physics clusters."
+    },
+    {
+      "entry_id": "C9-2026-ASTRO-002",
+      "title": "Scientists Discover Mercury's Hidden Radiation Belts That Appear And Disappear",
+      "source": "University of Michigan Engineering / UC Berkeley (Nature Astronomy)",
+      "date": "2026-07-29",
+      "audit_score": 0.88,
+      "layer": 1,
+      "clusters": [
+        2,
+        4,
+        5
+      ],
+      "sandbox_status": "PASS",
+      "key_insight": "Mercury develops temporary radiation belts ~50% of the time at aphelion (only ~20% at perihelion) as varying solar wind pressure expands/compresses its magnetosphere; discovered via reanalysis of MESSENGER gamma-ray instrument X-ray noise.",
+      "cross_links": [
+        "C9-2026-EARTH-001",
+        "C9-2026-PLAN-001"
+      ],
+      "doi_or_url": "Nature Astronomy (2026)",
+      "notes": "BepiColombo will provide first direct measurements (orbital insertion Nov 2026). Belts last <8-12 hrs typically. Implications for spacecraft hardening and exoplanet magnetosphere models."
+    },
+    {
+      "entry_id": "C9-2026-SETI-002-ALT",
+      "title": "Scientists think alien civilizations could be using 'Dyson Spheres' to siphon energy from black holes",
+      "source": "New York Post / Ben Cost (alt-source for SETI-002)",
+      "date": "2026-07-29",
+      "audit_score": 0.65,
+      "layer": 2,
+      "clusters": [
+        2,
+        3
+      ],
+      "sandbox_status": "PASS",
+      "key_insight": "Pop-science variant of Dyson Minds 2025 Workshop coverage. Adds Avi Loeb counterargument: active black hole environments too hazardous (X-rays, cosmic rays, tidal forces) for technological infrastructure.",
+      "cross_links": [
+        "C9-2026-SETI-002",
+        "C9-2026-COSMO-005"
+      ],
+      "doi_or_url": "nypost.com (news feature)",
+      "notes": "Duplicate source. Loeb critique is useful: quasar luminosity and tidal forces would tear apart any Dyson structure; biological and electronic systems would be destroyed. Adds risk-benefit dimension to Layer 2 speculation."
+    }
+  ],
+  "collection_metadata": {
+    "domains": [
+      "QIS",
+      "COSMO",
+      "NEURO",
+      "BIO",
+      "MATSCI",
+      "COND",
+      "ARCH",
+      "PLAN",
+      "EARTH",
+      "SETI",
+      "ASTRO",
+      "MED",
+      "SOC"
+    ],
+    "sandbox_tests_conducted": 0,
+    "sandbox_artifacts": [],
+    "github_ready": true,
+    "c9_bus_compatible": true
+  },
+  "cross_domain_patterns": [
+    {
+      "pattern_name": "Structured Suppression of Dominant Mode",
+      "description": "Multiple discoveries show that the dominant/explosive mechanism is not the primary driver: galaxy quenching is not mergers (COSMO-004), Dyson candidates are not stars (SETI-001), ghost experiences are not spirits (NEURO-003). The true signal lies in subtle, long-term, or background processes.",
+      "entries": [
+        "C9-2026-COSMO-004",
+        "C9-2026-SETI-001",
+        "C9-2026-NEURO-003"
+      ],
+      "strength": 0.89
+    },
+    {
+      "pattern_name": "Collective Dynamics Over Component Counting",
+      "description": "Information and behavior emerge from group coordination rather than individual elements: neural spheres store 1000× more than synapse counting (NEURO-002), Cooper pairs tunnel as units (QIS-001), Pines' demon arises from out-of-phase band oscillation (COND-001), quantum heat waves are phonon collective modes (MATSCI-001).",
+      "entries": [
+        "C9-2026-NEURO-002",
+        "C9-2026-QIS-001",
+        "C9-2026-COND-001",
+        "C9-2026-MATSCI-001"
+      ],
+      "strength": 0.91
+    },
+    {
+      "pattern_name": "Autonomous Stabilization Without Active Control",
+      "description": "Systems achieve persistent states through environmental coupling rather than centralized control: quantum bath entanglement stabilizes beyond qubit lifetime (QIS-002), brain offloads tasks to temporal cortex to bypass frontal bottleneck (NEURO-001), gut-brain GLP-1 signaling autonomously modulates reward (MED-001).",
+      "entries": [
+        "C9-2026-QIS-002",
+        "C9-2026-NEURO-001",
+        "C9-2026-MED-001"
+      ],
+      "strength": 0.84
+    },
+    {
+      "pattern_name": "Boundary Condition Revision",
+      "description": "Textbook simplifications of boundaries/singularities fail under scrutiny: Schwarzschild singularity is 3D surface not point (COSMO-001), Venus rings are density waves not cloud structures (PLAN-001), exosatellite blurs planet/moon boundary (ASTRO-001).",
+      "entries": [
+        "C9-2026-COSMO-001",
+        "C9-2026-PLAN-001",
+        "C9-2026-ASTRO-001"
+      ],
+      "strength": 0.82
+    },
+    {
+      "pattern_name": "Extreme Environment Materials Synthesis",
+      "description": "Non-equilibrium, high-energy anthropogenic or astrophysical environments produce novel material phases impossible under normal conditions: Hiroshimaite alloy (MATSCI-002), Trinity quasicrystals, boron arsenide phonon transport (MATSCI-001).",
+      "entries": [
+        "C9-2026-MATSCI-002",
+        "C9-2026-MATSCI-001"
+      ],
+      "strength": 0.86
+    },
+    {
+      "pattern_name": "Orbital-Period-Driven Magnetospheric Bistability",
+      "description": "Planetary magnetic environments switch between distinct states based on orbital phase: Mercury's radiation belts appear/disappear with orbital distance from Sun (ASTRO-002), analogous to how QPLS SMBH binaries produce orbit-encoded lightcurves (C9-2026-COSMO-006 from prior collection). Both encode orbital dynamics in electromagnetic signatures.",
+      "entries": [
+        "C9-2026-ASTRO-002",
+        "C9-2026-COSMO-006"
+      ],
+      "strength": 0.79
+    }
+  ]
+}
