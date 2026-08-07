@@ -1,0 +1,389 @@
+{
+  "collection_id": "C9-REDESIGN-2026-0807-DUAL",
+  "collection_name": "Cloud-9 Dual Redesign: Quantum A_c v3.0 + TNG Merger-Evolution Hypothesis",
+  "date_created": "2026-08-07T00:39:00+02:00",
+  "author": "Cloud-9 Assembly Framework",
+  "context": "Response to failed validations in C9-COLLECTION-2026-0807-NEWBATCH",
+  "part_1_quantum_redesign": {
+    "entry_id": "C9-2026-QUANTUM-REDESIGN-v3.0",
+    "title": "Cloud-9 Quantum A_c Redesign v3.0 \u2014 Message-Sensitive Complexity",
+    "status": "PROPOSAL \u2014 Ready for Simulation Testing",
+    "motivation": "v1/v2 quantum A_c failed validation because I = n_states \u00d7 256 is a constant determined by Hilbert space dimension, not dynamical complexity. The circuit (H\u2297\u2075 + measure) never encoded the message. A_c varied <0.1% across all messages.",
+    "design_principles": [
+      "PRINCIPLE 1: A_c must vary >10% when message content changes",
+      "PRINCIPLE 2: Each component must be sensitive to the OUTPUT distribution, not just circuit width",
+      "PRINCIPLE 3: Null model (uniform random) must produce A_c \u2248 0, not A_c \u2248 1641",
+      "PRINCIPLE 4: Message encoding must be PART of the circuit, not external to it",
+      "PRINCIPLE 5: Components must have physical interpretations testable on simulator"
+    ],
+    "new_formula": {
+      "A_c_quantum": "H_q + P_q + I_q + F_q + \u03b1_q",
+      "normalization": "All components normalized to [0, 1] range; A_c_quantum \u2208 [0, 5]",
+      "null_expectation": "For uniform random output: A_c_quantum \u2248 0.5 \u00b1 0.2",
+      "signal_threshold": "A_c_quantum > 2.0 considered significant structure"
+    },
+    "components_v3": {
+      "H_q (Hierarchical_Complexity)": {
+        "old_definition": "Topological entropy of measurement graph \u2014 insensitive to distribution",
+        "new_definition": "Normalized mutual information I(message; measurement) = H(message) + H(measurement) - H(message, measurement)",
+        "computation": "Compute classical mutual information between input bitstring (message) and output bitstring (measurement) over N shots. Normalize by H(message) to get [0,1].",
+        "physical_meaning": "How much information about the message is preserved in the quantum measurement",
+        "null_value": 0.0,
+        "max_value": 1.0,
+        "test": "For H\u2297\u2075 + measure with NO message encoding: H_q = 0. For amplitude-encoded message: H_q > 0"
+      },
+      "P_q (Phase_Space_Perturbation)": {
+        "old_definition": "KL divergence from uniform \u2014 but uniform WAS the output",
+        "new_definition": "Jensen-Shannon divergence between output distribution P(message) and uniform distribution U, weighted by circuit depth",
+        "computation": "JS(P||U) \u00d7 (1 - e^(-depth/10)) where depth = number of non-trivial gates",
+        "physical_meaning": "How much the circuit structure perturbs the uniform random baseline",
+        "null_value": 0.0,
+        "max_value": 1.0,
+        "test": "H\u2297\u2075 + measure: depth=0 \u2192 P_q = 0. QAOA with 4 layers: P_q > 0"
+      },
+      "I_q (Dynamical_Instability)": {
+        "old_definition": "I = n_states \u00d7 256 = CONSTANT \u2014 the fatal flaw",
+        "new_definition": "Effective participation ratio: PR = 1 / \u03a3_i p_i\u00b2 where p_i are measurement probabilities. Normalized: I_q = log(PR) / log(n_states)",
+        "computation": "From measured counts, estimate probabilities p_i = count_i / N_shots. Compute PR. Take log ratio.",
+        "physical_meaning": "How many states effectively participate in the dynamics. PR=1 (single state) \u2192 I_q=0. PR=n_states (full uniform) \u2192 I_q=1.",
+        "null_value": 1.0,
+        "max_value": 1.0,
+        "interpretation": "LOW I_q means dynamics collapsed to few states (high instability). HIGH I_q means uniform exploration (stable mixing).",
+        "test": "For H\u2297\u2075: I_q \u2248 1.0 (uniform). For Grover's algorithm: I_q << 1.0 (concentrated)"
+      },
+      "F_q (Information_Fragmentation)": {
+        "old_definition": "F = n_states/4 + 0.4 = CONSTANT",
+        "new_definition": "Normalized entropy production rate: F_q = (S_output - S_input) / S_max where S = von Neumann entropy of density matrix",
+        "computation": "Estimate output density matrix from tomography or use classical entropy S = -\u03a3 p_i log(p_i). Compare to input entropy.",
+        "physical_meaning": "How much the circuit fragments/encrypts information. Positive = entropy production (mixing). Negative = entropy reduction (purification).",
+        "null_value": 0.0,
+        "range": [
+          -1.0,
+          1.0
+        ],
+        "test": "Depolarizing channel: F_q > 0. Error correction: F_q < 0"
+      },
+      "\u03b1_q (Temporal_Acceleration)": {
+        "old_definition": "\u03b1 = 0.983 \u2014 fixed constant",
+        "new_definition": "Coherence decay rate: \u03b1_q = exp(-t_gate / T_2*) where T_2* is measured coherence time",
+        "computation": "Run same circuit at increasing depths. Fit exponential decay of H_q vs depth. Extract characteristic decay depth.",
+        "physical_meaning": "How quickly quantum coherence (and thus message sensitivity) decays due to noise",
+        "null_value": 1.0,
+        "range": [
+          0.0,
+          1.0
+        ],
+        "test": "Simulator (no noise): \u03b1_q = 1.0. IBM hardware: \u03b1_q < 1.0, depth-dependent"
+      }
+    },
+    "required_circuit_changes": {
+      "message_encoding": "MUST use amplitude encoding or angle embedding: |\u03c8\u27e9 = \u03a3_i m_i |i\u27e9 where m_i are message amplitudes",
+      "circuit_family": "Use parameterized circuits: QAOA, VQE ansatz, or hardware-efficient ansatz with message-dependent parameters",
+      "example_circuit": {
+        "description": "5-qubit message-encoded variational circuit",
+        "layers": [
+          "Layer 0: Angle embedding \u2014 Rz(message_i) on each qubit",
+          "Layer 1: Entanglement \u2014 CNOT chain + Ry(\u03b8\u2081)",
+          "Layer 2: Entanglement \u2014 CNOT chain + Ry(\u03b8\u2082)",
+          "Layer 3: Measurement \u2014 all qubits in Z basis"
+        ],
+        "parameters": "\u03b8\u2081, \u03b8\u2082 optimized to maximize H_q for given message",
+        "expected_behavior": "Different messages \u2192 different optimal \u03b8 \u2192 different output distributions \u2192 different A_c"
+      }
+    },
+    "validation_protocol": {
+      "step_1_simulator": {
+        "tool": "Qiskit Aer simulator (noiseless)",
+        "tests": [
+          "Test A: Same message, same circuit \u2192 A_c consistent within 5%",
+          "Test B: Different messages, same circuit \u2192 A_c varies >20%",
+          "Test C: Random message vs structured message \u2192 structured has higher H_q",
+          "Test D: Null circuit (no message encoding) \u2192 A_c \u2248 0.5 \u00b1 0.2"
+        ],
+        "pass_criteria": "4/4 tests pass before hardware"
+      },
+      "step_2_noisy_simulator": {
+        "tool": "Qiskit Aer with noise model from IBM backend",
+        "tests": [
+          "Test E: A_c decreases monotonically with added depolarizing noise",
+          "Test F: \u03b1_q correctly estimates coherence decay rate",
+          "Test G: Message sensitivity H_q persists at realistic noise levels"
+        ],
+        "pass_criteria": "3/3 tests pass"
+      },
+      "step_3_hardware": {
+        "tool": "IBM Quantum backend (ibm_brisbane or similar)",
+        "tests": [
+          "Test H: Run same circuit 5 times \u2192 A_c reproducible within 10%",
+          "Test I: Run with 3 different messages \u2192 A_c significantly different (ANOVA p<0.05)",
+          "Test J: Compare to null model (random circuits) \u2192 A_c > 2\u03c3 above null mean"
+        ],
+        "pass_criteria": "3/3 tests pass = VALIDATED"
+      }
+    },
+    "risk_assessment": {
+      "risk_1": "Amplitude encoding requires classical pre-processing \u2014 may introduce artificial structure",
+      "mitigation_1": "Use multiple encoding schemes (angle, amplitude, basis) and require consistency",
+      "risk_2": "Mutual information estimation is noisy with finite shots",
+      "mitigation_2": "Require N_shots \u2265 8192 for H_q; use Bayesian entropy estimation",
+      "risk_3": "Hardware noise may dominate signal, making all messages look similar",
+      "mitigation_3": "Use error mitigation (ZNE, PEC) or focus on NISQ-friendly circuits with <20 depth"
+    },
+    "timeline": {
+      "week_1": "Implement v3 formula in Qiskit simulator",
+      "week_2": "Run validation protocol Step 1 (noiseless simulator)",
+      "week_3": "Run validation protocol Step 2 (noisy simulator)",
+      "week_4": "If Steps 1-2 pass: submit to IBM hardware and run Step 3",
+      "week_5": "If Step 3 passes: publish as C9-2026-QUANTUM-VALIDATED-001"
+    }
+  },
+  "part_2_tng_merger_hypothesis": {
+    "entry_id": "C9-2026-TNG-MERGER-EVOLUTION-HYPOTHESIS",
+    "title": "Cloud-9 TNG Hypothesis Pivot: Merger-Driven Complexity Evolution",
+    "status": "HYPOTHESIS \u2014 Ready for TNG API Testing",
+    "motivation": "Quiescent halo deficit hypothesis failed (p=0.224, p=0.551). A_c shows no significant difference between quiescent and active halos. However, merger history analysis revealed counter-intuitive pattern: earlier formation redshift \u2192 LOWER present-day A_c. This suggests complexity is CREATED by mergers and ERASED by relaxation over cosmic time.",
+    "core_hypothesis": {
+      "statement": "Dark matter halo complexity A_c evolves through a CREATE-DESTROY cycle: mergers inject complexity via dynamical perturbation; subsequent relaxation/phase-mixing erases it. The equilibrium A_c is determined by the balance between merger rate and relaxation rate.",
+      "mathematical_form": "dA_c/dt = \u0393_merge \u00d7 \u0394A_c_merge - A_c/\u03c4_relax",
+      "steady_state": "A_c^eq = \u0393_merge \u00d7 \u0394A_c_merge \u00d7 \u03c4_relax",
+      "prediction_1": "Halos in high-density environments (frequent mergers) maintain higher A_c",
+      "prediction_2": "Isolated halos (rare mergers) show declining A_c with time since last merger",
+      "prediction_3": "Post-merger A_c peaks at pericentric passage, then decays exponentially",
+      "prediction_4": "A_c correlates with substructure fraction more strongly than with mass"
+    },
+    "mechanism": {
+      "complexity_creation": {
+        "trigger": "Major merger (mass ratio > 1:4)",
+        "process": "Gravitational torques inject non-equilibrium phase-space structure; streams, shells, and caustics form",
+        "timescale": "\u0394t_create ~ few dynamical times (~1 Gyr)",
+        "signature": "A_c increases rapidly; substructure fraction peaks; velocity anisotropy becomes radial"
+      },
+      "complexity_destruction": {
+        "trigger": "Phase mixing and violent relaxation",
+        "process": "Non-equilibrium structures shear out and mix; phase-space density homogenizes",
+        "timescale": "\u03c4_relax ~ 10-20 dynamical times (~5-10 Gyr for MW-mass halos)",
+        "signature": "A_c decreases exponentially; substructure fraction declines; velocity distribution becomes isotropic"
+      },
+      "equilibrium": {
+        "condition": "When merger interval \u2248 relaxation time",
+        "result": "A_c fluctuates around mean value determined by environment density",
+        "field_halos": "Low merger rate \u2192 A_c below equilibrium, slowly declining",
+        "cluster_halos": "High merger rate \u2192 A_c near equilibrium, high variance"
+      }
+    },
+    "testable_predictions": {
+      "prediction_A": {
+        "statement": "A_c correlates with time_since_last_major_merger with negative slope",
+        "test": "For each halo, extract merger tree; identify last major merger; correlate A_c vs \u0394t",
+        "expected": "Pearson r < -0.3, p < 0.01 for n > 500 halos",
+        "null": "No correlation (r \u2248 0)"
+      },
+      "prediction_B": {
+        "statement": "A_c correlates with local overdensity more strongly than with mass",
+        "test": "Compute local density contrast \u03b4 = (\u03c1_local - \u03c1_mean) / \u03c1_mean for each halo; compare A_c(\u03b4) vs A_c(M)",
+        "expected": "|r(A_c, \u03b4)| > |r(A_c, M)|; partial correlation shows \u03b4 dominates when M is controlled",
+        "null": "Mass is the dominant predictor"
+      },
+      "prediction_C": {
+        "statement": "A_c peaks at merger pericenter then decays",
+        "test": "Track A_c along individual merger tree branches; compute A_c at snapshots before/during/after merger",
+        "expected": "A_c(t) shows peak at pericenter, exponential decay with \u03c4_relax afterward",
+        "null": "A_c is constant along branch (no merger effect)"
+      },
+      "prediction_D": {
+        "statement": "Substructure fraction f_sub is a better A_c predictor than concentration c_NFW",
+        "test": "Compute f_sub from subhalo catalogs; compare predictive power of f_sub vs c_NFW for A_c",
+        "expected": "R\u00b2(A_c ~ f_sub) > R\u00b2(A_c ~ c_NFW) by factor > 2",
+        "null": "Concentration is the better predictor"
+      },
+      "prediction_E": {
+        "statement": "Field halos (isolated) show lower A_c than cluster halos at same mass",
+        "test": "Split sample by environment (field vs cluster); compare A_c at fixed mass bin",
+        "expected": "A_c_cluster > A_c_field at same M, significant at p < 0.05",
+        "null": "No environmental dependence at fixed mass"
+      }
+    },
+    "methodology": {
+      "data_source": "TNG100-1 (or TNG300-1 for larger sample) full merger trees + snapshot particle data",
+      "sample_selection": {
+        "n_halos_target": 2000,
+        "mass_range": "10^10 < M/M_sun < 10^15",
+        "redshift_range": "z = 0 to z = 4",
+        "exclusions": "Remove halos with < 1000 particles (poor resolution)"
+      },
+      "variables_to_extract": [
+        "M_200c, R_200c, V_max, c_NFW",
+        "Formation redshift z_form (when M = M_200c(z=0)/2)",
+        "Merger tree: all progenitors, mass ratios, merger times",
+        "Time since last major merger \u0394t_last",
+        "Merger rate \u0393_merge (mergers/Gyr)",
+        "Local overdensity \u03b4 (smoothed on 5 Mpc/h scale)",
+        "Substructure fraction f_sub = M_sub / M_total",
+        "Velocity anisotropy \u03b2 = 1 - (\u03c3_t\u00b2 / 2\u03c3_r\u00b2)",
+        "Spin parameter \u03bb = J|E|^0.5 / G M^2.5",
+        "Tidal field eigenvalues at halo position"
+      ],
+      "a_c_computation": {
+        "note": "Use EXISTING v2.1 formula for consistency, but ADD environmental context vector",
+        "new_components": {
+          "E_env (Environmental_Context)": "Weighted sum of local density, tidal field, and merger rate, normalized to [0,1]",
+          "T_dyn (Dynamical_Age)": "Time since last major merger / relaxation time, clipped to [0,1]"
+        },
+        "revised_formula": "A_c_total = [H + P + I + F + \u03b1] \u00d7 (1 + w_env \u00d7 E_env) \u00d7 exp(-T_dyn / \u03c4_norm)",
+        "parameters": "w_env = 0.3 (environmental weight), \u03c4_norm = 2.0 (normalization timescale)"
+      }
+    },
+    "statistical_tests": {
+      "test_1_correlation_matrix": {
+        "method": "Pearson/Spearman correlation between A_c and all predictor variables",
+        "significance": "Bonferroni-corrected p < 0.05",
+        "expected": "Strongest correlations: f_sub (+), \u0394t_last (-), \u03b4 (+), \u0393_merge (+)"
+      },
+      "test_2_partial_correlation": {
+        "method": "Partial correlation r(A_c, predictor | M) controlling for mass",
+        "significance": "p < 0.01",
+        "expected": "f_sub and \u0394t_last remain significant after mass control; mass correlation drops"
+      },
+      "test_3_merger_tree_tracking": {
+        "method": "For 100 randomly selected major mergers, track A_c(progenitor), A_c(peak), A_c(post)",
+        "model": "Fit A_c(t) = A_c^pre + \u0394A_c \u00d7 exp(-(t-t_merge)/\u03c4_relax) \u00d7 \u0398(t > t_merge)",
+        "significance": "F-test for model vs constant; p < 0.001",
+        "expected": "\u03c4_relax \u2248 5-8 Gyr for MW-mass halos; \u0394A_c \u2248 0.05-0.10"
+      },
+      "test_4_environmental_split": {
+        "method": "T-test comparing A_c(field) vs A_c(cluster) at fixed mass bins",
+        "significance": "p < 0.05 in at least 3 of 5 mass bins",
+        "expected": "Cluster halos have higher A_c at all masses"
+      },
+      "test_5_machine_learning": {
+        "method": "Train Random Forest to predict A_c from all variables; extract feature importance",
+        "expected": "Top features: f_sub, \u0394t_last, \u03b4, \u0393_merge \u2014 NOT mass or concentration",
+        "validation": "5-fold cross-validation; R\u00b2 > 0.4 indicates predictive power"
+      }
+    },
+    "expected_outcomes": {
+      "scenario_A_full_support": {
+        "probability": "40%",
+        "description": "All 5 predictions confirmed with p < 0.05",
+        "implication": "Merger-driven complexity evolution is real. A_c is a dynamical tracer, not just mass proxy. Publish as C9-2026-COSMO-MERGER-001 (Layer 1)."
+      },
+      "scenario_B_partial_support": {
+        "probability": "35%",
+        "description": "2-3 predictions confirmed, others marginal",
+        "implication": "Mechanism is partially correct but needs refinement. May need to include baryonic effects (feedback, AGN). Publish as Layer 2 with caveats."
+      },
+      "scenario_C_null_result": {
+        "probability": "20%",
+        "description": "0-1 predictions confirmed; mass still dominates",
+        "implication": "A_c formula is fundamentally flawed for cosmology. Need complete redesign or abandon cosmological application. Archive as failed hypothesis."
+      },
+      "scenario_D_unexpected": {
+        "probability": "5%",
+        "description": "Completely different pattern emerges (e.g., A_c anti-correlates with mergers)",
+        "implication": "New physics or new definition of complexity needed. Most interesting outcome scientifically."
+      }
+    },
+    "connection_to_quantum": {
+      "analogy": "Both quantum and cosmological A_c suffer from 'baseline dominance' \u2014 quantum: circuit width; cosmology: mass.",
+      "unified_lesson": "A_c must measure DEVIATION from equilibrium, not absolute magnitude. In quantum: deviation from uniform. In cosmology: deviation from relaxed NFW.",
+      "cross_pollination": "The relaxation timescale \u03c4_relax in cosmology is analogous to coherence time T_2* in quantum. Both represent the rate at which structure/information is lost.",
+      "formula_unification": "Consider defining A_c universally as: A_c = \u03a3_i (observed_i - equilibrium_i)\u00b2 / variance_i \u2014 a chi-squared-like measure of non-equilibrium"
+    },
+    "implementation_plan": {
+      "phase_1_data_extraction": {
+        "duration": "2 weeks",
+        "tasks": [
+          "Query TNG API for 2000 halos with full merger trees",
+          "Compute all predictor variables (f_sub, \u03b4, \u03b2, \u03bb, etc.)",
+          "Compute A_c for all halos at z=0, z=0.5, z=1, z=2",
+          "Build clean dataset with no missing values"
+        ]
+      },
+      "phase_2_exploratory_analysis": {
+        "duration": "1 week",
+        "tasks": [
+          "Correlation matrix and partial correlations",
+          "A_c vs mass plots with environmental color-coding",
+          "Merger tree visualization for selected cases"
+        ]
+      },
+      "phase_3_statistical_testing": {
+        "duration": "2 weeks",
+        "tasks": [
+          "Run all 5 statistical tests",
+          "Machine learning feature importance",
+          "Merger tree tracking for 100 cases"
+        ]
+      },
+      "phase_4_interpretation": {
+        "duration": "1 week",
+        "tasks": [
+          "Classify outcome into Scenario A/B/C/D",
+          "Write formal Cloud-9 entry",
+          "Update A_c formula if needed"
+        ]
+      }
+    },
+    "risk_assessment": {
+      "risk_1": "TNG API rate limits or data availability issues",
+      "mitigation_1": "Pre-download snapshot data; use local TNG cutouts if API fails",
+      "risk_2": "Merger tree definitions vary (different mass ratios, different tree builders)",
+      "mitigation_2": "Use standard TNG merger trees; test sensitivity to mass ratio threshold (1:4 vs 1:10)",
+      "risk_3": "A_c computation is slow for 2000 halos",
+      "mitigation_3": "Parallelize on Colab TPU or local cluster; pre-compute shell properties",
+      "risk_4": "Results are ambiguous (Scenario B)",
+      "mitigation_4": "Design follow-up tests before starting; have clear decision criteria"
+    }
+  },
+  "cross_connection": {
+    "unified_insight": "Both quantum and cosmological A_c suffered from 'baseline dominance' \u2014 measuring the wrong thing. Quantum: circuit width (I = constant). Cosmology: mass (A_c \u221d M). The fix is the same: measure DEVIATION from equilibrium, not absolute magnitude.",
+    "unified_formula_proposal": "A_c_universal = \u03a3_i (observed_i - equilibrium_i)\u00b2 / variance_i",
+    "quantum_equilibrium": "Uniform random distribution over measurement outcomes",
+    "cosmological_equilibrium": "Relaxed NFW profile with isotropic velocities",
+    "analogy_table": {
+      "quantum_coherence_time_T2*": "cosmological_relaxation_time_\u03c4_relax",
+      "quantum_decoherence_rate": "cosmological_phase_mixing_rate",
+      "quantum_message_encoding": "cosmological_merger_injection",
+      "quantum_noise": "cosmological_virialization",
+      "quantum_entanglement_entropy": "cosmological_phase_space_entropy"
+    }
+  },
+  "execution_priority": {
+    "immediate": [
+      "Halt all quantum hardware runs (current formula is broken)",
+      "Halt quiescent halo deficit tests (hypothesis is falsified)",
+      "Begin quantum v3.0 simulator implementation (Week 1)",
+      "Begin TNG merger tree data extraction (Week 1)"
+    ],
+    "short_term": [
+      "Complete quantum v3.0 Step 1 validation (Week 2)",
+      "Complete TNG Phase 1 data extraction (Week 2-3)",
+      "Run quantum v3.0 Step 2 noisy simulator (Week 3)",
+      "Run TNG Phase 2 exploratory analysis (Week 4)"
+    ],
+    "medium_term": [
+      "Quantum v3.0 Step 3 hardware validation (Week 4-5)",
+      "TNG Phase 3 statistical testing (Week 5-6)",
+      "Cross-domain comparison: Do quantum coherence decay and cosmological relaxation follow similar functional forms?"
+    ],
+    "contingency": {
+      "if_quantum_fails_again": "Abandon quantum A_c entirely; focus on classical simulation complexity measures",
+      "if_tng_null_again": "Abandon cosmological A_c entirely; pivot to biological/medical applications where empirical grounding is stronger",
+      "if_both_succeed": "Unify into cross-domain 'non-equilibrium complexity' framework with applications in quantum, cosmology, and biology"
+    }
+  },
+  "resource_requirements": {
+    "quantum": {
+      "compute": "Qiskit Aer + IBM Quantum credits (~$50 for hardware runs)",
+      "time": "5 weeks",
+      "risk": "MEDIUM \u2014 simulator testing is cheap; hardware is expensive if formula still broken"
+    },
+    "tng": {
+      "compute": "TNG API access + Colab Pro (~$50/month)",
+      "time": "6 weeks",
+      "risk": "LOW \u2014 data is already available; analysis is straightforward"
+    },
+    "total_estimated_cost": "$100-150",
+    "total_estimated_time": "6 weeks (parallel execution)"
+  }
+}
