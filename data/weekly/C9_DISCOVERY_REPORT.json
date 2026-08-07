@@ -1,0 +1,16 @@
+{
+  "run_id": "2026-07-21T00:18:24.395033+00:00",
+  "data_file": "unknown",
+  "file_size_mb": 0,
+  "is_real_data": false,
+  "branches_total": 5,
+  "has_muons": false,
+  "has_electrons": false,
+  "has_jets": false,
+  "has_met": false,
+  "events_total": 100,
+  "a_c_mean": 0.2949042394635604,
+  "a_c_max": 0.753457172358904,
+  "priority": false,
+  "status": "discovery_report_complete"
+}
