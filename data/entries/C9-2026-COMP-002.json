@@ -1,0 +1,64 @@
+{
+  "entry_id": "C9-2026-COMP-002",
+  "name": "TurboVec \u2014 Vector Quantization for RAG Memory Compression",
+  "source": {
+    "organization": "Google / TurboQuant team",
+    "paper": "arXiv:2507.04575",
+    "github": "https://github.com/google-research/turboquant",
+    "blog": "https://turboquant.dev"
+  },
+  "score": {
+    "audit": 0.65,
+    "scale": "0.0\u20131.0",
+    "rationale": "Mature compression algorithm with proven 8\u00d7 ratio on embedding indexes. However, C9 has no RAG layer yet, making this premature infrastructure."
+  },
+  "layer": 2,
+  "layer_rationale": "Speculative but grounded. Vector quantization is established information theory. Application to AI memory is validated by Google at scale.",
+  "clusters": [
+    3,
+    6
+  ],
+  "cluster_mapping": {
+    "3": "Quantum Information & Complexity \u2014 Quantization is a form of lossy compression that preserves semantic structure. Analogous to coarse-graining in statistical mechanics.",
+    "6": "Neuromorphic Computing \u2014 Reduces RAM footprint of embedding indexes from ~60GB to ~4GB, enabling phone-scale semantic retrieval."
+  },
+  "date_added": "2026-07-31",
+  "added_by": "C9-Librarian",
+  "tech_profile": {
+    "compression_ratio": "8\u00d7 (31 GB \u2192 4 GB)",
+    "method": "Random rotation + per-channel quantization (4-bit or 8-bit)",
+    "speed": "Faster than FAISS, zero training, fully offline",
+    "implementation": "Rust (TurboVec) with Python bindings",
+    "license": "Apache 2.0"
+  },
+  "c9_integration_path": {
+    "tier_1": {
+      "name": "Documentation & Entry",
+      "status": "COMPLETE",
+      "description": "Formal entry created. No local deployment."
+    },
+    "tier_2": {
+      "name": "RAG Layer Prototype",
+      "status": "FUTURE",
+      "description": "When C9 adds semantic retrieval over 7,276 files + The Well papers + TNG docs, TurboVec compresses the embedding index to fit on phone RAM."
+    },
+    "tier_3": {
+      "name": "Production Integration",
+      "status": "FUTURE",
+      "description": "Replace FAISS/naive vector stores with TurboVec-backed index in c9_knowledge_retriever.py"
+    }
+  },
+  "bus_schema": {
+    "event_type": "turbovec_status",
+    "payload": {
+      "entry_id": "C9-2026-COMP-002",
+      "status": "dormant",
+      "trigger_condition": "c9_knowledge_retriever.py module_boot"
+    }
+  },
+  "references": [
+    "arXiv:2507.04575 \u2014 TurboQuant: 31 GB of AI Memory to 4 GB",
+    "https://github.com/google-research/turboquant",
+    "https://turboquant.dev"
+  ]
+}
