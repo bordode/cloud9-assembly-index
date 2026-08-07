@@ -1,0 +1,103 @@
+{
+  "timestamp": "2026-07-24T19:21:34.245622+00:00",
+  "expected_modules": [
+    {
+      "name": "sovereign_living_manifold",
+      "role": "closed_loop_sim",
+      "status": "expected_from_launcher"
+    },
+    {
+      "name": "c9_physical_manifold_v2",
+      "role": "real_sensor_core",
+      "status": "expected_from_launcher"
+    },
+    {
+      "name": "c9_mimic_node",
+      "role": "pattern_mimic",
+      "status": "expected_from_launcher"
+    },
+    {
+      "name": "c9_sentry_minimal",
+      "role": "audit_guard",
+      "status": "expected_from_launcher"
+    },
+    {
+      "name": "agape_phone",
+      "role": "phone_bridge",
+      "status": "expected_from_launcher"
+    },
+    {
+      "name": "jarvis_interface",
+      "role": "cli_interface",
+      "status": "expected_from_launcher"
+    },
+    {
+      "name": "run_continuous",
+      "role": "continuous_runner",
+      "status": "expected_from_launcher"
+    },
+    {
+      "name": "c9_quantum_bridge_v2",
+      "role": "quantum_interface",
+      "status": "expected_from_launcher"
+    },
+    {
+      "name": "c9_oracle",
+      "role": "oracle_core",
+      "status": "expected_from_launcher"
+    },
+    {
+      "name": "c9_librarian",
+      "role": "file_indexer",
+      "status": "expected_from_launcher"
+    },
+    {
+      "name": "birth_proxy_fixed",
+      "role": "birth_api_proxy",
+      "status": "started_manually"
+    },
+    {
+      "name": "c9_birth_bridge",
+      "role": "birth_c9_bridge",
+      "status": "started_manually"
+    }
+  ],
+  "missing_modules": [
+    {
+      "name": "cloud9_omni_agent",
+      "role": "omni_agent",
+      "status": "NOT_FOUND",
+      "note": "File missing"
+    },
+    {
+      "name": "c9_autobaby_v2",
+      "role": "auto_research",
+      "status": "NOT_FOUND",
+      "note": "File missing"
+    },
+    {
+      "name": "kimi_bridge",
+      "role": "kimi_router",
+      "status": "NOT_FOUND",
+      "note": "File missing"
+    },
+    {
+      "name": "nemotron_bridge",
+      "role": "ai_reasoning",
+      "status": "NOT_IN_STARTUP",
+      "note": "From unified launcher v2"
+    },
+    {
+      "name": "nemotron_api",
+      "role": "ai_endpoint",
+      "status": "NOT_IN_STARTUP",
+      "note": "From unified launcher v2"
+    }
+  ],
+  "notes": [
+    "Startup v4 does not include unified launcher v2 modules (nemotron)",
+    "AutoBaby, omni_agent, kimi_bridge files are physically missing from ~/",
+    "Manual restart currently running 11 processes successfully",
+    "llama-server on 8080 is the only AI backend currently functional"
+  ]
+}
