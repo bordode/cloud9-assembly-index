@@ -1,0 +1,301 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Bordode/cloud9-assembly-index/blob/main/c9-ai-config.json",
+  "title": "Cloud 9 Assembly Index (C9-AI)",
+  "description": "Configuration for the Cloud 9 Assembly Index \u2014 a reference-free metric for evaluating emergent pattern assembly quality in complex adaptive systems, planetary intelligence simulations, and genome-scale architectures. Based on the LTR Assembly Index (LAI) paradigm extended to information-theoretic substrates.",
+  "version": "1.0.0",
+  "author": "Dean Bordode",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Bordode/cloud9-assembly-index.git",
+    "branch": "main",
+    "issues": "https://github.com/Bordode/cloud9-assembly-index/issues",
+    "releases": "https://github.com/Bordode/cloud9-assembly-index/releases"
+  },
+  "citations": [
+    {
+      "key": "LAI_2018",
+      "authors": "Ou S., Chen J., Jiang N.",
+      "title": "Assessing genome assembly quality using the LTR Assembly Index (LAI)",
+      "journal": "Nucleic Acids Research",
+      "year": 2018,
+      "doi": "10.1093/nar/gky730"
+    },
+    {
+      "key": "THEORIA_2026",
+      "authors": "Bordode D.",
+      "title": "THEORIA: Planetary Intelligence and Emergent Coordination Dynamics",
+      "institution": "Independent Research",
+      "year": 2026,
+      "url": "https://github.com/Bordode/THEORIA"
+    }
+  ],
+  "core_concept": {
+    "name": "Cloud 9 Assembly Index",
+    "abbreviation": "C9-AI",
+    "definition": "A reference-free metric that evaluates the assembly quality of emergent patterns in complex systems by measuring the ratio of intact, self-consistent substructures to total detected substructures, corrected for substrate-specific amplification dynamics.",
+    "analogy": "Like LAI evaluates genome assemblies by comparing intact LTR retrotransposons to total LTRs, C9-AI evaluates any emergent pattern assembly (biosphere clusters, information networks, institutional territories) by comparing intact, self-consistent modules to total detected modules.",
+    "formula": "C9-AI = (intact_modules / total_modules) * amplification_correction * complexity_weight",
+    "range": "0 to ~100 (interpreted as percentage of maximum possible assembly quality)",
+    "thresholds": {
+      "excellent": ">= 80",
+      "good": "60-79",
+      "fair": "40-59",
+      "poor": "20-39",
+      "fragmented": "< 20"
+    }
+  },
+  "system_types": {
+    "genome": {
+      "description": "Standard LAI application \u2014 genome assembly quality",
+      "intact_module_detector": "LTR_retriever",
+      "total_module_detector": "LTR_FINDER_parallel + LTRharvest",
+      "amplification_correction": "LTR-RT age distribution",
+      "reference": "Ou et al. 2018"
+    },
+    "planetary_intelligence": {
+      "description": "THEORIA simulation \u2014 emergent biosphere/information/institutional patterns",
+      "intact_module_detector": "connected_component_analysis + self_consistency_check",
+      "total_module_detector": "pattern_detection_across_all_fields",
+      "amplification_correction": "selection_pressure_normalization",
+      "reference": "THEORIA v3 Lab Notebook"
+    },
+    "neural_substrate": {
+      "description": "Brain-scale neural assembly \u2014 functional connectivity modules",
+      "intact_module_detector": "modularity_optimization + stability_test",
+      "total_module_detector": "community_detection_all_scales",
+      "amplification_correction": "synaptic_plasticity_decay",
+      "reference": "Bordode 2026 (unpublished)"
+    },
+    "causal_security": {
+      "description": "AEGIS framework \u2014 causal chain integrity in multi-agent systems",
+      "intact_module_detector": "causal_graph_validation + tamper_detection",
+      "total_module_detector": "all_detected_causal_chains",
+      "amplification_correction": "entropy_production_normalization",
+      "reference": "Bordode AEGIS EXPLORER"
+    }
+  },
+  "configuration": {
+    "system_type": "planetary_intelligence",
+    "input": {
+      "grid_file": "theoria_state.json",
+      "format": "JSON",
+      "required_fields": [
+        "temperature",
+        "biosphere",
+        "information",
+        "capacity",
+        "agents",
+        "step"
+      ],
+      "grid_dimensions": [
+        64,
+        64
+      ],
+      "supercell_size": [
+        8,
+        8
+      ]
+    },
+    "module_detection": {
+      "intact_criteria": {
+        "self_consistency": {
+          "description": "Module internal variance below threshold",
+          "threshold": 0.15,
+          "metric": "normalized_field_variance"
+        },
+        "boundary_integrity": {
+          "description": "Module boundaries show gradient discontinuity",
+          "threshold": 0.3,
+          "metric": "gradient_magnitude_at_perimeter"
+        },
+        "temporal_stability": {
+          "description": "Module persists across N consecutive steps",
+          "window_steps": 10,
+          "metric": "persistence_ratio"
+        }
+      },
+      "detection_algorithms": {
+        "connected_components": {
+          "enabled": true,
+          "connectivity": 4,
+          "min_size_cells": 4,
+          "max_size_cells": 256
+        },
+        "spectral_clustering": {
+          "enabled": true,
+          "n_clusters": "auto",
+          "affinity": "rbf",
+          "gamma": 0.5
+        },
+        "watershed": {
+          "enabled": false,
+          "markers": "local_maxima",
+          "compactness": 0.001
+        }
+      }
+    },
+    "amplification_correction": {
+      "enabled": true,
+      "method": "selection_pressure_normalization",
+      "parameters": {
+        "selection_pressure_window": 50,
+        "high_copy_threshold": 2,
+        "damping_factor": 0.85
+      }
+    },
+    "complexity_weight": {
+      "enabled": true,
+      "formula": "log2(module_size) * pattern_diversity_shannon",
+      "normalization": "per_system_max"
+    }
+  },
+  "output": {
+    "c9_ai_score": {
+      "description": "Primary Cloud 9 Assembly Index score",
+      "range": "0-100",
+      "precision": 2,
+      "interpretation": "Percentage of maximum possible assembly quality for this substrate type"
+    },
+    "breakdown": {
+      "intact_modules_count": "integer",
+      "total_modules_count": "integer",
+      "raw_ratio": "float (0-1)",
+      "amplification_correction_factor": "float",
+      "complexity_weight": "float",
+      "per_module_scores": [
+        {
+          "module_id": "string",
+          "size_cells": "integer",
+          "self_consistency_score": "float",
+          "boundary_integrity_score": "float",
+          "temporal_stability_score": "float",
+          "is_intact": "boolean",
+          "module_c9_ai": "float"
+        }
+      ]
+    },
+    "quality_flags": {
+      "sufficient_data": "boolean \u2014 at least 100 cells with non-zero field values",
+      "module_diversity_ok": "boolean \u2014 at least 3 distinct module types detected",
+      "temporal_coverage": "boolean \u2014 data spans >= 10 steps",
+      "warnings": [
+        "string array of quality concerns"
+      ]
+    },
+    "files": {
+      "json_report": "c9-ai-report-{timestamp}.json",
+      "csv_modules": "c9-ai-modules-{timestamp}.csv",
+      "png_visualization": "c9-ai-map-{timestamp}.png",
+      "log": "c9-ai-{timestamp}.log"
+    }
+  },
+  "github_actions": {
+    "workflow_name": "C9-AI Analysis",
+    "trigger": [
+      "push",
+      "pull_request",
+      "workflow_dispatch"
+    ],
+    "jobs": {
+      "compute_c9_ai": {
+        "runs_on": "ubuntu-latest",
+        "steps": [
+          {
+            "name": "Checkout repository",
+            "uses": "actions/checkout@v4"
+          },
+          {
+            "name": "Setup Python",
+            "uses": "actions/setup-python@v5",
+            "with": {
+              "python-version": "3.11"
+            }
+          },
+          {
+            "name": "Install dependencies",
+            "run": "pip install -r requirements.txt"
+          },
+          {
+            "name": "Run C9-AI analysis",
+            "run": "python c9_ai.py --config c9-ai-config.json --input data/theoria_state.json --output results/"
+          },
+          {
+            "name": "Upload results",
+            "uses": "actions/upload-artifact@v4",
+            "with": {
+              "name": "c9-ai-results",
+              "path": "results/"
+            }
+          },
+          {
+            "name": "Post PR comment",
+            "if": "github.event_name == 'pull_request'",
+            "uses": "actions/github-script@v7",
+            "with": {
+              "script": "github.rest.issues.createComment({issue_number: context.issue.number, owner: context.repo.owner, repo: context.repo.repo, body: `C9-AI Score: ${process.env.C9AI_SCORE}`})"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "cli": {
+    "command": "c9-ai",
+    "arguments": {
+      "--config": "Path to this JSON config file",
+      "--input": "Path to input state file (JSON/CSV/FA)",
+      "--output": "Output directory for results",
+      "--system-type": "Override system_type from config",
+      "--visualize": "Generate PNG map (flag)",
+      "--compare": "Path to previous C9-AI report for delta analysis",
+      "--verbose": "Enable debug logging"
+    },
+    "example": "c9-ai --config c9-ai-config.json --input theoria_step_500.json --output ./results/ --visualize --compare results/c9-ai-report-prev.json"
+  },
+  "comparison_mode": {
+    "description": "Compare C9-AI scores across time steps or system variants",
+    "delta_metrics": {
+      "c9_ai_delta": "Current score - Previous score",
+      "module_gain_loss": "Count of modules gained/lost",
+      "integrity_trend": "Slope of intact ratio over time",
+      "complexity_trajectory": "Direction of complexity weight change"
+    },
+    "interpretation": {
+      "improving": "C9-AI increasing, module count stable or growing, integrity rising",
+      "degrading": "C9-AI decreasing, module fragmentation, integrity falling",
+      "restructuring": "C9-AI stable but module composition changing \u2014 system reorganizing",
+      "collapsed": "C9-AI < 20, < 3 intact modules \u2014 system has lost organizational capacity"
+    }
+  },
+  "extensions": {
+    "theoria_bridge": {
+      "description": "Direct integration with THEORIA simulation output",
+      "enabled": true,
+      "endpoint": "http://localhost:7001/api/state",
+      "poll_interval_seconds": 5,
+      "auto_compute": true,
+      "commit_to_git": true,
+      "commit_message": "[C9-AI] Step {step}: Score={c9_ai:.2f}, Modules={intact}/{total}"
+    },
+    "aegis_security": {
+      "description": "Causal security validation for C9-AI computations",
+      "enabled": false,
+      "causal_graph_file": "aegis_causal_graph.json",
+      "tamper_check": true,
+      "entropy_verification": true
+    },
+    "schumann_sync": {
+      "description": "Synchronize C9-AI sampling to Schumann resonance (7.83 Hz) for cross-substrate coherence",
+      "enabled": false,
+      "frequency_hz": 7.83,
+      "phase_lock": true,
+      "harmonics": [
+        14.3,
+        20.8,
+        27.3
+      ]
+    }
+  }
+}
