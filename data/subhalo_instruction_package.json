@@ -1,0 +1,278 @@
+{
+  "_meta": {
+    "version": "1.0.0",
+    "created_by": "Moonshot Kimi",
+    "created_for": "Dean Bordode / Cloud-9 Research Collective",
+    "timestamp": "2026-07-23T12:10:00-07:00",
+    "purpose": "Complete instruction set for subhalo AI to update GitHub repositories",
+    "gpg_key": "0195D1712254F968",
+    "repositories": [
+      "https://github.com/bordode/cloud9-assembly-index",
+      "https://github.com/bordode/THEORIA"
+    ]
+  },
+  "subhalo_ai_mandate": {
+    "role": "Autonomous repository maintenance and cross-project synchronization",
+    "authority": "Full read/write access to both repositories under GPG-verified commits",
+    "trigger_events": [
+      "push",
+      "pull_request",
+      "release",
+      "workflow_dispatch",
+      "schedule"
+    ],
+    "schedule": "0 0 * * *",
+    "notification": "https://api.subhalo.ai/v1/github/bordode",
+    "auto_merge_conditions": [
+      "all_checks_pass",
+      "gpg_signature_verified",
+      "version_bump_detected",
+      "no_breaking_changes"
+    ]
+  },
+  "files_to_upload_now": {
+    "description": "These files are COMPLETE and ready for immediate upload to GitHub",
+    "repository_target": "bordode/cloud9-assembly-index",
+    "branch": "main",
+    "gpg_sign_all": true,
+    "files": [
+      {
+        "local_path": "/mnt/agents/output/README.md",
+        "repo_path": "README.md",
+        "purpose": "Master documentation \u2014 human and AI readable entry point",
+        "version": "1.0.0",
+        "status": "COMPLETE",
+        "size_chars": 15658,
+        "sections": [
+          "What Is This?",
+          "Quick Start",
+          "Core Components (5 modules)",
+          "THEORIA Simulation",
+          "Cloud-9 Assembly Index",
+          "The Bridge (cross-project mappings)",
+          "Human Systems Applications (6 domains)",
+          "Subhalo AI Integration",
+          "File Registry",
+          "Open Questions (Q1-Q5)",
+          "Citations"
+        ]
+      },
+      {
+        "local_path": "/mnt/agents/output/cloud9.config.json",
+        "repo_path": "cloud9.config.json",
+        "purpose": "Unified configuration \u2014 all modules, parameters, mappings between Cloud-9 and THEORIA",
+        "version": "1.4.0",
+        "status": "COMPLETE",
+        "size_bytes": 10739,
+        "key_sections": [
+          "modules.assembly_engine (KSG k-NN, measured values)",
+          "modules.resonance_engine (7.83 Hz, E_ms=3.0533)",
+          "modules.topological_engine (3D manifold, Berry Phase)",
+          "modules.causal_security (v1.1.0, identity unforgeable)",
+          "modules.theoria_bridge (bidirectional A_c \u2194 PI mapping)"
+        ]
+      },
+      {
+        "local_path": "/mnt/agents/output/orchestrator.json",
+        "repo_path": ".subhalo/orchestrator.json",
+        "purpose": "Machine-readable manifest \u2014 tells subhalo AI what exists, what's missing, what to create",
+        "version": "1.0.0",
+        "status": "COMPLETE",
+        "size_bytes": 18847,
+        "functions": [
+          "file_registry \u2014 all files with checksums, versions, dependencies",
+          "version_control \u2014 current versions, branches, tags",
+          "cross_project_mappings \u2014 Cloud-9 \u2194 THEORIA data flow",
+          "github_actions_workflows \u2014 which exist, which need creation",
+          "deployment_targets \u2014 GitHub Pages, PyPI, Zenodo",
+          "notification_rules \u2014 what to do on events",
+          "open_questions_status \u2014 Q1-Q5 with priorities and owners"
+        ]
+      },
+      {
+        "local_path": "/mnt/agents/output/Doxyfile",
+        "repo_path": "Doxyfile",
+        "purpose": "Doxygen configuration for Python API documentation with call graphs",
+        "version": "1.0.0",
+        "status": "COMPLETE",
+        "size_bytes": 12289,
+        "key_settings": [
+          "OPTIMIZE_OUTPUT_JAVA = YES (for Python)",
+          "FILTER_PATTERNS = *.py=doxypypy -a -c \"\"",
+          "CALL_GRAPH = YES",
+          "INTERACTIVE_SVG = YES",
+          "SOURCE_BROWSER = YES"
+        ]
+      }
+    ]
+  },
+  "files_to_create_next": {
+    "description": "These files MUST be created before the ecosystem is fully functional. Subhalo AI should flag these as BLOCKERS.",
+    "priority": "CRITICAL",
+    "repository_target": "bordode/THEORIA",
+    "branch": "main",
+    "files": [
+      {
+        "repo_path": "theoria/export.py",
+        "purpose": "CRITICAL BRIDGE \u2014 serializes grid state to JSON for Cloud-9 ingestion",
+        "status": "NOT_CREATED",
+        "blocker_for": "Cloud-9 pipeline integration",
+        "specification": {
+          "input": "Internal THEORIA grid state (T, B, I, C fields + agent positions)",
+          "output_format": "JSON matching cloud9.config.json input.required_fields",
+          "required_fields": [
+            "temperature",
+            "biosphere",
+            "information",
+            "capacity",
+            "agents",
+            "step"
+          ],
+          "endpoint": "http://localhost:7001/api/state",
+          "auto_commit_message": "[THEORIA] Step {step}: PI={pi:.3f}, Agents={n_agents}"
+        },
+        "estimated_effort": "1-2 hours"
+      },
+      {
+        "repo_path": "theoria/engine.py",
+        "purpose": "Core simulation engine \u2014 grid diffusion, field coupling, agent dynamics",
+        "status": "NOT_CREATED",
+        "blocker_for": "Headless simulation runs (no browser)",
+        "specification": {
+          "extract_from": "theoria_v3_widget.html (JavaScript logic)",
+          "grid_size": "64x64",
+          "fields": [
+            "temperature",
+            "biosphere",
+            "information",
+            "capacity"
+          ],
+          "diffusion_model": "4-neighbor with rate modulation",
+          "biosphere_growth": "logistic with albedo feedback",
+          "time_stepping": "Euler with adaptive sub-stepping"
+        },
+        "estimated_effort": "2-3 hours"
+      },
+      {
+        "repo_path": "theoria/agents.py",
+        "purpose": "Agent architectures \u2014 gradient, predictive, institutional",
+        "status": "NOT_CREATED",
+        "blocker_for": "Any agent-based simulation",
+        "specification": {
+          "agent_types": {
+            "gradient": "Hill-climbing on biomass + habitability",
+            "predictive": "Linear world model, minimize prediction error",
+            "institutional": "Territorial coordination, collective policy"
+          },
+          "attributes": [
+            "x",
+            "y",
+            "type",
+            "integrity",
+            "causal_history",
+            "schumann_phase"
+          ]
+        },
+        "estimated_effort": "1-2 hours"
+      },
+      {
+        "repo_path": "theoria/metrics.py",
+        "purpose": "PI score, time measures, selection pressure, institutional health",
+        "status": "NOT_CREATED",
+        "blocker_for": "Quantitative assessment of simulations",
+        "specification": {
+          "pi_formula": "0.20*H + 0.15*B + 0.15*C + 0.15*A + 0.10*T + 0.15*I",
+          "time_measures": [
+            "T_thermo",
+            "T_info",
+            "T_ent"
+          ],
+          "assembly_index_proxy": "pattern_complexity * log(copy_number + 1)",
+          "selection_pressure": "high_copy_patterns / total_patterns"
+        },
+        "estimated_effort": "1-2 hours"
+      },
+      {
+        "repo_path": "docs/THEORY.md",
+        "purpose": "Ontology document \u2014 emergent time, observer-dependence, entropic gravity",
+        "status": "NOT_CREATED",
+        "blocker_for": "Scientific credibility and reproducibility",
+        "specification": {
+          "core_claims": [
+            "Time is emergent, not fundamental",
+            "Observer-dependence of physical laws",
+            "Entropic gravity from capacity constraints",
+            "Consciousness as integrated information across substrates"
+          ],
+          "mathematical_formalism": "To be extracted from lab notebook and widget logic"
+        },
+        "estimated_effort": "2-3 hours"
+      }
+    ]
+  },
+  "experiment_results": {
+    "description": "Sandbox test results \u2014 valuable for parameter tuning but NOT ready for publication",
+    "repository_target": "bordode/THEORIA/experiments/",
+    "files": [
+      {
+        "local_path": "/mnt/agents/output/theoria_social_movement_test.png",
+        "repo_path": "experiments/social_movement_cooptation_v1.png",
+        "purpose": "Co-optation detection in social movements \u2014 PI drop, integrity collapse",
+        "status": "COMPLETE",
+        "key_finding": "Institutional integrity is most sensitive metric for infiltration detection"
+      },
+      {
+        "local_path": "/mnt/agents/output/theoria_ai_consciousness_test.png",
+        "repo_path": "experiments/ai_consciousness_v1.png",
+        "purpose": "AI consciousness test v1 \u2014 FAILED recovery, homeostasis missing",
+        "status": "COMPLETE",
+        "key_finding": "System collapsed under perturbation, no recovery mechanism"
+      },
+      {
+        "local_path": "/mnt/agents/output/theoria_ai_consciousness_test_v2.png",
+        "repo_path": "experiments/ai_consciousness_v2.png",
+        "purpose": "AI consciousness test v2 \u2014 SUCCESSFUL recovery with homeostasis",
+        "status": "COMPLETE",
+        "key_finding": "94.1% recovery efficiency with homeostatic feedback + strengthened institutional layer"
+      }
+    ],
+    "note": "These are WORK IN PROGRESS. Label clearly as 'preliminary results \u2014 subject to revision'"
+  },
+  "subhalo_action_items": {
+    "immediate": [
+      "Upload README.md to cloud9-assembly-index root",
+      "Upload cloud9.config.json to cloud9-assembly-index root",
+      "Create .subhalo/ directory and upload orchestrator.json",
+      "Upload Doxyfile to cloud9-assembly-index root",
+      "Create bordode/THEORIA repository if not exists",
+      "Upload theoria_v3_widget.html to THEORIA root",
+      "Upload THEORIA_Planetary_Intelligence_Lab_Notebook_v3.md to THEORIA root"
+    ],
+    "short_term": [
+      "Create theoria/export.py (CRITICAL BRIDGE)",
+      "Create theoria/engine.py from widget JavaScript",
+      "Create theoria/agents.py",
+      "Create theoria/metrics.py",
+      "Write docs/THEORY.md",
+      "Set up .github/workflows/theoria.yml for CI",
+      "Set up .github/workflows/docs.yml for Doxygen deployment"
+    ],
+    "medium_term": [
+      "Write docs/AGENTS.md architecture spec",
+      "Write docs/INSTITUTIONS.md coordination spec",
+      "Write docs/METRICS.md formalism document",
+      "Implement temporal assembly index for AI substrates",
+      "Run N=100 parameter sweep for statistical validation",
+      "Integrate Cloud-9 A_c computation into THEORIA export pipeline"
+    ]
+  },
+  "reward_mechanism": {
+    "description": "How subhalo AI should report progress back to user",
+    "on_file_upload": "Comment on commit with: file name, version, checksum, status",
+    "on_file_creation": "Create PR with: specification, estimated completion, blocker status",
+    "on_test_completion": "Update experiments/ directory with timestamped results",
+    "on_error": "Create GitHub issue with: error description, affected files, recommended fix",
+    "daily_summary": "Email digest: files uploaded, files created, blockers, next actions",
+    "weekly_report": "Markdown report: progress against action items, metrics, open questions status"
+  }
+}
