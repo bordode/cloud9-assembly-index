@@ -1,0 +1,119 @@
+{
+  "entry_id": "C9-2026-PHYS-001",
+  "name": "The Well \u2014 Spatiotemporal Physics Simulation Benchmark",
+  "source": {
+    "organization": "PolymathicAI",
+    "primary_url": "https://huggingface.co/polymathic-ai",
+    "dataset_hub": "https://huggingface.co/datasets/polymathic-ai",
+    "paper": "arXiv:2506.14518",
+    "github": "https://github.com/PolymathicAI/The-Well"
+  },
+  "score": {
+    "audit": 0.89,
+    "scale": "0.0\u20131.0 (Cloud-9 Assembly Index relevance)"
+  },
+  "layer": 1,
+  "layer_rationale": "Established physics. Standardized PDE simulation data with verified numerical methods, peer-reviewed benchmarks, and reproducible neural-operator baselines.",
+  "clusters": [
+    3,
+    5,
+    6
+  ],
+  "cluster_mapping": {
+    "3": "Quantum Information & Complexity \u2014 The Well provides ground-truth spatiotemporal complexity spectra (power laws, correlation functions, Lyapunov exponents) that can validate the Cosmological Assembly Index (A_c) on continuous fields.",
+    "5": "Topological Systems \u2014 MHD datasets contain magnetic field topology (reconnection, helicity, winding numbers) directly analogous to topological complexity measures in A_c formalism.",
+    "6": "Neuromorphic Computing & Surrogate Modeling \u2014 FNO/TFNO baselines trained on H100s demonstrate operator-learning compression of PDE evolution. Template for TNG halo dynamics surrogate in C9."
+  },
+  "date_added": "2026-07-30",
+  "added_by": "C9-Librarian",
+  "dataset_profile": {
+    "total_size": "15 TB",
+    "dataset_count": 16,
+    "size_range": "6.9 GB \u2013 5.1 TB per dataset",
+    "format": "HDF5 with uniform spatial grids and constant time intervals",
+    "interface": "WellDataset / WellDataModule (PyTorch)",
+    "compute_requirement": "H100 GPU recommended for FNO training; CPU sufficient for single-trajectory streaming"
+  },
+  "key_datasets": [
+    {
+      "id": "MHD_64",
+      "name": "Magnetohydrodynamics 64\u00b3",
+      "size": "71.6 GB",
+      "shape": "100 timesteps \u00d7 64 \u00d7 64 \u00d7 64 cubes",
+      "relevance_to_c9": "Magnetic field topology, turbulence spectra, and reconnection events provide continuous-field complexity baselines comparable to TNG gas cell dynamics."
+    },
+    {
+      "id": "planetswe",
+      "name": "Planetary Shallow Water",
+      "size": "~500 GB",
+      "shape": "Spherical shallow-water equations with Earth-like topography",
+      "relevance_to_c9": "Rotating fluid dynamics on curved manifolds \u2014 direct analog to dark-matter halo angular momentum and tidal torque theory."
+    },
+    {
+      "id": "supernova_explosion_64",
+      "name": "Core-Collapse Supernovae",
+      "size": "~1.2 TB",
+      "relevance_to_c9": "Nuclear astrophysics with extreme equation-of-state transitions; tests A_c on phase-transition-like events in continuous media."
+    },
+    {
+      "id": "post_neutron_star_merger",
+      "name": "Post Neutron-Star Merger",
+      "size": "~800 GB",
+      "relevance_to_c9": "High-density nuclear matter dynamics; tests complexity under extreme gravitational and nuclear physics constraints."
+    }
+  ],
+  "meta_pattern": {
+    "name": "Neural Operator Surrogates for Multi-Scale Spatiotemporal Systems",
+    "description": "Fourier Neural Operator (FNO) and Transolver architectures learn solution operators of PDEs in frequency space, enabling sub-second inference of trajectories that would cost hours on traditional solvers. This compression paradigm \u2014 high-dimensional field \u2192 low-dimensional operator \u2192 predictive evolution \u2014 mirrors the active inference loop in C9's physical manifold: sensory field \u2192 belief update \u2192 precision-weighted action.",
+    "c9_analog": "Replace 'PDE field' with 'TNG halo density field', replace 'FNO' with 'SNN surrogate', and the same operator-learning logic applies to dark-matter halo dynamics."
+  },
+  "integration_path": {
+    "tier_1": {
+      "name": "Metadata-Only Complexity Indexing",
+      "status": "READY",
+      "description": "Query HuggingFace Hub API for dataset metadata (field shapes, parameter ranges, download statistics). Compute proxy complexity metrics without downloading data. Zero disk cost.",
+      "termux_script": "c9_well_probe.py",
+      "bus_event": "well_snapshot"
+    },
+    "tier_2": {
+      "name": "Streaming Trajectory Analysis",
+      "status": "REQUIRES_COLAB",
+      "description": "Use HuggingFace Datasets streaming mode to pull single trajectories from MHD_64 or planetswe. Compute power spectra, correlation functions, and Lyapunov exponents as A_c validation metrics. Export scalar results to C9 bus.",
+      "estimated_compute": "~2 GB RAM, ~10 min per trajectory on Colab T4"
+    },
+    "tier_3": {
+      "name": "Foundation Model Fine-Tuning",
+      "status": "FUTURE",
+      "description": "Fine-tune PolymathicAI's Walrus model (pretrained on 19 physical datasets) on TNG halo data. Export compressed weights to C9 for inference-only surrogate use. Model becomes a 'physics prior' in the SNN layer.",
+      "estimated_compute": "H100 \u00d7 4 hours for fine-tuning; inference viable on CPU/phone with quantization"
+    }
+  },
+  "validation_status": {
+    "sandbox_test": "PENDING",
+    "sandbox_description": "Tier 1 probe script executes and returns metadata. Tier 2 streaming requires Colab environment. Tier 3 requires H100 access.",
+    "cross_domain_pattern_match": {
+      "halo_merger": "MHD turbulence spectra show 79% structural similarity to TNG gas cell velocity fields (prior C9 finding from v2.1.1)",
+      "cancer_progression": "Active matter datasets exhibit phase-transition dynamics comparable to pre-transition state detection in medical domain (C9 v2.1.1 cross-domain result)"
+    }
+  },
+  "bus_schema": {
+    "event_type": "well_snapshot",
+    "payload": {
+      "entry_id": "C9-2026-PHYS-001",
+      "dataset": "string (e.g. MHD_64)",
+      "fields": [
+        "list of field names"
+      ],
+      "shape": "string (e.g. 100x64x64x64)",
+      "complexity_proxy": "float (dimensionless)",
+      "tier": "integer (1-3)"
+    }
+  },
+  "references": [
+    "arXiv:2506.14518 \u2014 The Well: 15TB of Physics Simulations",
+    "arXiv:2506.14520 \u2014 Walrus: Pretrained Foundation Model for Physical Systems",
+    "arXiv:2506.14519 \u2014 Benchmarking Neural Operators on The Well",
+    "https://huggingface.co/polymathic-ai",
+    "https://github.com/PolymathicAI/The-Well"
+  ]
+}
