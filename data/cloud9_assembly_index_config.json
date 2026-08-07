@@ -1,0 +1,240 @@
+{
+  "_schema": "cloud9-theoria-assembly-v1",
+  "_description": "AWS Cloud9 environment configuration with embedded Assembly Index tracking for THEORIA planetary intelligence simulations",
+  "cloud9_environment": {
+    "name": "theoria-assembly-lab",
+    "description": "Cloud9 dev environment for THEORIA planetary intelligence + assembly index research",
+    "type": "EC2",
+    "instance_type": "t3.medium",
+    "image_id": "amazonlinux-2023-x86_64",
+    "automatic_stop_time_minutes": 30,
+    "connection_type": "CONNECT_SSM",
+    "subnet_id": "${SUBNET_ID}",
+    "tags": [
+      {
+        "Key": "Project",
+        "Value": "THEORIA"
+      },
+      {
+        "Key": "Layer",
+        "Value": "Assembly-Index"
+      },
+      {
+        "Key": "Owner",
+        "Value": "${GITHUB_USER}"
+      },
+      {
+        "Key": "Repo",
+        "Value": "theoria-planetary-intelligence"
+      }
+    ]
+  },
+  "github_integration": {
+    "repository": "https://github.com/${GITHUB_USER}/theoria-planetary-intelligence",
+    "branch": "main",
+    "clone_on_create": true,
+    "webhook_events": [
+      "push",
+      "pull_request",
+      "workflow_run"
+    ],
+    "actions_runner": {
+      "enabled": true,
+      "labels": [
+        "self-hosted",
+        "cloud9",
+        "theoria"
+      ],
+      "ephemeral": true
+    }
+  },
+  "assembly_index_module": {
+    "enabled": true,
+    "version": "3.0",
+    "description": "Assembly Index tracking for emergent pattern complexity in THEORIA simulations",
+    "configuration": {
+      "grid_resolution": [
+        64,
+        64
+      ],
+      "supercell_size": [
+        8,
+        8
+      ],
+      "coarse_grain_method": "mean",
+      "correlation_threshold": 0.8,
+      "track_fields": [
+        "temperature",
+        "biosphere",
+        "information",
+        "capacity"
+      ],
+      "sampling_interval_steps": 10,
+      "persist_to": "~/theoria-data/assembly-index/"
+    },
+    "metrics": {
+      "assembly_index_proxy": {
+        "formula": "pattern_complexity * log(copy_number + 1)",
+        "complexity_measure": "field_variance_across_subblocks",
+        "copy_number": "count_of_cells_with_similar_pattern",
+        "normalization": "per_block_max"
+      },
+      "selection_pressure": {
+        "formula": "high_copy_patterns / total_patterns",
+        "high_copy_threshold": 2,
+        "window_size_steps": 50
+      },
+      "pattern_diversity": {
+        "formula": "shannon_entropy(pattern_distribution)",
+        "bin_count": 16
+      }
+    },
+    "outputs": {
+      "json_log": "~/theoria-data/assembly-index/assembly_log.jsonl",
+      "csv_summary": "~/theoria-data/assembly-index/assembly_summary.csv",
+      "chart_png": "~/theoria-data/assembly-index/assembly_evolution.png",
+      "github_artifact": {
+        "enabled": true,
+        "path": "artifacts/assembly-index/",
+        "retention_days": 90
+      }
+    }
+  },
+  "theoria_simulation_params": {
+    "baseline": {
+      "stellar_flux": 0.1,
+      "diffusion_rate": 0.15,
+      "biosphere_growth": 0.08,
+      "albedo_feedback": 0.05,
+      "initial_agents": 5,
+      "agent_mix": {
+        "gradient": 2,
+        "predictive": 2,
+        "institutional": 1
+      }
+    },
+    "sweep_configurations": [
+      {
+        "name": "frozen_desert",
+        "stellar_flux": 0.06,
+        "biosphere_growth": 0.04
+      },
+      {
+        "name": "intelligence_island",
+        "stellar_flux": 0.1,
+        "biosphere_growth": 0.08
+      },
+      {
+        "name": "chaotic_bloom",
+        "stellar_flux": 0.1,
+        "biosphere_growth": 0.12
+      },
+      {
+        "name": "heat_death",
+        "stellar_flux": 0.18,
+        "biosphere_growth": 0.08
+      },
+      {
+        "name": "marginal_band",
+        "stellar_flux": 0.14,
+        "biosphere_growth": 0.08
+      }
+    ]
+  },
+  "startup_scripts": {
+    "cloud9_init": {
+      "path": "~/.c9/init.sh",
+      "commands": [
+        "sudo yum update -y",
+        "sudo yum install -y git htop tree jq python3.11 python3.11-pip",
+        "python3.11 -m pip install --user numpy matplotlib pandas scipy networkx",
+        "nvm install 20 && nvm use 20 && nvm alias default 20",
+        "mkdir -p ~/theoria-data/assembly-index/",
+        "git clone https://github.com/${GITHUB_USER}/theoria-planetary-intelligence.git ~/theoria || true",
+        "cd ~/theoria && git pull origin main || true",
+        "echo 'THEORIA Assembly Lab ready'"
+      ]
+    },
+    "assembly_index_daemon": {
+      "path": "~/theoria/scripts/assembly_daemon.py",
+      "trigger": "on_simulation_start",
+      "interval_seconds": 5,
+      "auto_commit_to_github": true,
+      "commit_message_template": "[assembly-index] Step {step}: AI={assembly_index:.3f}, Sel={selection_pressure:.3f}"
+    }
+  },
+  "environment_variables": {
+    "THEORIA_GRID_SIZE": "64",
+    "THEORIA_SUPERCELL": "8",
+    "THEORIA_DATA_DIR": "~/theoria-data",
+    "THEORIA_GITHUB_REPO": "${GITHUB_USER}/theoria-planetary-intelligence",
+    "THEORIA_ASSEMBLY_ENABLED": "true",
+    "THEORIA_LOG_LEVEL": "INFO",
+    "PYTHONPATH": "~/theoria:$PYTHONPATH",
+    "NODE_ENV": "development"
+  },
+  "collaboration": {
+    "shared_read_write": [
+      "arn:aws:iam::${AWS_ACCOUNT_ID}:user/theoria-researcher-1",
+      "arn:aws:iam::${AWS_ACCOUNT_ID}:user/theoria-researcher-2"
+    ],
+    "shared_read_only": [
+      "arn:aws:iam::${AWS_ACCOUNT_ID}:user/theoria-reviewer"
+    ],
+    "real_time_cursors": true,
+    "pair_programming_mode": true
+  },
+  "monitoring": {
+    "cloudwatch_dashboard": {
+      "enabled": true,
+      "name": "THEORIA-Assembly-Index-Dashboard",
+      "metrics": [
+        {
+          "namespace": "THEORIA/Assembly",
+          "metric": "AssemblyIndex",
+          "stat": "Average"
+        },
+        {
+          "namespace": "THEORIA/Assembly",
+          "metric": "SelectionPressure",
+          "stat": "Average"
+        },
+        {
+          "namespace": "THEORIA/Assembly",
+          "metric": "PatternDiversity",
+          "stat": "Average"
+        },
+        {
+          "namespace": "AWS/EC2",
+          "metric": "CPUUtilization",
+          "stat": "Average"
+        }
+      ]
+    },
+    "alarms": [
+      {
+        "name": "AssemblyIndexDrop",
+        "metric": "THEORIA/Assembly/AssemblyIndex",
+        "threshold": 0.3,
+        "comparison": "LessThanThreshold",
+        "evaluation_periods": 3,
+        "actions": [
+          "sns:theoria-alerts"
+        ]
+      }
+    ]
+  },
+  "cost_management": {
+    "auto_stop": true,
+    "idle_timeout_minutes": 30,
+    "budget_alert": {
+      "monthly_limit_usd": 50,
+      "alert_at_percent": [
+        50,
+        80,
+        100
+      ]
+    },
+    "spot_instance_fallback": false
+  }
+}
