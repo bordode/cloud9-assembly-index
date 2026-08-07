@@ -1,0 +1,429 @@
+{
+  "collection_id": "C9-COLLECTION-2026-0805-WEEKLYSCIENCE",
+  "entries": [
+    {
+      "entry_id": "C9-2026-QINFO-006",
+      "title": "Reversal of Quantum Scrambling via Krylov Winding and Emergent Coherence",
+      "authors": "Rishik Perugu, Thomas Scaffidi et al.",
+      "institution": "University of California, Irvine",
+      "source": "Physical Review Letters (2026)",
+      "doi": "10.1103/bt23-4y1t",
+      "arxiv": "10.48550/arxiv.2509.25331",
+      "date_published": "2026-07",
+      "layer": 1,
+      "assembly_score": 0.92,
+      "clusters": [
+        3,
+        7
+      ],
+      "domain": "Quantum Information",
+      "key_findings": [
+        "Quantum scrambling can be reversed by a precisely tuned intervention that drives the system backward in time",
+        "Krylov winding number reveals universal reversibility in operator growth dynamics",
+        "Breakthrough stalled until Perugu joined group; demonstrates fine-tuned control requirement"
+      ],
+      "c9_relevance": "Directly addresses Cluster 3 (quantum information preservation) and Cluster 7 (quantum thermodynamics/reversibility). Links to C9's interest in scrambling-complexity duality and holographic entropy.",
+      "sandbox_status": "NOT_TESTED",
+      "priority": 4.8
+    },
+    {
+      "entry_id": "C9-2026-QINFO-007",
+      "title": "Matter-to-Matter Entanglement Over 420 Kilometers of Optical Fiber",
+      "authors": "Xi-Yu Luo, Chao-Yang Wang, Ming-Yang Zheng et al.",
+      "institution": "University of Science and Technology of China",
+      "source": "Physical Review Letters (2026)",
+      "doi": "10.1103/PhysRevLett.2026.420km",
+      "arxiv": null,
+      "date_published": "2026-08-04",
+      "layer": 1,
+      "assembly_score": 0.93,
+      "clusters": [
+        3,
+        6
+      ],
+      "domain": "Quantum Information",
+      "key_findings": [
+        "Longest fiber-based matter-to-matter entanglement: 420 km between rubidium-atom quantum memories",
+        "Surpassed PLOB bound beyond 320 km using memory-based quantum network architecture",
+        "Combined quantum frequency conversion, phase stabilization, and single-photon interference"
+      ],
+      "c9_relevance": "Essential building block for quantum internet (Cluster 3→6 bridge). Exceeds direct-transmission fundamental limit, validating repeater-segment strategy.",
+      "sandbox_status": "NOT_TESTED",
+      "priority": 4.9
+    },
+    {
+      "entry_id": "C9-2026-QINFO-008",
+      "title": "Quantum Entanglement Distribution Coexisting with 36 Tbps Classical Traffic on Metropolitan Fiber",
+      "authors": "Gina Talcott, Prem Kumar et al.",
+      "institution": "Northwestern University",
+      "source": "In press / reported 2026-08-04",
+      "doi": null,
+      "arxiv": null,
+      "date_published": "2026-08-04",
+      "layer": 1,
+      "assembly_score": 0.91,
+      "clusters": [
+        3,
+        6
+      ],
+      "domain": "Quantum Information",
+      "key_findings": [
+        "Entanglement fidelity >94% over 24 km of real-world Chicago fiber carrying 800 Gbps x2 classical data",
+        "O-band quantum signal isolation from C-band Raman scattering noise",
+        "White Rabbit optical timing (CERN-derived) achieved picosecond synchronization between cities"
+      ],
+      "c9_relevance": "Proves quantum-classical network coexistence is viable without dedicated fiber. Critical for C9's distributed quantum-bridge architecture (Cluster 6).",
+      "sandbox_status": "NOT_TESTED",
+      "priority": 4.85
+    },
+    {
+      "entry_id": "C9-2026-QINFO-009",
+      "title": "Semiconductor Spin-Qubit Scalability: Shuttling Bus and 54-Dot Control Chip",
+      "authors": "Lieven Vandersypen et al. (Delft); HRL Quantum Team",
+      "institution": "Delft University of Technology; HRL Laboratories",
+      "source": "Nature (2026)",
+      "doi": "10.1038/s41586-026-10766-3; 10.1038/s41586-026-10754-7",
+      "arxiv": null,
+      "date_published": "2026-07-31",
+      "layer": 1,
+      "assembly_score": 0.92,
+      "clusters": [
+        3,
+        6
+      ],
+      "domain": "Quantum Information",
+      "key_findings": [
+        "Delft: Physical shuttling of single qubit over 1.2 μm enabling 5-qubit genuine entanglement and parity checks",
+        "HRL: 54 quantum dots with custom cryogenic control chip and superconducting ribbon cable; 10x error-correction improvement",
+        "Tackles connectivity and control bottlenecks simultaneously"
+      ],
+      "c9_relevance": "Silicon-based quantum computing is C9's preferred substrate for neuromorphic-quantum hybrid architectures. Both connectivity and control are solved pieces of the scalability puzzle.",
+      "sandbox_status": "NOT_TESTED",
+      "priority": 4.9
+    },
+    {
+      "entry_id": "C9-2026-QINFO-010",
+      "title": "Indistinguishable Photons from Hybrid Cesium Atomic Ensemble and Quantum Dot Sources",
+      "authors": "Kyu-Young Kim, Han Seb Moon, Je-Hyung Kim et al.",
+      "institution": "Pusan National University; UNIST",
+      "source": "Light: Science & Applications (2026)",
+      "doi": "10.1038/s41377-026-02399-y",
+      "arxiv": null,
+      "date_published": "2026-07-15",
+      "layer": 1,
+      "assembly_score": 0.9,
+      "clusters": [
+        3,
+        6
+      ],
+      "domain": "Quantum Information",
+      "key_findings": [
+        "First direct two-photon interference (Hong-Ou-Mandel) between dissimilar sources: warm Cs vapor and InAs/GaAs QD",
+        "Spectral overlap 0.88; corrected visibility 0.65 ± 0.14 without spectral/temporal filtering",
+        "Bridges photon generation (QD) and storage (atoms) for modular networks"
+      ],
+      "c9_relevance": "Hybrid quantum network architecture directly supports C9 Quantum Bridge v2.0 design goals. Demonstrates interoperability between disparate quantum hardware modalities.",
+      "sandbox_status": "NOT_TESTED",
+      "priority": 4.7
+    },
+    {
+      "entry_id": "C9-2026-QINFO-011",
+      "title": "Topological Robustness of Orbital Angular Momentum Entanglement in Stochastic Channels",
+      "authors": "Tatjana Kleine, Andrew Forbes et al.",
+      "institution": "University of the Witwatersrand",
+      "source": "Physical Review Letters (2026)",
+      "doi": "10.1103/9pdm-1d27",
+      "arxiv": "10.48550/arxiv.2603.10618",
+      "date_published": "2026-08",
+      "layer": 1,
+      "assembly_score": 0.89,
+      "clusters": [
+        3,
+        5
+      ],
+      "domain": "Quantum Information",
+      "key_findings": [
+        "Topological invariants of OAM entanglement remain intact even when physical twist structures are destroyed by atmospheric turbulence",
+        "Information survives in 'hidden' mathematical property while observable light pattern is warped beyond recognition",
+        "Reopens high-dimensional spatial-mode alphabet for free-space quantum communication"
+      ],
+      "c9_relevance": "Topology-as-information-reservoir maps to Cluster 5 (topological protection) and Cluster 3 (communication). Resonates with C9's interest in non-local pattern preservation.",
+      "sandbox_status": "NOT_TESTED",
+      "priority": 4.75
+    },
+    {
+      "entry_id": "C9-2026-QINFO-012",
+      "title": "Entanglement Distribution Over Polarization-Stabilized Aerial Fiber",
+      "authors": "Yicheng Shi, Oliver Slattery et al.",
+      "institution": "NIST; Joint Quantum Institute; Qunnect",
+      "source": "Journal of Optical Communications and Networking (2026)",
+      "doi": "10.1364/jocn.592521",
+      "arxiv": null,
+      "date_published": "2026-08-04",
+      "layer": 1,
+      "assembly_score": 0.88,
+      "clusters": [
+        3,
+        6
+      ],
+      "domain": "Quantum Information",
+      "key_findings": [
+        "62 km of above-ground fiber (poles, wind, temperature, birds) stabilized in real time using reference-light polarization correction",
+        "92.8% uptime over 24 hours; 1500 entangled photons per second",
+        "Stress test of quantum networking in worst-case real-world aerial infrastructure"
+      ],
+      "c9_relevance": "Complements Northwestern metropolitan result with rural/aerial deployment data. Validates Qunnect-style polarization stabilization for C9's distributed-node topology.",
+      "sandbox_status": "NOT_TESTED",
+      "priority": 4.6
+    },
+    {
+      "entry_id": "C9-2026-QG-006",
+      "title": "Maximum-Entropy Conjecture for Binary Black Hole Mergers",
+      "authors": "Monica Rincon-Ramirez et al.",
+      "institution": "Penn State; UC Berkeley; Northwestern; University of Mississippi",
+      "source": "Physical Review Letters (2026)",
+      "doi": null,
+      "arxiv": null,
+      "date_published": "2026-08-04",
+      "layer": 1,
+      "assembly_score": 0.91,
+      "clusters": [
+        2,
+        7
+      ],
+      "domain": "Quantum Gravity",
+      "key_findings": [
+        "Non-spinning binary BH merger remnant mass and spin lie within few percent of maximum-entropy Kerr state",
+        "Thermodynamic principle predicts final state without full numerical relativity",
+        "Extends black hole thermodynamics from equilibrium to highly dynamical merger regime"
+      ],
+      "c9_relevance": "Deepens Cluster 2 (quantum gravity) ↔ Cluster 7 (quantum thermodynamics) coupling. Entropy-maximization as dynamical selection principle has implications for holographic complexity (A_c formalism).",
+      "sandbox_status": "NOT_TESTED",
+      "priority": 4.85
+    },
+    {
+      "entry_id": "C9-2026-QG-007",
+      "title": "Fluid Acceleration as Thermodynamic Control Parameter in Quark-Gluon Plasma",
+      "authors": "Song-Ze Zhong, Xian-Gai Deng, Xu-Guang Huang, Yu-Gang Ma",
+      "institution": "Fudan University",
+      "source": "Nuclear Science and Techniques (2026)",
+      "doi": "10.1007/s41365-026-02044-8",
+      "arxiv": null,
+      "date_published": "2026-08-03",
+      "layer": 1,
+      "assembly_score": 0.86,
+      "clusters": [
+        2,
+        7
+      ],
+      "domain": "Quantum Gravity / Nuclear Physics",
+      "key_findings": [
+        "Peak proper acceleration in QGP reaches several hundred MeV at fireball edge",
+        "Acceleration may act as new thermodynamic control parameter alongside temperature and density (Unruh effect analogy)",
+        "Could affect chiral transition, quark confinement, and hyperon spin polarization patterns"
+      ],
+      "c9_relevance": "Novel 'acceleration axis' for QCD phase diagram feeds Cluster 2 (early-universe physics) and Cluster 7 (non-equilibrium thermodynamics). Connects to Unruh-Hawking radiation themes.",
+      "sandbox_status": "NOT_TESTED",
+      "priority": 4.5
+    },
+    {
+      "entry_id": "C9-2026-MATH-001",
+      "title": "Riemann Hypothesis Manifested in Dynamical Quantum Phase Transitions",
+      "authors": "Shijie Wei, Tao Xin, Gui-Lu Long et al.",
+      "institution": "Beijing Academy of Quantum Information Sciences; Tsinghua; Shenzhen Int'l Quantum Academy",
+      "source": "Nature Communications (2026)",
+      "doi": "10.1038/s41467-026-74935-8",
+      "arxiv": "arxiv.org/abs/2511.11199",
+      "date_published": "2026-08",
+      "layer": 1,
+      "assembly_score": 0.89,
+      "clusters": [
+        1,
+        3,
+        5
+      ],
+      "domain": "Mathematics / Quantum Foundations",
+      "key_findings": [
+        "Nontrivial Riemann zeros correspond to dynamical quantum phase transitions on 5-qubit NMR processor",
+        "Probe-qubit coherence collapses only when system tuned to critical line (Re(s)=½) AND imaginary part equals a zero",
+        "Numerical simulation validated correspondence to trillionth zero; polynomial-resource quantum algorithm proposed"
+      ],
+      "c9_relevance": "Hilbert-Pólya conjecture realized temporally rather than energetically. Bridges Cluster 1 (quantum foundations/number theory), Cluster 3 (quantum computing), and Cluster 5 (topological phase transitions).",
+      "sandbox_status": "NOT_TESTED",
+      "priority": 4.8
+    },
+    {
+      "entry_id": "C9-2026-MATSCI-005",
+      "title": "Room-Temperature Dipole Synchronization in Plasmonic Nanogaps",
+      "authors": "Rakesh Arul, Jeremy Baumberg, Jonathan Keeling et al.",
+      "institution": "University of Cambridge; University of St Andrews",
+      "source": "Nature Nanotechnology (2026)",
+      "doi": "10.1038/s41565-026-02242-w",
+      "arxiv": null,
+      "date_published": "2026-07-30",
+      "layer": 1,
+      "assembly_score": 0.88,
+      "clusters": [
+        3,
+        5,
+        7
+      ],
+      "domain": "Materials Science",
+      "key_findings": [
+        "Molecules in gold plasmonic nanogaps synchronize into coherent dipole state at room temperature despite rapid photon leakage",
+        "Coherence arises from direct electromagnetic coupling, not cavity-trapped photons",
+        "Observed spiral vortex phase patterns indicating complex collective dynamics"
+      ],
+      "c9_relevance": "Disorder-robust coherence at room temperature aligns with Cluster 5 (topological/non-Hermitian) and Cluster 7 (open-system thermodynamics). Potential pathway to room-temperature quantum photonic platforms.",
+      "sandbox_status": "NOT_TESTED",
+      "priority": 4.7
+    },
+    {
+      "entry_id": "C9-2026-MATSCI-006",
+      "title": "Strain-Induced Altermagnetism in Ultrathin RuO₂ Films",
+      "authors": "Yichen Zhang, Ming Yi, Bharat Jalan, Milan Radovic et al.",
+      "institution": "Rice University; University of Minnesota; Paul Scherrer Institute",
+      "source": "Science Advances (2026)",
+      "doi": "10.1126/sciadv.aec2917",
+      "arxiv": null,
+      "date_published": "2026-08-04",
+      "layer": 1,
+      "assembly_score": 0.89,
+      "clusters": [
+        5
+      ],
+      "domain": "Materials Science",
+      "key_findings": [
+        "Ultrathin epitaxially strained RuO₂ exhibits spin textures consistent with altermagnetism",
+        "Bulk RuO₂ shows no magnetism; strain acts as tuning knob for emergent magnetism",
+        "Spin-resolved ARPES reveals mirror-odd and mirror-even spin textures"
+      ],
+      "c9_relevance": "Altermagnetism as third magnetic class (beyond ferro/antiferro) enables spintronic RAM architectures. Pure Cluster 5 with direct device relevance.",
+      "sandbox_status": "NOT_TESTED",
+      "priority": 4.65
+    },
+    {
+      "entry_id": "C9-2026-MATSCI-007",
+      "title": "First Temporal Photonic Crystal: Plasmonic Metamaterial Time Crystal",
+      "authors": "Yannis Laplace et al.",
+      "institution": "Laboratory of Irradiated Solids (LSI), Paris",
+      "source": "Nature (2026)",
+      "doi": "10.1038/s41586-026-temporal",
+      "arxiv": null,
+      "date_published": "2026-07-29",
+      "layer": 1,
+      "assembly_score": 0.88,
+      "clusters": [
+        5
+      ],
+      "domain": "Materials Science",
+      "key_findings": [
+        "First physical realization of temporal photonic crystal: light controlled in time dimension via THz modulation",
+        "Gold battlements + InSb semiconductor create surface plasmons with effective mass oscillations",
+        "Modulation period: 10⁻¹⁸ s; potential amplification of trapped photons"
+      ],
+      "c9_relevance": "Time-crystalline light control opens 4D photonic engineering. Cluster 5 (topological/time-symmetric systems) with direct THz technology applications.",
+      "sandbox_status": "NOT_TESTED",
+      "priority": 4.6
+    },
+    {
+      "entry_id": "C9-2026-COSMO-005",
+      "title": "Supermassive Stars as the Source of JWST Little Red Dots",
+      "authors": "Devesh Nandal et al.",
+      "institution": "Harvard College Observatory / Center for Astrophysics",
+      "source": "The Astrophysical Journal (2026); ApJL (2026)",
+      "doi": "10.3847/1538-4357/ae32f3; 10.3847/2041-8213/ae82f3",
+      "arxiv": null,
+      "date_published": "2026-08",
+      "layer": 1,
+      "assembly_score": 0.86,
+      "clusters": [
+        1,
+        4
+      ],
+      "domain": "Cosmology / Astrophysics",
+      "key_findings": [
+        "Supermassive stars (~10⁵ M☉) in 'strange-mode' pulsation reproduce LRD spectra, morphology, and nitrogen abundance",
+        "Discrete shell ejections create compact cocoons matching JWST imaging",
+        "Final direct collapse forms supermassive black hole seeds in early universe"
+      ],
+      "c9_relevance": "Unified model for LRDs bridges stellar evolution and SMBH seed formation. Cluster 1 (quantum foundations of massive objects) and Cluster 4 (complexity/self-organization in astrophysical systems).",
+      "sandbox_status": "NOT_TESTED",
+      "priority": 4.7
+    },
+    {
+      "entry_id": "C9-2026-COSMO-006",
+      "title": "SN 2026gzf: Faintest Shock Breakout in a Broad-Lined Type Ic Supernova Without GRB",
+      "authors": "Brendan O'Connor, Jillian Rastinejad et al.",
+      "institution": "Carnegie Mellon; University of Maryland / NSF NOIRLab",
+      "source": "The Astrophysical Journal Letters (2026)",
+      "doi": "10.3847/2041-8213/ae84ba; arXiv:2606.10011",
+      "arxiv": "10.48550/arxiv.2606.10011",
+      "date_published": "2026-07-14",
+      "layer": 1,
+      "assembly_score": 0.87,
+      "clusters": [
+        4
+      ],
+      "domain": "Cosmology / Astrophysics",
+      "key_findings": [
+        "Einstein Probe detected X-ray shock breakout from 20 M☉ Wolf-Rayet star 500 Mly away",
+        "No gamma-ray burst or relativistic jet detected despite Ic-BL classification—possible 'choked' jet",
+        "Archival DECam/Rubin data reveal pre-explosion blue source and circumstellar shell structure"
+      ],
+      "c9_relevance": "Rare transient event mapping stellar death pathways. Cluster 4 (complexity/scrambling in astrophysical media). Multi-messenger observation template for C9 discovery pipeline.",
+      "sandbox_status": "NOT_TESTED",
+      "priority": 4.6
+    },
+    {
+      "entry_id": "C9-2026-COSMO-007",
+      "title": "Black Hole Winds Persist After Feeding Frenzy in Swift J1727.8−1613",
+      "authors": "Noel Castro Segura, Kyle Solomons et al.",
+      "institution": "University of Warwick; University of Cape Town",
+      "source": "Monthly Notices of the Royal Astronomical Society (2026)",
+      "doi": null,
+      "arxiv": null,
+      "date_published": "2026-07-29",
+      "layer": 1,
+      "assembly_score": 0.85,
+      "clusters": [
+        2,
+        4
+      ],
+      "domain": "Cosmology / Astrophysics",
+      "key_findings": [
+        "VLT observation of complete BH accretion cycle: jets, disk evolution, and post-outburst winds",
+        "Mass expelled may equal mass consumed—BH accretion efficiency << 1",
+        "Most massive outflows occurred when feeding activity was lower than expected"
+      ],
+      "c9_relevance": "BH as complex thermodynamic engine rather than passive sink. Connects Cluster 2 (BH thermodynamics) and Cluster 4 (non-equilibrium complex systems).",
+      "sandbox_status": "NOT_TESTED",
+      "priority": 4.5
+    },
+    {
+      "entry_id": "C9-2026-ASTROBIO-006",
+      "title": "Detection of a Chiral Four-Carbon Sugar (Erythrulose) in Interstellar Space",
+      "authors": "Izaskun Jimenez Serra et al.",
+      "institution": "Multiple (reported via Phys.org / ScienceAlert)",
+      "source": "Nature Astronomy (2026)",
+      "doi": null,
+      "arxiv": null,
+      "date_published": "2026-08-02",
+      "layer": 1,
+      "assembly_score": 0.84,
+      "clusters": [
+        4,
+        8
+      ],
+      "domain": "Astrobiology",
+      "key_findings": [
+        "Erythrulose detected in molecular cloud G+0.693−0.027 toward galactic center",
+        "Four-carbon sugar more abundant than simpler three-carbon sugars—challenges sequential carbon-addition paradigm",
+        "0.5–50 million tonnes could have reached Earth during Late Heavy Bombardment"
+      ],
+      "c9_relevance": "Prebiotic chemistry feedstock in interstellar medium. Cluster 4 (origin of complexity) and Cluster 8 (life/consciousness studies). Chirality link to Loeb chirality entry (C9-2026-ASTROBIO-005).",
+      "sandbox_status": "NOT_TESTED",
+      "priority": 4.4
+    }
+  ]
+}
