@@ -1,0 +1,19 @@
+{
+  "run_id": "2026-07-20T22-39-48.929540+00-00",
+  "dataset": "higgs_4mu_2012A",
+  "dataset_url": "http://opendata.cern.ch/record/12341/files/Run2012A_DoubleMuParked.root",
+  "channel": "Higgs \u2192 4\u03bc",
+  "timestamp": "2026-07-20T23:56:25.394139+00:00",
+  "status": "completed",
+  "events_processed": 100,
+  "data_source": "CERN Open Data Portal (REAL)",
+  "c9_metadata": {
+    "assembly_index_estimate": 0.28821569794571644,
+    "assembly_index_max": 0.8485420877647433,
+    "high_complexity_events": 12,
+    "priority_flag": true,
+    "cross_layer_target": "C9-2026-LHCB-001",
+    "analysis_type": "4-lepton invariant mass + complexity proxy",
+    "validation": "CERN ODP download verified"
+  }
+}
