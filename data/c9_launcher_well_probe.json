@@ -1,0 +1,9 @@
+{
+  "module_name": "well_probe",
+  "script": "c9_well_probe.py",
+  "args": [],
+  "port": null,
+  "type": "background",
+  "interval_minutes": 60,
+  "description": "Tier 1 metadata probe for The Well (C9-2026-PHYS-001). Queries HuggingFace Hub API for dataset metadata and writes well_snapshot events to C9 bus."
+}
