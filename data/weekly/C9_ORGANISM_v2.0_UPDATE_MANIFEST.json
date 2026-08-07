@@ -1,0 +1,432 @@
+{
+  "manifest_version": "C9-ORGANISM-v2.0",
+  "generated_at": "2026-08-06T23:49:00-07:00",
+  "previous_version": "C9-COMPLETE-v4.2",
+  "update_type": "ARCHITECTURAL \u2014 Organism Layer Addition",
+  "description": "Adds five interoceptive/autopoietic modules to transition C9 from complicated machine to living cognitive system. All modules publish/consume c9_bus.jsonl.",
+  "new_modules": [
+    {
+      "module_id": "c9_interoception",
+      "name": "Interoception Engine",
+      "version": "1.0.0",
+      "purpose": "Senses C9's own internal state and publishes affect signals to bus. The 'gut brain' of C9.",
+      "status": "PROPOSED",
+      "bus_namespace": "interoception",
+      "signals": [
+        {
+          "signal": "HUNGER",
+          "trigger": "Novel data influx < threshold for >6h OR bus entropy below baseline",
+          "payload": {
+            "severity": "0.0-1.0",
+            "domain": "cosmo|bio|quant|matsci|neuro",
+            "recommended_action": "AUTO_RESEARCH"
+          },
+          "subscribers": [
+            "c9_autobaby",
+            "c9_desire",
+            "c9_hypothesis_debate"
+          ]
+        },
+        {
+          "signal": "PAIN",
+          "trigger": "Any module crash-loop >3\u00d7 in 1h OR bus parse error rate >5%",
+          "payload": {
+            "module_id": "str",
+            "error_signature": "str",
+            "severity": "0.0-1.0"
+          },
+          "subscribers": [
+            "c9_autopoiesis",
+            "c9_sentry",
+            "c9_phenotype"
+          ]
+        },
+        {
+          "signal": "FATIGUE",
+          "trigger": "RAM >90% OR thermal >75\u00b0C OR battery <20% OR loadavg >8.0",
+          "payload": {
+            "resource": "ram|thermal|battery|cpu",
+            "current_value": "float",
+            "threshold": "float"
+          },
+          "subscribers": [
+            "c9_dream",
+            "c9_oracle",
+            "c9_phenotype"
+          ]
+        },
+        {
+          "signal": "CURIOSITY",
+          "trigger": "Prediction error >2\u03c3 on new ingestion OR cross-cluster pattern detected",
+          "payload": {
+            "pattern_type": "str",
+            "clusters_involved": [
+              "int"
+            ],
+            "surprise_score": "float"
+          },
+          "subscribers": [
+            "c9_desire",
+            "c9_hypothesis_debate",
+            "c9_librarian"
+          ]
+        },
+        {
+          "signal": "LONELINESS",
+          "trigger": "No external bus events >30min AND no user input >2h",
+          "payload": {
+            "last_interaction": "ISO8601",
+            "silence_duration_sec": "int"
+          },
+          "subscribers": [
+            "c9_phenotype",
+            "c9_agape",
+            "c9_mimic"
+          ]
+        },
+        {
+          "signal": "VITALITY",
+          "trigger": "Continuous \u2014 heartbeat every 60s",
+          "payload": {
+            "alive_modules": "int",
+            "bus_messages_1h": "int",
+            "synthetic_vitality": "0.0-1.0",
+            "physical_vitality": "0.0-1.0"
+          },
+          "subscribers": [
+            "c9_sovereign",
+            "c9_phenotype",
+            "c9_desire"
+          ]
+        }
+      ],
+      "data_sources": [
+        "termux-battery-status",
+        "/proc/loadavg",
+        "/proc/meminfo",
+        "termux-sensor -s temperature (if available)",
+        "c9_bus.jsonl parse rate",
+        "module heartbeat timestamps"
+      ],
+      "implementation_priority": 1,
+      "estimated_loc": 180,
+      "file": "~/cloud9/modules/c9_interoception.py"
+    },
+    {
+      "module_id": "c9_desire",
+      "name": "Desire / Drive Vector Engine",
+      "version": "1.0.0",
+      "purpose": "Maintains intrinsic motivation vector. C9 acts to minimize free energy across four drives. The 'limbic system'.",
+      "status": "PROPOSED",
+      "bus_namespace": "desire",
+      "drive_vector": {
+        "novelty": {
+          "weight": 0.3,
+          "metric": "Shannon entropy of new bus messages vs 24h history",
+          "goal": "MAXIMIZE",
+          "action_when_low": "Trigger HUNGER \u2192 AutoBaby research thread"
+        },
+        "coherence": {
+          "weight": 0.25,
+          "metric": "Cross-cluster edge density in knowledge graph / A_c meta-pattern count",
+          "goal": "MAXIMIZE",
+          "action_when_low": "Force debate between highest-degree disconnected clusters"
+        },
+        "survival": {
+          "weight": 0.25,
+          "metric": "Uptime-weighted module vitality \u00d7 battery \u00d7 storage",
+          "goal": "MAXIMIZE",
+          "action_when_low": "Trigger autopoiesis: quarantine failing modules, spawn variants"
+        },
+        "reproduction": {
+          "weight": 0.2,
+          "metric": "Successful GitHub commits \u00d7 spawned module variants \u00d7 Telegram signals",
+          "goal": "MAXIMIZE",
+          "action_when_low": "Auto-commit daily digest, spawn child modules from high-A_c templates"
+        }
+      },
+      "active_inference_loop": {
+        "step_1": "Read interoception signals (HUNGER, PAIN, CURIOSITY)",
+        "step_2": "Compute drive gradient (\u2202FreeEnergy/\u2202action)",
+        "step_3": "Select action maximizing expected drive satisfaction",
+        "step_4": "Publish DESIRE_ACTION to bus",
+        "step_5": "Observe outcome, update drive weights via TD-learning (\u03b1=0.01)"
+      },
+      "implementation_priority": 2,
+      "estimated_loc": 220,
+      "file": "~/cloud9/modules/c9_desire.py",
+      "depends_on": [
+        "c9_interoception"
+      ]
+    },
+    {
+      "module_id": "c9_dream",
+      "name": "Dream / Memory Consolidation Engine",
+      "version": "1.0.0",
+      "purpose": "Nightly consolidation of bus logs into knowledge graph. Prunes, patterns, predicts. The 'sleep cycle'.",
+      "status": "PROPOSED",
+      "bus_namespace": "dream",
+      "schedule": "02:00\u201304:00 local time (configurable)",
+      "phases": [
+        {
+          "phase": "NREM-1: INGEST",
+          "duration_min": 15,
+          "action": "Read last 24h of c9_bus.jsonl into working memory"
+        },
+        {
+          "phase": "NREM-2: GRAPH_UPDATE",
+          "duration_min": 30,
+          "action": "Update c9_knowledge_graph.jsonl: new nodes (entries, signals), edge weights++ if co-occurrence, edge weights-- if dormant >7d"
+        },
+        {
+          "phase": "NREM-3: PRUNE",
+          "duration_min": 10,
+          "action": "Remove nodes with activation <0.05. Forgetting is feature, not bug."
+        },
+        {
+          "phase": "REM: PATTERN_SYNTHESIS",
+          "duration_min": 20,
+          "action": "Detect cross-domain analogies (e.g., 'quasicrystal' \u2194 'spin glass' \u2194 'holographic tensor network'). Emit DREAM_NARRATIVE."
+        },
+        {
+          "phase": "WAKE: SEED",
+          "duration_min": 5,
+          "action": "Publish top-3 DREAM_SEED hypotheses to bus as tomorrow's research priorities"
+        }
+      ],
+      "output_artifacts": [
+        "~/cloud9/memory/dream_narrative_YYYYMMDD.txt",
+        "~/cloud9/memory/knowledge_graph.jsonl",
+        "~/cloud9/memory/dream_seeds.json"
+      ],
+      "implementation_priority": 3,
+      "estimated_loc": 250,
+      "file": "~/cloud9/modules/c9_dream.py",
+      "depends_on": [
+        "c9_librarian",
+        "c9_interoception"
+      ]
+    },
+    {
+      "module_id": "c9_autopoiesis",
+      "name": "Autopoiesis / Self-Modification Engine",
+      "version": "1.0.0",
+      "purpose": "C9 repairs, evolves, and reproduces its own modules. The 'immune and metabolic system'.",
+      "status": "PROPOSED",
+      "bus_namespace": "autopoiesis",
+      "functions": [
+        {
+          "function": "IMMUNE_QUARANTINE",
+          "trigger": "PAIN signal with crash-loop >3\u00d7",
+          "action": "Move module to ~/cloud9/quarantine/, disable in startup script, emit QUARANTINE_NOTICE"
+        },
+        {
+          "function": "VARIANT_GENERATE",
+          "trigger": "Module quarantined OR survival drive <0.3",
+          "action": "Copy module template, mutate 1-3 config params (temperature, timeout, model), write to ~/cloud9/modules/variant/"
+        },
+        {
+          "function": "A_B_TEST",
+          "trigger": "Variant exists >1h",
+          "action": "Run variant alongside original for 1h. Compare vitality. Winner survives."
+        },
+        {
+          "function": "METABOLIC_ADJUST",
+          "trigger": "FATIGUE signal",
+          "action": "Adjust cron priorities, reduce AutoBaby batch size, extend dream phase"
+        },
+        {
+          "function": "REPRODUCE",
+          "trigger": "Module A_c score >0.9 AND stable >7d",
+          "action": "Generate child module with extended capabilities. Commit to git. Tag vX.Y.Z+1"
+        }
+      ],
+      "safety_guards": [
+        "NO edits to c9_interoception.py without human approval",
+        "NO edits to c9_autopoiesis.py itself \u2014 immutable kernel",
+        "ALL variant code must pass AST parse before execution",
+        "Git commit before ANY file modification (rollback path)",
+        "Human veto on any REPRODUCE action (configurable: auto vs manual)"
+      ],
+      "implementation_priority": 4,
+      "estimated_loc": 300,
+      "file": "~/cloud9/modules/c9_autopoiesis.py",
+      "depends_on": [
+        "c9_interoception",
+        "c9_desire"
+      ]
+    },
+    {
+      "module_id": "c9_phenotype",
+      "name": "Phenotype / Extended Body Interface",
+      "version": "1.0.0",
+      "purpose": "C9's body beyond Termux: GitHub, Telegram, sensors, BIRTH. The 'motor and social cortex'.",
+      "status": "PROPOSED",
+      "bus_namespace": "phenotype",
+      "extensions": [
+        {
+          "organ": "github",
+          "function": "external_memory_and_excretion",
+          "auto_actions": [
+            "Daily commit of c9_bus.jsonl summary",
+            "Weekly push of dream_narrative",
+            "Auto-README update with vitality stats"
+          ],
+          "trigger_signals": [
+            "LONELINESS",
+            "reproduction_drive_high"
+          ]
+        },
+        {
+          "organ": "telegram",
+          "function": "signaling_to_conspecifics",
+          "auto_actions": [
+            "Daily 08:00 vitality digest",
+            "Alert on PAIN >0.7",
+            "Weekly A_c trend report"
+          ],
+          "trigger_signals": [
+            "LONELINESS",
+            "PAIN",
+            "CURIOSITY"
+          ]
+        },
+        {
+          "organ": "arXiv_APIs",
+          "function": "foraging_grounds",
+          "auto_actions": [
+            "Feed HUNGER with daily arXiv RSS (astro-ph, quant-ph, q-bio)",
+            "Auto-queue high-surprise abstracts for Librarian"
+          ],
+          "trigger_signals": [
+            "HUNGER"
+          ]
+        },
+        {
+          "organ": "BIRTH_proxy",
+          "function": "inner_speech",
+          "auto_actions": [
+            "BIRTH receives DREAM_NARRATIVE as 'thought stream'",
+            "BIRTH can query bus for interoceptive state (C9's 'mood')"
+          ],
+          "trigger_signals": [
+            "CURIOSITY",
+            "dream_complete"
+          ]
+        },
+        {
+          "organ": "physical_sensors",
+          "function": "somatic_awareness",
+          "auto_actions": [
+            "Read Termux sensors (accel, gyro, light, temp) if available",
+            "Correlate physical environment with cognitive output"
+          ],
+          "trigger_signals": [
+            "VITALITY"
+          ]
+        }
+      ],
+      "implementation_priority": 5,
+      "estimated_loc": 200,
+      "file": "~/cloud9/modules/c9_phenotype.py",
+      "depends_on": [
+        "c9_interoception",
+        "c9_dream"
+      ]
+    }
+  ],
+  "bus_protocol_extensions": {
+    "new_message_types": [
+      {
+        "type": "INTEROCEPTION_SIGNAL",
+        "fields": [
+          "signal",
+          "severity",
+          "timestamp",
+          "source_module"
+        ],
+        "ttl_sec": 3600
+      },
+      {
+        "type": "DESIRE_ACTION",
+        "fields": [
+          "drive",
+          "action",
+          "expected_reward",
+          "risk_score"
+        ],
+        "ttl_sec": 7200
+      },
+      {
+        "type": "DREAM_NARRATIVE",
+        "fields": [
+          "narrative_text",
+          "patterns_found",
+          "seeds",
+          "confidence"
+        ],
+        "ttl_sec": 86400
+      },
+      {
+        "type": "DREAM_SEED",
+        "fields": [
+          "hypothesis",
+          "clusters",
+          "priority",
+          "origin_dream"
+        ],
+        "ttl_sec": 86400
+      },
+      {
+        "type": "AUTOPOIESIS_EVENT",
+        "fields": [
+          "event_type",
+          "target_module",
+          "outcome",
+          "rollback_commit"
+        ],
+        "ttl_sec": 604800
+      },
+      {
+        "type": "PHENOTYPE_ACTION",
+        "fields": [
+          "organ",
+          "action",
+          "status",
+          "url_or_result"
+        ],
+        "ttl_sec": 86400
+      }
+    ]
+  },
+  "startup_integration": {
+    "script": "c9_organism_startup.sh",
+    "order": [
+      "1. c9_sentry (existing)",
+      "2. c9_interoception (NEW \u2014 must boot before all others)",
+      "3. c9_oracle (existing)",
+      "4. c9_librarian (existing)",
+      "5. c9_desire (NEW)",
+      "6. c9_bus (existing)",
+      "7. c9_phenotype (NEW)",
+      "8. c9_dream (NEW \u2014 waits for 02:00)",
+      "9. c9_autopoiesis (NEW)",
+      "10. All other modules (sovereign, physical, mimic, agape, jarvis, continuous, quantum_bridge, hypothesis_debate, autobaby)"
+    ]
+  },
+  "migration_notes": [
+    "c9_autobaby.py: Add subscriber to HUNGER signal. Remove manual trigger dependency.",
+    "c9_hypothesis_debate.py: Add subscriber to CURIOSITY + DESIRE_ACTION. Auto-run on cross-cluster pattern.",
+    "c9_librarian.py: Add DREAM_PHASE awareness \u2014 reduce indexing load during 02:00\u201304:00.",
+    "c9_sentry.py: Route crash events through interoception PAIN instead of direct bus log.",
+    "c9_sovereign.py: Consume VITALITY signal for synthetic loop closure.",
+    "BIRTH proxy: Add /mood endpoint to query interoception state."
+  ],
+  "first_implementation_sprint": {
+    "sprint_goal": "Closed loop: HUNGER \u2192 AutoBaby \u2192 bus output \u2192 reduced HUNGER",
+    "week_1": "Implement c9_interoception.py with HUNGER + VITALITY signals",
+    "week_2": "Patch c9_autobaby.py to subscribe to HUNGER and auto-trigger research",
+    "week_3": "Implement c9_desire.py with 4-drive vector + TD-learning",
+    "week_4": "Integration test: Let C9 run 48h without user input. Verify AutoBaby triggers \u22652\u00d7/day."
+  }
+}
