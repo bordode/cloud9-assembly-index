@@ -1,0 +1,12 @@
+{
+  "run_id": "2026-07-20T21-23-17.116919+00-00",
+  "dataset": "Zmumu_Run2012B_AOD.root",
+  "channel": "Z -> mumu",
+  "timestamp": "2026-07-20T22:21:07.777736+00:00",
+  "status": "failed_connection",
+  "events_processed": 0,
+  "c9_metadata": {
+    "assembly_index_estimate": 0.0,
+    "priority_flag": false
+  }
+}
