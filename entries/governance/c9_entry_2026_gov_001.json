@@ -1,0 +1,24 @@
+{
+  "entry_id": "C9-2026-GOV-001",
+  "title": "Cognitive Stewardship: An Adaptive Governance Framework for AI Under Uncertainty",
+  "author": "Dean Bordode",
+  "document": "Tuning the Moral Spectrum v2.0",
+  "date": "2026-08-06",
+  "ac_score": 0.88,
+  "layer": 1,
+  "clusters": [
+    1,
+    3,
+    6,
+    8
+  ],
+  "key_claim": "Seven principles of Cognitive Stewardship + Composition Hypothesis + Filter Hypothesis. Vancouver Declaration proposed as non-binding international framework.",
+  "evidence_strength": "Interdisciplinary synthesis; draws on governance history, human rights law, complexity science",
+  "testability": "Near-term: democratic trust metrics; manufactured vs honest uncertainty bibliometrics",
+  "cross_links": [
+    "C9-2026-NEURO-001",
+    "C9-2026-PHYS-001",
+    "C9-2026-QUANT-002",
+    "C9-2026-LEGACY-001"
+  ]
+}

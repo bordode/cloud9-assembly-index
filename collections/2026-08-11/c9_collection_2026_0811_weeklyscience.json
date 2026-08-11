@@ -1,0 +1,394 @@
+{
+  "collection_id": "C9-COLLECTION-2026-0811-WEEKLYSCIENCE",
+  "date": "2026-08-11",
+  "source_digest": "Kimi_20260805.docx",
+  "entry_count": 15,
+  "layer_distribution": {
+    "L1": 13,
+    "L2": 2,
+    "L3": 0
+  },
+  "average_ac_score": 0.877,
+  "max_ac_score": 0.93,
+  "min_ac_score": 0.82,
+  "meta_patterns": [
+    {
+      "pattern_id": "MP-2026-0811-01",
+      "pattern_name": "Temporal Asymmetry & Directional Selection",
+      "description": "Independent physical, climatic, and neural systems exhibit irreversible forward-time trajectories when driven out of equilibrium.",
+      "supporting_entries": [
+        "C9-2026-PHYS-001",
+        "C9-2026-CLIM-001",
+        "C9-2026-NEURO-001"
+      ],
+      "cross_layer": true,
+      "confidence": 0.79
+    },
+    {
+      "pattern_id": "MP-2026-0811-02",
+      "pattern_name": "Interface Engineering as Complexity Enabler",
+      "description": "Breakthroughs occur at boundaries, not in bulk: 0.42nm AlOx buffer, graphite-epoxy plate, Clavina modularity, vacuum birefringence.",
+      "supporting_entries": [
+        "C9-2026-MATSCI-001",
+        "C9-2026-SENS-001",
+        "C9-2026-QUANT-003",
+        "C9-2026-QUANT-004",
+        "C9-2026-BIO-005"
+      ],
+      "cross_layer": true,
+      "confidence": 0.85
+    },
+    {
+      "pattern_id": "MP-2026-0811-03",
+      "pattern_name": "Decoherence Bypass via Alternative Channels",
+      "description": "Systems preserve target observables by redirecting into orthogonal degrees of freedom before environmental decoherence.",
+      "supporting_entries": [
+        "C9-2026-QUANT-001",
+        "C9-2026-QUANT-002",
+        "C9-2026-SENS-001",
+        "C9-2026-BIO-005"
+      ],
+      "cross_layer": true,
+      "confidence": 0.82
+    },
+    {
+      "pattern_id": "MP-2026-0811-04",
+      "pattern_name": "Primordial Imprint Preservation Across Scales",
+      "description": "Early-universe high-complexity configurations survive late-time scrambling: tidal torque, glueballs, supermassive star cocoons.",
+      "supporting_entries": [
+        "C9-2026-COSMO-002",
+        "C9-2026-PART-001",
+        "C9-2026-ASTRO-001"
+      ],
+      "cross_layer": true,
+      "confidence": 0.77
+    },
+    {
+      "pattern_id": "MP-2026-0811-05",
+      "pattern_name": "Structured Suppression of Dominant Mode",
+      "description": "Recurring C9 signature: subdominant CDW emerges after dominant mode perturbation; Mn-QDs suppress fast thermalization; sunlight SPDC suppresses coherence requirements.",
+      "supporting_entries": [
+        "C9-2026-MATSCI-002",
+        "C9-2026-QUANT-001",
+        "C9-2026-QUANT-002"
+      ],
+      "cross_layer": true,
+      "confidence": 0.88
+    },
+    {
+      "pattern_id": "MP-2026-0811-06",
+      "pattern_name": "Generative Write-Back: From Prediction to Creation",
+      "description": "AI crosses from prediction to generative creation of functional entities: Evo 2 writes viable viruses, Clavina generates GKP states, 0.42nm interface engineers materials.",
+      "supporting_entries": [
+        "C9-2026-BIO-005",
+        "C9-2026-QUANT-003",
+        "C9-2026-MATSCI-001"
+      ],
+      "cross_layer": true,
+      "confidence": 0.84
+    }
+  ],
+  "entries": [
+    {
+      "entry_id": "C9-2026-PHYS-001",
+      "title": "Accelerating Wave Equation and Microscopic Arrow of Time",
+      "source": "Optica (Koivurova & Ornigotti)",
+      "doi": "10.1364/optica.XXXXXX",
+      "ac_score": 0.92,
+      "layer": 1,
+      "clusters": [
+        1,
+        2,
+        3,
+        7
+      ],
+      "key_claim": "Wave speed variation introduces acceleration term yielding time-asymmetric solutions; resolves Abraham-Minkowski controversy via wave proper-time frame.",
+      "evidence_strength": "Theoretical + proposed optical tests",
+      "testability": "RF transmission lines, epsilon-near-zero materials",
+      "cross_links": [
+        "C9-2026-QUANT-004",
+        "C9-2026-CLIM-001"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-MATSCI-001",
+      "title": "0.42nm Epitaxial Interface for Atomically Thin Transistors",
+      "source": "Nature Electronics (NYCU / TSMC)",
+      "doi": "10.1038/s41928-026-01672-7",
+      "ac_score": 0.89,
+      "layer": 1,
+      "clusters": [
+        5,
+        6
+      ],
+      "key_claim": "Ultrathin epitaxial Al buffer (0.42nm) on CVD MoS2 enables EOT ~1nm with 0.45 mS/\u03bcm transconductance; wafer-scale 2D electronics viable.",
+      "evidence_strength": "Experimental fabrication + electrical characterization",
+      "testability": "Immediate: scale to wafer-level manufacturing",
+      "cross_links": [
+        "C9-2026-QUANT-003"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-COSMO-001",
+      "title": "First Limits on Dark Matter Decay to Gravitons via Cosmic Filaments",
+      "source": "Physical Review D (Dunsky et al, NYU)",
+      "doi": "10.1103/yvs5-67cj",
+      "ac_score": 0.85,
+      "layer": 1,
+      "clusters": [
+        2,
+        3,
+        5
+      ],
+      "key_claim": "Gertsenshtein effect in cosmic filaments sets first constraints on DM\u2192graviton decay; no exotic physics beyond graviton hypothesis needed.",
+      "evidence_strength": "Observational nondetection (Fermi-LAT) as upper limits",
+      "testability": "Future: Advanced Particle-astrophysics Telescope (APT) could sharpen 10\u00d7",
+      "cross_links": [
+        "C9-2026-ASTRO-001",
+        "C9-2026-QUANT-004"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-QUANT-001",
+      "title": "Mn-Doped Quantum Dots Bypass Hot-Electron Thermalization",
+      "source": "Nature Communications (Los Alamos)",
+      "doi": "10.1038/s41467-026-XXXXX",
+      "ac_score": 0.84,
+      "layer": 1,
+      "clusters": [
+        3,
+        5,
+        7
+      ],
+      "key_claim": "Magnetic Mn dopants capture hot electrons via fs magnetic interaction, redirecting energy before thermalization; enables photocatalysis under previously inaccessible barriers.",
+      "evidence_strength": "Femtosecond transient absorption + methyl viologen reduction assay",
+      "testability": "Immediate: extend to other magnetic dopants; solar fuel applications",
+      "cross_links": [
+        "C9-2026-QUANT-002"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-QUANT-002",
+      "title": "Sunlight-Driven Quantum Entanglement via SPDC",
+      "source": "Optica (Li, Boyd, Fattahi \u2014 Ottawa / MPL)",
+      "doi": "10.1364/OPTICA.601797",
+      "ac_score": 0.91,
+      "layer": 1,
+      "clusters": [
+        1,
+        3,
+        6,
+        7
+      ],
+      "key_claim": "Highly incoherent sunlight generates polarization-entangled photons at 94% Bell-state fidelity; coherence in one DOF sufficient for entanglement in another.",
+      "evidence_strength": "Outdoor experiment + quantum state tomography + Bell violation",
+      "testability": "Immediate: field-deployable satellite QKD without onboard lasers",
+      "cross_links": [
+        "C9-2026-QUANT-001",
+        "C9-2026-QUANT-003",
+        "C9-2026-PHYS-001"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-QUANT-003",
+      "title": "Clavina: Extensible Universal Photonic Quantum Computing",
+      "source": "Nature Photonics (Imperial / QMLU / CJLU)",
+      "doi": "10.1038/s41566-026-01962-8",
+      "ac_score": 0.9,
+      "layer": 1,
+      "clusters": [
+        3,
+        5,
+        6
+      ],
+      "key_claim": "Modular photonic architecture combining linear and nonlinear ops; deterministic GKP state generation; Bose-Hubbard simulation demonstrated.",
+      "evidence_strength": "Experimental demonstration of two applications + architectural scalability",
+      "testability": "Immediate: integrate additional nonlinear modules; error-correction threshold testing",
+      "cross_links": [
+        "C9-2026-QUANT-002",
+        "C9-2026-MATSCI-001"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-COSMO-002",
+      "title": "Primordial Tidal Torque Imprint in Galaxy Spins",
+      "source": "Nature Astronomy (Sheng et al, Xiamen U.)",
+      "doi": "10.1038/s41550-026-02948-w",
+      "ac_score": 0.86,
+      "layer": 1,
+      "clusters": [
+        2,
+        3,
+        8
+      ],
+      "key_claim": "ELUCID reconstruction + SAMI spin measurements confirm gas in massive ellipticals retains primordial tidal torque signal; strongest evidence for tidal torque theory.",
+      "evidence_strength": "Observational correlation with >99% confidence",
+      "testability": "Immediate: neutrino mass constraints from tidal field statistics; JWST high-z validation",
+      "cross_links": [
+        "C9-2026-ASTRO-001",
+        "C9-2026-PHYS-001"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-CLIM-001",
+      "title": "Statistically Significant Acceleration of Global Warming",
+      "source": "Geophysical Research Letters (Foster & Rahmstorf, PIK)",
+      "doi": "10.1029/2025GL118804",
+      "ac_score": 0.88,
+      "layer": 1,
+      "clusters": [
+        3,
+        7,
+        8
+      ],
+      "key_claim": "After filtering ENSO/volcanic/solar noise, warming rate shifted from ~0.2\u00b0C/decade (1970-2015) to ~0.35\u00b0C/decade since ~2015; >98% statistical certainty across 5 datasets.",
+      "evidence_strength": "Meta-analysis of 5 global temperature records + 2 independent statistical methods",
+      "testability": "Immediate: attribution studies needed; policy window closing before 2030 1.5\u00b0C exceedance",
+      "cross_links": [
+        "C9-2026-PHYS-001"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-SENS-001",
+      "title": "Levitated Magnet Magnetometer (LeMaMa) at Room Temperature",
+      "source": "Science (Ji et al, Peking U. / JGU Mainz)",
+      "doi": "10.1126/science.adx1707",
+      "ac_score": 0.87,
+      "layer": 1,
+      "clusters": [
+        5,
+        6,
+        7
+      ],
+      "key_claim": "Floating permanent magnet in ambient conditions achieves 32 fT/\u221aHz; graphite-epoxy bound plate reduces Johnson noise >70%; no cryogenics or shielding.",
+      "evidence_strength": "Experimental coil-calibrated sensitivity measurements",
+      "testability": "Immediate: MEG brain imaging; dark matter axion detection; fundamental physics",
+      "cross_links": [
+        "C9-2026-QUANT-004",
+        "C9-2026-NEURO-001"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-MATSCI-002",
+      "title": "Distinct Mechanisms for Competing Charge Density Waves",
+      "source": "Nature Physics (Gedik/MIT + Stanford)",
+      "doi": "10.1038/s41567-026-XXXXX",
+      "ac_score": 0.86,
+      "layer": 1,
+      "clusters": [
+        3,
+        5,
+        7
+      ],
+      "key_claim": "Erbium tritelluride: dominant CDW recovers via 2nd-order (continuous) transition; subdominant CDW recovers via 1st-order (nucleation/growth) transition\u2014like water-to-ice.",
+      "evidence_strength": "Pump-probe ARPES at -230\u00b0C with controlled perturbation amplitude",
+      "testability": "Immediate: extend to cuprates/iron-based superconductors",
+      "cross_links": [
+        "C9-2026-QUANT-001",
+        "C9-2026-PHYS-001"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-NEURO-001",
+      "title": "Two-Stage Neural Dynamics of Visual Consciousness",
+      "source": "PLOS Biology (Men\u00e9trey, Herzog, Pascucci / EPFL)",
+      "doi": "10.1371/journal.pbio.3003894",
+      "ac_score": 0.83,
+      "layer": 1,
+      "clusters": [
+        6,
+        8
+      ],
+      "key_claim": "SQM illusion reveals unconscious encoding stage (~200ms, occipital) and conscious integration stage (~450ms, parietal); postdiction operates between stages.",
+      "evidence_strength": "EEG + ML decoding on 18 participants; reproducible across stimulus conditions",
+      "testability": "Immediate: TMS/perturbation to test causal role of 450ms signal; clinical (DOC patients)",
+      "cross_links": [
+        "C9-2026-SENS-001",
+        "C9-2026-GOV-001"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-PART-001",
+      "title": "Glueball-Dominated Particle X(2370) Confirmed",
+      "source": "ICHEP 2026 / BESIII (BEPC)",
+      "doi": "10.1103/PhysRevD.XX.XXXXXX",
+      "ac_score": 0.93,
+      "layer": 1,
+      "clusters": [
+        1,
+        3,
+        5
+      ],
+      "key_claim": "15-year campaign confirms X(2370) as flavor-singlet, glueball-dominated (~2.37 GeV); completes major Standard Model prediction.",
+      "evidence_strength": "BESIII: mass, quantum numbers, flavor-singlet signature; independent theoretical confirmation",
+      "testability": "Immediate: LHCb cross-check; lattice QCD refinement; search for pure glueballs",
+      "cross_links": [
+        "C9-2026-COSMO-001",
+        "C9-2026-QUANT-004"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-ASTRO-001",
+      "title": "Little Red Dots as Supermassive Progenitor Stars",
+      "source": "The Astrophysical Journal Letters (Harvard)",
+      "doi": "10.3847/2041-8213/XXXXXX",
+      "ac_score": 0.82,
+      "layer": 2,
+      "clusters": [
+        2,
+        3,
+        8
+      ],
+      "key_claim": "10^5 M\u2299 supermassive stars with 'strange-mode' pulsations create dense cocoons explaining JWST compact morphology; direct-collapse SMBH seeds.",
+      "evidence_strength": "Stellar evolution models + JWST photometric consistency; nitrogen-rich outflows detected",
+      "testability": "Near-term: JWST spectroscopic confirmation of predicted N/He ratios",
+      "cross_links": [
+        "C9-2026-COSMO-002",
+        "C9-2026-COSMO-001"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-QUANT-004",
+      "title": "Vacuum Birefringence Observed in Magnetar 1E1547",
+      "source": "Nature (Lower et al; IXPE/NICER/Parkes)",
+      "doi": "10.1038/s41586-026-XXXXX",
+      "ac_score": 0.91,
+      "layer": 1,
+      "clusters": [
+        1,
+        3,
+        5,
+        7
+      ],
+      "key_claim": "X-ray polarization from magnetar aligns with magnetic pole rotation; strong-field QED prediction of Heisenberg (1930s) observed\u2014vacuum itself modifies light propagation.",
+      "evidence_strength": "Multi-messenger polarization tomography; supercomputer modeling",
+      "testability": "Immediate: repeat for other magnetars; laboratory analogs with strong laser fields",
+      "cross_links": [
+        "C9-2026-PHYS-001",
+        "C9-2026-PART-001",
+        "C9-2026-SENS-001"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-BIO-005",
+      "title": "Evo 2 Designs First Fully AI-Generated Viable Bacteriophages",
+      "source": "Science (King et al., Stanford / Arc Institute)",
+      "doi": "10.1126/science.XXXXXX",
+      "ac_score": 0.89,
+      "layer": 1,
+      "clusters": [
+        3,
+        6,
+        8
+      ],
+      "key_claim": "Evo 1/2 generated ~700k \u03a6X174-variant genomes; 285 synthesized, 16 viable phages confirmed by plaque assay and cryo-EM. Some outperformed natural phage against antibiotic-resistant E. coli.",
+      "evidence_strength": "Experimental synthesis + plaque assay + cryo-EM + efficacy comparison",
+      "testability": "Immediate: replicate with other scaffolds; scale to larger genomes; C9 biosafety scoring integration",
+      "cross_links": [
+        "C9-2026-GOV-001",
+        "C9-2026-QUANT-002",
+        "C9-2026-MATSCI-001"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "entry_id": "C9-2026-BIO-005",
+  "title": "Evo 2 Designs First Fully AI-Generated Viable Bacteriophages",
+  "source": "Science (King et al., Stanford / Arc Institute)",
+  "doi": "10.1126/science.XXXXXX",
+  "ac_score": 0.89,
+  "layer": 1,
+  "clusters": [
+    3,
+    6,
+    8
+  ],
+  "key_claim": "Evo 1/2 generated ~700k PhiX174-variant genomes; 285 synthesized, 16 viable. Cryo-EM revealed evolutionarily distant proteins. First complete AI-designed viral genomes validated experimentally.",
+  "evidence_strength": "Experimental synthesis + plaque assay + cryo-EM + efficacy vs antibiotic-resistant E. coli",
+  "testability": "Immediate: replicate with other scaffolds; scale to larger genomes; C9 biosafety scoring integration",
+  "github": "https://github.com/ArcInstitute/evo2",
+  "safety_note": "Open-source Apache 2.0; commentary: ability to compose viral genomes using generative AI now exists; the governance to safely steer it does not (Inglesby & Hanke, Science)",
+  "cross_links": [
+    "C9-2026-GOV-001",
+    "C9-2026-QUANT-002",
+    "C9-2026-MATSCI-001"
+  ]
+}
