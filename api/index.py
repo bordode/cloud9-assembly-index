@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import json, os
-from http.server import BaseHTTPRequestHandler
+from http.server import BaseHTTPRequestHandler, HTTPServer
 
 C9_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 COLL = os.path.join(C9_DIR, "collections", "2026-08-11", "c9_collection_2026_0811_weeklyscience.json")
@@ -34,3 +34,11 @@ class handler(BaseHTTPRequestHandler):
 
     def do_POST(self):
         self._json({"status": "DUMMY_MODE", "message": "Read-only API"})
+
+# LOCAL TESTING: start server when run directly
+# VERCEL: ignores this block, uses handler class only
+if __name__ == "__main__":
+    PORT = int(os.environ.get("PORT", 8000))
+    print(f"[C9 API] Starting on http://127.0.0.1:{PORT}")
+    httpd = HTTPServer(("127.0.0.1", PORT), handler)
+    httpd.serve_forever()
