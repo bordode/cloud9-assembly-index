@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import re
 import os
+import c9_bus_client  # C9 bus injection
 
 def extract_snps(filepath="AncestryDNA.txt", target_chrom="13", max_snps=200):
     if not os.path.exists(filepath):
@@ -39,6 +40,7 @@ def kmer_complexity(dna, k=6):
         return 0.0
 
     kmers = {dna[i:i+k] for i in range(len(dna)-k+1)}
+        c9_bus_client.heartbeat()
     return round(len(kmers) / len(dna), 3)
 
 

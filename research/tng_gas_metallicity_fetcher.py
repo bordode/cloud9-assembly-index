@@ -1,4 +1,5 @@
 import os, json, time, requests, numpy as np
+import c9_bus_client  # C9 bus injection
 
 TNG_API_KEY = os.getenv('TNG_API_KEY', '').strip()
 TNG_BASE = 'https://www.tng-project.org/api/'

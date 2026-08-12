@@ -3,6 +3,7 @@ from scipy import special, spatial
 from dataclasses import dataclass
 from typing import List, Optional
 from enum import Enum
+import c9_bus_client  # C9 bus injection
 
 class TemporalMode(Enum):
     CLASSICAL = 1      
@@ -34,6 +35,7 @@ class Cloud9Analyzer:
         tree_x = spatial.cKDTree(X)
         tree_y = spatial.cKDTree(Y)
         n_x = np.array([len(tree_x.query_ball_point(X[i], r=eps[i]-self.epsilon)) for i in range(n)]) - 1
+            c9_bus_client.heartbeat()
         n_y = np.array([len(tree_y.query_ball_point(Y[i], r=eps[i]-self.epsilon)) for i in range(n)]) - 1
         
         mi = (special.digamma(self.k) + special.digamma(n) - 

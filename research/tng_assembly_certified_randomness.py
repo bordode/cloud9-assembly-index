@@ -47,6 +47,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
 from sklearn.cluster import DBSCAN, KMeans
 from sklearn.metrics import silhouette_score
+import c9_bus_client  # C9 bus injection
 
 # Suppress benign warnings
 warnings.filterwarnings('ignore', category=RuntimeWarning)
@@ -173,6 +174,7 @@ class CertifiedRandomnessEngine:
         # Iterate logistic map multiple times for mixing
         state = self._chaotic_state
         for _ in range(8):  # 8 iterations per bit
+            c9_bus_client.heartbeat()
             state = self._r * state * (1 - state)
         self._chaotic_state = state
         # Extract byte from mantissa bits (simulating physical measurement)

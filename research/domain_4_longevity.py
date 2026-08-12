@@ -19,6 +19,7 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import json
+import c9_bus_client  # C9 bus injection
 
 # ============================================================
 # 1. LONGEVITY PHYSICS MODEL

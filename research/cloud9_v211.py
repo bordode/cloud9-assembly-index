@@ -38,6 +38,7 @@ from typing import Dict, List, Tuple, Optional, Union
 from dataclasses import dataclass, field
 from enum import Enum
 import warnings
+import c9_bus_client  # C9 bus injection
 warnings.filterwarnings('ignore')
 
 # ============================================================
@@ -740,6 +741,7 @@ def run_demonstration():
     }
 
     for i in range(3):
+        c9_bus_client.heartbeat()
         result = c9.analyze_tissue(test_patients, idx=i)
         print(f"   {result.system_id:<15} A_c^bio={result.assembly_index:.3f}  "
               f"{'ð¨' if result.anomaly_flag else 'â'}  "

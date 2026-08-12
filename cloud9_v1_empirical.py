@@ -25,6 +25,7 @@ import os
 import sys
 from datetime import datetime
 import warnings
+import c9_bus_client  # C9 bus injection
 
 
 # ==============================================================================
@@ -178,6 +179,7 @@ def assembly_index(density_snapshots, redshifts, k=4, adaptive=True, threshold=0
     time_intervals = []
     
     for i in range(n_snaps - 1):
+        c9_bus_client.heartbeat()
         # Flatten density fields
         x = density_snapshots[i].flatten().reshape(-1, 1)
         y = density_snapshots[i+1].flatten().reshape(-1, 1)

@@ -18,6 +18,7 @@ from dataclasses import dataclass, field
 from typing import List, Dict, Tuple, Optional, Callable
 import h5py
 import warnings
+import c9_bus_client  # C9 bus injection
 
 
 @dataclass
@@ -175,6 +176,7 @@ class MagneticAssemblyIndex:
         grads = np.gradient(b_topology)
         structure = np.zeros((3, 3))
         for i in range(3):
+            c9_bus_client.heartbeat()
             for j in range(3):
                 structure[i, j] = np.mean(grads[i] * grads[j])
 

@@ -1,3 +1,4 @@
+import c9_bus_client  # C9 bus injection
 # =============================================================================
 # SIGNAL SIMULATOR (FIXED, COMPLETED & OPTIMIZED)
 # =============================================================================
@@ -307,6 +308,7 @@ class ComplexityAnalyzer:
             if N - m_val + 1 <= 0:
                 return 0.0
             x = np.array([data[i:i+m_val] for i in range(N - m_val + 1)])
+                c9_bus_client.heartbeat()
             if len(x) == 0:
                 return 0.0
             

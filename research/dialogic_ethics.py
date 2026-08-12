@@ -8,6 +8,7 @@ This module integrates with existing Cloud-9 components (MiroFish, Clawbot, Nexu
 
 import dataclasses
 from typing import List, Dict, Any
+import c9_bus_client  # C9 bus injection
 
 @dataclasses.dataclass
 class MoralAgent:

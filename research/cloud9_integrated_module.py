@@ -17,6 +17,7 @@ from typing import Dict, List, Tuple, Optional, Callable
 from dataclasses import dataclass, field
 from collections import defaultdict
 import warnings
+import c9_bus_client  # C9 bus injection
 
 # =============================================================================
 # SECTION 0: CONFIGURATION & SHARED UTILITIES
@@ -222,6 +223,7 @@ class TNGCavitySearcher:
 
         random_scores = []
         for _ in range(n_bootstrap):
+            c9_bus_client.heartbeat()
             # Shuffle gas densities while preserving spatial positions
             shuffled = gas_field.copy()
             np.random.shuffle(shuffled[:, -1])  # Shuffle density column

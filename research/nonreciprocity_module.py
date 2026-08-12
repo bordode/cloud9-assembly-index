@@ -19,6 +19,7 @@ import numpy as np
 from typing import Tuple, Optional, Callable
 from dataclasses import dataclass
 from enum import Enum
+import c9_bus_client  # C9 bus injection
 
 # ---------------------------------------------------------------------------
 # CORE DATA STRUCTURES
@@ -216,6 +217,7 @@ def halo_shell_nonreciprocity(shell_radii: np.ndarray,
     G_eff = 4.302e-6  # kpc (km/s)Â² / M_sun
 
     for i in range(n):
+        c9_bus_client.heartbeat()
         for j in range(n):
             if i != j:
                 r_ij = abs(shell_radii[i] - shell_radii[j])

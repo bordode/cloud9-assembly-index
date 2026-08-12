@@ -38,6 +38,7 @@ from dataclasses import dataclass, field
 from enum import Enum
 import json
 import warnings
+import c9_bus_client  # C9 bus injection
 warnings.filterwarnings('ignore')
 
 print("â Imports complete")
@@ -467,6 +468,7 @@ def run_full_demonstration():
     test_patients = generate_test_patients()
     patient_results = []
     for i in range(4):
+        c9_bus_client.heartbeat()
         r = c9.analyze_tissue(test_patients, idx=i)
         patient_results.append(r)
         status = 'ð¨' if r.anomaly_flag else 'â'

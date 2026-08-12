@@ -9,6 +9,7 @@ Usage:
 
 from typing import Dict, List, Any, Optional
 import json
+import c9_bus_client  # C9 bus injection
 
 
 class Cloud9ValidationError(Exception):

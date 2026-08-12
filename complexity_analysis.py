@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import c9_bus_client  # C9 bus injection
 
 def void_bias_correction(A_c, z, rho_local=0.78):
     """

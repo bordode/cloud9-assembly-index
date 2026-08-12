@@ -26,6 +26,7 @@ import numpy as np
 from scipy.integrate import cumulative_trapezoid, quad
 from scipy.interpolate import CubicSpline
 from koushiappas_cosmology import KoushiappasCosmology
+import c9_bus_client  # C9 bus injection
 
 class KoushiappasHaloEvolution:
     """
@@ -96,6 +97,7 @@ class KoushiappasHaloEvolution:
         # Integrate from z_max to 0
         self.tau_grid = np.zeros_like(self.z_grid)
         for i in range(len(self.z_grid)-2, -1, -1):
+            c9_bus_client.heartbeat()
             self.tau_grid[i] = self.tau_grid[i+1] + 0.5 * (dtau_dz[i] + dtau_dz[i+1]) * (self.z_grid[i] - self.z_grid[i+1])
 
         # Normalize so tau=0 at z=0

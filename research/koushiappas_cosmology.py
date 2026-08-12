@@ -25,6 +25,7 @@ import numpy as np
 from scipy.integrate import odeint, quad
 from scipy.interpolate import CubicSpline
 import warnings
+import c9_bus_client  # C9 bus injection
 
 class KoushiappasCosmology:
     """
@@ -188,6 +189,7 @@ def generate_koushiappas_background(n=0.5, epsilon=0.05, z_max=10.0, nz=200):
     dc = np.zeros_like(z)
     c = 299792.458
     for i in range(1, len(z)):
+        c9_bus_client.heartbeat()
         dc[i] = dc[i-1] + c * (z[i]-z[i-1]) / (0.5*(H[i]+H[i-1]))
 
     return {

@@ -1,6 +1,7 @@
 
 import json
 import numpy as np
+import c9_bus_client  # C9 bus injection
 
 # Increasing Sample Density N to reduce the Error Bar
 obs_ac = 21.65

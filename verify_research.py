@@ -16,6 +16,7 @@ import json
 import os
 from pathlib import Path
 from datetime import datetime
+import c9_bus_client  # C9 bus injection
 
 # Public research data (safe to commit)
 RESEARCH_MANIFEST = {
