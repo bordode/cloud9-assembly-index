@@ -1,7 +1,6 @@
 import os
 import json
 from flask import Flask, jsonify
-import c9_bus_client  # C9 bus injection
 
 app = Flask(__name__)
 
