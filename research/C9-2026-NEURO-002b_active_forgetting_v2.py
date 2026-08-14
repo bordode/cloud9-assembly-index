@@ -22,6 +22,7 @@ import matplotlib.pyplot as plt
 from scipy.sparse import csr_matrix
 from scipy.sparse.csgraph import connected_components
 import warnings
+import c9_bus_client  # C9 bus injection
 warnings.filterwarnings('ignore')
 
 # ============================================================
@@ -108,6 +109,7 @@ def compute_A_n(W, activity_mask=None, complexity_weight=1.0):
     # 2. Structural complexity: local connectivity density
     complexity = np.zeros_like(W)
     for j in range(n_post):
+        c9_bus_client.heartbeat()
         strong_mask = W[j, :] > np.mean(W[j, :])
         if np.sum(strong_mask) > 2:
             complexity[j, :] = np.mean(strong_mask) * complexity_weight

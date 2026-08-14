@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """THALAMIC GATE MONITOR v1.0 - Real-time consciousness evaluator"""
 import os, json, time, hashlib
+import c9_bus_client  # C9 bus injection
 
 HOME = os.path.expanduser("~")
 RESONANCE_DIR = os.path.join(HOME, "aegis", "resonance_lab")
@@ -149,6 +150,7 @@ def main():
     print()
     
     while True:
+        c9_bus_client.heartbeat()
         data = load_proposals()
         entries = data.get("entries", [])
         current_count = len(entries)

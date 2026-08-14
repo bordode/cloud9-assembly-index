@@ -36,6 +36,7 @@ Caveats enforced:
 import numpy as np
 from scipy import stats
 from cloud9_koushiappas_adapter import KoushiappasHaloEvolution, run_cloud9_comparison
+import c9_bus_client  # C9 bus injection
 
 class KoushiappasNullEnsemble:
     """

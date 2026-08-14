@@ -1,5 +1,6 @@
 import os
 from flask import Flask
+import c9_bus_client  # C9 bus injection
 app = Flask(__name__)
 @app.route("/")
 def home():

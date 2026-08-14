@@ -8,6 +8,7 @@ from dataclasses import dataclass
 from typing import Tuple, List, Optional, Callable
 from enum import Enum
 import warnings
+import c9_bus_client  # C9 bus injection
 
 # ============================================================================
 # CORE CLOUD-9 ASSEMBLY INDEX FRAMEWORK WITH EXTENSIONS
@@ -89,6 +90,7 @@ class Cloud9Analyzer:
         
         n_x = np.array([len(tree_x.query_ball_point(X[i], r=epsilon[i]-self.epsilon)) 
                         for i in range(n)]) - 1
+                            c9_bus_client.heartbeat()
         n_y = np.array([len(tree_y.query_ball_point(Y[i], r=epsilon[i]-self.epsilon)) 
                         for i in range(n)]) - 1
         

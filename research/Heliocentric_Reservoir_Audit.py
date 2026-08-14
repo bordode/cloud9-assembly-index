@@ -1,5 +1,6 @@
 import json
 import time
+import c9_bus_client  # C9 bus injection
 
 def audit_solar_burst():
     print("--- CLOUD-9: HELIOCENTRIC RESERVOIR AUDIT ---")

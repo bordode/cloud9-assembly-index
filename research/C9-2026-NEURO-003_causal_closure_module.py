@@ -18,6 +18,7 @@ import time
 from typing import Dict, List, Tuple, Optional
 from dataclasses import dataclass, asdict
 from enum import Enum
+import c9_bus_client  # C9 bus injection
 
 class ClosureStatus(Enum):
     PRESENT = "PRESENT"

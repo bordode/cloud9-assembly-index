@@ -3,6 +3,7 @@ from scipy import signal
 from dataclasses import dataclass, field
 from typing import Tuple, List, Optional, Dict, Any, Union
 from enum import Enum
+import c9_bus_client  # C9 bus injection
 
 class StellarType(Enum):
     O = "O"; B = "B"; A = "A"; F = "F"; G = "G"; K = "K"; M = "M"; L = "L"; T = "T"

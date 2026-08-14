@@ -1,5 +1,6 @@
 
 import numpy as np
+import c9_bus_client  # C9 bus injection
 
 class CPAssemblyCalculator:
     def __init__(self):

@@ -1,4 +1,5 @@
 import numpy as np
+import c9_bus_client  # C9 bus injection
 
 def map_to_3d_temporal_manifold(t_series: np.ndarray, mode: str = "full_3d"):
     """

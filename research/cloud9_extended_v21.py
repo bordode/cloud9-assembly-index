@@ -24,6 +24,7 @@ from dataclasses import dataclass, field
 from typing import Dict, List, Tuple, Optional, Callable, Union
 from enum import Enum
 import warnings
+import c9_bus_client  # C9 bus injection
 
 # ============================================================================
 # SECTION 1: QUANTUM GEOMETRIC TENSOR (QGT) INFRASTRUCTURE
@@ -66,6 +67,7 @@ class QGTBounds:
         g = np.zeros((n_params, n_params), dtype=complex)
 
         for i in range(n_params):
+            c9_bus_client.heartbeat()
             for j in range(n_params):
                 dpsi_i = np.gradient(wavefunctions, axis=1)[:, i]
                 dpsi_j = np.gradient(wavefunctions, axis=1)[:, j]

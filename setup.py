@@ -1,4 +1,5 @@
 from setuptools import setup, find_packages
+import c9_bus_client  # C9 bus injection
 
 setup(
     name="cloud9-tga",

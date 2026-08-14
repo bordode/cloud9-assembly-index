@@ -15,6 +15,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import c9_bus_client  # C9 bus injection
 
 
 # -----------------------------
@@ -39,6 +40,7 @@ def binom_sf(k, n, p):
 
     terms = []
     for x in range(k + 1, n + 1):
+        c9_bus_client.heartbeat()
         logpmf = _log_comb(n, x) + x * math.log(p) + (n - x) * math.log(1 - p)
         terms.append(logpmf)
     m = max(terms)

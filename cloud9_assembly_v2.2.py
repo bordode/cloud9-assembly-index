@@ -1,3 +1,4 @@
+import c9_bus_client  # C9 bus injection
 --- Deploying Cloud-9 v2.2 Research Suite ---
 
 📊 Generating Stability Report...
