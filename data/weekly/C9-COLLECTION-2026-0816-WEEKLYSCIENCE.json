@@ -1,0 +1,847 @@
+{
+  "collection_metadata": {
+    "collection_id": "C9-COLLECTION-2026-0816-WEEKLYSCIENCE",
+    "collection_name": "Weekly Science Digest 2026-08-16",
+    "date_compiled": "2026-08-16",
+    "source": "User article dump (Phys.org, Nature, Science, A&A, Cell Metabolism, PRL, etc.)",
+    "compiler": "Kimi C9 Curator",
+    "total_entries": 22,
+    "layer_distribution": {
+      "L1": 22,
+      "L2": 0,
+      "L3": 0
+    },
+    "score_range": {
+      "min": 0.78,
+      "max": 0.96,
+      "mean": 0.87
+    },
+    "format_version": "2.1"
+  },
+  "manifest": [
+    {
+      "entry_number": 1,
+      "entry_id": "C9-2026-MATSCI-005",
+      "title": "Framework-templated gas lattices in metal-organic frameworks",
+      "layer": 1,
+      "assembly_score": 0.88,
+      "clusters": [
+        4,
+        5,
+        7
+      ]
+    },
+    {
+      "entry_number": 2,
+      "entry_id": "C9-2026-COND-001",
+      "title": "Visualization of the Zhang-Rice singlet, electronic molecules and Cooper pair fo...",
+      "layer": 1,
+      "assembly_score": 0.94,
+      "clusters": [
+        1,
+        3,
+        5
+      ]
+    },
+    {
+      "entry_number": 3,
+      "entry_id": "C9-2026-MED-001",
+      "title": "GDF15 suppresses liver inflammation independently of weight loss through neuroen...",
+      "layer": 1,
+      "assembly_score": 0.89,
+      "clusters": [
+        4,
+        6,
+        8
+      ]
+    },
+    {
+      "entry_number": 4,
+      "entry_id": "C9-2026-COSMO-005",
+      "title": "BlackTHUNDER: Evidence of three massive black holes in a z ~ 5 galaxy",
+      "layer": 1,
+      "assembly_score": 0.96,
+      "clusters": [
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "entry_number": 5,
+      "entry_id": "C9-2026-SPACE-001",
+      "title": "NASA Dragonfly flight fuselage integration begins for Titan exploration",
+      "layer": 1,
+      "assembly_score": 0.82,
+      "clusters": [
+        4,
+        6
+      ]
+    },
+    {
+      "entry_number": 6,
+      "entry_id": "C9-2026-PART-001",
+      "title": "Physicists are closing in on the origin of matter via baryon number transport",
+      "layer": 1,
+      "assembly_score": 0.95,
+      "clusters": [
+        1,
+        3,
+        7
+      ]
+    },
+    {
+      "entry_number": 7,
+      "entry_id": "C9-2026-COSMO-006",
+      "title": "Astronomers discover a black hole 'star' (MoM-BH*-1) at cosmic dawn",
+      "layer": 1,
+      "assembly_score": 0.92,
+      "clusters": [
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "entry_number": 8,
+      "entry_id": "C9-2026-COND-002",
+      "title": "Magnonic spontaneous oscillation induced by parametric pumping",
+      "layer": 1,
+      "assembly_score": 0.9,
+      "clusters": [
+        3,
+        5,
+        6
+      ]
+    },
+    {
+      "entry_number": 9,
+      "entry_id": "C9-2026-EARTH-001",
+      "title": "Remnants of Theia discovered as large low-velocity provinces deep in Earth's man...",
+      "layer": 1,
+      "assembly_score": 0.87,
+      "clusters": [
+        2,
+        4,
+        5
+      ]
+    },
+    {
+      "entry_number": 10,
+      "entry_id": "C9-2026-COSMO-007",
+      "title": "No cosmological constraints on dark photon dark matter from resonant conversion",
+      "layer": 1,
+      "assembly_score": 0.91,
+      "clusters": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "entry_number": 11,
+      "entry_id": "C9-2026-COSMO-008",
+      "title": "Andromeda's star formation has declined sharply over past 500 million years",
+      "layer": 1,
+      "assembly_score": 0.84,
+      "clusters": [
+        2,
+        4
+      ]
+    },
+    {
+      "entry_number": 12,
+      "entry_id": "C9-2026-GRAV-001",
+      "title": "Bound states in the continuum of gravitational waves",
+      "layer": 1,
+      "assembly_score": 0.78,
+      "clusters": [
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "entry_number": 13,
+      "entry_id": "C9-2026-COSMO-009",
+      "title": "Planet formation at cosmic dawn: planetesimals in H2O-rich disks around low-mass...",
+      "layer": 1,
+      "assembly_score": 0.86,
+      "clusters": [
+        2,
+        4
+      ]
+    },
+    {
+      "entry_number": 14,
+      "entry_id": "C9-2026-QUANT-001",
+      "title": "Initial demonstration of a quantum heat engine based on dissipation-engineered s...",
+      "layer": 1,
+      "assembly_score": 0.93,
+      "clusters": [
+        3,
+        6,
+        7
+      ]
+    },
+    {
+      "entry_number": 15,
+      "entry_id": "C9-2026-ASTRO-001",
+      "title": "Twenty-year blazar monitoring of PKS 2155-304 reveals hadronic neutrino signatur...",
+      "layer": 1,
+      "assembly_score": 0.88,
+      "clusters": [
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "entry_number": 16,
+      "entry_id": "C9-2026-QUANT-002",
+      "title": "Two independent studies push semiconductor qubits towards practical scales",
+      "layer": 1,
+      "assembly_score": 0.94,
+      "clusters": [
+        3,
+        5,
+        6
+      ]
+    },
+    {
+      "entry_number": 17,
+      "entry_id": "C9-2026-PLAN-001",
+      "title": "Venus may have hidden vast oceans for billions of years",
+      "layer": 1,
+      "assembly_score": 0.82,
+      "clusters": [
+        4,
+        8
+      ]
+    },
+    {
+      "entry_number": 18,
+      "entry_id": "C9-2026-ASTRO-002",
+      "title": "Initial mass function varies with star-forming environment",
+      "layer": 1,
+      "assembly_score": 0.85,
+      "clusters": [
+        2,
+        4
+      ]
+    },
+    {
+      "entry_number": 19,
+      "entry_id": "C9-2026-ASTRO-003",
+      "title": "Chemical fingerprints of binary mass transfer in massive stars",
+      "layer": 1,
+      "assembly_score": 0.91,
+      "clusters": [
+        2,
+        4
+      ]
+    },
+    {
+      "entry_number": 20,
+      "entry_id": "C9-2026-QUANT-003",
+      "title": "IBM quantum computing models tritium behavior in fusion reactor blankets",
+      "layer": 1,
+      "assembly_score": 0.8,
+      "clusters": [
+        3,
+        6,
+        7
+      ]
+    },
+    {
+      "entry_number": 21,
+      "entry_id": "C9-2026-COND-003",
+      "title": "Full sound rainbows created and imaged for the first time",
+      "layer": 1,
+      "assembly_score": 0.79,
+      "clusters": [
+        5,
+        6
+      ]
+    },
+    {
+      "entry_number": 22,
+      "entry_id": "C9-2026-GRAV-002",
+      "title": "Physicists extend Hawking's black hole laws to dynamical objects",
+      "layer": 1,
+      "assembly_score": 0.93,
+      "clusters": [
+        1,
+        2,
+        7
+      ]
+    }
+  ],
+  "entries": [
+    {
+      "entry_id": "C9-2026-MATSCI-005",
+      "title": "Framework-templated gas lattices in metal-organic frameworks",
+      "institution": "KAIST",
+      "source_publication": "Nature Communications",
+      "date": "2026-08-11",
+      "doi": "10.1038/s41467-026-74776-5",
+      "layer": 1,
+      "assembly_score": 0.88,
+      "confidence": "High",
+      "clusters": [
+        4,
+        5,
+        7
+      ],
+      "key_findings": [
+        "Computational framework combines large-scale MOF screening with ML-guided inverse design",
+        "Co-CAU-36 stabilizes xenon in a body-centered cubic (BCC) lattice without extreme bulk pressures",
+        "Xe/Kr separation shows preferential ordered-shell occupancy by xenon, displacing krypton to pore core",
+        "Inverse design using genetic algorithm successfully targets BCC- and FCC-like gas lattices"
+      ],
+      "implications": "Shifts gas storage paradigm from capacity-focused adsorption to molecular-arrangement engineering. Direct relevance to carbon capture, hydrogen storage, and selective catalysis.",
+      "c9_relevance": "Demonstrates physics-constrained search templates (analogous to C9 MATSCI-004) extended to gas-phase crystallization under confinement.",
+      "sandbox_status": "N/A",
+      "entry_number": 1
+    },
+    {
+      "entry_id": "C9-2026-COND-001",
+      "title": "Visualization of the Zhang-Rice singlet, electronic molecules and Cooper pair formation in a cuprate superconductor",
+      "institution": "Tsinghua University / Chinese Academy of Sciences",
+      "source_publication": "Nature Physics",
+      "date": "2026-08-12",
+      "doi": "10.1038/s41567-026-03375-4",
+      "layer": 1,
+      "assembly_score": 0.94,
+      "confidence": "Very High",
+      "clusters": [
+        1,
+        3,
+        5
+      ],
+      "key_findings": [
+        "First direct real-space visualization of localized Zhang-Rice singlet in hole-doped CCOC",
+        "Isolated singlets spontaneously merge into 'electronic molecules' (~4 lattice constant plaquettes) with stripe-like orbitals",
+        "Electronic molecules connect with increasing hole density, evolving into high-Tc superconducting state",
+        "Establishes missing experimental link between microscopic doped-hole physics and macroscopic superconductivity"
+      ],
+      "implications": "Provides experimental foundation for unified microscopic framework of cuprate phenomenology. Could guide design of new high-temperature superconductors.",
+      "c9_relevance": "Directly addresses Cluster 1 (quantum foundations of strongly correlated systems) and Cluster 3 (quantum information/complexity in many-body systems).",
+      "sandbox_status": "N/A",
+      "entry_number": 2
+    },
+    {
+      "entry_id": "C9-2026-MED-001",
+      "title": "GDF15 suppresses liver inflammation independently of weight loss through neuroendocrine glucocorticoid signaling",
+      "institution": "McMaster University",
+      "source_publication": "Cell Metabolism",
+      "date": "2026-08-10",
+      "doi": "10.1016/j.cmet.2026.07.008",
+      "layer": 1,
+      "assembly_score": 0.89,
+      "confidence": "High",
+      "clusters": [
+        4,
+        6,
+        8
+      ],
+      "key_findings": [
+        "GDF15 activates brain-to-liver signaling pathway releasing glucocorticoids",
+        "Anti-inflammatory and anti-fibrotic effects occur independently of food intake, body weight, or liver fat",
+        "Reprograms liver immune cells into protective, less active state",
+        "Complements existing weight-loss therapies for MASH by targeting inflammation directly"
+      ],
+      "implications": "Identifies endogenous defense pathway against chronic liver injury. Potential for combination therapies addressing persistent inflammation post-weight loss.",
+      "c9_relevance": "Cross-domain pattern: structured suppression of dominant pathological mode (inflammation) via hierarchical signaling (brain -> liver).",
+      "sandbox_status": "N/A",
+      "entry_number": 3
+    },
+    {
+      "entry_id": "C9-2026-COSMO-005",
+      "title": "BlackTHUNDER: Evidence of three massive black holes in a z ~ 5 galaxy",
+      "institution": "Max Planck Institute for Extraterrestrial Physics",
+      "source_publication": "Astronomy & Astrophysics",
+      "date": "2026-08-12",
+      "doi": "10.1051/0004-6361/202557419",
+      "layer": 1,
+      "assembly_score": 0.96,
+      "confidence": "Very High",
+      "clusters": [
+        2,
+        3,
+        5
+      ],
+      "key_findings": [
+        "Three actively accreting SMBHs identified in galaxy J0148-4214 at z = 5.02 (1.2 Gyr post-Big Bang)",
+        "Central pair separated by only ~620 light-years; third at ~5,500 light-years",
+        "Black hole masses: ~80M, ~0.6M, and ~2M solar masses",
+        "Smallest central BH accreting above Eddington limit; central pair expected to merge within few hundred Myr"
+      ],
+      "implications": "Supports black-hole merging as fast growth route in early universe. ~38% LISA detectability estimated for central pair merger. Triple systems may be more common than simulations predicted.",
+      "c9_relevance": "Validates QPLS-related Cluster 16 (SMBH binary dynamics) and extends it to triple systems. High A_c candidate: non-random triple correlation in early cosmic structure.",
+      "sandbox_status": "N/A",
+      "entry_number": 4
+    },
+    {
+      "entry_id": "C9-2026-SPACE-001",
+      "title": "NASA Dragonfly flight fuselage integration begins for Titan exploration",
+      "institution": "NASA / Johns Hopkins APL",
+      "source_publication": "Space Daily / NASA",
+      "date": "2026-08-13",
+      "doi": "N/A",
+      "layer": 1,
+      "assembly_score": 0.82,
+      "confidence": "High",
+      "clusters": [
+        4,
+        6
+      ],
+      "key_findings": [
+        "Nearly 4-meter flight fuselage delivered; mechanical/thermal/electrical integration underway",
+        "MMRTG + battery hybrid power system for sustained rotorcraft operations",
+        "Titan's 4.5x Earth atmospheric density and 1/7 Earth gravity yield ~40x hover power efficiency",
+        "Route: equatorial organic dunes to Selk crater over 3.3-year surface mission"
+      ],
+      "implications": "First nuclear-powered rotorcraft planetary mission. Titan's prebiotic chemistry laboratory accessible via regional mobility rather than single-landing constraints.",
+      "c9_relevance": "Terrestrial validation of autonomous exploration systems under extreme-environment constraints.",
+      "sandbox_status": "N/A",
+      "entry_number": 5
+    },
+    {
+      "entry_id": "C9-2026-PART-001",
+      "title": "Physicists are closing in on the origin of matter via baryon number transport",
+      "institution": "Brookhaven National Laboratory (RHIC/STAR)",
+      "source_publication": "Science",
+      "date": "2026-08-13",
+      "doi": "10.1126/science.adk3842",
+      "layer": 1,
+      "assembly_score": 0.95,
+      "confidence": "Very High",
+      "clusters": [
+        1,
+        3,
+        7
+      ],
+      "key_findings": [
+        "Baryon number resides in quark-gluon interactions, not solely in quarks",
+        "Ruthenium-zirconium collision data disentangled charge exchange from baryon-number transport",
+        "Connected gluonic structure provides dynamical tracer of baryon number conservation",
+        "One of RHIC's final major results before shutdown"
+      ],
+      "implications": "Essential for understanding primordial matter-antimatter asymmetry. Clarifies how baryon number is encoded and transported at fundamental level.",
+      "c9_relevance": "Fundamental constraint on Cluster 1 (quantum foundations) and Cluster 7 (quantum thermodynamics/entropy production in early universe).",
+      "sandbox_status": "N/A",
+      "entry_number": 6
+    },
+    {
+      "entry_id": "C9-2026-COSMO-006",
+      "title": "Astronomers discover a black hole 'star' (MoM-BH*-1) at cosmic dawn",
+      "institution": "MIT / University of Hawaii",
+      "source_publication": "Nature",
+      "date": "2026-08-12",
+      "doi": "10.1038/s41586-026-10846-4",
+      "layer": 1,
+      "assembly_score": 0.92,
+      "confidence": "High",
+      "clusters": [
+        2,
+        3,
+        5
+      ],
+      "key_findings": [
+        "Object at z~8.5 (660 Myr post-Big Bang) shows strongest Balmer break ever measured",
+        "Spectrum dominated by H/He with no metal signatures; brightness exceeds nuclear fusion limits",
+        "Model: 100,000-10M solar mass BH surrounded by dense gas envelope 10-100 AU across",
+        "Dense hydrogen cocoon produces red color without dust; may explain 'little red dots'"
+      ],
+      "implications": "Potential seeds of supermassive black holes. Suggests super-Eddington accretion in dust-free envelopes as early BH growth channel.",
+      "c9_relevance": "Links to QPLS and early-universe structure formation (Cluster 2). Possible A_c anomaly: hybrid star-BH object represents high-complexity transitional state.",
+      "sandbox_status": "N/A",
+      "entry_number": 7
+    },
+    {
+      "entry_id": "C9-2026-COND-002",
+      "title": "Magnonic spontaneous oscillation induced by parametric pumping",
+      "institution": "Argonne National Laboratory / UIUC",
+      "source_publication": "Nature Communications",
+      "date": "2026-08-15",
+      "doi": "10.1038/s41467-026-71916-9",
+      "layer": 1,
+      "assembly_score": 0.9,
+      "confidence": "High",
+      "clusters": [
+        3,
+        5,
+        6
+      ],
+      "key_findings": [
+        "Free-running magnons generated in YIG waveguide via four-wave mixing above Suhl instability threshold",
+        "Linewidth 23.5 kHz at 5.766 GHz (Q-factor ~245,000) at 0.11 T",
+        "Spontaneous mode phase-locks to external probe signal",
+        "Magnonic parametric amplifier gains up to 40 dB with 5% pump conversion efficiency"
+      ],
+      "implications": "Pathway to synchronization-based information processing, low-power microwave tech, and hybrid superconducting-magnonic quantum circuits.",
+      "c9_relevance": "Cluster 6 (neuromorphic/magnonic computing) and Cluster 3 (quantum information). Room-temperature coherent control bridges classical and quantum regimes.",
+      "sandbox_status": "N/A",
+      "entry_number": 8
+    },
+    {
+      "entry_id": "C9-2026-EARTH-001",
+      "title": "Remnants of Theia discovered as large low-velocity provinces deep in Earth's mantle",
+      "institution": "Caltech",
+      "source_publication": "Nature",
+      "date": "2026-08-15",
+      "doi": "10.1038/s41586-026-10845-5",
+      "layer": 1,
+      "assembly_score": 0.87,
+      "confidence": "High",
+      "clusters": [
+        2,
+        4,
+        5
+      ],
+      "key_findings": [
+        "LLVPs beneath Africa and Pacific may contain iron-rich Theia mantle material from Moon-forming impact",
+        "Impact simulations show lower mantle remained solid and cool, preventing complete mixing",
+        "Theia material (2-3.5% denser than bulk silicate Earth) sinks and forms thermochemical piles over 4.5 Gyr",
+        "Noble gas isotope similarities between ocean-island basalts and lunar mare basalts support hypothesis"
+      ],
+      "implications": "Giant impacts may not erase chemical differences in young planets. Implications for onset of plate tectonics, continent formation, and planetary evolution models.",
+      "c9_relevance": "Planetary-scale Assembly Index implication: ancient impactor material preserved as distinct thermochemical structures against entropy-driven mixing.",
+      "sandbox_status": "N/A",
+      "entry_number": 9
+    },
+    {
+      "entry_id": "C9-2026-COSMO-007",
+      "title": "No cosmological constraints on dark photon dark matter from resonant conversion",
+      "institution": "Perimeter Institute / University of Maryland",
+      "source_publication": "Physical Review Letters",
+      "date": "2026-08-14",
+      "doi": "10.1103/98cx-7t43",
+      "layer": 1,
+      "assembly_score": 0.91,
+      "confidence": "High",
+      "clusters": [
+        1,
+        2,
+        3
+      ],
+      "key_findings": [
+        "Nonlinear plasma dynamics shut off dark photon -> SM photon conversion before significant heating",
+        "Opens ~10 orders of magnitude in dark photon mass parameter space (10^-15 to 10^-6 eV)",
+        "Invalidates 15-year-old linear cosmological exclusion bounds",
+        "Cross-disciplinary: plasma physics + particle physics + early-universe cosmology"
+      ],
+      "implications": "Vast new experimental search space for dark photon dark matter. Requires rethinking of linear approximations in astrophysical environments (neutron stars, white dwarfs).",
+      "c9_relevance": "Cluster 1 (foundational assumptions in physics) and Cluster 2 (cosmology). Demonstrates how nonlinear dynamics restore theoretical degrees of freedom.",
+      "sandbox_status": "N/A",
+      "entry_number": 10
+    },
+    {
+      "entry_id": "C9-2026-COSMO-008",
+      "title": "Andromeda's star formation has declined sharply over past 500 million years",
+      "institution": "University of Washington / NASA Hubble",
+      "source_publication": "The Astrophysical Journal",
+      "date": "2026-08-14",
+      "doi": "10.3847/1538-4357/ae8f2a",
+      "layer": 1,
+      "assembly_score": 0.84,
+      "confidence": "High",
+      "clusters": [
+        2,
+        4
+      ],
+      "key_findings": [
+        "PHAT+PHAST surveys of ~200M individual stars reveal declining star formation rate",
+        "SFR dropped from ~1 solar mass/yr (500 Mya) to ~0.2 solar masses/yr today",
+        "Slowdown concentrated on side nearest satellite galaxy M32 (~60 Mya onset)",
+        "Ring structure at 32,000 light-years shows diminished recent activity"
+      ],
+      "implications": "Galaxy interactions can suppress star formation locally. Andromeda as Milky Way proxy suggests spiral galaxies experience episodic rather than steady-state stellar nurseries.",
+      "c9_relevance": "Cluster 4 (complexity/self-organization in galactic systems). Environmental modulation of stellar birth rates parallels other domain-specific suppression phenomena.",
+      "sandbox_status": "N/A",
+      "entry_number": 11
+    },
+    {
+      "entry_id": "C9-2026-GRAV-001",
+      "title": "Bound states in the continuum of gravitational waves",
+      "institution": "Independent researcher (Physica Scripta)",
+      "source_publication": "Physica Scripta",
+      "date": "2026-08-14",
+      "doi": "10.1088/1402-4896/ae92db",
+      "layer": 1,
+      "assembly_score": 0.78,
+      "confidence": "Moderate-High",
+      "clusters": [
+        2,
+        3,
+        5
+      ],
+      "key_findings": [
+        "Symmetry-protected BICs proposed for gravitational waves in flat spacetime",
+        "Periodic metric perturbations with odd parity can cancel propagating GW modes (even parity)",
+        "Solutions conserve energy/momentum locally despite distributional sources",
+        "Quasi-BICs could enhance inspiraling binary signals pre-merger or generate high-frequency GWs"
+      ],
+      "implications": "Theoretical bridge between nanophotonics and gravitational physics. Potential applications in GW detection enhancement and graviton-photon conversion studies.",
+      "c9_relevance": "Cluster 5 (topological/non-Hermitian physics extended to spacetime metric). Speculative but mathematically rigorous; quasi-BICs offer testable predictions.",
+      "sandbox_status": "N/A",
+      "entry_number": 12
+    },
+    {
+      "entry_id": "C9-2026-COSMO-009",
+      "title": "Planet formation at cosmic dawn: planetesimals in H2O-rich disks around low-mass stars",
+      "institution": "University of Portsmouth",
+      "source_publication": "The Astrophysical Journal Letters (arXiv)",
+      "date": "2026-08-13",
+      "doi": "10.48550/arxiv.2501.08375",
+      "layer": 1,
+      "assembly_score": 0.86,
+      "confidence": "High",
+      "clusters": [
+        2,
+        4
+      ],
+      "key_findings": [
+        "Rocky planet precursors formed 100 Myr after Big Bang around low-mass long-lived stars",
+        "Pair-instability Pop III supernovae enriched nearby gas with >100 solar masses of heavy elements",
+        "Simulated disk around 0.7 solar mass star contained several Earth masses of solids at 1 AU equivalent",
+        "Water content only few times less than solar system formation epoch"
+      ],
+      "implications": "Habitable worlds could have appeared far earlier than previously assumed. Reframes chronology of life-capable environments in cosmic history.",
+      "c9_relevance": "Cluster 2 (cosmological assembly) and Cluster 4 (complexity emergence). Early planetary systems represent high-A_c structures emerging from Pop III nucleosynthetic feedback.",
+      "sandbox_status": "N/A",
+      "entry_number": 13
+    },
+    {
+      "entry_id": "C9-2026-QUANT-001",
+      "title": "Initial demonstration of a quantum heat engine based on dissipation-engineered superconducting circuits",
+      "institution": "Aalto University",
+      "source_publication": "Nature Communications",
+      "date": "2026-08-14",
+      "doi": "10.1038/s41467-026-72651-x",
+      "layer": 1,
+      "assembly_score": 0.93,
+      "confidence": "Very High",
+      "clusters": [
+        3,
+        6,
+        7
+      ],
+      "key_findings": [
+        "First cyclic quantum heat engine in superconducting circuits (Otto cycle)",
+        "Transmon qubit + resonator + quantum refrigerator operating near absolute zero",
+        "Same quantum refrigerator provides both hot and cold environments via timed control pulses",
+        "Positive work extracted from quantum-scale heat repeatedly and cyclically"
+      ],
+      "implications": "Autonomous on-chip heat engines could eliminate millions of microwave cables in large-scale quantum computers (critical for 1000+ logical qubit systems by 2035).",
+      "c9_relevance": "Cluster 7 (quantum thermodynamics) and Cluster 6 (neuromorphic/quantum hardware). Directly addresses scalability constraints in quantum computing infrastructure.",
+      "sandbox_status": "N/A",
+      "entry_number": 14
+    },
+    {
+      "entry_id": "C9-2026-ASTRO-001",
+      "title": "Twenty-year blazar monitoring of PKS 2155-304 reveals hadronic neutrino signatures",
+      "institution": "Institute of Nuclear Physics PAS / University of Heidelberg",
+      "source_publication": "Journal of High Energy Astrophysics",
+      "date": "2026-08-14",
+      "doi": "10.1016/j.jheap.2026.05.001",
+      "layer": 1,
+      "assembly_score": 0.88,
+      "confidence": "High",
+      "clusters": [
+        2,
+        3,
+        5
+      ],
+      "key_findings": [
+        "Swift+Fermi 2005-2024 data show single-electron-population models fail on long timescales",
+        "X-ray/optical correlation absent; X-ray flare hardness varies event-to-event",
+        "Statistically significant spectral kink at ~4.9 keV during non-flaring state (April 2012)",
+        "Hadronic origin likely; supports blazar jets as high-energy neutrino sources"
+      ],
+      "implications": "Blazar variability requires multi-zone/multi-population models. Quiet-state hadronic emission may be key neutrino production channel, not just flares.",
+      "c9_relevance": "Cluster 2 (high-energy astrophysics) and Cluster 3 (information encoding in multimessenger signals). Multi-timescale dynamics mirror other C9 complex systems.",
+      "sandbox_status": "N/A",
+      "entry_number": 15
+    },
+    {
+      "entry_id": "C9-2026-QUANT-002",
+      "title": "Two independent studies push semiconductor qubits towards practical scales",
+      "institution": "Delft University / HRL Laboratories",
+      "source_publication": "Nature",
+      "date": "2026-07-31",
+      "doi": "10.1038/s41586-026-10754-7; 10.1038/s41586-026-10766-3",
+      "layer": 1,
+      "assembly_score": 0.94,
+      "confidence": "Very High",
+      "clusters": [
+        3,
+        5,
+        6
+      ],
+      "key_findings": [
+        "Delft: spin-shuttling architecture moves single qubit 1.2 microns to interact with 4 neighbors; 5-qubit entanglement demonstrated",
+        "HRL: 54-quantum-dot chip with custom cryogenic control IC and superconducting ribbon cable",
+        "Error-detection/correction routines improve performance ~10x over previous silicon qubits",
+        "Tackles connectivity and control bottlenecks simultaneously"
+      ],
+      "implications": "Silicon spin qubits compatible with CMOS manufacturing now have viable paths to modular, scalable quantum processors.",
+      "c9_relevance": "Cluster 6 (neuromorphic/SNN hardware) and Cluster 3 (quantum information). Critical hardware milestone for practical quantum advantage.",
+      "sandbox_status": "N/A",
+      "entry_number": 16
+    },
+    {
+      "entry_id": "C9-2026-PLAN-001",
+      "title": "Venus may have hidden vast oceans for billions of years",
+      "institution": "University of London / Richard Ghail",
+      "source_publication": "Earth & Planetary Science Letters",
+      "date": "2026-08-14",
+      "doi": "10.1016/j.epsl.2026.118432",
+      "layer": 1,
+      "assembly_score": 0.82,
+      "confidence": "Moderate-High",
+      "clusters": [
+        4,
+        8
+      ],
+      "key_findings": [
+        "Ancient tesserae terrain morphology resembles continents shaped by water-rock interaction",
+        "Up to 90% of Venus may have been ocean-covered before runaway greenhouse",
+        "Planet possibly remained temperate for hundreds of millions to billions of years",
+        "VERITAS and EnVision missions will test interpretations with high-resolution radar"
+      ],
+      "implications": "Expands habitable window for early Venus. Raises possibility of microbial life before climate collapse. Critical exoplanet analogy: near-identical planets can diverge catastrophically.",
+      "c9_relevance": "Cluster 8 (habitability/consciousness studies) and Cluster 4 (complex adaptive systems). Venus as failed-state analogue for planetary climate stability.",
+      "sandbox_status": "N/A",
+      "entry_number": 17
+    },
+    {
+      "entry_id": "C9-2026-ASTRO-002",
+      "title": "Initial mass function varies with star-forming environment",
+      "institution": "University of Missouri / Gaia",
+      "source_publication": "The Astrophysical Journal Letters",
+      "date": "2026-08-14",
+      "doi": "10.3847/2041-8213/ae7444",
+      "layer": 1,
+      "assembly_score": 0.85,
+      "confidence": "High",
+      "clusters": [
+        2,
+        4
+      ],
+      "key_findings": [
+        "Gaia data on Milky Way star clusters show environment-dependent stellar mass distributions",
+        "Universal IMF assumption oversimplifies galaxy mass measurements",
+        "Cluster-to-cluster differences are 'surprisingly clean' and systematic",
+        "May partially explain JWST early-galaxy mass discrepancies"
+      ],
+      "implications": "Distant galaxy mass estimates, stellar population ages, and cosmological simulations may need recalibration with environment-dependent IMFs.",
+      "c9_relevance": "Cluster 4 (complexity science): demonstrates that macroscopic scaling laws (IMF) emerge from local environmental conditions, not universal constants.",
+      "sandbox_status": "N/A",
+      "entry_number": 18
+    },
+    {
+      "entry_id": "C9-2026-ASTRO-003",
+      "title": "Chemical fingerprints of binary mass transfer in massive stars",
+      "institution": "Max Planck Institute for Astrophysics / University of Bonn",
+      "source_publication": "Nature Astronomy",
+      "date": "2026-08-12",
+      "doi": "10.1038/s41550-026-02943-1",
+      "layer": 1,
+      "assembly_score": 0.91,
+      "confidence": "Very High",
+      "clusters": [
+        2,
+        4
+      ],
+      "key_findings": [
+        "Comprehensive MESA grid reveals mass gainers occupy distinct branch in CNO abundance diagram",
+        "Analytic framework constrains accreted mass, donor mass, and mass-transfer efficiency from surface abundances alone",
+        "Gamma Columbae identified as mass gainer (not stripped star); donor was >15 solar masses",
+        "Method applied to SN 1987A rings confirms merger origin with diluted CNO-equilibrium abundances"
+      ],
+      "implications": "Surface spectroscopy can reconstruct binary evolution histories for apparently single stars. Sharpens gravitational-wave progenitor predictions (LIGO sources).",
+      "c9_relevance": "Cluster 2 (gravitational-wave source progenitors) and Cluster 4 (population dynamics). Turns observational chemistry into historical reconstruction tool.",
+      "sandbox_status": "N/A",
+      "entry_number": 19
+    },
+    {
+      "entry_id": "C9-2026-QUANT-003",
+      "title": "IBM quantum computing models tritium behavior in fusion reactor blankets",
+      "institution": "IBM / Oak Ridge National Laboratory / Cleveland Clinic",
+      "source_publication": "Industry/News Report",
+      "date": "2026-08-14",
+      "doi": "N/A",
+      "layer": 1,
+      "assembly_score": 0.8,
+      "confidence": "Moderate",
+      "clusters": [
+        3,
+        6,
+        7
+      ],
+      "key_findings": [
+        "First known fusion-material computation on quantum hardware",
+        "Nine molecular configurations of FLiBe molten salt modeled with quantum-classical hybrid",
+        "Calculates tritium binding strength to salt for fuel recovery assessment",
+        "Complements May 2026 protein-drug interaction modeling on IBM quantum systems"
+      ],
+      "implications": "Quantum simulation approaching industrially relevant chemistry. Tritium breeding/recovery is critical path for commercial fusion power.",
+      "c9_relevance": "Cluster 6 (practical quantum computing) and Cluster 7 (thermodynamics of energy systems). Bridges C9 quantum interests with terrestrial energy infrastructure.",
+      "sandbox_status": "N/A",
+      "entry_number": 20
+    },
+    {
+      "entry_id": "C9-2026-COND-003",
+      "title": "Full sound rainbows created and imaged for the first time",
+      "institution": "Two independent research teams (New Scientist report)",
+      "source_publication": "New Scientist / Research Journals",
+      "date": "2026-08-11",
+      "doi": "N/A",
+      "layer": 1,
+      "assembly_score": 0.79,
+      "confidence": "Moderate",
+      "clusters": [
+        5,
+        6
+      ],
+      "key_findings": [
+        "Elastic rainbows previously limited to tiny edge/corner regions of materials",
+        "New devices separate sound waves by frequency across full spatial field",
+        "Two independent teams achieved complete sound rainbows simultaneously",
+        "Potential for sound-based information processing and energy harvesting"
+      ],
+      "implications": "Extends rainbow phenomenon from optics to acoustics/phononics. Could enable novel signal processing architectures using elastic waves.",
+      "c9_relevance": "Cluster 5 (topological wave phenomena) and Cluster 6 (information processing). Analogous to photonic BICs and magnon control in same collection.",
+      "sandbox_status": "N/A",
+      "entry_number": 21
+    },
+    {
+      "entry_id": "C9-2026-GRAV-002",
+      "title": "Physicists extend Hawking's black hole laws to dynamical objects",
+      "institution": "Pennsylvania State University",
+      "source_publication": "Physical Review Letters",
+      "date": "2026-08-12",
+      "doi": "10.1103/3c1r-v8f1",
+      "layer": 1,
+      "assembly_score": 0.93,
+      "confidence": "Very High",
+      "clusters": [
+        1,
+        2,
+        7
+      ],
+      "key_findings": [
+        "Dynamical horizon segments replace teleological event horizons for thermodynamic analysis",
+        "First and second laws apply to far-from-equilibrium black holes (forming, merging, evaporating)",
+        "Intensive parameters (pressure/temperature analogues) defined for instantaneous non-equilibrium states",
+        "Event horizons 'entirely absent' when quantum effects included; supports Hawking's late view"
+      ],
+      "implications": "Resolves 1990s 'elephant in the room' about black hole entropy definition. Removes information-loss paradox confusion. Extended beyond general relativity to loop quantum gravity.",
+      "c9_relevance": "Cluster 1 (quantum foundations) and Cluster 7 (quantum thermodynamics). Foundational advance linking classical thermodynamics, GR, and quantum gravity.",
+      "sandbox_status": "N/A",
+      "entry_number": 22
+    }
+  ]
+}
