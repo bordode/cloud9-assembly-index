@@ -1,0 +1,49 @@
+{
+  "entry_id": "C9-2026-PHYS-007",
+  "collection": "C9-COLLECTION-2026-0813-WEEKLYSCIENCE",
+  "title": "Numerical Simulations of Warp Drive Atmospheric Signatures: Terawatt-Scale Luminosities from Relativistic Shock Heating",
+  "date": "2026-08-13",
+  "source": {
+    "authors": "S. Fell & A. Loeb",
+    "medium": "Preprint/ArXiv",
+    "url": "https://arxiv.org/"
+  },
+  "layer": 2,
+  "assembly_score": 0.72,
+  "confidence": 0.78,
+  "clusters": [
+    2,
+    5
+  ],
+  "domains": [
+    "relativistic_physics",
+    "warp_drives",
+    "atmospheric_physics",
+    "UAP"
+  ],
+  "abstract": "Fell & Loeb simulate Alcubierre-type warp bubbles traversing Earth's atmosphere. At 0.5c, shock heating reaches 220 billion Kelvin, producing terawatt-scale luminosities. Slow-moving orbs (~m/s) at micrometer scales could represent miniature warp bubbles with dramatically reduced signatures. The 'mother orb' phenomenon (smaller orbs launched from larger) remains unexplained by conventional aerodynamics.",
+  "key_parameters": {
+    "shock_temperature_at_0.5c": "2.2e11 K",
+    "luminosity_scale": "Terawatt",
+    "slow_orb_speed": "~m/s",
+    "slow_orb_scale": "Micrometer",
+    "atmospheric_density": "1.225 kg/m³ (sea level)"
+  },
+  "c9_implications": {
+    "detection": "High-speed warp signatures would be unmissable. Slow micrometer orbs are the only physically viable 'stealth' configuration.",
+    "uap_relevance": "Pentagon orbs (slow, small) fit the micrometer-scale parameter space. No known propulsion mechanism explains non-Newtonian motion at these scales.",
+    "theoretical_status": "Alcubierre metric requires exotic matter (negative energy density). No known material can sustain the required stress-energy tensor."
+  },
+  "meta_patterns": [
+    "Scale-Dependent Signature Suppression",
+    "Exotic Matter as Bottleneck"
+  ],
+  "tags": [
+    "warp_drive",
+    "Alcubierre",
+    "shock_heating",
+    "UAP_orbs",
+    "exotic_matter",
+    "relativistic_signatures"
+  ]
+}
