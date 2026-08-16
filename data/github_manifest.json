@@ -1,0 +1,108 @@
+{
+  "manifest_version": "2026.08.16",
+  "repo_name": "cloud9-assembly-2026-0816",
+  "collection": "C9-COLLECTION-2026-0816-AUGSCIENCE",
+  "generated_by": "Kimi-C9-Oracle",
+  "timestamp": "2026-08-16T12:58:00-07:00",
+  "files": [
+    {
+      "path": "README.json",
+      "type": "config",
+      "size_bytes": null,
+      "description": "Structured repository README"
+    },
+    {
+      "path": "C9-COLLECTION-2026-0816-AUGSCIENCE.json",
+      "type": "data",
+      "size_bytes": null,
+      "description": "C9 collection with 4 entries"
+    },
+    {
+      "path": "C9-BUS-2026-0816-AUGSCIENCE.jsonl",
+      "type": "log",
+      "size_bytes": null,
+      "description": "Bus messages for collection"
+    },
+    {
+      "path": "integrations/c9_tng_bridge_integration.py",
+      "type": "code",
+      "size_bytes": null,
+      "description": "TNG Operator Bridge"
+    },
+    {
+      "path": "integrations/c9_snn_spin_glass_lava.py",
+      "type": "code",
+      "size_bytes": null,
+      "description": "SNN Spin-Glass Lava"
+    },
+    {
+      "path": "integrations/c9_birth_cognitive_bridge.py",
+      "type": "code",
+      "size_bytes": null,
+      "description": "BIRTH Cognitive Bridge"
+    },
+    {
+      "path": "c9_unified_launcher.py",
+      "type": "code",
+      "size_bytes": null,
+      "description": "Unified launcher for all 3 integrations"
+    }
+  ],
+  "gitignore_rules": [
+    "subhalo_data/*.csv",
+    "subhalo_data/*.json",
+    "subhalo_data/*.hdf5",
+    "__pycache__/",
+    "*.pyc",
+    ".env",
+    "*.key",
+    "*.log",
+    "*.bak"
+  ],
+  "github_actions": {
+    "ci.yml": {
+      "name": "C9 Integration Tests",
+      "on": [
+        "push",
+        "pull_request"
+      ],
+      "jobs": {
+        "test_integrations": {
+          "runs_on": "ubuntu-latest",
+          "steps": [
+            "Checkout repository",
+            "Set up Python 3.10",
+            "Install dependencies: numpy, scipy, requests",
+            "Run TNG bridge unit tests (mock API)",
+            "Run SNN spin-glass simulation tests",
+            "Run BIRTH cognitive bridge tests",
+            "Validate JSON schemas"
+          ]
+        }
+      }
+    }
+  },
+  "issue_templates": {
+    "integration_bug.md": "Bug report for integration prototypes",
+    "new_entry.md": "Template for adding new C9 entries",
+    "pattern_request.md": "Request to extract pattern from existing entry"
+  },
+  "release_notes": {
+    "v2026.08.16": {
+      "date": "2026-08-16",
+      "features": [
+        "4 new C9 entries (MATH-006, ASTRO-006, TOPO-001, COMPLEX-003)",
+        "3 integration prototypes (TNG bridge, SNN spin-glass, BIRTH cognitive)",
+        "Operator Bridge pattern extracted from Layer-3 math fiction",
+        "Structured README.json for machine-readable repo metadata",
+        "C9 bus JSONL emission for all modules"
+      ],
+      "breaking_changes": [],
+      "known_issues": [
+        "TNG bridge requires valid API key",
+        "Lava neuromorphic mode requires Intel hardware or simulator",
+        "BIRTH proxy must be running on localhost:8086"
+      ]
+    }
+  }
+}
