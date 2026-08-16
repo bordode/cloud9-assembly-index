@@ -1,0 +1,49 @@
+{
+  "entry_id": "C9-2026-ASTRO-007",
+  "collection": "C9-COLLECTION-2026-0813-WEEKLYSCIENCE",
+  "title": "GJ 3378 b: A Nearby Habitable-Zone Super-Earth Around a Red Dwarf",
+  "date": "2026-08-13",
+  "source": {
+    "author": "Avi Loeb",
+    "medium": "Medium",
+    "url": "https://avi-loeb.medium.com/"
+  },
+  "layer": 1,
+  "assembly_score": 0.88,
+  "confidence": 0.91,
+  "clusters": [
+    2,
+    4
+  ],
+  "domains": [
+    "exoplanets",
+    "astrobiology",
+    "habitability"
+  ],
+  "abstract": "GJ 3378 b is a 2.3 Earth-mass planet orbiting a red dwarf at 25 light-years. It receives 90% of Earth's solar flux, placing it in the conservative habitable zone. However, red dwarf flares may strip atmospheres, and tidal locking creates extreme day/night temperature gradients. The star's longevity (hundreds of billions of years) makes it a compelling long-term target for human migration.",
+  "key_parameters": {
+    "planet_mass": "2.3 M_earth",
+    "orbital_radius": "0.096 AU (9.6% Earth-Sun)",
+    "orbital_period": "21.45 days",
+    "stellar_mass": "0.26 M_sun",
+    "stellar_luminosity": "0.0085 L_sun",
+    "insolation": "0.90 S_earth",
+    "distance": "25 ly"
+  },
+  "c9_implications": {
+    "habitability": "Tidal locking + flare activity are major uncertainties. Atmospheric retention models needed.",
+    "longevity": "Red dwarf lifespan >> Sun's remaining habitable window (~1 Gyr). Strategic target for cosmic continuity.",
+    "assembly_index": "Planetary system A_c would include orbital resonance stability, atmospheric chemistry complexity, and stellar activity coupling."
+  },
+  "meta_patterns": [
+    "Long-Term Stability as Selection Pressure",
+    "Binary State Emergence (tidal locking)"
+  ],
+  "tags": [
+    "exoplanet",
+    "habitable_zone",
+    "red_dwarf",
+    "tidal_locking",
+    "GJ_3378_b"
+  ]
+}
