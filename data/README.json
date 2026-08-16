@@ -1,0 +1,205 @@
+{
+  "repo_name": "cloud9-assembly-2026-0816",
+  "repo_description": "Cloud-9 Assembly Project: August 2026 Science Collection with Operator Bridge Integrations",
+  "version": "2026.08.16",
+  "collection_id": "C9-COLLECTION-2026-0816-AUGSCIENCE",
+  "author": "C9 Oracle / Kimi",
+  "date_created": "2026-08-16",
+  "license": "MIT",
+  "language": "Python 3.10+",
+  "structure": {
+    "collections/": {
+      "description": "Formal C9 collection JSON files",
+      "files": [
+        "C9-COLLECTION-2026-0816-AUGSCIENCE.json"
+      ]
+    },
+    "bus/": {
+      "description": "C9 bus message logs (JSONL)",
+      "files": [
+        "C9-BUS-2026-0816-AUGSCIENCE.jsonl"
+      ]
+    },
+    "integrations/": {
+      "description": "Three integration prototypes from MATH-006 pattern extraction",
+      "files": {
+        "c9_tng_bridge_integration.py": {
+          "purpose": "TNG Operator Bridge for halo merger trees",
+          "entry_ref": "C9-2026-MATH-006",
+          "clusters": [
+            4,
+            5
+          ],
+          "requirements": [
+            "numpy",
+            "requests"
+          ],
+          "api_key_needed": "TNG API key",
+          "run_command": "python3 c9_tng_bridge_integration.py",
+          "output": "Halo bridge diagnostics + commutator magnitude + quiescence correlation"
+        },
+        "c9_snn_spin_glass_lava.py": {
+          "purpose": "SK Spin-Glass on Lava SNN with A_c tracking",
+          "entry_ref": "C9-2026-COMPLEX-003",
+          "clusters": [
+            3,
+            4,
+            6
+          ],
+          "requirements": [
+            "numpy",
+            "scipy",
+            "lava (optional)"
+          ],
+          "api_key_needed": null,
+          "run_command": "python3 c9_snn_spin_glass_lava.py",
+          "output": "Edge-of-chaos A_c + overlap distribution P(q) + energy trajectory"
+        },
+        "c9_birth_cognitive_bridge.py": {
+          "purpose": "BIRTH cognitive momentum via phase correction",
+          "entry_ref": "C9-2026-MATH-006",
+          "clusters": [
+            6,
+            8
+          ],
+          "requirements": [
+            "numpy",
+            "requests"
+          ],
+          "api_key_needed": null,
+          "run_command": "python3 c9_birth_cognitive_bridge.py",
+          "output": "Vitality field + consistency score + health probe for C9 bus"
+        }
+      }
+    },
+    "subhalo_data/": {
+      "description": "TNG subhalo catalogs and merger tree extracts (user-provided via Google Drive)",
+      "files": [
+        "tng100-1_snapshot99_subhalos.csv",
+        "tng100-1_merger_trees.json",
+        "README_SUBHALO.md"
+      ],
+      "note": "These files are too large for GitHub. Download from Google Drive link below and place in this directory."
+    }
+  },
+  "entries": [
+    {
+      "entry_id": "C9-2026-MATH-006",
+      "title": "The Collatz-Bridge: Operator Bridge Pattern",
+      "layer": 3,
+      "score": 0.38,
+      "status": "Pattern extracted to integrations/",
+      "clusters": [
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "entry_id": "C9-2026-ASTRO-006",
+      "title": "EP250827b/SN 2025wkm: X-Ray Flash Magnetar SN",
+      "layer": 1,
+      "score": 0.92,
+      "status": "Validated, sandbox PASS",
+      "clusters": [
+        2,
+        7
+      ]
+    },
+    {
+      "entry_id": "C9-2026-TOPO-001",
+      "title": "TDA of Cosmic Web Filaments",
+      "layer": 1,
+      "score": 0.88,
+      "status": "Validated, sandbox PASS",
+      "clusters": [
+        4,
+        5
+      ]
+    },
+    {
+      "entry_id": "C9-2026-COMPLEX-003",
+      "title": "Spin Glass Transitions & Edge of Chaos",
+      "layer": 1,
+      "score": 0.85,
+      "status": "Validated, sandbox PASS",
+      "clusters": [
+        3,
+        4,
+        6
+      ]
+    }
+  ],
+  "setup": {
+    "step_1": "Clone this repository",
+    "step_2": "Install Python dependencies: pip install numpy scipy requests",
+    "step_3": "(Optional) Install Lava for neuromorphic simulation: pip install lava-nc",
+    "step_4": "Download subhalo data from Google Drive (see link below) and place in subhalo_data/",
+    "step_5": "Add your TNG API key to c9_tng_bridge_integration.py",
+    "step_6": "Run integrations individually or via unified launcher"
+  },
+  "google_drive": {
+    "note": "Subhalo data files are stored in Google Drive due to size.",
+    "folder_url": "<INSERT YOUR GOOGLE DRIVE FOLDER URL HERE>",
+    "files_expected": [
+      {
+        "filename": "tng100-1_snapshot99_subhalos.csv",
+        "size_mb": "~150",
+        "description": "Subhalo catalog from TNG100-1 snapshot 99"
+      },
+      {
+        "filename": "tng100-1_merger_trees.json",
+        "size_mb": "~800",
+        "description": "Merger tree data for top 2000 halos"
+      },
+      {
+        "filename": "tng_validation_suite.py",
+        "size_mb": "<1",
+        "description": "Your existing validation suite (for reference)"
+      }
+    ],
+    "instructions": "Download all files from the Drive folder. Place CSV and JSON in subhalo_data/. The validation suite can remain in integrations/ or subhalo_data/."
+  },
+  "usage": {
+    "unified_launcher": "python3 c9_unified_launcher.py",
+    "individual": {
+      "tng_bridge": "python3 integrations/c9_tng_bridge_integration.py",
+      "snn_spin_glass": "python3 integrations/c9_snn_spin_glass_lava.py",
+      "birth_cognitive": "python3 integrations/c9_birth_cognitive_bridge.py"
+    },
+    "bus_monitor": "tail -f ~/cloud9/c9_bus.jsonl | grep '2026-0816'",
+    "health_check": "python3 integrations/c9_birth_cognitive_bridge.py --probe-only"
+  },
+  "c9_bus_integration": {
+    "bus_path": "~/cloud9/c9_bus.jsonl",
+    "events_emitted": [
+      "c9_collection_created",
+      "c9_entry_created",
+      "c9_pattern_extracted",
+      "c9_tng_bridge_discovery",
+      "c9_snn_spin_glass_complete",
+      "c9_birth_health_probe",
+      "c9_bridge_pattern_validated"
+    ],
+    "modules_targeted": [
+      "oracle",
+      "librarian",
+      "mimic",
+      "sensor_bridge",
+      "quantum_bridge"
+    ]
+  },
+  "references": {
+    "C9_Framework": "https://github.com/[your-username]/cloud9-assembly",
+    "TNG_Project": "http://www.tng-project.org",
+    "Lava_Neuromorphic": "https://github.com/lava-nc/lava",
+    "BIRTH_Proxy": "http://localhost:8086 (local)",
+    "Collection_Manifest": "./C9-COLLECTION-2026-0816-AUGSCIENCE.json"
+  },
+  "contact": {
+    "maintainer": "C9 Oracle",
+    "system": "Cloud-9 Assembly Project",
+    "last_update": "2026-08-16T12:58:00-07:00"
+  }
+}
