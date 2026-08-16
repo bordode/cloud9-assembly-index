@@ -1,0 +1,6 @@
+case_id,location,speed_kms,size_m,altitude_km,terrain_match,multi_sensor,resolved,conclusion,ac_hypothesis,layer,source,mach,angular_size_arcsec,dynamic_pressure_kpa
+DOW-UAP-PR043,"Goubetto, Djibouti",3.33,4.0,1.5,True,False,True,AGM-88 HARM missile,0.05,1,Loeb & Nandal 2026,9.708454810495626,550.04,6791.951250000001
+PENTAGON-ORBS-2025,Washington DC,0.001,1e-06,0.01,False,True,False,Unexplained,0.78,2,AARO Tranche 5,0.0029154518950437317,0.0206265,0.0006125000000000001
+UKR-MOON-UFO,"Kyiv, Ukraine",6.0,25000.0,384400.0,False,False,False,Unverified (single telescope),0.02,3,Zhilayev et al. 2026,17.492711370262388,13.414737252861604,22050.0
+WARP-ORB-SIM,Simulation,0.15,1e-05,10.0,False,False,False,Theoretical simulation,0.45,2,Fell & Loeb 2026,0.4373177842565597,0.00020626500000000002,13.781250000000002
+GALILEO-ANOM-001,"Cambridge, MA",0.05,2.0,0.5,True,True,False,Unexplained,0.82,2,Galileo Project,0.1457725947521866,825.0600000000001,1.53125
