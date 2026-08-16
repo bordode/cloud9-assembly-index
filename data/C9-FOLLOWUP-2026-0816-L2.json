@@ -1,0 +1,98 @@
+{
+  "queue_id": "C9-FOLLOWUP-2026-0816-L2",
+  "generated_at": "2026-08-16T03:41:00-07:00",
+  "escalation_deadline": "2026-08-23T03:41:00-07:00",
+  "entries": [
+    {
+      "entry_id": "C9-2026-QUANT-003",
+      "title": "IBM quantum fusion (FLiBe tritium system)",
+      "current_layer": 2,
+      "post_debate_score": 0.82,
+      "blocker": "Missing classical DFT/CCSD(T) benchmark",
+      "follow_up_tasks": [
+        {
+          "task_id": "QUANT-003-001",
+          "type": "literature_search",
+          "priority": "HIGH",
+          "search_queries": [
+            "IBM quantum fusion FLiBe tritium 2026",
+            "FLiBe molten salt tritium binding energy DFT",
+            "quantum computing nuclear fusion lithium beryllium fluoride"
+          ],
+          "target_sources": [
+            "arXiv",
+            "Physical Review A",
+            "Nature Physics",
+            "IBM Research blog"
+          ],
+          "success_criteria": "Locate primary article with classical DFT or CCSD(T) comparison data for FLiBe tritium system"
+        },
+        {
+          "task_id": "QUANT-003-002",
+          "type": "cross_reference",
+          "priority": "MEDIUM",
+          "action": "Compare IBM quantum results against known FLiBe tritium solubility/classical simulation literature",
+          "note": "If classical benchmark found and quantum advantage is substantiated, auto-promote to L1"
+        }
+      ],
+      "escalation_trigger": "primary_source_retrieval",
+      "auto_promote_criteria": "Classical benchmark data present + quantum advantage claim numerically justified"
+    },
+    {
+      "entry_id": "C9-2026-COND-003",
+      "title": "Sound rainbows (frequency-sorting phononic crystal)",
+      "current_layer": 2,
+      "post_debate_score": 0.79,
+      "blocker": "News brief lacks primary-source theoretical predictions",
+      "follow_up_tasks": [
+        {
+          "task_id": "COND-003-001",
+          "type": "literature_search",
+          "priority": "HIGH",
+          "search_queries": [
+            "sound rainbow phononic crystal 2026",
+            "frequency sorting acoustic metamaterial",
+            "rainbow trapping phononics Nature Science 2024 2025 2026"
+          ],
+          "target_sources": [
+            "Nature",
+            "Science",
+            "Physical Review Applied",
+            "Nature Materials",
+            "arXiv"
+          ],
+          "success_criteria": "Locate primary research article (not news brief) with theoretical predictions and experimental validation"
+        },
+        {
+          "task_id": "COND-003-002",
+          "type": "alternative_mechanism_check",
+          "priority": "MEDIUM",
+          "action": "Verify that alternative frequency-sorting mechanisms (e.g., graded index, topology, nonlinearity) are discussed and ruled out",
+          "note": "If primary source confirms unique mechanism and rules out alternatives, auto-promote to L1"
+        }
+      ],
+      "escalation_trigger": "primary_source_retrieval",
+      "auto_promote_criteria": "Primary research article located + theoretical predictions confirmed + alternative mechanisms addressed"
+    }
+  ],
+  "queue_management": {
+    "review_interval": "daily",
+    "next_review": "2026-08-17T03:41:00-07:00",
+    "max_retries": 3,
+    "on_deadline_missed": "REMAIN_L2_WITH_RISK_FLAG",
+    "on_success": "AUTO_PROMOTE_L1 + UPDATE_BUS + REGENERATE_DIGEST"
+  },
+  "bus_command": {
+    "action": "FOLLOWUP_QUEUE_ENQUEUE",
+    "target_module": "c9_hypothesis_debate",
+    "priority": 0.71,
+    "payload": {
+      "queue_id": "C9-FOLLOWUP-2026-0816-L2",
+      "entries": [
+        "C9-2026-QUANT-003",
+        "C9-2026-COND-003"
+      ],
+      "deadline": "2026-08-23T03:41:00-07:00"
+    }
+  }
+}
