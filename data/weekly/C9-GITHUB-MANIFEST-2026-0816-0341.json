@@ -1,0 +1,59 @@
+{
+  "manifest_version": "2026.08.16",
+  "collection_id": "C9-COLLECTION-2026-0816-SANDBOXPASSED",
+  "collection_name": "Weekly Science Sandbox \u2014 100% Pass Edition",
+  "generated_at": "2026-08-16T03:41:00-07:00",
+  "repository": "Cloud-9-Assembly/weekly-science",
+  "branch": "main",
+  "stats": {
+    "total_entries": 22,
+    "layer_1": 20,
+    "layer_2": 2,
+    "layer_3": 0,
+    "mean_assembly_score": 0.88,
+    "sandbox_pass_rate": 1.0,
+    "debate_reviewed": 2
+  },
+  "entries": {
+    "L1_VERIFIED": {
+      "count": 20,
+      "sandbox_grade": "4/4",
+      "status": "READY_FOR_GITHUB",
+      "source_file": "C9-SANDBOX-2026-0816-0341.json",
+      "note": "Bulk perfect-score entries. Publish as-is."
+    },
+    "L2_DEBATED": {
+      "count": 2,
+      "entries": [
+        {
+          "entry_id": "C9-2026-QUANT-003",
+          "title": "IBM quantum fusion (FLiBe tritium system)",
+          "pre_debate_score": 0.88,
+          "post_debate_score": 0.82,
+          "layer": 2,
+          "issue": "Missing classical DFT/CCSD(T) benchmark",
+          "follow_up_deadline": "2026-08-23",
+          "status": "CONDITIONAL"
+        },
+        {
+          "entry_id": "C9-2026-COND-003",
+          "title": "Sound rainbows (phononic frequency sorting)",
+          "pre_debate_score": 0.86,
+          "post_debate_score": 0.79,
+          "layer": 2,
+          "issue": "News brief lacks primary-source theoretical predictions",
+          "follow_up_deadline": "2026-08-23",
+          "status": "CONDITIONAL"
+        }
+      ]
+    }
+  },
+  "pipeline_metadata": {
+    "sandbox_audit": "PASSED",
+    "debate_module": "COMPLETED",
+    "bus_injection": "COMPLETED",
+    "github_ready": true,
+    "recommended_action": "COMMIT_TO_MAIN",
+    "auto_baby_digest": "PENDING"
+  }
+}
