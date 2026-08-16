@@ -1,0 +1,57 @@
+{
+  "entry_id": "C9-2026-ASTRO-006",
+  "collection": "C9-COLLECTION-2026-0813-WEEKLYSCIENCE",
+  "title": "S301: The Fastest Known Star Orbiting Sagittarius A* and Relativistic Black Hole Entry Dynamics",
+  "date": "2026-08-13",
+  "source": {
+    "author": "Avi Loeb",
+    "medium": "Medium",
+    "url": "https://avi-loeb.medium.com/"
+  },
+  "layer": 1,
+  "assembly_score": 0.9,
+  "confidence": 0.93,
+  "clusters": [
+    2,
+    3,
+    7
+  ],
+  "domains": [
+    "relativistic_astrophysics",
+    "black_holes",
+    "galactic_center",
+    "interstellar_travel"
+  ],
+  "abstract": "S301 is the fastest known star orbiting Sgr A*, reaching 8.5% c (25,600 km/s) at pericenter with e=0.98. A hypothetical civilization at S301 could enter the black hole in ~1.2 days free-fall time. Tidal forces at the event horizon are survivable (0.0012 m/s²) but spaghettification occurs near the singularity. Oberth maneuver at pericenter enables efficient propulsive dives.",
+  "key_parameters": {
+    "pericenter_speed": "0.085 c = 25,600 km/s",
+    "eccentricity": 0.98,
+    "black_hole_mass": "4.3e6 M_sun",
+    "free_fall_time": "~1.2 days (pericenter to singularity)",
+    "tidal_acceleration_at_horizon": "0.0012 m/s²",
+    "schwarzschild_radius": "~1.27e10 m"
+  },
+  "equations": {
+    "free_fall_time": "t_ff ~ (π/2) * sqrt(r_s³ / (8GM)) for radial plunge",
+    "tidal_force": "Δa ~ 2GM * Δr / r³ (Newtonian approximation)",
+    "oberth_effect": "Δv_inf = v_exhaust * ln(m_initial/m_final) * (1 + v_parking/v_exhaust)"
+  },
+  "c9_implications": {
+    "quantum_gravity_testbed": "Near-singularity regime probes Planck-scale physics. Relevant to Cluster 2 (quantum gravity).",
+    "interstellar_trajectory": "1g acceleration reaches near-c in ~1 year (traveler frame). Galactic center reachable in ~10.6 years one-way.",
+    "energy_requirements": "55,000x payload rest-mass for 1g to Galactic center. Negative mass/energy density required for zero-cost (Alcubierre-like)."
+  },
+  "meta_patterns": [
+    "Extreme Environment as Laboratory",
+    "Time Dilation as Strategic Resource"
+  ],
+  "tags": [
+    "S301",
+    "Sgr_A*",
+    "black_hole",
+    "relativistic_star",
+    "oberth_maneuver",
+    "free_fall",
+    "tidal_forces"
+  ]
+}
