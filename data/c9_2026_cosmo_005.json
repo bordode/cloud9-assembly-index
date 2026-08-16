@@ -1,0 +1,48 @@
+{
+  "entry_id": "C9-2026-COSMO-005",
+  "collection": "C9-COLLECTION-2026-0813-WEEKLYSCIENCE",
+  "title": "Dark Matter as Cosmic Scaffold: Galaxy Formation and Dark Matter-Deficient Systems",
+  "date": "2026-08-13",
+  "source": {
+    "author": "Avi Loeb",
+    "medium": "Medium",
+    "url": "https://avi-loeb.medium.com/"
+  },
+  "layer": 1,
+  "assembly_score": 0.95,
+  "confidence": 0.96,
+  "clusters": [
+    2,
+    4
+  ],
+  "domains": [
+    "cosmology",
+    "dark_matter",
+    "galaxy_formation",
+    "structure_formation"
+  ],
+  "abstract": "Dark matter constitutes 84% of cosmic matter and provides the gravitational scaffolding for galaxy formation. Without it, CMB fluctuations at small scales would be erased for baryonic matter. Dark matter-deficient galaxies (e.g., NGC 1052 DF2) challenge standard models but can be explained by tidal stripping, tidal formation, or high-speed collisions. These systems constrain dissipative and ultralight fuzzy dark matter models.",
+  "key_parameters": {
+    "dark_matter_fraction": "84% of matter density",
+    "baryon_fraction": "16% of matter density",
+    "cmb_smoothing_scale": "Silk damping erases baryon fluctuations < ~M_Jeans",
+    "df2_dark_matter_ratio": "~1:1 (baryon-dominated, anomaly)"
+  },
+  "c9_implications": {
+    "structure_formation": "Dark matter halo merger trees are the backbone of cosmic assembly index (A_c) computation.",
+    "dark_sector": "Self-interacting dark matter (SIDM) would modify halo profiles and affect A_c at galactic scales.",
+    "constraints": "DF2-like systems rule out dissipative DM (would clump) and ultralight fuzzy DM (would escape shallow potentials)."
+  },
+  "meta_patterns": [
+    "Invisible Scaffolding",
+    "Constraint Through Absence"
+  ],
+  "tags": [
+    "dark_matter",
+    "galaxy_formation",
+    "NGC1052_DF2",
+    "tidal_stripping",
+    "SIDM",
+    "cosmic_web"
+  ]
+}
