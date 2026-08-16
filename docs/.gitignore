@@ -1,0 +1,38 @@
+# C9 Assembly - Git Ignore
+# Subhalo data (too large, stored in Google Drive)
+subhalo_data/*.csv
+subhalo_data/*.json
+subhalo_data/*.hdf5
+subhalo_data/*.fits
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Environments
+.env
+.venv
+env/
+venv/
+
+# API Keys (NEVER commit)
+*.key
+api_keys.txt
+secrets.json
+
+# Logs
+*.log
+*.bak
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.iml
