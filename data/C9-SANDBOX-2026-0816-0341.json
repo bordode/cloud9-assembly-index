@@ -1,0 +1,553 @@
+{
+  "sandbox_id": "C9-SANDBOX-2026-0816-0341",
+  "collection_id": "C9-COLLECTION-2026-0816-WEEKLYSCIENCE",
+  "date_audited": "2026-08-16",
+  "auditor": "Kimi C9 Sandbox Module",
+  "protocol_version": "1.1",
+  "questions": [
+    "Q1: Is the core phenomenon reproducible in principle (independent replication feasible)?",
+    "Q2: Are the measurements, statistics, and data analysis sound and appropriately controlled?",
+    "Q3: Are the theoretical claims supported by the evidence presented (no overreach)?",
+    "Q4: Were alternative explanations adequately considered and ruled out?"
+  ],
+  "results": [
+    {
+      "entry_id": "C9-2026-MATSCI-005",
+      "entry_number": 1,
+      "title": "Framework-templated gas lattices in metal-organic frameworks",
+      "assembly_score": 0.88,
+      "q1": {
+        "verdict": "PASS",
+        "note": "GCMC simulations reproducible; Co-CAU-36 synthesis feasible though not yet experimentally confirmed."
+      },
+      "q2": {
+        "verdict": "PASS",
+        "note": "Large-scale screening + ML inverse design with clear stats. GCMC is standard."
+      },
+      "q3": {
+        "verdict": "PASS",
+        "note": "Claims limited to computational prediction; no experimental overreach."
+      },
+      "q4": {
+        "verdict": "PASS",
+        "note": "Other MOFs screened; inverse design tests designability vs incidental occurrence."
+      },
+      "overall": "PASS",
+      "score": "4/4"
+    },
+    {
+      "entry_id": "C9-2026-COND-001",
+      "entry_number": 2,
+      "title": "Visualization of the Zhang-Rice singlet, electronic molecules and Cooper pair formation in a cuprate superconductor",
+      "assembly_score": 0.94,
+      "q1": {
+        "verdict": "PASS",
+        "note": "STM/STS on CCOC reproducible by other UHV-STM groups."
+      },
+      "q2": {
+        "verdict": "PASS",
+        "note": "Large-area atomic-scale imaging across doping series. Systematic Na substitution control."
+      },
+      "q3": {
+        "verdict": "PASS",
+        "note": "Direct visualization claim conservative; 'electronic molecules' is descriptive model."
+      },
+      "q4": {
+        "verdict": "PASS",
+        "note": "Explicit comparison against undoped parent and superconducting samples."
+      },
+      "overall": "PASS",
+      "score": "4/4"
+    },
+    {
+      "entry_id": "C9-2026-MED-001",
+      "entry_number": 3,
+      "title": "GDF15 suppresses liver inflammation independently of weight loss through neuroendocrine glucocorticoid signaling",
+      "assembly_score": 0.89,
+      "q1": {
+        "verdict": "PASS",
+        "note": "Mouse MASH models standard; GDF15 commercially available."
+      },
+      "q2": {
+        "verdict": "PASS",
+        "note": "Genetic, pharmacological, genomic, spatial transcriptomics. Multiple orthogonal methods."
+      },
+      "q3": {
+        "verdict": "PASS",
+        "note": "'Independently of weight loss' explicitly tested and supported."
+      },
+      "q4": {
+        "verdict": "PASS",
+        "note": "Distinguished from prior 2023 GDF15 calorie-burning study."
+      },
+      "overall": "PASS",
+      "score": "4/4"
+    },
+    {
+      "entry_id": "C9-2026-COSMO-005",
+      "entry_number": 4,
+      "title": "BlackTHUNDER: Evidence of three massive black holes in a z ~ 5 galaxy",
+      "assembly_score": 0.96,
+      "q1": {
+        "verdict": "PASS",
+        "note": "JWST NIRSpec-IFS data public; spectro-astrometry standard and reproducible."
+      },
+      "q2": {
+        "verdict": "PASS",
+        "note": "Spatially resolved spectroscopy with independent spatial shifts. Two-year baseline."
+      },
+      "q3": {
+        "verdict": "PASS",
+        "note": "Mass estimates have acknowledged uncertainties; Eddington exceedance noted as expected."
+      },
+      "q4": {
+        "verdict": "PASS",
+        "note": "Tested single-BH-with-unusual-gas, outflows, SNe, winds, shocks. All disfavored."
+      },
+      "overall": "PASS",
+      "score": "4/4"
+    },
+    {
+      "entry_id": "C9-2026-SPACE-001",
+      "entry_number": 5,
+      "title": "NASA Dragonfly flight fuselage integration begins for Titan exploration",
+      "assembly_score": 0.82,
+      "q1": {
+        "verdict": "PASS",
+        "note": "Engineering milestone verifiable by NASA documentation."
+      },
+      "q2": {
+        "verdict": "PASS",
+        "note": "Ground-vibration, pressure-leak, and wind-tunnel testing standard."
+      },
+      "q3": {
+        "verdict": "PASS",
+        "note": "40x efficiency labeled as ideal theory comparison, not measured flight."
+      },
+      "q4": {
+        "verdict": "PASS",
+        "note": "Acknowledges real flight harder: coaxial wakes, drag, motor losses, winds."
+      },
+      "overall": "PASS",
+      "score": "4/4"
+    },
+    {
+      "entry_id": "C9-2026-PART-001",
+      "entry_number": 6,
+      "title": "Physicists are closing in on the origin of matter via baryon number transport",
+      "assembly_score": 0.95,
+      "q1": {
+        "verdict": "PASS",
+        "note": "RHIC/STAR data archived; isobaric analysis reproducible."
+      },
+      "q2": {
+        "verdict": "PASS",
+        "note": "Same proton+neutron total, different proton count provides clean tag."
+      },
+      "q3": {
+        "verdict": "PASS",
+        "note": "Framed as 'new clue', not solution to asymmetry."
+      },
+      "q4": {
+        "verdict": "PASS",
+        "note": "Addresses prior quark-only assumption; gluon role is the tested alternative."
+      },
+      "overall": "PASS",
+      "score": "4/4"
+    },
+    {
+      "entry_id": "C9-2026-COSMO-006",
+      "entry_number": 7,
+      "title": "Astronomers discover a black hole 'star' (MoM-BH*-1) at cosmic dawn",
+      "assembly_score": 0.92,
+      "q1": {
+        "verdict": "PASS",
+        "note": "JWST spectroscopy reproducible; object in public archives."
+      },
+      "q2": {
+        "verdict": "PASS",
+        "note": "Strongest Balmer break quantified; compared against stellar and dust models."
+      },
+      "q3": {
+        "verdict": "PASS",
+        "note": "Model presented as interpretation; 'could belong to' LRDs is cautious."
+      },
+      "q4": {
+        "verdict": "PASS",
+        "note": "Dust-obscured AGN, normal stars, new stellar atmospheres all considered."
+      },
+      "overall": "PASS",
+      "score": "4/4"
+    },
+    {
+      "entry_id": "C9-2026-COND-002",
+      "entry_number": 8,
+      "title": "Magnonic spontaneous oscillation induced by parametric pumping",
+      "assembly_score": 0.9,
+      "q1": {
+        "verdict": "PASS",
+        "note": "YIG waveguide + parametric pumping reproducible in magnonics labs."
+      },
+      "q2": {
+        "verdict": "PASS",
+        "note": "Linewidth, Q-factor, phase-locking quantified. Frequency tuning demonstrated."
+      },
+      "q3": {
+        "verdict": "PASS",
+        "note": "'Controllable platform' and 'pathway toward' — appropriately scoped."
+      },
+      "q4": {
+        "verdict": "PASS",
+        "note": "Contrasts with prior three-wave and four-wave mixing limits."
+      },
+      "overall": "PASS",
+      "score": "4/4"
+    },
+    {
+      "entry_id": "C9-2026-EARTH-001",
+      "entry_number": 9,
+      "title": "Remnants of Theia discovered as large low-velocity provinces deep in Earth's mantle",
+      "assembly_score": 0.87,
+      "q1": {
+        "verdict": "PASS",
+        "note": "Seismic data archived; simulations reproducible with standard codes."
+      },
+      "q2": {
+        "verdict": "PASS",
+        "note": "Hydrodynamic + thermal + convection simulations combined."
+      },
+      "q3": {
+        "verdict": "PASS",
+        "note": "Presented as hypothesis ('may contain'), not fact."
+      },
+      "q4": {
+        "verdict": "PASS",
+        "note": "Subducted crust and magma ocean alternatives discussed. Chemical tests proposed."
+      },
+      "overall": "PASS",
+      "score": "4/4"
+    },
+    {
+      "entry_id": "C9-2026-COSMO-007",
+      "entry_number": 10,
+      "title": "No cosmological constraints on dark photon dark matter from resonant conversion",
+      "assembly_score": 0.91,
+      "q1": {
+        "verdict": "PASS",
+        "note": "Plasma physics simulations reproducible; standard equations."
+      },
+      "q2": {
+        "verdict": "PASS",
+        "note": "Nonlinear simulations contrasted with 15-year linear treatment."
+      },
+      "q3": {
+        "verdict": "PASS",
+        "note": "Negative claim ('no cosmological constraints') is conservative."
+      },
+      "q4": {
+        "verdict": "PASS",
+        "note": "Linear treatment explicitly tested and shown to fail."
+      },
+      "overall": "PASS",
+      "score": "4/4"
+    },
+    {
+      "entry_id": "C9-2026-COSMO-008",
+      "entry_number": 11,
+      "title": "Andromeda's star formation has declined sharply over past 500 million years",
+      "assembly_score": 0.84,
+      "q1": {
+        "verdict": "PASS",
+        "note": "Hubble PHAT+PHAST public; color-magnitude analysis standard."
+      },
+      "q2": {
+        "verdict": "PASS",
+        "note": "~200M stars across thousands of cells. Color-age mapping standard."
+      },
+      "q3": {
+        "verdict": "PASS",
+        "note": "M32 connection is 'most likely suspect' with 3D position uncertainty noted."
+      },
+      "q4": {
+        "verdict": "PASS",
+        "note": "Internal settling and gas consumption considered; M32 causation not claimed proven."
+      },
+      "overall": "PASS",
+      "score": "4/4"
+    },
+    {
+      "entry_id": "C9-2026-GRAV-001",
+      "entry_number": 12,
+      "title": "Bound states in the continuum of gravitational waves",
+      "assembly_score": 0.78,
+      "q1": {
+        "verdict": "PASS",
+        "note": "Metric perturbation calculations mathematically reproducible."
+      },
+      "q2": {
+        "verdict": "PASS",
+        "note": "Analytical derivation with clear assumptions. Conservation checked."
+      },
+      "q3": {
+        "verdict": "PASS",
+        "note": "Explicitly theoretical. 'Could' and 'may' throughout."
+      },
+      "q4": {
+        "verdict": "PASS",
+        "note": "Acknowledges theoretical proposal. Quasi-BICs noted as next challenge."
+      },
+      "overall": "PASS",
+      "score": "4/4"
+    },
+    {
+      "entry_id": "C9-2026-COSMO-009",
+      "entry_number": 13,
+      "title": "Planet formation at cosmic dawn: planetesimals in H2O-rich disks around low-mass stars",
+      "assembly_score": 0.86,
+      "q1": {
+        "verdict": "PASS",
+        "note": "Cosmological simulation chain reproducible with standard codes."
+      },
+      "q2": {
+        "verdict": "PASS",
+        "note": "Pop III SN -> enrichment -> disk -> solids chain presented."
+      },
+      "q3": {
+        "verdict": "PASS",
+        "note": "'Could potentially' and 'may have existed' — cautious."
+      },
+      "q4": {
+        "verdict": "PASS",
+        "note": "Acknowledges prior slow-formation assumption; positions as counter-evidence."
+      },
+      "overall": "PASS",
+      "score": "4/4"
+    },
+    {
+      "entry_id": "C9-2026-QUANT-001",
+      "entry_number": 14,
+      "title": "Initial demonstration of a quantum heat engine based on dissipation-engineered superconducting circuits",
+      "assembly_score": 0.93,
+      "q1": {
+        "verdict": "PASS",
+        "note": "Superconducting circuit experiments reproducible in similar cryo facilities."
+      },
+      "q2": {
+        "verdict": "PASS",
+        "note": "Otto cycle with timed pulses. Qubit state monitored. Positive work quantified."
+      },
+      "q3": {
+        "verdict": "PASS",
+        "note": "'Initial demonstration' and 'could contribute' — scoped."
+      },
+      "q4": {
+        "verdict": "PASS",
+        "note": "Distinguished from prior non-cyclic/non-superconducting engines."
+      },
+      "overall": "PASS",
+      "score": "4/4"
+    },
+    {
+      "entry_id": "C9-2026-ASTRO-001",
+      "entry_number": 15,
+      "title": "Twenty-year blazar monitoring of PKS 2155-304 reveals hadronic neutrino signatures",
+      "assembly_score": 0.88,
+      "q1": {
+        "verdict": "PASS",
+        "note": "Swift and Fermi data public. 20-year lightcurve reproducible."
+      },
+      "q2": {
+        "verdict": "PASS",
+        "note": "Long baseline reduces flukes. Two-telescope cross-calibration."
+      },
+      "q3": {
+        "verdict": "PASS",
+        "note": "Hadronic origin 'most likely' per theory; neutrino link suggestive."
+      },
+      "q4": {
+        "verdict": "PASS",
+        "note": "Single-population electron models tested and rejected."
+      },
+      "overall": "PASS",
+      "score": "4/4"
+    },
+    {
+      "entry_id": "C9-2026-QUANT-002",
+      "entry_number": 16,
+      "title": "Two independent studies push semiconductor qubits towards practical scales",
+      "assembly_score": 0.94,
+      "q1": {
+        "verdict": "PASS",
+        "note": "Both devices reproducible in semiconductor fab facilities."
+      },
+      "q2": {
+        "verdict": "PASS",
+        "note": "Two independent Nature studies. 5-qubit entanglement and 10x improvement quantified."
+      },
+      "q3": {
+        "verdict": "PASS",
+        "note": "'Paving the way' — cautious about full-scale timeline."
+      },
+      "q4": {
+        "verdict": "PASS",
+        "note": "Complementary approaches acknowledged. Both note remaining distance to scale."
+      },
+      "overall": "PASS",
+      "score": "4/4"
+    },
+    {
+      "entry_id": "C9-2026-PLAN-001",
+      "entry_number": 17,
+      "title": "Venus may have hidden vast oceans for billions of years",
+      "assembly_score": 0.82,
+      "q1": {
+        "verdict": "PASS",
+        "note": "Magellan data archived; morphological analysis reproducible."
+      },
+      "q2": {
+        "verdict": "PASS",
+        "note": "Tesserae compared to Earth analogues at same scale. Global mapping."
+      },
+      "q3": {
+        "verdict": "PASS",
+        "note": "'Compelling case' and 'may have' — cautious. 90% is model output."
+      },
+      "q4": {
+        "verdict": "PASS",
+        "note": "'Not unambiguous' stated. Dry volcanic model acknowledged. Future missions proposed."
+      },
+      "overall": "PASS",
+      "score": "4/4"
+    },
+    {
+      "entry_id": "C9-2026-ASTRO-002",
+      "entry_number": 18,
+      "title": "Initial mass function varies with star-forming environment",
+      "assembly_score": 0.85,
+      "q1": {
+        "verdict": "PASS",
+        "note": "Gaia DR3 public. Cluster analysis reproducible."
+      },
+      "q2": {
+        "verdict": "PASS",
+        "note": "Nearly 2 billion stars mapped. Cluster sample provides control."
+      },
+      "q3": {
+        "verdict": "PASS",
+        "note": "Does not discard IMF; proposes environment-dependent refinement."
+      },
+      "q4": {
+        "verdict": "PASS",
+        "note": "Does not claim to explain all JWST massive galaxies; one possible factor."
+      },
+      "overall": "PASS",
+      "score": "4/4"
+    },
+    {
+      "entry_id": "C9-2026-ASTRO-003",
+      "entry_number": 19,
+      "title": "Chemical fingerprints of binary mass transfer in massive stars",
+      "assembly_score": 0.91,
+      "q1": {
+        "verdict": "PASS",
+        "note": "MESA inputs on Zenodo. Spectroscopic abundances standard."
+      },
+      "q2": {
+        "verdict": "PASS",
+        "note": "Comprehensive binary grid. Analytic framework independent of specific models."
+      },
+      "q3": {
+        "verdict": "PASS",
+        "note": "Gamma Columbae reclassification evidence-based; uncertainties acknowledged."
+      },
+      "q4": {
+        "verdict": "PASS",
+        "note": "Distinguishes gainers from donors, rotating single stars, and mergers."
+      },
+      "overall": "PASS",
+      "score": "4/4"
+    },
+    {
+      "entry_id": "C9-2026-QUANT-003",
+      "entry_number": 20,
+      "title": "IBM quantum computing models tritium behavior in fusion reactor blankets",
+      "assembly_score": 0.8,
+      "q1": {
+        "verdict": "PASS",
+        "note": "IBM quantum hardware limited but computation reproducible on similar devices."
+      },
+      "q2": {
+        "verdict": "PASS",
+        "note": "Nine configurations tested; hybrid quantum-classical is standard NISQ approach."
+      },
+      "q3": {
+        "verdict": "PASS",
+        "note": "'First-known instance' accurate for this application. Concrete output."
+      },
+      "q4": {
+        "verdict": "FAIL",
+        "note": "No classical benchmark (DFT/CCSD(T)) presented in news report for this FLiBe system."
+      },
+      "overall": "PASS",
+      "score": "3/4"
+    },
+    {
+      "entry_id": "C9-2026-COND-003",
+      "entry_number": 21,
+      "title": "Full sound rainbows created and imaged for the first time",
+      "assembly_score": 0.79,
+      "q1": {
+        "verdict": "PASS",
+        "note": "Elastic wave devices reproducible in phononics labs."
+      },
+      "q2": {
+        "verdict": "PASS",
+        "note": "Two independent teams strengthens reproducibility."
+      },
+      "q3": {
+        "verdict": "PASS",
+        "note": "'Could lead to' — appropriately speculative."
+      },
+      "q4": {
+        "verdict": "FAIL",
+        "note": "News report lacks detail on prior theoretical predictions and alternative frequency-sorting mechanisms."
+      },
+      "overall": "PASS",
+      "score": "3/4"
+    },
+    {
+      "entry_id": "C9-2026-GRAV-002",
+      "entry_number": 22,
+      "title": "Physicists extend Hawking's black hole laws to dynamical objects",
+      "assembly_score": 0.93,
+      "q1": {
+        "verdict": "PASS",
+        "note": "Mathematical derivation from Einstein equations fully reproducible."
+      },
+      "q2": {
+        "verdict": "PASS",
+        "note": "Dynamical horizons used in numerical relativity for decades."
+      },
+      "q3": {
+        "verdict": "PASS",
+        "note": "Extends Hawking-Bekenstein without overturning. Mathematically derived."
+      },
+      "q4": {
+        "verdict": "PASS",
+        "note": "Addresses 1990s teleology problem. Prior Ashtekar work acknowledged."
+      },
+      "overall": "PASS",
+      "score": "4/4"
+    }
+  ],
+  "summary": {
+    "total_entries": 22,
+    "passed": 22,
+    "failed": 0,
+    "pass_rate": "22/22",
+    "perfect_scores_4_4": 20,
+    "scores_3_4": 2,
+    "scores_below_3_4": 0,
+    "mean_assembly_score_of_passed": 0.88
+  }
+}
