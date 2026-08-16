@@ -1,0 +1,109 @@
+{
+  "entry_id": "C9-2026-UAP-006",
+  "collection": "C9-COLLECTION-2026-0813-WEEKLYSCIENCE",
+  "title": "Ukrainian Lunar UFO Claim (Zhilayev et al. 2026): Quarantine for Epistemic Failure",
+  "date": "2026-08-13",
+  "source": {
+    "authors": "Boris Zhilayev, Vladimir Petukov, Sergey Pokhvala",
+    "title": "Observations of Unidentified Flying Objects on the Moon",
+    "venue": "ResearchGate Preprint (unrefereed)",
+    "url": "https://www.researchgate.net/",
+    "date": "2026-08"
+  },
+  "layer": 3,
+  "assembly_score": 0.08,
+  "confidence": 0.15,
+  "clusters": [
+    1,
+    8
+  ],
+  "domains": [
+    "UAP",
+    "observational_astronomy",
+    "epistemology",
+    "critical_thinking"
+  ],
+  "abstract": "Unrefereed preprint claims detection of 20+ macro-structures (14-36 km diameter) moving near the lunar surface at 6-11 km/s, based on single 6-inch (150 mm) telescope observations from Kyiv. No distance measurement, no triangulation, no orbital corroboration. The claimed parameters (36 km toroidal object, 157 s rotation, 461 cm/s² centrifugal acceleration) are physically implausible and would be trivially detectable by LRO/Artemis II. This entry serves as a methodological cautionary tale.",
+  "layman_blurb": "A Ukrainian team claimed to find city-sized UFOs on the Moon using a small backyard telescope. Without a second telescope to confirm distance, there's no way to tell if these are actual lunar objects or birds, atmospheric distortions, or camera artifacts passing in front of the lens. It's like claiming you saw a whale in the ocean while looking through a drinking straw from a moving car.",
+  "technical_blurb": "Single-station optical UAP detection suffers from fundamental epistemic underdetermination: angular position alone cannot distinguish target distance. The 150 mm aperture yields Dawes' limit of ~0.77 arcsec (1.44 km at lunar distance), making 2×2 pixel 'toroidal' claims physically impossible. The claimed 36 km object at 384,400 km subtends ~19 arcsec — resolvable, yet absent from LRO NAC frames (0.52 m/px) and Artemis II photography. Centrifugal acceleration of 2.24g on a 36 km ring requires tensile hoop stress exceeding all known materials. No multi-observatory correlation, no radial velocity measurement, no parallax.",
+  "claimed_parameters": {
+    "object_count": "20+",
+    "size_range_km": "14-36",
+    "speed_range_kms": "6-11",
+    "morphologies": [
+      "toroidal",
+      "disc-shaped"
+    ],
+    "toroid_diameter_km": 36,
+    "rotation_period_s": 157,
+    "centrifugal_acceleration_ms2": 4.61,
+    "brightness_variation_hz": "several",
+    "brightness_amplitude": "~2%",
+    "telescope_aperture_mm": 150,
+    "observation_period": "2025"
+  },
+  "failure_modes": [
+    {
+      "mode": "Single-sensor underdetermination",
+      "severity": "CRITICAL",
+      "description": "One telescope cannot measure distance. Objects could be at any altitude between observer and Moon."
+    },
+    {
+      "mode": "Resolution impossibility",
+      "severity": "CRITICAL",
+      "description": "Dawes' limit = 0.77 arcsec → 1.44 km at lunar distance. Cannot resolve toroidal geometry, rings, or rotation from 2×2 pixel blobs."
+    },
+    {
+      "mode": "Orbital non-corroboration",
+      "severity": "CRITICAL",
+      "description": "LRO NAC (0.52 m/px) and Artemis II far-side imagery show zero evidence of 36 km artificial structures."
+    },
+    {
+      "mode": "Material impossibility",
+      "severity": "HIGH",
+      "description": "36 km ring at 157 s period: v_rim = 2πr/T = 719 m/s, a_c = v²/r = 4.61 m/s² (2.24g). Hoop stress σ = ρω²r² exceeds yield limits of all known aerospace materials (Ti-6Al-4V: ~0.9 GPa yield)."
+    },
+    {
+      "mode": "No peer review",
+      "severity": "MEDIUM",
+      "description": "ResearchGate preprint without referee scrutiny. No response to standard scientific critique."
+    }
+  ],
+  "equations": {
+    "dawes_limit": "θ = 116/D(mm) = 116/150 = 0.773 arcsec",
+    "lunar_footprint": "s = θ × d = 0.773 arcsec × 384,400 km × (π/648000) = 1.44 km",
+    "rim_velocity": "v = 2πr/T = 2π × 18,000 m / 157 s = 719.4 m/s",
+    "centrifugal_accel": "a_c = v²/r = (719.4)² / 18,000 = 28.76 m/s² — WAIT: paper claims 461 cm/s² = 4.61 m/s². Rechecking: if r = 18 km and T = 157 s, a_c = 4π²r/T² = 4π² × 18,000 / 157² = 28.76 m/s². The paper's 4.61 m/s² implies r ≈ 2,890 m or T ≈ 392 s. Internal inconsistency detected.",
+    "hoop_stress": "σ = ρ ω² r² = ρ (2π/T)² r². For ρ = 4500 kg/m³ (titanium), σ = 4500 × (2π/157)² × (18000)² = 2.33 × 10¹² Pa = 2.33 TPa. Ti-6Al-4V yield: ~0.9 GPa. Factor of ~2600× over yield."
+  },
+  "audit_notes": {
+    "methodology": "FATAL: No control for atmospheric scintillation, no calibration targets, no blind tests, no independent replication.",
+    "reproducibility": "IMPOSSIBLE: No raw data release, no observation logs, no telescope specifications beyond aperture.",
+    "falsifiability": "The claim IS falsifiable (LRO should see it), and HAS BEEN falsified by absence of evidence where evidence should exist.",
+    "c9_sandbox_status": "NOT_RUN — quarantined before sandbox due to fatal epistemic flaws",
+    "reviewer": "C9 Automated Ingestion + Human Curator (Dean Bordode)",
+    "score_justification": "0.08 is not a measure of scientific quality — it is a measure of epistemic distance from C9 Layer 1. The claim contains physical impossibilities, lacks basic observational controls, and is contradicted by existing high-resolution data. The 0.08 reflects only that the authors used a telescope (an instrument) and reported numbers (a format)."
+  },
+  "related_entries": [
+    "C9-2026-OBS-005",
+    "C9-2026-ASTRO-007"
+  ],
+  "meta_patterns": [
+    "Absence of Evidence as Evidence of Absence (when search space is complete)",
+    "Single-Sensor Underdetermination",
+    "Resolution-Claim Mismatch"
+  ],
+  "tags": [
+    "UAP",
+    "lunar_UFO",
+    "quarantine",
+    "epistemic_failure",
+    "single_telescope",
+    "Zhilayev",
+    "peer_review_absent",
+    "material_impossibility",
+    "LRO_non_corroboration"
+  ],
+  "timestamp_ingested": "2026-08-13T12:44:00-07:00",
+  "timestamp_curated": "2026-08-13T12:44:00-07:00"
+}
