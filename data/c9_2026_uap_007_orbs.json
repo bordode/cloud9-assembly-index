@@ -1,0 +1,116 @@
+{
+  "entry_id": "C9-2026-UAP-007",
+  "collection": "C9-COLLECTION-2026-0813-WEEKLYSCIENCE",
+  "title": "Pentagon Orbs (AARO Tranche 5): Multi-Sensor Correlated Unexplained Phenomenon",
+  "date": "2026-08-13",
+  "source": {
+    "venue": "AARO Tranche 5 Disclosure / UAP Science Advisory Council Review",
+    "witness": "Dr. Jon Kosloski (AARO)",
+    "media": "NewsNation / Popular Mechanics Podcast",
+    "date": "2026-08"
+  },
+  "layer": 2,
+  "assembly_score": 0.72,
+  "confidence": 0.55,
+  "clusters": [
+    1,
+    3,
+    6,
+    8
+  ],
+  "domains": [
+    "UAP",
+    "multi_sensor_fusion",
+    "aerodynamics",
+    "warp_physics",
+    "consciousness_studies"
+  ],
+  "abstract": "AARO Tranche 5 includes reports of 'mother orbs' launching smaller orbs, observed via multiple sensor modalities. Unlike DOW-UAP-PR043, these objects exhibit non-Newtonian motion at low speeds and micrometer-to-meter scales. No known propulsion mechanism explains the observed dynamics. Fell & Loeb (2026) simulations show that only micrometer-scale warp bubbles at low speeds could produce stealth signatures, but this requires exotic matter. The case remains unresolved and is the most credible current UAP candidate for non-human technology.",
+  "observed_characteristics": {
+    "primary_phenomenon": "Mother orb releasing smaller orbs",
+    "speed": "Slow (~m/s to low km/s)",
+    "size": "Micrometer to meter scale",
+    "motion": "Non-Newtonian (reported; no published trajectory data)",
+    "sensors": "Multiple (implied by AARO classification)",
+    "plume": "None detected",
+    "thermal_signature": "Anomalous (implied by IR detection)"
+  },
+  "hypothesis_space": [
+    {
+      "hypothesis": "Advanced human technology (classified drone swarm)",
+      "probability": 0.35,
+      "notes": "No known drone exhibits non-Newtonian motion or orb-launching behavior. Swarm coordination at this scale is unprecedented."
+    },
+    {
+      "hypothesis": "Natural phenomenon (plasma, ball lightning)",
+      "probability": 0.2,
+      "notes": "Ball lightning is rare, short-lived, and does not exhibit structured orb-launching. Plasma phenomena typically show spectral signatures."
+    },
+    {
+      "hypothesis": "Sensor artifact / misidentification",
+      "probability": 0.15,
+      "notes": "Multi-sensor correlation reduces but does not eliminate this possibility. Different sensor types can share failure modes."
+    },
+    {
+      "hypothesis": "Non-human technology (alien probe)",
+      "probability": 0.25,
+      "notes": "Consistent with Fell & Loeb micrometer warp bubble parameter space. No direct evidence. Extraordinary claim requires extraordinary evidence."
+    },
+    {
+      "hypothesis": "Other (unknown unknown)",
+      "probability": 0.05,
+      "notes": "Placeholder for phenomena outside current physical paradigms."
+    }
+  ],
+  "physics_constraints": {
+    "warp_bubble_scale": "Micrometer-scale Alcubierre bubbles at m/s speeds would produce negligible luminosity (Fell & Loeb 2026)",
+    "exotic_matter_requirement": "Negative energy density ~10^64 J/m³ required for 1m bubble at c — physically unattainable with known matter",
+    "aerodynamic_impossibility": "No airfoil or jet propulsion explains non-Newtonian motion without visible control surfaces or plume",
+    "energy_density": "If propulsion exists, it must be field-based (gravitational, electromagnetic) rather than reaction-based"
+  },
+  "c9_implications": {
+    "cluster_1": "Epistemic humility: multi-sensor correlation raises confidence but does not constitute proof. Bayesian prior for alien tech remains low given base rate.",
+    "cluster_3": "Information-theoretic: if non-human, the orbs represent a communication or observation technology with assembly complexity exceeding human capability.",
+    "cluster_6": "Sensor fusion: Galileo Project protocol (multi-telescope, multi-modal) is the only path to resolving this class of case.",
+    "cluster_8": "Consciousness: if orbs are probes, they may represent distributed intelligence (swarm consciousness) rather than centralized control."
+  },
+  "next_experiments": [
+    "Obtain declassified frame-by-frame centroid tracks for kinematic + FFT analysis",
+    "Cross-correlate with Galileo Project all-sky survey data for temporal/spatial coincidence",
+    "Hyperspectral IR analysis to identify thermal signature anomalies",
+    "Lidar/radar triangulation if available",
+    "Search for periodic modulation in brightness (communication signature?)"
+  ],
+  "audit_notes": {
+    "methodology": "INCOMPLETE: No public access to raw sensor data. Analysis based on AARO summaries and witness testimony.",
+    "reproducibility": "BLOCKED: Classification barriers prevent independent verification. This is a fundamental limitation of government-sourced UAP data.",
+    "falsifiability": "PARTIAL: If frame data were released, kinematic analysis could rule out conventional propulsion. Without data, the case remains in epistemic limbo.",
+    "c9_sandbox_status": "PENDING — awaiting declassification of motion tracks for trajectory + FFT analysis",
+    "reviewer": "C9 Automated Ingestion + Human Curator (Dean Bordode)",
+    "score_justification": "0.72 reflects high epistemic value (multi-sensor, government-sourced, unexplained) balanced against low accessibility (classified data) and absence of kinematic constraints. The case is the current 'best candidate' for non-human technology but remains unproven."
+  },
+  "related_entries": [
+    "C9-2026-OBS-005",
+    "C9-2026-PHYS-007",
+    "C9-2026-UAP-006"
+  ],
+  "meta_patterns": [
+    "Multi-Sensor Correlation as Confidence Multiplier",
+    "Classification as Epistemic Barrier",
+    "Scale-Dependent Signature Suppression"
+  ],
+  "tags": [
+    "UAP",
+    "Pentagon_orbs",
+    "AARO",
+    "multi_sensor",
+    "unexplained",
+    "non_Newtonian_motion",
+    "mother_orb",
+    "warp_bubble",
+    "alien_probe_hypothesis",
+    "Kosloski"
+  ],
+  "timestamp_ingested": "2026-08-13T12:44:00-07:00",
+  "timestamp_curated": "2026-08-13T12:44:00-07:00"
+}
