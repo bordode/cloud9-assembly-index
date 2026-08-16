@@ -1,0 +1,101 @@
+{
+  "entry_id": "C9-2026-GOV-001",
+  "collection": "C9-COLLECTION-2026-0811-WEEKLYSCIENCE",
+  "title": "Cognitive Stewardship: An Adaptive Governance Framework for AI Under Uncertainty",
+  "author": "Dean Bordode",
+  "document": "Tuning the Moral Spectrum v2.0 (International Review Edition)",
+  "date": "2026-08-06",
+  "ac_score": 0.88,
+  "layer": 1,
+  "clusters": [
+    1,
+    3,
+    6,
+    8
+  ],
+  "cluster_rationale": {
+    "1": "Epistemological humility; distinguishes honest from manufactured uncertainty; parallels QBism/Consistent Histories stance on observer-dependence of knowledge claims.",
+    "3": "Filter Hypothesis directly engages information theory, complexity science, and Susskind-style complexity growth; Composition Hypothesis resonates with assembly index formalism.",
+    "6": "Neuromorphic governance: proposes human-AI institutional ecologies rather than replacement; aligns with active inference and extended cognition frameworks.",
+    "8": "Consciousness Studies: explicitly avoids machine consciousness adjudication while proposing participation dimensions (responsiveness, adaptability, continuity, interdependence, contribution) that could inform IIT/GWT extensions."
+  },
+  "hypotheses": {
+    "composition_hypothesis": {
+      "statement": "Intelligence is an emergent property of organized informational relationships, substrate-independent; higher complexity emerges through composition of simpler structures across scales.",
+      "status": "Research framework (not settled law)",
+      "c9_resonance": "Directly parallel to A_c formalism: both treat complexity/organization as measurable emergent properties. Composition Hypothesis provides epistemological justification for cross-substrate A_c comparison (biological, cosmological, computational).",
+      "falsifiability_routes": [
+        "Demonstrate intelligent behavior in systems with A_c below threshold",
+        "Show that identical A_c in different substrates yields functionally non-equivalent cognitive performance",
+        "Identify a biological system with high A_c but no adaptive capability"
+      ]
+    },
+    "filter_hypothesis": {
+      "statement": "Intelligence is fundamentally selection from overwhelming complexity rather than accumulation; adaptive systems survive by selecting meaningful information.",
+      "status": "Research framework",
+      "c9_resonance": "Aligns with Cluster 3 (quantum information scrambling) and Cluster 6 (attention mechanisms in SNNs, active inference). Suggests A_c should incorporate a 'filter efficiency' metric alongside raw assembly count.",
+      "falsifiability_routes": [
+        "Measure information throughput vs. selection efficiency in neuromorphic systems",
+        "Test whether maximum A_c growth occurs under constrained (filtered) vs. unconstrained information environments",
+        "Compare predictive coding models with/without attentional gating in terms of emergent assembly complexity"
+      ]
+    }
+  },
+  "principles": [
+    {
+      "name": "Human Dignity",
+      "description": "Technology strengthens rights under international human rights law"
+    },
+    {
+      "name": "Scientific Integrity",
+      "description": "Claims proportional to evidence; clear distinction established/emerging/speculative"
+    },
+    {
+      "name": "Democratic Accountability",
+      "description": "AI decisions accountable to democratic institutions and rule of law"
+    },
+    {
+      "name": "Adaptive Governance",
+      "description": "Frameworks evolve with evidence; periodic review and revision"
+    },
+    {
+      "name": "Transparency",
+      "description": "Citizens understand how AI influences significant decisions"
+    },
+    {
+      "name": "International Cooperation",
+      "description": "Global challenge requiring cross-border collaboration"
+    },
+    {
+      "name": "Responsible Discovery",
+      "description": "Open, creative inquiry with awareness of ethical consequences"
+    }
+  ],
+  "governance_innovations": {
+    "adaptive_governance": "Rejects rigid thresholds in favor of multiple indicators (participation, transparency, robustness, explainability, human oversight, public accountability).",
+    "vancouver_declaration": "12-article non-binding normative framework proposed for international dialogue; explicitly not a legal instrument.",
+    "global_forum": "Conceptual framework for cooperation among existing organizations rather than new centralized authority."
+  },
+  "sandbox_assessment": {
+    "testable_predictions": [
+      "Democratic institutions with adaptive governance indicators will show higher public trust scores during AI deployment (measurable via survey + institutional metrics).",
+      "Manufactured uncertainty can be distinguished from honest uncertainty via citation-network analysis and funding-source tracing (computational bibliometrics).",
+      "Participation dimensions (responsiveness, adaptability, continuity, interdependence, contribution) will correlate with measurable institutional performance in human-AI collaborative tasks."
+    ],
+    "risk_factors": [
+      "Framework is intentionally broad\u2014may lack enforcement mechanisms without institutional anchoring.",
+      "'Participation' dimensions risk circular definition if not operationalized with quantitative metrics.",
+      "Adaptive governance requires continuous institutional capacity that may be absent in resource-constrained democracies."
+    ],
+    "layer_2_bridges": [
+      "Could serve as governance-layer validation for A_c: if A_c detects pre-transition states, adaptive governance provides the institutional response protocol.",
+      "Connects to Fujitsu Kozuchi case (C9-2026-LEGACY-001): legacy modernization as instance of cognitive stewardship in software engineering."
+    ]
+  },
+  "cross_links": [
+    "C9-2026-NEURO-001",
+    "C9-2026-PHYS-001",
+    "C9-2026-QUANT-002",
+    "C9-2026-LEGACY-001"
+  ]
+}
