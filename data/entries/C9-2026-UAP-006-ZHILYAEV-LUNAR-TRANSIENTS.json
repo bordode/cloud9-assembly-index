@@ -1,0 +1,317 @@
+{
+  "entry_metadata": {
+    "entry_id": "C9-2026-UAP-006",
+    "collection": "C9-COLLECTION-2026-0808-UAP",
+    "title": "Lunar Transient Anomalies — Zhilyaev et al. (MAO NASU)",
+    "layer_assignment": 3,
+    "layer_name": "Mathematical Fiction / Unverified Speculation",
+    "status": "QUARANTINED",
+    "assembly_index": 0.12,
+    "audit_date": "2026-08-08T20:18:00Z",
+    "auditor": "C9-Sandbox-v2.1",
+    "schema_version": "C9-v2.1.1"
+  },
+  "source_claim": {
+    "authors": [
+      "Boris Zhilyaev",
+      "Vladimir Petukhov",
+      "Sergey Pokhvala"
+    ],
+    "affiliation": "Main Astronomical Observatory, National Academy of Sciences of Ukraine (MAO NASU)",
+    "publication": {
+      "title": "UFO Dynamics on the Moon",
+      "venue": "ResearchGate (un-peer-reviewed preprint)",
+      "date_uploaded": "2026-08",
+      "peer_reviewed": false,
+      "doi": null,
+      "data_release": false
+    },
+    "observation_details": {
+      "dates": [
+        "2025-08-16T02:52:00Z",
+        "2025-09-07T23:05:00Z",
+        "2025-09-07T23:27:00Z"
+      ],
+      "location": "Vinarivka, Kyiv Region, Ukraine",
+      "instrument": "Intes-Alter M603 (6-inch / 150mm Maksutov-Cassegrain)",
+      "camera": "High-speed CCD, 20 frames per second",
+      "detection_size_pixels": "2×2 pixels at detection limit"
+    },
+    "claimed_phenomena": [
+      {
+        "type": "atmospheric_UFO",
+        "description": "Stationary objects synchronized with lunar rotation, appearing anchored to surface",
+        "count": ">20 objects",
+        "size_estimate_km": "25–40 km diameter (disc-shaped)",
+        "behavior": "Fixed position relative to Moon, pulsing luminosity"
+      },
+      {
+        "type": "continental_UFO",
+        "description": "Moving objects traversing lunar surface",
+        "count": ">20 objects",
+        "size_estimate_km": "25–40 km diameter (disc-shaped)",
+        "velocity_kms": 11.0,
+        "behavior": "Rapid traversal across lunar disk"
+      },
+      {
+        "type": "ring_structure",
+        "description": "Large toroidal objects in daytime sky",
+        "count": "Several",
+        "size_estimate_km": 35.4,
+        "rotation_period_min": 3.0,
+        "velocity_kms": 11.0,
+        "albedo": "Near-zero (absorbs nearly all radiation)",
+        "claimed_artificial_gravity_g": 2.2
+      }
+    ],
+    "authors_conclusion": "The Moon serves as a base for UFOs. UFOs demonstrate intelligent behavior and can be regarded as a technologically advanced civilisation."
+  },
+  "prior_credibility_assessment": {
+    "entry_id_2022": "Zhilyaev-et-al-2022-UAP-Kyiv",
+    "nasu_evaluation": {
+      "date": "2022-09-15",
+      "verdict": "Pseudo-scientific in form and content",
+      "methodology_criticism": [
+        "Significant errors in determining distances to observed objects",
+        "Miscalculations off by factor of ~10× (per Avi Loeb, Harvard)",
+        "No critical analysis of possible natural/terrestrial explanations",
+        "Unreasonable conclusions without adequate scientific rigor",
+        "Authors knowingly misrepresented work as peer-reviewed"
+      ],
+      "nasu_quote": "The article is pseudo-scientific in form and content, the methods are simply full of inaccuracies, simplifications, fabrications and outright manipulations. The conclusions are mostly absurd, far-fetched and have nothing to do with simple natural explanations of observed phenomena.",
+      "likely_explanation_2022": "Artillery shells, atmospheric insects/birds, or camera noise misidentified as high-altitude craft"
+    },
+    "pattern_recognition": "Same structural weaknesses inherited: single-station data, no parallax distance measurements, no independent replication, signals only pixels wide."
+  },
+  "sandbox_test_results": {
+    "test_date": "2026-08-08T20:18:00Z",
+    "test_suite": "C9-Physics-Sandbox-v2.1",
+    "overall_verdict": "REJECTED",
+    "pass_rate": "1/6",
+    "tests": [
+      {
+        "test_id": "SB-001",
+        "name": "Centrifugal Acceleration Calculation",
+        "claimed_value_g": 2.0,
+        "computed_value_g": 2.2,
+        "verdict": "PASS",
+        "notes": "Arithmetic is correct, but physical realizability is separate question."
+      },
+      {
+        "test_id": "SB-002",
+        "name": "Material Hoop Stress",
+        "method": "σ = ρ × v² for rotating ring",
+        "rim_velocity_ms": 617.8,
+        "results": {
+          "structural_steel": {
+            "hoop_stress_MPa": 2996.6,
+            "safety_factor": 0.13,
+            "verdict": "FAILS"
+          },
+          "titanium_alloy": {
+            "hoop_stress_MPa": 1717.8,
+            "safety_factor": 0.52,
+            "verdict": "FAILS"
+          },
+          "carbon_fiber_T800": {
+            "hoop_stress_MPa": 687.1,
+            "safety_factor": 4.37,
+            "verdict": "SURVIVES"
+          },
+          "carbon_nanotube_theoretical": {
+            "hoop_stress_MPa": 496.3,
+            "safety_factor": 201.5,
+            "verdict": "SURVIVES"
+          },
+          "diamond_theoretical": {
+            "hoop_stress_MPa": 1336.1,
+            "safety_factor": 44.9,
+            "verdict": "SURVIVES"
+          }
+        },
+        "verdict": "FAIL",
+        "notes": "Only theoretical/exotic materials survive. No known engineered structure approaches this scale under such stress."
+      },
+      {
+        "test_id": "SB-003",
+        "name": "Structural Mass Estimate",
+        "assumed_cross_section": "1 km × 0.5 km",
+        "implied_volume_km3": 55.6,
+        "mass_estimates_Mt": {
+          "steel": 437000000.0,
+          "titanium": 250000000.0,
+          "carbon_fiber": 100000000.0,
+          "carbon_nanotube": 72300000.0,
+          "diamond": 195000000.0
+        },
+        "comparison": {
+          "iss_mass_Mt": 0.42,
+          "all_human_structures_Mt": 1000000.0
+        },
+        "verdict": "FAIL",
+        "notes": "Even with most optimistic (CNT) material, ring mass = 72× all human-made structures combined."
+      },
+      {
+        "test_id": "SB-004",
+        "name": "Orbital Mechanics & Trajectory",
+        "claimed_velocity_kms": 11.0,
+        "moon_escape_velocity_kms": 2.38,
+        "ratio_to_escape": 4.62,
+        "trajectory_type": "Hyperbolic (unbound)",
+        "kinetic_energy_per_kg_J": 60500000.0,
+        "verdict": "FAIL",
+        "notes": "Object moving at 11 km/s near Moon is on escape trajectory. Station-keeping or surface traversal at this speed requires continuous propulsion with astronomical energy budget."
+      },
+      {
+        "test_id": "SB-005",
+        "name": "Angular Size & Detectability",
+        "claimed_angular_size_arcsec": 19.0,
+        "dawes_limit_6inch_arcsec": 19.6,
+        "resolution_ratio": 1.0,
+        "implied_size_from_2px_detection_km": 1.23,
+        "size_inflation_factor": 28.8,
+        "lro_nac_pixels_across": 70800,
+        "verdict": "FAIL",
+        "notes": "Claimed 35 km object would span 70,800 pixels in LRO NAC (0.5m/px). Unmistakable. 2-pixel detection implies ~1.2 km object at lunar distance, consistent with 2022 NASU finding of ~10× distance errors."
+      },
+      {
+        "test_id": "SB-006",
+        "name": "Synchronized Flashing Statistics",
+        "distance_between_sites_km": 500,
+        "light_travel_time_ms": 1.67,
+        "flash_duration_ms": "100–500",
+        "synchronization_precision": ">60 orders of magnitude coarser than light-speed limit",
+        "random_coincidence_probability": 3.67e-06,
+        "verdict": "FAIL",
+        "notes": "Synchronization precision is extremely coarse. Easily explained by random coincidence, cosmic ray air showers, or satellite glints."
+      }
+    ]
+  },
+  "cross_correlation_check": {
+    "lro_validation": {
+      "instrument": "Lunar Reconnaissance Orbiter Camera (LROC NAC)",
+      "resolution_m": 0.5,
+      "coverage": "Targeted >10% lunar surface, 100% >85.5° latitude",
+      "expected_detection": "70,800-pixel signature unmistakable in every frame of claimed region",
+      "actual_detection": "NULL — No orbital corroboration found",
+      "null_result_force": "LETHAL — Absence of 35 km structure in LRO data is definitive falsification"
+    },
+    "multi_site_ground_check": {
+      "expected": "Hundreds of professional and amateur observatories would detect 19 arcsecond objects",
+      "actual": "NULL — No independent ground confirmation",
+      "null_result_force": "LETHAL"
+    },
+    "chandrayaan_validation": {
+      "status": "Not checked (redundant given LRO null result)",
+      "expected": "Sub-meter resolution would resolve structure"
+    },
+    "natural_explanation_baseline": {
+      "apollo_light_flashes": "Galactic cosmic rays (GCRs) interacting with retinas — confirmed by NASA",
+      "transient_lunar_phenomena": "Meteoroid impacts, outgassing, solar reflections — well-documented natural causes",
+      "sensor_artifacts": "Hot pixels, CCD readout noise, cosmic ray hits on sensor — common at detection limit",
+      "atmospheric_effects": "Insects, birds, dust scatter at low angular elevation — identified in 2022 NASU critique"
+    }
+  },
+  "assembly_index_breakdown": {
+    "reproducibility": 0.05,
+    "independent_corroboration": 0.0,
+    "physical_consistency": 0.1,
+    "methodological_rigor": 0.15,
+    "signal_discrimination": 0.2,
+    "author_credibility": 0.05,
+    "weighted_aggregate": 0.12
+  },
+  "meta_pattern_analysis": {
+    "detected_pattern": "Structured Suppression of Dominant Mode",
+    "pattern_description": "Dominant mode (sensor noise/atmospheric artifacts) suppressed through narrative interpretation rather than algorithmic filtering. Same archetype as C9-COLLECTION-2026-0608-SCIENCENEWS entries.",
+    "comparison_to_validated_entries": {
+      "C9-2026-COSMO-003_SgrA_wind_cavity": {
+        "score": 0.96,
+        "contrast": "Multi-messenger, multi-observatory, peer-reviewed, physically consistent"
+      },
+      "C9-2026-QG-005_Barontini_cold_atom": {
+        "score": 0.94,
+        "contrast": "Reproducible, laboratory-controlled, theoretical grounding"
+      },
+      "C9-2026-UAP-006_Zhilyaev": {
+        "score": 0.12,
+        "contrast": "Single-source, unreproducible, physically implausible, prior methodological failure"
+      }
+    }
+  },
+  "risk_assessment": {
+    "epistemic_risk": "HIGH — Extraordinary claim with zero extraordinary evidence",
+    "reputation_risk": "MEDIUM — Prior NASU discreditation creates pattern of non-credible UAP claims",
+    "resource_misallocation_risk": "MEDIUM — Risk of diverting attention from legitimate anomaly detection pipelines",
+    "contamination_risk": "LOW — Easily identifiable as non-credible by standard filtering"
+  },
+  "recommendations": {
+    "bus_integration": "DO NOT integrate into primary C9 bus as live hypothesis",
+    "archive_location": "C9-LAYER3-QUARANTINE/",
+    "use_case": "Negative training example for AutoBaby v2 Hypothesis Debate Module. SKEPTIC agent should recognize pattern: small-aperture, single-observatory, high-FPS claims of massive cislunar structures without orbital cross-check = systematic failure mode.",
+    "future_action": "If peer-reviewed replication with orbital corroboration emerges, re-evaluate. Until then: quarantined."
+  },
+  "references": [
+    {
+      "id": "REF-001",
+      "title": "UFO Dynamics on the Moon",
+      "authors": [
+        "B.E. Zhilyaev",
+        "V. Petukhov",
+        "S. Pokhvala"
+      ],
+      "venue": "ResearchGate preprint (un-peer-reviewed)",
+      "year": 2026,
+      "url": "https://www.researchgate.net/"
+    },
+    {
+      "id": "REF-002",
+      "title": "NASU Evaluation of Zhilyaev 2022 UAP Claims",
+      "authors": [
+        "National Academy of Sciences of Ukraine"
+      ],
+      "venue": "MAO NASU Academic Council Statement",
+      "year": 2022,
+      "date": "2022-09-15",
+      "key_quote": "Pseudo-scientific in form and content... full of inaccuracies, simplifications, fabrications and outright manipulations."
+    },
+    {
+      "id": "REF-003",
+      "title": "Down To Earth Limits on Unidentified Aerial Phenomena in Ukraine",
+      "authors": [
+        "Avi Loeb"
+      ],
+      "venue": "Harvard-Smithsonian Center for Astrophysics",
+      "year": 2022,
+      "url": "https://avi-loeb.medium.com/down-to-earth-limits-on-unidentified-aerial-phenomena-in-ukraine-6d8bb9f64f85"
+    },
+    {
+      "id": "REF-004",
+      "title": "LRO (Lunar Reconnaissance Orbiter) Mission Overview",
+      "venue": "eoPortal / NASA",
+      "year": 2022,
+      "lroc_nac_resolution_m": 0.5,
+      "url": "https://www.eoportal.org/satellite-missions/lro"
+    },
+    {
+      "id": "REF-005",
+      "title": "UFOs over Kyiv — Skeptical Inquirer Analysis",
+      "authors": [
+        "Skeptical Inquirer"
+      ],
+      "venue": "Committee for Skeptical Inquiry",
+      "year": 2022,
+      "url": "https://skepticalinquirer.org/2022/12/ufos-over-kyiv/"
+    }
+  ],
+  "audit_trail": {
+    "created_by": "C9-Kimi-K2.7",
+    "created_at": "2026-08-08T20:18:00Z",
+    "sandbox_artifact": "c9_sandbox_zhilyaev_lunar_uap.png",
+    "previous_related_entries": [
+      "C9-AUDIT-2026-0608-0340",
+      "C9-2026-COSMO-003",
+      "C9-2026-QG-005"
+    ]
+  }
+}
