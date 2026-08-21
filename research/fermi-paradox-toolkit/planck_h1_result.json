@@ -1,0 +1,12 @@
+{
+  "test": "H1: Fold-symmetry angular correlation",
+  "null_max_deviation": 0.10960559420040182,
+  "signal_max_deviation": 0.08663608250845078,
+  "mc_threshold_99_9": 0.30983529920699177,
+  "p_value_null": 0.593,
+  "p_value_signal": 0.861,
+  "detection": false,
+  "false_positive_control": true,
+  "n_monte_carlo": 1000,
+  "note": "Mock test on simplified lat-lon grid. Real implementation requires HEALPix + Planck SMICA map."
+}
