@@ -1,0 +1,95 @@
+{
+  "source": "ASKAP J1935+2148",
+  "reference": "Caleb et al. 2024, Nature Astronomy",
+  "period_sec": 3225.313,
+  "n_pulses": 6,
+  "results": [
+    {
+      "pulse": 1,
+      "true_state": "BRIGHT",
+      "detected_state": "BRIGHT",
+      "peak_amplitude": 0.7688039967250312,
+      "peak_time_offset_sec": -0.599,
+      "density": {
+        "band_0": 0.007718258255767815,
+        "band_1": 0.1336146599213432,
+        "band_2": 0.13395504776945794,
+        "band_3": 0.013606399888358621,
+        "band_4": 0.01356234415991622
+      }
+    },
+    {
+      "pulse": 2,
+      "true_state": "BRIGHT",
+      "detected_state": "BRIGHT",
+      "peak_amplitude": 0.577204148534074,
+      "peak_time_offset_sec": -0.077,
+      "density": {
+        "band_0": 0.007652356601659821,
+        "band_1": 0.10154700347709412,
+        "band_2": 0.10199734157608066,
+        "band_3": 0.013545248508083314,
+        "band_4": 0.013615900348644237
+      }
+    },
+    {
+      "pulse": 3,
+      "true_state": "WEAK",
+      "detected_state": "WEAK",
+      "peak_amplitude": 0.11090854427880993,
+      "peak_time_offset_sec": 0.049,
+      "density": {
+        "band_0": 0.0074225719459329615,
+        "band_1": 0.009770335460894487,
+        "band_2": 0.013567940119237717,
+        "band_3": 0.013527449950493346,
+        "band_4": 0.013560596320050331
+      }
+    },
+    {
+      "pulse": 4,
+      "true_state": "BRIGHT",
+      "detected_state": "BRIGHT",
+      "peak_amplitude": 0.8149803819455644,
+      "peak_time_offset_sec": -0.667,
+      "density": {
+        "band_0": 0.007603480747415582,
+        "band_1": 0.10800888248952974,
+        "band_2": 0.10841375934544036,
+        "band_3": 0.013511492339025008,
+        "band_4": 0.013461191423596837
+      }
+    },
+    {
+      "pulse": 5,
+      "true_state": "WEAK",
+      "detected_state": "WEAK",
+      "peak_amplitude": 0.09105714514861683,
+      "peak_time_offset_sec": -0.011,
+      "density": {
+        "band_0": 0.007495655322139814,
+        "band_1": 0.009792840997666877,
+        "band_2": 0.013681163593642303,
+        "band_3": 0.013505378290891061,
+        "band_4": 0.013547943905833639
+      }
+    },
+    {
+      "pulse": 6,
+      "true_state": "QUIET",
+      "detected_state": "WEAK",
+      "peak_amplitude": 0.043220377377425,
+      "peak_time_offset_sec": -48.498,
+      "density": {
+        "band_0": 0.007387084737873806,
+        "band_1": 0.009647656677154429,
+        "band_2": 0.013478919117137535,
+        "band_3": 0.013529113309502063,
+        "band_4": 0.01352426648238406
+      }
+    }
+  ],
+  "accuracy": 0.8333333333333334,
+  "interval_symmetry": 0.33333333333333337,
+  "discovery": "H/T/D/A pipeline successfully distinguishes Bright (10-50s) vs Weak (370ms) vs Quiet states by amplitude and density profiling"
+}
