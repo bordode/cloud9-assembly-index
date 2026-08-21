@@ -140,6 +140,21 @@ The repository also contains separate mathematical manuscripts, including work c
 
 ---
 
+## Fermi Paradox Toolkit (Experimental)
+
+A SETI methodology framework using non-Indo-European linguistic logics as analytical filters, with honest sandbox validation. **2 of 4 sub-threads passed validation; 2 were fiction-tagged.**
+
+| Component | File | Status |
+|-----------|------|--------|
+| Fermi Toolkit (linguistic-SETI framework) | [`research/fermi-paradox-toolkit/`](research/fermi-paradox-toolkit/) | ✅ A_c = 0.84 PASS |
+| Sonic Synthesis (H/T/D/A pipeline) | `research/fermi-paradox-toolkit/c9_sonic_synthesis_v1.py` | ✅ A_c = 0.67 PASS |
+| Cantonese Quantum Bridge | referenced in quickref | 🔒 A_c = 0.48 FICTION |
+| J1832-0911 "Final Warning" decoding | `research/fermi-paradox-toolkit/j1832_empirical_audit.md` | 🔒 A_c = 0.31 FICTION |
+
+See [`research/fermi-paradox-toolkit/README.md`](research/fermi-paradox-toolkit/README.md) for full breakdown of what's rigorous vs. speculative.
+
+---
+
 ## Repository Structure
 
 ```text
