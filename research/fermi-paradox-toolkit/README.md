@@ -141,3 +141,12 @@ Three targeted tweaks were implemented and validated:
 | J1832 Decoding (ASTRO-007) | 0.31 | 🔒 FICTION-TAGGED |
 
 This is the key methodological lesson of the whole collection: the same pipeline produces **fiction when pointed at a target with no real structure** (J1832-0911) and **recovers genuine physics when pointed at a target that has real structure** (J1935+2148). The difference is the target, not the tool.
+
+### Audio Assets
+
+| File | Duration | Size | Description |
+|------|----------|------|-------------|
+| [`assets/audio/fermi_void_synthetic.wav`](../../assets/audio/fermi_void_synthetic.wav) | 15s | 1.3 MB | Short Fermi void demo — synthetic test signal with 5 injected pulses |
+| [`assets/audio/j1935_4hour_1khz.wav`](../../assets/audio/j1935_4hour_1khz.wav) | 4 hours | 27.5 MB | Full J1935+2148 simulation at 1 kHz — the 3-state switching pattern rendered as audio for playback demo |
+
+The 4-hour WAV renders the J1935+2148 three-state switching (Bright → Weak → Quiescent) as an audible signal. The Bright pulses (10–50s, high amplitude) are clearly distinguishable from Weak pulses (370ms, low amplitude) and Quiescent periods (silence). This is the same data the H/T/D/A pipeline scored at 83% classification accuracy.
