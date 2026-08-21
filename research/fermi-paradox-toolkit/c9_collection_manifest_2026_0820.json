@@ -10,7 +10,7 @@
       "layer": 2,
       "assembly_index": 0.84,
       "sandbox_pass": true,
-      "status": "INTEGRATED — READY FOR PUBLICATION",
+      "status": "INTEGRATED \u2014 READY FOR PUBLICATION",
       "deliverables": [
         "fermi_toolkit_formal_v1.md",
         "c9_sonic_synthesis_v1.py"
@@ -29,7 +29,7 @@
       "layer": 2,
       "assembly_index": 0.67,
       "sandbox_pass": true,
-      "status": "INTEGRATED — CODE DEPLOYED",
+      "status": "INTEGRATED \u2014 CODE DEPLOYED",
       "deliverables": [
         "c9_sonic_synthesis_v1.py"
       ],
@@ -41,11 +41,11 @@
     },
     {
       "entry_id": "C9-2026-ASTRO-007-FICTION",
-      "title": "ASKAP J1832-0911: 'Final Warning' — A Narrative Decoding Exercise",
+      "title": "ASKAP J1832-0911: 'Final Warning' \u2014 A Narrative Decoding Exercise",
       "layer": 3,
       "assembly_index": 0.31,
       "sandbox_pass": false,
-      "status": "QUARANTINED — FICTION TAG APPLIED",
+      "status": "QUARANTINED \u2014 FICTION TAG APPLIED",
       "deliverables": [
         "j1832_empirical_audit.md"
       ],
@@ -54,7 +54,7 @@
         8
       ],
       "warning": "Explicitly tagged as mathematical fiction. Period stability refutes decay model. Flux decay is real but not semantic.",
-      "next_action": "None — retained as narrative artifact only"
+      "next_action": "None \u2014 retained as narrative artifact only"
     },
     {
       "entry_id": "C9-2026-MATH-008-FICTION",
@@ -62,7 +62,7 @@
       "layer": 3,
       "assembly_index": 0.48,
       "sandbox_pass": false,
-      "status": "QUARANTINED — FICTION TAG APPLIED",
+      "status": "QUARANTINED \u2014 FICTION TAG APPLIED",
       "deliverables": [],
       "clusters": [
         1,
@@ -70,7 +70,32 @@
         7
       ],
       "warning": "No rigorous mapping between phonology and complex analysis. Structural metaphor only.",
-      "next_action": "Attempt ONE concrete formalization: derive explicit constraint on ζ(s) from tonal rule"
+      "next_action": "Attempt ONE concrete formalization: derive explicit constraint on \u03b6(s) from tonal rule"
+    },
+    {
+      "entry_id": "C9-2026-ASTRO-011",
+      "name": "ASKAP J1935+2148 \u2014 H/T/D/A Pipeline Validation",
+      "target": "ASKAP J1935+2148 (Caleb et al. 2024, Nature Astronomy)",
+      "period": "53.76 min (3225.313s)",
+      "states": [
+        "Bright (10-50s, 119 mJy, >90% linear pol)",
+        "Weak (370ms, 9 mJy, >70% circular pol)",
+        "Quiescent/Null"
+      ],
+      "pipeline_version": "v2.2 (Stokes V discriminator + Kendall tau A-operator + cross-band coherence matrix)",
+      "classification_accuracy": "83%",
+      "false_positive": "Pulse 6 (QUIET\u2192WEAK) \u2014 noise floor threshold issue",
+      "a_c_score": 0.83,
+      "layer": 1,
+      "status": "VALIDATED \u2014 empirical recovery of known multi-state structure",
+      "key_finding": "Same pipeline that produced fiction on J1832-0911 recovered real physics on J1935+2148. The discriminating test: does the target have real structure the pipeline is designed to detect?",
+      "files": [
+        "j1935_discovery.json",
+        "j1935_enhanced_v2_2.json",
+        "j1935_htda_v2_2_robust_pol_snr.jpg"
+      ],
+      "audio": "j1935_4hour_1khz.wav",
+      "date_validated": "2026-08-21"
     }
   ],
   "collection_stats": {
