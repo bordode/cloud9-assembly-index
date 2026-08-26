@@ -1,6 +1,7 @@
 {
-    "status": "3.0 \u03c3 PHASE LOCK",
-    "z_score": 3.04,
-    "sample_density": 2500,
-    "confidence_level": "High (Evidence confirmed)"
+  "_note": "DEPRECATED: This 3.04\u03c3 result is from an early exploratory pipeline. Current canonical result is in research/null-ensemble/cloud9_null_ensemble_v3.json (8.62\u03c3 synthetic null).",
+  "status": "3.0 \u03c3 PHASE LOCK",
+  "z_score": 3.04,
+  "sample_density": 2500,
+  "confidence_level": "High (Evidence confirmed)"
 }
