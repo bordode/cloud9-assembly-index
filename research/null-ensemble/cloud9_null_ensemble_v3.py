@@ -1,8 +1,13 @@
 #!/usr/bin/env python3
 """
 Cloud-9 Null Ensemble Generator v3 — KSG TEMPORAL MI
-Publication-grade pipeline using Kraskov-Stögbauer-Grassberger
+Experimental pipeline using Kraskov-Stögbauer-Grassberger
 k-NN mutual information integrated over cosmic time.
+
+This is a synthetic/prototype null-model implementation for methodological
+study. It is not a like-for-like reproduction of an IllustrisTNG halo
+catalogue and its output should not be described as an observational
+discovery significance without independent validation.
 
 Author: Assistant (for Dean Bordode / Cloud-9 research)
 Date: 2026-08-24
@@ -337,141 +342,77 @@ def main():
     print("="*65)
     print("CLOUD-9 NULL ENSEMBLE GENERATOR v3 — KSG TEMPORAL MI")
     print("="*65)
-    print(f"N_HALOS: {N_HALOS} | GRID: {GRID_RES}^3 | STEPS: {N_STEPS}")
+    print(f"N_HALOS: {N_HALOS}")
     print(f"Workers: {N_WORKERS}")
-    print("Integrating I[\u03c1(t); \u03c1(t+\u0394t)] via KSG k-NN over cosmic time.")
-    print("")
+    print(f"Grid: {GRID_RES}^3, {N_STEPS} time steps, {1200} samples/step")
+    print(f"Target A_c: {CLOUD9_A_C} ± {CLOUD9_SYSTEMATIC} bits")
+    print("NOTE: synthetic/prototype null model; not direct IllustrisTNG data")
 
-    start = time.time()
+    t0 = time.time()
+    seeds = [SEED_BASE + i for i in range(N_HALOS)]
 
-    with mp.Pool(N_WORKERS) as pool:
-        seeds = list(range(SEED_BASE, SEED_BASE + N_HALOS))
-        ensemble = pool.map(run_single_halo, seeds)
-
-    elapsed = time.time() - start
-    A_c_values = np.array([h['A_c_bits'] for h in ensemble])
-
-    # Statistics
-    null_mean = float(np.mean(A_c_values))
-    null_std = float(np.std(A_c_values))
-    null_median = float(np.median(A_c_values))
-    p16 = float(np.percentile(A_c_values, 16))
-    p84 = float(np.percentile(A_c_values, 84))
-    p95 = float(np.percentile(A_c_values, 95))
-    p99 = float(np.percentile(A_c_values, 99))
-    p2_5 = float(np.percentile(A_c_values, 2.5))
-    p97_5 = float(np.percentile(A_c_values, 97.5))
-
-    z_score = (CLOUD9_A_C - null_mean) / null_std if null_std > 0 else 0
-
-    print(f"Completed in {elapsed:.1f}s ({elapsed/N_HALOS:.2f}s per halo)")
-    print("")
-    print("="*65)
-    print("RESULTS")
-    print("="*65)
-    print(f"\nNull Distribution (N={N_HALOS}):")
-    print(f"  Mean:      {null_mean:.4f} bits")
-    print(f"  Std:       {null_std:.4f} bits")
-    print(f"  Median:    {null_median:.4f} bits")
-    print(f"  16-84:     [{p16:.4f}, {p84:.4f}]")
-    print(f"  95th:      {p95:.4f}")
-    print(f"  99th:      {p99:.4f}")
-    print(f"  2.5-97.5:  [{p2_5:.4f}, {p97_5:.4f}]")
-    print(f"  Min:       {float(np.min(A_c_values)):.4f}")
-    print(f"  Max:       {float(np.max(A_c_values)):.4f}")
-    print(f"  CV:        {null_std/null_mean*100:.2f}%")
-
-    print(f"\nCloud-9 Comparison:")
-    print(f"  Cloud-9 A_c:  {CLOUD9_A_C:.1f} ± {CLOUD9_SYSTEMATIC:.1f} bits")
-    print(f"  Null mean:      {null_mean:.4f} ± {null_std:.4f} bits")
-    print(f"  Z-score:        {z_score:.4f}\u03c3")
-
-    if z_score >= 5.0:
-        sig_str = "\U0001f389 DISCOVERY"
-    elif z_score >= 3.0:
-        sig_str = "\u2705 SIGNIFICANT"
-    elif z_score >= 2.0:
-        sig_str = "\u26a0\ufe0f MARGINAL"
+    if N_WORKERS > 1:
+        with mp.Pool(N_WORKERS) as pool:
+            results = pool.map(run_single_halo, seeds)
     else:
-        sig_str = "\u274c NOT SIGNIFICANT"
-    print(f"  Significance:   {sig_str}")
+        results = [run_single_halo(s) for s in seeds]
 
-    # ==================== PLOT ====================
-    fig, axes = plt.subplots(1, 2, figsize=(14, 5))
+    A_values = np.array([r['A_c_bits'] for r in results])
+    mean = float(np.mean(A_values))
+    std = float(np.std(A_values, ddof=1))
+    median = float(np.median(A_values))
+    z = (CLOUD9_A_C - mean) / std if std > 0 else float('nan')
 
-    ax1 = axes[0]
-    ax1.hist(A_c_values, bins=20, color='steelblue', edgecolor='black', alpha=0.7)
-    ax1.axvline(CLOUD9_A_C, color='red', linestyle='--', linewidth=3, label=f'Cloud-9 = {CLOUD9_A_C}')
-    ax1.axvline(null_mean, color='green', linestyle='--', linewidth=2, label=f'Null \u03bc = {null_mean:.1f}')
-    ax1.axvline(null_mean + 2*null_std, color='orange', linestyle=':', alpha=0.8, label=f'2\u03c3')
-    ax1.axvline(null_mean + 3*null_std, color='purple', linestyle=':', alpha=0.8, label=f'3\u03c3')
-    ax1.axvline(null_mean + 5*null_std, color='brown', linestyle=':', alpha=0.8, label=f'5\u03c3')
-    ax1.set_xlabel('Assembly Index A_c (bits)', fontsize=12)
-    ax1.set_ylabel('Count', fontsize=12)
-    ax1.set_title(f'Null Ensemble Distribution (N = {N_HALOS})', fontsize=14, fontweight='bold')
-    ax1.legend(fontsize=10)
-    ax1.grid(alpha=0.3)
-
-    ax2 = axes[1]
-    sorted_Ac = np.sort(A_c_values)
-    cumulative = np.arange(1, len(sorted_Ac)+1) / len(sorted_Ac)
-    ax2.plot(sorted_Ac, cumulative, color='steelblue', linewidth=2.5)
-    ax2.axvline(CLOUD9_A_C, color='red', linestyle='--', linewidth=3, label=f'Cloud-9')
-    ax2.axhline(0.99, color='brown', linestyle=':', alpha=0.7, label='99th percentile')
-    ax2.axhline(0.95, color='purple', linestyle=':', alpha=0.7, label='95th percentile')
-    ax2.axhline(0.90, color='orange', linestyle=':', alpha=0.7, label='90th percentile')
-    ax2.set_xlabel('A_c (bits)', fontsize=12)
-    ax2.set_ylabel('Cumulative Fraction', fontsize=12)
-    ax2.set_title('Cumulative Distribution', fontsize=14, fontweight='bold')
-    ax2.legend(fontsize=10)
-    ax2.grid(alpha=0.3)
-
-    plt.tight_layout()
-    plt.savefig('cloud9_null_ensemble_v3.png', dpi=200, bbox_inches='tight')
-    print(f"\nPlot saved to: cloud9_null_ensemble_v3.png")
-
-    # ==================== JSON OUTPUT ====================
-    result_json = {
-        "run_timestamp": datetime.utcnow().isoformat() + "Z",
-        "pipeline_version": "3.0-KSG",
-        "n_halos": N_HALOS,
-        "grid_resolution": GRID_RES,
-        "n_time_steps": N_STEPS,
-        "cosmology": COSMO,
-        "target_halo": TARGET,
-        "null_distribution": {
-            "mean": round(null_mean, 4),
-            "std": round(null_std, 4),
-            "median": round(null_median, 4),
-            "percentile_16": round(p16, 4),
-            "percentile_84": round(p84, 4),
-            "percentile_95": round(p95, 4),
-            "percentile_99": round(p99, 4),
-            "percentile_2_5": round(p2_5, 4),
-            "percentile_97_5": round(p97_5, 4),
-            "min": round(float(np.min(A_c_values)), 4),
-            "max": round(float(np.max(A_c_values)), 4)
+    output = {
+        'run_timestamp': datetime.utcnow().isoformat() + 'Z',
+        'pipeline_version': '3.0-KSG-fast',
+        'status': 'experimental synthetic null model',
+        'n_halos': N_HALOS,
+        'grid_resolution': GRID_RES,
+        'n_time_steps': N_STEPS,
+        'n_samples_per_step': 1200,
+        'cosmology': COSMO,
+        'target_halo': TARGET,
+        'null_distribution': {
+            'mean': mean,
+            'std': std,
+            'median': median,
+            'percentile_16': float(np.percentile(A_values, 16)),
+            'percentile_84': float(np.percentile(A_values, 84)),
+            'percentile_95': float(np.percentile(A_values, 95)),
+            'percentile_99': float(np.percentile(A_values, 99)),
+            'percentile_2_5': float(np.percentile(A_values, 2.5)),
+            'percentile_97_5': float(np.percentile(A_values, 97.5)),
+            'min': float(np.min(A_values)),
+            'max': float(np.max(A_values))
         },
-        "cloud9_comparison": {
-            "cloud9_measured": CLOUD9_A_C,
-            "cloud9_systematic": CLOUD9_SYSTEMATIC,
-            "null_mean": round(null_mean, 4),
-            "null_std": round(null_std, 4),
-            "z_score": round(z_score, 4),
-            "significance": "discovery" if z_score >= 5 else "significant" if z_score >= 3 else "marginal" if z_score >= 2 else "none"
+        'cloud9_comparison': {
+            'cloud9_measured': CLOUD9_A_C,
+            'cloud9_systematic': CLOUD9_SYSTEMATIC,
+            'null_mean': mean,
+            'null_std': std,
+            'z_score': float(z),
+            'significance': 'exploratory; not a discovery claim'
         },
-        "ensemble_members": ensemble,
-        "disclaimer": "Semi-analytic evolution. For publication, validate against Gadget-4/IllustrisTNG halos."
+        'ensemble_members': results,
+        'runtime_seconds': time.time() - t0,
+        'reproducibility': {
+            'seed_base': SEED_BASE,
+            'seeds': seeds,
+            'data_source': 'synthetic model; no IllustrisTNG catalogue fetched'
+        }
     }
 
     with open('cloud9_null_ensemble_v3.json', 'w') as f:
-        json.dump(result_json, f, indent=2)
+        json.dump(output, f, indent=2)
 
-    print(f"JSON saved to: cloud9_null_ensemble_v3.json")
-    print("\n" + "="*65)
-    print("DONE")
-    print("="*65)
+    print(f"\nCompleted in {time.time()-t0:.1f}s")
+    print(f"Null mean: {mean:.4f} bits")
+    print(f"Null std:  {std:.4f} bits")
+    print(f"Cloud-9 A_c: {CLOUD9_A_C:.4f} bits")
+    print(f"Exploratory z-score: {z:.4f}σ")
+    print("Saved: cloud9_null_ensemble_v3.json")
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
