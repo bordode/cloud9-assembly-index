@@ -10,6 +10,18 @@
 
 ---
 
+## Current Results
+
+| Result | Location | Status |
+|--------|----------|--------|
+| **Synthetic Null Ensemble v3** | `research/null-ensemble/` | ✅ Verified (N=100, z=8.62σ, empirical p<0.01) |
+| TNG Temporal Validation | `research/validation/C9-2026-COSMO-005_subhalo_validation.json` | ⏳ Pending |
+| Legacy Analysis | `results/cloud9_analysis.json` | ⚠️ Deprecated (z=3.04σ, exploratory) |
+
+> **Note:** The 8.62σ figure is a synthetic null-model comparison, not a direct ΛCDM validation. See `research/validation/README.md` for full caveats.
+
+---
+
 ## Overview
 
 This repository contains complementary research modules plus a formal ethics and governance framework:
