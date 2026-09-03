@@ -1,0 +1,40 @@
+{
+  "entry_id": "C9-2026-QUANT-002",
+  "title": "Robust Two-Qubit Geometric Phase Gates Using Amplitude and Frequency Ramping in Trapped Ions",
+  "author": "C. M. Bowers et al. / LLNL & NIST Ion Storage Group",
+  "source": "Physical Review Letters (2026). DOI: 10.1103/x9b9-5d78",
+  "date_published": "2026-08-26",
+  "date_audited": "2026-08-27",
+  "audit_score": 0.92,
+  "layer": 1,
+  "clusters": [
+    1,
+    3,
+    6
+  ],
+  "confidence": "high",
+  "key_claims": [
+    "Ramped detuning and amplitude modulation of state-dependent forces enable robust trapped-ion two-qubit geometric phase gates",
+    "Gate protocol captures robustness of far-detuned operation while retaining speed from near-resonant phases",
+    "Ions operate at higher temperatures with reduced calibration overhead, paving way for scalable ion-trap quantum computers",
+    "Phase-space trajectory control ensures motional state returns to origin, leaving only entangling phase shift"
+  ],
+  "methodology": "Radio-frequency and microwave electromagnetic fields applied to trapped ions; ramped detuning through resonance; amplitude ramping; phase-space tomography",
+  "key_risk": "Demonstrated in a specific ion-trap apparatus; transferability to multi-zone scalable architectures (e.g., Quantinuum, IonQ) requires further validation",
+  "next_experiment": "Implement in shielded multi-zone trap with extra hardware; benchmark gate fidelity at scale; integrate with QPilotos router for distributed ion-trap quantum networking",
+  "tags": [
+    "trapped_ion",
+    "quantum_computing",
+    "geometric_phase_gate",
+    "entanglement",
+    "scalability",
+    "LLNL",
+    "NIST"
+  ],
+  "related_entries": [
+    "C9-2026-QUANT-001",
+    "C9-2026-QUANT-003"
+  ],
+  "meta_pattern": "ROBUSTNESS_THROUGH_STRUCTURED_VARIATION",
+  "notes": "Directly relevant to C9 Quantum Bridge and QPilotos backends. The ramped-detuning principle (start far, approach resonance, retreat) is analogous to simulated annealing and could inspire optimization heuristics in C9's hypothesis debate module."
+}
