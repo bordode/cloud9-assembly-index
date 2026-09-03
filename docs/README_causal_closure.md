@@ -1,6 +1,8 @@
 # Cloud-9 Causal Closure Module
 
-For Termux / Python execution. Analyzes any system for causal closure properties.
+For Termux / Python execution. Analyzes any system for candidate causal-closure properties.
+
+**Important:** This module is an experimental research tool. Its scores and labels are operational definitions used for exploration; they are not established tests for life or consciousness. See [`docs/EVIDENCE_STATUS.md`](EVIDENCE_STATUS.md).
 
 ## Installation (Termux)
 
@@ -51,17 +53,23 @@ The module generates:
 - `Self-Repair` status: POSSIBLE / IMPOSSIBLE
 - `Self-Replication` status: POSSIBLE / IMPOSSIBLE
 - Quantitative scores (0-100)
-- Final verdict: Is Alive? Is Conscious?
+- A **model-generated research verdict** for the configured criteria
 
-## Thresholds
+The labels are properties of the implemented model. They should not be interpreted as a definitive determination of whether an entity is alive or conscious.
 
-| Threshold | Score Required | Meaning |
-|-----------|---------------|---------|
-| LIFE | >60 | Causal closure sufficient for life |
-| MAINTENANCE | >50 | Self-maintenance loop functional |
-| PERSISTENCE | >40 | Information preservation over time |
-| CONSCIOUSNESS | All above + info_pres > 40 | Cloud-9 consciousness criterion |
+## Experimental thresholds
+
+| Threshold | Score Required | Current interpretation |
+|-----------|---------------|------------------------|
+| LIFE | >60 | Experimental causal-closure heuristic |
+| MAINTENANCE | >50 | Experimental self-maintenance heuristic |
+| PERSISTENCE | >40 | Experimental information-persistence heuristic |
+| CONSCIOUSNESS | All above + info_pres > 40 | **Proposed research criterion; not a validated consciousness detector** |
 
 ## Key Insight
 
-Complexity (assembly proxy) is necessary but insufficient. Causal closure is the distinguishing criterion between living and non-living systems.
+Complexity (assembly proxy) may be useful as one descriptive feature, while causal closure is explored here as another. The distinction between those concepts is a research hypothesis, not an established rule separating living, non-living, or conscious systems.
+
+## Research boundary
+
+A model can classify an input according to its own thresholds without demonstrating that those thresholds correspond to biological life or subjective experience in the physical world. Any claim of consciousness, life, or personhood requires evidence beyond a score produced by this module.
