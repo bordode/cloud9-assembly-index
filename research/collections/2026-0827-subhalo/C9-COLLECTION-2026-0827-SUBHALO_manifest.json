@@ -1,0 +1,48 @@
+{
+  "collection_id": "C9-COLLECTION-2026-0827-SUBHALO",
+  "collection_name": "Subhalo \u2014 Cosmic Horizon, UAP Evidence, Quantum Sensing, Stellar Astrophysics & Critical Thresholds",
+  "date_compiled": "2026-08-27",
+  "compiler": "Kimi K2.7",
+  "entry_count": 11,
+  "layer_distribution": {
+    "L1": 8,
+    "L2": 3,
+    "L3": 0
+  },
+  "mean_audit_score": 0.827,
+  "score_range": [
+    0.58,
+    0.95
+  ],
+  "meta_patterns_identified": [
+    "EPISTEMOLOGICAL_HORIZON",
+    "ATLAS_TO_MACHINERY",
+    "AMPLIFICATION_OF_WEAK_SIGNAL_VIA_QUANTUM_CORRELATION",
+    "LABORATORY_ANALOGUE_OF_COSMIC_PHENOMENA",
+    "STRUCTURED_SUPPRESSION_OF_DOMINANT_MODE",
+    "DUAL_MODE_SENSE_AND_ACT",
+    "CRITICAL_ACCUMULATION_AND_SNAP",
+    "ROBUSTNESS_THROUGH_STRUCTURED_VARIATION",
+    "SYNTHESIS_REVEALS_HIDDEN_STRUCTURE"
+  ],
+  "entries": [
+    "C9-2026-ASTRO-001",
+    "C9-2026-ASTRO-002",
+    "C9-2026-BIO-001",
+    "C9-2026-COSMO-005",
+    "C9-2026-MED-001",
+    "C9-2026-PHIL-001",
+    "C9-2026-QG-006",
+    "C9-2026-QUANT-001",
+    "C9-2026-QUANT-002",
+    "C9-2026-QUANT-003",
+    "C9-2026-UAP-001"
+  ],
+  "debates_conducted": [
+    "C9-DEBATE-QG006-20260827",
+    "C9-DEBATE-PHIL001-20260827",
+    "C9-DEBATE-UAP001-20260827"
+  ],
+  "repository_purpose": "Formal Cloud-9 Assembly Index entries, TNG subhalo validation scripts, quantum sensing frameworks, hypothesis debate audits, and evidence-based documentation for cosmological, stellar, quantum, and complex systems research.",
+  "target_audience": "INRC reviewers, TNG collaboration, Galileo Project affiliates, QPilotos quantum bridge operators, C9 bus modules, resilience engineering researchers"
+}
