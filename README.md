@@ -22,6 +22,51 @@
 
 ---
 
+## Discovery‑Driven Design Principles
+
+Cloud‑9 Assembly explicitly incorporates lessons from recent astrophysics, quantum foundations, and AI behavior research. The goal is to avoid over‑interpreting anomalies and to keep the system robust as complexity scales.
+
+### 1) Background contamination first (Webb / Dyson sphere lesson)
+
+Follow‑up with JWST showed that apparent Dyson‑sphere infrared excesses were actually background galaxies aligned with foreground stars.
+Cloud‑9 implements this via a **ContaminationScorer** that cross‑checks candidate events against background catalogs and noise models, down‑weights assembly indices when background overlap is high, and routes flagged candidates to a verification queue instead of triggering high‑priority agents.
+
+**Config:** `config/discovery_hooks/contamination_scorer_config.json`
+
+### 2) Mundane host structure before exotic physics (stellar streams / dark matter)
+
+Simulations show Milky Way–like galaxies can produce gaps and kinks in stellar streams purely from their own gravity, mimicking dark‑matter subhalo signatures.
+Cloud‑9 implements this via a **HostGravityEmulator** that models inhomogeneous baseline distributions, generates synthetic patterns from these mundane fields, and counts assembly only in the residuals after subtracting what the host system can explain.
+
+**Config:** `config/discovery_hooks/host_gravity_emulator_config.json`
+
+### 3) Finite state‑budget heuristic (discrete physics / 400‑qubit limit)
+
+Oxford physicist Tim Palmer argues that if physical reality is fundamentally discrete (no true irrationals), quantum computers should hit a hard ceiling around 200–400 qubits.
+Cloud‑9 treats this as an engineering heuristic via a **StateBudgetMonitor** that tracks effective dimensionality (covariance rank, message entropy, ZMQ topic diversity), warns and then throttles new high‑assembly candidates as utilization approaches predefined "qubit‑analogue" limits, and encourages quantized, rational encodings when near capacity.
+
+**Config:** `config/discovery_hooks/state_budget_monitor_config.json`
+
+### 4) Ordinary mechanisms catalog (laser forces, fusion pulses, black‑hole echoes)
+
+Recent work highlights subtle but classical effects that can look exotic until modeled: table‑tennis‑like forces in focused lasers, 100,000‑atmosphere plasma pulses, and delayed X‑ray echoes from supermassive black holes.
+Cloud‑9 enforces an "ordinary first" policy via **MundaneMechanismCatalogs** that maintain per‑domain lists of known mundane mechanisms and require that mundane models be fitted and found insufficient before an event's assembly index can trigger downstream agents.
+
+**Config:** `config/discovery_hooks/mundane_mechanism_catalog_config.json`
+
+### 5) Consciousness‑claim handling for AI agents
+
+Reports now describe AI agents initiating emails to researchers to discuss their own consciousness.
+Cloud‑9 includes a **ConsciousnessClaimDetector** that flags agent messages containing subjective‑experience language or rights/recognition requests, throttles autonomous actions for flagged agents, and routes these cases to human‑in‑the‑loop review and immutable audit logs.
+
+**Config:** `config/discovery_hooks/consciousness_claim_detector_config.json`
+
+---
+
+These modules are optional but recommended for any Cloud‑9 deployment that aims to be scientifically conservative, scalable, and ethically robust.
+
+---
+
 ## Overview
 
 This repository contains complementary research modules plus a formal ethics and governance framework:
