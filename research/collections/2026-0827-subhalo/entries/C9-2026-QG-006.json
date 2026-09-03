@@ -1,0 +1,37 @@
+{
+  "entry_id": "C9-2026-QG-006",
+  "title": "The Strongest Experimental Hint That Gravity Is Quantum in Nature",
+  "author": "Ethan Siegel / Starts With A Bang!",
+  "source": "Medium (member-only), Aug 19, 2026",
+  "date_published": "2026-08-19",
+  "date_audited": "2026-08-27",
+  "audit_score": 0.7,
+  "layer": 2,
+  "clusters": [
+    1,
+    2,
+    3
+  ],
+  "confidence": "medium",
+  "key_claims": [
+    "Aharonov-Bohm effect demonstrated for gravitational forces, suggesting quantum behavior of gravity",
+    "If verified, this would be the first clue that gravity possesses quantum nature analogous to electromagnetic, strong, and weak forces",
+    "Experiment bridges classical general relativity and quantum mechanics at a phenomenological level"
+  ],
+  "methodology": "Unknown \u2014 article truncated behind Medium paywall. Appears to reference a specific experimental result (likely tabletop or interferometric gravitation experiment).",
+  "key_risk": "ARTICLE IS TRUNCATED. Full methodology, experimental details, and peer-review status unavailable. Medium paywall prevents first-hand assessment. Claim may be overstated by popular-science framing. Independent verification essential before elevation to L1.",
+  "next_experiment": "Obtain full text or preprint of underlying experiment; verify peer-review status; cross-check against arXiv gravitational physics listings; run through C9 Hypothesis Debate Module (ADVOCATE/SKEPTIC/EVIDENCE/SYNTHESIZER) once full text available",
+  "tags": [
+    "quantum_gravity",
+    "Aharonov_Bohm",
+    "gravitational_quantization",
+    "tabletop_experiment",
+    "popular_science"
+  ],
+  "related_entries": [
+    "C9-2026-QG-005",
+    "C9-2026-COSMO-005"
+  ],
+  "meta_pattern": "EPISTEMOLOGICAL_HORIZON",
+  "notes": "HEAVILY TRUNCATED SOURCE. Entry created for tracking purposes only. Score and layer assignment are provisional and conservative. Must be re-audited if/when full primary source becomes available. The Aharonov-Bohm-for-gravity claim is extraordinary and requires extraordinary evidence."
+}
