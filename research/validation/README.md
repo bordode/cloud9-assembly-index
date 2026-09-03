@@ -2,7 +2,7 @@
 
 **Entry ID:** `C9-2026-COSMO-005`  
 **Date:** 2026-08-26  
-**Status:** Synthetic Null ✅ Verified | TNG Temporal Validation ⏳ Pending
+**Status:** Synthetic Null 🧪 Experimental / reproducible comparison | TNG Temporal Validation ⏳ Pending
 
 ---
 
@@ -10,12 +10,13 @@
 
 | Claim | Value | Status |
 |-------|-------|--------|
-| Cloud-9 A_c | **87.3 ± 3.2 bits** | Measured |
-| vs Synthetic Null (N=100) | **z = 8.62σ**, empirical p < 0.01 | ✅ **Verified** |
-| vs Real TNG100-1 (z=0, radial) | **z = 1011σ**, KS p = 0.000 | ⚠️ **Invalid comparison** |
-| vs Real TNG100-1 (temporal, multi-snap) | *Untested* | ⏳ **Pending** |
+| Cloud-9 A_c | **87.3 ± 3.2 bits** | Reported historical measurement |
+| vs Synthetic Null (N=100) | **z = 8.62σ** | 🧪 Experimental synthetic comparison |
+| Empirical tail test | **0/100 synthetic halos ≥ 87.3** | ⚠️ Limited by N=100 |
+| vs Real TNG100-1 (z=0, radial) | **z = 1011σ**, KS p = 0.000 | ⚠️ Invalid comparison |
+| vs Real TNG100-1 (temporal, multi-snap) | *Untested* | ⏳ Pending |
 
-The 8.62σ figure is **arithmetically correct** for the synthetic null-model comparison. It is **not yet validated** against real IllustrisTNG multi-snapshot temporal evolution.
+The 8.62σ figure is **arithmetically correct for this synthetic null-model comparison**. It is **not a discovery claim and is not yet validated against real IllustrisTNG multi-snapshot temporal evolution**.
 
 ---
 
@@ -31,14 +32,18 @@ The 8.62σ figure is **arithmetically correct** for the synthetic null-model com
 | Median | 57.95 bits |
 | Range | 50.96 – 64.40 bits |
 | Z vs Cloud-9 | **8.62σ** |
-| Empirical p (≥87.3) | **0.0** (0/100 halos reach Cloud-9) |
+| Empirical exceedances (≥87.3) | **0/100** |
+| Empirical tail resolution | **1/100-scale**; exact p convention must be stated |
 | Normality (Shapiro) | **p = 0.0019** — REJECTED |
 | Bootstrap 95% CI on z | [7.91, 9.63]σ |
 
 ### What This Means
-The synthetic null uses a semi-analytic halo evolver with KSG k-NN temporal mutual-information estimation. Cloud-9's measured A_c = 87.3 bits exceeds **every single halo** in the N=100 null ensemble. The z-score of 8.62σ is a standardized distance, not a Gaussian tail probability (the null is non-Gaussian).
 
-**Honest statement:** *"Cloud-9 A_c exceeds all 100 synthetic null halos; empirical p < 0.01."*
+The synthetic null uses a semi-analytic halo evolver with KSG k-NN temporal mutual-information estimation. Cloud-9's reported A_c = 87.3 bits exceeds **every single halo** in the N=100 synthetic null ensemble. The z-score of 8.62σ is a standardized distance within this model comparison; because the null is non-Gaussian, it should not be converted automatically into a Gaussian discovery p-value.
+
+**Preferred statement:** *"Cloud-9's reported A_c exceeds all 100 synthetic null halos; the resulting standardized separation is z = 8.62σ in this synthetic comparison."*
+
+The empirical tail probability is limited by the ensemble size. If a finite-sample convention such as `(k+1)/(N+1)` is used, 0 exceedances would correspond to approximately 0.0099; the exact convention should be reported with any p-value.
 
 ---
 
@@ -85,7 +90,7 @@ The TNG comparison **does NOT invalidate** the synthetic null. Here is why:
 | **Expected magnitude** | ~58 bits (structured temporal evolution) | ~0 bits (smooth radial profile) |
 | **Validity as null** | ✅ Valid temporal null | ❌ Not a temporal null |
 
-**The 1011σ z-score is meaningless** because the two A_c values measure different physical observables. The TNG radial A_c ≈ 0 is **physically correct** for a relaxed halo — gas density is a smooth, monotonic function of radius.
+**The 1011σ z-score is not scientifically interpretable as a comparison between the two experiments** because they measure different observables. The TNG radial A_c ≈ 0 may be physically reasonable for a smooth radial profile, but it does not test the temporal-null hypothesis.
 
 ---
 
@@ -104,10 +109,12 @@ To properly test Cloud-9 against real ΛCDM, you need:
 
 | TNG Temporal Null | Implication |
 |-------------------|-------------|
-| μ ≈ 58, σ ≈ 3.4 | ✅ Synthetic null validated. 8.62σ stands. |
-| μ ≈ 58, σ ≈ 10 | ⚠️ Same mean, wider variance. z drops to ~3σ. |
-| μ ≈ 70, σ ≈ 5 | ❌ Synthetic null biased low. z ~3–4σ. |
-| μ ≈ 85, σ ≈ 3 | ❌ Cloud-9 consistent with ΛCDM. |
+| μ ≈ 58, σ ≈ 3.4 | Synthetic null model broadly supported; 8.62σ remains the model-comparison separation. |
+| μ ≈ 58, σ ≈ 10 | Same mean, wider variance; standardized separation drops to ~3σ. |
+| μ ≈ 70, σ ≈ 5 | Synthetic null biased low; standardized separation falls to ~3–4σ. |
+| μ ≈ 85, σ ≈ 3 | Cloud-9 reported value becomes much less anomalous under ΛCDM. |
+
+These are scenario illustrations, not predictions of the real TNG result.
 
 ---
 
@@ -115,7 +122,7 @@ To properly test Cloud-9 against real ΛCDM, you need:
 
 ```
 research/validation/
-├── C9-2026-COSMO-005_subhalo_validation.json   ← This report (machine-readable)
+├── C9-2026-COSMO-005_subhalo_validation.json   ← Machine-readable validation record
 ├── c9_null_ensemble_validation_v2.py           ← Synthetic null audit script
 ├── c9_tng_validation_fixed.py                  ← TNG radial comparison script
 └── README.md                                   ← This file
@@ -148,7 +155,7 @@ See `research/tng_assembly_certified_randomness.py` for the merger-tree fetcher.
 
 ## 7. Conclusion
 
-> The 8.62σ figure is a verified synthetic null-model comparison. It is arithmetically correct, empirically significant (p < 0.01), and internally consistent. It is not a direct ΛCDM simulation validation. That requires multi-snapshot temporal tracking, which is the next step in the Cloud-9 validation pipeline.
+> The 8.62σ figure is a reproducible standardized separation within an N=100 synthetic null-model experiment. It is not a Gaussian discovery significance and is not direct ΛCDM validation. The real test is a like-for-like multi-snapshot temporal comparison using real TNG data, which remains pending.
 
 ---
 
