@@ -1,0 +1,40 @@
+{
+  "entry_id": "C9-2026-QUANT-001",
+  "title": "Infrared Absorption Spectroscopy of a Single Polyatomic Molecular Ion via Quantum Logic",
+  "author": "Zhenlin Wu et al. / Philipp Schindler group, University of Innsbruck",
+  "source": "Nature (2026). DOI: 10.1038/s41586-026-10915-8",
+  "date_published": "2026-08-26",
+  "date_audited": "2026-08-27",
+  "audit_score": 0.95,
+  "layer": 1,
+  "clusters": [
+    1,
+    3,
+    7
+  ],
+  "confidence": "very high",
+  "key_claims": [
+    "Quantum logic spectroscopy enables non-destructive IR absorption measurement of a single CaOH+ molecular ion",
+    "Schr\u00f6dinger's cat entangled state between molecular ion and auxiliary atomic ion amplifies imperceptible photon recoil into measurable signal",
+    "O-H stretching vibration spectrum of singly-charged calcium hydroxide matches theoretical predictions from University of Warsaw collaborators",
+    "Method is generalizable to diverse molecular species for quantum-state preparation and precision spectroscopy"
+  ],
+  "methodology": "Trapped two-ion mixed-species crystal; quantum logic operations; entangled cat-state detection of single-photon recoil; comparison with ab initio theory",
+  "key_risk": "None significant. Method validated against theory. Generalizability to larger polyatomic molecules remains to be demonstrated.",
+  "next_experiment": "Extend to larger astrophysically relevant molecules (e.g., PAHs, metal hydrides) for laboratory astrochemistry; integrate with QPilotos quantum bridge for automated ion-trap control",
+  "tags": [
+    "quantum_logic_spectroscopy",
+    "single_molecule",
+    "ion_trap",
+    "entanglement",
+    "infrared_spectroscopy",
+    "non_destructive_measurement",
+    "quantum_computing"
+  ],
+  "related_entries": [
+    "C9-2026-QUANT-002",
+    "C9-2026-QG-005"
+  ],
+  "meta_pattern": "AMPLIFICATION_OF_WEAK_SIGNAL_VIA_QUANTUM_CORRELATION",
+  "notes": "Landmark L1 result. Directly connects to C9 Quantum Bridge v2.0 (ion-trap backends) and Cluster 3 (quantum information). The 'cat-state amplification' principle mirrors the signal-boost logic used in C9 SNN focality metrics."
+}
