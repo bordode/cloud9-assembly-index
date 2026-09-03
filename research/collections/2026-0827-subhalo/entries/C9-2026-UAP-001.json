@@ -1,0 +1,41 @@
+{
+  "entry_id": "C9-2026-UAP-001",
+  "title": "Scientists Deserve First-Hand Evidence on UAP Materials",
+  "author": "Avi Loeb",
+  "source": "Medium / UAP Science Advisory Council policy brief",
+  "date_published": "2026-08-26",
+  "date_audited": "2026-08-27",
+  "audit_score": 0.65,
+  "layer": 2,
+  "clusters": [
+    1,
+    4,
+    8
+  ],
+  "confidence": "medium",
+  "key_claims": [
+    "UAP materials of >1g mass could be isotopically/chemically fingerprinted for extrasolar origin",
+    "Solid-state structure analysis can distinguish alien manufacturing from human black-projects",
+    "Biological materials could be distinguished by non-terrestrial chirality or non-DNA genetic chemistry",
+    "Grusch testimony (July 2023) remains unverified without first-hand physical evidence"
+  ],
+  "methodology": "Proposed validation framework: isotope-ratio mass spectrometry, X-ray diffraction/crystallography, bio-molecular chirality assays, electron microscopy",
+  "key_risk": "Conditional premise (existence of retrieved non-human craft) rests on second-hand testimony; intelligence-community disinformation/adversarial-tech mislabeling is a major confounder",
+  "next_experiment": "If materials are released: perform ICP-MS and TIMS isotopic analysis on >1g samples; compare against solar-system nucleosynthetic baseline. If not: treat as unfalsified L2 hypothesis and redirect resources to Galileo Project multi-sensor triangulation.",
+  "tags": [
+    "UAP",
+    "policy",
+    "materials_science",
+    "isotope_geochemistry",
+    "astrobiology",
+    "SETI",
+    "intelligence_community",
+    "disinformation"
+  ],
+  "related_entries": [
+    "C9-2026-LEGACY-001",
+    "SETI-005"
+  ],
+  "meta_pattern": "EPISTEMOLOGICAL_HORIZON",
+  "notes": "Methodology proposed is rigorous L1; the underlying claim of retrieved craft is L2 pending evidence. Entry value lies in the physics-constrained search template for validating extraordinary claims, analogous to MATSCI-004 pipeline."
+}
