@@ -1,0 +1,35 @@
+{
+  "module": "cloud9_assembly.host_gravity_emulator",
+  "class": "HostGravityEmulator",
+  "enabled": true,
+  "emulation": {
+    "inhomogeneity_field": {
+      "type": "density_gradient",
+      "smoothing_scale": 0.02
+    },
+    "synthetic_pattern_generator": {
+      "num_realizations": 100,
+      "metrics": [
+        "gap_distribution",
+        "kink_angle_stats",
+        "clump_mass_function"
+      ]
+    }
+  },
+  "integration": {
+    "subtract_from_observed": true,
+    "residual_assembly_weight": 0.8,
+    "flag_if_mundane_explains_most": true,
+    "mundane_explanation_threshold": 0.7
+  },
+  "domains": [
+    "cosmology_halos",
+    "stellar_streams",
+    "detector_arrays",
+    "agent_interaction_graphs"
+  ],
+  "audit": {
+    "log_all_residuals": true,
+    "log_path": "logs/host_gravity_emulator.jsonl"
+  }
+}
