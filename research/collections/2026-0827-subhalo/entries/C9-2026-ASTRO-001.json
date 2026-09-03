@@ -1,0 +1,40 @@
+{
+  "entry_id": "C9-2026-ASTRO-001",
+  "title": "NASA Chandra X-ray Observatory: 16 Galactic Gems Multi-Wavelength Gallery",
+  "author": "NASA / Chandra X-ray Center / Lydia Amazouz (Daily Galaxy)",
+  "source": "NASA Press Release / Daily Galaxy (2026-08-26)",
+  "date_published": "2026-08-26",
+  "date_audited": "2026-08-27",
+  "audit_score": 0.9,
+  "layer": 1,
+  "clusters": [
+    2,
+    3
+  ],
+  "confidence": "high",
+  "key_claims": [
+    "Multi-wavelength composite gallery of 16 galaxies combining Chandra X-ray, JWST, Hubble, IXPE, Swift, NuSTAR, and ground-based data",
+    "Images reveal supermassive black hole jets (Centaurus A, M106), superwinds (NGC 4631, M82), collisional ring structures (Arp 143), and polar rings (NGC 660)",
+    "X-ray data traces million-degree gas, energetic particles, and supernova remnants invisible to optical telescopes",
+    "Collection demonstrates galaxy lifecycle: star formation, internal bar-driven inflow, black-hole feedback, mergers, and environmental stripping (M90 in Virgo Cluster)"
+  ],
+  "methodology": "Archival multi-mission data fusion; X-ray/optical/IR/radio image registration and color-composite rendering; public science communication",
+  "key_risk": "Gallery is observational showcase rather than new discovery publication. Scientific conclusions are syntheses of previously published data. No novel quantitative analysis presented.",
+  "next_experiment": "Cross-reference gallery sources with TNG100-1 simulated analogs (e.g., M82 superwind vs. TNG feedback models; Arp 143 merger vs. TNG merger trees); use as public-facing validation of C9 A_c visual complexity metrics",
+  "tags": [
+    "Chandra",
+    "multi_wavelength",
+    "galaxy_evolution",
+    "black_hole_feedback",
+    "superwinds",
+    "mergers",
+    "public_outreach"
+  ],
+  "related_entries": [
+    "C9-2026-COSMO-003",
+    "C9-2026-COSMO-005",
+    "C9-2026-QG-005"
+  ],
+  "meta_pattern": "SYNTHESIS_REVEALS_HIDDEN_STRUCTURE",
+  "notes": "Pedagogical and public-engagement value is high. Scientific value lies in multi-mission data synthesis. Ideal for C9 outreach layer and for training visual complexity classifiers on real astronomical morphologies."
+}
