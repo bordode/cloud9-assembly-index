@@ -1,0 +1,41 @@
+{
+  "entry_id": "C9-2026-COSMO-005",
+  "title": "The Limits of Our Cosmic Horizon \u2014 Finite Observability in \u039bCDM",
+  "author": "Avi Loeb",
+  "source": "Medium / Personal Essay (30th in Art-Science series with Greg Wyatt)",
+  "date_published": "2026-08-26",
+  "date_audited": "2026-08-27",
+  "audit_score": 0.94,
+  "layer": 1,
+  "clusters": [
+    2,
+    3,
+    7
+  ],
+  "confidence": "high",
+  "key_claims": [
+    "Matter-\u039b equality occurred at z \u2248 0.63 (~6.1 Gyr ago), triggering accelerated expansion",
+    "In \u039bCDM with constant vacuum density, the future observability window is finite",
+    "Galaxy MoM-z14 (z=14.4) will remain observable for only ~230 Myr longer before exiting our event horizon",
+    "Cosmological event horizons are information-theoretic boundaries analogous to black hole horizons"
+  ],
+  "methodology": "Analytical cosmology based on \u039bCDM Friedmann equations; references Loeb 2002 PRD 65, 047301",
+  "key_risk": "None for core physics; editorial asides on AI pollution are opinion and excluded from score",
+  "next_experiment": "Cross-reference with TNG100-1 snapshot 99 halos at z\u22480 to verify local Hubble flow consistency; integrate finite-horizon cutoff into A_c phase-transition formalism",
+  "tags": [
+    "cosmology",
+    "event_horizon",
+    "lambda_CDM",
+    "dark_energy",
+    "observability",
+    "de_Sitter",
+    "information_loss"
+  ],
+  "related_entries": [
+    "C9-2026-COSMO-002",
+    "C9-2026-COSMO-003",
+    "C9-2026-QG-005"
+  ],
+  "meta_pattern": "STRUCTURED_SUPPRESSION_OF_DOMINANT_MODE",
+  "notes": "Pedagogically excellent L1 entry. Connects directly to QPLS SMBH binary finite-observability window (C9-2026-COSMO-003) and Barontini entropic-time mini-universe (C9-2026-QG-005)."
+}
