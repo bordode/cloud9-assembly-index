@@ -1,0 +1,37 @@
+{
+  "module": "cloud9_assembly.state_budget_monitor",
+  "class": "StateBudgetMonitor",
+  "enabled": true,
+  "metrics": {
+    "effective_dimensionality": {
+      "covariance_rank_threshold": 350,
+      "entropy_threshold_bits": 12.0
+    },
+    "zmq_traffic": {
+      "unique_topics_per_minute_threshold": 200,
+      "message_entropy_threshold_bits": 10.0
+    }
+  },
+  "limits": {
+    "soft_qubit_analogue": 300,
+    "hard_qubit_analogue": 400,
+    "utilization_warning_at": 0.7,
+    "utilization_throttle_at": 0.9
+  },
+  "actions": {
+    "on_warning": [
+      "log_warning",
+      "notify_operator"
+    ],
+    "on_throttle": [
+      "reduce_candidate_rate",
+      "enable_quantization",
+      "pause_new_high_assembly_events"
+    ]
+  },
+  "philosophy_note": "Design heuristic inspired by discrete\u2011physics arguments (Palmer 200\u2013400 qubit limit).",
+  "audit": {
+    "log_all_utilization_samples": true,
+    "log_path": "logs/state_budget_monitor.jsonl"
+  }
+}
