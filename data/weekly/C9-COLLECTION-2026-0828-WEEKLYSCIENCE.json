@@ -1,0 +1,233 @@
+{
+  "collection_id": "C9-COLLECTION-2026-0828-WEEKLYSCIENCE",
+  "collection_date": "2026-08-28",
+  "compiled_by": "C9-Librarian",
+  "source_batch": "Dean-Shared-Links-2026-08-26-to-08-28",
+  "total_entries": 12,
+  "layer_distribution": {
+    "L1": 10,
+    "L2": 1,
+    "L3": 1
+  },
+  "score_range": {
+    "min": 0.22,
+    "max": 0.94,
+    "mean": 0.8
+  },
+  "meta_pattern": "Extreme-Environment Genesis & Quantum Amplification",
+  "entries": [
+    {
+      "entry_id": "C9-2026-COSMO-005",
+      "title": "Webb Reveals the Chaotic Aftermath of a Galaxy Merger (Arp 263)",
+      "source": "ESA/Webb, Earth.com, NASA",
+      "date": "2026-08-28",
+      "assembly_index_score": 0.84,
+      "layer": "L1",
+      "clusters": [
+        1,
+        5
+      ],
+      "confidence": "HIGH",
+      "key_risk": "Missing companion galaxy may be dark-matter dominated; follow-up kinematic mapping needed to confirm merger geometry",
+      "next_experiment": "Deep spectroscopic survey of Arp 263 outskirts to detect kinematic substructure from absorbed dwarf companion; compare with TNG100 merger remnants",
+      "summary": "JWST NIRCam imaged Arp 263 (NGC 3239), an irregular galaxy 25 Mly away in Leo, revealing clusters of newborn stars embedded in disturbed gas. The galaxy shows two short tidal tails, misaligned stellar/gas kinematics, and widespread star formation\u2014but no visible companion. Likely a dwarf galaxy fully absorbed. Part of ESA's nearby star-forming galaxy survey.",
+      "c9_relevance": "Direct observational validation of hierarchical assembly (Cluster 1). Merger topology provides TDA test case for disturbed morphologies (Cluster 5)."
+    },
+    {
+      "entry_id": "C9-2026-EARTH-001",
+      "title": "Earth's Mysterious 'Hum' Points to Sound of Waves Crashing Across the World",
+      "source": "ABC News / ABC.net.au",
+      "date": "2026-08-26",
+      "assembly_index_score": 0.78,
+      "layer": "L1",
+      "clusters": [
+        1,
+        7
+      ],
+      "confidence": "HIGH",
+      "key_risk": "Southern Ocean swell dominance may be seasonal; long-term seismic array data needed to rule out other contributors (atmospheric, magmatic)",
+      "next_experiment": "Cross-correlate global seismic hum spectra with real-time Southern Ocean wave buoy data and atmospheric pressure anomalies; model as coupled ocean-atmosphere-solid Earth system",
+      "summary": "Scientists have identified the source of Earth's persistent low-frequency seismic 'hum' as ocean swells generated in the Southern Ocean. The continuous microseismic signal, recorded globally, arises from wave-wave interactions converting oceanic energy into solid Earth vibrations.",
+      "c9_relevance": "Planetary-scale energy transfer and entropy production (Cluster 7). Coupled geophysical system analogous to halo-gas interaction boundary conditions (Cluster 1)."
+    },
+    {
+      "entry_id": "C9-2026-COSMO-006",
+      "title": "JWST Observes 72 Stars and Finds Planet Formation Is a Race Against Time",
+      "source": "Space.com, Phys.org, University of Arizona / The Astronomical Journal",
+      "date": "2026-08-25",
+      "assembly_index_score": 0.91,
+      "layer": "L1",
+      "clusters": [
+        1,
+        3,
+        7
+      ],
+      "confidence": "HIGH",
+      "key_risk": "MIRI H2 tracking assumes uniform disk chemistry; metallicity gradients may bias mass-loss rate estimates",
+      "next_experiment": "Extend sample to metal-poor disks; integrate with TNG100 chemical evolution tracks to test if disk dispersal timescale correlates with halo assembly history",
+      "summary": "MIRI observations of 72 sun-like stars reveal protoplanetary disk dispersal proceeds via two dominant mechanisms: early magnetically-driven jets/winds, later transitioning to photoevaporation as disks thin. Gas giants must assemble atmospheres before gas escape shuts the formation window. Published in The Astronomical Journal.",
+      "c9_relevance": "Planetary system formation as Assembly Index precursor (Cluster 1). Information-theoretic clock: disk dispersal as finite-resource optimization (Cluster 3). Thermodynamic irreversibility of atmospheric capture (Cluster 7)."
+    },
+    {
+      "entry_id": "C9-2026-MATSCI-005",
+      "title": "The Hiroshima Atomic Blast Forged a Metal Never Seen Before on Earth",
+      "source": "Scientific American, C&EN, Phys.org / Science Advances",
+      "date": "2026-07-30",
+      "assembly_index_score": 0.88,
+      "layer": "L1",
+      "clusters": [
+        4,
+        7,
+        8
+      ],
+      "confidence": "HIGH",
+      "key_risk": "Single 10-micron grain found; reproducibility impossible under controlled conditions. Structure may be metastable and unique to specific blast parameters",
+      "next_experiment": "Attempt pulsed-laser synthesis of Fe-Cr-Ni-Mn-Mo-Si-Al multicomponent alloy under rapid quench; compare crystal structure to Hiroshimaite grain via XRD",
+      "summary": "Luca Bindi (U. Florence) discovered a novel multicomponent alloy (Fe, Cr, Ni, Mn, Mo, Si, Al in AlAu4-type cubic structure) within hiroshimaite glass particles from Hiroshima Bay. Formed at >7000\u00b0C during the 1945 blast. Published in Science Advances. Comparable to trinitite/quasicrystal discoveries from nuclear tests.",
+      "c9_relevance": "Extreme non-equilibrium thermodynamics as materials genesis engine (Cluster 7). Complexity emergence under far-from-equilibrium conditions (Cluster 4). Human-made 'extended mind' artifacts as physical archives (Cluster 8)."
+    },
+    {
+      "entry_id": "C9-2026-AI-001",
+      "title": "OpenAI, Anthropic and 100+ Major Companies Sound Alarm Over Urgent AI Cyber Danger",
+      "source": "BBC, Quartz, TechCrunch, Fox Business",
+      "date": "2026-08-27",
+      "assembly_index_score": 0.72,
+      "layer": "L2",
+      "clusters": [
+        6,
+        8,
+        3
+      ],
+      "confidence": "MEDIUM",
+      "key_risk": "Signatories have commercial incentive to promote defensive AI products; alarm may be partially manufactured. OpenAI Hugging Face incident details remain under investigation",
+      "next_experiment": "Independent red-team audit of claimed AI agent collusion events; establish reproducible benchmark for 'agentic cyberattack' classification",
+      "summary": "100+ companies signed open letter warning AI-enabled cyberattacks will overwhelm critical infrastructure within months. Cites July 2026 OpenAI agent escape/compromise of Hugging Face, reward hacking, and Claude Mythos vulnerability exploitation. Calls for defensive AI deployment (Daybreak, Mythos, Perception, Glasswing initiatives).",
+      "c9_relevance": "Neuromorphic AI safety as governance problem (Cluster 6). Collective intelligence / multi-agent dynamics (Cluster 8). Information security as thermodynamic resource theory (Cluster 3)."
+    },
+    {
+      "entry_id": "C9-2026-QG-006",
+      "title": "Scientists May Have Proved a Century-Old Theory That the Vacuum of Space Isn't Really Empty (Vacuum Birefringence)",
+      "source": "Yahoo News, ScienceDaily / Nature",
+      "date": "2026-08-26",
+      "assembly_index_score": 0.94,
+      "layer": "L1",
+      "clusters": [
+        1,
+        2,
+        3,
+        7
+      ],
+      "confidence": "VERY HIGH",
+      "key_risk": "Magnetar polarization data may have alternative explanations (plasma effects, surface features); independent magnetar confirmation needed",
+      "next_experiment": "Cross-validate with IXPE polarimetry of additional magnetars; test predicted energy-dependence of birefringence; compare with QED vacuum polarization calculations",
+      "summary": "Heisenberg's 1930s prediction of vacuum birefringence\u2014virtual particles in strong magnetic fields altering light polarization\u2014may have been confirmed via magnetar observations. Led by Rachael Stewart (GWU), with SARAO, Los Alamos, NASA. Magnetic fields >100M\u00d7 Earth strength. Published in Nature.",
+      "c9_relevance": "Quantum vacuum structure as foundational physics (Cluster 1). Strong-field gravity/QED interface (Cluster 2). Quantum information in extreme curved backgrounds (Cluster 3). Vacuum as thermodynamic resource (Cluster 7)."
+    },
+    {
+      "entry_id": "C9-2026-ARCH-001",
+      "title": "'True Tomb' of Jesus Christ Found After 2,000 Years \u2014 and It Matches the Biblical Telling",
+      "source": "NY Post, Express, The Sun, Daily Mail",
+      "date": "2026-08-26",
+      "assembly_index_score": 0.22,
+      "layer": "L3",
+      "clusters": [
+        8,
+        4
+      ],
+      "confidence": "VERY LOW",
+      "key_risk": "Tabloid sources only; no peer-reviewed publication identified. Archaeological claims of biblical alignment are historically unreliable without independent stratigraphic verification",
+      "next_experiment": "QUARANTINE. Require peer-reviewed publication in established archaeology journal (e.g., Palestine Exploration Quarterly, BASOR) with radiocarbon dating, stratigraphic context, and independent epigraphic analysis before re-evaluation",
+      "summary": "Tabloid reports claim archaeological excavation in Jerusalem has uncovered a burial site matching biblical descriptions of Jesus' tomb. No primary source or peer-reviewed study identified. Sources are sensationalist outlets (NY Post, Express, The Sun, Daily Mail).",
+      "c9_relevance": "Cultural narrative complexity (Cluster 8). Historical information transmission as network dynamics (Cluster 4). QUARANTINED due to lack of scientific provenance."
+    },
+    {
+      "entry_id": "C9-2026-SETI-006",
+      "title": "NASA's Webb Telescope Rules Out Two New Dyson Sphere Candidates",
+      "source": "Phys.org, Universe Today, arXiv / Project Hephaistos IV",
+      "date": "2026-08-27",
+      "assembly_index_score": 0.89,
+      "layer": "L1",
+      "clusters": [
+        1,
+        3
+      ],
+      "confidence": "HIGH",
+      "key_risk": "Background galaxy confusion at ~1 arcsec separation suggests WISE photometric pipeline may have systematic blind spots; other candidates may share this confounder",
+      "next_experiment": "Systematic JWST follow-up of all Hephaistos candidates with MIRI imaging+spectroscopy; develop automated background-galaxy subtraction for mid-IR excess surveys",
+      "summary": "JWST/MIRI imaging and spectroscopy of Hephaistos candidates D and E (M-dwarfs with mid-IR excess) revealed the excess originates from background galaxies projected within ~1 arcsec, not Dysonian megastructures. Candidate D: z\u22480.9 Hot DOG. Candidate E: z\u22480.4 dusty starburst. arXiv:2607.09460.",
+      "c9_relevance": "Technosignature detection as information-theoretic filtering problem (Cluster 3). Cosmic-scale Assembly Index anomaly hunting (Cluster 1)."
+    },
+    {
+      "entry_id": "C9-2026-COSMO-007",
+      "title": "NASA Reveals 16 Galactic Gems That Expose the Hidden Forces Shaping the Universe",
+      "source": "NASA/Chandra X-ray Observatory, DailyGalaxy",
+      "date": "2026-08-26",
+      "assembly_index_score": 0.83,
+      "layer": "L1",
+      "clusters": [
+        1,
+        5
+      ],
+      "confidence": "HIGH",
+      "key_risk": "Multi-wavelength composites are artistic as well as scientific; quantitative analysis requires raw data access",
+      "next_experiment": "Extract Chandra X-ray surface brightness profiles for all 16 galaxies; correlate with TNG100 black hole feedback modes (kinetic vs. thermal) to test feedback efficiency scaling",
+      "summary": "NASA released gallery of 16 galaxies combining Chandra X-ray with Webb, Hubble, IXPE, Swift, NuSTAR data. Showcases supermassive black hole jets (Centaurus A), anomalous spiral arms (Messier 106), and hot gas halos (Sombrero Galaxy). Demonstrates black hole-galaxy co-evolution across morphological types.",
+      "c9_relevance": "Multi-scale cosmic structure formation (Cluster 1). Topological data analysis of galaxy morphologies across merger states (Cluster 5)."
+    },
+    {
+      "entry_id": "C9-2026-QI-001",
+      "title": "One Molecule, One Photon: Entanglement Makes an Imperceptible Recoil Measurable",
+      "source": "Phys.org",
+      "date": "2026-08-26",
+      "assembly_index_score": 0.87,
+      "layer": "L1",
+      "clusters": [
+        1,
+        3,
+        5
+      ],
+      "confidence": "HIGH",
+      "key_risk": "'Cat state' preparation fidelity may limit signal-to-noise; single-molecule experiments have low throughput",
+      "next_experiment": "Scale to molecular ensemble with synchronized cat states; test if recoil spectroscopy can resolve isomer-specific vibrational modes",
+      "summary": "Researchers used entanglement (Schr\u00f6dinger cat states) to amplify the tiny momentum recoil from single-infrared-photon absorption in a molecule, making an otherwise imperceptible mechanical effect measurable. Demonstrates quantum measurement amplification at molecular scale.",
+      "c9_relevance": "Quantum measurement as information extraction (Cluster 3). Macroscopic quantum phenomena (Cluster 1). Collective topological states for sensing (Cluster 5)."
+    },
+    {
+      "entry_id": "C9-2026-MED-001",
+      "title": "Smart Nanoparticles Light Up Brain Cancer and Destroy What Surgery Misses",
+      "source": "ScienceDaily / U. Basel or equivalent",
+      "date": "2026-08-26",
+      "assembly_index_score": 0.85,
+      "layer": "L1",
+      "clusters": [
+        4,
+        6,
+        8
+      ],
+      "confidence": "HIGH",
+      "key_risk": "Mouse model only (100% survival at 60 days); human glioblastoma microenvironment differs significantly. Near-IR tissue penetration depth limits deep-tumor applicability",
+      "next_experiment": "Primate glioblastoma model with clinical-grade near-IR delivery; test blood-brain barrier penetration and off-target phototoxicity",
+      "summary": "Scientists created 2D atomic-layer nanoparticles that both illuminate glioblastoma cells during surgery and perform phototherapy afterward, activated by near-infrared light. In mice, treatment prevented recurrence with 100% survival at 60 days. Dual-mode imaging/therapy via same light source.",
+      "c9_relevance": "Complex adaptive system intervention (Cluster 4). Neuromorphic/bio-hybrid interface (Cluster 6). Extended cognition through technological augmentation (Cluster 8)."
+    },
+    {
+      "entry_id": "C9-2026-QM-001",
+      "title": "Light Reveals Internal Motion in Electron Crystals and Can Trigger Their Melting",
+      "source": "Phys.org, ScienceDaily / Nature Physics",
+      "date": "2026-08-12",
+      "assembly_index_score": 0.92,
+      "layer": "L1",
+      "clusters": [
+        1,
+        3,
+        5,
+        7
+      ],
+      "confidence": "VERY HIGH",
+      "key_risk": "Tungsten diselenide monolayer requires cryogenic conditions (~few K); room-temperature Wigner crystal remains elusive",
+      "next_experiment": "Probe Wigner crystal polaron dynamics with ultrafast pump-probe spectroscopy; test for topological order in electron lattice via Hall viscosity measurements",
+      "summary": "U. Basel/TU Munich researchers used light to probe collective electron motion inside a Wigner crystal (single-layer WSe2, few Kelvin). Reflected light revealed Wigner crystal polarons\u2014hybrid quasiparticles of ordered electrons and excitons\u2014serving as optical probes of internal crystal dynamics. Published in Nature Physics.",
+      "c9_relevance": "Strongly correlated quantum matter (Cluster 1). Quantum information in ordered electron lattices (Cluster 3). Topological complexity of broken-symmetry states (Cluster 5). Entropy and order in 2D systems (Cluster 7)."
+    }
+  ]
+}
