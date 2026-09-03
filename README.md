@@ -14,11 +14,11 @@
 
 | Result | Location | Status |
 |--------|----------|--------|
-| **Synthetic Null Ensemble v3** | `research/null-ensemble/` | ✅ Verified (N=100, z=8.62σ, empirical p<0.01) |
+| **Synthetic Null Ensemble v3** | `research/null-ensemble/` | 🧪 Experimental / reproducible synthetic comparison (N=100, z=8.62σ) |
 | TNG Temporal Validation | `research/validation/C9-2026-COSMO-005_subhalo_validation.json` | ⏳ Pending |
 | Legacy Analysis | `results/cloud9_analysis.json` | ⚠️ Deprecated (z=3.04σ, exploratory) |
 
-> **Note:** The 8.62σ figure is a synthetic null-model comparison, not a direct ΛCDM validation. See `research/validation/README.md` for full caveats.
+> **Important:** The 8.62σ figure is a model-dependent result from a synthetic null-model comparison, not a detection or direct ΛCDM validation. With N=100 synthetic null realizations, the empirical tail estimate also has limited resolution. See `research/validation/README.md` and `docs/RESULTS_PROVENANCE.md` for the full provenance and caveats.
 
 ---
 
@@ -83,7 +83,7 @@ The project explores possible connections among complexity, assembly, emergence,
 
 ## Scientific Status & Reproducibility
 
-Cloud-9 contains several generations of analysis. Some historical documents report numerical results whose original computational provenance is still being reconstructed. To avoid conflating different experiments, numerical claims are classified as **verified**, **reported historical**, **exploratory**, or **pending reproduction**.
+Cloud-9 contains several generations of analysis. Some historical documents report numerical results whose original computational provenance is still being reconstructed. To avoid conflating different experiments, numerical claims are classified as **verified, reported historical, exploratory, or pending reproduction**.
 
 See [`docs/RESULTS_PROVENANCE.md`](docs/RESULTS_PROVENANCE.md) for the current statistical audit.
 
@@ -185,7 +185,7 @@ Formal philosophical/mathematical work concerning causal continuity and identity
 |-----------|------|-------------|
 | Formal Proof | `docs/Causal_Security_v1.1.0_Formal_Proof.md` | Draft formal framework |
 | Specification | `CAUSAL_SECURITY.md` | Full specification |
-| Closure Module | `research/cloud9_causal_closure.py` | Research implementation |
+| Closure Module | `research/cloud9_causal_closure.py` | Research implementation
 
 These materials are drafts/frameworks and should not be presented as settled scientific consensus.
 
