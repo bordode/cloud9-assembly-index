@@ -1,0 +1,187 @@
+{
+  "entry_id": "C9-2026-COSMO-005",
+  "timestamp_utc": "2026-08-29T17:45:00Z",
+  "status": "ACTIVE",
+  "layer": 1,
+  "audit_score": 0.83,
+  "confidence": "HIGH",
+  "subject": {
+    "name": "Dark Star Remnants and the Nanohertz Gravitational-Wave Background",
+    "type": "ASTROPHYSICAL_HYPOTHESIS",
+    "paper": {
+      "title": "Reconstructing PTA measurements via early seeding of supermassive black holes",
+      "authors": [
+        "Sohan Ghodla",
+        "Cosmin Ilie"
+      ],
+      "journal": "Physical Review D",
+      "volume": "114",
+      "issue": "4",
+      "pages": "L041303",
+      "year": 2026,
+      "doi": "10.1103/PhysRevD.114.L041303",
+      "arXiv": "2507.06163v2",
+      "institution": "Colgate University / University of Auckland",
+      "publication_date": "2026-08-17",
+      "paper_type": "Letter"
+    },
+    "code_repository": {
+      "url": "https://github.com/SohanGhodla/Early_SMBHs_PTA",
+      "description": "Data and code for PTA SGWB from early SMBH seeding",
+      "language": "Python"
+    }
+  },
+  "astrophysical_parameters": {
+    "seed_formation_mechanism": "Supermassive Dark Star Collapse (SMDS)",
+    "alternative_mechanism": "Direct Collapse Black Holes (DCBH)",
+    "dark_matter_model": "WIMP Annihilation",
+    "initial_seed_mass_solar_masses": {
+      "range": [
+        10000,
+        1000000
+      ],
+      "mean": 100000,
+      "dispersion": "0.5 dex log-normal"
+    },
+    "target_seed_density_mpc3": 0.001,
+    "seeding_redshift_range": [
+      10,
+      30
+    ],
+    "seeding_end_redshift": 10,
+    "observational_signatures": [
+      "Pulsar Timing Array (PTA) Stochastic Background",
+      "Nanohertz gravitational-wave background",
+      "Hellings-Downs correlation"
+    ]
+  },
+  "key_findings": {
+    "dominant_contributor": "SMDS-seeded SMBHs at n_BH ~ O(10^-3) Mpc^-3 can dominate the PTA nHz signal",
+    "dcbh_status": "Sub-dominant at simulated abundances (~10^-6 Mpc^-3) unless abundance is considerably higher",
+    "pta_dominance_mass": "SMBH binaries with total mass >~ 10^9 M_sun dominate the PTA band",
+    "upper_limit": "n_BH^max ~ 0.05 Mpc^-3 (mu_H = 5e8 M_sun), scaling as mu_H^-1.4",
+    "temporal_bridge": "Present-day PTA signal constrains objects that existed >13 Gyr ago at cosmic dawn"
+  },
+  "research_program": {
+    "note": "Not a one-off idea; part of a developing research program",
+    "related_work": [
+      {
+        "citation": "Freese et al. (2025)",
+        "title": "Early formation of supermassive black holes via dark star gravitational instability",
+        "arXiv": "2511.08578",
+        "note": "SMDSs can grow to 10^4\u201310^7 M_sun before collapsing"
+      },
+      {
+        "citation": "Ilie et al. (2023)",
+        "title": "Supermassive Dark Star candidates seen by JWST",
+        "journal": "PNAS 120(30), e2305762120",
+        "arXiv": "2304.01173"
+      },
+      {
+        "citation": "Ilie et al. (2025)",
+        "title": "Spectroscopic supermassive dark star candidates",
+        "arXiv": "2505.06101"
+      },
+      {
+        "citation": "Ilie et al. (2026)",
+        "title": "Supermassive Dark Stars and Their Remnants as a Possible Solution to Three Recent Cosmic Dawn Puzzles",
+        "journal": "Universe 12(1), 1",
+        "arXiv": "2511.08477"
+      }
+    ]
+  },
+  "cluster_analysis": {
+    "cluster_2_quantum_gravity": {
+      "relevance": 0.75,
+      "note": "WIMP dark matter paradigm connects to beyond-Standard-Model physics. Early universe conditions (z~10-30) probe physics at energy scales inaccessible in laboratories. SMDS formation depends on dark matter annihilation cross-sections."
+    },
+    "cluster_3_quantum_information_complexity": {
+      "relevance": 0.85,
+      "note": "PTA measures stochastic GW background \u2014 a superposition of ~10^5 binary signals per frequency bin. This is a classical information channel encoding 13+ Gyr of merger history. Precision timing arrays extract coherent patterns from stochastic noise."
+    },
+    "cluster_4_complexity_science": {
+      "relevance": 0.9,
+      "note": "Population synthesis model with competing hypotheses (SMDS vs DCBH). Halo occupation distribution, merger rate evolution, and delay-time distributions create emergent stochastic background. Statistical inference from incomplete data."
+    },
+    "cluster_7_quantum_thermodynamics": {
+      "relevance": 0.8,
+      "note": "Dark Stars powered by WIMP annihilation rather than nuclear fusion \u2014 a dark matter heat engine. Thermal balance between annihilation heating and radiative cooling determines stellar structure and maximum mass before collapse."
+    }
+  },
+  "meta_pattern": {
+    "name": "Echoes from the Deep Past",
+    "recurrence": [
+      "C9-2026-COSMO-003 (Sgr A* wind cavity reveals hidden quiescent structure)",
+      "C9-2026-COSMO-004 (JWST 3I/ATLAS methane \u2014 ancient cometary chemistry)",
+      "C9-2026-SPATIAL-006 (real-time spatial intelligence as present-day panopticon)",
+      "C9-2026-COSMO-005 (PTA GWB constrains 13 Gyr-old dark star remnants)"
+    ],
+    "description": "Use present-day observable signals to reconstruct or constrain structures and events from the deep cosmic past. The signal is a delayed echo, not a direct image."
+  },
+  "score_justification": {
+    "verifiability": {
+      "score": 0.95,
+      "note": "PRD Letter, arXiv preprint with full equations, public GitHub repository with data and code, reproducible population synthesis"
+    },
+    "cross_cluster_fertility": {
+      "score": 0.85,
+      "note": "Touches dark matter physics, early universe cosmology, gravitational wave astronomy, and statistical population modeling. Strongest in clusters 3, 4, 7."
+    },
+    "speculative_load": {
+      "score": 0.7,
+      "note": "Dark Stars remain hypothetical. Paper is a constraint/test framework, not confirmation. However, the PTA data is real and the population synthesis is standard astrophysics."
+    },
+    "continuity_relevance": {
+      "score": 0.8,
+      "note": "Directly connects to C9's existing SMBH binary work (QPLS, TNG halo dynamics). Provides new observational target for Assembly Index validation: stochastic GW background as population-level complexity signal."
+    }
+  },
+  "integration_notes": {
+    "tng_validation": "SMDS seed mass range (10^4\u201310^6 M_sun) and halo mass threshold (M >~ 10^6 M_sun at z~10) can be cross-checked against TNG100-1 high-redshift halo catalogs. C9 Discovery Pipeline can flag halos at z>10 with mass in the SMDS formation window.",
+    "qpls_connection": "QPLS (C9-2026-COSMO-QPLS) targets individual inspiraling SMBH binaries. This entry addresses the stochastic background from the population. Together they cover discrete and continuous GW signatures from the same source population.",
+    "assembly_index_extension": "The stochastic GW background Omega_GW(f) is a population-level observable. Its spectral shape encodes the merger history complexity. Could define a 'GW Assembly Index' measuring deviation from pure power-law expectations due to population structure.",
+    "code_integrity": "GitHub repo Early_SMBHs_PTA contains Python scripts for SGWB calculation. Can be audited for C9 validation pipeline integration."
+  },
+  "sandbox_result": {
+    "status": "PASSED",
+    "tests_run": 21,
+    "tests_passed": 21,
+    "tests_failed": 0,
+    "details": "See c9_sandbox_cosmo_005.py for full test log"
+  },
+  "collection_impact": {
+    "pre_addition": {
+      "l1_count": 11,
+      "l2_count": 1,
+      "l3_count": 1,
+      "mean": 0.802
+    },
+    "post_addition": {
+      "l1_count": 12,
+      "l2_count": 1,
+      "l3_count": 1,
+      "mean": 0.804
+    }
+  },
+  "related_entries": [
+    "C9-2026-COSMO-003",
+    "C9-2026-COSMO-004",
+    "C9-2026-SPATIAL-006",
+    "C9-2026-QG-005",
+    "C9-2026-NEURO-001"
+  ],
+  "tags": [
+    "dark_stars",
+    "supermassive_black_holes",
+    "pulsar_timing_array",
+    "gravitational_waves",
+    "nanohertz_background",
+    "early_universe",
+    "wimp_dark_matter",
+    "population_synthesis",
+    "indirect_detection",
+    "cosmic_dawn",
+    "pta",
+    "sgwb"
+  ]
+}
