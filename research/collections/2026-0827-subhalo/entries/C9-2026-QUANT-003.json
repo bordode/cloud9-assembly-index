@@ -1,0 +1,41 @@
+{
+  "entry_id": "C9-2026-QUANT-003",
+  "title": "Direct Imaging of Vacuum Fluctuations in a Two-Dimensional Bose-Einstein Condensate",
+  "author": "Yansheng Zhang et al., University of Cambridge",
+  "source": "arXiv preprint (2026)",
+  "date_published": "2026-08-26",
+  "date_audited": "2026-08-27",
+  "audit_score": 0.85,
+  "layer": 1,
+  "clusters": [
+    1,
+    2,
+    3,
+    7
+  ],
+  "confidence": "high",
+  "key_claims": [
+    "Vacuum fluctuations in a lab-made quantum field (2D K-39 BEC) directly imaged for the first time",
+    "Amplification protocol distinguishes vacuum fluctuations from thermal noise via frequency-dependent power-law decay",
+    "BEC tuned to simulate sine-Gordon relativistic quantum field, enabling laboratory study of theoretically intractable regimes",
+    "Platform suitable for probing false-vacuum decay, particle production, and topological defect formation"
+  ],
+  "methodology": "Two-dimensional potassium-39 Bose-Einstein condensate; internal-state coupling via radio waves; spin-field encoding; sudden quench amplification; direct imaging of local spin variations",
+  "key_risk": "Preprint \u2014 not yet peer-reviewed. Thermal noise subtraction and BEC imaging systematics require independent replication. Sine-Gordon mapping validity depends on interaction parameter tuning.",
+  "next_experiment": "Peer review and independent replication; extend to false-vacuum decay bubble nucleation experiments; connect to C9 Cluster 2 quantum gravity analog models (cf. Barontini entropic-time mini-universe)",
+  "tags": [
+    "Bose_Einstein_condensate",
+    "vacuum_fluctuations",
+    "quantum_field_theory",
+    "sine_Gordon",
+    "analog_gravity",
+    "false_vacuum_decay",
+    "Cambridge"
+  ],
+  "related_entries": [
+    "C9-2026-QG-005",
+    "C9-2026-COSMO-005"
+  ],
+  "meta_pattern": "LABORATORY_ANALOGUE_OF_COSMIC_PHENOMENA",
+  "notes": "Strong L1 candidate pending peer review. The BEC-as-quantum-field approach is a powerful analog-gravity platform. Connects to primordial fluctuation seeding (Cluster 2) and quantum thermodynamics of de Sitter space (Cluster 7)."
+}
