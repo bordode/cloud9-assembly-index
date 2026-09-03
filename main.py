@@ -35,8 +35,8 @@ CLOUD9_DATA = {
     ],
     "scaling_law": "A_c = 2.5 * log10(E_max/E_min) + 16.1",
     "threshold_5_41_sigma": {
-        "description": "Validated metric for uninterrupted causal history",
-        "status": "active"
+        "description": "Configurable experimental software threshold for exploratory classification",
+        "status": "active; not a validated physical threshold"
     },
     "neuromorphic": {
         "hardware": "Intel Loihi 2",
@@ -46,6 +46,8 @@ CLOUD9_DATA = {
     "github": "https://github.com/bordode/cloud9-assembly-index"
 }
 
+# Configurable software threshold. The default 5.41 value is a heuristic used
+# for exploratory classification; it is not a measured 5.41-sigma result.
 THRESHOLD = float(os.getenv("THRESHOLD", "5.41"))
 
 @app.route("/")
@@ -65,7 +67,7 @@ def get_data():
 
 @app.route("/analyze")
 def analyze():
-    """Analyze current A_c values against threshold."""
+    """Analyze current A_c values against the configurable exploratory threshold."""
     results = CLOUD9_DATA["assembly_index_results"]
     above = [r for r in results if r["A_c"] >= THRESHOLD]
     below = [r for r in results if r["A_c"] < THRESHOLD]
@@ -73,6 +75,7 @@ def analyze():
     return jsonify({
         "status": "ok",
         "threshold_sigma": THRESHOLD,
+        "threshold_status": "experimental software heuristic; not a validated physical threshold",
         "total_systems": len(results),
         "above_threshold": len(above),
         "below_threshold": len(below),
@@ -98,7 +101,7 @@ def full_status():
         "peak_A_c": 210.36,
         "peak_system": "GW190728 Dark Matter",
         "scaling_law": CLOUD9_DATA["scaling_law"],
-        "threshold_5_41_sigma": "active",
+        "threshold_5_41_sigma": "active; experimental software heuristic, not a validated physical threshold",
         "server_status": "operational"
     }), 200
 
