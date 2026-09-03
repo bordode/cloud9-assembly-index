@@ -1,0 +1,40 @@
+{
+  "entry_id": "C9-2026-ASTRO-002",
+  "title": "ALMA Submillimeter Imaging of Betelgeuse Reveals Persistent Northeastern Hotspot and Corrugated Atmosphere",
+  "author": "Bill Dent et al. / ALMA (ESO/NAOJ/NRAO)",
+  "source": "ZME Science / ESO Press Release (2026-08-26)",
+  "date_published": "2026-08-26",
+  "date_audited": "2026-08-27",
+  "audit_score": 0.91,
+  "layer": 1,
+  "clusters": [
+    2,
+    4
+  ],
+  "confidence": "high",
+  "key_claims": [
+    "ALMA extended-configuration observations (7 mas resolution, 16 km baseline) resolve submillimeter 'surface' of Betelgeuse at ~2,300 K",
+    "Northeastern hotspot persists for \u22657.3 years (2015\u20132023), far exceeding predicted convective cell lifetimes (months to few years)",
+    "Stellar radius deviates \u00b16% from circular; corrugated edge and molecular atmosphere (SiO, CO) show significant changes between epochs",
+    "Detached gas clump at ~10 km/s may connect to 2019\u20132020 Great Dimming event; companion star Betelgeuse B orbital axis aligns with hotspot geometry",
+    "If 2008/2015/2023 bright structures are same phenomenon, persistence approaches two decades"
+  ],
+  "methodology": "ALMA Band 6/7 submillimeter interferometry in extended configuration (16 km baselines); 2015 and 2023 epoch comparison; molecular line imaging (SiO, CO); astrometric alignment to <2 mas",
+  "key_risk": "Companion-causation hypothesis is speculative; two-epoch data insufficient to securely link detached clump to Great Dimming; long-term hotspot persistence across 2008/2015/2023 not yet rigorously established as same structure",
+  "next_experiment": "Third-epoch ALMA observation (2026/2027) to confirm hotspot persistence and measure proper motion; VLTI/GRAVITY companion orbit refinement; 3D radiation-hydrodynamic simulations incorporating companion tides and magnetic fields",
+  "tags": [
+    "Betelgeuse",
+    "ALMA",
+    "red_supergiant",
+    "stellar_convection",
+    "Great_Dimming",
+    "stellar_companion",
+    "submillimeter_astronomy"
+  ],
+  "related_entries": [
+    "C9-2026-ASTRO-001",
+    "C9-2026-COSMO-003"
+  ],
+  "meta_pattern": "STRUCTURED_SUPPRESSION_OF_DOMINANT_MODE",
+  "notes": "Excellent observational astrophysics. The persistent hotspot challenges standard convection models \u2014 a classic case where dominant theoretical paradigm (pure convection) may need revision. Companion-induced tidal locking or polar convection preference are alternative hypotheses. Directly relevant to C9 stellar-evolution complexity metrics."
+}
