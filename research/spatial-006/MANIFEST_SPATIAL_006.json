@@ -1,0 +1,41 @@
+{
+  "package_id": "C9-2026-SPATIAL-006",
+  "package_name": "Bilawal Sidhu Spatial Intelligence Stack",
+  "created_at": "2026-08-29T17:24:00Z",
+  "sandbox_run_at": "2026-08-29T17:27:53Z",
+  "sandbox_result": "PASSED",
+  "sandbox_tests": "21/21 passed",
+  "layer_confirmed": 1,
+  "files": [
+    {
+      "filename": "c9_entry_spatial_006.json",
+      "description": "Formal C9 entry (machine-readable)",
+      "bytes": 5757
+    },
+    {
+      "filename": "c9_sandbox_spatial_006.py",
+      "description": "Sandbox test suite (executable)",
+      "bytes": 7109
+    },
+    {
+      "filename": "c9_sandbox_spatial_006_result.json",
+      "description": "Sandbox artifact (test results)",
+      "bytes": 208
+    },
+    {
+      "filename": "c9_integration_spatial_006.py",
+      "description": "C9 bus integration module",
+      "bytes": 10734
+    },
+    {
+      "filename": "README_spatial_006.md",
+      "description": "GitHub README",
+      "bytes": 5631
+    },
+    {
+      "filename": "MANIFEST.json",
+      "description": "Package manifest",
+      "bytes": 1070
+    }
+  ]
+}
