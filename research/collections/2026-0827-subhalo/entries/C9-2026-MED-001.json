@@ -1,0 +1,40 @@
+{
+  "entry_id": "C9-2026-MED-001",
+  "title": "Spatiotemporal-Switchable 2D NIR-II Single-Atom Nanozyme for Single-Cell-Level Surgical Navigation and Glioblastoma Phototherapy",
+  "author": "Ping Shangguan et al. / Bingyang Shi group, UTS & Harvard",
+  "source": "Science Translational Medicine (2026). DOI: 10.1126/scitranslmed.aeb8054",
+  "date_published": "2026-08-27",
+  "date_audited": "2026-08-27",
+  "audit_score": 0.82,
+  "layer": 1,
+  "clusters": [
+    4,
+    8
+  ],
+  "confidence": "high",
+  "key_claims": [
+    "2D single-atom nanozyme platform provides dual-function intraoperative NIR-II imaging (44-micrometer resolution) and postoperative phototherapy for glioblastoma",
+    "Platinum atoms catalyze H2O2-to-O2 conversion, countering hypoxic tumor microenvironment; simultaneous photothermal/photodynamic therapy destroys residual microscopic cancer cells",
+    "In mouse glioblastoma models: 100% survival at 60 days vs. 42 days for surgery-only controls; no detectable neurological or motor impairments",
+    "Targeting molecule enables blood-brain barrier crossing and glioma-specific accumulation"
+  ],
+  "methodology": "2D nanosheet synthesis via semiconductor-adapted atomic placement; NIR-II fluorescent dye conjugation; in vivo mouse glioblastoma xenograft model; survival analysis; histological and behavioral assessment",
+  "key_risk": "Mouse models only \u2014 human translation uncertain. Blood-brain barrier penetration at human scale unproven. Long-term toxicity and immune response not assessed. Scale-up manufacturing of atomically precise 2D sheets is non-trivial.",
+  "next_experiment": "Primate BBB penetration studies; GLP toxicology; Phase I human trial in recurrent glioblastoma; integrate with C9 physical sensor layer for real-time nanoparticle tracking via NIR-II imaging",
+  "tags": [
+    "nanomedicine",
+    "glioblastoma",
+    "phototherapy",
+    "NIR_II_imaging",
+    "single_atom_catalyst",
+    "nanozyme",
+    "blood_brain_barrier",
+    "cancer_immunotherapy"
+  ],
+  "related_entries": [
+    "C9-2026-BIO-001",
+    "C9-2026-NEURO-002"
+  ],
+  "meta_pattern": "DUAL_MODE_SENSE_AND_ACT",
+  "notes": "Strong translational medicine entry. The 'image then treat' spatiotemporal switching is a concrete realization of active inference (sense \u2192 update \u2192 act). Connects to C9 physical sensor layer and neuromorphic control loops."
+}
