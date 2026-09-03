@@ -1,0 +1,41 @@
+{
+  "module": "cloud9_assembly.mundane_catalog",
+  "class": "MundaneMechanismCatalog",
+  "enabled": true,
+  "catalogs": {
+    "astro": {
+      "file": "docs/mundane_catalogs/astro.md",
+      "mechanisms": [
+        "background_galaxy_alignment",
+        "stellar_stream_gaps_from_host_gravity",
+        "x_ray_echoes_from_smbh_reprocessing"
+      ]
+    },
+    "detector": {
+      "file": "docs/mundane_catalogs/detector.md",
+      "mechanisms": [
+        "thermal_drift",
+        "scattering",
+        "alignment_errors",
+        "calibration_transients"
+      ]
+    },
+    "plasma": {
+      "file": "docs/mundane_catalogs/plasma.md",
+      "mechanisms": [
+        "high_pressure_plasma_pulses",
+        "laser_focusing_table_tennis_force",
+        "shock_wave_artifacts"
+      ]
+    }
+  },
+  "policy": {
+    "require_mundane_fit_before_exotic": true,
+    "residual_significance_threshold_sigma": 3.0,
+    "auto_reject_if_mundane_sufficient": true
+  },
+  "audit": {
+    "log_all_mundane_fits": true,
+    "log_path": "logs/mundane_mechanism_catalog.jsonl"
+  }
+}
