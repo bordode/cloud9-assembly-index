@@ -1,0 +1,39 @@
+{
+  "entry_id": "C9-2026-BIO-001",
+  "title": "MitoMatch: AlphaFold-Multimer Prediction of Mitochondrial Protein Interaction Networks",
+  "author": "Tibi Puiu reporting on Nature Communications study",
+  "source": "Nature Communications (2026) / ZME Science",
+  "date_published": "2026-08-26",
+  "date_audited": "2026-08-27",
+  "audit_score": 0.88,
+  "layer": 1,
+  "clusters": [
+    4,
+    8
+  ],
+  "confidence": "high",
+  "key_claims": [
+    "AlphaFold-Multimer adapted to screen 630,003 possible protein pairs across human mitochondrial proteome (~1,123 proteins)",
+    "2,895 high-confidence interactions predicted at ~85% precision threshold; 57% were absent from six major interaction databases",
+    "85 previously uncharacterized mitochondrial proteins assigned potential partners and functional hypotheses",
+    "COA4-COX11 binding predicted by MitoMatch and validated experimentally in yeast and human cells; COA4 deletion reduces COX11 levels, mitochondrial copper, and respiratory complex IV abundance"
+  ],
+  "methodology": "AlphaFold-Multimer complex prediction; threshold calibration against 1,338 known positives and 15,000 known negatives; experimental validation via co-immunoprecipitation and gene deletion in human cell lines",
+  "key_risk": "Computational predictions require experimental confirmation at scale; false positives remain possible outside the calibrated mitochondrial compartment where encounter probability is higher",
+  "next_experiment": "Expand to whole-proteome screening with evolutionary co-conservation filtering (cf. Predictomes 2025); integrate with C9 neuromorphic protein-interaction graph for active-inference modeling of metabolic networks",
+  "tags": [
+    "AlphaFold",
+    "protein_interaction",
+    "mitochondria",
+    "structural_biology",
+    "AI",
+    "MitoMatch",
+    "systems_biology"
+  ],
+  "related_entries": [
+    "C9-2026-MED-001",
+    "C9-2026-NEURO-002"
+  ],
+  "meta_pattern": "ATLAS_TO_MACHINERY",
+  "notes": "Excellent example of L1 AI-driven biology. The 'structure-to-function' pipeline parallels C9's own 'data-to-insight' Assembly Index workflow. Cross-species conservation analysis (11 organisms) adds evolutionary robustness."
+}
