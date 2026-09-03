@@ -1,0 +1,658 @@
+{
+  "manifest": {
+    "collection_id": "C9-COLLECTION-2026-0827-SUBHALO",
+    "collection_name": "Subhalo \u2014 Cosmic Horizon, UAP Evidence, Quantum Sensing, Stellar Astrophysics & Critical Thresholds",
+    "date_compiled": "2026-08-27",
+    "compiler": "Kimi K2.7",
+    "entry_count": 11,
+    "layer_distribution": {
+      "L1": 8,
+      "L2": 3,
+      "L3": 0
+    },
+    "mean_audit_score": 0.827,
+    "score_range": [
+      0.58,
+      0.95
+    ],
+    "meta_patterns_identified": [
+      "EPISTEMOLOGICAL_HORIZON",
+      "ATLAS_TO_MACHINERY",
+      "AMPLIFICATION_OF_WEAK_SIGNAL_VIA_QUANTUM_CORRELATION",
+      "LABORATORY_ANALOGUE_OF_COSMIC_PHENOMENA",
+      "STRUCTURED_SUPPRESSION_OF_DOMINANT_MODE",
+      "DUAL_MODE_SENSE_AND_ACT",
+      "CRITICAL_ACCUMULATION_AND_SNAP",
+      "ROBUSTNESS_THROUGH_STRUCTURED_VARIATION",
+      "SYNTHESIS_REVEALS_HIDDEN_STRUCTURE"
+    ],
+    "entries": [
+      "C9-2026-ASTRO-001",
+      "C9-2026-ASTRO-002",
+      "C9-2026-BIO-001",
+      "C9-2026-COSMO-005",
+      "C9-2026-MED-001",
+      "C9-2026-PHIL-001",
+      "C9-2026-QG-006",
+      "C9-2026-QUANT-001",
+      "C9-2026-QUANT-002",
+      "C9-2026-QUANT-003",
+      "C9-2026-UAP-001"
+    ],
+    "debates_conducted": [
+      "C9-DEBATE-QG006-20260827",
+      "C9-DEBATE-PHIL001-20260827",
+      "C9-DEBATE-UAP001-20260827"
+    ],
+    "repository_purpose": "Formal Cloud-9 Assembly Index entries, TNG subhalo validation scripts, quantum sensing frameworks, hypothesis debate audits, and evidence-based documentation for cosmological, stellar, quantum, and complex systems research.",
+    "target_audience": "INRC reviewers, TNG collaboration, Galileo Project affiliates, QPilotos quantum bridge operators, C9 bus modules, resilience engineering researchers"
+  },
+  "readme": "# Subhalo\n\n> **Cosmological Assembly Index validation pipeline for TNG subhalos, quantum sensing frameworks, stellar astrophysics, critical threshold analysis, and evidence-based documentation for extraordinary claims.**\n\n[![Cloud-9](https://img.shields.io/badge/C9-Collection-2026.08.27-blue)](./C9-COLLECTION-2026-0827-SUBHALO_manifest.json)\n[![Layer](https://img.shields.io/badge/Layer-L1%20%7C%20L2-green)](./)\n[![Audit](https://img.shields.io/badge/Mean%20Audit%20Score-0.83-brightgreen)](./)\n[![Entries](https://img.shields.io/badge/Entries-11-orange)](./entries/)\n[![Debates](https://img.shields.io/badge/Debates-3-purple)](./)\n\n---\n\n## What is Subhalo?\n\n**Subhalo** is a Cloud-9 research repository bridging:\n\n1. **TNG Subhalo Validation** \u2014 Pull, filter, and compute Assembly Index scores for dark matter halos using the IllustrisTNG API.\n2. **Quantum Sensing & Computing** \u2014 Formal entries for ion-trap spectroscopy, entanglement gates, BEC analog gravity, and quantum bridge integration.\n3. **Stellar Astrophysics** \u2014 Observational entries for red supergiants, multi-wavelength galaxy galleries, and black-hole feedback.\n4. **Critical Thresholds & Resilience** \u2014 Philosophical and complexity-science frameworks for understanding phase transitions, structural failure, and the \"Purity Paradox\" across physical and social systems.\n5. **Evidence Framework Documentation** \u2014 Auditable entry schemas with multi-agent hypothesis debate (ADVOCATE/SKEPTIC/EVIDENCE/SYNTHESIZER) for evaluating claims from established cosmology (L1) to unfalsified anomalous phenomena (L2/L3).\n6. **Bus Integration** \u2014 JSON-serialized outputs compatible with the C9 event bus (`c9_bus.jsonl`) for ingestion by the Oracle, Librarian, Hypothesis Debate, and Quantum Bridge modules.\n\n---\n\n## Repository Structure\n\n```\nsubhalo/\n\u251c\u2500\u2500 C9-COLLECTION-2026-0827-SUBHALO_manifest.json   # Collection metadata\n\u251c\u2500\u2500 subhalo_package.json                            # Combined manifest + all entries + README\n\u251c\u2500\u2500 C9-SANDBOX-2026-0827-SUBHALO_report.json        # Cross-correlation & hypothesis discovery\n\u251c\u2500\u2500 entries/\n\u2502   \u251c\u2500\u2500 C9-2026-COSMO-005.json                      # Cosmic Horizon (L1)\n\u2502   \u251c\u2500\u2500 C9-2026-UAP-001.json                        # UAP Materials (L2)\n\u2502   \u251c\u2500\u2500 C9-2026-QUANT-001.json                      # Quantum Logic Spectroscopy (L1)\n\u2502   \u251c\u2500\u2500 C9-2026-QUANT-002.json                      # Ramped Ion-Trap Gates (L1)\n\u2502   \u251c\u2500\u2500 C9-2026-QUANT-003.json                      # BEC Vacuum Fluctuations (L1)\n\u2502   \u251c\u2500\u2500 C9-2026-BIO-001.json                        # AlphaFold MitoMatch (L1)\n\u2502   \u251c\u2500\u2500 C9-2026-MED-001.json                        # Nanozyme Glioblastoma (L1)\n\u2502   \u251c\u2500\u2500 C9-2026-ASTRO-001.json                      # NASA Chandra Gallery (L1)\n\u2502   \u251c\u2500\u2500 C9-2026-ASTRO-002.json                      # Betelgeuse ALMA Hotspot (L1)\n\u2502   \u251c\u2500\u2500 C9-2026-QG-006.json                         # Gravity Quantum Nature (L2\u2192L3)\n\u2502   \u2514\u2500\u2500 C9-2026-PHIL-001.json                       # Physics of the Breaking Point (L2)\n\u251c\u2500\u2500 debates/\n\u2502   \u251c\u2500\u2500 C9-DEBATE-QG006-20260827.json               # QG-006 quarantine verdict\n\u2502   \u251c\u2500\u2500 C9-DEBATE-PHIL001-20260827.json             # PHIL-001 formalization path\n\u2502   \u2514\u2500\u2500 C9-DEBATE-UAP001-20260827.json              # UAP-001 12-month review\n\u251c\u2500\u2500 tng/\n\u2502   \u2514\u2500\u2500 (TNG validation scripts)\n\u251c\u2500\u2500 quantum/\n\u2502   \u2514\u2500\u2500 (QPilotos bridge configs)\n\u251c\u2500\u2500 README.md                                       # This file\n\u2514\u2500\u2500 .github/\n    \u2514\u2500\u2500 (CI for automated audit score regression tests)\n```\n\n---\n\n## Current Collection: 2026-08-27\n\n| Entry ID | Title | Layer | Score | Clusters | Meta-Pattern |\n|----------|-------|-------|-------|----------|--------------|\n| `C9-2026-QUANT-001` | Single Polyatomic Molecular Ion IR Spectroscopy | **L1** | 0.95 | 1, 3, 7 | `AMPLIFICATION_OF_WEAK_SIGNAL...` |\n| `C9-2026-ASTRO-002` | Betelgeuse ALMA Persistent Hotspot | **L1** | 0.91 | 2, 4 | `STRUCTURED_SUPPRESSION_OF_DOMINANT_MODE` |\n| `C9-2026-ASTRO-001` | NASA Chandra 16 Galactic Gems | **L1** | 0.90 | 2, 3 | `SYNTHESIS_REVEALS_HIDDEN_STRUCTURE` |\n| `C9-2026-BIO-001` | AlphaFold MitoMatch | **L1** | 0.88 | 4, 8 | `ATLAS_TO_MACHINERY` |\n| `C9-2026-QUANT-003` | BEC Vacuum Fluctuations (Cambridge) | **L1** | 0.85 | 1, 2, 3, 7 | `LABORATORY_ANALOGUE_OF_COSMIC_PHENOMENA` |\n| `C9-2026-QUANT-002` | Ramped Ion-Trap Geometric Phase Gates | **L1** | 0.92 | 1, 3, 6 | `ROBUSTNESS_THROUGH_STRUCTURED_VARIATION` |\n| `C9-2026-MED-001` | 2D Single-Atom Nanozyme for Glioblastoma | **L1** | 0.82 | 4, 8 | `DUAL_MODE_SENSE_AND_ACT` |\n| `C9-2026-COSMO-005` | Cosmic Horizon (Loeb) | **L1** | 0.94 | 2, 3, 7 | `STRUCTURED_SUPPRESSION_OF_DOMINANT_MODE` |\n| `C9-2026-PHIL-001` | Physics of the Breaking Point | **L2** | 0.58 | 1, 4, 7, 8 | `CRITICAL_ACCUMULATION_AND_SNAP` |\n| `C9-2026-QG-006` | Gravity Quantum Nature (Siegel) | **L2\u2192L3** | 0.45 | 1, 2, 3 | `EPISTEMOLOGICAL_HORIZON` |\n| `C9-2026-UAP-001` | UAP Materials Framework (Loeb) | **L2** | 0.65 | 1, 4, 8 | `EPISTEMOLOGICAL_HORIZON` |\n\n**Mean Audit Score:** 0.827  \n**Layer Distribution:** L1=8, L2=3, L3=0 (QG-006 quarantined pending review)  \n**Meta-Patterns:** 9 distinct patterns  \n**Hypothesis Debates:** 3 conducted\n\n---\n\n## Hypothesis Debate Module Results\n\nThe C9 multi-agent debate engine (ADVOCATE / SKEPTIC / EVIDENCE / SYNTHESIZER) was run on three high-risk entries:\n\n### QG-006 \u2014 Gravity Is Quantum?\n**Verdict: QUARANTINED to Layer 3** (score: 0.45)\n- **SKEPTIC wins.** Source is truncated behind Medium paywall. No preprint, no peer review, no arXiv ID. Popular-science framing of extraordinary claim without accessible primary source is epistemically toxic.\n- **Action:** 7-day deadline to obtain primary source. If unavailable, permanent L3 demotion. H6 (ion-trap gravitational A-B test) must not depend on this entry.\n\n### PHIL-001 \u2014 Physics of the Breaking Point\n**Verdict: MAINTAIN Layer 2** (score: 0.58)\n- **ADVOCATE/SYNTHESIZER consensus.** Explicit risk disclosure and conceptual value for C9 AI governance and resilience engineering. However, metaphorical extension from physics to politics requires formalization.\n- **Action:** Formalize \"Purity Paradox\" as agent-based model with heterogeneity parameter. 90-day review.\n\n### UAP-001 \u2014 UAP Materials Framework\n**Verdict: MAINTAIN Layer 2** (score: 0.65)\n- **ADVOCATE wins on methodology.** Isotope fingerprinting and bio-chirality assays are rigorous L1. SKEPTIC correctly flags conditional-premise risk but overstates it \u2014 frameworks have value independent of trigger frequency.\n- **Action:** 12-month review. If no materials released by Aug 2027, demote existence-premise to L3; retain methodology as L1 standalone.\n\n---\n\n## Cross-Domain Hypotheses Generated (7)\n\n| ID | Title | Priority | Source Entries | Risk |\n|----|-------|----------|----------------|------|\n| H6 | Gravitational A-B in Ion Traps | 0.600 | QG-006 + QUANT-001/002 | **HIGH** \u2014 Quarantined |\n| H5 | Galaxy Morphology \u2192 A_c Classifier | 0.568 | ASTRO-001 + COSMO-005 | MEDIUM |\n| H4 | Ramped Detuning \u2192 SNN Plasticity | 0.516 | QUANT-002 + BIO-001 | MEDIUM |\n| H2 | BEC False-Vacuum \u2192 Cosmic Horizon | 0.482 | QUANT-003 + COSMO-005 | LOW |\n| H1 | Quantum-Enhanced Submm Astrometry | 0.451 | QUANT-001 + ASTRO-002 | MEDIUM |\n| H7 | Betelgeuse \u2192 TNG Merger Analog | 0.392 | ASTRO-002 + BIO-001 | HIGH |\n| H3 | Active-Inference UAP Pipeline | 0.382 | BIO-001 + MED-001 + UAP-001 | HIGH |\n\n**Top pick:** H2 (BEC false-vacuum as cosmic horizon analog) \u2014 cleanest physics, direct experimental path, manageable risk.\n\n---\n\n## TNG Subhalo Validation\n\n```bash\nexport TNG_API_KEY=\"your_key_here\"\npython3 tng_validation_suite.py --snapshot 99 --n_halos 2000 --output subhalo_catalog.json\n```\n\nCapabilities: 2000+ halos, physical shell radii, metallicity filters, bootstrap significance, A_c complexity kernel. Gas cell fetch integration (v2026.06.09) computes SFR surface density, metallicity gradients, turbulent velocity dispersion.\n\n---\n\n## Quantum Bridge Integration\n\nAll quantum entries are serialized for QPilotos ingestion:\n\n```json\n{\n  \"bus_timestamp\": \"2026-08-27T22:51:00Z\",\n  \"module\": \"quantum_bridge\",\n  \"event_type\": \"ion_trap_backend_update\",\n  \"payload\": {\n    \"entry_id\": \"C9-2026-QUANT-002\",\n    \"backend\": \"LLNL_NIST_ramped_gate\",\n    \"port\": 11434,\n    \"protocol\": \"zmq_dealer\"\n  }\n}\n```\n\n---\n\n## Audit Methodology\n\n**Assembly Index (A_c)** scored 0.00\u20131.00 across:\n1. Theoretical Grounding\n2. Empirical Anchoring\n3. Methodological Rigor\n4. Risk Disclosure\n\n**Layers:** L1 \u22650.85 (peer-reviewed), L2 0.50\u20130.84 (grounded but unverified), L3 <0.50 (untestable or quarantined).\n\n**Hypothesis Debate Module:** ADVOCATE presents best case; SKEPTIC attacks epistemic foundations; EVIDENCE provides objective data; SYNTHESIZER integrates into binding verdict.\n\n---\n\n## Related Cloud-9 Entries\n\n- `C9-2026-QG-005` \u2014 Barontini cold-atom entropic-time mini-universe\n- `C9-2026-COSMO-002` \u2014 Planck-mass BH remnant / white hole transition\n- `C9-2026-COSMO-003` \u2014 Sgr A* wind cavity\n- `C9-2026-MATSCI-004` \u2014 AI-guided rare-earth-free magnet discovery\n- `C9-2026-NEURO-001/002` \u2014 TIS interference cancellation / frontal aslant tract\n- `SETI-005` \u2014 Signal classification framework (on bus)\n\n---\n\n## Citation\n\n```bibtex\n@misc{subhalo_c9_2026,\n  title={Subhalo: Cosmological Assembly Index Validation Pipeline},\n  author={Cloud-9 Assembly Project},\n  year={2026},\n  url={https://github.com/[user]/subhalo}\n}\n```\n\n---\n\n> *\"The physics of the breaking point is not just a theory of collapse. It is an invitation to build in a way that expects stress, honors vulnerability, and treats resilience not as an afterthought but as the core design constraint.\"* \u2014 C9-2026-PHIL-001\n\n> *\"Everything good has an end, including the movie of cosmic history.\"* \u2014 Avi Loeb, C9-2026-COSMO-005\n\n**C9 Sovereign Living Manifold \u2014 Synthetic closed-loop + physical v2.0**  \n*Vitality: 0.81 | Modules: 10+ | Bus: Active | Files Indexed: 7,276*\n",
+  "entries": [
+    {
+      "entry_id": "C9-2026-ASTRO-001",
+      "title": "NASA Chandra X-ray Observatory: 16 Galactic Gems Multi-Wavelength Gallery",
+      "author": "NASA / Chandra X-ray Center / Lydia Amazouz (Daily Galaxy)",
+      "source": "NASA Press Release / Daily Galaxy (2026-08-26)",
+      "date_published": "2026-08-26",
+      "date_audited": "2026-08-27",
+      "audit_score": 0.9,
+      "layer": 1,
+      "clusters": [
+        2,
+        3
+      ],
+      "confidence": "high",
+      "key_claims": [
+        "Multi-wavelength composite gallery of 16 galaxies combining Chandra X-ray, JWST, Hubble, IXPE, Swift, NuSTAR, and ground-based data",
+        "Images reveal supermassive black hole jets (Centaurus A, M106), superwinds (NGC 4631, M82), collisional ring structures (Arp 143), and polar rings (NGC 660)",
+        "X-ray data traces million-degree gas, energetic particles, and supernova remnants invisible to optical telescopes",
+        "Collection demonstrates galaxy lifecycle: star formation, internal bar-driven inflow, black-hole feedback, mergers, and environmental stripping (M90 in Virgo Cluster)"
+      ],
+      "methodology": "Archival multi-mission data fusion; X-ray/optical/IR/radio image registration and color-composite rendering; public science communication",
+      "key_risk": "Gallery is observational showcase rather than new discovery publication. Scientific conclusions are syntheses of previously published data. No novel quantitative analysis presented.",
+      "next_experiment": "Cross-reference gallery sources with TNG100-1 simulated analogs (e.g., M82 superwind vs. TNG feedback models; Arp 143 merger vs. TNG merger trees); use as public-facing validation of C9 A_c visual complexity metrics",
+      "tags": [
+        "Chandra",
+        "multi_wavelength",
+        "galaxy_evolution",
+        "black_hole_feedback",
+        "superwinds",
+        "mergers",
+        "public_outreach"
+      ],
+      "related_entries": [
+        "C9-2026-COSMO-003",
+        "C9-2026-COSMO-005",
+        "C9-2026-QG-005"
+      ],
+      "meta_pattern": "SYNTHESIS_REVEALS_HIDDEN_STRUCTURE",
+      "notes": "Pedagogical and public-engagement value is high. Scientific value lies in multi-mission data synthesis. Ideal for C9 outreach layer and for training visual complexity classifiers on real astronomical morphologies."
+    },
+    {
+      "entry_id": "C9-2026-ASTRO-002",
+      "title": "ALMA Submillimeter Imaging of Betelgeuse Reveals Persistent Northeastern Hotspot and Corrugated Atmosphere",
+      "author": "Bill Dent et al. / ALMA (ESO/NAOJ/NRAO)",
+      "source": "ZME Science / ESO Press Release (2026-08-26)",
+      "date_published": "2026-08-26",
+      "date_audited": "2026-08-27",
+      "audit_score": 0.91,
+      "layer": 1,
+      "clusters": [
+        2,
+        4
+      ],
+      "confidence": "high",
+      "key_claims": [
+        "ALMA extended-configuration observations (7 mas resolution, 16 km baseline) resolve submillimeter 'surface' of Betelgeuse at ~2,300 K",
+        "Northeastern hotspot persists for \u22657.3 years (2015\u20132023), far exceeding predicted convective cell lifetimes (months to few years)",
+        "Stellar radius deviates \u00b16% from circular; corrugated edge and molecular atmosphere (SiO, CO) show significant changes between epochs",
+        "Detached gas clump at ~10 km/s may connect to 2019\u20132020 Great Dimming event; companion star Betelgeuse B orbital axis aligns with hotspot geometry",
+        "If 2008/2015/2023 bright structures are same phenomenon, persistence approaches two decades"
+      ],
+      "methodology": "ALMA Band 6/7 submillimeter interferometry in extended configuration (16 km baselines); 2015 and 2023 epoch comparison; molecular line imaging (SiO, CO); astrometric alignment to <2 mas",
+      "key_risk": "Companion-causation hypothesis is speculative; two-epoch data insufficient to securely link detached clump to Great Dimming; long-term hotspot persistence across 2008/2015/2023 not yet rigorously established as same structure",
+      "next_experiment": "Third-epoch ALMA observation (2026/2027) to confirm hotspot persistence and measure proper motion; VLTI/GRAVITY companion orbit refinement; 3D radiation-hydrodynamic simulations incorporating companion tides and magnetic fields",
+      "tags": [
+        "Betelgeuse",
+        "ALMA",
+        "red_supergiant",
+        "stellar_convection",
+        "Great_Dimming",
+        "stellar_companion",
+        "submillimeter_astronomy"
+      ],
+      "related_entries": [
+        "C9-2026-ASTRO-001",
+        "C9-2026-COSMO-003"
+      ],
+      "meta_pattern": "STRUCTURED_SUPPRESSION_OF_DOMINANT_MODE",
+      "notes": "Excellent observational astrophysics. The persistent hotspot challenges standard convection models \u2014 a classic case where dominant theoretical paradigm (pure convection) may need revision. Companion-induced tidal locking or polar convection preference are alternative hypotheses. Directly relevant to C9 stellar-evolution complexity metrics."
+    },
+    {
+      "entry_id": "C9-2026-BIO-001",
+      "title": "MitoMatch: AlphaFold-Multimer Prediction of Mitochondrial Protein Interaction Networks",
+      "author": "Tibi Puiu reporting on Nature Communications study",
+      "source": "Nature Communications (2026) / ZME Science",
+      "date_published": "2026-08-26",
+      "date_audited": "2026-08-27",
+      "audit_score": 0.88,
+      "layer": 1,
+      "clusters": [
+        4,
+        8
+      ],
+      "confidence": "high",
+      "key_claims": [
+        "AlphaFold-Multimer adapted to screen 630,003 possible protein pairs across human mitochondrial proteome (~1,123 proteins)",
+        "2,895 high-confidence interactions predicted at ~85% precision threshold; 57% were absent from six major interaction databases",
+        "85 previously uncharacterized mitochondrial proteins assigned potential partners and functional hypotheses",
+        "COA4-COX11 binding predicted by MitoMatch and validated experimentally in yeast and human cells; COA4 deletion reduces COX11 levels, mitochondrial copper, and respiratory complex IV abundance"
+      ],
+      "methodology": "AlphaFold-Multimer complex prediction; threshold calibration against 1,338 known positives and 15,000 known negatives; experimental validation via co-immunoprecipitation and gene deletion in human cell lines",
+      "key_risk": "Computational predictions require experimental confirmation at scale; false positives remain possible outside the calibrated mitochondrial compartment where encounter probability is higher",
+      "next_experiment": "Expand to whole-proteome screening with evolutionary co-conservation filtering (cf. Predictomes 2025); integrate with C9 neuromorphic protein-interaction graph for active-inference modeling of metabolic networks",
+      "tags": [
+        "AlphaFold",
+        "protein_interaction",
+        "mitochondria",
+        "structural_biology",
+        "AI",
+        "MitoMatch",
+        "systems_biology"
+      ],
+      "related_entries": [
+        "C9-2026-MED-001",
+        "C9-2026-NEURO-002"
+      ],
+      "meta_pattern": "ATLAS_TO_MACHINERY",
+      "notes": "Excellent example of L1 AI-driven biology. The 'structure-to-function' pipeline parallels C9's own 'data-to-insight' Assembly Index workflow. Cross-species conservation analysis (11 organisms) adds evolutionary robustness."
+    },
+    {
+      "entry_id": "C9-2026-COSMO-005",
+      "title": "The Limits of Our Cosmic Horizon \u2014 Finite Observability in \u039bCDM",
+      "author": "Avi Loeb",
+      "source": "Medium / Personal Essay (30th in Art-Science series with Greg Wyatt)",
+      "date_published": "2026-08-26",
+      "date_audited": "2026-08-27",
+      "audit_score": 0.94,
+      "layer": 1,
+      "clusters": [
+        2,
+        3,
+        7
+      ],
+      "confidence": "high",
+      "key_claims": [
+        "Matter-\u039b equality occurred at z \u2248 0.63 (~6.1 Gyr ago), triggering accelerated expansion",
+        "In \u039bCDM with constant vacuum density, the future observability window is finite",
+        "Galaxy MoM-z14 (z=14.4) will remain observable for only ~230 Myr longer before exiting our event horizon",
+        "Cosmological event horizons are information-theoretic boundaries analogous to black hole horizons"
+      ],
+      "methodology": "Analytical cosmology based on \u039bCDM Friedmann equations; references Loeb 2002 PRD 65, 047301",
+      "key_risk": "None for core physics; editorial asides on AI pollution are opinion and excluded from score",
+      "next_experiment": "Cross-reference with TNG100-1 snapshot 99 halos at z\u22480 to verify local Hubble flow consistency; integrate finite-horizon cutoff into A_c phase-transition formalism",
+      "tags": [
+        "cosmology",
+        "event_horizon",
+        "lambda_CDM",
+        "dark_energy",
+        "observability",
+        "de_Sitter",
+        "information_loss"
+      ],
+      "related_entries": [
+        "C9-2026-COSMO-002",
+        "C9-2026-COSMO-003",
+        "C9-2026-QG-005"
+      ],
+      "meta_pattern": "STRUCTURED_SUPPRESSION_OF_DOMINANT_MODE",
+      "notes": "Pedagogically excellent L1 entry. Connects directly to QPLS SMBH binary finite-observability window (C9-2026-COSMO-003) and Barontini entropic-time mini-universe (C9-2026-QG-005)."
+    },
+    {
+      "entry_id": "C9-2026-MED-001",
+      "title": "Spatiotemporal-Switchable 2D NIR-II Single-Atom Nanozyme for Single-Cell-Level Surgical Navigation and Glioblastoma Phototherapy",
+      "author": "Ping Shangguan et al. / Bingyang Shi group, UTS & Harvard",
+      "source": "Science Translational Medicine (2026). DOI: 10.1126/scitranslmed.aeb8054",
+      "date_published": "2026-08-27",
+      "date_audited": "2026-08-27",
+      "audit_score": 0.82,
+      "layer": 1,
+      "clusters": [
+        4,
+        8
+      ],
+      "confidence": "high",
+      "key_claims": [
+        "2D single-atom nanozyme platform provides dual-function intraoperative NIR-II imaging (44-micrometer resolution) and postoperative phototherapy for glioblastoma",
+        "Platinum atoms catalyze H2O2-to-O2 conversion, countering hypoxic tumor microenvironment; simultaneous photothermal/photodynamic therapy destroys residual microscopic cancer cells",
+        "In mouse glioblastoma models: 100% survival at 60 days vs. 42 days for surgery-only controls; no detectable neurological or motor impairments",
+        "Targeting molecule enables blood-brain barrier crossing and glioma-specific accumulation"
+      ],
+      "methodology": "2D nanosheet synthesis via semiconductor-adapted atomic placement; NIR-II fluorescent dye conjugation; in vivo mouse glioblastoma xenograft model; survival analysis; histological and behavioral assessment",
+      "key_risk": "Mouse models only \u2014 human translation uncertain. Blood-brain barrier penetration at human scale unproven. Long-term toxicity and immune response not assessed. Scale-up manufacturing of atomically precise 2D sheets is non-trivial.",
+      "next_experiment": "Primate BBB penetration studies; GLP toxicology; Phase I human trial in recurrent glioblastoma; integrate with C9 physical sensor layer for real-time nanoparticle tracking via NIR-II imaging",
+      "tags": [
+        "nanomedicine",
+        "glioblastoma",
+        "phototherapy",
+        "NIR_II_imaging",
+        "single_atom_catalyst",
+        "nanozyme",
+        "blood_brain_barrier",
+        "cancer_immunotherapy"
+      ],
+      "related_entries": [
+        "C9-2026-BIO-001",
+        "C9-2026-NEURO-002"
+      ],
+      "meta_pattern": "DUAL_MODE_SENSE_AND_ACT",
+      "notes": "Strong translational medicine entry. The 'image then treat' spatiotemporal switching is a concrete realization of active inference (sense \u2192 update \u2192 act). Connects to C9 physical sensor layer and neuromorphic control loops."
+    },
+    {
+      "entry_id": "C9-2026-PHIL-001",
+      "title": "The Physics Of The Breaking Point: Critical Thresholds Across Quantum, Material, and Social Systems",
+      "author": "Unknown / Essay (Medium-style long-form)",
+      "source": "Uploaded essay / Philosophical synthesis",
+      "date_published": "2026-08-27",
+      "date_audited": "2026-08-27",
+      "audit_score": 0.58,
+      "layer": 2,
+      "clusters": [
+        1,
+        4,
+        7,
+        8
+      ],
+      "confidence": "medium",
+      "key_claims": [
+        "Phase transitions and critical thresholds are universal patterns across physical, biological, cognitive, and political systems",
+        "The 'Process-Pattern Trade': zoomed-in observation reveals indeterminate process; zoomed-out reveals rigid pattern; the snap is their collision",
+        "The Purity Paradox: systems that eliminate 'weak' or marginal elements appear stronger but become more brittle due to lost redundancy and shock absorption",
+        "Totalitarian regimes engineer their own collapse by converting flexible social complexity into rigid monoculture \u2014 a structural, not merely political, failure",
+        "Resilience requires designing for slack, diversity, friction, and the inclusion of vulnerability \u2014 across scales from quantum to social"
+      ],
+      "methodology": "Philosophical essay synthesizing concepts from statistical mechanics (phase transitions), quantum mechanics (observer effect), materials science (brittle vs. ductile failure), and political history. No formal quantitative methods. Uses analogy and structural isomorphism as primary reasoning tools.",
+      "key_risk": "Heavy reliance on metaphorical extension from physics to social systems. Historical examples are selective and anecdotal rather than systematically tested. The 'Purity Paradox' is a compelling conceptual frame but lacks empirical validation across regime types. Risk of confirmation bias in historical case selection.",
+      "next_experiment": "Formalize Purity Paradox as testable hypothesis: quantify redundancy/diversity metrics in political systems and correlate with collapse probability using political science datasets (Polity IV, V-Dem). Test quantum phase transition \u2192 social system analogy via agent-based models with tunable heterogeneity parameters.",
+      "tags": [
+        "phase_transitions",
+        "critical_phenomena",
+        "resilience",
+        "totalitarianism",
+        "purity_paradox",
+        "complexity_science",
+        "observer_effect",
+        "structural_failure",
+        "philosophy_of_science"
+      ],
+      "related_entries": [
+        "C9-2026-COSMO-005",
+        "C9-2026-ASTRO-002",
+        "C9-2026-QG-005",
+        "C9-2026-QUANT-003"
+      ],
+      "meta_pattern": "CRITICAL_ACCUMULATION_AND_SNAP",
+      "notes": "L2 philosophical synthesis. The quantum phase transition and glacier mechanics sections are grounded in real physics (L1), but the extension to political regimes is analogical rather than deductive. The 'Process-Pattern Trade' is an epistemological insight that resonates with C9's multi-resolution Assembly Index formalism. The Purity Paradox directly challenges optimization-for-efficiency paradigms in AI governance (Cluster 6) and social design. Cross-references well with COSMO-005 (finite observability as a kind of horizon/snap) and ASTRO-002 (persistent structure in dynamic system)."
+    },
+    {
+      "entry_id": "C9-2026-QG-006",
+      "title": "The Strongest Experimental Hint That Gravity Is Quantum in Nature",
+      "author": "Ethan Siegel / Starts With A Bang!",
+      "source": "Medium (member-only), Aug 19, 2026",
+      "date_published": "2026-08-19",
+      "date_audited": "2026-08-27",
+      "audit_score": 0.7,
+      "layer": 2,
+      "clusters": [
+        1,
+        2,
+        3
+      ],
+      "confidence": "medium",
+      "key_claims": [
+        "Aharonov-Bohm effect demonstrated for gravitational forces, suggesting quantum behavior of gravity",
+        "If verified, this would be the first clue that gravity possesses quantum nature analogous to electromagnetic, strong, and weak forces",
+        "Experiment bridges classical general relativity and quantum mechanics at a phenomenological level"
+      ],
+      "methodology": "Unknown \u2014 article truncated behind Medium paywall. Appears to reference a specific experimental result (likely tabletop or interferometric gravitation experiment).",
+      "key_risk": "ARTICLE IS TRUNCATED. Full methodology, experimental details, and peer-review status unavailable. Medium paywall prevents first-hand assessment. Claim may be overstated by popular-science framing. Independent verification essential before elevation to L1.",
+      "next_experiment": "Obtain full text or preprint of underlying experiment; verify peer-review status; cross-check against arXiv gravitational physics listings; run through C9 Hypothesis Debate Module (ADVOCATE/SKEPTIC/EVIDENCE/SYNTHESIZER) once full text available",
+      "tags": [
+        "quantum_gravity",
+        "Aharonov_Bohm",
+        "gravitational_quantization",
+        "tabletop_experiment",
+        "popular_science"
+      ],
+      "related_entries": [
+        "C9-2026-QG-005",
+        "C9-2026-COSMO-005"
+      ],
+      "meta_pattern": "EPISTEMOLOGICAL_HORIZON",
+      "notes": "HEAVILY TRUNCATED SOURCE. Entry created for tracking purposes only. Score and layer assignment are provisional and conservative. Must be re-audited if/when full primary source becomes available. The Aharonov-Bohm-for-gravity claim is extraordinary and requires extraordinary evidence."
+    },
+    {
+      "entry_id": "C9-2026-QUANT-001",
+      "title": "Infrared Absorption Spectroscopy of a Single Polyatomic Molecular Ion via Quantum Logic",
+      "author": "Zhenlin Wu et al. / Philipp Schindler group, University of Innsbruck",
+      "source": "Nature (2026). DOI: 10.1038/s41586-026-10915-8",
+      "date_published": "2026-08-26",
+      "date_audited": "2026-08-27",
+      "audit_score": 0.95,
+      "layer": 1,
+      "clusters": [
+        1,
+        3,
+        7
+      ],
+      "confidence": "very high",
+      "key_claims": [
+        "Quantum logic spectroscopy enables non-destructive IR absorption measurement of a single CaOH+ molecular ion",
+        "Schr\u00f6dinger's cat entangled state between molecular ion and auxiliary atomic ion amplifies imperceptible photon recoil into measurable signal",
+        "O-H stretching vibration spectrum of singly-charged calcium hydroxide matches theoretical predictions from University of Warsaw collaborators",
+        "Method is generalizable to diverse molecular species for quantum-state preparation and precision spectroscopy"
+      ],
+      "methodology": "Trapped two-ion mixed-species crystal; quantum logic operations; entangled cat-state detection of single-photon recoil; comparison with ab initio theory",
+      "key_risk": "None significant. Method validated against theory. Generalizability to larger polyatomic molecules remains to be demonstrated.",
+      "next_experiment": "Extend to larger astrophysically relevant molecules (e.g., PAHs, metal hydrides) for laboratory astrochemistry; integrate with QPilotos quantum bridge for automated ion-trap control",
+      "tags": [
+        "quantum_logic_spectroscopy",
+        "single_molecule",
+        "ion_trap",
+        "entanglement",
+        "infrared_spectroscopy",
+        "non_destructive_measurement",
+        "quantum_computing"
+      ],
+      "related_entries": [
+        "C9-2026-QUANT-002",
+        "C9-2026-QG-005"
+      ],
+      "meta_pattern": "AMPLIFICATION_OF_WEAK_SIGNAL_VIA_QUANTUM_CORRELATION",
+      "notes": "Landmark L1 result. Directly connects to C9 Quantum Bridge v2.0 (ion-trap backends) and Cluster 3 (quantum information). The 'cat-state amplification' principle mirrors the signal-boost logic used in C9 SNN focality metrics."
+    },
+    {
+      "entry_id": "C9-2026-QUANT-002",
+      "title": "Robust Two-Qubit Geometric Phase Gates Using Amplitude and Frequency Ramping in Trapped Ions",
+      "author": "C. M. Bowers et al. / LLNL & NIST Ion Storage Group",
+      "source": "Physical Review Letters (2026). DOI: 10.1103/x9b9-5d78",
+      "date_published": "2026-08-26",
+      "date_audited": "2026-08-27",
+      "audit_score": 0.92,
+      "layer": 1,
+      "clusters": [
+        1,
+        3,
+        6
+      ],
+      "confidence": "high",
+      "key_claims": [
+        "Ramped detuning and amplitude modulation of state-dependent forces enable robust trapped-ion two-qubit geometric phase gates",
+        "Gate protocol captures robustness of far-detuned operation while retaining speed from near-resonant phases",
+        "Ions operate at higher temperatures with reduced calibration overhead, paving way for scalable ion-trap quantum computers",
+        "Phase-space trajectory control ensures motional state returns to origin, leaving only entangling phase shift"
+      ],
+      "methodology": "Radio-frequency and microwave electromagnetic fields applied to trapped ions; ramped detuning through resonance; amplitude ramping; phase-space tomography",
+      "key_risk": "Demonstrated in a specific ion-trap apparatus; transferability to multi-zone scalable architectures (e.g., Quantinuum, IonQ) requires further validation",
+      "next_experiment": "Implement in shielded multi-zone trap with extra hardware; benchmark gate fidelity at scale; integrate with QPilotos router for distributed ion-trap quantum networking",
+      "tags": [
+        "trapped_ion",
+        "quantum_computing",
+        "geometric_phase_gate",
+        "entanglement",
+        "scalability",
+        "LLNL",
+        "NIST"
+      ],
+      "related_entries": [
+        "C9-2026-QUANT-001",
+        "C9-2026-QUANT-003"
+      ],
+      "meta_pattern": "ROBUSTNESS_THROUGH_STRUCTURED_VARIATION",
+      "notes": "Directly relevant to C9 Quantum Bridge and QPilotos backends. The ramped-detuning principle (start far, approach resonance, retreat) is analogous to simulated annealing and could inspire optimization heuristics in C9's hypothesis debate module."
+    },
+    {
+      "entry_id": "C9-2026-QUANT-003",
+      "title": "Direct Imaging of Vacuum Fluctuations in a Two-Dimensional Bose-Einstein Condensate",
+      "author": "Yansheng Zhang et al., University of Cambridge",
+      "source": "arXiv preprint (2026)",
+      "date_published": "2026-08-26",
+      "date_audited": "2026-08-27",
+      "audit_score": 0.85,
+      "layer": 1,
+      "clusters": [
+        1,
+        2,
+        3,
+        7
+      ],
+      "confidence": "high",
+      "key_claims": [
+        "Vacuum fluctuations in a lab-made quantum field (2D K-39 BEC) directly imaged for the first time",
+        "Amplification protocol distinguishes vacuum fluctuations from thermal noise via frequency-dependent power-law decay",
+        "BEC tuned to simulate sine-Gordon relativistic quantum field, enabling laboratory study of theoretically intractable regimes",
+        "Platform suitable for probing false-vacuum decay, particle production, and topological defect formation"
+      ],
+      "methodology": "Two-dimensional potassium-39 Bose-Einstein condensate; internal-state coupling via radio waves; spin-field encoding; sudden quench amplification; direct imaging of local spin variations",
+      "key_risk": "Preprint \u2014 not yet peer-reviewed. Thermal noise subtraction and BEC imaging systematics require independent replication. Sine-Gordon mapping validity depends on interaction parameter tuning.",
+      "next_experiment": "Peer review and independent replication; extend to false-vacuum decay bubble nucleation experiments; connect to C9 Cluster 2 quantum gravity analog models (cf. Barontini entropic-time mini-universe)",
+      "tags": [
+        "Bose_Einstein_condensate",
+        "vacuum_fluctuations",
+        "quantum_field_theory",
+        "sine_Gordon",
+        "analog_gravity",
+        "false_vacuum_decay",
+        "Cambridge"
+      ],
+      "related_entries": [
+        "C9-2026-QG-005",
+        "C9-2026-COSMO-005"
+      ],
+      "meta_pattern": "LABORATORY_ANALOGUE_OF_COSMIC_PHENOMENA",
+      "notes": "Strong L1 candidate pending peer review. The BEC-as-quantum-field approach is a powerful analog-gravity platform. Connects to primordial fluctuation seeding (Cluster 2) and quantum thermodynamics of de Sitter space (Cluster 7)."
+    },
+    {
+      "entry_id": "C9-2026-UAP-001",
+      "title": "Scientists Deserve First-Hand Evidence on UAP Materials",
+      "author": "Avi Loeb",
+      "source": "Medium / UAP Science Advisory Council policy brief",
+      "date_published": "2026-08-26",
+      "date_audited": "2026-08-27",
+      "audit_score": 0.65,
+      "layer": 2,
+      "clusters": [
+        1,
+        4,
+        8
+      ],
+      "confidence": "medium",
+      "key_claims": [
+        "UAP materials of >1g mass could be isotopically/chemically fingerprinted for extrasolar origin",
+        "Solid-state structure analysis can distinguish alien manufacturing from human black-projects",
+        "Biological materials could be distinguished by non-terrestrial chirality or non-DNA genetic chemistry",
+        "Grusch testimony (July 2023) remains unverified without first-hand physical evidence"
+      ],
+      "methodology": "Proposed validation framework: isotope-ratio mass spectrometry, X-ray diffraction/crystallography, bio-molecular chirality assays, electron microscopy",
+      "key_risk": "Conditional premise (existence of retrieved non-human craft) rests on second-hand testimony; intelligence-community disinformation/adversarial-tech mislabeling is a major confounder",
+      "next_experiment": "If materials are released: perform ICP-MS and TIMS isotopic analysis on >1g samples; compare against solar-system nucleosynthetic baseline. If not: treat as unfalsified L2 hypothesis and redirect resources to Galileo Project multi-sensor triangulation.",
+      "tags": [
+        "UAP",
+        "policy",
+        "materials_science",
+        "isotope_geochemistry",
+        "astrobiology",
+        "SETI",
+        "intelligence_community",
+        "disinformation"
+      ],
+      "related_entries": [
+        "C9-2026-LEGACY-001",
+        "SETI-005"
+      ],
+      "meta_pattern": "EPISTEMOLOGICAL_HORIZON",
+      "notes": "Methodology proposed is rigorous L1; the underlying claim of retrieved craft is L2 pending evidence. Entry value lies in the physics-constrained search template for validating extraordinary claims, analogous to MATSCI-004 pipeline."
+    }
+  ],
+  "debates": [
+    {
+      "entry_id": "C9-2026-QG-006",
+      "debate_id": "C9-DEBATE-006-20260827",
+      "timestamp": "2026-08-27T22:51:00Z",
+      "participants": [
+        {
+          "role": "ADVOCATE",
+          "stance": "This entry represents a valuable contribution to the C9 Assembly framework.",
+          "points": [
+            "Aharonov-Bohm effect for gravity would be a landmark discovery bridging GR and QM",
+            "If true, it opens experimental pathways to quantum gravity at tabletop scales",
+            "Siegel is a credentialed astrophysicist with strong science communication track record",
+            "The claim aligns with theoretical expectations that gravity should be quantum"
+          ]
+        },
+        {
+          "role": "SKEPTIC",
+          "stance": "This entry contains significant epistemic risks that threaten its validity.",
+          "points": [
+            "SOURCE IS TRUNCATED. No primary paper, preprint, or peer-reviewed source accessible",
+            "Medium paywall prevents first-hand verification of methodology, sample size, error bars",
+            "Popular-science framing often inflates preliminary results into 'breakthroughs'",
+            "No independent replication cited. No arXiv identifier provided in truncated text",
+            "Score 0.70 may be artificially inflated by author's credibility rather than evidence quality"
+          ]
+        },
+        {
+          "role": "EVIDENCE",
+          "stance": "Objective assessment of available data and methodology.",
+          "points": [
+            "Claim type: Extraordinary (quantum gravity detection)",
+            "Source quality: POPULAR_SCIENCE_TRUNCATED \u2014 lowest tier for extraordinary claims",
+            "Peer review status: UNKNOWN",
+            "Replication status: UNKNOWN",
+            "Cluster overlap with L1 entries: 6 L1 entries share clusters [1,2,3] \u2014 strong theoretical support exists",
+            "Risk-adjusted score: 0.70 \u00d7 0.5 (source_penalty) = 0.35, suggesting L3 quarantine"
+          ]
+        },
+        {
+          "role": "SYNTHESIZER",
+          "stance": "Balanced verdict integrating all perspectives.",
+          "verdict": {
+            "final_score": 0.45,
+            "final_layer": 3,
+            "confidence": "low",
+            "key_risk": "Source inaccessibility makes this entry epistemically toxic. It cannot be validated, falsified, or properly cited.",
+            "rationale": "ADVOCATE makes valid theoretical points, but SKEPTIC's source-access objection is fatal. EVIDENCE shows that even with strong L1 cluster support, a truncated popular-science source for an extraordinary claim must be downgraded. SYNTHESIZER assigns L3 (mathematical fiction) pending primary-source recovery."
+          },
+          "recommendation": "QUARANTINE in Layer 3 for 7 days. If no primary source (preprint or peer-reviewed paper) is obtained, PERMANENTLY DEMOTE. Do not allow downstream hypotheses (e.g., H6) to depend on this entry."
+        }
+      ],
+      "module_version": "c9_hypothesis_debate_v1.1"
+    },
+    {
+      "entry_id": "C9-2026-UAP-001",
+      "debate_id": "C9-DEBATE-001-20260827",
+      "timestamp": "2026-08-27T22:51:00Z",
+      "participants": [
+        {
+          "role": "ADVOCATE",
+          "stance": "This entry represents a valuable contribution to the C9 Assembly framework.",
+          "points": [
+            "Methodology proposed (isotope fingerprinting, crystallography, chirality assays) is rigorous L1 science",
+            "Loeb has direct experience with isotopic analysis of interstellar meteor fragments (IM1)",
+            "Framework correctly identifies the confounder: adversarial tech mislabeled as alien",
+            "Policy advocacy is appropriately conditional ('if such materials exist') \u2014 no overclaim",
+            "UAP Science Advisory Council provides institutional context for evidence evaluation"
+          ]
+        },
+        {
+          "role": "SKEPTIC",
+          "stance": "This entry contains significant epistemic risks that threaten its validity.",
+          "points": [
+            "Entire value proposition depends on unverified premise: existence of retrieved non-human materials",
+            "Grusch testimony (July 2023) remains unsubstantiated by first-hand physical evidence after 3+ years",
+            "Intelligence-community disinformation scenario is plausible and would explain lack of material release",
+            "Framework is sound but may be a solution in search of a problem \u2014 like designing a unicorn detector",
+            "Score 0.65 may overstate value if no materials ever materialize"
+          ]
+        },
+        {
+          "role": "EVIDENCE",
+          "stance": "Objective assessment of available data and methodology.",
+          "points": [
+            "Claim type: Conditional policy framework + extraordinary existence claim",
+            "Source quality: OP-ED by credentialed scientist \u2014 medium-high for methodology, low for existence claim",
+            "Peer review status: N/A (op-ed)",
+            "Empirical anchoring: SPLIT \u2014 methodology is L1; existence premise is L2/L3",
+            "Theoretical grounding: HIGH \u2014 isotope geochemistry and bio-chirality are established fields",
+            "Risk disclosure: HIGH \u2014 Loeb explicitly acknowledges the adversarial-tech confounder",
+            "Cluster overlap: Shares [1,4,8] with 6 L1 entries \u2014 strong methodological support network"
+          ]
+        },
+        {
+          "role": "SYNTHESIZER",
+          "stance": "Balanced verdict integrating all perspectives.",
+          "verdict": {
+            "final_score": 0.65,
+            "final_layer": 2,
+            "confidence": "medium",
+            "key_risk": "Conditional premise may never be satisfied, rendering framework permanently inert. 12-month review deadline essential.",
+            "rationale": "ADVOCATE and EVIDENCE agree: the methodology is sound L1 science. SKEPTIC correctly identifies the existence-premise problem but overstates it \u2014 frameworks can have value even if their triggering condition is rare. The adversarial-tech confounder is properly acknowledged. SYNTHESIZER maintains L2 at 0.65. Entry is a physics-constrained search template, analogous to MATSCI-004."
+          },
+          "recommendation": "MAINTAIN as L2 framework. SET 12-MONTH REVIEW: if no materials released and analyzed by Aug 2027, demote methodology to L1 standalone (independent of UAP context) and reclassify entry as L3 'unfalsified hypothesis'. Continue Galileo Project multi-sensor data collection as parallel L1 path."
+        }
+      ],
+      "module_version": "c9_hypothesis_debate_v1.1"
+    },
+    {
+      "entry_id": "C9-2026-PHIL-001",
+      "debate_id": "C9-DEBATE-PHIL001-20260827",
+      "timestamp": "2026-08-27T22:51:00Z",
+      "synthesizer_verdict": {
+        "final_score": 0.58,
+        "final_layer": 2,
+        "confidence": "medium",
+        "key_risk": "Metaphorical reasoning from physics to politics is powerful but dangerous.",
+        "rationale": "Conceptual framework with explicit risk disclosure. Maintain L2 pending formalization."
+      },
+      "recommendation": "MAINTAIN as L2. PRIORITIZE formalization via agent-based model. Review in 90 days.",
+      "module_version": "c9_hypothesis_debate_v1.1"
+    },
+    {
+      "entry_id": "C9-2026-QG-006",
+      "debate_id": "C9-DEBATE-QG006-20260827",
+      "timestamp": "2026-08-27T22:51:00Z",
+      "synthesizer_verdict": {
+        "final_score": 0.45,
+        "final_layer": 3,
+        "confidence": "low",
+        "key_risk": "Source inaccessibility makes this entry epistemically toxic.",
+        "rationale": "Truncated popular-science source for extraordinary claim must be downgraded."
+      },
+      "recommendation": "QUARANTINE in Layer 3 for 7 days. If no primary source obtained, PERMANENTLY DEMOTE.",
+      "module_version": "c9_hypothesis_debate_v1.1"
+    },
+    {
+      "entry_id": "C9-2026-UAP-001",
+      "debate_id": "C9-DEBATE-UAP001-20260827",
+      "timestamp": "2026-08-27T22:51:00Z",
+      "synthesizer_verdict": {
+        "final_score": 0.65,
+        "final_layer": 2,
+        "confidence": "medium",
+        "key_risk": "Conditional premise may never be satisfied, rendering framework inert.",
+        "rationale": "Methodology is L1; existence premise is L2. Maintain as physics-constrained search template."
+      },
+      "recommendation": "MAINTAIN as L2. SET 12-MONTH REVIEW deadline. If no materials by Aug 2027, demote to L3.",
+      "module_version": "c9_hypothesis_debate_v1.1"
+    }
+  ],
+  "package_metadata": {
+    "format_version": "C9-PACKAGE-v2.0",
+    "date_built": "2026-08-27",
+    "builder": "Kimi K2.7",
+    "includes_readme": true,
+    "includes_debates": true,
+    "bus_compatible": true
+  }
+}
