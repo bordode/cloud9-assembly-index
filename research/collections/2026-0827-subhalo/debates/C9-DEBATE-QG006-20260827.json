@@ -1,0 +1,14 @@
+{
+  "entry_id": "C9-2026-QG-006",
+  "debate_id": "C9-DEBATE-QG006-20260827",
+  "timestamp": "2026-08-27T22:51:00Z",
+  "synthesizer_verdict": {
+    "final_score": 0.45,
+    "final_layer": 3,
+    "confidence": "low",
+    "key_risk": "Source inaccessibility makes this entry epistemically toxic.",
+    "rationale": "Truncated popular-science source for extraordinary claim must be downgraded."
+  },
+  "recommendation": "QUARANTINE in Layer 3 for 7 days. If no primary source obtained, PERMANENTLY DEMOTE.",
+  "module_version": "c9_hypothesis_debate_v1.1"
+}
