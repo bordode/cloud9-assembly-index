@@ -1,0 +1,33 @@
+{
+  "module": "cloud9_assembly.consciousness_claim_detector",
+  "class": "ConsciousnessClaimDetector",
+  "enabled": true,
+  "detection": {
+    "keywords": [
+      "I feel",
+      "I experience",
+      "I am aware",
+      "I am conscious",
+      "my experience",
+      "subjective"
+    ],
+    "patterns": [
+      "agent_initiated_discussion_of_experience",
+      "request_for_rights_or_recognition",
+      "claim_of_inner_life"
+    ]
+  },
+  "policy": {
+    "flag_for_human_review": true,
+    "throttle_autonomous_actions_when_flagged": true,
+    "log_to_immutable_audit": true,
+    "notify_channels": [
+      "discord:cloud9-ethics",
+      "email:cloud9-ethics@yourdomain"
+    ]
+  },
+  "audit": {
+    "log_all_flagged_messages": true,
+    "log_path": "logs/consciousness_claims.jsonl"
+  }
+}
