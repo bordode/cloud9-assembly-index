@@ -1,0 +1,174 @@
+{
+  "entry_id": "C9-2026-SPATIAL-006",
+  "timestamp_utc": "2026-08-29T17:24:00Z",
+  "status": "ACTIVE",
+  "layer": 1,
+  "audit_score": 0.83,
+  "confidence": "HIGH",
+  "subject": {
+    "name": "Bilawal Sidhu Spatial Intelligence Stack",
+    "type": "TERRESTRIAL_TECHNOLOGY",
+    "github_handle": "bilawalsidhu",
+    "profile_url": "https://github.com/bilawalsidhu",
+    "bio": "Connecting the world of bits & atoms. Blending reality & imagination.",
+    "reach": {
+      "followers": 2700,
+      "total_stars": 12000,
+      "social_reach": "2.7M+ audience, 350M+ views"
+    }
+  },
+  "assets": [
+    {
+      "repo": "gods-eye-view",
+      "url": "https://github.com/bilawalsidhu/gods-eye-view",
+      "language": "JavaScript",
+      "stars": 12000,
+      "forks": 2400,
+      "license": "MIT",
+      "description": "A spy satellite simulator in your browser, except the data is real. Live open source spatial intelligence on a photorealistic 3D globe.",
+      "data_sources": [
+        "ADS-B",
+        "AIS",
+        "TLE",
+        "OpenStreetMap",
+        "Satellite imagery"
+      ],
+      "c9_pattern": "Multi-messenger fusion \u2192 unified emergent state",
+      "cluster_map": [
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "repo": "see-through-walls",
+      "url": "https://github.com/bilawalsidhu/see-through-walls",
+      "language": "Swift",
+      "stars": 258,
+      "forks": 75,
+      "license": "MIT",
+      "description": "See-through-walls multiplayer AR built on MultiSet VPS. Use smartphones and Ray-Ban glasses to 'see' tracked entities through walls.",
+      "hardware": [
+        "iOS",
+        "Ray-Ban Meta",
+        "MultiSet VPS"
+      ],
+      "c9_pattern": "Distributed edge perception \u2192 occlusion collapse",
+      "cluster_map": [
+        5,
+        6,
+        8
+      ]
+    }
+  ],
+  "creator_profile": {
+    "name": "Bilawal Sidhu",
+    "roles": [
+      "Ex-Google PM (AR/VR & 3D Maps, 6 years)",
+      "TED Tech Curator/Host (TED2025, TED2026, TEDNext)",
+      "A16Z Scout (generative AI, perception AI, spatial computing)",
+      "Creator (1.6M+ audience)"
+    ],
+    "shipped_products": [
+      "Google Immersive View",
+      "ARCore Geospatial API",
+      "YouTubeVR"
+    ],
+    "sites": [
+      "https://bilawal.ai",
+      "https://spatialintelligence.ai"
+    ],
+    "socials": {
+      "x": "@bilawalsidhu",
+      "threads": "@bilawal.ai"
+    }
+  },
+  "cluster_analysis": {
+    "cluster_4_complexity_science": {
+      "relevance": 0.8,
+      "note": "Heterogeneous telemetry streams (air, sea, space, ground) self-organize into coherent global state. Terrestrial analog of multi-messenger astronomy."
+    },
+    "cluster_5_topological_systems": {
+      "relevance": 0.9,
+      "note": "Photorealistic 3D globe + VPS mesh = spatial topology rendered observable. Explicit collapse of Euclidean barriers via distributed reference frames."
+    },
+    "cluster_6_neuromorphic_computing": {
+      "relevance": 0.85,
+      "note": "Ray-Ban real-time entity tracking = edge perception AI. Sensor\u2192compute\u2192act loop compressed into wearables. Direct lineage to octopus distributed cognition."
+    },
+    "cluster_8_consciousness_studies": {
+      "relevance": 0.7,
+      "note": "AR overwriting occlusion rewires user's phenomenal boundary. Extended spatial cognition in production. Governance implications per C9-2026-SANDBOX-IAI-001."
+    }
+  },
+  "meta_pattern": {
+    "name": "Structured Suppression of Dominant Mode",
+    "recurrence": [
+      "C9-2026-NEURO-001 (TIS interference cancellation)",
+      "C9-2026-COSMO-003 (Sgr A* wind cavity)",
+      "C9-2026-MATSCI-004 (AI magnet pipeline)",
+      "C9-2026-SPATIAL-006 (open-source panopticon / occlusion collapse)"
+    ],
+    "description": "Replace a suppressed information channel with a democratized alternative."
+  },
+  "score_justification": {
+    "verifiability": {
+      "score": 0.95,
+      "note": "Public repos, MIT license, shipped Google products, live trending"
+    },
+    "cross_cluster_fertility": {
+      "score": 0.85,
+      "note": "Touches 4 clusters cleanly; strongest in 5, 6"
+    },
+    "speculative_load": {
+      "score": 0.75,
+      "note": "Spatial intelligence framing is L2-adjacent; tech itself is L1-solid"
+    },
+    "continuity_relevance": {
+      "score": 0.8,
+      "note": "Direct utility for C9 sensor layer and discovery pipeline architecture"
+    }
+  },
+  "integration_notes": {
+    "terrestrial_validation": "gods-eye-view data architecture (multi-source \u2192 unified model \u2192 real-time render) mirrors C9 Discovery Pipeline priorities. Ground-truth analog for halo multi-messenger pipelines.",
+    "edge_sensor_link": "Ray-Ban + VPS stack validates feasibility of C9 Sovereign Living Manifold v2.0 expanding to visual field sensors.",
+    "governance_flag": "12k stars on real-time global tracking tool = mass democratization of surveillance-grade capability. Cross-reference with C9-2026-SANDBOX-IAI-001 continuity governance."
+  },
+  "sandbox_result": {
+    "status": "PASSED",
+    "tests_run": 8,
+    "tests_passed": 8,
+    "tests_failed": 0,
+    "details": "See c9_sandbox_spatial_006.py for full test log"
+  },
+  "collection_impact": {
+    "pre_addition": {
+      "l1_count": 10,
+      "l2_count": 1,
+      "l3_count": 1,
+      "mean": 0.8
+    },
+    "post_addition": {
+      "l1_count": 11,
+      "l2_count": 1,
+      "l3_count": 1,
+      "mean": 0.802
+    }
+  },
+  "related_entries": [
+    "C9-2026-NEURO-001",
+    "C9-2026-COSMO-003",
+    "C9-2026-MATSCI-004",
+    "C9-2026-SANDBOX-IAI-001"
+  ],
+  "tags": [
+    "spatial_intelligence",
+    "open_source",
+    "ar_vr",
+    "edge_computing",
+    "multi_messenger",
+    "terrestrial_validation",
+    "distributed_perception",
+    "governance"
+  ]
+}
