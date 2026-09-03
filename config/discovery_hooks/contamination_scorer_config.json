@@ -1,0 +1,40 @@
+{
+  "module": "cloud9_assembly.contamination_scorer",
+  "class": "ContaminationScorer",
+  "enabled": true,
+  "domains": {
+    "astro": {
+      "background_catalogs": [
+        "WISE",
+        "Gaia",
+        "2MASS"
+      ],
+      "angular_tolerance_arcsec": 1.0,
+      "redshift_window": 0.05
+    },
+    "detector": {
+      "noise_models": [
+        "thermal_drift",
+        "scattering",
+        "alignment_error"
+      ],
+      "snr_threshold": 5.0
+    },
+    "plasma": {
+      "artifact_models": [
+        "high_pressure_pulse",
+        "laser_focusing_effect"
+      ]
+    }
+  },
+  "scoring": {
+    "overlap_weight": 0.7,
+    "contamination_flag_threshold": 0.6,
+    "assembly_downweight_rule": "linear",
+    "route_to_verify_queue_if_flagged": true
+  },
+  "audit": {
+    "log_all_scores": true,
+    "log_path": "logs/contamination_scorer.jsonl"
+  }
+}
