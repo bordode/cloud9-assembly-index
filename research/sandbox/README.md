@@ -11,6 +11,8 @@ python3 C9-SANDBOX-RUNNER-ALL.py --dna-file ~/genome/my_snps.txt   # test 005
 ```
 Verified 2026-09-20 (Subhalo): single-test mode, aggregate, and bus output all functional.
 
+Test protocols (objectives, debate-module configs, pass criteria) are documented in `C9-SANDBOX-PROTOCOLS-2026-0825-TOP5.md` (public edition; protocol 005 redacted).
+
 **Suite status (5 tests):**
 | # | Test | Entry ID | Status |
 |---|------|----------|--------|
