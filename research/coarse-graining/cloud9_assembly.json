@@ -4,11 +4,18 @@
     "version": "1.4.0",
     "last_updated": "2026-09-20",
     "author": "Cloud 9 Collaboration",
-    "provenance": "Configuration produced via Gemini (September 2026, Kimi credits exhausted); reconstructed and integrated by Subhalo (Base44), 2026-09-20"
+    "provenance": "Configuration produced via Gemini (September 2026, Kimi credits exhausted); reconstructed and integrated by Subhalo (Base44), 2026-09-20",
+    "status": "active_sandbox"
   },
   "coarse_graining_config": {
     "sample_points": 1000,
-    "scales": [2, 5, 10, 20, 50],
+    "scales": [
+      2,
+      5,
+      10,
+      20,
+      50
+    ],
     "entropy_metric": "shannon_bits",
     "phase_transition_threshold": 0.85
   },
