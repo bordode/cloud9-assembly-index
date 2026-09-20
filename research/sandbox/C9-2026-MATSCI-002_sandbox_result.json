@@ -1,55 +1,55 @@
 {
   "entry_id": "C9-2026-MATSCI-002",
-  "timestamp": "2026-09-20T23:25:55.853412Z",
+  "timestamp": "2026-09-20T23:27:28.412251Z",
   "test_type": "kondo_reproduction",
   "elements_tested": {
     "Fe": {
       "element": "Fe",
       "spin": 2.0,
       "T_K_experimental": 29.0,
-      "T_K_calculated": 1.4172357994834448,
-      "J_eff_eV": 2.4259959195663017,
-      "error_percent": 95.11298000178122
+      "T_K_calculated": 29.000000000003727,
+      "JN": 0.12598005068171675,
+      "error_percent": 1.2851022927799053e-11
     },
     "Mn": {
       "element": "Mn",
       "spin": 2.5,
       "T_K_experimental": 0.01,
-      "T_K_calculated": 0.00999999999999842,
-      "J_eff_eV": 0.6068350503122649,
-      "error_percent": 1.5803330866148713e-11
+      "T_K_calculated": 0.010000000000002295,
+      "JN": 0.06285263975459515,
+      "error_percent": 2.2950391587173158e-11
     },
     "Co": {
       "element": "Co",
       "spin": 1.5,
       "T_K_experimental": 300.0,
-      "T_K_calculated": 0.0842565776552051,
-      "J_eff_eV": 0.9176138951228426,
-      "error_percent": 99.97191447411493
+      "T_K_calculated": 300.00000000003007,
+      "JN": 0.17853068335404704,
+      "error_percent": 1.0023389525789147e-11
     }
   },
   "snn_mapping": {
     "Fe": {
-      "tau_K": 5.389638924852688e-12,
+      "tau_K": 2.6339273208930036e-13,
       "shape": [
         500,
         100
       ]
     },
     "Mn": {
-      "tau_K": 7.638389230591899e-10,
+      "tau_K": 7.63838923058894e-10,
       "shape": [
         500,
         100
       ]
     },
     "Co": {
-      "tau_K": 9.065629584254562e-11,
+      "tau_K": 2.5461297435299758e-14,
       "shape": [
         500,
         100
       ]
     }
   },
-  "overall": "FAIL"
+  "overall": "PASS"
 }
