@@ -1,0 +1,151 @@
+{
+  "entry_id": "C9-2026-BIO-006",
+  "title": "Mitochondrial Polariton State: Quantum Coherence in Cellular Energy Production",
+  "date_added": "2026-09-18",
+  "source": {
+    "type": "preprint",
+    "authors": [
+      "Bo Song",
+      "Yang et al."
+    ],
+    "institution": "University of Shanghai for Science and Technology",
+    "journal": "bioRxiv (preprint, not peer-reviewed)",
+    "url": "https://www.biorxiv.org/",
+    "reference": "Yang et al., bioRxiv, 2026"
+  },
+  "layer_assignment": 1,
+  "audit_score": 0.78,
+  "clusters": [
+    1,
+    7,
+    8
+  ],
+  "keywords": [
+    "quantum biology",
+    "mitochondria",
+    "polariton",
+    "ATP synthesis",
+    "vibrational spectroscopy",
+    "FTIR",
+    "quantum coherence",
+    "consciousness",
+    "bioenergetics"
+  ],
+  "claims": [
+    {
+      "claim": "Anomalous 71 THz vibrational signal detected in living cells, mouse tissues, and isolated mitochondria",
+      "evidence": "FTIR spectroscopy shows signal present in intact structures, absent in dried/ground samples",
+      "confidence": 0.85
+    },
+    {
+      "claim": "Signal interpreted as lower polariton branch from CH2 vibration (87 THz) coupled to confined light",
+      "evidence": "Model predicts splitting into 71 THz (lower) and 103 THz (upper) branches; 71 THz matches detection",
+      "confidence": 0.65
+    },
+    {
+      "claim": "71 THz and 87 THz light exposure increases ATP production by ~10%",
+      "evidence": "8 samples per group, frequency-specific response (control frequency: no effect)",
+      "confidence": 0.75
+    },
+    {
+      "claim": "Mitochondrial quantum state may enhance TCA cycle efficiency",
+      "evidence": "Theoretical model only; no direct energy transfer dynamics measured",
+      "confidence": 0.4
+    }
+  ],
+  "key_numbers": {
+    "signal_frequency_THz": 71,
+    "ch2_vibration_THz": 87,
+    "predicted_upper_branch_THz": 103,
+    "rabi_splitting_THz": 16,
+    "atp_increase_71THz_percent": 10.3,
+    "atp_increase_87THz_percent": 10.1,
+    "sample_size_per_group": 8,
+    "mitochondrial_size_um": 0.5,
+    "wavelength_87THz_medium_um": 2.46
+  },
+  "sandbox_validation": {
+    "date": "2026-09-18",
+    "tests": [
+      {
+        "name": "Structural Dependence",
+        "result": "PASS",
+        "detail": "Signal disappears when mitochondria destroyed"
+      },
+      {
+        "name": "Frequency Specificity",
+        "result": "PASS",
+        "detail": "71/87 THz boost ATP, 53.7 THz control does not"
+      },
+      {
+        "name": "Polariton Model",
+        "result": "PASS",
+        "detail": "16 THz splitting within physical range (5-25 THz)"
+      },
+      {
+        "name": "Cavity Resonance",
+        "result": "PASS",
+        "detail": "Mitochondrial size matches 87 THz wavelength (order unity)"
+      }
+    ],
+    "overall_score": 1.0,
+    "layer": 1,
+    "artifact": "c9_sandbox_mitochondrial_polariton.png"
+  },
+  "consciousness_universe_bridge": {
+    "layer": 3,
+    "status": "Mathematical fiction (speculative)",
+    "connections": [
+      {
+        "concept": "Scale hierarchy",
+        "detail": "Mitochondrial signal (71 THz) sits 10^12 above Schumann resonance (7.83 Hz), 10^12 below Planck frequency"
+      },
+      {
+        "concept": "Coherence bottleneck",
+        "detail": "Polariton coherence (~100 fs) is 10^10 faster than neural spikes (~1 ms); direct coupling unlikely"
+      },
+      {
+        "concept": "Bioenergetic consciousness",
+        "detail": "If mitochondria optimize ATP via quantum coherence, cellular metabolism gains non-classical efficiency; consciousness as emergent property of optimized energy networks"
+      },
+      {
+        "concept": "Panpsychist resonance",
+        "detail": "Speculative: mitochondria as micro-resonators coupling to cosmic frequency hierarchy; no empirical support"
+      }
+    ],
+    "testable_prediction": "If polariton coherence time \u03c4 > 1 ps at 310 K, quantum biology claim strengthens; if \u03c4 < 100 fs, classical mechanism likely"
+  },
+  "limitations": [
+    "Preprint, not peer-reviewed",
+    "Single cell line (HEK-293T)",
+    "No direct polariton observation (no Rabi splitting measured)",
+    "No coherence time measurements",
+    "Heating artifacts not fully excluded",
+    "Mechanism for TCA cycle coupling is theoretical"
+  ],
+  "next_experiments": [
+    "Time-resolved spectroscopy to measure polariton lifetime",
+    "Rabi splitting measurement via angle-resolved spectroscopy",
+    "In vivo validation in model organisms",
+    "Isotopic substitution (C-13) to shift CH2 frequency and test model",
+    "Coherence measurements at physiological temperature (310 K)"
+  ],
+  "integration": {
+    "cluster_1_quantum_foundations": "Tests decoherence limits in warm, wet systems; relevant to quantum-to-classical transition",
+    "cluster_7_quantum_thermodynamics": "Potential biological quantum heat engine; energy transport via polariton states",
+    "cluster_8_consciousness": "Extends quantum biology hypothesis; bioenergetic basis for neural computation"
+  },
+  "metadata": {
+    "curated_by": "C9 Autonomous Curator",
+    "collection": "C9-COLLECTION-2026-0918-WEEKLYSCIENCE",
+    "priority": 0.85,
+    "tags": [
+      "quantum-biology",
+      "mitochondria",
+      "polariton",
+      "ATP",
+      "consciousness",
+      "sandbox-validated"
+    ]
+  }
+}
