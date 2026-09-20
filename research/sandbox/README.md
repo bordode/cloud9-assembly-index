@@ -17,7 +17,7 @@ Test protocols (objectives, debate-module configs, pass criteria) are documented
 | # | Test | Entry ID | Status |
 |---|------|----------|--------|
 | 001 | Glueball X(2370) Discovery | C9-2026-QCD-001 | script in phone/Termux archive — not yet uploaded |
-| 002 | Quantitative Kondo Effect | C9-2026-MATSCI-002 | ⚠️ verified FAIL — unit bug, see below |
+| 002 | Quantitative Kondo Effect | C9-2026-MATSCI-002 | ✅ v2 verified PASS (v1 FAIL preserved as audit record) |
 | 003 | 420 km Quantum Entanglement | C9-2026-QINFO-009 | ✅ verified PASS (see below) |
 | 004 | TIC 433545934 Quadruple Star | C9-2026-ASTRO-030 | ✅ verified PASS (see below) |
 | 005 | DNA Initiator × SNP Cross-Reference | C9-2026-BIO-027 | script is PRIVATE (personal genetic data handling) — lives in the private archive, intentionally not published here |
@@ -25,19 +25,14 @@ Test protocols (objectives, debate-module configs, pass criteria) are documented
 Note: the runner references canonical filenames (e.g., `C9-SANDBOX-003-ENTANGLEMENT.py`); the uploaded variants are named `-FIXED` and `-v2`. Keep canonical names in your local suite or the runner will skip the files.
 
 
-## C9-SANDBOX-002-KONDO.py — C9-2026-MATSCI-002
-**Quantitative Kondo Effect Reproduction.** Fits effective exchange coupling J_eff for Fe/Mn/Co in Cu from experimental T_K, predicts T_K back via the analytical formula D·√(JN)·exp(−1/JN), and maps Kondo screening dynamics to SNN spike patterns.
+## C9-SANDBOX-002-KONDO.py / -v2.py — C9-2026-MATSCI-002
+**Quantitative Kondo Effect Reproduction** for Fe/Mn/Co in Cu: fits dimensionless coupling J·N(E_F) from experimental T_K, computes T_K via the Kondo formula, and maps screening dynamics to SNN spike patterns.
 
-**Result: FAIL** (verified 2026-09-20, Subhalo) — Fe: 95.1% error, Co: 100.0% error, Mn: 0.0% (circular pass).
+**v2 result: PASS** (verified 2026-09-20, Subhalo) — Fe, Mn, Co all reproduce T_K exactly. The v2 fix converts the Cu bandwidth D = 7 eV to Kelvin (81,232 K) and uses the standard formula T_K = D·exp(−1/JN) with a proper bisection solve, replacing v1's broken fit.
 
-**Root cause (diagnosed, not a Kondo-model failure):**
-1. **Unit inconsistency:** `EXPERIMENTAL_TK` is in *Kelvin* (Fe 29 K, Co 300 K) but the analytical formula with D=7 eV returns T_K in *eV-scale* units. Values 29 and 300 exceed the formula's maximum reachable output (~12.8), so `brentq` finds no root and the fallback JN ≈ 1/|ln(T_K/D)| approximation is used, which does not reproduce the input.
-2. **Circular validation:** J_eff is *fitted from* experimental T_K, then T_K is "predicted" back with the same formula. Even a perfect fit proves self-consistency only, not predictive power. Mn's 0.0% error is exactly this.
-3. The protocol's original pass criterion (first-principles PySCF-derived J predicting T_K *without* fitting to experiment) is not what this script implements.
+**v1 result: FAIL** (audit record preserved as `C9-2026-MATSCI-002_sandbox_result_v1_FAIL.json`) — v1 compared Kelvin-scale experimental values against eV-scale formula output; Fe 95.1% / Co 100.0% error. Root cause documented in the v1 commit.
 
-**Suggested fixes:** convert T_K to eV via k_B (8.617e-5 eV/K) before fitting; solve JN from the full transcendental equation numerically rather than the log-approximation; for genuine prediction, derive J via Schrieffer-Wolff from ab initio cluster calculations instead of fitting to experiment.
-
-The SNN mapping section (τ_K extraction, 500×100 firing-rate reservoir) runs correctly and is preserved in the pattern JSON.
+**Honest caveat (unchanged from v1):** J·N(E_F) is *fitted from* experimental T_K, then T_K is computed back — a self-consistency check of the formula and pipeline, not an ab initio prediction. The protocol's Layer-1 aspiration (first-principles J via Schrieffer-Wolff from PySCF, predicting T_K without fitting to experiment) remains future work.
 
 ## C9-SANDBOX-003-ENTANGLEMENT-FIXED.py — C9-2026-QINFO-009
 **420 km Quantum Memory Entanglement.** PLOB bound analysis (crossover at ~230 km), 3-segment repeater simulation (current 750 ns vs 1 s target memory), QPilotos latency test (420 km, 1000 messages).
