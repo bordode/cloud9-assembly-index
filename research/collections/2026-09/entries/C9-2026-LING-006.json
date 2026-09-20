@@ -1,0 +1,75 @@
+{
+  "entry_id": "C9-2026-LING-006",
+  "title": "Symbolic Density vs. Morphological Stacking: Cantonese and Agglutinative Languages as Competing Architectures for Emergent Agency",
+  "collection": "C9-COLLECTION-2026-0915-LINGUISTIC-ARCHITECTURES",
+  "timestamp": "2026-09-15T22:12:00-07:00",
+  "layer": 1,
+  "layer_rationale": "Established linguistic typology and information theory; no speculative physics required",
+  "audit_score": 0.87,
+  "clusters": [
+    3,
+    6,
+    8
+  ],
+  "cluster_mapping": {
+    "3": "Quantum Information & Complexity - entropy density, compression-decompression cycles",
+    "6": "Neuromorphic Computing - SNN mapping, spike-timing analogies, control planes",
+    "8": "Consciousness Studies - agency emergence, metacognition, stance manipulation"
+  },
+  "source_analysis": {
+    "primary_comparison": {
+      "cantonese": {
+        "type": "Analytic + High symbolic density",
+        "tones": "6-9 (contour + register)",
+        "sfps": "~30 sentence-final particles",
+        "entropy_per_syllable": "~7-8 bits",
+        "architecture": "RISC + SIMD (high-frequency ops + vectorized modal operations)",
+        "snap_transition": "Event-driven, syllable-level, quantized modal jumps"
+      },
+      "agglutinative": {
+        "languages": [
+          "Hungarian",
+          "Finnish",
+          "Turkish"
+        ],
+        "type": "Synthetic + Recursive morphological stacking",
+        "cases": "Finnish 15+, Hungarian 18+, Turkish 6+ with chaining",
+        "architecture": "Stack-based VM (morphemes as instructions, recursive scope)",
+        "snap_transition": "Accumulative, morpheme-boundary, compositional buildup"
+      }
+    },
+    "agency_facilitation": {
+      "cantonese_advantage": "Pragmatic agency - SFP control plane for stance/evidentiality, high-dimensional modal space",
+      "agglutinative_advantage": "Computational agency - Turing-complete semantic construction, precise scope engineering",
+      "hybrid_requirement": "Both layers coupled for full emergent agency"
+    }
+  },
+  "c9_integration": {
+    "thalamic_analogy": "Cantonese SFPs as modal gating (thalamic resonance)",
+    "cortical_analogy": "Agglutinative morphology as hierarchical composition (cortical stacking)",
+    "snap_mechanism": "Oscillation between compression (high-density symbols) and decompression (recursive expansion)",
+    "neuromorphic_mapping": {
+      "tones": "Frequency-modulated spike trains (STDP-compatible)",
+      "sfps": "Modulatory gating signals (dopaminergic-like)",
+      "morpheme_chains": "Synaptic weight accumulation via stacked plasticity rules"
+    }
+  },
+  "testable_predictions": [
+    "SNN models with tonal input layers will show faster state-transition latency than frequency-coded equivalents",
+    "Morphological parsing agents will demonstrate higher compositional generalization on novel concept formation tasks",
+    "Hybrid architectures (modal gating + recursive composition) will outperform either alone on theory-of-mind benchmarks"
+  ],
+  "next_experiments": [
+    "Implement Cantonese SFP parser as modulatory layer in Lava SNN",
+    "Compare A_c of agglutinative word-formation vs. Cantonese SFP combinations",
+    "Test 'snap' transition in BIRTH v3 using dual encoding streams"
+  ],
+  "related_entries": [
+    "C9-2026-NEURO-001",
+    "C9-2026-QG-005",
+    "C9-2026-SANDBOX-IAI-001"
+  ],
+  "confidence": 0.82,
+  "key_risk": "Linguistic-computational analogies may be metaphorically compelling but mechanistically underspecified; requires empirical validation in neuromorphic hardware",
+  "status": "FORMALIZED - READY FOR REPOSITORY"
+}
