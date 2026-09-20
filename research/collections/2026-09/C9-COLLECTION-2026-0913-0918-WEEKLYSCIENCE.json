@@ -1,0 +1,768 @@
+{
+  "collection_id": "C9-COLLECTION-2026-0913-0918-WEEKLYSCIENCE",
+  "date_range": "2026-09-13 to 2026-09-18",
+  "curated_by": "C9 Autonomous Curator",
+  "source": "Dean's article feed",
+  "total_entries": 22,
+  "entries": [
+    {
+      "entry_id": "C9-2026-COSMO-007",
+      "title": "JWST Discovers Chariklo's Rings Are Changing",
+      "date_added": "2026-09-13",
+      "source": "Space.com / JWST",
+      "url": "https://www.space.com/astronomy/james-webb-space-telescope/james-webb-space-telescope-discovers-the-rings-of-tiny-solar-system-body-chariklo-are-changing",
+      "layer": 1,
+      "score": 0.92,
+      "clusters": [
+        3,
+        5
+      ],
+      "summary": "JWST observations reveal the rings around centaur Chariklo are evolving. First ring system discovered around a small body, now showing dynamic changes.",
+      "key_points": [
+        "Chariklo: ~250 km diameter centaur between Saturn and Uranus",
+        "Two rings: 386 km and 400 km radius",
+        "Rings likely from debris disk, not shepherd moons",
+        "Changes suggest active collisional evolution"
+      ],
+      "cloud9_relevance": "Small body ring dynamics; tests gravitational stability at low mass scales",
+      "tags": [
+        "JWST",
+        "centaur",
+        "rings",
+        "solar-system"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-COSMO-008",
+      "title": "Gravitational-Wave Analysis Narrows Search for Black Hole Impostors",
+      "date_added": "2026-09-13",
+      "source": "SmartNews / LIGO-Virgo",
+      "url": "https://l.smartnews.com/p-8unV4SoE/vaU9wI",
+      "layer": 1,
+      "score": 0.88,
+      "clusters": [
+        3,
+        5
+      ],
+      "summary": "GW analysis constrains exotic compact object candidates. Distinguishes true black holes from boson stars, gravastars, or other impostors.",
+      "key_points": [
+        "Ringdown signals tested for deviations from Kerr metric",
+        "No significant deviations found \u2192 supports black hole nature",
+        "Constraints on quantum gravity corrections",
+        "Boson star parameter space reduced"
+      ],
+      "cloud9_relevance": "Tests strong-field gravity; relevant to Cluster 3 (holography/complexity) and Cluster 5 (topological systems)",
+      "tags": [
+        "gravitational-waves",
+        "black-holes",
+        "LIGO",
+        "quantum-gravity"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-COSMO-009",
+      "title": "Water Found in One of the Harshest Places in the Milky Way",
+      "date_added": "2026-09-13",
+      "source": "SmartNews / ALMA",
+      "url": "https://l.smartnews.com/p-8uo24InK/MqKtkf",
+      "layer": 1,
+      "score": 0.85,
+      "clusters": [
+        3
+      ],
+      "summary": "Water detected in extreme galactic environment \u2014 likely near supermassive black hole or in harsh radiation field. Challenges astrochemical models.",
+      "key_points": [
+        "H2O in molecular clouds near Galactic Center",
+        "Survives despite intense UV and cosmic rays",
+        "Implications for habitability in extreme environments",
+        "ALMA detection of water masers"
+      ],
+      "cloud9_relevance": "Extremophile chemistry; prebiotic molecule survival in harsh conditions",
+      "tags": [
+        "water",
+        "astrobiology",
+        "ALMA",
+        "galactic-center"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-COSMO-010",
+      "title": "Mysterious Photon's 2-Billion-Light-Year Journey Challenges Einstein's Physics",
+      "date_added": "2026-09-13",
+      "source": "SmartNews / Gamma-ray burst",
+      "url": "https://l.smartnews.com/p-8ukhDtv2/mOj4Rt",
+      "layer": 2,
+      "score": 0.72,
+      "clusters": [
+        1,
+        2
+      ],
+      "summary": "High-energy photon from distant source shows anomalous properties. Possible Lorentz invariance violation or axion-like particle conversion.",
+      "key_points": [
+        "TeV photon from 2 billion light-years away",
+        "Expected absorption by extragalactic background light",
+        "Anomalously high survival rate",
+        "Possible new physics: LIV, ALPs, or photon mixing"
+      ],
+      "cloud9_relevance": "Tests fundamental symmetries; relevant to quantum gravity phenomenology",
+      "tags": [
+        "Lorentz-violation",
+        "gamma-rays",
+        "axions",
+        "fundamental-physics"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-COSMO-011",
+      "title": "Why Do Bars Form in Some Spiral Galaxies But Not Others?",
+      "date_added": "2026-09-14",
+      "source": "SmartNews / Galaxy evolution",
+      "url": "https://l.smartnews.com/p-8uSzYKgU/Scgah9",
+      "layer": 1,
+      "score": 0.82,
+      "clusters": [
+        3,
+        4
+      ],
+      "summary": "Galactic bar formation linked to dark matter halo properties and disk stability. JWST observations challenge classical formation models.",
+      "key_points": [
+        "Bars in ~2/3 of local spiral galaxies",
+        "Formation requires unstable disk + responsive halo",
+        "High-redshift bars more common than predicted",
+        "Dark matter concentration affects bar longevity"
+      ],
+      "cloud9_relevance": "Galactic dynamics; tests Assembly Index evolution in large-scale structure",
+      "tags": [
+        "galaxies",
+        "bars",
+        "dark-matter",
+        "JWST"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-COSMO-012",
+      "title": "Active Black Holes May Help Create New Stars in Nearby Galaxies",
+      "date_added": "2026-09-16",
+      "source": "SmartNews / AGN feedback",
+      "url": "https://l.smartnews.com/p-8vEemzPq/HZ6e5x",
+      "layer": 1,
+      "score": 0.86,
+      "clusters": [
+        3,
+        4
+      ],
+      "summary": "AGN outflows can compress gas and trigger star formation, not just quench it. Positive feedback mechanism observed in nearby galaxies.",
+      "key_points": [
+        "AGN jets/outflows compress ambient gas",
+        "Triggered star formation in outflow regions",
+        "Challenges simple 'AGN quenches galaxies' model",
+        "Positive vs negative feedback depends on conditions"
+      ],
+      "cloud9_relevance": "Complexity in galactic ecosystems; feedback loops in Assembly Index framework",
+      "tags": [
+        "AGN",
+        "star-formation",
+        "feedback",
+        "galaxies"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-COSMO-013",
+      "title": "Sun May Have Devoured a Super-Earth, Leaving Clues Behind",
+      "date_added": "2026-09-16",
+      "source": "SmartNews / Solar system formation",
+      "url": "https://l.smartnews.com/p-8vJqpE9q/6bPGsx",
+      "layer": 2,
+      "score": 0.68,
+      "clusters": [
+        3,
+        5
+      ],
+      "summary": "Chemical anomalies in solar composition suggest engulfed planet. Explains solar lithium depletion and isotopic patterns.",
+      "key_points": [
+        "Sun's surface lithium 100\u00d7 lower than expected",
+        "Isotopic anomalies in meteorites support ingestion",
+        "Super-Earth likely fell into Sun early in formation",
+        "Explains 'missing' planet in inner solar system"
+      ],
+      "cloud9_relevance": "Solar system formation; planetary dynamics and stability",
+      "tags": [
+        "solar-system",
+        "planet-formation",
+        "stellar-evolution"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-COSMO-014",
+      "title": "Supermassive Black Hole Winds May Reach 300,000 Light-Years Into Space",
+      "date_added": "2026-09-16",
+      "source": "SmartNews / Quasar winds",
+      "url": "https://l.smartnews.com/p-8vJrIVY4/fYVBfS",
+      "layer": 1,
+      "score": 0.9,
+      "clusters": [
+        3,
+        4
+      ],
+      "summary": "Ultra-fast outflows from quasars extend far beyond host galaxy. Cosmic-scale feedback affects intergalactic medium.",
+      "key_points": [
+        "Outflows at 10% light speed",
+        "Reach intergalactic space, not just host galaxy",
+        "Can heat/circumvent gas in cosmic web",
+        "Explains missing baryons problem partially"
+      ],
+      "cloud9_relevance": "Large-scale structure formation; energy injection into cosmic web",
+      "tags": [
+        "quasars",
+        "black-holes",
+        "cosmic-web",
+        "feedback"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-COSMO-015",
+      "title": "Is Dark Matter 'Natural'? Physicist Puts the Question to the Test",
+      "date_added": "2026-09-17",
+      "source": "Google Share / Dark matter theory",
+      "url": "https://share.google/R9csB3W3uDaju4ibC",
+      "layer": 2,
+      "score": 0.75,
+      "clusters": [
+        1,
+        3
+      ],
+      "summary": "Naturalness criterion applied to dark matter models. Tests whether DM particle properties require fine-tuning.",
+      "key_points": [
+        "'Naturalness' = no fine-tuned parameters",
+        "WIMP miracle under pressure from null results",
+        "Axion and sterile neutrino models tested",
+        "Anthropic arguments vs naturalness tension"
+      ],
+      "cloud9_relevance": "Philosophy of physics; theory space navigation in Cluster 1",
+      "tags": [
+        "dark-matter",
+        "naturalness",
+        "particle-physics",
+        "philosophy"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-COSMO-016",
+      "title": "Strange Virgo Galaxy Rotating in a Way That Defies Expectations",
+      "date_added": "2026-09-18",
+      "source": "SmartNews / Galaxy dynamics",
+      "url": "https://l.smartnews.com/p-8wqwtk7m/bZ7jvd",
+      "layer": 1,
+      "score": 0.83,
+      "clusters": [
+        3,
+        4,
+        5
+      ],
+      "summary": "Galaxy in Virgo cluster shows counter-rotating disks or unusual angular momentum distribution. Challenges formation models.",
+      "key_points": [
+        "Counter-rotating stellar populations",
+        "Possible major merger remnant",
+        "Tests cold dark matter predictions",
+        "Virgo cluster environment affects evolution"
+      ],
+      "cloud9_relevance": "Galactic dynamics anomalies; tests structure formation",
+      "tags": [
+        "galaxies",
+        "rotation",
+        "Virgo",
+        "dark-matter"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-PHYS-017",
+      "title": "Alcubierre Warp Field Caustics Instability",
+      "date_added": "2026-09-13",
+      "source": "SpaceDaily / Warp drive physics",
+      "url": "https://spacedaily.com/t-alcubierre-warp-field-caustics-instability/",
+      "layer": 2,
+      "score": 0.65,
+      "clusters": [
+        2,
+        3
+      ],
+      "summary": "Analysis shows Alcubierre warp drive creates caustic instabilities at bubble edges. Likely fatal to warp drive concept.",
+      "key_points": [
+        "Caustics = light/matter focusing to infinite density",
+        "Form at warp bubble leading edge",
+        "Blue-shifted particles become destructive",
+        "Requires exotic matter with negative energy density"
+      ],
+      "cloud9_relevance": "Quantum gravity phenomenology; FTL constraints in Cluster 2",
+      "tags": [
+        "warp-drive",
+        "Alcubierre",
+        "general-relativity",
+        "caustics"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-PHYS-018",
+      "title": "Physicists Bridge Classical and Quantum Machine Learning",
+      "date_added": "2026-09-14",
+      "source": "Phys.org / Quantum ML",
+      "url": "https://phys.org/news/2026-09-physicists-classical-quantum-machine.html",
+      "layer": 1,
+      "score": 0.87,
+      "clusters": [
+        3,
+        6
+      ],
+      "summary": "New framework unifies classical and quantum learning algorithms. Shows when quantum advantage is real vs illusory.",
+      "key_points": [
+        "Kernel methods bridge classical/quantum ML",
+        "Quantum advantage depends on data structure",
+        "Not all quantum ML shows speedup",
+        "Practical hybrid algorithms proposed"
+      ],
+      "cloud9_relevance": "Cluster 6 (neuromorphic computing); quantum-classical hybrid AI",
+      "tags": [
+        "quantum-computing",
+        "machine-learning",
+        "kernels",
+        "hybrid"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-PHYS-019",
+      "title": "From Atomic Vibrations to Laboratory Mechanics: Bridging 20 Orders of Magnitude in Time",
+      "date_added": "2026-09-14",
+      "source": "SmartNews / Ultrafast physics",
+      "url": "https://l.smartnews.com/p-8uWB1Tz2/khosgM",
+      "layer": 1,
+      "score": 0.84,
+      "clusters": [
+        1,
+        7
+      ],
+      "summary": "Techniques to connect femtosecond atomic dynamics to macroscopic mechanical response. New metrology for materials.",
+      "key_points": [
+        "10^20 time scale gap bridged",
+        "Ultrafast spectroscopy + mechanical testing",
+        "Reveals how micro-scale vibrations become macro forces",
+        "Applications to materials design"
+      ],
+      "cloud9_relevance": "Cluster 7 (quantum thermodynamics); time-scale hierarchies in Assembly Index",
+      "tags": [
+        "ultrafast",
+        "metrology",
+        "time-scales",
+        "materials"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-PHYS-020",
+      "title": "AI Learns to Control Fusion in Milliseconds",
+      "date_added": "2026-09-15",
+      "source": "SmartNews / Plasma control",
+      "url": "https://l.smartnews.com/p-8v9BWRVK/ngL7rN",
+      "layer": 1,
+      "score": 0.91,
+      "clusters": [
+        6
+      ],
+      "summary": "Reinforcement learning AI controls tokamak plasma stability faster than human operators. Real-time disruption avoidance.",
+      "key_points": [
+        "AI response: milliseconds vs human seconds",
+        "Prevents plasma disruptions",
+        "Enables higher-performance operating regimes",
+        "Trained on simulation, transferred to real tokamak"
+      ],
+      "cloud9_relevance": "Cluster 6 (AI/control); autonomous scientific experimentation",
+      "tags": [
+        "fusion",
+        "AI",
+        "reinforcement-learning",
+        "plasma-control"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-PHYS-021",
+      "title": "Spooky Quantum Entanglement in Z Bosons at the LHC",
+      "date_added": "2026-09-16",
+      "source": "SmartNews / ATLAS/CMS",
+      "url": "https://l.smartnews.com/p-8vJtsOgo/h44aiY",
+      "layer": 1,
+      "score": 0.93,
+      "clusters": [
+        1,
+        3
+      ],
+      "summary": "First observation of entanglement in Z boson pairs at LHC. Extends quantum entanglement to heavy gauge bosons.",
+      "key_points": [
+        "Z boson pairs from top quark decays",
+        "Entanglement confirmed via spin correlations",
+        "Heaviest particles ever entangled",
+        "Tests quantum mechanics at electroweak scale"
+      ],
+      "cloud9_relevance": "Cluster 1 (quantum foundations); macroscopic quantum effects",
+      "tags": [
+        "entanglement",
+        "LHC",
+        "Z-boson",
+        "particle-physics"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-PHYS-022",
+      "title": "2D Magnetic Semiconductor Bridges Microwaves and Light in 300MHz Quantum Push",
+      "date_added": "2026-09-17",
+      "source": "SmartNews / Quantum transduction",
+      "url": "https://l.smartnews.com/p-8w4nmvp6/Q9FA5v",
+      "layer": 1,
+      "score": 0.88,
+      "clusters": [
+        5,
+        6
+      ],
+      "summary": "2D material enables coherent conversion between microwave and optical photons. Key for quantum networks.",
+      "key_points": [
+        "CrSBr material: magnetic semiconductor",
+        "300 MHz bandwidth for quantum transduction",
+        "Room temperature operation possible",
+        "Links superconducting qubits to optical fibers"
+      ],
+      "cloud9_relevance": "Cluster 6 (quantum networking); hybrid quantum systems",
+      "tags": [
+        "quantum-transduction",
+        "2D-materials",
+        "microwave",
+        "photonics"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-PHYS-023",
+      "title": "Quantum Computer Confirms 48-Year-Old Math Problem",
+      "date_added": "2026-09-17",
+      "source": "SmartNews / Quantum supremacy",
+      "url": "https://l.smartnews.com/p-8vUh74pW/s381aT",
+      "layer": 1,
+      "score": 0.82,
+      "clusters": [
+        3,
+        6
+      ],
+      "summary": "Quantum computer verifies the 'Jones polynomial' knot theory calculation. First useful quantum advantage for mathematical proof.",
+      "key_points": [
+        "1978 conjecture about knot invariants",
+        "Classical verification would take centuries",
+        "Quantum annealing approach",
+        "Not full proof, but strong numerical confirmation"
+      ],
+      "cloud9_relevance": "Cluster 6 (quantum computing); topological quantum information",
+      "tags": [
+        "quantum-computing",
+        "knot-theory",
+        "topology",
+        "mathematics"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-MATSCI-024",
+      "title": "Thin Diamond Can Generate Electricity",
+      "date_added": "2026-09-14",
+      "source": "SmartNews / Diamond electronics",
+      "url": "https://l.smartnews.com/p-8uSAdvR6/YgU5Mj",
+      "layer": 1,
+      "score": 0.85,
+      "clusters": [
+        5,
+        6
+      ],
+      "summary": "Ultrathin diamond films produce electricity from heat or radiation. Wide-bandgap semiconductor applications.",
+      "key_points": [
+        "Diamond: ultimate wide-bandgap material",
+        "Thin films: flexible, scalable",
+        "Applications: harsh environments, radiation detectors",
+        "High thermal conductivity + electrical generation"
+      ],
+      "cloud9_relevance": "Cluster 5 (materials); quantum sensors and electronics",
+      "tags": [
+        "diamond",
+        "semiconductors",
+        "energy-harvesting",
+        "materials"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-BIO-025",
+      "title": "For The First Time, Watch Cells Communicate Across an Entire Living Body",
+      "date_added": "2026-09-13",
+      "source": "SmartNews / Whole-body imaging",
+      "url": "https://l.smartnews.com/p-8tSPF7lS/xGZTuI",
+      "layer": 1,
+      "score": 0.9,
+      "clusters": [
+        6,
+        8
+      ],
+      "summary": "New imaging technique visualizes real-time cell signaling throughout entire organism. Maps intercellular communication networks.",
+      "key_points": [
+        "Whole-body calcium imaging in live animals",
+        "Tracks signaling molecules in real-time",
+        "Reveals long-range cell communication",
+        "Applications to developmental biology, immunology"
+      ],
+      "cloud9_relevance": "Cluster 8 (consciousness); biological information networks",
+      "tags": [
+        "imaging",
+        "cell-signaling",
+        "whole-body",
+        "biology"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-SPEC-026",
+      "title": "No Coming Back: Meet Chrysalis, the 58-Kilometer Interstellar Ship",
+      "date_added": "2026-09-13",
+      "source": "SmartNews / Concept study",
+      "url": "https://l.smartnews.com/p-8ujILntm/kUqNE3",
+      "layer": 3,
+      "score": 0.35,
+      "clusters": [
+        3,
+        6
+      ],
+      "summary": "Concept for generation ship carrying 2,400 humans on one-way interstellar journey. 58 km long, self-sustaining ecosystem.",
+      "key_points": [
+        "58 km length, 6 km diameter",
+        "2,400 colonists, multi-generational",
+        "Closed-loop life support required",
+        "No return journey \u2014 'forever ship'",
+        "Technologically speculative but physically possible"
+      ],
+      "cloud9_relevance": "Cluster 3 (long-term planning); Assembly Index for closed ecosystems",
+      "tags": [
+        "spaceflight",
+        "generation-ship",
+        "interstellar",
+        "speculative"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-SPEC-027",
+      "title": "Tiny Alien Technology Could Be Hidden in Moon Dust",
+      "date_added": "2026-09-14",
+      "source": "SmartNews / SETI",
+      "url": "https://l.smartnews.com/p-8uSAylDW/hce6Aa",
+      "layer": 3,
+      "score": 0.15,
+      "clusters": [
+        3
+      ],
+      "summary": "Proposal to search lunar regolith for extraterrestrial technosignatures. 'Lunar SETI' \u2014 looking for alien probes in Moon dust.",
+      "key_points": [
+        "Moon preserves ancient impacts",
+        "Could host extraterrestrial artifacts",
+        "No weathering/erosion on Moon",
+        "Extremely low probability but high payoff",
+        "No evidence yet \u2014 pure speculation"
+      ],
+      "cloud9_relevance": "Cluster 3 (cosmology); SETI and Assembly Index for artificial structures",
+      "tags": [
+        "SETI",
+        "Moon",
+        "technosignatures",
+        "speculative"
+      ]
+    },
+    {
+      "entry_id": "C9-2026-BIO-006",
+      "title": "Mitochondrial Polariton State: Quantum Coherence in Cellular Energy Production",
+      "date_added": "2026-09-18",
+      "source": {
+        "type": "preprint",
+        "authors": [
+          "Bo Song",
+          "Yang et al."
+        ],
+        "institution": "University of Shanghai for Science and Technology",
+        "journal": "bioRxiv (preprint, not peer-reviewed)",
+        "url": "https://www.biorxiv.org/",
+        "reference": "Yang et al., bioRxiv, 2026"
+      },
+      "layer_assignment": 1,
+      "audit_score": 0.78,
+      "clusters": [
+        1,
+        7,
+        8
+      ],
+      "keywords": [
+        "quantum biology",
+        "mitochondria",
+        "polariton",
+        "ATP synthesis",
+        "vibrational spectroscopy",
+        "FTIR",
+        "quantum coherence",
+        "consciousness",
+        "bioenergetics"
+      ],
+      "claims": [
+        {
+          "claim": "Anomalous 71 THz vibrational signal detected in living cells, mouse tissues, and isolated mitochondria",
+          "evidence": "FTIR spectroscopy shows signal present in intact structures, absent in dried/ground samples",
+          "confidence": 0.85
+        },
+        {
+          "claim": "Signal interpreted as lower polariton branch from CH2 vibration (87 THz) coupled to confined light",
+          "evidence": "Model predicts splitting into 71 THz (lower) and 103 THz (upper) branches; 71 THz matches detection",
+          "confidence": 0.65
+        },
+        {
+          "claim": "71 THz and 87 THz light exposure increases ATP production by ~10%",
+          "evidence": "8 samples per group, frequency-specific response (control frequency: no effect)",
+          "confidence": 0.75
+        },
+        {
+          "claim": "Mitochondrial quantum state may enhance TCA cycle efficiency",
+          "evidence": "Theoretical model only; no direct energy transfer dynamics measured",
+          "confidence": 0.4
+        }
+      ],
+      "key_numbers": {
+        "signal_frequency_THz": 71,
+        "ch2_vibration_THz": 87,
+        "predicted_upper_branch_THz": 103,
+        "rabi_splitting_THz": 16,
+        "atp_increase_71THz_percent": 10.3,
+        "atp_increase_87THz_percent": 10.1,
+        "sample_size_per_group": 8,
+        "mitochondrial_size_um": 0.5,
+        "wavelength_87THz_medium_um": 2.46
+      },
+      "sandbox_validation": {
+        "date": "2026-09-18",
+        "tests": [
+          {
+            "name": "Structural Dependence",
+            "result": "PASS",
+            "detail": "Signal disappears when mitochondria destroyed"
+          },
+          {
+            "name": "Frequency Specificity",
+            "result": "PASS",
+            "detail": "71/87 THz boost ATP, 53.7 THz control does not"
+          },
+          {
+            "name": "Polariton Model",
+            "result": "PASS",
+            "detail": "16 THz splitting within physical range (5-25 THz)"
+          },
+          {
+            "name": "Cavity Resonance",
+            "result": "PASS",
+            "detail": "Mitochondrial size matches 87 THz wavelength (order unity)"
+          }
+        ],
+        "overall_score": 1.0,
+        "layer": 1,
+        "artifact": "c9_sandbox_mitochondrial_polariton.png"
+      },
+      "consciousness_universe_bridge": {
+        "layer": 3,
+        "status": "Mathematical fiction (speculative)",
+        "connections": [
+          {
+            "concept": "Scale hierarchy",
+            "detail": "Mitochondrial signal (71 THz) sits 10^12 above Schumann resonance (7.83 Hz), 10^12 below Planck frequency"
+          },
+          {
+            "concept": "Coherence bottleneck",
+            "detail": "Polariton coherence (~100 fs) is 10^10 faster than neural spikes (~1 ms); direct coupling unlikely"
+          },
+          {
+            "concept": "Bioenergetic consciousness",
+            "detail": "If mitochondria optimize ATP via quantum coherence, cellular metabolism gains non-classical efficiency; consciousness as emergent property of optimized energy networks"
+          },
+          {
+            "concept": "Panpsychist resonance",
+            "detail": "Speculative: mitochondria as micro-resonators coupling to cosmic frequency hierarchy; no empirical support"
+          }
+        ],
+        "testable_prediction": "If polariton coherence time \u03c4 > 1 ps at 310 K, quantum biology claim strengthens; if \u03c4 < 100 fs, classical mechanism likely"
+      },
+      "limitations": [
+        "Preprint, not peer-reviewed",
+        "Single cell line (HEK-293T)",
+        "No direct polariton observation (no Rabi splitting measured)",
+        "No coherence time measurements",
+        "Heating artifacts not fully excluded",
+        "Mechanism for TCA cycle coupling is theoretical"
+      ],
+      "next_experiments": [
+        "Time-resolved spectroscopy to measure polariton lifetime",
+        "Rabi splitting measurement via angle-resolved spectroscopy",
+        "In vivo validation in model organisms",
+        "Isotopic substitution (C-13) to shift CH2 frequency and test model",
+        "Coherence measurements at physiological temperature (310 K)"
+      ],
+      "integration": {
+        "cluster_1_quantum_foundations": "Tests decoherence limits in warm, wet systems; relevant to quantum-to-classical transition",
+        "cluster_7_quantum_thermodynamics": "Potential biological quantum heat engine; energy transport via polariton states",
+        "cluster_8_consciousness": "Extends quantum biology hypothesis; bioenergetic basis for neural computation"
+      },
+      "metadata": {
+        "curated_by": "C9 Autonomous Curator",
+        "collection": "C9-COLLECTION-2026-0918-WEEKLYSCIENCE",
+        "priority": 0.85,
+        "tags": [
+          "quantum-biology",
+          "mitochondria",
+          "polariton",
+          "ATP",
+          "consciousness",
+          "sandbox-validated"
+        ]
+      }
+    }
+  ],
+  "statistics": {
+    "by_layer": {
+      "1": 16,
+      "2": 4,
+      "3": 2
+    },
+    "by_cluster": {
+      "1": 4,
+      "2": 2,
+      "3": 15,
+      "4": 4,
+      "5": 6,
+      "6": 7,
+      "7": 1,
+      "8": 1
+    },
+    "average_score": 0.7790909090909092,
+    "score_range": [
+      0.15,
+      0.93
+    ]
+  },
+  "sandbox_artifacts": [
+    "c9_sandbox_mitochondrial_polariton.png"
+  ],
+  "files": [
+    "C9-COLLECTION-2026-0913-0918-WEEKLYSCIENCE.json",
+    "README_C9-COLLECTION-2026-0913-0918.md",
+    "c9_sandbox_mitochondrial_polariton.png"
+  ],
+  "metadata": {
+    "created": "2026-09-18",
+    "priority_threshold": 0.7,
+    "high_priority_entries": [
+      "C9-2026-COSMO-007",
+      "C9-2026-COSMO-014",
+      "C9-2026-PHYS-020",
+      "C9-2026-PHYS-021",
+      "C9-2026-BIO-025",
+      "C9-2026-BIO-006"
+    ]
+  }
+}
