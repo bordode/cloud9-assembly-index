@@ -1,0 +1,55 @@
+{
+  "entry_id": "C9-2026-MATSCI-002",
+  "timestamp": "2026-09-20T23:25:55.853412Z",
+  "test_type": "kondo_reproduction",
+  "elements_tested": {
+    "Fe": {
+      "element": "Fe",
+      "spin": 2.0,
+      "T_K_experimental": 29.0,
+      "T_K_calculated": 1.4172357994834448,
+      "J_eff_eV": 2.4259959195663017,
+      "error_percent": 95.11298000178122
+    },
+    "Mn": {
+      "element": "Mn",
+      "spin": 2.5,
+      "T_K_experimental": 0.01,
+      "T_K_calculated": 0.00999999999999842,
+      "J_eff_eV": 0.6068350503122649,
+      "error_percent": 1.5803330866148713e-11
+    },
+    "Co": {
+      "element": "Co",
+      "spin": 1.5,
+      "T_K_experimental": 300.0,
+      "T_K_calculated": 0.0842565776552051,
+      "J_eff_eV": 0.9176138951228426,
+      "error_percent": 99.97191447411493
+    }
+  },
+  "snn_mapping": {
+    "Fe": {
+      "tau_K": 5.389638924852688e-12,
+      "shape": [
+        500,
+        100
+      ]
+    },
+    "Mn": {
+      "tau_K": 7.638389230591899e-10,
+      "shape": [
+        500,
+        100
+      ]
+    },
+    "Co": {
+      "tau_K": 9.065629584254562e-11,
+      "shape": [
+        500,
+        100
+      ]
+    }
+  },
+  "overall": "FAIL"
+}
