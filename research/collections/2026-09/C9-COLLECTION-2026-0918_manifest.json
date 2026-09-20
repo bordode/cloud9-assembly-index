@@ -1,0 +1,22 @@
+{
+  "collection_id": "C9-COLLECTION-2026-0918-WEEKLYSCIENCE",
+  "date": "2026-09-18",
+  "entries": [
+    "C9-2026-BIO-006"
+  ],
+  "total_entries": 1,
+  "average_score": 0.78,
+  "layer_distribution": {
+    "1": 1,
+    "2": 0,
+    "3": 0
+  },
+  "sandbox_artifacts": [
+    "c9_sandbox_mitochondrial_polariton.png"
+  ],
+  "files": [
+    "C9-2026-BIO-006_mitochondrial_polariton.json",
+    "README_C9-2026-BIO-006.md",
+    "c9_sandbox_mitochondrial_polariton.png"
+  ]
+}
