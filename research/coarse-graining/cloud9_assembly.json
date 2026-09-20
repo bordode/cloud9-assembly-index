@@ -1,0 +1,35 @@
+{
+  "metadata": {
+    "project": "Cloud 9 Theoretical Research Suite",
+    "version": "1.4.0",
+    "last_updated": "2026-09-20",
+    "author": "Cloud 9 Collaboration",
+    "provenance": "Configuration produced via Gemini (September 2026, Kimi credits exhausted); reconstructed and integrated by Subhalo (Base44), 2026-09-20"
+  },
+  "coarse_graining_config": {
+    "sample_points": 1000,
+    "scales": [2, 5, 10, 20, 50],
+    "entropy_metric": "shannon_bits",
+    "phase_transition_threshold": 0.85
+  },
+  "astrophysics_correlations": {
+    "ghost_galaxies": {
+      "host_count": 3,
+      "detected_count": 48,
+      "subhalo_mass_range_solar_masses": "1e7 - 1e9",
+      "status": "integrated_subhalo_model"
+    },
+    "little_red_dots": {
+      "seed_mechanism": "direct_collapse_smbh",
+      "assembly_index_ac_min": 12.4
+    }
+  },
+  "particle_gravity_correlations": {
+    "muonium_beam": {
+      "facility": "PSI / ETH Zurich",
+      "generation": 2,
+      "particle": "muonium_atom",
+      "test_type": "universality_of_free_fall"
+    }
+  }
+}
