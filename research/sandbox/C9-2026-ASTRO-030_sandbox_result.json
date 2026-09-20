@@ -1,0 +1,31 @@
+{
+  "entry_id": "C9-2026-ASTRO-030",
+  "verification": "whfast_symplectic_10kyr",
+  "note": "Verification run by Subhalo (Base44) 2026-09-20; original script uses IAS15 (hours-long in constrained sandboxes)",
+  "nbody_stability": {
+    "ejections": false,
+    "mergers": false,
+    "a_stability": true,
+    "min_pair_distances_AU": [
+      0.049800301165246134,
+      0.42854496041400003,
+      0.43472074379129944,
+      0.4238532973507933,
+      0.4132154796324801,
+      0.03490587604170818
+    ]
+  },
+  "ac_classifier": {
+    "features": {
+      "period_ratio": 160.35714285714286,
+      "hierarchy_score": 1.0,
+      "eccentricity": 0.62,
+      "asymmetry_score": 0.62,
+      "n_mutual_eclipses": 1,
+      "n_reverse_eclipses": 0
+    },
+    "is_hierarchical": true,
+    "classification": "HIERARCHICAL_2P2"
+  },
+  "overall": "PASS"
+}
