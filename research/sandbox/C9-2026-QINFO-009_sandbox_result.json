@@ -1,0 +1,30 @@
+{
+  "entry_id": "C9-2026-QINFO-009",
+  "timestamp": "2026-09-20T23:11:37.640321Z",
+  "test_type": "quantum_entanglement_validation",
+  "repeater_simulation": {
+    "n_segments": 3,
+    "segment_length_km": 140.0,
+    "total_distance_km": 420.0,
+    "p_herald_per_segment": 0.000533592810842033,
+    "p_total_success": 6.22285751313702e-11,
+    "end_to_end_fidelity": 0.05958575346938104,
+    "end_to_end_concurrence": 0.0,
+    "decoherence_factor": 0.4980862283509049,
+    "storage_time_us": 696.9820676470881
+  },
+  "qpiolos_test": {
+    "distance_km": 420.0,
+    "mean_latency_ms": 2.0949884318129386,
+    "max_latency_ms": 2.896531631074937,
+    "rtt_ms": 4.181892405882529,
+    "stability": true,
+    "n_messages": 1000
+  },
+  "pass_criteria": {
+    "plob_crossover": true,
+    "repeater_fidelity": true,
+    "qpiolos_stability": true
+  },
+  "overall": "PASS"
+}
