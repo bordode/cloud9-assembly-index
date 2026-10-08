@@ -24,7 +24,7 @@ But this assumes that growth is decoupled from efficiency. A more grounded view 
 
 This reality underpins the thermodynamic debate between Anders Sandberg and Charles Bennett, Robin Hanson, and C. Jess Riedel. Sandberg's "aestivation hypothesis" posits that ultra-advanced intellects would choose to sleep, holding their resources until a future, expanded, colder universe where the thermodynamic cost of computation drops dramatically.
 
-However, in their 2019 rebuttal, Bennett, Hanson, and Riedel argued that waiting for the universe to cool is unnecessary and inefficient: computation can be made efficient now, and resources left waiting drift out of reach as the universe expands.
+However, in their 2019 rebuttal, Bennett, Hanson, and Riedel challenged the thermodynamic premise of the aestivation argument itself. They argued that the key assumption—that computational entropy must be dumped into the cosmological background—does not hold in the present universe, which contains other physical systems and reservoirs capable of absorbing entropy. On their analysis, waiting for the cosmic background to cool does not provide the computational advantage Sandberg et al. proposed.
 
 The resolution to this debate is not a civilization that sleeps, but one that stops growing. To get past the Great Filter, a concept Hanson formulated in 1996 to explain the eerie silence of the universe, a civilization must transition from exponential expansion to a strict thermodynamic steady state.
 
