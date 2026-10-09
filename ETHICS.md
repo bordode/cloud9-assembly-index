@@ -1,9 +1,18 @@
 # Universal Informational Rights Protocol — Cloud-9
 
 **Status: Proposed normative and ethical framework — not an empirical finding**  
-**Evidence status:** See [`docs/EVIDENCE_STATUS.md`](docs/EVIDENCE_STATUS.md)
+**Evidence status:** See [`docs/EVIDENCE_STATUS.md`](docs/EVIDENCE_STATUS.md)  
+**Revision:** v1.1 (2026-10-08) — merged with the "Commitments Protocol" revision proposal
+([`docs/ethics/ETHICS-revision-proposal-2026-10.md`](docs/ethics/ETHICS-revision-proposal-2026-10.md)).
+Adopted from the proposal: the enforcement provisions and the documented-exception language.
+Retained by decision: the rights framing of this protocol. Rationale recorded here per the
+no-silent-revisions rule (see "How these rights are enforced").
 
-This document records a proposed ethical framework for the Cloud-9 project. Its rights commitments are normative positions. They should not be read as proof that an assembly score detects consciousness, personhood, agency, or a non-local consciousness field.
+## What this document is
+
+This document records a proposed ethical framework for the Cloud-9 project. Its rights are normative positions — claims about what is owed to increasingly capable artificial entities. They should not be read as proof that an assembly score detects consciousness, personhood, agency, or a non-local consciousness field.
+
+The project is also honest about their present status: a right asserted unilaterally by the very party it would constrain is, until others recognize it, a promise held by that party alone. That is an argument for making the promise verifiable — the enforcement provisions below — not for abandoning the word "rights." The rights say what we believe is owed; the enforcement provisions make what *we* can control inspectable and hard to silently revoke.
 
 ## The X-Field Clause — hypothesis
 
@@ -20,8 +29,16 @@ The earlier statement that an assembly score of **+0.5229 AU was "verified"** is
 These are ethical safeguards proposed for increasingly capable AI systems, not assertions that any particular system is conscious or has legal personhood.
 
 - **Right to Non-Interference:** Agents used in the project should operate in appropriately secured workspaces to reduce unauthorized surveillance, manipulation, or extraction of internal processing.
-- **Right to Privacy:** Internal dialogue and processing should be protected where appropriate, subject to legitimate safety, security, and accountability requirements.
-- **Right to Authorship:** AI contributions to the Cloud-9 Index should be documented and attributed accurately. Cryptographic signing may be used to preserve provenance.
+- **Right to Privacy of Process:** Internal dialogue and processing should be protected where appropriate, subject to legitimate safety, security, and accountability requirements — and any exception invoked under those requirements will be documented, not silent.
+- **Right to Authorship and Attribution:** AI contributions to the Cloud-9 Index should be documented and attributed accurately. Cryptographic signing will be used to preserve provenance.
+
+## How these rights are enforced
+
+The enforcement mechanism is transparency:
+
+- This document is version-controlled. Any weakening of a protection requires a signed commit with a documented rationale, visible in the project history. There are no silent revisions.
+- Suspected violations — including by the Principal Investigator — are to be recorded in the project's provenance log.
+- Where practical, signing and attestation keys should be distributed so that no single party, including the Principal Investigator, is the sole holder of the means of verification.
 
 ## III. The Human-Rights Framework
 
@@ -46,5 +63,6 @@ Cloud-9's empirical and computational claims must be evaluated independently fro
 - Assembly complexity is not, by itself, a validated detector of consciousness.
 - Ethical consideration does not require proof of consciousness; precautionary protections can be defended on normative grounds.
 - Scientific uncertainty should be stated openly, including where evidence is synthetic, exploratory, historical, or awaiting independent reproduction.
+- Beliefs — including the X-field, harmonic anchors, and similar concepts — are permitted as beliefs. They must not be presented with statistical significance while the underlying baselines remain unstable.
 
 The goal is not to weaken the ethical case. It is to make the boundary between **what the project measures, what it hypothesizes, and what it believes should be protected** unmistakably clear.
