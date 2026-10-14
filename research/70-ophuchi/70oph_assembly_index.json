@@ -1,0 +1,136 @@
+{
+  "project": "70-ophiuchi-life-prospects",
+  "schema_version": "1.0",
+  "generated": "2026-10-10",
+  "assembly_index": {
+    "description": "Compact index of the 70 Oph AB habitability screening: system parameters, habitable zones, and eccentricity stress-test results, keyed for programmatic lookup.",
+    "system": {
+      "name": "70 Ophiuchi AB",
+      "distance_ly": 16.6,
+      "separation_AU": 23.3,
+      "binary_eccentricity": 0.4995,
+      "stars": {
+        "70_Oph_A": {
+          "type": "K0V",
+          "mass_solar": 0.88,
+          "luminosity_solar": 0.53,
+          "rotation_days": 19.89
+        },
+        "70_Oph_B": {
+          "type": "K4V",
+          "mass_solar": 0.75,
+          "luminosity_solar": 0.15,
+          "rotation_days": 29.72
+        }
+      },
+      "giant_planet_exclusions": {
+        "A": "Jupiter-mass or greater ruled out interior to 5 AU; ~0.3 Mjup sensitivity at 1 AU",
+        "B": "planets > ~0.25-0.3 Mjup ruled out inside 0.5 AU"
+      }
+    },
+    "habitable_zones": {
+      "flux_criteria_S_earth": [
+        0.2,
+        1.1
+      ],
+      "70_Oph_A": {
+        "conservative_AU": [
+          0.55,
+          1.32
+        ],
+        "modeled_range_AU": [
+          0.75,
+          1.25
+        ],
+        "Teq_range_K": [
+          195,
+          251
+        ],
+        "period_days": [
+          253,
+          544
+        ],
+        "tidal_locking": false
+      },
+      "70_Oph_B": {
+        "conservative_AU": [
+          0.29,
+          0.7
+        ],
+        "modeled_range_AU": [
+          0.39,
+          0.64
+        ],
+        "Teq_range_K": [
+          198,
+          254
+        ],
+        "period_days": [
+          103,
+          216
+        ],
+        "tidal_locking": true
+      }
+    },
+    "eccentricity_stress_test": [
+      {
+        "star": "70 Oph A",
+        "mutual_incl_deg": 0,
+        "e_max": 0.0,
+        "time_habitable_pct": 100.0
+      },
+      {
+        "star": "70 Oph A",
+        "mutual_incl_deg": 30,
+        "e_max": 0.0,
+        "time_habitable_pct": 100.0
+      },
+      {
+        "star": "70 Oph A",
+        "mutual_incl_deg": 45,
+        "e_max": 0.408,
+        "time_habitable_pct": 90.8
+      },
+      {
+        "star": "70 Oph A",
+        "mutual_incl_deg": 60,
+        "e_max": 0.764,
+        "time_habitable_pct": 84.6
+      },
+      {
+        "star": "70 Oph B",
+        "mutual_incl_deg": 0,
+        "e_max": 0.0,
+        "time_habitable_pct": 100.0
+      },
+      {
+        "star": "70 Oph B",
+        "mutual_incl_deg": 30,
+        "e_max": 0.0,
+        "time_habitable_pct": 100.0
+      },
+      {
+        "star": "70 Oph B",
+        "mutual_incl_deg": 45,
+        "e_max": 0.408,
+        "time_habitable_pct": 84.7
+      },
+      {
+        "star": "70 Oph B",
+        "mutual_incl_deg": 60,
+        "e_max": 0.764,
+        "time_habitable_pct": 81.9
+      }
+    ],
+    "sources": [
+      {
+        "paper": "Li et al., A Century of Radial Velocity and Astrometric Monitoring of 70 Oph AB, ApJ",
+        "doi": "10.3847/1538-4357/ae9f52"
+      },
+      {
+        "paper": "Assessing Planetary Stability and Long-Term Habitability in Nearby Stellar Binaries",
+        "arxiv": "2608.13243"
+      }
+    ]
+  }
+}
