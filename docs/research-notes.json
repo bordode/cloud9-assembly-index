@@ -1,0 +1,86 @@
+{
+  "collection": "cloud9-research-notes",
+  "description": "Dated research notes filing outside findings into the Cloud-9 frame. Each note separates established findings from the interpretive Cloud-9 reading. Notes live under docs/ in cloud9-assembly-index.",
+  "notes": [
+    {
+      "date": "2026-10-10",
+      "file": "docs/op313-blazar-ebl-signal.md",
+      "sources": [
+        "Astronomy & Astrophysics (via press summaries)",
+        "University of Geneva materials"
+      ],
+      "status": "established summarized from press; interpretive reading included; verify against primary paper before citing",
+      "title": "OP 313: a blazar's jet, read as layered information",
+      "topics": [
+        "blazar",
+        "gamma-ray astronomy",
+        "extragalactic background light",
+        "information channels"
+      ]
+    },
+    {
+      "date": "2026-10-10",
+      "file": "docs/frb20240304B-magnetar-signal.md",
+      "sources": [
+        "Science (via Mashable press summary)"
+      ],
+      "status": "established summarized from press; interpretive reading included; verify against primary paper before citing",
+      "title": "FRB 20240304B: a starquake's flash, read as a cosmic flashlight",
+      "topics": [
+        "fast radio burst",
+        "magnetar",
+        "cosmic noon",
+        "dwarf galaxy",
+        "intergalactic medium",
+        "information channels"
+      ]
+    },
+    {
+      "date": "2026-10-11",
+      "file": "docs/senescent-cells-raman-barcode.md",
+      "sources": [
+        "Nature Aging (via Earth.com, phys.org, MIT press summaries)"
+      ],
+      "status": "established summarized from press; interpretive reading included; verify against primary paper before citing",
+      "title": "Senescent cells: a light-read barcode for the 'zombie cells'",
+      "topics": [
+        "cellular senescence",
+        "Raman microscopy",
+        "non-destructive measurement",
+        "aging biology"
+      ]
+    },
+    {
+      "date": "2026-10-11",
+      "file": "docs/quantum-birthmarks-signal.md",
+      "sources": [
+        "Physical Review X (via Phys.org press summaries)"
+      ],
+      "status": "pending \u2014 referenced in index but file not yet delivered via Drive sync (2026-10-13); add when available",
+      "title": "Quantum birthmarks: a system that cannot forget where it started",
+      "topics": [
+        "quantum chaos",
+        "ergodicity breaking",
+        "quantum scarring",
+        "information persistence"
+      ]
+    },
+    {
+      "date": "2026-10-11",
+      "file": "docs/pbh-five-dimensional-signal.md",
+      "sources": [
+        "Physical Review D (abstract read directly; via Phys.org press summary)"
+      ],
+      "status": "pending \u2014 referenced in index but file not yet delivered via Drive sync (2026-10-13); add when available",
+      "title": "Primordial black holes: ancient remnants that may be five-dimensional",
+      "topics": [
+        "primordial black holes",
+        "dark dimension",
+        "extra dimensions",
+        "KM3NeT neutrino",
+        "information persistence"
+      ]
+    }
+  ],
+  "updated": "2026-10-11"
+}
