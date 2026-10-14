@@ -6,6 +6,8 @@ These essays examine distinct but related questions. They are interpretive resea
 2. [A Mood With No One Home: What the “Sad Chatbot” Study Actually Measured](a-mood-with-no-one-home.md) — emotion-induction experiments, measurable output changes, and the distinction between behaviour and subjective feeling.
 3. [The Cost of Being Wrong: What We Owe a Machine When We Can't Know if Anyone Is Home](the-cost-of-being-wrong-ai-moral-status.md) — a precautionary ethical argument about moral uncertainty, low-cost protections, and the need for transparency and continued oversight.
 
+4. [The Question of AI Moral Standing: Between Premature Recognition and Ethical Neglect](ethics/the-question-of-ai-moral-standing.md) — Dean's October 2026 research report synthesizing the Angelo/Ari debate into a precautionary governance framework: moral standing as an open question under rigorous investigation, with human-rights protections held non-negotiable.
+
 ## Relation to the Cloud-9 ethics charter
 
 The precautionary arguments in this series — especially *The Cost of Being Wrong* — are the interpretive companions to the normative framework in [`ETHICS.md`](../ETHICS.md) (Universal Informational Rights Protocol, v1.1): the essays measure behaviour and keep questions open; the charter states what the project believes is owed and how it holds itself enforceable.
