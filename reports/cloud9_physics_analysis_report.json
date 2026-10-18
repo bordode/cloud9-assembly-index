@@ -1,0 +1,108 @@
+{
+  "metadata": {
+    "framework_version": "Cloud-9 Assembly Index v2.3",
+    "analysis_date": "2026-05-16",
+    "analyst": "Cloud-9 Assembly Project",
+    "total_systems_analyzed": 4,
+    "source_articles": [
+      {
+        "title": "Strongly Nonlinear Nanocavity Exciton Polaritons in Gate-Tunable Monolayer Semiconductors",
+        "authors": "Zhi Wang et al.",
+        "journal": "Physical Review Letters",
+        "year": 2026,
+        "doi": "10.1103/gc15-qsvf",
+        "institution": "University of Pennsylvania",
+        "system_key": "polariton"
+      },
+      {
+        "title": "Image Rotation of Alv\u00e9n Waves in Rotating Magnetized Plasma",
+        "authors": "Renaud Gueroult et al.",
+        "journal": "Physical Review Letters",
+        "year": 2026,
+        "institution": "Universit\u00e9 de Toulouse / UCLA",
+        "system_key": "alfven"
+      },
+      {
+        "title": "Chemical Evolution of the Perseus Cluster: New Stellar Evolution Models",
+        "authors": "University of Tokyo / SRON team",
+        "journal": "The Astrophysical Journal",
+        "year": 2026,
+        "institution": "University of Tokyo / Netherlands Institute for Space Research",
+        "system_key": "perseus"
+      },
+      {
+        "title": "Gravitational Wave Signatures of Binary Black Holes in Ultralight Dark Matter",
+        "authors": "Rodrigo Vicente et al.",
+        "journal": "Physical Review Letters",
+        "year": 2026,
+        "institution": "University of Amsterdam / MIT",
+        "system_key": "darkmatter",
+        "key_event": "GW190728",
+        "event_date": "2019-07-28",
+        "lvk_events_analyzed": 28,
+        "dm_fits": 1,
+        "statistical_significance": "LOW (not confirmed)"
+      }
+    ]
+  },
+  "quantitative_analysis": {
+    "polariton": {
+      "system_name": "Exciton-Polariton Photonic Switch",
+      "institution": "University of Pennsylvania",
+      "assembly_index_A_c": 5.0,
+      "causal_closure_C_c": 0.8,
+      "quantum_entropy_S_q": 1.2,
+      "integrated_information_Phi": 0.7,
+      "topological_complexity_beta": 0.6,
+      "node_count": 100,
+      "temporal_depth_seconds": 1.0,
+      "layer_classification": "ESTABLISHED_PHYSICS (Layer 1)"
+    },
+    "alfven": {
+      "system_name": "Alfv\u00e9n Wave Image Rotation in Plasma",
+      "institution": "UCLA / Universit\u00e9 de Toulouse",
+      "assembly_index_A_c": 4.5,
+      "causal_closure_C_c": 0.7,
+      "quantum_entropy_S_q": 1.0,
+      "integrated_information_Phi": 0.6,
+      "topological_complexity_beta": 0.5,
+      "node_count": 200,
+      "temporal_depth_seconds": 10.0,
+      "layer_classification": "ESTABLISHED_PHYSICS (Layer 1)"
+    },
+    "perseus": {
+      "system_name": "Perseus Cluster Chemical Evolution",
+      "institution": "University of Tokyo / SRON",
+      "assembly_index_A_c": 30.0,
+      "causal_closure_C_c": 0.9,
+      "quantum_entropy_S_q": 5.0,
+      "integrated_information_Phi": 0.25,
+      "topological_complexity_beta": 3.0,
+      "node_count": 5000,
+      "temporal_depth_seconds": 1000.0,
+      "layer_classification": "MIXED: Layer 1 + Layer 2"
+    },
+    "darkmatter": {
+      "system_name": "Dark Matter via Gravitational Waves (GW190728)",
+      "institution": "University of Amsterdam / MIT",
+      "assembly_index_A_c": 210.36,
+      "causal_closure_C_c": 0.5,
+      "quantum_entropy_S_q": 70.0,
+      "integrated_information_Phi": 0.463,
+      "topological_complexity_beta": 15.0,
+      "node_count": 1000000,
+      "temporal_depth_seconds": 1000000000.0,
+      "layer_classification": "MIXED: Layer 1 + Layer 2"
+    }
+  },
+  "cross_layer_patterns": [
+    {
+      "name": "HYBRIDIZATION",
+      "description": "Coupling distinct subsystems scales A_c superlinearly."
+    },
+    {
+      "name": "ENERGY HIERARCHY",
+      "description": "A_c is proportional to log(E_max/E_min)."
+    }
+  ]
+}
