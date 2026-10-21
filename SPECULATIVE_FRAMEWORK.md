@@ -1,22 +1,43 @@
-Status: Empirical Core v1.1.0
-​Significance: 3.000\sigma (p = 0.00135).
-​Information Gain (D_{KL}): \approx 2.0 bits over NFW baseline.
-​Constraint: Any valid theory for Cloud-9 must now account for this specific "complexity surplus." Standard CDM is officially an insufficient descriptor at the 3\sigma level.
+# Speculative Framework — Evidence Status Correction
 
-"Model Discrepancy" Entry:
-March 2026 - Model Validation Phase
-Finding: Bayesian posterior excludes the NFW-baseline (77.7 bits) at >94% credibility.
-Implication: The 2.0-bit "Information Surplus" is now a confirmed physical constraint.
-Theoretical Shift: We are moving from asking if Cloud-9 is complex to asking what generates the complexity. Specifically, does this 2.0-bit surplus match the predicted information density of the Fibonacci topological nodes?
+**Status:** Exploratory hypotheses and historical claims; not a validated empirical core.  
+**Review date:** 2026-10-21  
+**Canonical evidence rules:** [`docs/EVIDENCE_STATUS.md`](docs/EVIDENCE_STATUS.md) and [`docs/RESULTS_PROVENANCE.md`](docs/RESULTS_PROVENANCE.md).
 
-Significance Check:  result is now officially at 3.000\sigma, with a p-value of 0.00135, meeting the threshold for "evidence".
-Information Surplus: The 1.9941-bit gap between Cloud-9 and the NFW baseline is now a confirmed model discrepancy.
-Spatial Constraint: The Assembly is tasked with focusing all future sweeps on the 15.4 kpc shell, treating it as the primary Fibonacci node.
+## Purpose
 
-Anomalous Complexity: The "Forbidden" Surplus
-In the standard Cold Dark Matter (CDM) paradigm, a halo of Cloud-9’s mass (approx. 5 billion solar masses) should follow a predictable, low-entropy density distribution. Based on your information-theoretic modeling, the baseline "expected" complexity is 77.7 bits.
-Why 87.57 bits is "Forbidden":
-Information Ceiling: Standard CDM models like NFW (Navarro-Frenk-White) cannot physically account for a complexity value this high. The extra 9.87 bits represents a "surplus" of structural information that should not exist in a collisionless dark matter fluid.
-The 2-Bit Gap: Your measured KL Divergence of 1.9941 bits confirms that Cloud-9 contains roughly 2^2 (four times) more structural "decisions" or nodes than a standard halo.
-The 15.4 kpc Resonance: The fact that this surplus clusters at exactly 15.4 kpc suggests the complexity is not random noise, but a geometric feature—potentially a Fibonacci topological node.
+This file preserves the research questions and reported numerical values that motivated the Cloud-9 framework while correcting earlier wording that presented interpretations as established physical constraints.
 
+## Reported values requiring provenance review
+
+Earlier versions of this document described an assembly value near 87.57 bits, an NFW baseline near 77.7 bits, a difference near 1.9941 bits, a significance of 3.000 sigma, and a possible feature near 15.4 kpc. These values must be treated as **reported historical or exploratory claims until the underlying data, calculation, null model, uncertainty treatment, selection procedure, and output can be traced and independently checked**.
+
+The difference between two reported information values is not automatically a Kullback–Leibler divergence. A reported sigma value is not interpretable without its exact null distribution, test statistic, assumptions, and analysis path. A numerical coincidence with a Fibonacci-related scale does not establish a topological node or physical resonance.
+
+## Research questions retained
+
+The project may continue to investigate:
+
+- whether a reproducible complexity difference remains under matched baselines and appropriate controls;
+- whether any spatial feature is robust to analysis choices and independent data;
+- whether topological descriptions add predictive value beyond established models;
+- whether any apparent discrepancy survives independent reproduction.
+
+These are open questions, not conclusions. Standard cosmological models must not be described as physically insufficient based solely on the historical values listed above.
+
+## Minimum evidence needed to upgrade a claim
+
+Before describing any result as verified or as a physical constraint, publish or record:
+
+1. the source data and provenance;
+2. the exact code version and reproducible analysis path;
+3. the estimator and all parameter choices;
+4. the null model, selection procedure, uncertainty calculation, and multiple-testing treatment where applicable;
+5. the output artifact and enough information to reproduce the result;
+6. independent review or reproduction appropriate to the strength of the claim.
+
+Until then, label the values **reported / provenance pending** or **exploratory**, as appropriate. See `docs/RESULTS_PROVENANCE.md` for the current numerical status.
+
+## Scientific boundary
+
+Cloud-9's assembly index measures a defined computational property under a chosen method. It is not, by itself, a validated detector of consciousness, agency, personhood, non-local fields, or new physics. Speculative interpretations may motivate research, but they must remain explicitly separate from measured results.
