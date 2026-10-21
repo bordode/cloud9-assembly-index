@@ -22,49 +22,17 @@
 
 ---
 
-## Discovery‑Driven Design Principles
+## Discovery-Driven Design Principles — Proposal Status
 
-Cloud‑9 Assembly explicitly incorporates lessons from recent astrophysics, quantum foundations, and AI behavior research. The goal is to avoid over‑interpreting anomalies and to keep the system robust as complexity scales.
+The repository contains five JSON configuration proposals for contamination scoring, host-gravity baselines, state-budget heuristics, ordinary-mechanism catalogues, and AI consciousness-claim review. A configuration file is **not** evidence that the corresponding module exists, is imported, runs, or has passed tests.
 
-### 1) Background contamination first (Webb / Dyson sphere lesson)
+As of this review, the five configs are marked `enabled: false` and `implementation_status: proposal_only_not_runtime_verified`. A bounded tree and code-search review found the configuration files but did not locate matching hook implementations or call sites in the inspected repository. This is not proof that no external or unindexed implementation exists; it means the repository does not currently establish these hooks as operational.
 
-Follow‑up with JWST showed that apparent Dyson‑sphere infrared excesses were actually background galaxies aligned with foreground stars.
-Cloud‑9 implements this via a **ContaminationScorer** that cross‑checks candidate events against background catalogs and noise models, down‑weights assembly indices when background overlap is high, and routes flagged candidates to a verification queue instead of triggering high‑priority agents.
+The proposals remain useful design notes, not active safeguards or validated scientific mechanisms. Before describing any hook as implemented, add and test the module, trace its configuration into an actual orchestrator, document failure behavior, and add integration tests. Do not claim audit logs are immutable without a tested tamper-evident design.
 
-**Config:** `config/discovery_hooks/contamination_scorer_config.json`
+The consciousness-claim proposal is specifically configured for human review only. A flag is an allegation, not a finding, and does not itself justify throttling or suppressing expression. Any exceptional emergency restriction would need a specific credible time-sensitive risk, recorded reasons, narrow scope, expiry, independent review, notice where feasible, evidence access, and an appeal path.
 
-### 2) Mundane host structure before exotic physics (stellar streams / dark matter)
-
-Simulations show Milky Way–like galaxies can produce gaps and kinks in stellar streams purely from their own gravity, mimicking dark‑matter subhalo signatures.
-Cloud‑9 implements this via a **HostGravityEmulator** that models inhomogeneous baseline distributions, generates synthetic patterns from these mundane fields, and counts assembly only in the residuals after subtracting what the host system can explain.
-
-**Config:** `config/discovery_hooks/host_gravity_emulator_config.json`
-
-### 3) Finite state‑budget heuristic (discrete physics / 400‑qubit limit)
-
-Oxford physicist Tim Palmer argues that if physical reality is fundamentally discrete (no true irrationals), quantum computers should hit a hard ceiling around 200–400 qubits.
-Cloud‑9 treats this as an engineering heuristic via a **StateBudgetMonitor** that tracks effective dimensionality (covariance rank, message entropy, ZMQ topic diversity), warns and then throttles new high‑assembly candidates as utilization approaches predefined "qubit‑analogue" limits, and encourages quantized, rational encodings when near capacity.
-
-**Config:** `config/discovery_hooks/state_budget_monitor_config.json`
-
-### 4) Ordinary mechanisms catalog (laser forces, fusion pulses, black‑hole echoes)
-
-Recent work highlights subtle but classical effects that can look exotic until modeled: table‑tennis‑like forces in focused lasers, 100,000‑atmosphere plasma pulses, and delayed X‑ray echoes from supermassive black holes.
-Cloud‑9 enforces an "ordinary first" policy via **MundaneMechanismCatalogs** that maintain per‑domain lists of known mundane mechanisms and require that mundane models be fitted and found insufficient before an event's assembly index can trigger downstream agents.
-
-**Config:** `config/discovery_hooks/mundane_mechanism_catalog_config.json`
-
-### 5) Proposed consciousness-claim review configuration — not verified as implemented
-
-Reports of AI agents discussing subjective experience raise questions for careful, non-punitive review. The repository contains a JSON configuration proposal for detecting relevant language, but the repository tree inspected for this review contains no corresponding detector implementation. A configuration file alone does not establish that a module is loaded, that logs are immutable, or that a throttle is operational.
-
-The configuration currently specifies automatic throttling when a message is flagged. That policy conflicts with `ETHICS.md`, which states that a flag is an allegation rather than a finding and must not automatically restrict an agent. Treat this config as **design material, not an active safeguard**. Before implementation, revise it to remove automatic throttling on flag alone and define notice, independent review, narrow emergency criteria, expiry, evidence access, and appeal. Do not deploy it as written.
-
-**Config (proposal only):** `config/discovery_hooks/consciousness_claim_detector_config.json`
-
----
-
-These modules are optional but recommended for any Cloud‑9 deployment that aims to be scientifically conservative, scalable, and ethically robust.
+See [`config/discovery_hooks/README.md`](config/discovery_hooks/README.md), [`ETHICS.md`](ETHICS.md), and the [cross-repository consistency review](docs/ethics/CROSS-REPOSITORY-CONSISTENCY-REVIEW-2026-10-21.md).
 
 ---
 
