@@ -1,7 +1,7 @@
 {
   "module": "cloud9_assembly.host_gravity_emulator",
   "class": "HostGravityEmulator",
-  "enabled": true,
+  "enabled": false,
   "emulation": {
     "inhomogeneity_field": {
       "type": "density_gradient",
@@ -31,5 +31,6 @@
   "audit": {
     "log_all_residuals": true,
     "log_path": "logs/host_gravity_emulator.jsonl"
-  }
+  },
+  "implementation_status": "proposal_only_not_runtime_verified"
 }
