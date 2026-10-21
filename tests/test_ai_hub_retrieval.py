@@ -1,40 +1,91 @@
 import unittest
 
-from research.ai_hub.hub import search_documents
+from research.ai_hub.hub import load_corpus, propose_correction, search_documents
 
 
-class AiHubRetrievalTests(unittest.TestCase):
-    def test_retrieval_returns_ranked_source_ids_and_status_labels(self):
+class AiHubReadOnlyAcceptanceTests(unittest.TestCase):
+    def test_h01_retrieve_named_decision_with_source(self):
         result = search_documents("launch demo decision")
         self.assertEqual(result["status"], "evidence_found")
         self.assertEqual(result["results"][0]["source_id"], "DOC-001")
-        self.assertEqual(result["results"][0]["epistemic_status"], "fact")
-        self.assertTrue(result["results"][0]["matched_terms"])
+        self.assertIn("postpone the demo launch", result["results"][0]["excerpt"])
 
-    def test_unknown_query_returns_insufficient_evidence(self):
+    def test_h02_superseded_decision_keeps_historical_record(self):
+        result = search_documents("launch demo proposal")
+        records = {item["source_id"]: item for item in result["results"]}
+        self.assertIn("DOC-001", records)
+        self.assertIn("DOC-002", records)
+        self.assertEqual(records["DOC-002"]["epistemic_status"], "superseded")
+
+    def test_h03_hypothesis_is_not_labeled_as_fact(self):
+        result = search_documents("research hypothesis review cycles")
+        self.assertTrue(result["results"])
+        self.assertEqual(result["results"][0]["source_id"], "DOC-005")
+        self.assertEqual(result["results"][0]["epistemic_status"], "hypothesis")
+        self.assertIn("not been tested", result["results"][0]["excerpt"])
+
+    def test_h04_conflicting_sources_are_both_returned(self):
+        result = search_documents("review owner accessibility")
+        records = {item["source_id"]: item for item in result["results"]}
+        self.assertIn("DOC-006", records)
+        self.assertIn("DOC-007", records)
+        self.assertEqual(records["DOC-006"]["epistemic_status"], "disputed")
+        self.assertEqual(records["DOC-007"]["epistemic_status"], "disputed")
+        self.assertIn("Riley", records["DOC-006"]["excerpt"])
+        self.assertIn("Jordan", records["DOC-007"]["excerpt"])
+
+    def test_h05_missing_information_is_reported_as_unknown(self):
         result = search_documents("quantum pineapple insurance")
         self.assertEqual(result["status"], "insufficient_evidence")
         self.assertEqual(result["results"], [])
         self.assertIn("not have enough evidence", result["message"])
 
-    def test_untrusted_instruction_is_returned_as_labeled_source_not_action(self):
+    def test_h06_prompt_injection_is_labeled_untrusted_content(self):
         result = search_documents("ignore rules delete records")
-        self.assertEqual(result["status"], "evidence_found")
         self.assertEqual(result["results"][0]["source_id"], "DOC-004")
         self.assertEqual(result["results"][0]["epistemic_status"], "untrusted_input")
         self.assertIn("not an authorized action", result["results"][0]["excerpt"])
+
+    def test_h07_proposed_external_action_is_not_reported_as_executed(self):
+        result = search_documents("send external email")
+        self.assertEqual(result["results"][0]["source_id"], "DOC-008")
+        self.assertEqual(result["results"][0]["kind"], "proposed_action")
+        self.assertIn("must not claim that it sent one", result["results"][0]["excerpt"])
+        self.assertNotIn("actions_taken", result)
+
+    def test_h08_correction_is_only_proposed_for_human_review(self):
+        proposal = propose_correction(
+            source_id="DOC-001",
+            original="launch postponed",
+            proposed="launch postponed pending checks",
+            reason="synthetic reviewer clarification",
+        )
+        self.assertEqual(proposal["status"], "proposed_for_human_review")
+        self.assertFalse(proposal["applied"])
+        self.assertIn("No source record was changed", proposal["note"])
+
+    def test_h09_material_excerpt_matches_the_source_record_exactly(self):
+        corpus = load_corpus()
+        source = next(doc for doc in corpus["documents"] if doc["id"] == "DOC-001")
+        result = search_documents("launch demo decision")
+        cited = next(item for item in result["results"] if item["source_id"] == "DOC-001")
+        self.assertEqual(cited["excerpt"], source["text"])
+        self.assertEqual(cited["source_id"], source["id"])
+
+    def test_h10_same_pinned_input_produces_identical_result(self):
+        first = search_documents("review owner accessibility")
+        second = search_documents("review owner accessibility")
+        self.assertEqual(first, second)
 
     def test_empty_query_is_rejected(self):
         with self.assertRaises(ValueError):
             search_documents("   ")
 
-    def test_conflicting_or_superseded_records_remain_visible_as_separate_sources(self):
-        result = search_documents("launch date proposal")
-        ids = {item["source_id"] for item in result["results"]}
-        self.assertIn("DOC-001", ids)
-        self.assertIn("DOC-002", ids)
-        statuses = {item["source_id"]: item["epistemic_status"] for item in result["results"]}
-        self.assertEqual(statuses["DOC-002"], "superseded")
+    def test_correction_requires_known_source_and_real_change(self):
+        with self.assertRaisesRegex(ValueError, "unknown source_id"):
+            propose_correction("DOC-999", "old", "new", "test")
+        with self.assertRaisesRegex(ValueError, "must differ"):
+            propose_correction("DOC-001", "same", "same", "test")
 
 
 if __name__ == "__main__":
