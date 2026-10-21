@@ -398,7 +398,7 @@
     },
     "C9-2026-QUANTUM-NULL": {
       "entry_id": "C9-2026-QUANTUM-NULL",
-      "title": "IBM Quantum A_c Validation \u2014 NULL RESULT",
+      "title": "cloud quantum hardware A_c Validation \u2014 NULL RESULT",
       "domain": "quantum",
       "clusters": [
         1,
@@ -415,7 +415,7 @@
         "predictive": 0.1,
         "portable": 0.2
       },
-      "data_source": "IBM Quantum 'fez' backend, job d92ouhfd07jc73dvkfdg, 4096 shots",
+      "data_source": "cloud quantum hardware 'fez' backend, job [job-id-redacted], 4096 shots",
       "methodology": "Run H\u2297\u2075 + measure circuit; encode message into qubit phases; compute A_c from measurement counts",
       "key_results": {
         "ac_score": 1641.876,
