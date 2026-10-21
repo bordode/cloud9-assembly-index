@@ -73,7 +73,7 @@
           0.0,
           1.0
         ],
-        "test": "Simulator (no noise): \u03b1_q = 1.0. IBM hardware: \u03b1_q < 1.0, depth-dependent"
+        "test": "Simulator (no noise): \u03b1_q = 1.0. cloud quantum hardware: \u03b1_q < 1.0, depth-dependent"
       }
     },
     "required_circuit_changes": {
@@ -112,7 +112,7 @@
         "pass_criteria": "3/3 tests pass"
       },
       "step_3_hardware": {
-        "tool": "IBM Quantum backend (ibm_brisbane or similar)",
+        "tool": "cloud quantum hardware backend ([superconducting-QPU] or similar)",
         "tests": [
           "Test H: Run same circuit 5 times \u2192 A_c reproducible within 10%",
           "Test I: Run with 3 different messages \u2192 A_c significantly different (ANOVA p<0.05)",
@@ -133,7 +133,7 @@
       "week_1": "Implement v3 formula in Qiskit simulator",
       "week_2": "Run validation protocol Step 1 (noiseless simulator)",
       "week_3": "Run validation protocol Step 2 (noisy simulator)",
-      "week_4": "If Steps 1-2 pass: submit to IBM hardware and run Step 3",
+      "week_4": "If Steps 1-2 pass: submit to cloud quantum hardware and run Step 3",
       "week_5": "If Step 3 passes: publish as C9-2026-QUANTUM-VALIDATED-001"
     }
   },
@@ -374,7 +374,7 @@
   },
   "resource_requirements": {
     "quantum": {
-      "compute": "Qiskit Aer + IBM Quantum credits (~$50 for hardware runs)",
+      "compute": "Qiskit Aer + cloud quantum hardware credits (~$50 for hardware runs)",
       "time": "5 weeks",
       "risk": "MEDIUM \u2014 simulator testing is cheap; hardware is expensive if formula still broken"
     },
