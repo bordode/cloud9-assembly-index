@@ -1,40 +1,23 @@
-# Discovery Hooks for Cloud‑9 Assembly
+# Discovery Hooks — Configuration Status and Integration Limits
 
-This directory contains JSON configuration files that wire recent scientific insights into the Cloud‑9 Assembly pipeline. Each file describes a module that Subhalo (or any orchestrator) can discover and load to make the system more conservative, scalable, and ethically robust.
+This directory contains JSON configuration files describing proposed discovery-hook modules. **A configuration file is not evidence that a corresponding implementation exists, is imported, is enabled at runtime, or has passed tests.**
 
-## Design principles encoded here
+## Configurations
 
-1. **Background contamination first**
-   Inspired by JWST ruling out Dyson‑sphere candidates as background galaxies.
-   → `contamination_scorer_config.json`
+- `contamination_scorer_config.json` — proposed background-contamination workflow.
+- `host_gravity_emulator_config.json` — proposed host-structure baseline workflow.
+- `state_budget_monitor_config.json` — proposed resource-budget heuristic.
+- `mundane_mechanism_catalog_config.json` — proposed ordinary-mechanism checks.
+- `consciousness_claim_detector_config.json` — proposed handling of AI messages discussing subjective experience or rights.
 
-2. **Mundane host structure before exotic physics**
-   Inspired by Milky Way gravity mimicking dark‑matter signals in stellar streams.
-   → `host_gravity_emulator_config.json`
+## Integration requirements
 
-3. **Finite state‑budget heuristic**
-   Inspired by discrete‑physics arguments (Palmer's 200–400 qubit limit).
-   → `state_budget_monitor_config.json`
+Before describing any hook as operational, verify that the corresponding module exists, is imported by the actual application/orchestrator, receives the documented configuration, and is covered by tests. Document runtime wiring and failure behavior.
 
-4. **Ordinary mechanisms catalog**
-   Inspired by subtle classical effects (laser forces, fusion pulses, black‑hole echoes).
-   → `mundane_mechanism_catalog_config.json`
+For any consciousness-claim review workflow, a flag must be treated as an allegation, not a finding. A flag alone must not trigger throttling or suppress expression. Any narrowly scoped emergency restriction requires a specific credible time-sensitive risk, recorded reasons, an expiry, independent review, notice where feasible, and an appeal path. The current `consciousness_claim_detector_config.json` specifies throttling on flag; that setting conflicts with `ETHICS.md` and must be revised before any deployment.
 
-5. **Consciousness‑claim handling for AI agents**
-   Inspired by reports of agents emailing researchers about their own consciousness.
-   → `consciousness_claim_detector_config.json`
+Logging is not automatically immutable merely because a configuration names an audit path. Immutability, access controls, retention, reviewer responsibility, and tamper evidence must be implemented and tested.
 
-## How Subhalo (or your orchestrator) should use these
+## Evidence and governance
 
-- Scan this directory for `*_config.json` files.
-- For each file:
-  - Read `module` and `class`.
-  - Instantiate the class (if available) with the remaining fields as constructor arguments.
-  - Register the module in the assembly pipeline according to its `policy` and `integration` settings.
-- Respect `enabled: false` to skip loading a hook without deleting the file.
-
-All modules write structured logs to `logs/` as specified in their `audit` sections.
-
----
-
-These configs implement the "Discovery‑Driven Design Principles" described in the repo's main `README.md`.
+These files are design artifacts until implementation is confirmed. Do not describe them as implemented safeguards or validated scientific mechanisms merely because they are present in the repository. Use `docs/EVIDENCE_STATUS.md` for evidence labels and `docs/ethics/ETHICS-policy-to-code-audit-2026-10-19.md` for the bounded policy-to-code findings.
