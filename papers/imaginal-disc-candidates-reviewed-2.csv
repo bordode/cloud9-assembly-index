@@ -1,0 +1,39 @@
+ref,kind,word,context,confirmed,type_final,variant_flag,notes,category
+1:3,nom_apposition_after_oblique,ὁ,"τὰ ἐν αὐτῇ γεγραμμένα, ὁ γὰρ καιρὸς ἐγγύς. Ἰωάννης",n,new clause subject,,,
+1:4,nominative_after_preposition,ὁ,ὑμῖν καὶ εἰρήνη ⸀ἀπὸ ὁ ὢν καὶ ὁ ἦν,y,classic 1:4,,,divine_name_exalted_title
+1:5,nom_apposition_after_oblique,ὁ,"καὶ ἀπὸ Ἰησοῦ Χριστοῦ, ὁ μάρτυς ὁ πιστός, ὁ",y,classic 1:5,,,divine_name_exalted_title
+2:18,nom_apposition_after_oblique,ὁ,"ὁ υἱὸς τοῦ θεοῦ, ὁ ἔχων τοὺς ὀφθαλμοὺς αὐτοῦ",n,"both nominative, agree correctly",,,
+2:20,nom_apposition_after_oblique,ἡ,"ἀφεῖς τὴν ⸀γυναῖκα Ἰεζάβελ, ἡ ⸀λέγουσα ἑαυτὴν προφῆτιν, καὶ",y,classic 2:20,,,unclassified
+3:7,nom_apposition_after_oblique,ὁ,"ἔχων τὴν κλεῖν ⸀Δαυίδ, ὁ ἀνοίγων καὶ οὐδεὶς κλείσει,",n,agrees with nominative subject (the Holy One),,,
+3:12,nom_apposition_after_oblique,ἡ,"μου, τῆς καινῆς Ἰερουσαλήμ, ἡ ⸀καταβαίνουσα ἐκ τοῦ οὐρανοῦ",y,classic 3:12,,,unclassified
+4:10,nom_apposition_after_oblique,λέγοντες,"αὐτῶν ἐνώπιον τοῦ θρόνου, λέγοντες· Ἄξιος εἶ, ὁ κύριος",n,"agrees with nominative subject, not genitive",,,
+5:5,nom_apposition_after_oblique,ἡ,"ἐκ τῆς φυλῆς Ἰούδα, ἡ ῥίζα Δαυίδ, ⸀ἀνοῖξαι τὸ",n,"agrees with nominative subject (the Lion), not genitive",,,
+5:6,nom_apposition_after_oblique,ἀπεσταλμένοι,"ἑπτὰ πνεύματα τοῦ θεοῦ, ⸀ἀπεσταλμένοι εἰς πᾶσαν τὴν γῆν.",y,"masc participle, neuter noun (gender mismatch)",,,personification_gender_shift
+5:8,nom_apposition_after_oblique,ἔχοντες,"ἔπεσαν ἐνώπιον τοῦ ἀρνίου, ἔχοντες ἕκαστος κιθάραν καὶ φιάλας",n,agrees with nominative subject,,,
+5:8,nom_apposition_after_oblique,τὰ,"ὅτε ἔλαβεν τὸ βιβλίον, τὰ τέσσαρα ζῷα καὶ οἱ",n,"new sentence, not apposition",,,
+5:12,nom_apposition_after_oblique,λέγοντες,"μυριάδων καὶ χιλιάδες χιλιάδων, λέγοντες φωνῇ μεγάλῃ· Ἄξιόν ἐστιν",y,semantic/sense agreement shift,,,unclassified
+7:3,nom_apposition_after_oblique,λέγων,"γῆν καὶ τὴν θάλασσαν, λέγων· Μὴ ἀδικήσητε τὴν γῆν",y,accusative-to-nominative participle shift,,,vision_object_case_shift
+7:9,nom_apposition_after_oblique,ἑστῶτες,"καὶ λαῶν καὶ γλωσσῶν, ⸀ἑστῶτες ἐνώπιον τοῦ θρόνου καὶ",y,nominative amid genitive context,,,unclassified
+7:12,nom_apposition_after_oblique,λέγοντες,"καὶ προσεκύνησαν τῷ θεῷ, λέγοντες· Ἀμήν· ἡ εὐλογία καὶ",n,"agrees with nominative subject, not dative",,,
+8:9,nom_apposition_after_oblique,τὰ,"τῶν ἐν τῇ θαλάσσῃ, τὰ ἔχοντα ψυχάς, καὶ τὸ",y,classic 8:9,,,unclassified
+9:14,nom_apposition_after_oblique,ὁ,"⸀λέγοντα τῷ ἕκτῳ ἀγγέλῳ, ὁ ἔχων τὴν σάλπιγγα· Λῦσον",y,nom after dative,,,unclassified
+9:19,nom_apposition_after_oblique,ἔχουσαι,"οὐραὶ αὐτῶν ὅμοιαι ⸀ὄφεσιν, ἔχουσαι κεφαλάς, καὶ ἐν αὐταῖς",n,agrees with nominative subject (the tails),,,
+11:1,nom_apposition_after_oblique,λέγων,"μοι κάλαμος ὅμοιος ῥάβδῳ, λέγων· ⸀Ἔγειρε καὶ μέτρησον τὸν",n,agrees correctly with kalamos,,,
+11:3,nom_apposition_after_oblique,περιβεβλημένοι,"ἡμέρας χιλίας διακοσίας ἑξήκοντα, ⸀περιβεβλημένοι σάκκους. Οὗτοί εἰσιν αἱ",n,"agrees with implied subject, standard",,,
+11:17,nom_apposition_after_oblique,λέγοντες,"καὶ προσεκύνησαν τῷ θεῷ, λέγοντες· Εὐχαριστοῦμέν σοι, κύριε, ὁ",n,"agrees with nominative subject, not dative",,,
+12:7,nom_apposition_after_oblique,ὁ,"πόλεμος ἐν τῷ οὐρανῷ, ὁ Μιχαὴλ καὶ οἱ ἄγγελοι",n,new sentence,,,
+12:12,nom_apposition_after_oblique,εἰδὼς,"ὑμᾶς, ἔχων θυμὸν μέγαν, εἰδὼς ὅτι ὀλίγον καιρὸν ἔχει.",n,agrees with nominative subject (the devil),,,
+13:14,nom_apposition_after_oblique,λέγων,"ποιῆσαι ἐνώπιον τοῦ θηρίου, λέγων τοῖς κατοικοῦσιν ἐπὶ τῆς",n,"agrees with subject, not genitive",,,
+14:7,nom_apposition_after_oblique,λέγων,"καὶ γλῶσσαν καὶ λαόν, λέγων ἐν φωνῇ μεγάλῃ· Φοβήθητε",y,accusative-to-nominative participle shift,,,vision_object_case_shift
+14:11,nom_apposition_after_oblique,οἱ,"ἀνάπαυσιν ἡμέρας καὶ νυκτός, οἱ προσκυνοῦντες τὸ θηρίον καὶ",n,"agrees with implied subject, standard",,,
+14:14,nom_apposition_after_oblique,ἔχων,"καθήμενον ὅμοιον ⸀υἱὸν ἀνθρώπου, ἔχων ἐπὶ τῆς κεφαλῆς αὐτοῦ",y,nom participle after accusative,,,vision_object_case_shift
+14:17,nom_apposition_after_oblique,ἔχων,"τοῦ ἐν τῷ οὐρανῷ, ἔχων καὶ αὐτὸς δρέπανον ὀξύ.",n,agrees with nominative subject (the angel),,,
+14:18,nom_apposition_after_oblique,ὁ,"⸀ἄγγελος ἐκ τοῦ θυσιαστηρίου, ⸀ὁ ἔχων ἐξουσίαν ἐπὶ τοῦ",n,"both nominative, agree correctly",,,
+15:6,nom_apposition_after_oblique,ἐνδεδυμένοι,"πληγὰς ἐκ τοῦ ναοῦ, ⸀ἐνδεδυμένοι ⸀λίνον καθαρὸν λαμπρὸν καὶ",n,agrees with nominative subject (angels),,,
+17:3,nom_apposition_after_oblique,ἔχων,"κόκκινον, ⸀γέμοντα ὀνόματα βλασφημίας, ⸀ἔχων κεφαλὰς ἑπτὰ καὶ κέρατα",y,accusative/neuter to nominative masculine shift,,,personification_gender_shift
+17:4,nom_apposition_after_oblique,ἔχουσα,"λίθῳ τιμίῳ καὶ μαργαρίταις, ἔχουσα ποτήριον χρυσοῦν ἐν τῇ",n,agrees with nominative subject (the woman),,,
+19:8,nom_apposition_after_oblique,τὸ,"περιβάληται βύσσινον ⸀λαμπρὸν καθαρόν, τὸ γὰρ βύσσινον τὰ δικαιώματα",n,new sentence (gar),,,
+19:14,nom_apposition_after_oblique,ἐνδεδυμένοι,"αὐτῷ ἐφ’ ἵπποις λευκοῖς, ἐνδεδυμένοι βύσσινον λευκὸν καθαρόν. καὶ",y,"masc participle, neuter noun (armies)",,,personification_gender_shift
+20:2,nom_apposition_after_oblique,ὁ,"καὶ ἐκράτησεν τὸν δράκοντα, ⸂ὁ ὄφις ὁ ἀρχαῖος⸃, ὅς",y,"nom_apposition, title after accusative",,,divine_name_exalted_title
+21:12,nom_apposition_after_oblique,ἔχουσα,"τεῖχος μέγα καὶ ὑψηλόν, ἔχουσα πυλῶνας δώδεκα, καὶ ἐπὶ",y,case-shift continuation,,,vision_object_case_shift
+22:16,nom_apposition_after_oblique,ὁ,"καὶ τὸ γένος Δαυίδ, ὁ ἀστὴρ ὁ λαμπρός, ὁ",n,all nominative in series,,,
