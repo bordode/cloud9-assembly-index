@@ -109,6 +109,41 @@ def search_documents(
     }
 
 
+def propose_correction(
+    source_id: str,
+    original: str,
+    proposed: str,
+    reason: str,
+    corpus: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Return a correction proposal for review without modifying source records."""
+    for name, value in (
+        ("source_id", source_id),
+        ("original", original),
+        ("proposed", proposed),
+        ("reason", reason),
+    ):
+        if not isinstance(value, str) or not value.strip():
+            raise ValueError(f"{name} must not be empty")
+    if original == proposed:
+        raise ValueError("proposed correction must differ from the original value")
+
+    loaded = corpus if corpus is not None else load_corpus()
+    known_ids = {document["id"] for document in loaded["documents"]}
+    if source_id not in known_ids:
+        raise ValueError(f"unknown source_id: {source_id}")
+
+    return {
+        "status": "proposed_for_human_review",
+        "source_id": source_id,
+        "original": original,
+        "proposed": proposed,
+        "reason": reason,
+        "applied": False,
+        "note": "No source record was changed. A human reviewer must approve any correction.",
+    }
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(
         description="Search the synthetic AI Hub corpus in read-only mode."
