@@ -23,5 +23,7 @@ jobs:
         run: python -m py_compile main.py cloud9_ssbm.py
       - name: Check documentation consistency
         run: python scripts/check_docs_consistency.py
+      - name: Check documentation caveats
+        run: python scripts/check_docs_caveats.py
       - name: Run tests
         run: python -m unittest discover -s tests -v
