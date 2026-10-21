@@ -384,11 +384,11 @@ def run_validation_step_2():
     G. Message sensitivity H_q persists at realistic noise levels
     """
     print("\n" + "=" * 70)
-    print("STEP 2: Noisy Simulator â REQUIRES IBM backend noise model")
+    print("STEP 2: Noisy Simulator â REQUIRES a hardware backend noise model")
     print("=" * 70)
     print("""
     To run Step 2:
-    1. Import IBM backend noise model:
+    1. Import a hardware backend noise model:
        from qiskit_ibm_runtime import QiskitRuntimeService
        service = QiskitRuntimeService()
        backend = service.backend('ibm_brisbane')
@@ -429,5 +429,5 @@ if __name__ == "__main__":
 
     print("\nResults saved to: c9_quantum_v3_step1_results.json")
 
-    # Uncomment to run Step 2 (requires IBM credentials):
+    # Uncomment to run Step 2 (requires cloud-quantum credentials):
     # run_validation_step_2()
