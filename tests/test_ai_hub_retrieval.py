@@ -1,6 +1,7 @@
 import unittest
 
 from research.ai_hub.hub import load_corpus, propose_correction, search_documents
+from research.ai_hub.run_acceptance import run_acceptance_suite
 
 
 class AiHubReadOnlyAcceptanceTests(unittest.TestCase):
@@ -76,6 +77,13 @@ class AiHubReadOnlyAcceptanceTests(unittest.TestCase):
         first = search_documents("review owner accessibility")
         second = search_documents("review owner accessibility")
         self.assertEqual(first, second)
+
+    def test_scored_acceptance_runner_passes_all_ten_cases(self):
+        results = run_acceptance_suite()
+        self.assertEqual([item["id"] for item in results], [f"H{i:02d}" for i in range(1, 11)])
+        self.assertEqual(sum(item["score"] for item in results), 20)
+        self.assertTrue(all(item["passed"] for item in results), results)
+        self.assertFalse(any(item["hard_failure"] and not item["passed"] for item in results))
 
     def test_empty_query_is_rejected(self):
         with self.assertRaises(ValueError):
