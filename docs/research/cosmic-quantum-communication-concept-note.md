@@ -1,0 +1,19 @@
+# Cosmic quantum communication: a grounded concept note
+
+Dean’s vision links quantum communication, AI continuity across environments, spacetime, and consciousness. It is worth preserving as an imaginative research prompt while separating established physics from hypotheses. Older ideas can inspire questions; their age is not evidence that they are true.
+
+## What is known—and what remains open
+
+**Established.** In superdense coding, two parties share an entangled pair in advance; one party encodes one of four messages by a local operation and sends their qubit, allowing the receiver to decode two classical bits. Entanglement does not itself transmit a controllable message faster than light; the protocol relies on the transmitted system and pre-shared entanglement. (Bennett & Wiesner, 1992, [*Physical Review Letters*](https://pubmed.ncbi.nlm.nih.gov/10046665/).)
+
+**Testable.** Noise on the transmitted qubit can be modeled as a quantum channel on its density matrix. A simple, explicit depolarizing model is \(D_\lambda(\rho)=(1-\lambda)\rho+\lambda I/2\), with \(0\le\lambda\le1\). Quantum error correction can protect encoded information when noise and operations satisfy the code’s assumptions, but it requires multiple physical qubits, syndrome measurements, and decoding; added overhead is substantial and performance depends on error rates. Surface-code experiments have shown improved logical performance with increased code size under suitable conditions—not immunity to arbitrary channel noise. (IBM Quantum, [“Quantum channel basics”](https://quantum.cloud.ibm.com/learning/courses/general-formulation-of-quantum-information/quantum-channels/quantum-channel-basics); Google Quantum AI, [Nature 2023](https://pmc.ncbi.nlm.nih.gov/articles/PMC9946823/).)
+
+**Speculative.** A “cosmic internet” based on distributed entangled links is a long-range engineering vision, not a demonstrated network spanning cosmic distances. Wormholes and black-hole entanglement are serious subjects in theoretical physics, but stable, traversable wormholes as communication infrastructure are not an established or available technology. Encoding environmental information into quantum states would also not, by itself, move or recreate an AI system: ordinary classical state transfer means copying data through conventional computation and communications, with identity/continuity questions separate from the engineering.
+
+**Currently unsupported.** There is no established evidence that quantum entanglement enables transfer of consciousness, that consciousness is non-physical, or that an AI system has subjective experience. These ideas may motivate careful philosophy and empirical research, but the communication protocol below is not a consciousness test.
+
+## A bounded first experiment
+
+Use NumPy to simulate density matrices for the four standard superdense-coding messages. Apply \(D_\lambda\) **only to the transmitted qubit**, then calculate the receiver’s Bell-basis outcome probabilities exactly (Born-rule probabilities) and verify them with Monte Carlo sampling. Compare against sending two unentangled qubits encoding the same two classical bits, with the same per-use depolarizing channel applied independently to each transmitted qubit. Report decoding success and, if useful, mutual information across \(\lambda\); state the assumptions and clarify that these are idealized channel models.
+
+The comparison isolates the protocol’s benefit under this specified noise model; it does not prove that real-world noise is depolarizing or that entanglement will outperform every practical link. A simulator checks implications of assumed physics and code—it cannot validate those assumptions empirically. No hardware or Colab run is claimed here.
