@@ -1,0 +1,31 @@
+{
+  "entry": {
+    "entry_id": "C9-2026-QG-006",
+    "title": "Gluon Bound States: X(2370) Glueball Discovery at BESIII",
+    "timestamp": "2026-10-21T11:42:12.496818",
+    "assembly_index": 0.9,
+    "component_scores": {
+      "complexity": 0.2,
+      "integration": 0.24,
+      "testability": 0.2375,
+      "novelty": 0.225
+    },
+    "layer_assignment": 1,
+    "clusters_integrated": [
+      1,
+      2,
+      3,
+      5
+    ],
+    "validation_status": "PASSED",
+    "source_hash": "dca5c766e5e070f1",
+    "cross_references": [
+      "C9-2026-QG-005",
+      "C9-2026-COSMO-002"
+    ],
+    "rationale": "First confirmed glueball - pure binding energy creating mass. Direct window into quantum vacuum structure and non-perturbative QCD. Bridges quantum gravity (mass from fields) and topological systems.",
+    "source_url": "https://phys.org/news/2026-08-chemical-physicists-quantitatively-electron-interactions.html"
+  },
+  "source_collection": "C9-COLLECTION-2026-1020-WEEKLYSCIENCE",
+  "provenance": "Split from the parent collection file by Subhalo (individual files stalled in phone upload; no data altered)"
+}
