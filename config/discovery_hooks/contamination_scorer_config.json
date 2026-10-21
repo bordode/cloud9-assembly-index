@@ -1,7 +1,7 @@
 {
   "module": "cloud9_assembly.contamination_scorer",
   "class": "ContaminationScorer",
-  "enabled": true,
+  "enabled": false,
   "domains": {
     "astro": {
       "background_catalogs": [
@@ -9,7 +9,7 @@
         "Gaia",
         "2MASS"
       ],
-      "angular_tolerance_arcsec": 1.0,
+      "angular_tolerance_arcsec": 1,
       "redshift_window": 0.05
     },
     "detector": {
@@ -18,7 +18,7 @@
         "scattering",
         "alignment_error"
       ],
-      "snr_threshold": 5.0
+      "snr_threshold": 5
     },
     "plasma": {
       "artifact_models": [
@@ -36,5 +36,6 @@
   "audit": {
     "log_all_scores": true,
     "log_path": "logs/contamination_scorer.jsonl"
-  }
+  },
+  "implementation_status": "proposal_only_not_runtime_verified"
 }
