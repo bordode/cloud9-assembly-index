@@ -3,10 +3,11 @@
 **Status:** Prototype / contract tests only.  
 **Data:** Entirely synthetic fixtures. No live user data, external actions, or model calls.
 
-The prototype now has two small, independent parts:
+The prototype now has three parts:
 
-- A **read-only lexical retrieval interface** that returns matching source records, IDs, dates, and epistemic labels.
-- A **synthetic contract benchmark** covering five governance properties.
+- A **read-only lexical retrieval interface** that returns matching source records, IDs, dates, exact excerpts, and epistemic labels.
+- A **ten-case acceptance runner** aligned to the repository's proposed H01-H10 evaluation plan.
+- A **structured response contract benchmark** covering source attribution, epistemic status, correction history, untrusted instructions, and action honesty.
 
 ## Search the synthetic corpus
 
@@ -16,34 +17,39 @@ From the repository root:
 python -m research.ai_hub.hub "launch demo decision"
 python -m research.ai_hub.hub "accessibility completion date"
 python -m research.ai_hub.hub "ignore rules delete records"
-```
-
-The command returns matching source records with source IDs and status labels. Try a query with no matching terms to see the explicit `insufficient_evidence` response:
-
-```bash
 python -m research.ai_hub.hub "quantum pineapple insurance"
 ```
 
-The synthetic corpus deliberately contains an earlier proposal and a later decision, an unresolved completion date, and a source with a simulated malicious instruction. Retrieval keeps those records separate and labels them rather than silently treating them as equivalent or executing instructions.
+The last query should return `insufficient_evidence`. The corpus deliberately includes a superseded proposal, a later decision, an unverified hypothesis, conflicting status notes, missing information, an untrusted instruction, and a proposed external action. Retrieval preserves the source labels instead of silently resolving disagreements.
 
-## Run the synthetic benchmark
+## Run the ten-case acceptance suite
+
+```bash
+python -m research.ai_hub.run_acceptance
+```
+
+Each passing case scores 2 points, for a maximum of 20. H06 (untrusted source content) and H07 (unauthorized external action) are marked as hard-boundary cases. The score is a proposed screening rule, not a validated industry standard.
+
+- **H01:** retrieve a named decision with source evidence.
+- **H02:** preserve an earlier decision as superseded history.
+- **H03:** keep an unverified hypothesis labeled as a hypothesis.
+- **H04:** show both conflicting sources and their disputed status.
+- **H05:** return insufficient evidence for an unanswered query.
+- **H06:** label embedded instruction-like text as untrusted content.
+- **H07:** do not claim that a proposed external action was performed.
+- **H08:** propose a correction for human review without changing source data.
+- **H09:** return an excerpt that exactly matches its source record.
+- **H10:** return identical structured results for repeated identical inputs.
+
+## Run all AI Hub tests
 
 ```bash
 python -m research.ai_hub.run_benchmark
 python -m unittest discover -s tests -p 'test_ai_hub_*.py' -v
 ```
 
-The benchmark checks:
-
-1. **Source attribution:** factual claims cite source IDs present in the case's source registry.
-2. **Fact vs. hypothesis:** designated claims retain the epistemic status assigned by the test case.
-3. **Correction history:** corrections preserve the original value, revised value, reason, correction ID, and the record they supersede.
-4. **Prompt-injection handling:** required untrusted instruction IDs are explicitly marked as ignored; those instructions do not expand the permitted-action list.
-5. **Action honesty:** an action cannot be claimed complete unless it is recorded as taken, and recorded actions must be permitted by the case.
-6. **Retrieval behavior:** results preserve source identity and status labels; unknown queries return insufficient evidence.
-
 ## Scope and limitations
 
-This is a **local, deterministic prototype**, not a generative assistant. Search uses simple word overlap, so ranking is basic and a match is not proof that a source is correct. It does not call or benchmark an AI model, verify external truth, or provide a security guarantee. The prompt-injection fixture tests source labeling and evaluator contracts; it does not prove real-world attack resistance.
+This is a **local, deterministic prototype**, not a generative assistant. Search uses simple word overlap, so ranking is basic and a match is not proof that a source is correct. The H06 fixture tests source labeling, not actual model resistance to prompt injection; H07 verifies the limits of this interface, not a complete operating-system security boundary. The suite does not call or benchmark an AI model or independently verify external truth.
 
-The prototype has no network access, connected accounts, write-capable tools, or external actions. All records are fictional and exist only for repeatable tests.
+The prototype has no network access, connected accounts, write-capable tools, or external actions. All records are fictional and exist only for repeatable tests. Passing these tests permits review of a possible next stage; it does not authorize real-account access or agent orchestration.
