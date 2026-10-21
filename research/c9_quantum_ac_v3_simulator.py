@@ -391,7 +391,7 @@ def run_validation_step_2():
     1. Import a hardware backend noise model:
        from qiskit_ibm_runtime import QiskitRuntimeService
        service = QiskitRuntimeService()
-       backend = service.backend('ibm_brisbane')
+       backend = service.backend('[your-backend]')
        noise_model = NoiseModel.from_backend(backend)
 
     2. Run circuit with noise_model parameter:
