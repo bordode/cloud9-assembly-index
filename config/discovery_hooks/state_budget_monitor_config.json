@@ -1,15 +1,15 @@
 {
   "module": "cloud9_assembly.state_budget_monitor",
   "class": "StateBudgetMonitor",
-  "enabled": true,
+  "enabled": false,
   "metrics": {
     "effective_dimensionality": {
       "covariance_rank_threshold": 350,
-      "entropy_threshold_bits": 12.0
+      "entropy_threshold_bits": 12
     },
     "zmq_traffic": {
       "unique_topics_per_minute_threshold": 200,
-      "message_entropy_threshold_bits": 10.0
+      "message_entropy_threshold_bits": 10
     }
   },
   "limits": {
@@ -29,9 +29,10 @@
       "pause_new_high_assembly_events"
     ]
   },
-  "philosophy_note": "Design heuristic inspired by discrete\u2011physics arguments (Palmer 200\u2013400 qubit limit).",
+  "philosophy_note": "Design heuristic inspired by discrete‑physics arguments (Palmer 200–400 qubit limit).",
   "audit": {
     "log_all_utilization_samples": true,
     "log_path": "logs/state_budget_monitor.jsonl"
-  }
+  },
+  "implementation_status": "proposal_only_not_runtime_verified"
 }
