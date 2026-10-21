@@ -3,7 +3,7 @@ from pathlib import Path
 
 CHECKS = {
     "README.md": [
-        "configuration proposal",
+        "configuration proposals",
         "not verified as implemented",
     ],
     "ETHICS_MANIFESTO.md": [
@@ -15,8 +15,8 @@ CHECKS = {
         "reported historical or exploratory claims",
     ],
     "config/discovery_hooks/README.md": [
-        "a config does not prove",
-        "proposal-only",
+        "a configuration file is not evidence",
+        "not established as operational modules",
     ],
 }
 
