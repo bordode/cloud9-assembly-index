@@ -24,7 +24,7 @@
 
 ## Discovery-Driven Design Principles — Proposal Status
 
-The repository contains five JSON configuration proposals for contamination scoring, host-gravity baselines, state-budget heuristics, ordinary-mechanism catalogues, and AI consciousness-claim review. A configuration file is **not** evidence that the corresponding module exists, is imported, runs, or has passed tests.
+The repository contains five JSON configuration proposals for contamination scoring, host-gravity baselines, state-budget heuristics, ordinary-mechanism catalogues, and AI consciousness-claim review. These are **not verified as implemented**. A configuration file is not evidence that the corresponding module exists, is imported, runs, or has passed tests.
 
 As of this review, the five configs are marked `enabled: false` and `implementation_status: proposal_only_not_runtime_verified`. A bounded tree and code-search review found the configuration files but did not locate matching hook implementations or call sites in the inspected repository. This is not proof that no external or unindexed implementation exists; it means the repository does not currently establish these hooks as operational.
 
