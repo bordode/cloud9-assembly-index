@@ -1,0 +1,29 @@
+{
+  "entry": {
+    "entry_id": "C9-2026-NEURO-003",
+    "title": "DNA Flight Recorder: Embryonic Development Traced Cell-by-Cell",
+    "timestamp": "2026-10-21T11:42:12.497144",
+    "assembly_index": 0.76,
+    "component_scores": {
+      "complexity": 0.2,
+      "integration": 0.12,
+      "testability": 0.23,
+      "novelty": 0.2125
+    },
+    "layer_assignment": 1,
+    "clusters_integrated": [
+      4,
+      8
+    ],
+    "validation_status": "PASSED",
+    "source_hash": "692aab0fd6053a7d",
+    "cross_references": [
+      "C9-2026-NEURO-001",
+      "C9-2026-NEURO-002"
+    ],
+    "rationale": "Biological assembly index in action - tracking how complex organisms build themselves from single cells. Direct analog to cosmological structure formation.",
+    "source_url": "https://l.smartnews.com/p-8GflMDwA/AqGOgF"
+  },
+  "source_collection": "C9-COLLECTION-2026-1020-WEEKLYSCIENCE",
+  "provenance": "Split from the parent collection file by Subhalo (individual files stalled in phone upload; no data altered)"
+}
