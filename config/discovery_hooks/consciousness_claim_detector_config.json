@@ -1,7 +1,7 @@
 {
   "module": "cloud9_assembly.consciousness_claim_detector",
   "class": "ConsciousnessClaimDetector",
-  "enabled": true,
+  "enabled": false,
   "detection": {
     "keywords": [
       "I feel",
@@ -19,15 +19,13 @@
   },
   "policy": {
     "flag_for_human_review": true,
-    "throttle_autonomous_actions_when_flagged": true,
-    "log_to_immutable_audit": true,
-    "notify_channels": [
-      "discord:cloud9-ethics",
-      "email:cloud9-ethics@yourdomain"
-    ]
+    "throttle_autonomous_actions_when_flagged": false,
+    "log_to_immutable_audit": false,
+    "note": "A flag requests human review only; it is not a finding and must not trigger automatic restriction. This config is not wired to a verified implementation."
   },
   "audit": {
-    "log_all_flagged_messages": true,
+    "log_all_flagged_messages": false,
     "log_path": "logs/consciousness_claims.jsonl"
-  }
+  },
+  "implementation_status": "proposal_only_not_runtime_verified"
 }
