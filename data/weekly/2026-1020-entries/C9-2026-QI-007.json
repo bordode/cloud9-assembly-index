@@ -1,0 +1,28 @@
+{
+  "entry": {
+    "entry_id": "C9-2026-QI-007",
+    "title": "Quantum Speed Limit for Thermalization Proven",
+    "timestamp": "2026-10-21T11:42:12.497035",
+    "assembly_index": 0.75,
+    "component_scores": {
+      "complexity": 0.2,
+      "integration": 0.12,
+      "testability": 0.2125,
+      "novelty": 0.22
+    },
+    "layer_assignment": 1,
+    "clusters_integrated": [
+      3,
+      7
+    ],
+    "validation_status": "PASSED",
+    "source_hash": "cfc88422e162acac",
+    "cross_references": [
+      "C9-2026-QG-005"
+    ],
+    "rationale": "Fundamental bound on how fast quantum systems thermalize. Critical for understanding black hole information, quantum computing stability, and the arrow of time.",
+    "source_url": "https://l.smartnews.com/p-8I9SDbA4/vvp8ek"
+  },
+  "source_collection": "C9-COLLECTION-2026-1020-WEEKLYSCIENCE",
+  "provenance": "Split from the parent collection file by Subhalo (individual files stalled in phone upload; no data altered)"
+}
