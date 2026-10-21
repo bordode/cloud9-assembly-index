@@ -14,8 +14,8 @@
       "severity": "CRITICAL",
       "description": "The I component in quantum A_c v1.0 is I = n_states \u00d7 256 = 8192, a constant determined entirely by Hilbert space dimension. It does not measure dynamical instability \u2014 it measures circuit width. This explains why A_c = 1641.876 was identical across all messages ('Peace.Love.789', 'Hello World', 'Quantum Cloud-9', random strings). The 'discovery' was a mathematical artifact.",
       "evidence": {
-        "hardware_job_id": "d92ouhfd07jc73dvkfdg",
-        "backend": "ibm_fez",
+        "hardware_job_id": "[job-id-redacted]",
+        "backend": "[superconducting-QPU]",
         "ac_range_across_messages": "17.0 (1.01% of mean)",
         "i_component_dominance": "99.8% of A_c score",
         "entropy_of_output": "99.85% of maximum (uniform random)",
