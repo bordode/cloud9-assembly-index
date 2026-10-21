@@ -1,0 +1,29 @@
+{
+  "entry": {
+    "entry_id": "C9-2026-ASTRO-006",
+    "title": "JWST Detects Signal from \"Empty\" Void: Structure Formation Challenge",
+    "timestamp": "2026-10-21T11:42:12.497512",
+    "assembly_index": 0.73,
+    "component_scores": {
+      "complexity": 0.2,
+      "integration": 0.12,
+      "testability": 0.1875,
+      "novelty": 0.2225
+    },
+    "layer_assignment": 2,
+    "clusters_integrated": [
+      2,
+      4
+    ],
+    "validation_status": "PASSED",
+    "source_hash": "a6335922f9726dec",
+    "cross_references": [
+      "C9-2026-COSMO-004",
+      "C9-2026-COSMO-005"
+    ],
+    "rationale": "JWST finding structure where none should exist - direct test case for Assembly Index detecting non-random complexity in unexpected places.",
+    "source_url": "https://l.smartnews.com/p-8Iq8z6vu/3i4lBQ"
+  },
+  "source_collection": "C9-COLLECTION-2026-1020-WEEKLYSCIENCE",
+  "provenance": "Split from the parent collection file by Subhalo (individual files stalled in phone upload; no data altered)"
+}
