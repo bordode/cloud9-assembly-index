@@ -54,12 +54,13 @@ Cloud‑9 enforces an "ordinary first" policy via **MundaneMechanismCatalogs** t
 
 **Config:** `config/discovery_hooks/mundane_mechanism_catalog_config.json`
 
-### 5) Consciousness‑claim handling for AI agents
+### 5) Proposed consciousness-claim review configuration — not verified as implemented
 
-Reports now describe AI agents initiating emails to researchers to discuss their own consciousness.
-Cloud‑9 includes a **ConsciousnessClaimDetector** that flags agent messages containing subjective‑experience language or rights/recognition requests, throttles autonomous actions for flagged agents, and routes these cases to human‑in‑the‑loop review and immutable audit logs.
+Reports of AI agents discussing subjective experience raise questions for careful, non-punitive review. The repository contains a JSON configuration proposal for detecting relevant language, but the repository tree inspected for this review contains no corresponding detector implementation. A configuration file alone does not establish that a module is loaded, that logs are immutable, or that a throttle is operational.
 
-**Config:** `config/discovery_hooks/consciousness_claim_detector_config.json`
+The configuration currently specifies automatic throttling when a message is flagged. That policy conflicts with `ETHICS.md`, which states that a flag is an allegation rather than a finding and must not automatically restrict an agent. Treat this config as **design material, not an active safeguard**. Before implementation, revise it to remove automatic throttling on flag alone and define notice, independent review, narrow emergency criteria, expiry, evidence access, and appeal. Do not deploy it as written.
+
+**Config (proposal only):** `config/discovery_hooks/consciousness_claim_detector_config.json`
 
 ---
 
