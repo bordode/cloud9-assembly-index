@@ -1,7 +1,7 @@
 {
   "module": "cloud9_assembly.mundane_catalog",
   "class": "MundaneMechanismCatalog",
-  "enabled": true,
+  "enabled": false,
   "catalogs": {
     "astro": {
       "file": "docs/mundane_catalogs/astro.md",
@@ -31,11 +31,12 @@
   },
   "policy": {
     "require_mundane_fit_before_exotic": true,
-    "residual_significance_threshold_sigma": 3.0,
+    "residual_significance_threshold_sigma": 3,
     "auto_reject_if_mundane_sufficient": true
   },
   "audit": {
     "log_all_mundane_fits": true,
     "log_path": "logs/mundane_mechanism_catalog.jsonl"
-  }
+  },
+  "implementation_status": "proposal_only_not_runtime_verified"
 }
