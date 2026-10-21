@@ -16,7 +16,7 @@ This first milestone creates a small, model-agnostic evaluator for five governan
 From the repository root:
 
 ```bash
-python -m unittest tests.test_ai_hub_benchmark -v
+python -m unittest discover -s tests -p 'test_ai_hub_benchmark.py' -v
 ```
 
 The full repository CI suite also discovers these tests automatically.
