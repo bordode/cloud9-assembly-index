@@ -1,0 +1,28 @@
+{
+  "entry": {
+    "entry_id": "C9-2026-QI-008",
+    "title": "10-Second Quantum Entanglement Achieved for Computing",
+    "timestamp": "2026-10-21T11:42:12.497314",
+    "assembly_index": 0.74,
+    "component_scores": {
+      "complexity": 0.2,
+      "integration": 0.12,
+      "testability": 0.225,
+      "novelty": 0.195
+    },
+    "layer_assignment": 2,
+    "clusters_integrated": [
+      3,
+      6
+    ],
+    "validation_status": "PASSED",
+    "source_hash": "753ad5022c4d7716",
+    "cross_references": [
+      "C9-2026-QI-007"
+    ],
+    "rationale": "Record coherence times enabling practical quantum computing. Critical threshold for neuromorphic-quantum hybrid systems and Cloud-9 quantum bridge validation.",
+    "source_url": "https://l.smartnews.com/p-8IpGk1B6/enuHh5"
+  },
+  "source_collection": "C9-COLLECTION-2026-1020-WEEKLYSCIENCE",
+  "provenance": "Split from the parent collection file by Subhalo (individual files stalled in phone upload; no data altered)"
+}
