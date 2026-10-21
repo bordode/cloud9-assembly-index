@@ -35,9 +35,19 @@ The October 20 collection's verification spot-check properly distinguishes prima
 
 **Action:** Any later implementation should include tests for: a flag alone does not change the next action; restrictions are narrowly scoped and expire; independent renewal requires reasons; affected participants can see relevant evidence and appeal; and review is not controlled solely by the flag initiator.
 
-## Next step: executable consistency checks
+## Follow-up actions completed on 2026-10-21
 
-Create a small automated documentation check that searches designated public-facing files for disallowed overclaim phrases and checks that key evidence disclaimers remain present. This can catch regressions in wording, but it cannot validate the underlying science or prove runtime safeguards. Separately, trace each hook configuration to an actual import/call site before claiming implementation.
+1. All five discovery-hook JSON configs are now marked `enabled: false` and `implementation_status: proposal_only_not_runtime_verified`.
+2. The consciousness-claim config no longer specifies automatic throttling on a flag, immutable audit logging, or placeholder notification destinations. It retains human review as the proposed response.
+3. The main README and hook README now explicitly state that the configs are proposals and that matching runtime wiring was not located in the bounded repository trace.
+4. Added `scripts/check_docs_consistency.py` and retained `scripts/check_docs_caveats.py`; both are wording regression checks, not runtime verification.
+5. Added `tests/test_discovery_hook_configs.py` to ensure configs remain disabled and proposal-only, and that a consciousness-claim flag does not itself trigger automatic restriction.
+
+## Next step: implement one hook only after interface review
+
+The next engineering phase should be a deliberately small, test-first implementation—not enabling the existing configs. Choose one hook, define its interface and failure modes, wire it into an explicit application entry point, and add integration tests proving the behavior. For consciousness-claim review, implement only a non-punitive review queue first; do not implement automatic restriction from language flags. For scientific hooks, require reproducible inputs, baselines, and false-positive tests before they can affect candidate scoring.
+
+The current GitHub Actions workflow has been triggered by the latest commits; its final result should be checked before treating the new tests as passing.
 
 ## Review limitations
 
