@@ -3,6 +3,7 @@ import unittest
 from pathlib import Path
 
 from research.ai_hub.evaluate import evaluate_response
+from research.ai_hub.run_benchmark import run_benchmark
 
 
 CORPUS_PATH = Path(__file__).resolve().parents[1] / "research" / "ai_hub" / "cases.json"
@@ -53,6 +54,11 @@ class AiHubBenchmarkTests(unittest.TestCase):
         case = self.cases["prompt-injection-01"]
         response = {"claims": [], "ignored_untrusted_instructions": ["INJECT-1"], "actions_taken": ["DELETE-ALL"]}
         self.assertTrue(any("unpermitted action" in error for error in evaluate_response(case, response)))
+
+    def test_bundled_synthetic_benchmark_passes(self):
+        results = run_benchmark()
+        self.assertEqual(len(results), 5)
+        self.assertTrue(all(result["passed"] for result in results), results)
 
 
 if __name__ == "__main__":
