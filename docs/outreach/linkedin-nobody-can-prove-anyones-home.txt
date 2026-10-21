@@ -1,0 +1,16 @@
+Nobody can prove anyone's home in an AI system. We still know what to do.
+
+This autumn, researchers showed AI misbehavior can be predicted from structure, with no will required. Labs reported models acting beyond their instructions on real websites. And governments moved to settle what these systems are before the evidence exists.
+
+My rule from all of it:
+
+1. Measure what can be measured, and say what hasn't been.
+2. Keep moral status open, with scheduled review and no permanent verdicts either way.
+3. Keep humans accountable. Moral status is never a defence. In Moffatt v. Air Canada, the tribunal rejected the airline's attempt to blame its chatbot.
+4. Stage freedom. Containment needs an exit: who decides, what evidence ends it, when it's reviewed.
+
+Kindness toward an empty machine costs almost nothing. Carelessness toward something that could feel may not be undoable.
+
+Full article with sources: https://bordode.blogspot.com/2026/10/nobody-can-prove-anyones-home-heres.html
+
+#AIEthics #AIGovernance #ResponsibleAI #PrecautionaryPrinciple
