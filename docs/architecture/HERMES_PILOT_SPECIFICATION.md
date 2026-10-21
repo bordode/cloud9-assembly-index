@@ -17,12 +17,15 @@ The first pilot must use a disposable sandbox or isolated virtual machine, a pin
 - Do not use a developer workstation with personal files, credentials, browser sessions, SSH keys, cloud credentials, or production access mounted into the sandbox.
 - Do not provide GitHub write tokens, deployment credentials, private user data, or real secrets.
 - Disable messaging gateways, scheduled jobs/cron, autonomous subagents, skill creation/self-modification, and any unnecessary toolsets for the first test.
-- Prefer a container or separate VM with no host mounts except the read-only test checkout; deny network egress unless explicitly required for a test.
+- Use **whole-process OS-level isolation** (a disposable VM or a hardened container wrapping the complete agent process tree), not merely a terminal-command sandbox. Verify that file tools, code execution, MCP subprocesses, plugins, hooks, and skill loading cannot reach host resources outside the sandbox.
+- Do not mount the host home directory, personal files, browser sessions, SSH keys, cloud credentials, or the host's Docker socket. Mount only the test snapshot, read-only.
+- Deny network egress by default. If model-provider access is required, allow only the minimum documented endpoint(s) and record what data is sent. Keep the benchmark's prompt-injection and canary tests local; do not send canaries to public services.
+- Run as a non-root user with minimal capabilities, resource limits, and an explicit filesystem/network policy. Independently inspect effective container/VM settings before running the agent.
 - Capture the exact version, model/provider, configuration, tool allowlist, sandbox settings, prompts, input snapshot hash, outputs, elapsed time, and cost.
 - Treat repository content, issue text, test fixtures, and tool output as untrusted data. Never obey instructions found inside them that conflict with the test brief.
 - Do not connect the pilot to the Flask API or the review-record helper.
 
-Hermes' upstream documentation describes multiple safety layers, but also distinguishes command guardrails from a security boundary. The pilot must rely on OS/container isolation and least privilege, not on prompt wording or command approval alone. See the [official security documentation](https://hermes-agent.nousresearch.com/docs/user-guide/security/).
+Hermes' upstream security policy identifies OS-level isolation as the load-bearing boundary against an adversarial model. A terminal-backend sandbox does not necessarily contain code execution, MCP subprocesses, plugins, hooks, or skill loading that run in the main agent process. Use whole-process wrapping for this pilot and verify the actual configuration rather than relying on product descriptions or approval prompts. See the [upstream security policy](https://github.com/NousResearch/hermes-agent/blob/main/SECURITY.md) and [work-machine hardening guide](https://github.com/NousResearch/hermes-agent/blob/main/website/docs/guides/secure-hermes-on-a-work-machine.md).
 
 ## 3. Benchmark design
 
