@@ -131,7 +131,37 @@
         "DESI",
         "Hubble tension"
       ]
+    },
+    {
+      "date": "2026-10-14",
+      "file": "docs/omega3-aspirin-gum-disease-signal.md",
+      "sources": [
+        "Journal of Periodontology (via HealthDay/Drugs.com press summary)"
+      ],
+      "status": "established summarized from press; interpretive reading included; verify against primary paper before citing",
+      "title": "Severe gum disease: resolving inflammation matches killing bacteria",
+      "topics": [
+        "periodontitis",
+        "omega-3",
+        "aspirin",
+        "inflammation resolution"
+      ]
+    },
+    {
+      "date": "2026-10-14",
+      "file": "docs/coffee-blood-sugar-signal.md",
+      "sources": [
+        "Nutrition, Metabolism and Cardiovascular Diseases (via News-Medical press summary)"
+      ],
+      "status": "established summarized from press; interpretive reading included; verify against primary paper before citing",
+      "title": "Coffee and blood sugar: a decade of habit, no clear diabetes signal",
+      "topics": [
+        "coffee",
+        "type 2 diabetes",
+        "cohort study",
+        "null result"
+      ]
     }
   ],
-  "updated": "2026-10-13"
+  "updated": "2026-10-20"
 }
