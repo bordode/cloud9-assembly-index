@@ -1,0 +1,43 @@
+{
+  "project": "Cloud-9 Assembly Index",
+  "phase": "Phase 2 Validation",
+  "seed": 1926,
+  "window_size_N": 5,
+  "cohort_summary": [
+    {
+      "cohort": "Candidate",
+      "count": 15,
+      "mean_A": 0.904,
+      "mean_S": 0.880,
+      "mean_R": 0.9173,
+      "mean_ASR": 0.9004,
+      "std_ASR": 0.0398,
+      "mean_parser_score": 0.9406
+    },
+    {
+      "cohort": "Matched_Prose",
+      "count": 15,
+      "mean_A": 0.4647,
+      "mean_S": 0.3867,
+      "mean_R": 0.4393,
+      "mean_ASR": 0.4302,
+      "std_ASR": 0.0236,
+      "mean_parser_score": 0.0904
+    },
+    {
+      "cohort": "Random_Baseline",
+      "count": 15,
+      "mean_A": 0.2433,
+      "mean_S": 0.234,
+      "mean_R": 0.2493,
+      "mean_ASR": 0.2422,
+      "std_ASR": 0.0393,
+      "mean_parser_score": 0.0692
+    }
+  ],
+  "permutation_test": {
+    "iterations": 10000,
+    "observed_mean_diff": 0.5642,
+    "p_value": 0.0
+  }
+}
