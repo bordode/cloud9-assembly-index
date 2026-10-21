@@ -1,0 +1,29 @@
+{
+  "entry": {
+    "entry_id": "C9-2026-QT-009",
+    "title": "Work Extraction from Hidden Degrees of Freedom: Maxwell Demon Realized",
+    "timestamp": "2026-10-21T11:42:12.497422",
+    "assembly_index": 0.77,
+    "component_scores": {
+      "complexity": 0.2,
+      "integration": 0.12,
+      "testability": 0.2175,
+      "novelty": 0.2275
+    },
+    "layer_assignment": 1,
+    "clusters_integrated": [
+      7,
+      3
+    ],
+    "validation_status": "PASSED",
+    "source_hash": "a1a34e5fc6cdcb04",
+    "cross_references": [
+      "C9-2026-QI-007",
+      "C9-2026-QG-005"
+    ],
+    "rationale": "Experimental realization of information-to-work conversion. Deep implications for biological systems, computation thermodynamics, and the physics of life.",
+    "source_url": "https://share.google/0Zs8zs71rdZcQc4QJ"
+  },
+  "source_collection": "C9-COLLECTION-2026-1020-WEEKLYSCIENCE",
+  "provenance": "Split from the parent collection file by Subhalo (individual files stalled in phone upload; no data altered)"
+}
