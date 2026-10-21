@@ -1,6 +1,6 @@
 # Discovery Hooks — Configuration Status and Integration Limits
 
-This directory contains five JSON configuration proposals. All five are marked `enabled: false` and `implementation_status: proposal_only_not_runtime_verified`. **They are not established as operational modules.** A config does not prove its named module exists, is imported, receives configuration, or has passed tests.
+This directory contains five JSON configuration proposals. All five are marked `enabled: false` and `implementation_status: proposal_only_not_runtime_verified`. **They are not established as operational modules.** A configuration file is not evidence that its named module exists, is imported, receives configuration, or has passed tests.
 
 ## Configurations
 
