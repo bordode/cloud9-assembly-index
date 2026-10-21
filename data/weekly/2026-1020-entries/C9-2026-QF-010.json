@@ -1,0 +1,28 @@
+{
+  "entry": {
+    "entry_id": "C9-2026-QF-010",
+    "title": "Quantum Probability Cannot Be Derived Without Assuming It",
+    "timestamp": "2026-10-21T11:42:12.497624",
+    "assembly_index": 0.67,
+    "component_scores": {
+      "complexity": 0.2,
+      "integration": 0.06,
+      "testability": 0.175,
+      "novelty": 0.2325
+    },
+    "layer_assignment": 2,
+    "clusters_integrated": [
+      1
+    ],
+    "validation_status": "PASSED",
+    "source_hash": "f805ed657755fe52",
+    "cross_references": [
+      "C9-2026-QG-005",
+      "C9-2026-QG-006"
+    ],
+    "rationale": "Deep foundational result - quantum probability structure is irreducible. Constraints on any future unified theory and the interpretation of quantum mechanics.",
+    "source_url": "https://l.smartnews.com/p-8IP0n6Ew/Ius66H"
+  },
+  "source_collection": "C9-COLLECTION-2026-1020-WEEKLYSCIENCE",
+  "provenance": "Split from the parent collection file by Subhalo (individual files stalled in phone upload; no data altered)"
+}
