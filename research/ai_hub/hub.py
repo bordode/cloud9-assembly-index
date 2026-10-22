@@ -262,8 +262,8 @@ def build_conclusion_trace(
             "not as authority to act."
         ),
         "proposed_actions": (
-            "unexecuted_proposal", "Confirm authorization and execution evidence before "
-            "reporting the action as completed."
+            "unexecuted_proposal", "Confirm authorization and require a trustworthy "
+            "execution receipt before reporting the action as completed."
         ),
         "other_provisional_records": (
             "provisional_context", "Check the record's status and seek corroboration "
