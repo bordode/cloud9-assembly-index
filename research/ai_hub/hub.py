@@ -349,6 +349,16 @@ def audit_conclusion_trace(
                     f"documents[{index}] missing required fields: {', '.join(missing)}"
                 )
                 continue
+            invalid_values = [
+                field for field in ("title", "text", "epistemic_status")
+                if not isinstance(source[field], str) or not source[field].strip()
+            ]
+            if invalid_values:
+                corpus_errors.append(
+                    f"documents[{index}] fields must be non-empty strings: "
+                    f"{', '.join(invalid_values)}"
+                )
+                continue
             source_id = source["id"]
             if not isinstance(source_id, str) or not source_id.strip():
                 corpus_errors.append(f"documents[{index}].id must be a non-empty string")
