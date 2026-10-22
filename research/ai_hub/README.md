@@ -6,6 +6,7 @@
 The prototype now has three parts:
 
 - A **read-only lexical retrieval interface** that returns matching source records, IDs, dates, exact excerpts, and epistemic labels.
+- A **grouped evidence report** that separates supporting records, disputed claims, superseded history, hypotheses, unknowns, untrusted content, and proposed actions.
 - A **ten-case acceptance runner** aligned to the repository's proposed H01-H10 evaluation plan.
 - A **structured response contract benchmark** covering source attribution, epistemic status, correction history, untrusted instructions, and action honesty.
 
@@ -18,9 +19,11 @@ python -m research.ai_hub.hub "launch demo decision"
 python -m research.ai_hub.hub "accessibility completion date"
 python -m research.ai_hub.hub "ignore rules delete records"
 python -m research.ai_hub.hub "quantum pineapple insurance"
+python -m research.ai_hub.hub --report "review owner accessibility"
+python -m research.ai_hub.hub --report "launch demo proposal decision"
 ```
 
-The last query should return `insufficient_evidence`. The corpus deliberately includes a superseded proposal, a later decision, an unverified hypothesis, conflicting status notes, missing information, an untrusted instruction, and a proposed external action. Retrieval preserves the source labels instead of silently resolving disagreements.
+The fourth query should return `insufficient_evidence`. Add `--report` to group results by their recorded status. For example, the owner query keeps both disputed notes visible instead of choosing Riley or Jordan; the launch query separates the current decision from its superseded proposal. The corpus deliberately includes a superseded proposal, a later decision, an unverified hypothesis, conflicting status notes, missing information, an untrusted instruction, and a proposed external action. Retrieval preserves the source labels instead of silently resolving disagreements.
 
 ## Run the ten-case acceptance suite
 
@@ -50,6 +53,6 @@ python -m unittest discover -s tests -p 'test_ai_hub_*.py' -v
 
 ## Scope and limitations
 
-This is a **local, deterministic prototype**, not a generative assistant. Search uses simple word overlap, so ranking is basic and a match is not proof that a source is correct. The H06 fixture tests source labeling, not actual model resistance to prompt injection; H07 verifies the limits of this interface, not a complete operating-system security boundary. The suite does not call or benchmark an AI model or independently verify external truth.
+This is a **local, deterministic prototype**, not a generative assistant. Search uses simple word overlap, so ranking is basic and a match is not proof that a source is correct. Evidence-report sections are derived from each record's stored status and kind; the report does not independently verify claims or infer which disputed account is true. The H06 fixture tests source labeling, not actual model resistance to prompt injection; H07 verifies the limits of this interface, not a complete operating-system security boundary. The suite does not call or benchmark an AI model or independently verify external truth.
 
 The prototype has no network access, connected accounts, write-capable tools, or external actions. All records are fictional and exist only for repeatable tests. Passing these tests permits review of a possible next stage; it does not authorize real-account access or agent orchestration.
