@@ -320,17 +320,76 @@ def build_conclusion_trace(
 def audit_conclusion_trace(
     result: dict[str, Any], corpus: dict[str, Any] | None = None
 ) -> dict[str, Any]:
-    """Check that every trace citation faithfully maps to a source in the corpus.
+    """Check citation correspondence after validating the supplied corpus shape.
 
-    This deterministic integrity check verifies source existence, exact excerpt,
-    title, and epistemic status. It does not verify whether source content is true.
+    This verifies trace fields against source records, not whether the records
+    themselves are accurate or truthful.
     """
     loaded = corpus if corpus is not None else load_corpus()
-    source_by_id = {item["id"]: item for item in loaded["documents"]}
+    corpus_errors: list[str] = []
+    if not isinstance(loaded, dict):
+        corpus_errors.append("corpus must be an object")
+        documents = None
+    else:
+        documents = loaded.get("documents")
+        if not isinstance(documents, list):
+            corpus_errors.append("corpus.documents must be a list")
+
+    source_by_id: dict[str, dict[str, Any]] = {}
+    seen_ids: set[str] = set()
+    if isinstance(documents, list):
+        required_fields = ("id", "title", "text", "epistemic_status")
+        for index, source in enumerate(documents):
+            if not isinstance(source, dict):
+                corpus_errors.append(f"documents[{index}] must be an object")
+                continue
+            missing = [field for field in required_fields if field not in source]
+            if missing:
+                corpus_errors.append(
+                    f"documents[{index}] missing required fields: {', '.join(missing)}"
+                )
+                continue
+            source_id = source["id"]
+            if not isinstance(source_id, str) or not source_id.strip():
+                corpus_errors.append(f"documents[{index}].id must be a non-empty string")
+                continue
+            if source_id in seen_ids:
+                corpus_errors.append(f"duplicate source id: {source_id}")
+                continue
+            seen_ids.add(source_id)
+            source_by_id[source_id] = source
+
+    raw_trace = result.get("trace", []) if isinstance(result, dict) else []
+    if not isinstance(raw_trace, list):
+        corpus_errors.append("trace must be a list")
+        raw_trace = []
+    if corpus_errors:
+        return {
+            "status": "invalid_corpus",
+            "checks_passed": 0,
+            "checks_total": len(raw_trace),
+            "entries": [],
+            "corpus_errors": corpus_errors,
+            "note": (
+                "Audit stopped because the supplied corpus or trace structure is "
+                "invalid. No citation-integrity pass was issued."
+            ),
+        }
+
     entries: list[dict[str, Any]] = []
-    for item in result.get("trace", []):
+    for item in raw_trace:
+        if not isinstance(item, dict):
+            entries.append({
+                "source_id": None,
+                "source_exists": False,
+                "excerpt_matches": False,
+                "title_matches": False,
+                "status_matches": False,
+                "passed": False,
+            })
+            continue
         source_id = item.get("source_id")
-        source = source_by_id.get(source_id)
+        source = source_by_id.get(source_id) if isinstance(source_id, str) else None
         source_exists = source is not None
         excerpt_matches = source_exists and item.get("excerpt") == source.get("text")
         title_matches = source_exists and item.get("title") == source.get("title")
@@ -355,6 +414,7 @@ def audit_conclusion_trace(
         "checks_passed": sum(item["passed"] for item in entries),
         "checks_total": len(entries),
         "entries": entries,
+        "corpus_errors": [],
         "note": (
             "Trace citations match the supplied corpus records; this does not "
             "establish that those records are accurate or truthful."
