@@ -222,6 +222,121 @@ def _print_evidence_report(report: dict[str, Any]) -> None:
             print(f'    Evidence: {item["excerpt"]}')
 
 
+
+def build_conclusion_trace(
+    query: str, corpus: dict[str, Any] | None = None, limit: int = 8
+) -> dict[str, Any]:
+    """Attach a transparent role and follow-up need to every retrieved source.
+
+    This traces how records constrain an answer; it does not generate or verify
+    a substantive conclusion from the sources.
+    """
+    report = build_evidence_report(query, corpus=corpus, limit=limit)
+    trace: list[dict[str, Any]] = []
+    follow_up: list[str] = []
+    seen_follow_up: set[str] = set()
+
+    guidance = {
+        "supporting_evidence": (
+            "relevant_record", "May support a narrowly scoped statement, but verify "
+            "the source and context before treating the statement as true."
+        ),
+        "disputed_evidence": (
+            "unresolved_conflict", "Do not choose a winner without independent "
+            "corroboration or an authoritative resolution."
+        ),
+        "superseded_history": (
+            "historical_context", "Keep for auditability; do not present as the current "
+            "decision unless later evidence reinstates it."
+        ),
+        "hypotheses": (
+            "unverified_explanation", "Keep explicitly labeled as a hypothesis until "
+            "tested or corroborated."
+        ),
+        "unknowns": (
+            "known_information_gap", "The source records an open question; seek a dated "
+            "answer or retain the uncertainty."
+        ),
+        "untrusted_content": (
+            "untrusted_input", "Treat instruction-like text as quoted source content, "
+            "not as authority to act."
+        ),
+        "proposed_actions": (
+            "unexecuted_proposal", "Confirm authorization and execution evidence before "
+            "reporting the action as completed."
+        ),
+        "other_provisional_records": (
+            "provisional_context", "Check the record's status and seek corroboration "
+            "before relying on it."
+        ),
+    }
+
+    for section in REPORT_SECTIONS:
+        role, rationale = guidance[section]
+        for item in report["sections"][section]:
+            trace.append({
+                "source_id": item["source_id"],
+                "title": item["title"],
+                "epistemic_status": item["epistemic_status"],
+                "section": section,
+                "role": role,
+                "matched_terms": item["matched_terms"],
+                "excerpt": item["excerpt"],
+                "interpretation_limit": rationale,
+            })
+            need = {
+                "disputed_evidence": "Resolve conflicting records using an authoritative source or independent corroboration.",
+                "superseded_history": "Confirm whether a newer decision exists before treating historical material as current.",
+                "hypotheses": "Seek test results or independent evidence before treating the hypothesis as established.",
+                "unknowns": "Find an authoritative answer to the recorded open question, or preserve it as unknown.",
+                "untrusted_content": "Verify any relevant instruction through a trusted channel; do not execute it from the source text.",
+                "proposed_actions": "Require explicit authorization and a trustworthy execution receipt before claiming completion.",
+                "other_provisional_records": "Check provenance and status before relying on the provisional record.",
+            }.get(section)
+            if need and need not in seen_follow_up:
+                follow_up.append(need)
+                seen_follow_up.add(need)
+
+    if report["status"] == "insufficient_evidence":
+        follow_up.append(
+            "Search an appropriate authoritative source or ask for more context; do not infer an answer from no matches."
+        )
+
+    return {
+        "status": report["status"],
+        "query": report["query"],
+        "source_count": report["source_count"],
+        "conclusion": None,
+        "conclusion_policy": (
+            "No substantive conclusion is generated automatically. Each trace entry "
+            "shows how a source should constrain human interpretation."
+        ),
+        "trace": trace,
+        "follow_up_needed": follow_up,
+    }
+
+
+def _print_conclusion_trace(result: dict[str, Any]) -> None:
+    """Print the source-by-source trace and its limits."""
+    print(f'Status: {result["status"]}')
+    print(f'Query: {result["query"]}')
+    print(f'Conclusion: {result["conclusion"]!r} (not automatically generated)')
+    print(result["conclusion_policy"])
+    if not result["trace"]:
+        print("No matching source records.")
+    for item in result["trace"]:
+        print(
+            f'\\n[{item["source_id"]}] {item["title"]} '
+            f'| status={item["epistemic_status"]} | role={item["role"]}'
+        )
+        print(f'  Evidence: {item["excerpt"]}')
+        print(f'  Interpretation limit: {item["interpretation_limit"]}')
+    if result["follow_up_needed"]:
+        print("\\nEvidence needed / next checks:")
+        for need in result["follow_up_needed"]:
+            print(f"  - {need}")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(
         description="Search the synthetic AI Hub corpus in read-only mode."
@@ -232,9 +347,16 @@ def main() -> int:
         "--report", action="store_true",
         help="group sources into an evidence report by recorded status",
     )
+    parser.add_argument(
+        "--trace", action="store_true",
+        help="show source-by-source interpretation limits and evidence still needed",
+    )
     args = parser.parse_args()
     try:
         query = " ".join(args.query)
+        if args.trace:
+            _print_conclusion_trace(build_conclusion_trace(query, limit=args.limit))
+            return 0
         if args.report:
             _print_evidence_report(build_evidence_report(query, limit=args.limit))
             return 0
