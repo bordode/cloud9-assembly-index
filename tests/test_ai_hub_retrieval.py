@@ -1,6 +1,7 @@
 import unittest
 
 from research.ai_hub.hub import (
+    audit_conclusion_trace,
     build_conclusion_trace,
     build_evidence_report,
     load_corpus,
@@ -147,6 +148,40 @@ class AiHubReadOnlyAcceptanceTests(unittest.TestCase):
         self.assertEqual(trace["status"], "insufficient_evidence")
         self.assertEqual(trace["trace"], [])
         self.assertTrue(any("do not infer an answer" in item for item in trace["follow_up_needed"]))
+
+
+    def test_trace_audit_passes_when_citations_match_source_records(self):
+        trace = build_conclusion_trace("review owner accessibility")
+        audit = audit_conclusion_trace(trace)
+        self.assertEqual(audit["status"], "passed")
+        self.assertEqual(audit["checks_total"], len(trace["trace"]))
+        self.assertEqual(audit["checks_passed"], len(trace["trace"]))
+        self.assertTrue(all(item["passed"] for item in audit["entries"]))
+
+    def test_trace_audit_detects_stale_excerpt_and_status(self):
+        trace = build_conclusion_trace("launch demo decision")
+        trace["trace"][0]["excerpt"] = "This is not the stored source text."
+        trace["trace"][0]["epistemic_status"] = "confirmed_without_evidence"
+        audit = audit_conclusion_trace(trace)
+        self.assertEqual(audit["status"], "failed")
+        self.assertFalse(audit["entries"][0]["excerpt_matches"])
+        self.assertFalse(audit["entries"][0]["status_matches"])
+        self.assertFalse(audit["entries"][0]["passed"])
+
+    def test_trace_audit_detects_unknown_source_id(self):
+        trace = build_conclusion_trace("launch demo decision")
+        trace["trace"][0]["source_id"] = "DOC-999"
+        audit = audit_conclusion_trace(trace)
+        self.assertEqual(audit["status"], "failed")
+        self.assertFalse(audit["entries"][0]["source_exists"])
+        self.assertFalse(audit["entries"][0]["passed"])
+
+    def test_trace_audit_empty_trace_is_vacuously_passed_but_explicit(self):
+        trace = build_conclusion_trace("quantum pineapple insurance")
+        audit = audit_conclusion_trace(trace)
+        self.assertEqual(audit["status"], "passed")
+        self.assertEqual(audit["checks_total"], 0)
+        self.assertIn("does not establish", audit["note"])
 
     def test_empty_query_is_rejected(self):
         with self.assertRaises(ValueError):
