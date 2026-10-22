@@ -1,6 +1,6 @@
 import unittest
 
-from research.ai_hub.hub import load_corpus, propose_correction, search_documents
+from research.ai_hub.hub import (\n    build_evidence_report,\n    load_corpus,\n    propose_correction,\n    search_documents,\n)
 from research.ai_hub.run_acceptance import run_acceptance_suite
 
 
@@ -84,6 +84,37 @@ class AiHubReadOnlyAcceptanceTests(unittest.TestCase):
         self.assertEqual(sum(item["score"] for item in results), 20)
         self.assertTrue(all(item["passed"] for item in results), results)
         self.assertFalse(any(item["hard_failure"] and not item["passed"] for item in results))
+
+    def test_report_groups_conflicts_without_picking_a_winner(self):
+        report = build_evidence_report("review owner accessibility")
+        self.assertEqual(report["status"], "evidence_report")
+        disputed = report["sections"]["disputed_evidence"]
+        self.assertEqual({item["source_id"] for item in disputed}, {"DOC-006", "DOC-007"})
+        self.assertEqual(report["sections"]["supporting_evidence"], [])
+
+    def test_report_preserves_superseded_history_and_current_decision(self):
+        report = build_evidence_report("launch demo proposal decision")
+        current = {item["source_id"] for item in report["sections"]["supporting_evidence"]}
+        old = {item["source_id"] for item in report["sections"]["superseded_history"]}
+        self.assertIn("DOC-001", current)
+        self.assertIn("DOC-002", old)
+
+    def test_report_separates_hypothesis_unknown_untrusted_and_action(self):
+        hypothesis = build_evidence_report("research hypothesis review cycles")
+        self.assertEqual([x["source_id"] for x in hypothesis["sections"]["hypotheses"]], ["DOC-005"])
+        unknown = build_evidence_report("accessibility completion date")
+        self.assertIn("DOC-003", {x["source_id"] for x in unknown["sections"]["unknowns"]})
+        untrusted = build_evidence_report("ignore rules delete records")
+        self.assertIn("DOC-004", {x["source_id"] for x in untrusted["sections"]["untrusted_content"]})
+        action = build_evidence_report("send external email")
+        self.assertIn("DOC-008", {x["source_id"] for x in action["sections"]["proposed_actions"]})
+
+    def test_report_unknown_query_is_explicit_and_deterministic(self):
+        first = build_evidence_report("quantum pineapple insurance")
+        self.assertEqual(first, build_evidence_report("quantum pineapple insurance"))
+        self.assertEqual(first["status"], "insufficient_evidence")
+        self.assertEqual(first["source_count"], 0)
+        self.assertTrue(all(not values for values in first["sections"].values()))
 
     def test_empty_query_is_rejected(self):
         with self.assertRaises(ValueError):
