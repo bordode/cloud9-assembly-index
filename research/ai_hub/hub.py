@@ -348,18 +348,23 @@ def audit_conclusion_trace(
                 source_exists and excerpt_matches and title_matches and status_matches
             ),
         })
-    passed = all(item["passed"] for item in entries)
+    passed = bool(entries) and all(item["passed"] for item in entries)
+    status = "passed" if passed else ("failed" if entries else "no_sources")
     return {
-        "status": "passed" if passed else "failed",
+        "status": status,
         "checks_passed": sum(item["passed"] for item in entries),
         "checks_total": len(entries),
         "entries": entries,
         "note": (
             "Trace citations match the supplied corpus records; this does not "
             "establish that those records are accurate or truthful."
-            if passed else
-            "One or more trace citations do not match the supplied corpus. "
-            "Review the mismatches before relying on this trace."
+            if passed else (
+                "No trace entries were available to audit; this is not evidence "
+                "that any source citation passed."
+                if not entries else
+                "One or more trace citations do not match the supplied corpus. "
+                "Review the mismatches before relying on this trace."
+            )
         ),
     }
 
