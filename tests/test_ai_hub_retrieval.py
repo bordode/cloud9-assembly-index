@@ -188,6 +188,37 @@ class AiHubReadOnlyAcceptanceTests(unittest.TestCase):
         self.assertIn("not evidence", audit["note"])
 
 
+    def test_trace_audit_rejects_duplicate_source_ids_in_custom_corpus(self):
+        trace = build_conclusion_trace("launch demo decision")
+        corpus = load_corpus()
+        corpus["documents"].append(dict(corpus["documents"][0]))
+        audit = audit_conclusion_trace(trace, corpus=corpus)
+        self.assertEqual(audit["status"], "invalid_corpus")
+        self.assertTrue(any("duplicate source id: DOC-001" in error
+                            for error in audit["corpus_errors"]))
+        self.assertEqual(audit["entries"], [])
+
+    def test_trace_audit_rejects_missing_documents_collection(self):
+        trace = build_conclusion_trace("launch demo decision")
+        audit = audit_conclusion_trace(trace, corpus={"title": "malformed"})
+        self.assertEqual(audit["status"], "invalid_corpus")
+        self.assertIn("corpus.documents must be a list", audit["corpus_errors"])
+        self.assertEqual(audit["checks_passed"], 0)
+
+    def test_trace_audit_rejects_source_missing_required_fields(self):
+        trace = build_conclusion_trace("launch demo decision")
+        corpus = {"documents": [{"id": "DOC-001", "title": "partial"}]}
+        audit = audit_conclusion_trace(trace, corpus=corpus)
+        self.assertEqual(audit["status"], "invalid_corpus")
+        self.assertTrue(any("missing required fields: text, epistemic_status" in error
+                            for error in audit["corpus_errors"]))
+
+    def test_trace_audit_rejects_non_object_trace_entries(self):
+        trace = {"trace": [None]}
+        audit = audit_conclusion_trace(trace)
+        self.assertEqual(audit["status"], "failed")
+        self.assertFalse(audit["entries"][0]["passed"])
+
     def test_cli_trace_can_print_provenance_audit(self):
         output = StringIO()
         with patch("sys.argv", [
