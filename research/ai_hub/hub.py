@@ -316,6 +316,53 @@ def build_conclusion_trace(
     }
 
 
+
+def audit_conclusion_trace(
+    result: dict[str, Any], corpus: dict[str, Any] | None = None
+) -> dict[str, Any]:
+    """Check that every trace citation faithfully maps to a source in the corpus.
+
+    This deterministic integrity check verifies source existence, exact excerpt,
+    title, and epistemic status. It does not verify whether source content is true.
+    """
+    loaded = corpus if corpus is not None else load_corpus()
+    source_by_id = {item["id"]: item for item in loaded["documents"]}
+    entries: list[dict[str, Any]] = []
+    for item in result.get("trace", []):
+        source_id = item.get("source_id")
+        source = source_by_id.get(source_id)
+        source_exists = source is not None
+        excerpt_matches = source_exists and item.get("excerpt") == source.get("text")
+        title_matches = source_exists and item.get("title") == source.get("title")
+        status_matches = (
+            source_exists
+            and item.get("epistemic_status") == source.get("epistemic_status")
+        )
+        entries.append({
+            "source_id": source_id,
+            "source_exists": source_exists,
+            "excerpt_matches": bool(excerpt_matches),
+            "title_matches": bool(title_matches),
+            "status_matches": bool(status_matches),
+            "passed": bool(
+                source_exists and excerpt_matches and title_matches and status_matches
+            ),
+        })
+    passed = all(item["passed"] for item in entries)
+    return {
+        "status": "passed" if passed else "failed",
+        "checks_passed": sum(item["passed"] for item in entries),
+        "checks_total": len(entries),
+        "entries": entries,
+        "note": (
+            "Trace citations match the supplied corpus records; this does not "
+            "establish that those records are accurate or truthful."
+            if passed else
+            "One or more trace citations do not match the supplied corpus. "
+            "Review the mismatches before relying on this trace."
+        ),
+    }
+
 def _print_conclusion_trace(result: dict[str, Any]) -> None:
     """Print the source-by-source trace and its limits."""
     print(f'Status: {result["status"]}')
