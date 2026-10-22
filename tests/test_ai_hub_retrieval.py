@@ -213,6 +213,20 @@ class AiHubReadOnlyAcceptanceTests(unittest.TestCase):
         self.assertTrue(any("missing required fields: text, epistemic_status" in error
                             for error in audit["corpus_errors"]))
 
+    def test_trace_audit_rejects_empty_or_non_string_source_fields(self):
+        trace = build_conclusion_trace("launch demo decision")
+        corpus = {
+            "documents": [{
+                "id": "DOC-001",
+                "title": " ",
+                "text": None,
+                "epistemic_status": "fact",
+            }]
+        }
+        audit = audit_conclusion_trace(trace, corpus=corpus)
+        self.assertEqual(audit["status"], "invalid_corpus")
+        self.assertTrue(any("title, text" in error for error in audit["corpus_errors"]))
+
     def test_trace_audit_rejects_non_object_trace_entries(self):
         trace = {"trace": [None]}
         audit = audit_conclusion_trace(trace)
