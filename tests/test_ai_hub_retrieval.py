@@ -1,10 +1,14 @@
 import unittest
+from contextlib import redirect_stdout
+from io import StringIO
+from unittest.mock import patch
 
 from research.ai_hub.hub import (
     audit_conclusion_trace,
     build_conclusion_trace,
     build_evidence_report,
     load_corpus,
+    main,
     propose_correction,
     search_documents,
 )
@@ -182,6 +186,18 @@ class AiHubReadOnlyAcceptanceTests(unittest.TestCase):
         self.assertEqual(audit["status"], "no_sources")
         self.assertEqual(audit["checks_total"], 0)
         self.assertIn("not evidence", audit["note"])
+
+
+    def test_cli_trace_can_print_provenance_audit(self):
+        output = StringIO()
+        with patch("sys.argv", [
+            "ai_hub", "--trace", "--audit", "review", "owner", "accessibility"
+        ]), redirect_stdout(output):
+            exit_code = main()
+        self.assertEqual(exit_code, 0)
+        self.assertIn("Citation integrity audit: passed", output.getvalue())
+        self.assertIn("does not establish that those records are accurate or truthful",
+                      output.getvalue())
 
     def test_empty_query_is_rejected(self):
         with self.assertRaises(ValueError):
