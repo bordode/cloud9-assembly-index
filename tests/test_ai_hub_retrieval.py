@@ -1,6 +1,11 @@
 import unittest
 
-from research.ai_hub.hub import (\n    build_evidence_report,\n    load_corpus,\n    propose_correction,\n    search_documents,\n)
+from research.ai_hub.hub import (
+    build_evidence_report,
+    load_corpus,
+    propose_correction,
+    search_documents,
+)
 from research.ai_hub.run_acceptance import run_acceptance_suite
 
 
