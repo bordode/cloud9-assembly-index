@@ -326,13 +326,13 @@ def _print_conclusion_trace(result: dict[str, Any]) -> None:
         print("No matching source records.")
     for item in result["trace"]:
         print(
-            f'\\n[{item["source_id"]}] {item["title"]} '
+            f'\n[{item["source_id"]}] {item["title"]} '
             f'| status={item["epistemic_status"]} | role={item["role"]}'
         )
         print(f'  Evidence: {item["excerpt"]}')
         print(f'  Interpretation limit: {item["interpretation_limit"]}')
     if result["follow_up_needed"]:
-        print("\\nEvidence needed / next checks:")
+        print("\nEvidence needed / next checks:")
         for need in result["follow_up_needed"]:
             print(f"  - {need}")
 
