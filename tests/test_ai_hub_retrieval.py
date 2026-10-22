@@ -179,9 +179,9 @@ class AiHubReadOnlyAcceptanceTests(unittest.TestCase):
     def test_trace_audit_empty_trace_is_vacuously_passed_but_explicit(self):
         trace = build_conclusion_trace("quantum pineapple insurance")
         audit = audit_conclusion_trace(trace)
-        self.assertEqual(audit["status"], "passed")
+        self.assertEqual(audit["status"], "no_sources")
         self.assertEqual(audit["checks_total"], 0)
-        self.assertIn("does not establish", audit["note"])
+        self.assertIn("not evidence", audit["note"])
 
     def test_empty_query_is_rejected(self):
         with self.assertRaises(ValueError):
