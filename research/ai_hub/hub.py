@@ -213,7 +213,7 @@ def _print_evidence_report(report: dict[str, Any]) -> None:
         records = report["sections"][section]
         if not records:
             continue
-        print(f"\\n{headings[section]}:")
+        print(f"\n{headings[section]}:")
         for item in records:
             print(
                 f'  [{item["source_id"]}] {item["title"]} '
@@ -245,7 +245,7 @@ def main() -> int:
     print(result["message"])
     for item in result["results"]:
         print(
-            f'\\n[{item["source_id"]}] {item["title"]} '
+            f'\n[{item["source_id"]}] {item["title"]} '
             f'| status={item["epistemic_status"]} | date={item["date"]}'
         )
         print(f'Matched terms: {", ".join(item["matched_terms"])}')
