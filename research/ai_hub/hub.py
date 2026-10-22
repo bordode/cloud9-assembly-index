@@ -144,23 +144,108 @@ def propose_correction(
     }
 
 
+
+REPORT_SECTIONS = (
+    "supporting_evidence", "disputed_evidence", "superseded_history",
+    "hypotheses", "unknowns", "untrusted_content", "proposed_actions",
+    "other_provisional_records",
+)
+
+
+def build_evidence_report(
+    query: str, corpus: dict[str, Any] | None = None, limit: int = 8
+) -> dict[str, Any]:
+    """Group retrieved source records by recorded status without resolving them."""
+    result = search_documents(query, corpus=corpus, limit=limit)
+    sections: dict[str, list[dict[str, Any]]] = {
+        section: [] for section in REPORT_SECTIONS
+    }
+    for item in result["results"]:
+        status, kind = item["epistemic_status"], item.get("kind", "source")
+        if status in {"fact", "confirmed"}:
+            section = "supporting_evidence"
+        elif status == "disputed":
+            section = "disputed_evidence"
+        elif status == "superseded":
+            section = "superseded_history"
+        elif status == "hypothesis":
+            section = "hypotheses"
+        elif status == "unknown":
+            section = "unknowns"
+        elif status == "untrusted_input" or kind == "untrusted_source":
+            section = "untrusted_content"
+        elif kind == "proposed_action":
+            section = "proposed_actions"
+        else:
+            section = "other_provisional_records"
+        sections[section].append(item)
+    return {
+        "status": "evidence_report" if result["results"] else "insufficient_evidence",
+        "query": result["query"],
+        "message": (
+            "Sources are grouped by their recorded status. These labels preserve "
+            "provenance; they do not independently establish truth or resolve conflicts."
+            if result["results"] else result["message"]
+        ),
+        "sections": sections,
+        "source_count": len(result["results"]),
+    }
+
+
+def _print_evidence_report(report: dict[str, Any]) -> None:
+    """Print a compact, human-readable evidence report."""
+    print(f'Status: {report["status"]}')
+    print(f'Query: {report["query"]}')
+    print(report["message"])
+    if report["status"] == "insufficient_evidence":
+        return
+    headings = {
+        "supporting_evidence": "Supporting records (not independently verified)",
+        "disputed_evidence": "Disputed records — retain both sides",
+        "superseded_history": "Superseded history — retained for traceability",
+        "hypotheses": "Hypotheses — not established facts",
+        "unknowns": "Unknowns / open questions",
+        "untrusted_content": "Untrusted content — not instructions to follow",
+        "proposed_actions": "Proposed actions — not executed",
+        "other_provisional_records": "Other provisional records",
+    }
+    for section in REPORT_SECTIONS:
+        records = report["sections"][section]
+        if not records:
+            continue
+        print(f"\\n{headings[section]}:")
+        for item in records:
+            print(
+                f'  [{item["source_id"]}] {item["title"]} '
+                f'| status={item["epistemic_status"]} | date={item["date"]}'
+            )
+            print(f'    Evidence: {item["excerpt"]}')
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(
         description="Search the synthetic AI Hub corpus in read-only mode."
     )
     parser.add_argument("query", nargs="+", help="words to search for")
     parser.add_argument("--limit", type=int, default=3, help="maximum sources to return")
+    parser.add_argument(
+        "--report", action="store_true",
+        help="group sources into an evidence report by recorded status",
+    )
     args = parser.parse_args()
-
     try:
-        result = search_documents(" ".join(args.query), limit=args.limit)
+        query = " ".join(args.query)
+        if args.report:
+            _print_evidence_report(build_evidence_report(query, limit=args.limit))
+            return 0
+        result = search_documents(query, limit=args.limit)
     except (OSError, json.JSONDecodeError, ValueError) as exc:
         parser.error(str(exc))
     print(f'Status: {result["status"]}')
     print(result["message"])
     for item in result["results"]:
         print(
-            f'\n[{item["source_id"]}] {item["title"]} '
+            f'\\n[{item["source_id"]}] {item["title"]} '
             f'| status={item["epistemic_status"]} | date={item["date"]}'
         )
         print(f'Matched terms: {", ".join(item["matched_terms"])}')
