@@ -389,6 +389,23 @@ def _print_conclusion_trace(result: dict[str, Any]) -> None:
             print(f"  - {need}")
 
 
+
+def _print_trace_audit(audit: dict[str, Any]) -> None:
+    """Print citation-integrity results without implying source truth."""
+    print(
+        f'\nCitation integrity audit: {audit["status"]} '
+        f'({audit["checks_passed"]}/{audit["checks_total"]} source records passed)'
+    )
+    print(audit["note"])
+    for item in audit["entries"]:
+        if not item["passed"]:
+            failures = [
+                name for name in (
+                    "source_exists", "excerpt_matches", "title_matches", "status_matches"
+                ) if not item[name]
+            ]
+            print(f'  FAIL [{item["source_id"]}]: {", ".join(failures)}')
+
 def main() -> int:
     parser = argparse.ArgumentParser(
         description="Search the synthetic AI Hub corpus in read-only mode."
@@ -403,11 +420,20 @@ def main() -> int:
         "--trace", action="store_true",
         help="show source-by-source interpretation limits and evidence still needed",
     )
+    parser.add_argument(
+        "--audit", action="store_true",
+        help="audit trace citations against the synthetic corpus (requires --trace)",
+    )
     args = parser.parse_args()
+    if args.audit and not args.trace:
+        parser.error("--audit requires --trace")
     try:
         query = " ".join(args.query)
         if args.trace:
-            _print_conclusion_trace(build_conclusion_trace(query, limit=args.limit))
+            trace = build_conclusion_trace(query, limit=args.limit)
+            _print_conclusion_trace(trace)
+            if args.audit:
+                _print_trace_audit(audit_conclusion_trace(trace))
             return 0
         if args.report:
             _print_evidence_report(build_evidence_report(query, limit=args.limit))
