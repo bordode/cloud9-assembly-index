@@ -207,6 +207,59 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
         self.assertEqual(request["original_outcome_snapshot"], outcome_snapshot)
 
 
+    def test_mutating_request_snapshots_does_not_mutate_source_case(self):
+        case = self.to_outcome(self.make_case())
+        closed = transition_case(
+            case, to_status="closed", actor="reviewer-a",
+            reason="Close synthetic fixture for reverse copy-isolation test.",
+            closure_disposition="other_documented_reason",
+        )
+        original_closure = deepcopy(closed["closure_record"])
+        original_outcome = deepcopy(closed["outcome"])
+        request = self.make_post_closure_request(closed)
+
+        # This proves only that the in-memory copies are detached from each other.
+        # It does not prove authenticity, durable preservation, or tamper resistance.
+        request["original_closure_snapshot"]["reason"] = "Mutated request copy."
+        request["original_outcome_snapshot"]["rationale"] = "Mutated request copy."
+        request["events"].append({
+            "event_id": "synthetic-test-only",
+            "action": "test_mutation",
+        })
+
+        self.assertEqual(closed["closure_record"], original_closure)
+        self.assertEqual(closed["outcome"], original_outcome)
+        self.assertNotIn("synthetic-test-only", [
+            event.get("event_id") for event in closed["events"]
+        ])
+
+    def test_mutating_reopening_record_snapshots_does_not_mutate_request(self):
+        closed = self.closed_case()
+        request = self.accepted_reopening_request(closed)
+        original_closure = deepcopy(request["original_closure_snapshot"])
+        original_outcome = deepcopy(request["original_outcome_snapshot"])
+        record = create_reopening_decision_record(
+            request, decision="reopening_authorized",
+            actor="authority-label-not-verified",
+            reviewer_conflict_check="Not assessed; synthetic fixture only.",
+            reason="Synthetic decision for copy-isolation test.",
+            scope="Review the fictional access barrier only.",
+            evidence_limitations="No independent evidence or authority verification.",
+            next_steps="No real-case action; synthetic test only.",
+            authority_basis="Synthetic fixture; not a verified delegation.",
+        )
+
+        # The returned record is still mutable; this checks only separation from
+        # the request object, not immutable or tamper-evident history.
+        record["original_closure_snapshot"]["reason"] = "Mutated decision copy."
+        if record["original_outcome_snapshot"] is not None:
+            record["original_outcome_snapshot"]["rationale"] = "Mutated decision copy."
+
+        self.assertEqual(request["original_closure_snapshot"], original_closure)
+        self.assertEqual(request["original_outcome_snapshot"], original_outcome)
+        self.assertEqual(request["status"], "decision_recorded")
+
+
     def test_post_closure_request_requires_closed_case(self):
         with self.assertRaisesRegex(ValueError, "requires a closed case"):
             create_post_closure_review_request(
