@@ -315,6 +315,40 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
         self.assertIs(record["automated_restriction"], False)
         self.assertEqual(record["external_actions"], [])
 
+    def test_reopening_decision_snapshots_are_independent_of_later_request_mutation(self):
+        request = self.accepted_reopening_request()
+        record = create_reopening_decision_record(
+            request, decision="reopening_authorized", actor="authority-label-not-verified",
+            reviewer_conflict_check="Not assessed; synthetic fixture only.",
+            reason="Synthetic decision records a limited procedural review.",
+            scope="Review the reported notice-access barrier only.",
+            evidence_limitations="Synthetic fixture only; no external evidence verified.",
+            next_steps="A future reviewed implementation would record a new status event.",
+            authority_basis="Synthetic policy fixture; not a verified delegation of authority.",
+        )
+        closure_snapshot = deepcopy(record["original_closure_snapshot"])
+        outcome_snapshot = deepcopy(record["original_outcome_snapshot"])
+
+        # Later changes to the source request must not rewrite the separate
+        # decision record's copied snapshots. This is not tamper-proof storage.
+        request["original_closure_snapshot"]["reason"] = "Later synthetic mutation."
+        request["original_outcome_snapshot"]["rationale"] = "Later synthetic mutation."
+
+        self.assertEqual(record["original_closure_snapshot"], closure_snapshot)
+        self.assertEqual(record["original_outcome_snapshot"], outcome_snapshot)
+        self.assertNotEqual(
+            record["original_closure_snapshot"]["reason"],
+            request["original_closure_snapshot"]["reason"],
+        )
+        self.assertNotEqual(
+            record["original_outcome_snapshot"]["rationale"],
+            request["original_outcome_snapshot"]["rationale"],
+        )
+        self.assertIs(record["authority_verified"], False)
+        self.assertIs(record["reviewer_independence_verified"], False)
+        self.assertIs(record["changes_case_status"], False)
+        self.assertIs(record["overwrites_original_closure"], False)
+
     def test_reopening_decision_requires_prior_acceptance_and_complete_record(self):
         request = self.make_post_closure_request()
         request = record_post_closure_review_decision(
