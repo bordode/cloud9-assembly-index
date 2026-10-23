@@ -63,6 +63,7 @@ def create_synthetic_case(*, referral_summary, source_label="synthetic_fixture")
         "original_outcome": None,
         "notice_result": "not_attempted",
         "notice_confirmation_reference": None,
+        "notice_result_history": [],
         "participation_barriers": [],
         "events": [
             _event("synthetic_fixture", "case_created", "Fictional test fixture", None, "referred")
@@ -103,13 +104,14 @@ def record_participation_barrier(case, *, barrier, actor, reason):
     updated = deepcopy(case)
     barrier_text = _required_text("barrier", barrier)
     event_reason = _required_text("reason", reason)
+    actor_text = _required_text("actor", actor)
     updated["participation_barriers"].append({
         "barrier": barrier_text,
-        "recorded_by": _required_text("actor", actor),
+        "recorded_by": actor_text,
         "reason": event_reason,
     })
     updated["events"].append(
-        _event(actor, "participation_barrier_recorded", event_reason,
+        _event(actor_text, "participation_barrier_recorded", event_reason,
                updated["status"], updated["status"])
     )
     # Deliberately do not change status, outcome, access, or permissions.
@@ -117,7 +119,7 @@ def record_participation_barrier(case, *, barrier, actor, reason):
 
 
 def record_notice_result(case, *, result, actor, reason, confirmation_reference=None):
-    """Record notice metadata; a reference is caller-supplied and not verified."""
+    """Record notice metadata and append a history entry; no delivery is verified."""
     if result not in NOTICE_RESULTS:
         raise ValueError(f"result must be one of {sorted(NOTICE_RESULTS)}")
 
@@ -135,12 +137,26 @@ def record_notice_result(case, *, result, actor, reason, confirmation_reference=
     else:
         reference = None
 
+    actor_text = _required_text("actor", actor)
+    reason_text = _required_text("reason", reason)
     updated = deepcopy(case)
+    prior_result = updated["notice_result"]
+    entry = {
+        "result": result,
+        "prior_result": prior_result,
+        "confirmation_reference": reference,
+        "actor": actor_text,
+        "reason": reason_text,
+        "recorded_at": datetime.now(timezone.utc).isoformat(),
+        "verification_status": "unverified_metadata",
+    }
+    updated.setdefault("notice_result_history", []).append(entry)
     updated["notice_result"] = result
     updated["notice_confirmation_reference"] = reference
     updated["events"].append(
-        _event(actor, f"notice:{result}", reason, updated["status"], updated["status"])
+        _event(actor_text, f"notice:{result}", reason_text, updated["status"], updated["status"])
     )
+    # The history is ordinary mutable in-memory data, not immutable audit evidence.
     # A reference is only an unverified label; it does not prove delivery or imply waiver.
     return updated
 
