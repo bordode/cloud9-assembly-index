@@ -283,13 +283,23 @@ def create_reopening_decision_record(
         raise ValueError("a post-closure request decision must be recorded first")
     if request.get("decision") != "accepted_for_reopening_review":
         raise ValueError("reopening decision requires acceptance for reopening review")
-    if not isinstance(request.get("original_closure_snapshot"), dict):
+    closure_snapshot = request.get("original_closure_snapshot")
+    if not isinstance(closure_snapshot, dict):
         raise ValueError("reopening decision requires an original closure snapshot")
+    if not isinstance(closure_snapshot.get("disposition"), str) or not closure_snapshot["disposition"].strip():
+        raise ValueError("original closure snapshot requires a disposition")
+    if not isinstance(closure_snapshot.get("reason"), str) or not closure_snapshot["reason"].strip():
+        raise ValueError("original closure snapshot requires a reason")
     if "original_outcome_snapshot" not in request:
         raise ValueError("original outcome snapshot is required")
     outcome_snapshot = request["original_outcome_snapshot"]
-    if outcome_snapshot is not None and not isinstance(outcome_snapshot, dict):
-        raise ValueError("original outcome snapshot must be a record or None")
+    if outcome_snapshot is not None:
+        if not isinstance(outcome_snapshot, dict):
+            raise ValueError("original outcome snapshot must be a record or None")
+        if outcome_snapshot.get("category") not in OUTCOMES:
+            raise ValueError("original outcome snapshot requires a valid category")
+        if not isinstance(outcome_snapshot.get("rationale"), str) or not outcome_snapshot["rationale"].strip():
+            raise ValueError("original outcome snapshot requires a rationale")
     if decision not in REOPENING_DECISIONS:
         raise ValueError(f"decision must be one of {sorted(REOPENING_DECISIONS)}")
     return {
