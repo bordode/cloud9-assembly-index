@@ -434,6 +434,22 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
             )
         self.assertEqual(malformed_outcome_record, malformed_outcome_record_before)
 
+        invalid_category = deepcopy(accepted)
+        invalid_category["original_outcome_snapshot"] = {
+            "category": ["not", "a", "category"],
+            "rationale": "Synthetic rationale.",
+        }
+        invalid_category_before = deepcopy(invalid_category)
+        with self.assertRaisesRegex(ValueError, "valid category"):
+            create_reopening_decision_record(
+                invalid_category, decision="reopening_authorized", actor="reviewer-a",
+                reviewer_conflict_check="Not assessed; synthetic fixture only.",
+                reason="Synthetic decision.", scope="Narrow procedural scope.",
+                evidence_limitations="Synthetic only.", next_steps="No external action.",
+                authority_basis="Synthetic policy fixture; not verified.",
+            )
+        self.assertEqual(invalid_category, invalid_category_before)
+
     def test_reopening_decision_requires_prior_acceptance_and_complete_record(self):
         request = self.make_post_closure_request()
         request = record_post_closure_review_decision(
