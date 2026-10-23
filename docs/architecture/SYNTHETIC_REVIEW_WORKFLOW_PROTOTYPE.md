@@ -13,6 +13,7 @@ This prototype translates a narrow subset of the proposed review lifecycle into 
 - The actor labels in records are descriptive test inputs, not authenticated identities.
 - The event list is ordinary mutable application data, not an immutable or tamper-evident audit log.
 - A `confirmed` notice result requires a caller-supplied reference string, but this prototype does not validate the reference, inspect delivery evidence, or independently verify receipt. The reference is metadata, not proof.
+- Notice-result state checks enforce only this narrow rule: a notice may be drafted after an outcome is recorded; attempted, confirmed, or failed results require the workflow to be in `notice_issued`. This is a synthetic lifecycle check, not a delivery mechanism or proof of service.
 - Passing these unit tests establishes only the behavior exercised by these tests. It does not validate consciousness claims, moral status, security, or suitability for real cases.
 
 ## Invariants exercised
@@ -20,11 +21,12 @@ This prototype translates a narrow subset of the proposed review lifecycle into 
 1. A referral starts without a finding or automated restriction.
 2. Invalid lifecycle transitions are rejected.
 3. A participation barrier is recorded without changing the status or outcome.
-4. Failed notice remains distinguishable from confirmed delivery and does not imply waiver.
-5. A confirmation label requires a reference field, without treating that field as verified delivery evidence.
-6. Opening a challenge preserves the original outcome.
-7. Input records are copied rather than mutated by transition helpers.
-8. The prototype has no external-action interface.
+4. Notice results are constrained to the expected lifecycle states.
+5. Failed notice remains distinguishable from confirmed delivery and does not imply waiver.
+6. A confirmation label requires a reference field, without treating that field as verified delivery evidence.
+7. Opening a challenge preserves the original outcome.
+8. Input records are copied rather than mutated by transition helpers.
+9. The prototype has no external-action interface.
 
 ## Before any further implementation
 
