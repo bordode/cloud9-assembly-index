@@ -129,6 +129,13 @@ def transition_case(
             "participation_barrier_resolution_status": "no_barrier_recorded",
             "notice_delivery_status_at_closure": updated.get("notice_delivery_status", "not_verified"),
             "does_not_establish_response_or_waiver": True,
+            # Explicit gaps against the fuller design specification. These are
+            # limitation labels, not claims that the missing processes exist.
+            "outstanding_uncertainty_status": "not_captured_by_prototype",
+            "retention_deletion_schedule_status": "not_implemented",
+            "post_closure_review_route_status": (
+                "separate_request_supported_authorized_reopening_not_implemented"
+            ),
         }
 
     updated["events"].append(
