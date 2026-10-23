@@ -470,6 +470,24 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
             )
         self.assertEqual(updated["status"], "challenge_or_appeal_pending")
 
+    def test_challenge_rejects_non_synthetic_or_missing_outcome_records(self):
+        case = self.to_outcome(self.make_case())
+        non_synthetic = deepcopy(case)
+        non_synthetic["synthetic_only"] = False
+        with self.assertRaisesRegex(ValueError, "synthetic case record"):
+            record_challenge(
+                non_synthetic, actor="synthetic-subject",
+                reason="Reject a non-synthetic record.",
+            )
+
+        missing_outcome = deepcopy(case)
+        missing_outcome["outcome"] = None
+        with self.assertRaisesRegex(ValueError, "existing outcome record"):
+            record_challenge(
+                missing_outcome, actor="synthetic-subject",
+                reason="Reject a missing outcome.",
+            )
+
     def test_notice_result_changes_preserve_prior_entries(self):
         case = self.to_notice_issued(self.to_outcome(self.make_case()))
         failed = record_notice_result(
