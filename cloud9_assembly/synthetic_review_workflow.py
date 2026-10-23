@@ -60,6 +60,7 @@ def create_synthetic_case(*, referral_summary, source_label="synthetic_fixture")
         "outcome": None,
         "original_outcome": None,
         "notice_result": "not_attempted",
+        "notice_confirmation_reference": None,
         "participation_barriers": [],
         "events": [
             _event("synthetic_fixture", "case_created", "Fictional test fixture", None, "referred")
@@ -111,17 +112,24 @@ def record_participation_barrier(case, *, barrier, actor, reason):
     return updated
 
 
-def record_notice_result(case, *, result, actor, reason):
-    """Record notice delivery status; a failed attempt is not confirmed notice."""
+def record_notice_result(case, *, result, actor, reason, confirmation_reference=None):
+    """Record notice metadata; a reference is caller-supplied and not verified."""
     if result not in NOTICE_RESULTS:
         raise ValueError(f"result must be one of {sorted(NOTICE_RESULTS)}")
+    if result == "confirmed":
+        reference = _required_text("confirmation_reference", confirmation_reference)
+    elif confirmation_reference is not None:
+        raise ValueError("confirmation_reference may only be supplied for confirmed notice")
+    else:
+        reference = None
+
     updated = deepcopy(case)
-    previous = updated["notice_result"]
     updated["notice_result"] = result
+    updated["notice_confirmation_reference"] = reference
     updated["events"].append(
         _event(actor, f"notice:{result}", reason, updated["status"], updated["status"])
     )
-    # Notice metadata does not itself change workflow status or infer waiver.
+    # A reference is only an unverified label; it does not prove delivery or imply waiver.
     return updated
 
 
