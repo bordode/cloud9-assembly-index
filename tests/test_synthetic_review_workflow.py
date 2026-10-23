@@ -316,7 +316,13 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
         self.assertEqual(record["external_actions"], [])
 
     def test_reopening_decision_snapshots_are_independent_of_later_request_mutation(self):
-        request = self.accepted_reopening_request()
+        case = self.to_outcome(self.make_case())
+        closed = transition_case(
+            case, to_status="closed", actor="reviewer-a",
+            reason="Close outcome-bearing synthetic fixture for snapshot isolation.",
+            closure_disposition="other_documented_reason",
+        )
+        request = self.accepted_reopening_request(closed)
         record = create_reopening_decision_record(
             request, decision="reopening_authorized", actor="authority-label-not-verified",
             reviewer_conflict_check="Not assessed; synthetic fixture only.",
