@@ -4,9 +4,11 @@ from copy import deepcopy
 
 from cloud9_assembly.synthetic_review_workflow import (
     create_synthetic_case,
+    create_post_closure_review_request,
     record_challenge,
     record_notice_result,
     record_participation_barrier,
+    record_post_closure_review_decision,
     transition_case,
 )
 
@@ -135,6 +137,106 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
             )
         self.assertEqual(closed["status"], "closed")
         self.assertEqual(closed["participation_barriers"], [])
+
+    def closed_case(self):
+        case = self.to_review(self.make_case())
+        return transition_case(
+            case, to_status="closed", actor="reviewer-a",
+            reason="Close synthetic fixture with documented disposition.",
+            closure_disposition="administrative_duplicate",
+        )
+
+    def make_post_closure_request(self, closed=None):
+        return create_post_closure_review_request(
+            closed or self.closed_case(),
+            barrier_or_information="Fictional inaccessible notice discovered after closure.",
+            discovered_when="synthetic test date",
+            requested_review_reason="Assess whether the newly reported access barrier warrants review.",
+        )
+
+    def test_post_closure_request_is_separate_and_does_not_reopen_case(self):
+        closed = self.closed_case()
+        original_status = closed["status"]
+        original_closure = deepcopy(closed["closure_record"])
+        original_outcome = deepcopy(closed["outcome"])
+        request = self.make_post_closure_request(closed)
+
+        self.assertTrue(request["synthetic_only"])
+        self.assertEqual(request["original_case_id"], closed["case_id"])
+        self.assertEqual(request["status"], "request_recorded")
+        self.assertIsNone(request["decision"])
+        self.assertEqual(request["original_closure_snapshot"], original_closure)
+        self.assertEqual(request["original_outcome_snapshot"], original_outcome)
+        self.assertEqual(closed["status"], original_status)
+        self.assertEqual(closed["closure_record"], original_closure)
+        self.assertEqual(closed["outcome"], original_outcome)
+        self.assertIs(request["automated_restriction"], False)
+        self.assertEqual(request["external_actions"], [])
+
+    def test_post_closure_request_requires_closed_case(self):
+        with self.assertRaisesRegex(ValueError, "requires a closed case"):
+            create_post_closure_review_request(
+                self.make_case(),
+                barrier_or_information="Fictional access barrier.",
+                discovered_when="synthetic test date",
+                requested_review_reason="Request review.",
+            )
+
+    def test_post_closure_decision_records_limits_without_reopening_case(self):
+        closed = self.closed_case()
+        original_closure = deepcopy(closed["closure_record"])
+        original_outcome = deepcopy(closed["outcome"])
+        request = self.make_post_closure_request(closed)
+        decided = record_post_closure_review_decision(
+            request,
+            decision="accepted_for_reopening_review",
+            actor="reviewer-label-not-authenticated",
+            reason="The reported access barrier warrants further procedural review.",
+            evidence_limitations="Synthetic fixture only; no delivery or access evidence verified.",
+            next_steps="A separately authorized review decision would be required.",
+        )
+
+        self.assertEqual(decided["status"], "decision_recorded")
+        self.assertEqual(decided["decision"], "accepted_for_reopening_review")
+        self.assertIs(decided["decision_record"]["does_not_reopen_original_case"], True)
+        self.assertIs(decided["decision_record"]["authority_verified"], False)
+        self.assertIs(decided["decision_record"]["reviewer_independence_verified"], False)
+        self.assertEqual(decided["original_closure_snapshot"], original_closure)
+        self.assertEqual(decided["original_outcome_snapshot"], original_outcome)
+        self.assertEqual(closed["status"], "closed")
+        self.assertEqual(closed["closure_record"], original_closure)
+        self.assertEqual(closed["outcome"], original_outcome)
+        self.assertIs(decided["automated_restriction"], False)
+        self.assertEqual(decided["external_actions"], [])
+
+    def test_post_closure_decision_requires_reason_limits_and_next_steps(self):
+        request = self.make_post_closure_request()
+        with self.assertRaisesRegex(ValueError, "evidence_limitations"):
+            record_post_closure_review_decision(
+                request, decision="inconclusive", actor="reviewer-a",
+                reason="Insufficient information.",
+                evidence_limitations=" ",
+                next_steps="Keep the request unresolved.",
+            )
+        self.assertEqual(request["status"], "request_recorded")
+
+    def test_post_closure_decision_cannot_be_overwritten_or_infer_waiver(self):
+        request = self.make_post_closure_request()
+        decided = record_post_closure_review_decision(
+            request, decision="reopening_not_warranted", actor="reviewer-a",
+            reason="The synthetic evidence does not establish a basis for reopening.",
+            evidence_limitations="No independent access or delivery evidence exists.",
+            next_steps="Provide an accessible challenge route in a future implementation.",
+        )
+        self.assertEqual(decided["decision"], "reopening_not_warranted")
+        self.assertNotIn("waiver", decided["decision_record"])
+        with self.assertRaisesRegex(ValueError, "only be recorded once"):
+            record_post_closure_review_decision(
+                decided, decision="accepted_for_reopening_review", actor="reviewer-b",
+                reason="Attempt to overwrite decision.",
+                evidence_limitations="Synthetic fixture.",
+                next_steps="None.",
+            )
 
     def test_closure_disposition_is_rejected_for_non_closure_transition(self):
         with self.assertRaisesRegex(ValueError, "only be supplied when closing"):
