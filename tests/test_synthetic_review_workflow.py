@@ -82,7 +82,7 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
         self.assertEqual(len(updated["participation_barriers"]), 1)
         self.assertIs(updated["automated_restriction"], False)
 
-    def test_closure_requires_disposition_and_preserves_participation_limits(self):
+    def test_closure_is_blocked_while_participation_barrier_is_recorded(self):
         case = self.to_review(self.make_case())
         case = record_participation_barrier(
             case, barrier="accessible response channel unavailable",
@@ -90,6 +90,17 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
             reason="The fictional subject could not use the proposed channel."
         )
 
+        with self.assertRaisesRegex(ValueError, "no barrier-resolution process"):
+            transition_case(
+                case, to_status="closed", actor="reviewer-a",
+                reason="Do not close while the participation barrier remains unresolved.",
+                closure_disposition="other_documented_reason",
+            )
+        self.assertEqual(case["status"], "under_review")
+        self.assertEqual(len(case["participation_barriers"]), 1)
+
+    def test_closure_requires_disposition_and_records_no_waiver(self):
+        case = self.to_review(self.make_case())
         with self.assertRaisesRegex(ValueError, "closure_disposition"):
             transition_case(
                 case, to_status="closed", actor="reviewer-a",
@@ -103,11 +114,8 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
         )
         self.assertEqual(closed["status"], "closed")
         self.assertEqual(closed["closure_record"]["disposition"], "other_documented_reason")
-        self.assertEqual(closed["closure_record"]["participation_barrier_count_at_closure"], 1)
-        self.assertEqual(
-            closed["closure_record"]["participation_barrier_resolution_status"],
-            "recorded_but_resolution_not_represented",
-        )
+        self.assertEqual(closed["closure_record"]["participation_barrier_count_at_closure"], 0)
+        self.assertEqual(closed["closure_record"]["participation_barrier_resolution_status"], "no_barrier_recorded")
         self.assertEqual(closed["closure_record"]["notice_delivery_status_at_closure"], "not_verified")
         self.assertIs(closed["closure_record"]["does_not_establish_response_or_waiver"], True)
         self.assertEqual(case["status"], "under_review")
