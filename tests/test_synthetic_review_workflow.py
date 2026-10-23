@@ -742,6 +742,49 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
             )
         self.assertEqual(invalid, before)
 
+    def test_all_public_helpers_require_boolean_true_synthetic_marker(self):
+        closed = self.closed_case()
+        closed["synthetic_only"] = 1
+        with self.assertRaisesRegex(ValueError, "synthetic case record"):
+            create_post_closure_review_request(
+                closed,
+                barrier_or_information="Fictional access barrier.",
+                discovered_when="synthetic test date",
+                requested_review_reason="Reject a truthy non-boolean marker.",
+            )
+
+        request = self.make_post_closure_request()
+        request["synthetic_only"] = "yes"
+        with self.assertRaisesRegex(ValueError, "synthetic post-closure review request"):
+            record_post_closure_review_decision(
+                request, decision="inconclusive", actor="reviewer-a",
+                reviewer_conflict_check="Synthetic fixture only.",
+                reason="Reject a truthy non-boolean marker.",
+                evidence_limitations="Synthetic only.",
+                next_steps="None.",
+            )
+
+        accepted = self.accepted_reopening_request()
+        accepted["synthetic_only"] = 1
+        with self.assertRaisesRegex(ValueError, "synthetic post-closure review request"):
+            create_reopening_decision_record(
+                accepted, decision="reopening_not_authorized", actor="reviewer-a",
+                reviewer_conflict_check="Synthetic fixture only.",
+                reason="Reject a truthy non-boolean marker.",
+                scope="Synthetic scope.",
+                evidence_limitations="Synthetic only.",
+                next_steps="None.",
+                authority_basis="Not verified.",
+            )
+
+        case = self.to_outcome(self.make_case())
+        case["synthetic_only"] = "yes"
+        with self.assertRaisesRegex(ValueError, "synthetic case record"):
+            record_challenge(
+                case, actor="synthetic-subject",
+                reason="Reject a truthy non-boolean marker.",
+            )
+
     def test_input_case_is_not_mutated(self):
         case = self.make_case()
         original_events = list(case["events"])
