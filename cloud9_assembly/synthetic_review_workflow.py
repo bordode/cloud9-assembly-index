@@ -1,4 +1,4 @@
-""""Synthetic, in-memory review workflow prototype.
+"""Synthetic, in-memory review workflow prototype.
 
 This module is a local demonstration only. It has no persistence, authentication,
 network access, detector, runtime integration, or enforcement capability. It must
@@ -23,7 +23,9 @@ TRANSITIONS = {
     "more_evidence_requested": {"under_review", "outcome_recorded", "closed"},
     "outcome_recorded": {"notice_issued", "challenge_or_appeal_pending", "closed"},
     "notice_issued": {"challenge_or_appeal_pending", "closed"},
-    "challenge_or_appeal_pending": {"closed"},
+    # A challenge cannot be closed through the generic transition helper.
+    # A separately specified challenge-resolution process is required first.
+    "challenge_or_appeal_pending": set(),
     "closed": set(),
 }
 
@@ -78,6 +80,8 @@ def transition_case(case, *, to_status, actor, reason, outcome=None):
         raise ValueError(f"invalid transition: {current!r} -> {to_status!r}")
 
     if to_status == "outcome_recorded":
+        if updated.get("outcome") is not None:
+            raise ValueError("an existing outcome cannot be overwritten; use a separately reviewed correction process")
         if outcome not in OUTCOMES:
             raise ValueError("a valid outcome category is required")
         updated["outcome"] = {
