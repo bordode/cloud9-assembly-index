@@ -17,7 +17,7 @@ This prototype translates a narrow subset of the proposed review lifecycle into 
 - Each notice-result update appends an in-memory history entry containing the new result, prior result, actor label, reason, timestamp, and an explicit `unverified_metadata` marker. This makes changes visible in the returned fixture but does not prevent a caller from altering the list or establish an immutable audit trail.
 - An outcome already present in a record cannot be overwritten through the generic transition helper. No correction or reconsideration process is implemented; that requires a separately specified and reviewed process.
 - A pending challenge cannot be closed through the generic transition helper. This deliberately fails closed until a distinct challenge-resolution process is specified; it is not a complete appeals service.
-- Other permitted generic closures require an explicit disposition and reason. Generic closure is blocked while any participation barrier is recorded, because this prototype has no barrier-resolution process. When closure is permitted, the closure record notes that no barrier was recorded and preserves notice delivery as `not_verified` when applicable. It does not establish that a response occurred, that notice was received, or that any right was waived.
+- Other permitted generic closures require an explicit disposition and reason. Generic closure is blocked while any participation barrier is recorded, because this prototype has no barrier-resolution process. When closure is permitted, the closure record notes that no barrier was recorded and preserves notice delivery as `not_verified` when applicable. It does not establish that a response occurred, that notice was received, or that any right was waived. The prototype also rejects adding a participation barrier after closure because no reopening or post-closure review process is defined; this is a limitation, not a claim that real cases should be unable to reopen.
 - Passing these unit tests establishes only the behavior exercised by these tests. It does not validate consciousness claims, moral status, security, or suitability for real cases.
 
 ## Invariants exercised
@@ -32,8 +32,9 @@ This prototype translates a narrow subset of the proposed review lifecycle into 
 8. An existing outcome cannot be silently overwritten.
 9. A pending challenge cannot be closed via the generic transition helper, and the original outcome is preserved.
 10. Generic closure requires an explicit disposition, is blocked while a participation barrier is recorded, and does not imply response, receipt, or waiver.
-11. Input records are copied rather than mutated by transition helpers.
-12. The prototype has no external-action interface.
+11. A closed case rejects new participation barriers because no reopening process is defined.
+12. Input records are copied rather than mutated by transition helpers.
+13. The prototype has no external-action interface.
 
 ## Before any further implementation
 
