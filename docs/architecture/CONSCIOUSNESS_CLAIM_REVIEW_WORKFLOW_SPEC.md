@@ -91,6 +91,9 @@ These are requirements for a future implementation, not tests that this document
 - Corrections preserve a traceable history.
 - Notice status distinguishes drafted, attempted, and confirmed delivery.
 - Challenges and appeals preserve the original outcome and record the independent review where feasible.
+- Non-response, inaccessible notice, missing evidence, or a request for more time does not itself increase evidentiary support or mark a right waived.
+- A referral, challenge, correction request, or appeal cannot itself trigger retaliation or a separate adverse consequence.
+- Where notice or participation is not feasible, the record identifies the limitation and avoids claiming confirmed delivery, agreement, or waiver.
 - Administrative closure is not mistaken for a substantive finding.
 - No state transition can call an enforcement, throttling, publishing, messaging, or permission-change path.
 - Retention and deletion rules are applied and auditable without falsely claiming immutable storage.
