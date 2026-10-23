@@ -288,6 +288,8 @@ def create_reopening_decision_record(
         raise ValueError("reopening decision requires an original closure snapshot")
     if not isinstance(closure_snapshot.get("disposition"), str) or not closure_snapshot["disposition"].strip():
         raise ValueError("original closure snapshot requires a disposition")
+    if closure_snapshot["disposition"] not in CLOSURE_DISPOSITIONS:
+        raise ValueError("original closure snapshot requires a valid disposition")
     if not isinstance(closure_snapshot.get("reason"), str) or not closure_snapshot["reason"].strip():
         raise ValueError("original closure snapshot requires a reason")
     if "original_outcome_snapshot" not in request:
