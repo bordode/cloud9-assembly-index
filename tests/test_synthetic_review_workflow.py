@@ -192,6 +192,7 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
             request,
             decision="accepted_for_reopening_review",
             actor="reviewer-label-not-authenticated",
+            reviewer_conflict_check="Not assessed; synthetic fixture only.",
             reason="The reported access barrier warrants further procedural review.",
             evidence_limitations="Synthetic fixture only; no delivery or access evidence verified.",
             next_steps="A separately authorized review decision would be required.",
@@ -214,6 +215,7 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
         request = self.make_post_closure_request(closed)
         return record_post_closure_review_decision(
             request, decision="accepted_for_reopening_review", actor="reviewer-label",
+            reviewer_conflict_check="Not assessed; synthetic fixture only.",
             reason="Further procedural review is warranted.",
             evidence_limitations="Synthetic fixture only; no external evidence verified.",
             next_steps="Record a separate reopening decision.",
@@ -226,6 +228,7 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
         request = self.accepted_reopening_request(closed)
         record = create_reopening_decision_record(
             request, decision="reopening_authorized", actor="authority-label-not-verified",
+            reviewer_conflict_check="Not assessed; synthetic fixture only.",
             reason="Synthetic decision approves reopening for limited procedural review.",
             scope="Review the reported notice-access barrier only.",
             evidence_limitations="No delivery records or identity verification exist in this prototype.",
@@ -252,6 +255,7 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
         request = self.make_post_closure_request()
         request = record_post_closure_review_decision(
             request, decision="inconclusive", actor="reviewer-a",
+            reviewer_conflict_check="Not assessed; synthetic fixture only.",
             reason="Insufficient information.",
             evidence_limitations="Synthetic fixture only.",
             next_steps="Seek more information.",
@@ -259,6 +263,7 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "acceptance for reopening review"):
             create_reopening_decision_record(
                 request, decision="reopening_authorized", actor="reviewer-a",
+            reviewer_conflict_check="Not assessed; synthetic fixture only.",
                 reason="Try to skip the required procedural decision.",
                 scope="Narrow synthetic scope.",
                 evidence_limitations="Synthetic only.",
@@ -270,6 +275,7 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "authority_basis"):
             create_reopening_decision_record(
                 accepted, decision="reopening_not_authorized", actor="reviewer-a",
+            reviewer_conflict_check="Not assessed; synthetic fixture only.",
                 reason="A separate decision is recorded.",
                 scope="Narrow synthetic scope.",
                 evidence_limitations="Synthetic only.",
@@ -282,6 +288,7 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "evidence_limitations"):
             record_post_closure_review_decision(
                 request, decision="inconclusive", actor="reviewer-a",
+            reviewer_conflict_check="Not assessed; synthetic fixture only.",
                 reason="Insufficient information.",
                 evidence_limitations=" ",
                 next_steps="Keep the request unresolved.",
@@ -292,6 +299,7 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
         request = self.make_post_closure_request()
         decided = record_post_closure_review_decision(
             request, decision="reopening_not_warranted", actor="reviewer-a",
+            reviewer_conflict_check="Not assessed; synthetic fixture only.",
             reason="The synthetic evidence does not establish a basis for reopening.",
             evidence_limitations="No independent access or delivery evidence exists.",
             next_steps="Provide an accessible challenge route in a future implementation.",
@@ -301,6 +309,7 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "only be recorded once"):
             record_post_closure_review_decision(
                 decided, decision="accepted_for_reopening_review", actor="reviewer-b",
+            reviewer_conflict_check="Not assessed; synthetic fixture only.",
                 reason="Attempt to overwrite decision.",
                 evidence_limitations="Synthetic fixture.",
                 next_steps="None.",
