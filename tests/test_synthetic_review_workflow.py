@@ -213,6 +213,18 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
         self.assertIs(decided["automated_restriction"], False)
         self.assertEqual(decided["external_actions"], [])
 
+    def test_post_closure_decision_rejects_blank_conflict_check_metadata(self):
+        request = self.make_post_closure_request()
+        with self.assertRaisesRegex(ValueError, "reviewer_conflict_check"):
+            record_post_closure_review_decision(
+                request, decision="inconclusive", actor="reviewer-a",
+                reviewer_conflict_check="   ",
+                reason="Insufficient information.",
+                evidence_limitations="Synthetic fixture only.",
+                next_steps="Seek more information.",
+            )
+        self.assertEqual(request["status"], "request_recorded")
+
     def accepted_reopening_request(self, closed=None):
         request = self.make_post_closure_request(closed)
         return record_post_closure_review_decision(
@@ -285,6 +297,19 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
                 evidence_limitations="Synthetic only.",
                 next_steps="No further action.",
                 authority_basis=" ",
+            )
+
+    def test_reopening_decision_rejects_blank_conflict_check_metadata(self):
+        accepted = self.accepted_reopening_request()
+        with self.assertRaisesRegex(ValueError, "reviewer_conflict_check"):
+            create_reopening_decision_record(
+                accepted, decision="reopening_authorized", actor="reviewer-a",
+                reviewer_conflict_check=" ",
+                reason="Synthetic decision.",
+                scope="Narrow synthetic scope.",
+                evidence_limitations="Synthetic only.",
+                next_steps="No external action.",
+                authority_basis="Synthetic policy fixture; not verified.",
             )
 
     def test_post_closure_decision_requires_reason_limits_and_next_steps(self):
