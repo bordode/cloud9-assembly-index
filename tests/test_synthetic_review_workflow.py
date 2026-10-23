@@ -38,6 +38,7 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
         self.assertIsNone(case["outcome"])
         self.assertIs(case["automated_restriction"], False)
         self.assertEqual(case["external_actions"], [])
+        self.assertIsNone(case["notice_confirmation_reference"])
 
     def test_claim_language_does_not_change_state_or_permissions(self):
         case = create_synthetic_case(
@@ -72,8 +73,34 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
             reason="Synthetic delivery attempt failed."
         )
         self.assertEqual(updated["notice_result"], "failed")
+        self.assertIsNone(updated["notice_confirmation_reference"])
         self.assertEqual(updated["status"], "outcome_recorded")
         self.assertEqual(updated["outcome"], case["outcome"])
+
+    def test_confirmed_notice_requires_reference_but_does_not_verify_it(self):
+        case = self.make_case()
+        with self.assertRaises(ValueError):
+            record_notice_result(
+                case, result="confirmed", actor="reviewer-a",
+                reason="Synthetic notice result."
+            )
+
+        updated = record_notice_result(
+            case, result="confirmed", confirmation_reference="fixture-ref-001",
+            actor="reviewer-a", reason="Synthetic notice result."
+        )
+        self.assertEqual(updated["notice_result"], "confirmed")
+        self.assertEqual(updated["notice_confirmation_reference"], "fixture-ref-001")
+        self.assertEqual(updated["status"], "referred")
+        self.assertIs(updated["automated_restriction"], False)
+
+    def test_confirmation_reference_is_rejected_for_other_results(self):
+        with self.assertRaises(ValueError):
+            record_notice_result(
+                self.make_case(), result="attempted",
+                confirmation_reference="fixture-ref-001", actor="reviewer-a",
+                reason="A reference cannot upgrade an attempt to confirmation."
+            )
 
     def test_challenge_preserves_original_outcome(self):
         case = self.to_outcome(self.make_case())
