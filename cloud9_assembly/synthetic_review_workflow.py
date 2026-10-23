@@ -186,6 +186,8 @@ def create_post_closure_review_request(
 
     This records a request only. It does not reopen or mutate the original case.
     """
+    if not isinstance(closed_case, dict) or not closed_case.get("synthetic_only"):
+        raise ValueError("post-closure review request requires a synthetic case record")
     if closed_case.get("status") != "closed" or not isinstance(
         closed_case.get("closure_record"), dict
     ):
