@@ -80,6 +80,9 @@ def transition_case(case, *, to_status, actor, reason, outcome=None):
     if current not in TRANSITIONS or to_status not in TRANSITIONS[current]:
         raise ValueError(f"invalid transition: {current!r} -> {to_status!r}")
 
+    if to_status == "notice_issued" and updated.get("notice_result") != "drafted":
+        raise ValueError("a notice must be drafted before it can be marked notice_issued")
+
     if to_status == "outcome_recorded":
         if updated.get("outcome") is not None:
             raise ValueError("an existing outcome cannot be overwritten; use a separately reviewed correction process")
