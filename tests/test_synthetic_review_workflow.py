@@ -370,6 +370,18 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
             )
         self.assertEqual(missing_closure, missing_closure_before)
 
+        empty_closure = deepcopy(accepted)
+        empty_closure["original_closure_snapshot"] = {}
+        empty_closure_before = deepcopy(empty_closure)
+        with self.assertRaisesRegex(ValueError, "closure snapshot requires a disposition"):
+            create_reopening_decision_record(
+                empty_closure, decision="reopening_authorized", actor="reviewer-a",
+                reviewer_conflict_check="Not assessed; synthetic fixture only.",
+                reason="Synthetic decision.", scope="Narrow procedural scope.",
+                evidence_limitations="Synthetic only.", next_steps="No external action.",
+                authority_basis="Synthetic policy fixture; not verified.",
+            )
+        self.assertEqual(empty_closure, empty_closure_before)
         missing_outcome = deepcopy(accepted)
         del missing_outcome["original_outcome_snapshot"]
         missing_outcome_before = deepcopy(missing_outcome)
@@ -395,6 +407,18 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
                 authority_basis="Synthetic policy fixture; not verified.",
             )
         self.assertEqual(malformed_outcome, malformed_outcome_before)
+        malformed_outcome_record = deepcopy(accepted)
+        malformed_outcome_record["original_outcome_snapshot"] = {"category": "inconclusive", "rationale": " "}
+        malformed_outcome_record_before = deepcopy(malformed_outcome_record)
+        with self.assertRaisesRegex(ValueError, "original outcome snapshot requires a rationale"):
+            create_reopening_decision_record(
+                malformed_outcome_record, decision="reopening_authorized", actor="reviewer-a",
+                reviewer_conflict_check="Not assessed; synthetic fixture only.",
+                reason="Synthetic decision.", scope="Narrow procedural scope.",
+                evidence_limitations="Synthetic only.", next_steps="No external action.",
+                authority_basis="Synthetic policy fixture; not verified.",
+            )
+        self.assertEqual(malformed_outcome_record, malformed_outcome_record_before)
 
     def test_reopening_decision_requires_prior_acceptance_and_complete_record(self):
         request = self.make_post_closure_request()
