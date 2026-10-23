@@ -94,6 +94,11 @@ def transition_case(
         raise ValueError(f"invalid transition: {current!r} -> {to_status!r}")
 
     if to_status == "closed":
+        if updated.get("participation_barriers"):
+            raise ValueError(
+                "cannot close while participation barriers are recorded; "
+                "this prototype has no barrier-resolution process"
+            )
         if closure_disposition not in CLOSURE_DISPOSITIONS:
             raise ValueError(
                 f"closure_disposition must be one of {sorted(CLOSURE_DISPOSITIONS)}"
@@ -117,14 +122,11 @@ def transition_case(
         raise ValueError("outcome may only be supplied when recording an outcome")
 
     if to_status == "closed":
-        barriers = updated.get("participation_barriers", [])
         updated["closure_record"] = {
             "disposition": closure_disposition,
             "reason": _required_text("closure reason", reason),
-            "participation_barrier_count_at_closure": len(barriers),
-            "participation_barrier_resolution_status": (
-                "recorded_but_resolution_not_represented" if barriers else "no_barrier_recorded"
-            ),
+            "participation_barrier_count_at_closure": 0,
+            "participation_barrier_resolution_status": "no_barrier_recorded",
             "notice_delivery_status_at_closure": updated.get("notice_delivery_status", "not_verified"),
             "does_not_establish_response_or_waiver": True,
         }
