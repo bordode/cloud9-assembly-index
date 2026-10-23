@@ -120,6 +120,22 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
         self.assertIs(closed["closure_record"]["does_not_establish_response_or_waiver"], True)
         self.assertEqual(case["status"], "under_review")
 
+    def test_participation_barrier_cannot_be_added_after_closure(self):
+        case = self.to_review(self.make_case())
+        closed = transition_case(
+            case, to_status="closed", actor="reviewer-a",
+            reason="Close synthetic fixture with documented disposition.",
+            closure_disposition="administrative_duplicate",
+        )
+        with self.assertRaisesRegex(ValueError, "no reopening or post-closure review process"):
+            record_participation_barrier(
+                closed, barrier="newly discovered inaccessible notice",
+                actor="reviewer-b",
+                reason="A new synthetic process barrier was reported after closure.",
+            )
+        self.assertEqual(closed["status"], "closed")
+        self.assertEqual(closed["participation_barriers"], [])
+
     def test_closure_disposition_is_rejected_for_non_closure_transition(self):
         with self.assertRaisesRegex(ValueError, "only be supplied when closing"):
             transition_case(
