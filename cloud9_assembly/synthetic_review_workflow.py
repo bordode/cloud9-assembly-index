@@ -251,6 +251,55 @@ def record_post_closure_review_decision(
     return updated
 
 
+
+REOPENING_DECISIONS = {"reopening_authorized", "reopening_not_authorized"}
+
+
+def create_reopening_decision_record(
+    request, *, decision, actor, reason, scope,
+    evidence_limitations, next_steps, authority_basis,
+):
+    """Record a separate synthetic reopening decision without mutating the case.
+
+    This is a decision-record schema demonstration, not an authorization service.
+    Actor identity and authority cannot be verified in this prototype.
+    """
+    if not isinstance(request, dict) or not request.get("synthetic_only"):
+        raise ValueError("a synthetic post-closure review request is required")
+    if request.get("status") != "decision_recorded":
+        raise ValueError("a post-closure request decision must be recorded first")
+    if request.get("decision") != "accepted_for_reopening_review":
+        raise ValueError("reopening decision requires acceptance for reopening review")
+    if decision not in REOPENING_DECISIONS:
+        raise ValueError(f"decision must be one of {sorted(REOPENING_DECISIONS)}")
+    return {
+        "decision_record_id": f"SYN-REOPEN-{uuid4()}",
+        "synthetic_only": True,
+        "original_case_id": _required_text("original_case_id", request.get("original_case_id")),
+        "request_id": _required_text("request_id", request.get("request_id")),
+        "decision": decision,
+        "actor_label": _required_text("actor", actor),
+        "reason": _required_text("reason", reason),
+        "scope": _required_text("scope", scope),
+        "evidence_limitations": _required_text("evidence_limitations", evidence_limitations),
+        "next_steps": _required_text("next_steps", next_steps),
+        "authority_basis": _required_text("authority_basis", authority_basis),
+        "authority_verified": False,
+        "reviewer_independence_verified": False,
+        "recorded_at": datetime.now(timezone.utc).isoformat(),
+        "original_closure_snapshot": deepcopy(request["original_closure_snapshot"]),
+        "original_outcome_snapshot": deepcopy(request["original_outcome_snapshot"]),
+        "changes_case_status": False,
+        "overwrites_original_closure": False,
+        "automated_restriction": False,
+        "external_actions": [],
+        "event": _event(
+            actor, f"separate_reopening_decision:{decision}", reason,
+            "closed", "closed",
+        ),
+    }
+
+
 def record_notice_result(case, *, result, actor, reason, confirmation_reference=None):
     """Record notice metadata; caller-reported confirmation remains unverified."""
     if result not in NOTICE_RESULTS:
