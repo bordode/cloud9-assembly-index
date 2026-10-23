@@ -187,10 +187,16 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
         self.assertEqual(request["external_actions"], [])
 
     def test_post_closure_request_snapshots_are_independent_copies(self):
-        closed = self.closed_case()
+        case = self.to_outcome(self.make_case())
+        closed = transition_case(
+            case, to_status="closed", actor="reviewer-a",
+            reason="Close outcome-bearing synthetic fixture for this snapshot test.",
+            closure_disposition="other_documented_reason",
+        )
         request = self.make_post_closure_request(closed)
         closure_snapshot = deepcopy(request["original_closure_snapshot"])
         outcome_snapshot = deepcopy(request["original_outcome_snapshot"])
+        self.assertIsNotNone(outcome_snapshot)
 
         # Later mutation of the source fixture must not rewrite the request's
         # captured history. This is an in-memory copy guarantee, not tamper proofing.
