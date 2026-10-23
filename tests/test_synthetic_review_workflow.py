@@ -370,6 +370,19 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
             )
         self.assertEqual(missing_closure, missing_closure_before)
 
+        missing_outcome = deepcopy(accepted)
+        del missing_outcome["original_outcome_snapshot"]
+        missing_outcome_before = deepcopy(missing_outcome)
+        with self.assertRaisesRegex(ValueError, "original outcome snapshot is required"):
+            create_reopening_decision_record(
+                missing_outcome, decision="reopening_authorized", actor="reviewer-a",
+                reviewer_conflict_check="Not assessed; synthetic fixture only.",
+                reason="Synthetic decision.", scope="Narrow procedural scope.",
+                evidence_limitations="Synthetic only.", next_steps="No external action.",
+                authority_basis="Synthetic policy fixture; not verified.",
+            )
+        self.assertEqual(missing_outcome, missing_outcome_before)
+
         malformed_outcome = deepcopy(accepted)
         malformed_outcome["original_outcome_snapshot"] = "not a record"
         malformed_outcome_before = deepcopy(malformed_outcome)
