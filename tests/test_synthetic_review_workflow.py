@@ -186,6 +186,21 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
         self.assertIs(request["automated_restriction"], False)
         self.assertEqual(request["external_actions"], [])
 
+    def test_post_closure_request_snapshots_are_independent_copies(self):
+        closed = self.closed_case()
+        request = self.make_post_closure_request(closed)
+        closure_snapshot = deepcopy(request["original_closure_snapshot"])
+        outcome_snapshot = deepcopy(request["original_outcome_snapshot"])
+
+        # Later mutation of the source fixture must not rewrite the request's
+        # captured history. This is an in-memory copy guarantee, not tamper proofing.
+        closed["closure_record"]["reason"] = "Later synthetic mutation."
+        closed["outcome"]["rationale"] = "Later synthetic mutation."
+
+        self.assertEqual(request["original_closure_snapshot"], closure_snapshot)
+        self.assertEqual(request["original_outcome_snapshot"], outcome_snapshot)
+
+
     def test_post_closure_request_requires_closed_case(self):
         with self.assertRaisesRegex(ValueError, "requires a closed case"):
             create_post_closure_review_request(
