@@ -352,8 +352,12 @@ def record_notice_result(case, *, result, actor, reason, confirmation_reference=
 
 def record_challenge(case, *, actor, reason):
     """Open a challenge while preserving the original outcome verbatim."""
+    if not isinstance(case, dict) or not case.get("synthetic_only"):
+        raise ValueError("a synthetic case record is required")
     if case.get("status") not in {"outcome_recorded", "notice_issued"}:
         raise ValueError("a challenge requires a recorded outcome")
+    if not isinstance(case.get("outcome"), dict):
+        raise ValueError("a challenge requires an existing outcome record")
     updated = deepcopy(case)
     updated["original_outcome"] = deepcopy(updated["outcome"])
     updated["events"].append(
