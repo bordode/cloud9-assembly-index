@@ -355,10 +355,11 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
         self.assertIs(record["changes_case_status"], False)
         self.assertIs(record["overwrites_original_closure"], False)
 
-    def test_reopening_decision_rejects_malformed_history_snapshots(self):
+    def test_reopening_decision_rejects_malformed_history_snapshots_without_mutating_request(self):
         accepted = self.accepted_reopening_request()
         missing_closure = deepcopy(accepted)
         missing_closure["original_closure_snapshot"] = None
+        missing_closure_before = deepcopy(missing_closure)
         with self.assertRaisesRegex(ValueError, "original closure snapshot"):
             create_reopening_decision_record(
                 missing_closure, decision="reopening_authorized", actor="reviewer-a",
@@ -367,9 +368,11 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
                 evidence_limitations="Synthetic only.", next_steps="No external action.",
                 authority_basis="Synthetic policy fixture; not verified.",
             )
+        self.assertEqual(missing_closure, missing_closure_before)
 
         malformed_outcome = deepcopy(accepted)
         malformed_outcome["original_outcome_snapshot"] = "not a record"
+        malformed_outcome_before = deepcopy(malformed_outcome)
         with self.assertRaisesRegex(ValueError, "original outcome snapshot"):
             create_reopening_decision_record(
                 malformed_outcome, decision="reopening_authorized", actor="reviewer-a",
@@ -378,6 +381,7 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
                 evidence_limitations="Synthetic only.", next_steps="No external action.",
                 authority_basis="Synthetic policy fixture; not verified.",
             )
+        self.assertEqual(malformed_outcome, malformed_outcome_before)
 
     def test_reopening_decision_requires_prior_acceptance_and_complete_record(self):
         request = self.make_post_closure_request()
