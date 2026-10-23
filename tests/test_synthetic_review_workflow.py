@@ -53,6 +53,7 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
         self.assertIs(case["automated_restriction"], False)
         self.assertEqual(case["external_actions"], [])
         self.assertIsNone(case["notice_confirmation_reference"])
+        self.assertEqual(case["notice_delivery_status"], "not_verified")
         self.assertEqual(case["notice_result_history"], [])
 
     def test_claim_language_does_not_change_state_or_permissions(self):
@@ -103,11 +104,11 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
         self.assertEqual(updated["notice_result_history"][1]["prior_result"], "drafted")
         self.assertEqual(updated["notice_result_history"][1]["verification_status"], "unverified_metadata")
 
-    def test_confirmed_notice_requires_reference_but_does_not_verify_it(self):
+    def test_confirmation_report_requires_reference_but_does_not_verify_receipt(self):
         case = self.to_notice_issued(self.to_outcome(self.make_case()))
         with self.assertRaises(ValueError):
             record_notice_result(
-                case, result="confirmed", actor="reviewer-a",
+                case, result="confirmation_reported", actor="reviewer-a",
                 reason="Synthetic notice result."
             )
 
@@ -115,8 +116,9 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
             case, result="confirmed", confirmation_reference="fixture-ref-001",
             actor="reviewer-a", reason="Synthetic notice result."
         )
-        self.assertEqual(updated["notice_result"], "confirmed")
+        self.assertEqual(updated["notice_result"], "confirmation_reported")
         self.assertEqual(updated["notice_confirmation_reference"], "fixture-ref-001")
+        self.assertEqual(updated["notice_delivery_status"], "not_verified")
         self.assertEqual(updated["status"], "notice_issued")
         self.assertIs(updated["automated_restriction"], False)
         self.assertEqual(updated["notice_result_history"][-1]["verification_status"], "unverified_metadata")
@@ -194,14 +196,14 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
             reason="First synthetic notice attempt failed."
         )
         confirmed = record_notice_result(
-            failed, result="confirmed", confirmation_reference="fixture-ref-002",
+            failed, result="confirmation_reported", confirmation_reference="fixture-ref-002",
             actor="reviewer-b", reason="Second synthetic result recorded; reference unverified."
         )
-        self.assertEqual(confirmed["notice_result"], "confirmed")
+        self.assertEqual(confirmed["notice_result"], "confirmation_reported")
         self.assertEqual(len(confirmed["notice_result_history"]), 3)
         self.assertEqual(confirmed["notice_result_history"][0]["result"], "drafted")
         self.assertEqual(confirmed["notice_result_history"][1]["result"], "failed")
-        self.assertEqual(confirmed["notice_result_history"][2]["result"], "confirmed")
+        self.assertEqual(confirmed["notice_result_history"][2]["result"], "confirmation_reported")
         self.assertEqual(confirmed["notice_result_history"][2]["prior_result"], "failed")
         self.assertEqual(confirmed["notice_result_history"][2]["verification_status"], "unverified_metadata")
         self.assertEqual(len(confirmed["events"]), len(case["events"]) + 2)
