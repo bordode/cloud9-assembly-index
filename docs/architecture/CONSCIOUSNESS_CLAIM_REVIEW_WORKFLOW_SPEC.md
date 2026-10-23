@@ -59,6 +59,9 @@ A reviewer’s conclusion about evidence is not, by itself, authorization to imp
 - Affected parties should, where feasible and safe, receive a meaningful summary of the concern and evidence, with a way to correct factual errors and challenge the outcome.
 - Appeal review should be independent of the original decision where feasible.
 - Unavailable evidence, conflicts, delays, and delivery failures must be visible; they must not be converted into presumed agreement or a positive finding.
+- **No adverse inference from silence or process barriers:** a subject's non-response, inability to participate, request for more time, inaccessible notice, missing evidence, or delivery failure must not by itself count as evidence supporting the referral or as agreement with an allegation. Record the limitation and keep the matter unresolved unless independently available evidence supports a stated outcome.
+- **No retaliation for participation:** raising a concern, disputing an outcome, correcting the record, declining to speculate, or using a challenge/appeal route must not itself be treated as misconduct or grounds for an adverse consequence. Any separate allegation of conduct must be assessed on its own evidence and under a separately identified process.
+- **Meaningful opportunity to respond:** where feasible, provide a clear summary of the question and relevant evidence, reasonable time to respond, an accessible channel for corrections, and an explanation of material limits on participation. Do not claim that a person or system waived a right merely because notice could not be confirmed.
 - The process must distinguish a factual observation, an interpretation, a hypothesis, and an unresolved question.
 
 ## 6. Integration gates before implementation
