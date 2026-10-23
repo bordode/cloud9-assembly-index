@@ -347,8 +347,8 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
             request["original_closure_snapshot"]["reason"],
         )
         self.assertNotEqual(
-            record["original_outcome_snapshot"]["rationale"],
-            request["original_outcome_snapshot"]["rationale"],
+            record["original_outcome_snapshot"],
+            request["original_outcome_snapshot"],
         )
         self.assertIs(record["authority_verified"], False)
         self.assertIs(record["reviewer_independence_verified"], False)
