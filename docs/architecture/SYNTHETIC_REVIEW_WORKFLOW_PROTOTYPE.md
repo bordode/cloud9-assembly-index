@@ -30,8 +30,9 @@ This prototype translates a narrow subset of the proposed review lifecycle into 
 7. Notice-result changes preserve prior entries in the returned in-memory history.
 8. An existing outcome cannot be silently overwritten.
 9. A pending challenge cannot be closed via the generic transition helper, and the original outcome is preserved.
-10. Input records are copied rather than mutated by transition helpers.
-11. The prototype has no external-action interface.
+10. Generic closure requires an explicit disposition and records participation barriers without implying response, receipt, or waiver.
+11. Input records are copied rather than mutated by transition helpers.
+12. The prototype has no external-action interface.
 
 ## Before any further implementation
 
