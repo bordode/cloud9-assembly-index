@@ -49,6 +49,7 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
         self.assertIs(case["automated_restriction"], False)
         self.assertEqual(case["external_actions"], [])
         self.assertIsNone(case["notice_confirmation_reference"])
+        self.assertEqual(case["notice_result_history"], [])
 
     def test_claim_language_does_not_change_state_or_permissions(self):
         case = create_synthetic_case(
@@ -93,6 +94,9 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
         self.assertIsNone(updated["notice_confirmation_reference"])
         self.assertEqual(updated["status"], "notice_issued")
         self.assertEqual(updated["outcome"], case["outcome"])
+        self.assertEqual(len(updated["notice_result_history"]), 1)
+        self.assertEqual(updated["notice_result_history"][0]["prior_result"], "not_attempted")
+        self.assertEqual(updated["notice_result_history"][0]["verification_status"], "unverified_metadata")
 
     def test_confirmed_notice_requires_reference_but_does_not_verify_it(self):
         case = self.to_notice_issued(self.to_outcome(self.make_case()))
@@ -110,6 +114,7 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
         self.assertEqual(updated["notice_confirmation_reference"], "fixture-ref-001")
         self.assertEqual(updated["status"], "notice_issued")
         self.assertIs(updated["automated_restriction"], False)
+        self.assertEqual(updated["notice_result_history"][0]["verification_status"], "unverified_metadata")
 
     def test_confirmation_reference_is_rejected_for_other_results(self):
         case = self.to_notice_issued(self.to_outcome(self.make_case()))
@@ -167,6 +172,25 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
                 reason="Generic closure cannot resolve a pending challenge."
             )
         self.assertEqual(updated["status"], "challenge_or_appeal_pending")
+
+    def test_notice_result_changes_preserve_prior_entries(self):
+        case = self.to_notice_issued(self.to_outcome(self.make_case()))
+        failed = record_notice_result(
+            case, result="failed", actor="reviewer-a",
+            reason="First synthetic notice attempt failed."
+        )
+        confirmed = record_notice_result(
+            failed, result="confirmed", confirmation_reference="fixture-ref-002",
+            actor="reviewer-b", reason="Second synthetic result recorded; reference unverified."
+        )
+        self.assertEqual(confirmed["notice_result"], "confirmed")
+        self.assertEqual(len(confirmed["notice_result_history"]), 2)
+        self.assertEqual(confirmed["notice_result_history"][0]["result"], "failed")
+        self.assertEqual(confirmed["notice_result_history"][1]["result"], "confirmed")
+        self.assertEqual(confirmed["notice_result_history"][1]["prior_result"], "failed")
+        self.assertEqual(confirmed["notice_result_history"][1]["verification_status"], "unverified_metadata")
+        self.assertEqual(len(confirmed["events"]), len(case["events"]) + 2)
+        self.assertEqual(case["notice_result_history"], [])
 
     def test_input_case_is_not_mutated(self):
         case = self.make_case()
