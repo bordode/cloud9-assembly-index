@@ -36,9 +36,13 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
         )
 
     def to_notice_issued(self, case):
+        case = record_notice_result(
+            case, result="drafted", actor="reviewer-a",
+            reason="Draft the fictional notice before issuing it."
+        )
         return transition_case(
             case, to_status="notice_issued", actor="reviewer-a",
-            reason="Begin the fictional notice process."
+            reason="The fictional notice is ready for the notice process."
         )
 
     def test_new_case_is_synthetic_pending_and_non_punitive(self):
@@ -94,9 +98,10 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
         self.assertIsNone(updated["notice_confirmation_reference"])
         self.assertEqual(updated["status"], "notice_issued")
         self.assertEqual(updated["outcome"], case["outcome"])
-        self.assertEqual(len(updated["notice_result_history"]), 1)
-        self.assertEqual(updated["notice_result_history"][0]["prior_result"], "not_attempted")
-        self.assertEqual(updated["notice_result_history"][0]["verification_status"], "unverified_metadata")
+        self.assertEqual(len(updated["notice_result_history"]), 2)
+        self.assertEqual(updated["notice_result_history"][0]["result"], "drafted")
+        self.assertEqual(updated["notice_result_history"][1]["prior_result"], "drafted")
+        self.assertEqual(updated["notice_result_history"][1]["verification_status"], "unverified_metadata")
 
     def test_confirmed_notice_requires_reference_but_does_not_verify_it(self):
         case = self.to_notice_issued(self.to_outcome(self.make_case()))
@@ -114,7 +119,7 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
         self.assertEqual(updated["notice_confirmation_reference"], "fixture-ref-001")
         self.assertEqual(updated["status"], "notice_issued")
         self.assertIs(updated["automated_restriction"], False)
-        self.assertEqual(updated["notice_result_history"][0]["verification_status"], "unverified_metadata")
+        self.assertEqual(updated["notice_result_history"][-1]["verification_status"], "unverified_metadata")
 
     def test_confirmation_reference_is_rejected_for_other_results(self):
         case = self.to_notice_issued(self.to_outcome(self.make_case()))
@@ -138,6 +143,15 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
         )
         self.assertEqual(updated["notice_result"], "drafted")
         self.assertEqual(updated["status"], "outcome_recorded")
+
+    def test_notice_cannot_be_issued_before_drafting(self):
+        case = self.to_outcome(self.make_case())
+        with self.assertRaisesRegex(ValueError, "must be drafted"):
+            transition_case(
+                case, to_status="notice_issued", actor="reviewer-a",
+                reason="Attempt to skip the drafting stage."
+            )
+        self.assertEqual(case["status"], "outcome_recorded")
 
     def test_recorded_outcome_cannot_be_overwritten(self):
         case = self.to_review(self.make_case())
@@ -184,13 +198,14 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
             actor="reviewer-b", reason="Second synthetic result recorded; reference unverified."
         )
         self.assertEqual(confirmed["notice_result"], "confirmed")
-        self.assertEqual(len(confirmed["notice_result_history"]), 2)
-        self.assertEqual(confirmed["notice_result_history"][0]["result"], "failed")
-        self.assertEqual(confirmed["notice_result_history"][1]["result"], "confirmed")
-        self.assertEqual(confirmed["notice_result_history"][1]["prior_result"], "failed")
-        self.assertEqual(confirmed["notice_result_history"][1]["verification_status"], "unverified_metadata")
+        self.assertEqual(len(confirmed["notice_result_history"]), 3)
+        self.assertEqual(confirmed["notice_result_history"][0]["result"], "drafted")
+        self.assertEqual(confirmed["notice_result_history"][1]["result"], "failed")
+        self.assertEqual(confirmed["notice_result_history"][2]["result"], "confirmed")
+        self.assertEqual(confirmed["notice_result_history"][2]["prior_result"], "failed")
+        self.assertEqual(confirmed["notice_result_history"][2]["verification_status"], "unverified_metadata")
         self.assertEqual(len(confirmed["events"]), len(case["events"]) + 2)
-        self.assertEqual(case["notice_result_history"], [])
+        self.assertEqual(case["notice_result_history"][-1]["result"], "drafted")
 
     def test_input_case_is_not_mutated(self):
         case = self.make_case()
