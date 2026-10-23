@@ -285,7 +285,7 @@ def create_reopening_decision_record(
     This is a decision-record schema demonstration, not an authorization service.
     Actor identity and authority cannot be verified in this prototype.
     """
-    if not isinstance(request, dict) or not request.get("synthetic_only"):
+    if not isinstance(request, dict) or request.get("synthetic_only") is not True:
         raise ValueError("a synthetic post-closure review request is required")
     if request.get("status") != "decision_recorded":
         raise ValueError("a post-closure request decision must be recorded first")
