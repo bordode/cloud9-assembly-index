@@ -382,6 +382,20 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
                 authority_basis="Synthetic policy fixture; not verified.",
             )
         self.assertEqual(empty_closure, empty_closure_before)
+
+        invalid_disposition = deepcopy(accepted)
+        invalid_disposition["original_closure_snapshot"]["disposition"] = "invented_disposition"
+        invalid_disposition_before = deepcopy(invalid_disposition)
+        with self.assertRaisesRegex(ValueError, "valid disposition"):
+            create_reopening_decision_record(
+                invalid_disposition, decision="reopening_authorized", actor="reviewer-a",
+                reviewer_conflict_check="Not assessed; synthetic fixture only.",
+                reason="Synthetic decision.", scope="Narrow procedural scope.",
+                evidence_limitations="Synthetic only.", next_steps="No external action.",
+                authority_basis="Synthetic policy fixture; not verified.",
+            )
+        self.assertEqual(invalid_disposition, invalid_disposition_before)
+
         missing_outcome = deepcopy(accepted)
         del missing_outcome["original_outcome_snapshot"]
         missing_outcome_before = deepcopy(missing_outcome)
