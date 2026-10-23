@@ -64,6 +64,25 @@ A reviewer’s conclusion about evidence is not, by itself, authorization to imp
 - **Meaningful opportunity to respond:** where feasible, provide a clear summary of the question and relevant evidence, reasonable time to respond, an accessible channel for corrections, and an explanation of material limits on participation. Do not claim that a person or system waived a right merely because notice could not be confirmed.
 - The process must distinguish a factual observation, an interpretation, a hypothesis, and an unresolved question.
 
+## 5A. Participation-barrier resolution and reopening
+
+A reported participation barrier is a procedural concern, not evidence for or against the underlying referral. Examples include inaccessible notice, a failed delivery channel, an unavailable response method, insufficient time, or a newly discovered obstacle to meaningful participation. Recording a barrier must not itself change the substantive outcome, access, permissions, or enforcement state.
+
+Before a barrier can be treated as resolved, a future implementation should record distinct facts rather than a single caller-controlled `resolved: true` flag:
+
+- The barrier reported and when it became known, with its source and limitations.
+- The remediation proposed and the action actually taken, kept separate from an assertion that the action worked.
+- Any available evidence about whether the response channel became accessible, including what that evidence can and cannot establish.
+- The affected party's opportunity to confirm, dispute, or correct the record where feasible; silence or inability to respond is not confirmation.
+- The reviewer and rationale for the procedural status, with conflict-of-interest handling. An actor label alone is not authenticated identity or independent review.
+- The remaining uncertainty, next review point, and any accessible alternative channel offered.
+
+Use carefully bounded statuses such as **reported**, **remediation recorded**, **resolution assessed**, and **unresolved**. These labels describe recorded process steps; they do not certify accessibility or receipt unless an independently designed evidence process supports that specific claim. A person who reports a barrier must not be the sole source of verification for a consequential claim about its resolution.
+
+A barrier discovered after closure must have a documented route to post-closure review and, where warranted, reopening. Closure must not make new evidence or a newly discovered access failure disappear. The reopening decision, decision-maker, rationale, scope, and resulting status should be recorded as a new event while preserving the prior closure and outcome history. Reopening must not itself be treated as misconduct, agreement, or proof of the original allegation. Until this route is designed and tested, a prototype that cannot reopen a closed record must state that limitation and must not be presented as a complete procedural system.
+
+No status in this process may itself trigger throttling, suppression, permission changes, or other enforcement. Any consequential action remains outside this review workflow and requires its own separately authorized process.
+
 ## 6. Integration gates before implementation
 
 Do not add a live connector or runtime hook until reviewers identify and document:
@@ -95,6 +114,10 @@ These are requirements for a future implementation, not tests that this document
 - A referral, challenge, correction request, or appeal cannot itself trigger retaliation or a separate adverse consequence.
 - Where notice or participation is not feasible, the record identifies the limitation and avoids claiming confirmed delivery, agreement, or waiver.
 - Administrative closure is not mistaken for a substantive finding.
+- A reported participation barrier is not treated as evidence for or against the underlying referral.
+- Recording remediation is distinct from evidence that a barrier was resolved; a caller-supplied flag or actor label alone cannot certify resolution or independence.
+- A barrier discovered after closure can enter a documented post-closure review/reopening route without erasing the prior closure or outcome history.
+- Silence, failed notice, or inability to use a response channel does not count as confirmation that a barrier was resolved or that a right was waived.
 - No state transition can call an enforcement, throttling, publishing, messaging, or permission-change path.
 - Retention and deletion rules are applied and auditable without falsely claiming immutable storage.
 - Tests exercise authorization failures, race conditions, duplicate referrals, malformed records, and interrupted transitions.
