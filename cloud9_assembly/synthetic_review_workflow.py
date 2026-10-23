@@ -215,6 +215,7 @@ def create_post_closure_review_request(
 
 def record_post_closure_review_decision(
     request, *, decision, actor, reason, evidence_limitations, next_steps,
+    reviewer_conflict_check,
 ):
     """Record a procedural request decision without reopening the original case."""
     if not isinstance(request, dict) or not request.get("synthetic_only"):
@@ -227,6 +228,7 @@ def record_post_closure_review_decision(
     limitations_text = _required_text("evidence_limitations", evidence_limitations)
     next_steps_text = _required_text("next_steps", next_steps)
     actor_text = _required_text("actor", actor)
+    conflict_check_text = _required_text("reviewer_conflict_check", reviewer_conflict_check)
     updated = deepcopy(request)
     updated["decision"] = decision
     updated["status"] = "decision_recorded"
@@ -236,6 +238,8 @@ def record_post_closure_review_decision(
         "reason": reason_text,
         "evidence_limitations": limitations_text,
         "next_steps": next_steps_text,
+        "reviewer_conflict_check": conflict_check_text,
+        "reviewer_conflict_check_status": "reported_not_verified",
         "authority_verified": False,
         "reviewer_independence_verified": False,
         "recorded_at": datetime.now(timezone.utc).isoformat(),
@@ -257,7 +261,7 @@ REOPENING_DECISIONS = {"reopening_authorized", "reopening_not_authorized"}
 
 def create_reopening_decision_record(
     request, *, decision, actor, reason, scope,
-    evidence_limitations, next_steps, authority_basis,
+    evidence_limitations, next_steps, authority_basis, reviewer_conflict_check,
 ):
     """Record a separate synthetic reopening decision without mutating the case.
 
@@ -284,6 +288,8 @@ def create_reopening_decision_record(
         "evidence_limitations": _required_text("evidence_limitations", evidence_limitations),
         "next_steps": _required_text("next_steps", next_steps),
         "authority_basis": _required_text("authority_basis", authority_basis),
+        "reviewer_conflict_check": _required_text("reviewer_conflict_check", reviewer_conflict_check),
+        "reviewer_conflict_check_status": "reported_not_verified",
         "authority_verified": False,
         "reviewer_independence_verified": False,
         "recorded_at": datetime.now(timezone.utc).isoformat(),
