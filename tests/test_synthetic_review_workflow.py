@@ -338,7 +338,7 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
         # Later changes to the source request must not rewrite the separate
         # decision record's copied snapshots. This is not tamper-proof storage.
         request["original_closure_snapshot"]["reason"] = "Later synthetic mutation."
-        request["original_outcome_snapshot"]["rationale"] = "Later synthetic mutation."
+        request["original_outcome_snapshot"] = {"category": "synthetic_mutation", "rationale": "Later synthetic mutation."}
 
         self.assertEqual(record["original_closure_snapshot"], closure_snapshot)
         self.assertEqual(record["original_outcome_snapshot"], outcome_snapshot)
