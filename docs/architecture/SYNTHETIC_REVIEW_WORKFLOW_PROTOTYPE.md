@@ -11,9 +11,10 @@ This prototype translates a narrow subset of the proposed review lifecycle into 
 - No API route or agent/runtime integration is added.
 - There is no enforcement capability. The prototype does not alter permissions, throttle, suppress, publish, message, or invoke external actions.
 - The actor labels in records are descriptive test inputs, not authenticated identities.
-- The event list is ordinary mutable application data, not an immutable or tamper-evident audit log.
+- The event list and notice-result history are ordinary mutable in-memory application data, not immutable or tamper-evident audit logs.
 - A `confirmed` notice result requires a caller-supplied reference string, but this prototype does not validate the reference, inspect delivery evidence, or independently verify receipt. The reference is metadata, not proof.
 - Notice-result state checks enforce only this narrow rule: a notice may be drafted after an outcome is recorded; attempted, confirmed, or failed results require the workflow to be in `notice_issued`. This is a synthetic lifecycle check, not a delivery mechanism or proof of service.
+- Each notice-result update appends an in-memory history entry containing the new result, prior result, actor label, reason, timestamp, and an explicit `unverified_metadata` marker. This makes changes visible in the returned fixture but does not prevent a caller from altering the list or establish an immutable audit trail.
 - An outcome already present in a record cannot be overwritten through the generic transition helper. No correction or reconsideration process is implemented; that requires a separately specified and reviewed process.
 - A pending challenge cannot be closed through the generic transition helper. This deliberately fails closed until a distinct challenge-resolution process is specified; it is not a complete appeals service.
 - Passing these unit tests establishes only the behavior exercised by these tests. It does not validate consciousness claims, moral status, security, or suitability for real cases.
@@ -26,10 +27,11 @@ This prototype translates a narrow subset of the proposed review lifecycle into 
 4. Notice results are constrained to the expected lifecycle states.
 5. Failed notice remains distinguishable from confirmed delivery and does not imply waiver.
 6. A confirmation label requires a reference field, without treating that field as verified delivery evidence.
-7. An existing outcome cannot be silently overwritten.
-8. A pending challenge cannot be closed via the generic transition helper, and the original outcome is preserved.
-9. Input records are copied rather than mutated by transition helpers.
-10. The prototype has no external-action interface.
+7. Notice-result changes preserve prior entries in the returned in-memory history.
+8. An existing outcome cannot be silently overwritten.
+9. A pending challenge cannot be closed via the generic transition helper, and the original outcome is preserved.
+10. Input records are copied rather than mutated by transition helpers.
+11. The prototype has no external-action interface.
 
 ## Before any further implementation
 
