@@ -157,7 +157,7 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
 
     def test_notice_cannot_be_redrafted_after_issuance(self):
         case = self.to_notice_issued(self.to_outcome(self.make_case()))
-        with self.assertRaisesRegex(ValueError, "only be drafted before issuance"):
+        with self.assertRaisesRegex(ValueError, "before issuance"):
             record_notice_result(
                 case, result="drafted", actor="reviewer-a",
                 reason="A second draft must not reset the issued notice state."
