@@ -17,6 +17,13 @@ OUTCOMES = {
 # "confirmation_reported" records only that a caller supplied a claim/reference.
 # It deliberately does not assert that notice was delivered or received.
 NOTICE_RESULTS = {"drafted", "attempted", "confirmation_reported", "failed"}
+CLOSURE_DISPOSITIONS = {
+    "withdrawn",
+    "out_of_scope",
+    "administrative_duplicate",
+    "resolved_after_review",
+    "other_documented_reason",
+}
 
 TRANSITIONS = {
     "referred": {"pending_human_review"},
@@ -68,6 +75,7 @@ def create_synthetic_case(*, referral_summary, source_label="synthetic_fixture")
         "notice_delivery_status": "not_verified",
         "notice_result_history": [],
         "participation_barriers": [],
+        "closure_record": None,
         "events": [
             _event("synthetic_fixture", "case_created", "Fictional test fixture", None, "referred")
         ],
@@ -76,12 +84,22 @@ def create_synthetic_case(*, referral_summary, source_label="synthetic_fixture")
     }
 
 
-def transition_case(case, *, to_status, actor, reason, outcome=None):
-    """Return a transitioned copy; reject invalid transitions and never enforce."""
+def transition_case(
+    case, *, to_status, actor, reason, outcome=None, closure_disposition=None
+):
+    """Return a transitioned copy; require an explicit record for generic closure."""
     updated = deepcopy(case)
     current = updated.get("status")
     if current not in TRANSITIONS or to_status not in TRANSITIONS[current]:
         raise ValueError(f"invalid transition: {current!r} -> {to_status!r}")
+
+    if to_status == "closed":
+        if closure_disposition not in CLOSURE_DISPOSITIONS:
+            raise ValueError(
+                f"closure_disposition must be one of {sorted(CLOSURE_DISPOSITIONS)}"
+            )
+    elif closure_disposition is not None:
+        raise ValueError("closure_disposition may only be supplied when closing a case")
 
     if to_status == "notice_issued" and updated.get("notice_result") != "drafted":
         raise ValueError("a notice must be drafted before it can be marked notice_issued")
@@ -97,6 +115,19 @@ def transition_case(case, *, to_status, actor, reason, outcome=None):
         }
     elif outcome is not None:
         raise ValueError("outcome may only be supplied when recording an outcome")
+
+    if to_status == "closed":
+        barriers = updated.get("participation_barriers", [])
+        updated["closure_record"] = {
+            "disposition": closure_disposition,
+            "reason": _required_text("closure reason", reason),
+            "participation_barrier_count_at_closure": len(barriers),
+            "participation_barrier_resolution_status": (
+                "recorded_but_resolution_not_represented" if barriers else "no_barrier_recorded"
+            ),
+            "notice_delivery_status_at_closure": updated.get("notice_delivery_status", "not_verified"),
+            "does_not_establish_response_or_waiver": True,
+        }
 
     updated["events"].append(
         _event(actor, f"status_transition:{to_status}", reason, current, to_status)
