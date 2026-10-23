@@ -470,6 +470,20 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
             )
         self.assertEqual(updated["status"], "challenge_or_appeal_pending")
 
+    def test_challenge_rejects_status_without_recorded_outcome_and_preserves_input(self):
+        case = self.make_case()
+        case["outcome"] = {
+            "category": "inconclusive",
+            "rationale": "Fixture deliberately has an outcome field but remains referred.",
+        }
+        before = deepcopy(case)
+        with self.assertRaisesRegex(ValueError, "challenge requires a recorded outcome"):
+            record_challenge(
+                case, actor="synthetic-subject",
+                reason="Status is not eligible for a challenge.",
+            )
+        self.assertEqual(case, before)
+
     def test_challenge_rejects_non_synthetic_or_missing_outcome_records(self):
         case = self.to_outcome(self.make_case())
         non_synthetic = deepcopy(case)
