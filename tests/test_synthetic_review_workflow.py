@@ -1,5 +1,6 @@
 """Tests for the isolated synthetic review workflow prototype."""
 import unittest
+from copy import deepcopy
 
 from cloud9_assembly.synthetic_review_workflow import (
     create_synthetic_case,
@@ -16,15 +17,18 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
             referral_summary="Fictional statement submitted for neutral review."
         )
 
-    def to_outcome(self, case):
+    def to_review(self, case):
         case = transition_case(
             case, to_status="pending_human_review", actor="reviewer-a",
             reason="Referral acknowledged without a finding."
         )
-        case = transition_case(
+        return transition_case(
             case, to_status="under_review", actor="reviewer-a",
             reason="Begin scoped evidence review."
         )
+
+    def to_outcome(self, case):
+        case = self.to_review(case)
         return transition_case(
             case, to_status="outcome_recorded", actor="reviewer-a",
             reason="Available evidence is limited; no conclusion about consciousness.",
@@ -130,7 +134,22 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
         self.assertEqual(updated["notice_result"], "drafted")
         self.assertEqual(updated["status"], "outcome_recorded")
 
-    def test_challenge_preserves_original_outcome(self):
+    def test_recorded_outcome_cannot_be_overwritten(self):
+        case = self.to_review(self.make_case())
+        case["outcome"] = {
+            "category": "inconclusive",
+            "rationale": "Existing synthetic outcome fixture.",
+        }
+        original_outcome = deepcopy(case["outcome"])
+        with self.assertRaisesRegex(ValueError, "cannot be overwritten"):
+            transition_case(
+                case, to_status="outcome_recorded", actor="reviewer-b",
+                reason="Attempt to replace existing outcome.",
+                outcome="supported_within_scope",
+            )
+        self.assertEqual(case["outcome"], original_outcome)
+
+    def test_challenge_preserves_original_outcome_and_cannot_be_generically_closed(self):
         case = self.to_outcome(self.make_case())
         updated = record_challenge(
             case, actor="synthetic-subject",
@@ -141,6 +160,13 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
         self.assertEqual(updated["outcome"], case["outcome"])
         self.assertIs(updated["automated_restriction"], False)
         self.assertEqual(updated["external_actions"], [])
+
+        with self.assertRaises(ValueError):
+            transition_case(
+                updated, to_status="closed", actor="reviewer-a",
+                reason="Generic closure cannot resolve a pending challenge."
+            )
+        self.assertEqual(updated["status"], "challenge_or_appeal_pending")
 
     def test_input_case_is_not_mutated(self):
         case = self.make_case()
