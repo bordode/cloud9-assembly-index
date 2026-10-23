@@ -113,7 +113,7 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
             )
 
         updated = record_notice_result(
-            case, result="confirmed", confirmation_reference="fixture-ref-001",
+            case, result="confirmation_reported", confirmation_reference="fixture-ref-001",
             actor="reviewer-a", reason="Synthetic notice result."
         )
         self.assertEqual(updated["notice_result"], "confirmation_reported")
@@ -154,6 +154,17 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
                 reason="Attempt to skip the drafting stage."
             )
         self.assertEqual(case["status"], "outcome_recorded")
+
+    def test_notice_cannot_be_redrafted_after_issuance(self):
+        case = self.to_notice_issued(self.to_outcome(self.make_case()))
+        with self.assertRaisesRegex(ValueError, "only be drafted before issuance"):
+            record_notice_result(
+                case, result="drafted", actor="reviewer-a",
+                reason="A second draft must not reset the issued notice state."
+            )
+        self.assertEqual(case["status"], "notice_issued")
+        self.assertEqual(case["notice_result"], "drafted")
+        self.assertEqual(len(case["notice_result_history"]), 1)
 
     def test_recorded_outcome_cannot_be_overwritten(self):
         case = self.to_review(self.make_case())
