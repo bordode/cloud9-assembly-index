@@ -250,7 +250,7 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
 
     def test_reopening_decision_requires_prior_acceptance_and_complete_record(self):
         request = self.make_post_closure_request()
-        record_post_closure_review_decision(
+        request = record_post_closure_review_decision(
             request, decision="inconclusive", actor="reviewer-a",
             reason="Insufficient information.",
             evidence_limitations="Synthetic fixture only.",
