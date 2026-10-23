@@ -131,8 +131,8 @@ def record_notice_result(case, *, result, actor, reason, confirmation_reference=
 
     status = case.get("status")
     if result == "drafted":
-        if status not in {"outcome_recorded", "notice_issued"}:
-            raise ValueError("a notice can only be drafted after an outcome is recorded")
+        if status != "outcome_recorded":
+            raise ValueError("a notice can only be drafted after an outcome and before issuance")
     elif status != "notice_issued":
         raise ValueError("attempted, confirmation_reported, or failed notice requires notice_issued status")
 
