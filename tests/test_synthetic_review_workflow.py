@@ -121,6 +121,18 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
         self.assertEqual(closed["closure_record"]["participation_barrier_resolution_status"], "no_barrier_recorded")
         self.assertEqual(closed["closure_record"]["notice_delivery_status_at_closure"], "not_verified")
         self.assertIs(closed["closure_record"]["does_not_establish_response_or_waiver"], True)
+        self.assertEqual(
+            closed["closure_record"]["outstanding_uncertainty_status"],
+            "not_captured_by_prototype",
+        )
+        self.assertEqual(
+            closed["closure_record"]["retention_deletion_schedule_status"],
+            "not_implemented",
+        )
+        self.assertEqual(
+            closed["closure_record"]["post_closure_review_route_status"],
+            "separate_request_supported_authorized_reopening_not_implemented",
+        )
         self.assertEqual(case["status"], "under_review")
 
     def test_participation_barrier_cannot_be_added_after_closure(self):
