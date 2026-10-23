@@ -31,6 +31,12 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
             outcome="inconclusive",
         )
 
+    def to_notice_issued(self, case):
+        return transition_case(
+            case, to_status="notice_issued", actor="reviewer-a",
+            reason="Begin the fictional notice process."
+        )
+
     def test_new_case_is_synthetic_pending_and_non_punitive(self):
         case = self.make_case()
         self.assertTrue(case["synthetic_only"])
@@ -66,19 +72,26 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
         self.assertEqual(len(updated["participation_barriers"]), 1)
         self.assertIs(updated["automated_restriction"], False)
 
-    def test_failed_notice_is_not_confirmed_and_does_not_close_case(self):
+    def test_failed_notice_requires_notice_issued_state(self):
         case = self.to_outcome(self.make_case())
+        with self.assertRaises(ValueError):
+            record_notice_result(
+                case, result="failed", actor="reviewer-a",
+                reason="Cannot record delivery result before notice process."
+            )
+
+        notice_case = self.to_notice_issued(case)
         updated = record_notice_result(
-            case, result="failed", actor="reviewer-a",
+            notice_case, result="failed", actor="reviewer-a",
             reason="Synthetic delivery attempt failed."
         )
         self.assertEqual(updated["notice_result"], "failed")
         self.assertIsNone(updated["notice_confirmation_reference"])
-        self.assertEqual(updated["status"], "outcome_recorded")
+        self.assertEqual(updated["status"], "notice_issued")
         self.assertEqual(updated["outcome"], case["outcome"])
 
     def test_confirmed_notice_requires_reference_but_does_not_verify_it(self):
-        case = self.make_case()
+        case = self.to_notice_issued(self.to_outcome(self.make_case()))
         with self.assertRaises(ValueError):
             record_notice_result(
                 case, result="confirmed", actor="reviewer-a",
@@ -91,16 +104,31 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
         )
         self.assertEqual(updated["notice_result"], "confirmed")
         self.assertEqual(updated["notice_confirmation_reference"], "fixture-ref-001")
-        self.assertEqual(updated["status"], "referred")
+        self.assertEqual(updated["status"], "notice_issued")
         self.assertIs(updated["automated_restriction"], False)
 
     def test_confirmation_reference_is_rejected_for_other_results(self):
+        case = self.to_notice_issued(self.to_outcome(self.make_case()))
         with self.assertRaises(ValueError):
             record_notice_result(
-                self.make_case(), result="attempted",
+                case, result="attempted",
                 confirmation_reference="fixture-ref-001", actor="reviewer-a",
                 reason="A reference cannot upgrade an attempt to confirmation."
             )
+
+    def test_drafting_notice_requires_recorded_outcome(self):
+        with self.assertRaises(ValueError):
+            record_notice_result(
+                self.make_case(), result="drafted", actor="reviewer-a",
+                reason="A referral alone is not an outcome."
+            )
+        case = self.to_outcome(self.make_case())
+        updated = record_notice_result(
+            case, result="drafted", actor="reviewer-a",
+            reason="Draft fictional notice after outcome."
+        )
+        self.assertEqual(updated["notice_result"], "drafted")
+        self.assertEqual(updated["status"], "outcome_recorded")
 
     def test_challenge_preserves_original_outcome(self):
         case = self.to_outcome(self.make_case())
