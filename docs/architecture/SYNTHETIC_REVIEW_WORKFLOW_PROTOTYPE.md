@@ -13,6 +13,11 @@ The supported request decisions are `accepted_for_reopening_review`, `reopening_
 
 The decision record explicitly marks reviewer authority and independence as unverified. Actor labels are not authenticated identities. The function requires recorded rationale, evidence limitations, and next steps, but cannot verify their truth or quality. Request and decision records remain ordinary mutable in-memory data; they are not immutable audit evidence. No status creates an enforcement capability or changes permissions.
 
+
+A further helper records a separate reopening decision only after the request has been accepted for reopening review. It requires a decision, reason, scope, evidence limitations, next steps, and a stated authority basis. The record preserves snapshots of the original closure and outcome and explicitly states that it does not change the original case status or overwrite its closure.
+
+The terms `reopening_authorized` and `reopening_not_authorized` are labels in a synthetic fixture, not proof of actual authority. The record marks authority and reviewer independence as unverified. It does not perform a reopening transition, authenticate a decision-maker, or create a real case event in the original record. A production design would need a separately reviewed authorization model and a new, append-only status event that preserves the original closure and outcome; this prototype does not provide append-only or tamper-evident storage.
+
 ## Deliberate limits
 
 - Only fictional test records should be used.
