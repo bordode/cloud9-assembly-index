@@ -140,6 +140,11 @@ def transition_case(
 
 def record_participation_barrier(case, *, barrier, actor, reason):
     """Record a process barrier without treating it as evidence or agreement."""
+    if case.get("status") == "closed":
+        raise ValueError(
+            "cannot add a participation barrier to a closed case; "
+            "this prototype has no reopening or post-closure review process"
+        )
     updated = deepcopy(case)
     barrier_text = _required_text("barrier", barrier)
     event_reason = _required_text("reason", reason)
