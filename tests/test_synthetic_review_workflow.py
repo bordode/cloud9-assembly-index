@@ -252,6 +252,7 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
         closure_before = deepcopy(closed["closure_record"])
         outcome_before = deepcopy(closed["outcome"])
         request = self.accepted_reopening_request(closed)
+        request_before = deepcopy(request)
         record = create_reopening_decision_record(
             request, decision="reopening_authorized", actor="authority-label-not-verified",
             reviewer_conflict_check="Not assessed; synthetic fixture only.",
@@ -265,6 +266,9 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
         self.assertEqual(record["original_case_id"], closed["case_id"])
         self.assertEqual(record["request_id"], request["request_id"])
         self.assertEqual(record["decision"], "reopening_authorized")
+        self.assertIs(record["synthetic_only"], True)
+        self.assertEqual(request, request_before)
+        self.assertEqual(request["status"], "decision_recorded")
         self.assertIs(record["authority_verified"], False)
         self.assertIs(record["reviewer_independence_verified"], False)
         self.assertEqual(record["reviewer_conflict_check_status"], "reported_not_verified")
