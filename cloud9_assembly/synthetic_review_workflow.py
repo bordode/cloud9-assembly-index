@@ -298,7 +298,8 @@ def create_reopening_decision_record(
     if outcome_snapshot is not None:
         if not isinstance(outcome_snapshot, dict):
             raise ValueError("original outcome snapshot must be a record or None")
-        if outcome_snapshot.get("category") not in OUTCOMES:
+        category = outcome_snapshot.get("category")
+        if not isinstance(category, str) or category not in OUTCOMES:
             raise ValueError("original outcome snapshot requires a valid category")
         if not isinstance(outcome_snapshot.get("rationale"), str) or not outcome_snapshot["rationale"].strip():
             raise ValueError("original outcome snapshot requires a rationale")
