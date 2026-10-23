@@ -162,6 +162,95 @@ def record_participation_barrier(case, *, barrier, actor, reason):
     return updated
 
 
+
+POST_CLOSURE_REVIEW_DECISIONS = {
+    "accepted_for_reopening_review",
+    "reopening_not_warranted",
+    "more_information_requested",
+    "inconclusive",
+}
+
+
+def create_post_closure_review_request(
+    closed_case, *, barrier_or_information, discovered_when,
+    requested_review_reason, source_label="synthetic_fixture",
+):
+    """Create a separate synthetic request linked to a closed case.
+
+    This records a request only. It does not reopen or mutate the original case.
+    """
+    if closed_case.get("status") != "closed" or not isinstance(
+        closed_case.get("closure_record"), dict
+    ):
+        raise ValueError("post-closure review request requires a closed case with a closure record")
+    request = {
+        "request_id": f"SYN-REVIEW-{uuid4()}",
+        "synthetic_only": True,
+        "original_case_id": _required_text("case_id", closed_case.get("case_id")),
+        "source_label": _required_text("source_label", source_label),
+        "barrier_or_new_information": _required_text(
+            "barrier_or_information", barrier_or_information
+        ),
+        "discovered_when": _required_text("discovered_when", discovered_when),
+        "requested_review_reason": _required_text(
+            "requested_review_reason", requested_review_reason
+        ),
+        "status": "request_recorded",
+        "decision": None,
+        "decision_record": None,
+        "original_closure_snapshot": deepcopy(closed_case["closure_record"]),
+        "original_outcome_snapshot": deepcopy(closed_case.get("outcome")),
+        "events": [
+            _event(
+                "synthetic_fixture", "post_closure_review_request_recorded",
+                "Separate request recorded; original case remains closed.",
+                "closed", "request_recorded",
+            )
+        ],
+        "automated_restriction": False,
+        "external_actions": [],
+    }
+    return request
+
+
+def record_post_closure_review_decision(
+    request, *, decision, actor, reason, evidence_limitations, next_steps,
+):
+    """Record a procedural request decision without reopening the original case."""
+    if not isinstance(request, dict) or not request.get("synthetic_only"):
+        raise ValueError("a synthetic post-closure review request is required")
+    if request.get("status") != "request_recorded":
+        raise ValueError("a decision can only be recorded once for a request in request_recorded state")
+    if decision not in POST_CLOSURE_REVIEW_DECISIONS:
+        raise ValueError(f"decision must be one of {sorted(POST_CLOSURE_REVIEW_DECISIONS)}")
+    reason_text = _required_text("reason", reason)
+    limitations_text = _required_text("evidence_limitations", evidence_limitations)
+    next_steps_text = _required_text("next_steps", next_steps)
+    actor_text = _required_text("actor", actor)
+    updated = deepcopy(request)
+    updated["decision"] = decision
+    updated["status"] = "decision_recorded"
+    updated["decision_record"] = {
+        "decision": decision,
+        "actor_label": actor_text,
+        "reason": reason_text,
+        "evidence_limitations": limitations_text,
+        "next_steps": next_steps_text,
+        "authority_verified": False,
+        "reviewer_independence_verified": False,
+        "recorded_at": datetime.now(timezone.utc).isoformat(),
+        "does_not_reopen_original_case": True,
+    }
+    updated["events"].append(
+        _event(
+            actor_text, f"post_closure_review_decision:{decision}", reason_text,
+            "request_recorded", "decision_recorded",
+        )
+    )
+    # This prototype cannot authenticate authority or alter the linked case.
+    return updated
+
+
 def record_notice_result(case, *, result, actor, reason, confirmation_reference=None):
     """Record notice metadata; caller-reported confirmation remains unverified."""
     if result not in NOTICE_RESULTS:
