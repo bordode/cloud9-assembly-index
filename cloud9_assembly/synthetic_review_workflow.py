@@ -285,7 +285,9 @@ def create_reopening_decision_record(
         raise ValueError("reopening decision requires acceptance for reopening review")
     if not isinstance(request.get("original_closure_snapshot"), dict):
         raise ValueError("reopening decision requires an original closure snapshot")
-    outcome_snapshot = request.get("original_outcome_snapshot")
+    if "original_outcome_snapshot" not in request:
+        raise ValueError("original outcome snapshot is required")
+    outcome_snapshot = request["original_outcome_snapshot"]
     if outcome_snapshot is not None and not isinstance(outcome_snapshot, dict):
         raise ValueError("original outcome snapshot must be a record or None")
     if decision not in REOPENING_DECISIONS:
