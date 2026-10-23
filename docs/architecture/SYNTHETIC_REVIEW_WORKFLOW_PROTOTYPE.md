@@ -18,6 +18,12 @@ A further helper records a separate reopening decision only after the request ha
 
 The terms `reopening_authorized` and `reopening_not_authorized` are labels in a synthetic fixture, not proof of actual authority. The record marks authority and reviewer independence as unverified. It does not perform a reopening transition, authenticate a decision-maker, or create a real case event in the original record. A production design would need a separately reviewed authorization model and a new, append-only status event that preserves the original closure and outcome; this prototype does not provide append-only or tamper-evident storage.
 
+## Outcome correction boundary
+
+The prototype rejects replacing an outcome through the generic transition helper, and its regression test checks that a rejected replacement leaves the entire input record unchanged. No outcome-correction or amendment helper is implemented. Before one is considered, a separate reviewed specification should define at least: a stable link to the original outcome; the specific field(s) proposed for correction; the prior value and proposed replacement; the factual or procedural reason; supporting evidence and limitations; uncertainty; the request and decision timestamps; and a record of who supplied each actor label. The design must preserve the original outcome and rationale as historical information rather than silently replacing them.
+
+Any future amendment record in this prototype would still be caller-supplied, synthetic metadata. It could not authenticate a requester or reviewer, verify authority or independence, establish evidence quality, or provide append-only/tamper-evident storage. A correction request must not itself change case status, permissions, or enforcement. Do not implement a correction path until its decision states, authorization boundary, and review route have been specified and separately reviewed.
+
 ## Deliberate limits
 
 - Only fictional test records should be used.
