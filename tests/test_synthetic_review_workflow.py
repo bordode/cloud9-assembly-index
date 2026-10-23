@@ -82,6 +82,44 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
         self.assertEqual(len(updated["participation_barriers"]), 1)
         self.assertIs(updated["automated_restriction"], False)
 
+    def test_closure_requires_disposition_and_preserves_participation_limits(self):
+        case = self.to_review(self.make_case())
+        case = record_participation_barrier(
+            case, barrier="accessible response channel unavailable",
+            actor="reviewer-a",
+            reason="The fictional subject could not use the proposed channel."
+        )
+
+        with self.assertRaisesRegex(ValueError, "closure_disposition"):
+            transition_case(
+                case, to_status="closed", actor="reviewer-a",
+                reason="Do not close without a recorded disposition."
+            )
+
+        closed = transition_case(
+            case, to_status="closed", actor="reviewer-a",
+            reason="Close the synthetic fixture for a documented administrative reason.",
+            closure_disposition="other_documented_reason",
+        )
+        self.assertEqual(closed["status"], "closed")
+        self.assertEqual(closed["closure_record"]["disposition"], "other_documented_reason")
+        self.assertEqual(closed["closure_record"]["participation_barrier_count_at_closure"], 1)
+        self.assertEqual(
+            closed["closure_record"]["participation_barrier_resolution_status"],
+            "recorded_but_resolution_not_represented",
+        )
+        self.assertEqual(closed["closure_record"]["notice_delivery_status_at_closure"], "not_verified")
+        self.assertIs(closed["closure_record"]["does_not_establish_response_or_waiver"], True)
+        self.assertEqual(case["status"], "under_review")
+
+    def test_closure_disposition_is_rejected_for_non_closure_transition(self):
+        with self.assertRaisesRegex(ValueError, "only be supplied when closing"):
+            transition_case(
+                self.make_case(), to_status="pending_human_review",
+                actor="reviewer-a", reason="Acknowledge the synthetic referral.",
+                closure_disposition="withdrawn",
+            )
+
     def test_failed_notice_requires_notice_issued_state(self):
         case = self.to_outcome(self.make_case())
         with self.assertRaises(ValueError):
