@@ -195,6 +195,17 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
                 requested_review_reason="Request review.",
             )
 
+    def test_post_closure_request_rejects_non_synthetic_closed_case(self):
+        closed = self.closed_case()
+        closed["synthetic_only"] = False
+        with self.assertRaisesRegex(ValueError, "requires a synthetic case record"):
+            create_post_closure_review_request(
+                closed,
+                barrier_or_information="Fictional access barrier.",
+                discovered_when="synthetic test date",
+                requested_review_reason="Request review.",
+            )
+
     def test_post_closure_decision_records_limits_without_reopening_case(self):
         closed = self.closed_case()
         original_closure = deepcopy(closed["closure_record"])
