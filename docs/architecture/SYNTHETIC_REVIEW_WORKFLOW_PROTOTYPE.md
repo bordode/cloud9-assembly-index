@@ -4,6 +4,15 @@
 
 This prototype translates a narrow subset of the proposed review lifecycle into pure Python functions and tests. It exists to exercise procedural invariants before any integration is considered.
 
+
+## Post-closure request demonstration
+
+The prototype now supports a narrow, separate synthetic record for a request to review a closed case. It captures the linked case identifier, reported barrier or new information, when it was discovered, the reason review is requested, and snapshots of the original closure and outcome. A separate decision record requires a bounded decision category, rationale, evidence limitations, and next steps.
+
+The supported request decisions are `accepted_for_reopening_review`, `reopening_not_warranted`, `more_information_requested`, and `inconclusive`. These describe the request assessment only. Even `accepted_for_reopening_review` does not reopen the original case. The original case remains unchanged, and the original closure and outcome are preserved in the request record. This prototype does not implement an authorized reopening event, an independent review service, an accessible notice/appeal channel, or a route for modifying the original case.
+
+The decision record explicitly marks reviewer authority and independence as unverified. Actor labels are not authenticated identities. The function requires recorded rationale, evidence limitations, and next steps, but cannot verify their truth or quality. Request and decision records remain ordinary mutable in-memory data; they are not immutable audit evidence. No status creates an enforcement capability or changes permissions.
+
 ## Deliberate limits
 
 - Only fictional test records should be used.
