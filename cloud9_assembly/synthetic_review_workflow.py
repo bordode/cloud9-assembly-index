@@ -14,7 +14,9 @@ OUTCOMES = {
     "inconclusive",
     "out_of_scope",
 }
-NOTICE_RESULTS = {"drafted", "attempted", "confirmed", "failed"}
+# "confirmation_reported" records only that a caller supplied a claim/reference.
+# It deliberately does not assert that notice was delivered or received.
+NOTICE_RESULTS = {"drafted", "attempted", "confirmation_reported", "failed"}
 
 TRANSITIONS = {
     "referred": {"pending_human_review"},
@@ -63,6 +65,7 @@ def create_synthetic_case(*, referral_summary, source_label="synthetic_fixture")
         "original_outcome": None,
         "notice_result": "not_attempted",
         "notice_confirmation_reference": None,
+        "notice_delivery_status": "not_verified",
         "notice_result_history": [],
         "participation_barriers": [],
         "events": [
@@ -122,7 +125,7 @@ def record_participation_barrier(case, *, barrier, actor, reason):
 
 
 def record_notice_result(case, *, result, actor, reason, confirmation_reference=None):
-    """Record notice metadata and append a history entry; no delivery is verified."""
+    """Record notice metadata; caller-reported confirmation remains unverified."""
     if result not in NOTICE_RESULTS:
         raise ValueError(f"result must be one of {sorted(NOTICE_RESULTS)}")
 
@@ -131,12 +134,12 @@ def record_notice_result(case, *, result, actor, reason, confirmation_reference=
         if status not in {"outcome_recorded", "notice_issued"}:
             raise ValueError("a notice can only be drafted after an outcome is recorded")
     elif status != "notice_issued":
-        raise ValueError("attempted, confirmed, or failed notice requires notice_issued status")
+        raise ValueError("attempted, confirmation_reported, or failed notice requires notice_issued status")
 
-    if result == "confirmed":
+    if result == "confirmation_reported":
         reference = _required_text("confirmation_reference", confirmation_reference)
     elif confirmation_reference is not None:
-        raise ValueError("confirmation_reference may only be supplied for confirmed notice")
+        raise ValueError("confirmation_reference may only be supplied for confirmation_reported")
     else:
         reference = None
 
@@ -156,11 +159,12 @@ def record_notice_result(case, *, result, actor, reason, confirmation_reference=
     updated.setdefault("notice_result_history", []).append(entry)
     updated["notice_result"] = result
     updated["notice_confirmation_reference"] = reference
+    # Never infer delivery or receipt from caller-supplied metadata.
+    updated["notice_delivery_status"] = "not_verified"
     updated["events"].append(
         _event(actor_text, f"notice:{result}", reason_text, updated["status"], updated["status"])
     )
     # The history is ordinary mutable in-memory data, not immutable audit evidence.
-    # A reference is only an unverified label; it does not prove delivery or imply waiver.
     return updated
 
 
