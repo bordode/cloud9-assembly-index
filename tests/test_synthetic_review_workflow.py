@@ -5,6 +5,7 @@ from copy import deepcopy
 from cloud9_assembly.synthetic_review_workflow import (
     create_synthetic_case,
     create_post_closure_review_request,
+    create_reopening_decision_record,
     record_challenge,
     record_notice_result,
     record_participation_barrier,
@@ -208,6 +209,73 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
         self.assertEqual(closed["outcome"], original_outcome)
         self.assertIs(decided["automated_restriction"], False)
         self.assertEqual(decided["external_actions"], [])
+
+    def accepted_reopening_request(self, closed=None):
+        request = self.make_post_closure_request(closed)
+        return record_post_closure_review_decision(
+            request, decision="accepted_for_reopening_review", actor="reviewer-label",
+            reason="Further procedural review is warranted.",
+            evidence_limitations="Synthetic fixture only; no external evidence verified.",
+            next_steps="Record a separate reopening decision.",
+        )
+
+    def test_reopening_decision_is_separate_and_preserves_closure(self):
+        closed = self.closed_case()
+        closure_before = deepcopy(closed["closure_record"])
+        outcome_before = deepcopy(closed["outcome"])
+        request = self.accepted_reopening_request(closed)
+        record = create_reopening_decision_record(
+            request, decision="reopening_authorized", actor="authority-label-not-verified",
+            reason="Synthetic decision approves reopening for limited procedural review.",
+            scope="Review the reported notice-access barrier only.",
+            evidence_limitations="No delivery records or identity verification exist in this prototype.",
+            next_steps="A future reviewed implementation would record a new status event.",
+            authority_basis="Synthetic policy fixture; not a verified delegation of authority.",
+        )
+
+        self.assertEqual(record["original_case_id"], closed["case_id"])
+        self.assertEqual(record["request_id"], request["request_id"])
+        self.assertEqual(record["decision"], "reopening_authorized")
+        self.assertIs(record["authority_verified"], False)
+        self.assertIs(record["reviewer_independence_verified"], False)
+        self.assertIs(record["changes_case_status"], False)
+        self.assertIs(record["overwrites_original_closure"], False)
+        self.assertEqual(record["original_closure_snapshot"], closure_before)
+        self.assertEqual(record["original_outcome_snapshot"], outcome_before)
+        self.assertEqual(closed["status"], "closed")
+        self.assertEqual(closed["closure_record"], closure_before)
+        self.assertEqual(closed["outcome"], outcome_before)
+        self.assertIs(record["automated_restriction"], False)
+        self.assertEqual(record["external_actions"], [])
+
+    def test_reopening_decision_requires_prior_acceptance_and_complete_record(self):
+        request = self.make_post_closure_request()
+        record_post_closure_review_decision(
+            request, decision="inconclusive", actor="reviewer-a",
+            reason="Insufficient information.",
+            evidence_limitations="Synthetic fixture only.",
+            next_steps="Seek more information.",
+        )
+        with self.assertRaisesRegex(ValueError, "acceptance for reopening review"):
+            create_reopening_decision_record(
+                request, decision="reopening_authorized", actor="reviewer-a",
+                reason="Try to skip the required procedural decision.",
+                scope="Narrow synthetic scope.",
+                evidence_limitations="Synthetic only.",
+                next_steps="None.",
+                authority_basis="Not verified.",
+            )
+
+        accepted = self.accepted_reopening_request()
+        with self.assertRaisesRegex(ValueError, "authority_basis"):
+            create_reopening_decision_record(
+                accepted, decision="reopening_not_authorized", actor="reviewer-a",
+                reason="A separate decision is recorded.",
+                scope="Narrow synthetic scope.",
+                evidence_limitations="Synthetic only.",
+                next_steps="No further action.",
+                authority_basis=" ",
+            )
 
     def test_post_closure_decision_requires_reason_limits_and_next_steps(self):
         request = self.make_post_closure_request()
