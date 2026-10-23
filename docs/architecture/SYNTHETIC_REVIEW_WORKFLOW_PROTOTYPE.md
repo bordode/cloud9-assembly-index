@@ -56,6 +56,7 @@ Any future amendment record in this prototype would still be caller-supplied, sy
 11. This prototype rejects barriers submitted directly to a closed case because no post-closure review route is implemented; the design specification requires a future review-request path that preserves closure history.
 12. Input records are copied rather than mutated by transition helpers.
 13. The prototype has no external-action interface.
+14. A separate reopening-decision record rejects a missing or malformed original-history snapshot, and the regression tests verify that rejection leaves the supplied request unchanged.
 
 Reviewer conflict-check metadata is required on synthetic post-closure and reopening decision records. The field records only the supplied description; its status is explicitly `reported_not_verified`. It does not authenticate the reviewer, prove that a conflict check was actually performed, or establish independence. Those require a separately designed and reviewed process.
 
