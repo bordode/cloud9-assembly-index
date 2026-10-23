@@ -454,6 +454,7 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
             "category": "inconclusive",
             "rationale": "Existing synthetic outcome fixture.",
         }
+        before_attempt = deepcopy(case)
         original_outcome = deepcopy(case["outcome"])
         with self.assertRaisesRegex(ValueError, "cannot be overwritten"):
             transition_case(
@@ -462,6 +463,8 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
                 outcome="supported_within_scope",
             )
         self.assertEqual(case["outcome"], original_outcome)
+        self.assertEqual(case, before_attempt)
+        self.assertEqual(case["status"], "under_review")
 
     def test_challenge_preserves_original_outcome_and_cannot_be_generically_closed(self):
         case = self.to_outcome(self.make_case())
