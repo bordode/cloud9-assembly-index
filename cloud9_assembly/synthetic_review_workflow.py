@@ -1,4 +1,4 @@
-"""Synthetic, in-memory review workflow prototype.
+""""Synthetic, in-memory review workflow prototype.
 
 This module is a local demonstration only. It has no persistence, authentication,
 network access, detector, runtime integration, or enforcement capability. It must
@@ -116,6 +116,14 @@ def record_notice_result(case, *, result, actor, reason, confirmation_reference=
     """Record notice metadata; a reference is caller-supplied and not verified."""
     if result not in NOTICE_RESULTS:
         raise ValueError(f"result must be one of {sorted(NOTICE_RESULTS)}")
+
+    status = case.get("status")
+    if result == "drafted":
+        if status not in {"outcome_recorded", "notice_issued"}:
+            raise ValueError("a notice can only be drafted after an outcome is recorded")
+    elif status != "notice_issued":
+        raise ValueError("attempted, confirmed, or failed notice requires notice_issued status")
+
     if result == "confirmed":
         reference = _required_text("confirmation_reference", confirmation_reference)
     elif confirmation_reference is not None:
