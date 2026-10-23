@@ -708,6 +708,40 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
         self.assertEqual(len(confirmed["events"]), len(case["events"]) + 2)
         self.assertEqual(case["notice_result_history"][-1]["result"], "drafted")
 
+    def test_transition_rejects_non_synthetic_and_malformed_records(self):
+        for invalid in (None, [], {}, {"synthetic_only": False, "status": "referred"}):
+            before = deepcopy(invalid)
+            with self.subTest(invalid=invalid):
+                with self.assertRaisesRegex(ValueError, "synthetic case record"):
+                    transition_case(
+                        invalid, to_status="pending_human_review",
+                        actor="reviewer-a", reason="Reject non-synthetic input.",
+                    )
+                self.assertEqual(invalid, before)
+
+    def test_participation_barrier_rejects_non_synthetic_record(self):
+        invalid = {"synthetic_only": False, "status": "under_review",
+                   "participation_barriers": [], "events": []}
+        before = deepcopy(invalid)
+        with self.assertRaisesRegex(ValueError, "synthetic case record"):
+            record_participation_barrier(
+                invalid, barrier="Fictional access barrier", actor="reviewer-a",
+                reason="Reject non-synthetic input.",
+            )
+        self.assertEqual(invalid, before)
+
+    def test_notice_result_rejects_non_synthetic_record(self):
+        invalid = {"synthetic_only": False, "status": "outcome_recorded",
+                   "notice_result": "not_attempted", "notice_result_history": [],
+                   "events": []}
+        before = deepcopy(invalid)
+        with self.assertRaisesRegex(ValueError, "synthetic case record"):
+            record_notice_result(
+                invalid, result="drafted", actor="reviewer-a",
+                reason="Reject non-synthetic input.",
+            )
+        self.assertEqual(invalid, before)
+
     def test_input_case_is_not_mutated(self):
         case = self.make_case()
         original_events = list(case["events"])
