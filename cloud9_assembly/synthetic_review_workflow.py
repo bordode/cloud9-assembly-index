@@ -45,6 +45,12 @@ def _required_text(name, value):
     return value.strip()
 
 
+def _require_synthetic_case(case):
+    """Reject non-records and records not explicitly scoped to synthetic fixtures."""
+    if not isinstance(case, dict) or case.get("synthetic_only") is not True:
+        raise ValueError("a synthetic case record is required")
+
+
 def _event(actor, action, reason, prior_status, new_status):
     return {
         "event_id": str(uuid4()),
@@ -88,6 +94,7 @@ def transition_case(
     case, *, to_status, actor, reason, outcome=None, closure_disposition=None
 ):
     """Return a transitioned copy; require an explicit record for generic closure."""
+    _require_synthetic_case(case)
     updated = deepcopy(case)
     current = updated.get("status")
     if current not in TRANSITIONS or to_status not in TRANSITIONS[current]:
@@ -147,6 +154,7 @@ def transition_case(
 
 def record_participation_barrier(case, *, barrier, actor, reason):
     """Record a process barrier without treating it as evidence or agreement."""
+    _require_synthetic_case(case)
     if case.get("status") == "closed":
         raise ValueError(
             "cannot add a participation barrier to a closed case; "
@@ -337,6 +345,7 @@ def create_reopening_decision_record(
 
 def record_notice_result(case, *, result, actor, reason, confirmation_reference=None):
     """Record notice metadata; caller-reported confirmation remains unverified."""
+    _require_synthetic_case(case)
     if result not in NOTICE_RESULTS:
         raise ValueError(f"result must be one of {sorted(NOTICE_RESULTS)}")
 
