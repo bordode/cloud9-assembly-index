@@ -639,7 +639,7 @@
     },
     "hardware_requirements": {
       "current_platforms": [
-        "IBM Quantum (ibm_brisbane)",
+        "IBM Quantum ([superconducting-QPU])",
         "Google Sycamore",
         "IonQ"
       ],
