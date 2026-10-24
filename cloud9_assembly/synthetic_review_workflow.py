@@ -243,6 +243,10 @@ def record_post_closure_review_decision(
         raise ValueError("a synthetic post-closure review request is required")
     if request.get("status") != "request_recorded":
         raise ValueError("a decision can only be recorded once for a request in request_recorded state")
+    if request.get("decision") is not None or request.get("decision_record") is not None:
+        raise ValueError("an undecided request must not already contain a decision record")
+    if not isinstance(request.get("events"), list):
+        raise ValueError("a post-closure request must contain an event list")
     if not isinstance(decision, str) or decision not in POST_CLOSURE_REVIEW_DECISIONS:
         raise ValueError(f"decision must be one of {sorted(POST_CLOSURE_REVIEW_DECISIONS)}")
     reason_text = _required_text("reason", reason)
