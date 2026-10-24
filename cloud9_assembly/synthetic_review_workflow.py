@@ -186,7 +186,7 @@ def create_post_closure_review_request(
 
     This records a request only. It does not reopen or mutate the original case.
     """
-    if not isinstance(closed_case, dict) or not closed_case.get("synthetic_only"):
+    if not isinstance(closed_case, dict) or closed_case.get("synthetic_only") is not True:
         raise ValueError("post-closure review request requires a synthetic case record")
     if closed_case.get("status") != "closed" or not isinstance(
         closed_case.get("closure_record"), dict
@@ -227,7 +227,7 @@ def record_post_closure_review_decision(
     reviewer_conflict_check,
 ):
     """Record a procedural request decision without reopening the original case."""
-    if not isinstance(request, dict) or not request.get("synthetic_only"):
+    if not isinstance(request, dict) or request.get("synthetic_only") is not True:
         raise ValueError("a synthetic post-closure review request is required")
     if request.get("status") != "request_recorded":
         raise ValueError("a decision can only be recorded once for a request in request_recorded state")
@@ -277,7 +277,7 @@ def create_reopening_decision_record(
     This is a decision-record schema demonstration, not an authorization service.
     Actor identity and authority cannot be verified in this prototype.
     """
-    if not isinstance(request, dict) or not request.get("synthetic_only"):
+    if not isinstance(request, dict) or request.get("synthetic_only") is not True:
         raise ValueError("a synthetic post-closure review request is required")
     if request.get("status") != "decision_recorded":
         raise ValueError("a post-closure request decision must be recorded first")
@@ -381,7 +381,7 @@ def record_notice_result(case, *, result, actor, reason, confirmation_reference=
 
 def record_challenge(case, *, actor, reason):
     """Open a challenge while preserving the original outcome verbatim."""
-    if not isinstance(case, dict) or not case.get("synthetic_only"):
+    if not isinstance(case, dict) or case.get("synthetic_only") is not True:
         raise ValueError("a synthetic case record is required")
     if case.get("status") not in {"outcome_recorded", "notice_issued"}:
         raise ValueError("a challenge requires a recorded outcome")
