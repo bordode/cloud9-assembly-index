@@ -170,8 +170,8 @@ def record_participation_barrier(case, *, barrier, actor, reason):
     _require_list_field(case, "participation_barriers", "synthetic case")
     if case.get("status") == "closed":
         raise ValueError(
-            "cannot add a participation barrier to a closed case; "
-            "this prototype has no reopening or post-closure review process"
+            "cannot append a participation barrier to a closed case; "
+            "create a separate post-closure review request instead"
         )
     updated = deepcopy(case)
     barrier_text = _required_text("barrier", barrier)
