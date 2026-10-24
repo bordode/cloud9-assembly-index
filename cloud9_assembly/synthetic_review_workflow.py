@@ -96,7 +96,12 @@ def transition_case(
     _require_synthetic_case(case)
     updated = deepcopy(case)
     current = updated.get("status")
-    if current not in TRANSITIONS or to_status not in TRANSITIONS[current]:
+    if (
+        not isinstance(current, str)
+        or current not in TRANSITIONS
+        or not isinstance(to_status, str)
+        or to_status not in TRANSITIONS[current]
+    ):
         raise ValueError(f"invalid transition: {current!r} -> {to_status!r}")
 
     if to_status == "closed":
@@ -105,7 +110,7 @@ def transition_case(
                 "cannot close while participation barriers are recorded; "
                 "this prototype has no barrier-resolution process"
             )
-        if closure_disposition not in CLOSURE_DISPOSITIONS:
+        if not isinstance(closure_disposition, str) or closure_disposition not in CLOSURE_DISPOSITIONS:
             raise ValueError(
                 f"closure_disposition must be one of {sorted(CLOSURE_DISPOSITIONS)}"
             )
@@ -118,7 +123,7 @@ def transition_case(
     if to_status == "outcome_recorded":
         if updated.get("outcome") is not None:
             raise ValueError("an existing outcome cannot be overwritten; use a separately reviewed correction process")
-        if outcome not in OUTCOMES:
+        if not isinstance(outcome, str) or outcome not in OUTCOMES:
             raise ValueError("a valid outcome category is required")
         updated["outcome"] = {
             "category": outcome,
@@ -238,7 +243,7 @@ def record_post_closure_review_decision(
         raise ValueError("a synthetic post-closure review request is required")
     if request.get("status") != "request_recorded":
         raise ValueError("a decision can only be recorded once for a request in request_recorded state")
-    if decision not in POST_CLOSURE_REVIEW_DECISIONS:
+    if not isinstance(decision, str) or decision not in POST_CLOSURE_REVIEW_DECISIONS:
         raise ValueError(f"decision must be one of {sorted(POST_CLOSURE_REVIEW_DECISIONS)}")
     reason_text = _required_text("reason", reason)
     limitations_text = _required_text("evidence_limitations", evidence_limitations)
@@ -310,7 +315,7 @@ def create_reopening_decision_record(
             raise ValueError("original outcome snapshot requires a valid category")
         if not isinstance(outcome_snapshot.get("rationale"), str) or not outcome_snapshot["rationale"].strip():
             raise ValueError("original outcome snapshot requires a rationale")
-    if decision not in REOPENING_DECISIONS:
+    if not isinstance(decision, str) or decision not in REOPENING_DECISIONS:
         raise ValueError(f"decision must be one of {sorted(REOPENING_DECISIONS)}")
     return {
         "decision_record_id": f"SYN-REOPEN-{uuid4()}",
@@ -345,7 +350,7 @@ def create_reopening_decision_record(
 def record_notice_result(case, *, result, actor, reason, confirmation_reference=None):
     """Record notice metadata; caller-reported confirmation remains unverified."""
     _require_synthetic_case(case)
-    if result not in NOTICE_RESULTS:
+    if not isinstance(result, str) or result not in NOTICE_RESULTS:
         raise ValueError(f"result must be one of {sorted(NOTICE_RESULTS)}")
 
     status = case.get("status")
