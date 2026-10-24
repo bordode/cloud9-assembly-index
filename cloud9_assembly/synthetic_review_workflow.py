@@ -340,6 +340,8 @@ def create_reopening_decision_record(
         raise ValueError("prototype decision record must not claim verified authority")
     if decision_record.get("reviewer_independence_verified") is not False:
         raise ValueError("prototype decision record must not claim verified reviewer independence")
+    if decision_record.get("reviewer_conflict_check_status") != "reported_not_verified":
+        raise ValueError("prototype conflict-check status must remain reported_not_verified")
     closure_snapshot = request.get("original_closure_snapshot")
     if not isinstance(closure_snapshot, dict):
         raise ValueError("reopening decision requires an original closure snapshot")
