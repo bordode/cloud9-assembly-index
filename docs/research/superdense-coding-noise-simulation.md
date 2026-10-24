@@ -2,7 +2,7 @@
 
 **Suggested repository path:** `docs/research/superdense-coding-noise-simulation.md`  
 **Status:** Idealized density-matrix simulation; not a quantum-hardware experiment  
-**Companion notebook:** [`cosmic_quantum_network_test.ipynb`](../../cosmic_quantum_network_test.ipynb)
+**Companion notebook:** [`cosmic_quantum_network_test.ipynb`](cosmic_quantum_network_test.ipynb)
 
 ## Question
 
