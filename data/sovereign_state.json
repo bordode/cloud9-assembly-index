@@ -8,8 +8,8 @@
         "sovereign_threshold": 3.5
     },
     "hardware_witness": {
-        "backend": "ibm_kingston",
-        "job_id": "d7a4o6bc6das739jlpcg",
+        "backend": "[superconducting-QPU]",
+        "job_id": "[job-id-redacted]",
         "status": "VERIFIED"
     },
     "state": "SOVEREIGN"
