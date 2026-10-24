@@ -744,6 +744,28 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
         self.assertEqual(len(confirmed["events"]), len(case["events"]) + 2)
         self.assertEqual(case["notice_result_history"][-1]["result"], "drafted")
 
+    def test_case_mutation_helpers_require_explicit_boolean_synthetic_marker(self):
+        case = self.make_case()
+        case["synthetic_only"] = "false"
+        before = deepcopy(case)
+
+        with self.assertRaisesRegex(ValueError, "synthetic case record"):
+            transition_case(
+                case, to_status="pending_human_review", actor="reviewer-a",
+                reason="Reject a truthy non-boolean synthetic marker.",
+            )
+        with self.assertRaisesRegex(ValueError, "synthetic case record"):
+            record_participation_barrier(
+                case, barrier="access barrier", actor="reviewer-a",
+                reason="Reject a truthy non-boolean synthetic marker.",
+            )
+        with self.assertRaisesRegex(ValueError, "synthetic case record"):
+            record_notice_result(
+                case, result="drafted", actor="reviewer-a",
+                reason="Reject a truthy non-boolean synthetic marker.",
+            )
+        self.assertEqual(case, before)
+
     def test_input_case_is_not_mutated(self):
         case = self.make_case()
         original_events = list(case["events"])
