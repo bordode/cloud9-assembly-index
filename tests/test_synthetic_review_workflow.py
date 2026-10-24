@@ -486,6 +486,34 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
             )
         self.assertEqual(request["status"], "decision_recorded")
 
+    def test_reopening_decision_rejects_missing_or_mismatched_prior_decision_record(self):
+        request = self.accepted_reopening_request()
+        missing_record = deepcopy(request)
+        missing_record["decision_record"] = None
+        before_missing = deepcopy(missing_record)
+        with self.assertRaisesRegex(ValueError, "recorded post-closure decision record"):
+            create_reopening_decision_record(
+                missing_record, decision="reopening_authorized", actor="reviewer-a",
+                reason="Synthetic reopening decision.", scope="bounded review",
+                evidence_limitations="Fixture only.", next_steps="No external action.",
+                authority_basis="Unverified fixture basis.",
+                reviewer_conflict_check="Reported only.",
+            )
+        self.assertEqual(missing_record, before_missing)
+
+        mismatched_record = deepcopy(request)
+        mismatched_record["decision_record"]["decision"] = "reopening_not_warranted"
+        before_mismatch = deepcopy(mismatched_record)
+        with self.assertRaisesRegex(ValueError, "must match the request decision"):
+            create_reopening_decision_record(
+                mismatched_record, decision="reopening_authorized", actor="reviewer-a",
+                reason="Synthetic reopening decision.", scope="bounded review",
+                evidence_limitations="Fixture only.", next_steps="No external action.",
+                authority_basis="Unverified fixture basis.",
+                reviewer_conflict_check="Reported only.",
+            )
+        self.assertEqual(mismatched_record, before_mismatch)
+
     def test_reopening_decision_requires_prior_acceptance_and_complete_record(self):
         request = self.make_post_closure_request()
         request = record_post_closure_review_decision(
