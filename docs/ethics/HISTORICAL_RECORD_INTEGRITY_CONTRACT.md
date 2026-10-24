@@ -103,6 +103,18 @@ Tests may check:
 
 Tests must not infer a canonical relationship merely because two caller-controlled fields contain the same string. Nor should tests add validation that appears to authenticate a record when the prototype has no trusted source against which to validate it.
 
+### Known schema limitation: review-decision linkage
+
+In the current prototype, `record_post_closure_review_decision` returns an updated request containing an embedded `decision_record`. That embedded object does not carry its own explicit `request_id` or `original_case_id`; its association with the request is provided by object nesting. This is adequate for a small synthetic demonstration, but it is not a standalone, independently addressable decision record.
+
+A future durable implementation should give each review decision its own stable record/event identifier and explicit links to:
+- the canonical original case and relevant case version;
+- the post-closure review request;
+- the decision event and the prior request state/version;
+- any later reopening decision and, separately, any executed reopening transition.
+
+Those links must be resolved against the authoritative record store and validated for existence, expected relationship, and version/state compatibility. Merely copying identifiers from a caller-supplied request does not validate them. If the authoritative relationship cannot be resolved, the system should mark the link unresolved and prevent any privileged state transition; it should not silently repair, infer, or fabricate a link.
+
 ### Requirements for an authoritative implementation
 
 A future implementation should resolve links against a canonical record/version store rather than trusting only the caller-supplied object. It should retain immutable or independently protected event/version identifiers for the case, closure, request, review decision, reopening authorization, and any executed state transition. Each privileged event must be checked against authenticated identity and action-specific authority. Failed or ambiguous linkage must be reported as unverified and must not silently authorize a state change.
