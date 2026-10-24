@@ -142,7 +142,7 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
             reason="Close synthetic fixture with documented disposition.",
             closure_disposition="administrative_duplicate",
         )
-        with self.assertRaisesRegex(ValueError, "no reopening or post-closure review process"):
+        with self.assertRaisesRegex(ValueError, "separate post-closure review request"):
             record_participation_barrier(
                 closed, barrier="newly discovered inaccessible notice",
                 actor="reviewer-b",
