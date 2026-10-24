@@ -288,6 +288,7 @@ def record_post_closure_review_decision(
     updated["decision"] = decision
     updated["status"] = "decision_recorded"
     updated["decision_record"] = {
+        "synthetic_only": True,
         "decision": decision,
         "actor_label": actor_text,
         "reason": reason_text,
