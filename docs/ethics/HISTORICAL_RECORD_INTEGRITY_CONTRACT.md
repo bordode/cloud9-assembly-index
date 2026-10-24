@@ -80,6 +80,35 @@ The interface and documentation must distinguish:
 
 **Acceptance test:** user-facing status labels do not describe a record as immutable, authenticated, authorized, delivered, or tamper-proof unless the corresponding mechanism exists and has been tested.
 
+## Cross-record linkage acceptance matrix
+
+The following matrix separates checks that can be exercised in the current synthetic prototype from guarantees that require an authoritative record store. Passing a row in the first group must not be described as proving authenticity, authorization, or historical integrity.
+
+| Relationship or property | Synthetic test that is appropriate now | What remains unproven |
+|---|---|---|
+| Review request → original case | Assert the request's `original_case_id` equals the case ID supplied when the request is created. | Whether the supplied case ID is canonical, unique in a trusted store, or belongs to an authenticated source record. |
+| Review request → closure/outcome snapshots | Assert snapshots initially equal the source values and later mutations of one in-memory copy do not alter the other. | Whether the snapshots reflect the genuine historical values at the time of closure, or whether either copy can later be rewritten. |
+| Review decision → request | Assert the decision is recorded only in the expected request state and its decision value is consistent with the recorded decision. | Whether the request itself is authentic, whether the actor is authenticated, and whether the decision was authorized or independent. |
+| Reopening-decision record → request | Assert the record copies the request ID and original case ID consistently, and preserves the decision/snapshot fields expected by the schema. | Whether the request ID or case ID was tampered with before record creation, or whether an authority actually granted permission to reopen. |
+| Reopening decision → actual case state | Assert that creating a decision record does not change the original case's closed state. | A real reopening event, which requires a separately authorized state transition and a durable linked event. |
+| Event order and continuity | Assert locally that expected event entries are added by the exercised helper calls. | Complete event history, trusted ordering/timestamps, resistance to deletion/reordering/replay/rollback, or reconstruction after restart. |
+
+### Minimum linkage tests for this prototype
+
+Tests may check:
+- identifiers copied by a helper are internally consistent with the input object supplied to that helper;
+- an ordinary helper does not silently change the linked original case;
+- snapshots remain independent copies in the exercised in-memory path;
+- a decision record is not mistaken for an executed reopening transition.
+
+Tests must not infer a canonical relationship merely because two caller-controlled fields contain the same string. Nor should tests add validation that appears to authenticate a record when the prototype has no trusted source against which to validate it.
+
+### Requirements for an authoritative implementation
+
+A future implementation should resolve links against a canonical record/version store rather than trusting only the caller-supplied object. It should retain immutable or independently protected event/version identifiers for the case, closure, request, review decision, reopening authorization, and any executed state transition. Each privileged event must be checked against authenticated identity and action-specific authority. Failed or ambiguous linkage must be reported as unverified and must not silently authorize a state change.
+
+Do not introduce a cryptographic checksum or hash chain in isolation as a substitute for this model. Integrity mechanisms need a documented threat model, independent key/storage controls where appropriate, and explicit treatment of deletion, reordering, replay, rollback, backup restoration, and compromise.
+
 ## Current prototype boundary
 
 The current synthetic prototype does **not** implement durable storage, authenticated identities, authority enforcement, an append-only event store, cryptographic verification, trusted timestamps, backup/rollback protection, or a real reopening transition. Its event arrays and snapshots are ordinary Python data. Deep-copy behaviour and input validation must not be described as historical integrity.
