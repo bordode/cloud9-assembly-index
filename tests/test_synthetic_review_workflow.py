@@ -389,6 +389,7 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
 
     def test_reopening_decision_rejects_inconsistent_procedural_decision_record(self):
         mutations = (
+            ("synthetic_only", False),
             ("decision", "reopening_not_warranted"),
             ("does_not_reopen_original_case", False),
             ("authority_verified", True),
