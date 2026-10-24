@@ -256,6 +256,27 @@ def record_post_closure_review_decision(
         raise ValueError("an undecided request must not already contain a decision record")
     if not isinstance(request.get("events"), list):
         raise ValueError("a post-closure request must contain an event list")
+    _required_text("request_id", request.get("request_id"))
+    _required_text("original_case_id", request.get("original_case_id"))
+    closure_snapshot = request.get("original_closure_snapshot")
+    if not isinstance(closure_snapshot, dict):
+        raise ValueError("post-closure request requires an original closure snapshot")
+    disposition = closure_snapshot.get("disposition")
+    if not isinstance(disposition, str) or disposition not in CLOSURE_DISPOSITIONS:
+        raise ValueError("original closure snapshot requires a valid disposition")
+    if not isinstance(closure_snapshot.get("reason"), str) or not closure_snapshot["reason"].strip():
+        raise ValueError("original closure snapshot requires a reason")
+    if "original_outcome_snapshot" not in request:
+        raise ValueError("original outcome snapshot is required")
+    outcome_snapshot = request["original_outcome_snapshot"]
+    if outcome_snapshot is not None:
+        if not isinstance(outcome_snapshot, dict):
+            raise ValueError("original outcome snapshot must be a record or None")
+        category = outcome_snapshot.get("category")
+        if not isinstance(category, str) or category not in OUTCOMES:
+            raise ValueError("original outcome snapshot requires a valid category")
+        if not isinstance(outcome_snapshot.get("rationale"), str) or not outcome_snapshot["rationale"].strip():
+            raise ValueError("original outcome snapshot requires a rationale")
     if not isinstance(decision, str) or decision not in POST_CLOSURE_REVIEW_DECISIONS:
         raise ValueError(f"decision must be one of {sorted(POST_CLOSURE_REVIEW_DECISIONS)}")
     reason_text = _required_text("reason", reason)
