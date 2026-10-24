@@ -227,6 +227,16 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
                 requested_review_reason="Request review.",
             )
 
+        truthy_non_boolean = self.closed_case()
+        truthy_non_boolean["synthetic_only"] = "false"
+        with self.assertRaisesRegex(ValueError, "requires a synthetic case record"):
+            create_post_closure_review_request(
+                truthy_non_boolean,
+                barrier_or_information="Fictional access barrier.",
+                discovered_when="synthetic test date",
+                requested_review_reason="Request review.",
+            )
+
     def test_post_closure_decision_records_limits_without_reopening_case(self):
         closed = self.closed_case()
         original_closure = deepcopy(closed["closure_record"])
@@ -449,6 +459,32 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
                 authority_basis="Synthetic policy fixture; not verified.",
             )
         self.assertEqual(invalid_category, invalid_category_before)
+
+    def test_post_closure_decision_requires_explicit_boolean_synthetic_marker(self):
+        request = self.make_post_closure_request()
+        request["synthetic_only"] = "false"
+        with self.assertRaisesRegex(ValueError, "synthetic post-closure review request"):
+            record_post_closure_review_decision(
+                request, decision="inconclusive", actor="reviewer-a",
+                reviewer_conflict_check="Not assessed; synthetic fixture only.",
+                reason="Insufficient information.",
+                evidence_limitations="Synthetic fixture only.",
+                next_steps="Seek more information.",
+            )
+        self.assertEqual(request["status"], "request_recorded")
+
+    def test_reopening_decision_requires_explicit_boolean_synthetic_marker(self):
+        request = self.accepted_reopening_request()
+        request["synthetic_only"] = "false"
+        with self.assertRaisesRegex(ValueError, "synthetic post-closure review request"):
+            create_reopening_decision_record(
+                request, decision="reopening_authorized", actor="reviewer-a",
+                reviewer_conflict_check="Not assessed; synthetic fixture only.",
+                reason="Synthetic decision.", scope="Narrow procedural scope.",
+                evidence_limitations="Synthetic only.", next_steps="No external action.",
+                authority_basis="Synthetic policy fixture; not verified.",
+            )
+        self.assertEqual(request["status"], "decision_recorded")
 
     def test_reopening_decision_requires_prior_acceptance_and_complete_record(self):
         request = self.make_post_closure_request()
@@ -673,7 +709,7 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
     def test_challenge_rejects_non_synthetic_or_missing_outcome_records(self):
         case = self.to_outcome(self.make_case())
         non_synthetic = deepcopy(case)
-        non_synthetic["synthetic_only"] = False
+        non_synthetic["synthetic_only"] = "false"
         with self.assertRaisesRegex(ValueError, "synthetic case record"):
             record_challenge(
                 non_synthetic, actor="synthetic-subject",
