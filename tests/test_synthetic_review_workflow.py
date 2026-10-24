@@ -745,26 +745,46 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
         self.assertEqual(case["notice_result_history"][-1]["result"], "drafted")
 
     def test_case_mutation_helpers_require_explicit_boolean_synthetic_marker(self):
-        case = self.make_case()
-        case["synthetic_only"] = "false"
-        before = deepcopy(case)
+        base = self.make_case()
+        invalid_markers = (False, "false", 1, None)
 
+        for marker in invalid_markers:
+            with self.subTest(marker=marker):
+                case = deepcopy(base)
+                case["synthetic_only"] = marker
+                before = deepcopy(case)
+                mutators = (
+                    lambda c: transition_case(
+                        c, to_status="pending_human_review", actor="reviewer-a",
+                        reason="Reject a non-boolean synthetic marker.",
+                    ),
+                    lambda c: record_participation_barrier(
+                        c, barrier="access barrier", actor="reviewer-a",
+                        reason="Reject a non-boolean synthetic marker.",
+                    ),
+                    lambda c: record_notice_result(
+                        c, result="drafted", actor="reviewer-a",
+                        reason="Reject a non-boolean synthetic marker.",
+                    ),
+                    lambda c: record_challenge(
+                        c, actor="synthetic-subject",
+                        reason="Reject a non-boolean synthetic marker.",
+                    ),
+                )
+                for mutate in mutators:
+                    with self.assertRaisesRegex(ValueError, "synthetic case record"):
+                        mutate(case)
+                self.assertEqual(case, before)
+
+        missing = deepcopy(base)
+        del missing["synthetic_only"]
+        before_missing = deepcopy(missing)
         with self.assertRaisesRegex(ValueError, "synthetic case record"):
             transition_case(
-                case, to_status="pending_human_review", actor="reviewer-a",
-                reason="Reject a truthy non-boolean synthetic marker.",
+                missing, to_status="pending_human_review", actor="reviewer-a",
+                reason="Reject a missing synthetic marker.",
             )
-        with self.assertRaisesRegex(ValueError, "synthetic case record"):
-            record_participation_barrier(
-                case, barrier="access barrier", actor="reviewer-a",
-                reason="Reject a truthy non-boolean synthetic marker.",
-            )
-        with self.assertRaisesRegex(ValueError, "synthetic case record"):
-            record_notice_result(
-                case, result="drafted", actor="reviewer-a",
-                reason="Reject a truthy non-boolean synthetic marker.",
-            )
-        self.assertEqual(case, before)
+        self.assertEqual(missing, before_missing)
 
     def test_input_case_is_not_mutated(self):
         case = self.make_case()
