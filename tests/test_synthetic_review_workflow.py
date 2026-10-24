@@ -294,6 +294,41 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
             )
         self.assertEqual(request, before)
 
+    def test_post_closure_decision_rejects_incomplete_snapshots_without_mutation(self):
+        mutations = (
+            ("original_closure_snapshot", {"disposition": "other_documented_reason"}),
+            ("original_closure_snapshot", {"disposition": "invalid", "reason": "Fixture reason."}),
+            ("original_outcome_snapshot", {"category": "invalid", "rationale": "Fixture rationale."}),
+            ("original_outcome_snapshot", {}),
+        )
+        for field, malformed in mutations:
+            with self.subTest(field=field, malformed=malformed):
+                request = self.make_post_closure_request()
+                request[field] = deepcopy(malformed)
+                before = deepcopy(request)
+                with self.assertRaises(ValueError):
+                    record_post_closure_review_decision(
+                        request, decision="inconclusive", actor="reviewer-a",
+                        reason="Reject incomplete snapshot.",
+                        evidence_limitations="Synthetic fixture only.",
+                        next_steps="No external action.",
+                        reviewer_conflict_check="Not assessed; synthetic fixture only.",
+                    )
+                self.assertEqual(request, before)
+
+        request = self.make_post_closure_request()
+        del request["original_outcome_snapshot"]
+        before = deepcopy(request)
+        with self.assertRaisesRegex(ValueError, "outcome snapshot is required"):
+            record_post_closure_review_decision(
+                request, decision="inconclusive", actor="reviewer-a",
+                reason="Reject missing outcome snapshot.",
+                evidence_limitations="Synthetic fixture only.",
+                next_steps="No external action.",
+                reviewer_conflict_check="Not assessed; synthetic fixture only.",
+            )
+        self.assertEqual(request, before)
+
     def test_post_closure_decision_rejects_blank_conflict_check_metadata(self):
         request = self.make_post_closure_request()
         with self.assertRaisesRegex(ValueError, "reviewer_conflict_check"):
