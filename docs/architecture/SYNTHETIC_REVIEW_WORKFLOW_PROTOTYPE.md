@@ -43,6 +43,18 @@ Any future amendment record in this prototype would still be caller-supplied, sy
 - The closure record now explicitly labels three design-specification gaps: outstanding uncertainty is `not_captured_by_prototype`, retention/deletion scheduling is `not_implemented`, and the post-closure route is `separate_request_supported_authorized_reopening_not_implemented`. These labels expose missing functionality; they do not resolve the gaps or certify closure as procedurally complete.
 - Passing these unit tests establishes only the behavior exercised by these tests. It does not validate consciousness claims, moral status, security, or suitability for real cases.
 
+
+## Evidence-informed design principles and limits
+
+This prototype uses procedural safeguards that are consistent with, but do not prove compliance with, established research and risk-management guidance:
+
+- **Voice, neutrality, respect, and trustworthy motives.** Procedural-justice research identifies opportunities to participate, neutral decision-making, respectful treatment, and trustworthy motives as important dimensions of perceived procedural fairness. Here, participation barriers are recorded without automatically becoming findings or penalties, and challenges are not silently closed. This is a design rationale, not evidence that this prototype produces fair outcomes. See Tyler, “Social Justice: Outcome and Procedure” (2000): https://doi.org/10.1080/002075900399411.
+- **Validity, reliability, transparency, and documented uncertainty.** The NIST AI Risk Management Framework recommends evaluating and documenting validity/reliability, transparency/accountability, explainability, privacy, and fairness, and tracking risks over time. For this prototype, that supports explicit evidence limitations, a distinct inconclusive outcome, and clear statements about what tests do and do not establish. It does not establish that this workflow is an AI system or that NIST has assessed or endorsed it. NIST AI RMF 1.0: https://doi.org/10.6028/NIST.AI.100-1.
+- **Auditability is an engineering property, not a label.** NIST SP 800-92 describes log-management practices for security and accountability. The current event/history lists are mutable Python data, so they are not tamper-evident logs. A production design would need separately specified access controls, integrity protection, retention, monitoring, and independent verification before making stronger audit claims. NIST SP 800-92: https://doi.org/10.6028/NIST.SP.800-92.
+- **Fail safely and test negative paths.** The NIST AI RMF emphasizes evaluating safety, reliability, robustness, and whether a system can fail safely. The tests here therefore focus not only on accepted inputs but on rejection paths and preservation of supplied records after rejection. Unit tests cover only enumerated cases; they are not a formal verification, security audit, or proof that every bypass is impossible.
+
+These sources inform design choices by analogy; they do not validate the prototype, establish legal compliance, or justify claims about an AI system's consciousness or moral status. The prototype remains synthetic-only, in-memory, non-enforcing, and not production-ready.
+
 ## Invariants exercised
 
 1. A referral starts without a finding or automated restriction.
