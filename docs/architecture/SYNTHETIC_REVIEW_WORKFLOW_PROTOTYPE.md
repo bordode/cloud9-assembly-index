@@ -67,7 +67,7 @@ These sources inform design choices by analogy; they do not validate the prototy
 8. An existing outcome cannot be silently overwritten.
 9. A pending challenge cannot be closed via the generic transition helper, and the original outcome is preserved.
 10. Generic closure requires an explicit disposition, is blocked while a participation barrier is recorded, and does not imply response, receipt, or waiver.
-11. This prototype rejects barriers submitted directly to a closed case because no post-closure review route is implemented; the design specification requires a future review-request path that preserves closure history.
+11. This prototype rejects barriers submitted directly to a closed case because a barrier report is not itself a post-closure review request. A separate synthetic post-closure review-request and decision-record path is now implemented and preserves closure history; an authorized reopening transition and independent review service remain unimplemented.
 12. Input records are copied rather than mutated by transition helpers.
 13. The prototype has no external-action interface.
 14. A separate reopening-decision record rejects a missing or malformed original-history snapshot, and the regression tests verify that rejection leaves the supplied request unchanged.
