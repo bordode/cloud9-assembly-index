@@ -1,0 +1,40 @@
+{
+  "status": "complete",
+  "state": {
+    "hypothesis": "YOUR_HYPOTHESIS",
+    "domain": "cosmology",
+    "context": "arXiv:..., TNG data, etc.",
+    "round_num": 1,
+    "history": [
+      {
+        "role": "system",
+        "content": "HYPOTHESIS: YOUR_HYPOTHESIS\nDOMAIN: cosmology\nCONTEXT: arXiv:..., TNG data, etc."
+      },
+      {
+        "agent": "ADVOCATE",
+        "round": 1,
+        "content": "[ERROR] Fallback also failed: ClientConnectorError: Cannot connect to host localhost:11434 ssl:default [Connect call failed ('127.0.0.1', 11434)]",
+        "backend": "http://localhost:11434/v1/chat/completions"
+      },
+      {
+        "agent": "SKEPTIC",
+        "round": 1,
+        "content": "[ERROR] Fallback also failed: ClientConnectorError: Cannot connect to host localhost:11434 ssl:default [Connect call failed ('127.0.0.1', 11434)]",
+        "backend": "http://localhost:11434/v1/chat/completions"
+      },
+      {
+        "agent": "EVIDENCE",
+        "round": 1,
+        "content": "[ERROR] Fallback also failed: ClientConnectorError: Cannot connect to host localhost:11434 ssl:default [Connect call failed ('127.0.0.1', 11434)]",
+        "backend": "http://localhost:11434/v1/chat/completions"
+      },
+      {
+        "agent": "SYNTHESIZER",
+        "round": "final",
+        "content": "[ERROR] Fallback also failed: ClientConnectorError: Cannot connect to host localhost:11434 ssl:default [Connect call failed ('127.0.0.1', 11434)]",
+        "backend": "http://localhost:11434/v1/chat/completions"
+      }
+    ]
+  },
+  "verdict": "[ERROR] Fallback also failed: ClientConnectorError: Cannot connect to host localhost:11434 ssl:default [Connect call failed ('127.0.0.1', 11434)]"
+}
