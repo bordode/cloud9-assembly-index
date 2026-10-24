@@ -893,6 +893,43 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
             )
         self.assertEqual(case, before_notice)
 
+    def test_malformed_history_lists_are_rejected_without_mutation(self):
+        cases_and_operations = []
+
+        case = self.make_case()
+        case["events"] = "not-a-list"
+        cases_and_operations.append((case, lambda c: transition_case(
+            c, to_status="pending_human_review", actor="reviewer-a",
+            reason="Reject malformed event history.",
+        ), "events list"))
+
+        case = self.make_case()
+        case["participation_barriers"] = None
+        cases_and_operations.append((case, lambda c: record_participation_barrier(
+            c, barrier="synthetic barrier", actor="reviewer-a",
+            reason="Reject malformed barrier history.",
+        ), "participation_barriers list"))
+
+        case = self.to_notice_issued(self.to_outcome(self.make_case()))
+        case["notice_result_history"] = {}
+        cases_and_operations.append((case, lambda c: record_notice_result(
+            c, result="failed", actor="reviewer-a",
+            reason="Reject malformed notice history.",
+        ), "notice_result_history list"))
+
+        case = self.to_outcome(self.make_case())
+        case["events"] = None
+        cases_and_operations.append((case, lambda c: record_challenge(
+            c, actor="synthetic-subject", reason="Reject malformed event history.",
+        ), "events list"))
+
+        for case, operation, message in cases_and_operations:
+            with self.subTest(message=message):
+                before = deepcopy(case)
+                with self.assertRaisesRegex(ValueError, message):
+                    operation(case)
+                self.assertEqual(case, before)
+
     def test_notice_result_validation(self):
         with self.assertRaises(ValueError):
             record_notice_result(
