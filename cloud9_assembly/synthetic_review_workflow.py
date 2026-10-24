@@ -334,6 +334,12 @@ def create_reopening_decision_record(
         raise ValueError("reopening decision requires a recorded post-closure decision record")
     if decision_record.get("decision") != request.get("decision"):
         raise ValueError("post-closure decision record must match the request decision")
+    if decision_record.get("does_not_reopen_original_case") is not True:
+        raise ValueError("post-closure decision record must explicitly preserve the original case state")
+    if decision_record.get("authority_verified") is not False:
+        raise ValueError("prototype decision record must not claim verified authority")
+    if decision_record.get("reviewer_independence_verified") is not False:
+        raise ValueError("prototype decision record must not claim verified reviewer independence")
     closure_snapshot = request.get("original_closure_snapshot")
     if not isinstance(closure_snapshot, dict):
         raise ValueError("reopening decision requires an original closure snapshot")
