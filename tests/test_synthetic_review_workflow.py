@@ -267,6 +267,33 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
         self.assertIs(decided["automated_restriction"], False)
         self.assertEqual(decided["external_actions"], [])
 
+    def test_post_closure_decision_rejects_inconsistent_request_record_without_mutation(self):
+        request = self.make_post_closure_request()
+        request["decision"] = "accepted_for_reopening_review"
+        before = deepcopy(request)
+        with self.assertRaisesRegex(ValueError, "must not already contain a decision record"):
+            record_post_closure_review_decision(
+                request, decision="inconclusive", actor="reviewer-a",
+                reason="Reject inconsistent synthetic request.",
+                evidence_limitations="Synthetic fixture only.",
+                next_steps="No external action.",
+                reviewer_conflict_check="Not assessed; synthetic fixture only.",
+            )
+        self.assertEqual(request, before)
+
+        request = self.make_post_closure_request()
+        request["events"] = None
+        before = deepcopy(request)
+        with self.assertRaisesRegex(ValueError, "must contain an event list"):
+            record_post_closure_review_decision(
+                request, decision="inconclusive", actor="reviewer-a",
+                reason="Reject malformed event history.",
+                evidence_limitations="Synthetic fixture only.",
+                next_steps="No external action.",
+                reviewer_conflict_check="Not assessed; synthetic fixture only.",
+            )
+        self.assertEqual(request, before)
+
     def test_post_closure_decision_rejects_blank_conflict_check_metadata(self):
         request = self.make_post_closure_request()
         with self.assertRaisesRegex(ValueError, "reviewer_conflict_check"):
