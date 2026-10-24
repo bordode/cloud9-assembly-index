@@ -394,6 +394,11 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
             ("authority_verified", True),
             ("reviewer_independence_verified", True),
             ("reviewer_conflict_check_status", "verified"),
+            ("actor_label", " "),
+            ("reason", ""),
+            ("evidence_limitations", None),
+            ("next_steps", []),
+            ("reviewer_conflict_check", ""),
         )
         for field, value in mutations:
             with self.subTest(field=field, value=value):
