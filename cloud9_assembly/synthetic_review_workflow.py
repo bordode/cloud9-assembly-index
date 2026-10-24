@@ -50,6 +50,11 @@ def _require_synthetic_case(case):
         raise ValueError("a synthetic case record is required")
 
 
+def _require_list_field(record, field, record_name):
+    if not isinstance(record.get(field), list):
+        raise ValueError(f"{record_name} must contain a {field} list")
+
+
 def _event(actor, action, reason, prior_status, new_status):
     return {
         "event_id": str(uuid4()),
@@ -94,6 +99,8 @@ def transition_case(
 ):
     """Return a transitioned synthetic copy; require an explicit record for generic closure."""
     _require_synthetic_case(case)
+    _require_list_field(case, "events", "synthetic case")
+    _require_list_field(case, "participation_barriers", "synthetic case")
     updated = deepcopy(case)
     current = updated.get("status")
     if (
@@ -159,6 +166,8 @@ def transition_case(
 def record_participation_barrier(case, *, barrier, actor, reason):
     """Record a process barrier without treating it as evidence or agreement."""
     _require_synthetic_case(case)
+    _require_list_field(case, "events", "synthetic case")
+    _require_list_field(case, "participation_barriers", "synthetic case")
     if case.get("status") == "closed":
         raise ValueError(
             "cannot add a participation barrier to a closed case; "
@@ -359,6 +368,8 @@ def create_reopening_decision_record(
 def record_notice_result(case, *, result, actor, reason, confirmation_reference=None):
     """Record notice metadata; caller-reported confirmation remains unverified."""
     _require_synthetic_case(case)
+    _require_list_field(case, "events", "synthetic case")
+    _require_list_field(case, "notice_result_history", "synthetic case")
     if not isinstance(result, str) or result not in NOTICE_RESULTS:
         raise ValueError(f"result must be one of {sorted(NOTICE_RESULTS)}")
 
@@ -404,6 +415,7 @@ def record_notice_result(case, *, result, actor, reason, confirmation_reference=
 def record_challenge(case, *, actor, reason):
     """Open a challenge while preserving the original outcome verbatim."""
     _require_synthetic_case(case)
+    _require_list_field(case, "events", "synthetic case")
     if case.get("status") not in {"outcome_recorded", "notice_issued"}:
         raise ValueError("a challenge requires a recorded outcome")
     if not isinstance(case.get("outcome"), dict):
