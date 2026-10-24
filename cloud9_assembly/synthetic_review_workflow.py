@@ -332,6 +332,8 @@ def create_reopening_decision_record(
     decision_record = request.get("decision_record")
     if not isinstance(decision_record, dict):
         raise ValueError("reopening decision requires a recorded post-closure decision record")
+    if decision_record.get("synthetic_only") is not True:
+        raise ValueError("post-closure decision record must be explicitly synthetic")
     if decision_record.get("decision") != request.get("decision"):
         raise ValueError("post-closure decision record must match the request decision")
     if decision_record.get("does_not_reopen_original_case") is not True:
