@@ -387,6 +387,30 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
         self.assertIs(record["automated_restriction"], False)
         self.assertEqual(record["external_actions"], [])
 
+    def test_reopening_decision_rejects_inconsistent_procedural_decision_record(self):
+        mutations = (
+            ("decision", "reopening_not_warranted"),
+            ("does_not_reopen_original_case", False),
+            ("authority_verified", True),
+            ("reviewer_independence_verified", True),
+        )
+        for field, value in mutations:
+            with self.subTest(field=field, value=value):
+                request = self.accepted_reopening_request()
+                request["decision_record"][field] = value
+                before = deepcopy(request)
+                with self.assertRaises(ValueError):
+                    create_reopening_decision_record(
+                        request, decision="reopening_authorized", actor="reviewer-a",
+                        reviewer_conflict_check="Not assessed; synthetic fixture only.",
+                        reason="Reject inconsistent procedural record.",
+                        scope="Narrow procedural review only.",
+                        evidence_limitations="Synthetic fixture only.",
+                        next_steps="No external action.",
+                        authority_basis="Synthetic policy fixture; not verified.",
+                    )
+                self.assertEqual(request, before)
+
     def test_reopening_decision_snapshots_are_independent_of_later_request_mutation(self):
         case = self.to_outcome(self.make_case())
         closed = transition_case(
