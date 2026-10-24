@@ -797,6 +797,47 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
         self.assertEqual(case["events"], original_events)
         self.assertEqual(updated["status"], "pending_human_review")
 
+    def test_unhashable_enum_inputs_are_rejected_without_mutating_case(self):
+        case = self.make_case()
+        malformed_status = deepcopy(case)
+        malformed_status["status"] = []
+        before_status = deepcopy(malformed_status)
+        with self.assertRaisesRegex(ValueError, "invalid transition"):
+            transition_case(
+                malformed_status, to_status="pending_human_review",
+                actor="reviewer-a", reason="Reject malformed status.",
+            )
+        self.assertEqual(malformed_status, before_status)
+
+        case = self.to_review(self.make_case())
+        before_closure = deepcopy(case)
+        with self.assertRaisesRegex(ValueError, "closure_disposition"):
+            transition_case(
+                case, to_status="closed", closure_disposition=[],
+                actor="reviewer-a", reason="Reject malformed disposition.",
+            )
+        self.assertEqual(case, before_closure)
+
+        case = self.to_review(self.make_case())
+        case["status"] = "under_review"
+        before_outcome = deepcopy(case)
+        with self.assertRaisesRegex(ValueError, "valid outcome category"):
+            transition_case(
+                case, to_status="outcome_recorded", outcome=[],
+                actor="reviewer-a", reason="Reject malformed outcome.",
+            )
+        self.assertEqual(case, before_outcome)
+
+        case = self.to_outcome(self.make_case())
+        case = self.to_notice_issued(case)
+        before_notice = deepcopy(case)
+        with self.assertRaisesRegex(ValueError, "result must be one of"):
+            record_notice_result(
+                case, result=[], actor="reviewer-a",
+                reason="Reject malformed notice result.",
+            )
+        self.assertEqual(case, before_notice)
+
     def test_notice_result_validation(self):
         with self.assertRaises(ValueError):
             record_notice_result(
