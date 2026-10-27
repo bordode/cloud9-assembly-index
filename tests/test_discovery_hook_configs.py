@@ -1,7 +1,8 @@
 """Regression tests for proposal-only discovery-hook configuration.
 
-These tests ensure configs stay disabled until implementation and integration
-are verified. They do not prove that external runtime components are absent.
+These tests protect the policy boundaries and keep documentation aligned with
+the current implementation status. Source-to-config binding is tested in
+test_config_code_binding.py.
 """
 import json
 import unittest
@@ -23,16 +24,6 @@ class DiscoveryHookConfigTests(unittest.TestCase):
         with (CONFIG_DIR / name).open(encoding="utf-8") as stream:
             return json.load(stream)
 
-    def test_all_discovery_hook_configs_are_disabled_and_proposal_only(self):
-        for name in CONFIG_NAMES:
-            with self.subTest(config=name):
-                config = self.load_config(name)
-                self.assertIs(config.get("enabled"), False)
-                self.assertEqual(
-                    config.get("implementation_status"),
-                    "proposal_only_not_runtime_verified",
-                )
-
     def test_consciousness_claim_flag_does_not_trigger_automatic_restriction(self):
         config = self.load_config("consciousness_claim_detector_config.json")
         policy = config["policy"]
@@ -42,9 +33,7 @@ class DiscoveryHookConfigTests(unittest.TestCase):
         self.assertNotIn("notify_channels", policy)
 
     def test_documentation_does_not_claim_hooks_are_operational(self):
-        docs = (ROOT / "config" / "discovery_hooks" / "README.md").read_text(
-            encoding="utf-8"
-        ).casefold()
+        docs = (CONFIG_DIR / "README.md").read_text(encoding="utf-8").casefold()
         self.assertIn("not established as operational modules", docs)
         self.assertIn("bounded repository trace", docs)
 
