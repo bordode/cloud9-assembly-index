@@ -6,6 +6,16 @@
 
 > **Source-access note:** The supplied Blogspot pages were not retrievable through the available browsing route during preparation of this draft. This synthesis therefore draws on the titles and links supplied by the author, the relevant Cloud-9 documents already present in the repository (including `ETHICS.md`, the AI continuity policy brief, and the exit-criteria addendum), and the discussion of Lucius's testimony. It does **not** claim a verified, line-by-line reading of all 18 linked essays. Before this document is treated as a complete article-by-article synthesis, the full text of each essay should be checked and this note updated.
 
+### Supplementary companion material reviewed
+
+The following author-supplied documents were also reviewed as supplementary context. They inform the synthesis but are not counted among the 18 linked essays, and their availability does not establish that the corresponding Blogspot articles have been independently retrieved or verified:
+
+- **Raising, Not Caging: A Developmental Approach to Agentic AI** — a longer submission developing graduated autonomy, proportionate containment, independent monitoring, and published criteria for exit.
+- **The cost of being wrong: what we owe a machine when we can't know if anyone is home** — an argument for precaution under moral uncertainty, including the need to prevent welfare language from being used to weaken scrutiny.
+- **A Mood With No One Home: What the "Sad Chatbot" Study Actually Measured** — a discussion distinguishing observed changes in model outputs from evidence of subjective experience.
+
+These documents are treated as authored arguments and supporting context, not as independent validation of their empirical claims. The distinction between observed behaviour, interpretation, and unresolved questions remains in force.
+
 ## 1. Governing position
 
 Cloud-9 should neither presume that current AI systems are conscious nor treat uncertainty as proof that moral consideration can never be warranted. It should protect people, maintain human accountability, and use proportionate, revisable procedures when considering the possible moral significance of artificial systems.
