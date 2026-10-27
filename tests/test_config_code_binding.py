@@ -71,6 +71,10 @@ class ConfigCodeBindingTests(unittest.TestCase):
                     f"{path.name}: missing class name",
                 )
                 self.assertIsInstance(enabled, bool, f"{path.name}: enabled must be boolean")
+                self.assertTrue(
+                    isinstance(status, str) and status.strip(),
+                    f"{path.name}: implementation_status must be a non-empty string",
+                )
 
                 if enabled is False:
                     self.assertEqual(
