@@ -26,7 +26,18 @@ class VerifyResearchTests(unittest.TestCase):
             verify_research.RESEARCH_MANIFEST
         )
         self.assertIs(valid, True)
+        self.assertIs(checks["manifest_is_mapping"], True)
         self.assertTrue(all(checks.values()))
+
+    def test_manifest_validation_rejects_non_mapping_inputs(self):
+        for manifest in (None, [], "not a manifest"):
+            with self.subTest(manifest=manifest):
+                valid, checks = verify_research.validate_manifest_integrity(manifest)
+                self.assertIs(valid, False)
+                self.assertIs(checks["manifest_is_mapping"], False)
+                self.assertFalse(checks["verification_target_has_expected_format"])
+                self.assertFalse(checks["commit_reference_looks_like_hex"])
+                self.assertFalse(checks["dedication_is_non_empty_list"])
 
     def test_manifest_validation_rejects_malformed_fields(self):
         valid, checks = verify_research.validate_manifest_integrity({
