@@ -48,12 +48,26 @@ def verify_gpg_signature(commit_hash: str) -> dict:
             capture_output=True,
             text=True,
             check=False,
+            timeout=15,
         )
     except FileNotFoundError:
         return {
             "status": "UNAVAILABLE",
             "commit": commit_hash,
             "message": "Git executable was not found.",
+        }
+    except subprocess.TimeoutExpired:
+        return {
+            "status": "UNAVAILABLE",
+            "commit": commit_hash,
+            "message": "Git signature verification exceeded the time limit.",
+        }
+    except OSError:
+        # Avoid copying OS exception details into a report; they may reveal paths.
+        return {
+            "status": "UNAVAILABLE",
+            "commit": commit_hash,
+            "message": "Git signature verification could not be started.",
         }
 
     if result.returncode == 0:
