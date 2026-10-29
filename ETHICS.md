@@ -93,6 +93,12 @@ This ethical framework is maintained in memory of **Niki, Nikolaos, and Apostolo
 
 The project has explored the **7.83 Hz Schumann resonance** as a philosophical or conceptual motif. It should not be represented as a scientifically required synchronization mechanism for people, AI systems, or other entities. No established Cloud-9 result demonstrates that synchronizing technology or consciousness to 7.83 Hz produces the claimed ethical or cognitive effects.
 
+## Related governance framework
+
+The companion [AI Rights Framework Synthesis (October 2026)](docs/ethics/AI_RIGHTS_FRAMEWORK_SYNTHESIS_2026-10.md) maps the project's existing commitments to precaution in both directions, developmental autonomy, evidence access, reciprocal oversight, continuity, disability inclusion, and implementation-status reporting.
+
+This synthesis is a navigation and review aid. It does not silently override this protocol, the [exit-criteria and log-integrity addendum](docs/ethics/blog-post-exit-criteria-refinement.md), the [AI continuity policy brief](docs/ethics/ai-continuity-policy-brief.md), or [`docs/EVIDENCE_STATUS.md`](docs/EVIDENCE_STATUS.md). If a future change alters a normative commitment, the change must identify the affected clause, state the rationale, preserve version history, and distinguish a proposal from an implemented and independently reviewed safeguard.
+
 ## Scientific boundary
 
 Cloud-9’s empirical and computational claims must be evaluated independently from this ethical framework:
