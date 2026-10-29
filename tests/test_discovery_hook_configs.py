@@ -29,6 +29,17 @@ class DiscoveryHookConfigTests(unittest.TestCase):
         with (CONFIG_DIR / name).open(encoding="utf-8") as stream:
             return json.load(stream)
 
+    def test_all_existing_hooks_remain_disabled_and_proposal_only(self):
+        """Activation requires explicit policy review, not just consistent fields."""
+        for name in CONFIG_NAMES:
+            with self.subTest(config=name):
+                config = self.load_config(name)
+                self.assertIs(config.get("enabled"), False)
+                self.assertEqual(
+                    config.get("implementation_status"),
+                    "proposal_only_not_runtime_verified",
+                )
+
     def test_all_discovery_hook_configs_have_consistent_states(self):
         for name in CONFIG_NAMES:
             with self.subTest(config=name):
