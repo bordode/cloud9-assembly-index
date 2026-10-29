@@ -5,6 +5,7 @@ that no local repository or GPG configuration is required.
 """
 import json
 import os
+import subprocess
 import tempfile
 import unittest
 from pathlib import Path
@@ -44,7 +45,7 @@ class VerifyResearchTests(unittest.TestCase):
         self.assertEqual(result["status"], "INVALID_INPUT")
         run.assert_not_called()
 
-    def test_full_hash_uses_git_verify_commit(self):
+    def test_full_hash_uses_git_verify_commit_with_timeout(self):
         full_hash = "a" * 40
         with patch("verify_research.subprocess.run") as run:
             run.return_value.returncode = 0
@@ -55,6 +56,7 @@ class VerifyResearchTests(unittest.TestCase):
             capture_output=True,
             text=True,
             check=False,
+            timeout=15,
         )
 
     def test_failed_signature_does_not_claim_verification(self):
@@ -62,6 +64,33 @@ class VerifyResearchTests(unittest.TestCase):
             run.return_value.returncode = 1
             result = verify_research.verify_gpg_signature("b" * 40)
         self.assertEqual(result["status"], "FAILED")
+
+    def test_missing_git_is_reported_as_unavailable(self):
+        with patch(
+            "verify_research.subprocess.run",
+            side_effect=FileNotFoundError("private/path/detail"),
+        ):
+            result = verify_research.verify_gpg_signature("c" * 40)
+        self.assertEqual(result["status"], "UNAVAILABLE")
+        self.assertNotIn("private/path/detail", result["message"])
+
+    def test_verifier_timeout_is_reported_as_unavailable(self):
+        with patch(
+            "verify_research.subprocess.run",
+            side_effect=subprocess.TimeoutExpired("git", 15),
+        ):
+            result = verify_research.verify_gpg_signature("d" * 40)
+        self.assertEqual(result["status"], "UNAVAILABLE")
+        self.assertIn("time limit", result["message"])
+
+    def test_other_os_launch_error_is_reported_without_path_details(self):
+        with patch(
+            "verify_research.subprocess.run",
+            side_effect=PermissionError("private/path/detail"),
+        ):
+            result = verify_research.verify_gpg_signature("e" * 40)
+        self.assertEqual(result["status"], "UNAVAILABLE")
+        self.assertNotIn("private/path/detail", result["message"])
 
     def test_report_does_not_include_environment_secret_values(self):
         with tempfile.TemporaryDirectory() as directory:
