@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Cloud-9 research manifest checks and optional Git commit-signature verification.
 
-This script reports structural checks separately from cryptographic signature
-verification. It does not validate the scientific claims in the manifest.
-A successful `git verify-commit` depends on the local Git/GPG trust setup and
-does not, by itself, establish that a signer is an authorized researcher.
+This script reports manifest structure separately from cryptographic signature
+verification. It does not validate scientific claims. A successful
+`git verify-commit` depends on the local Git/GPG trust setup and does not,
+by itself, establish that a signer is an authorized researcher.
 """
 import json
 import os
@@ -24,7 +24,7 @@ RESEARCH_MANIFEST = {
 
 
 def get_sensitive_config():
-    """Read optional verification settings without exposing them in reports."""
+    """Read optional settings; these values do not pin or authenticate a signer."""
     return {
         "gpg_key_id": os.getenv("CLOUD9_GPG_KEY_ID", ""),
         "signatory": os.getenv("CLOUD9_SIGNATORY", ""),
@@ -87,8 +87,8 @@ def verify_gpg_signature(commit_hash: str) -> dict:
     }
 
 
-def validate_manifest_integrity(manifest: dict) -> tuple[bool, dict]:
-    """Check manifest shape only; this does not establish scientific validity."""
+def validate_manifest_structure(manifest: dict) -> tuple[bool, dict]:
+    """Check field shape and format only; this does not establish scientific validity."""
     checks = {"manifest_is_mapping": isinstance(manifest, dict)}
     if not checks["manifest_is_mapping"]:
         checks.update({
@@ -99,7 +99,11 @@ def validate_manifest_integrity(manifest: dict) -> tuple[bool, dict]:
         return False, checks
 
     target = manifest.get("verification_target", "")
-    match = re.fullmatch(r"\s*(\d+(?:\.\d+)?)\s+AU\s*", target) if isinstance(target, str) else None
+    match = (
+        re.fullmatch(r"\s*(\d+(?:\.\d+)?)\s+AU\s*", target)
+        if isinstance(target, str)
+        else None
+    )
     commit_ref = manifest.get("commit_hash", "")
     dedication = manifest.get("dedication", [])
 
@@ -118,11 +122,36 @@ def validate_manifest_integrity(manifest: dict) -> tuple[bool, dict]:
     return all(checks.values()), checks
 
 
-def generate_integrity_report(output_path="verification_report.json"):
-    """Write a structural-check report without embedding environment secrets."""
-    manifest_ok, checks = validate_manifest_integrity(RESEARCH_MANIFEST)
+def _default_report_path() -> Path:
+    """Choose a fresh default report path; callers may still supply an explicit path."""
+    timestamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S_%fZ")
+    base = Path(f"verification_report_{timestamp}.json")
+    candidate = base
+    suffix = 1
+    while candidate.exists():
+        candidate = base.with_name(f"{base.stem}_{suffix}{base.suffix}")
+        suffix += 1
+    return candidate
+
+
+def generate_integrity_report(output_path=None):
+    """Write a structural report; default runs preserve earlier reports."""
+    manifest_ok, checks = validate_manifest_structure(RESEARCH_MANIFEST)
     sensitive = get_sensitive_config()
-    signature = verify_gpg_signature(RESEARCH_MANIFEST["commit_hash"])
+    commit_hash = RESEARCH_MANIFEST.get("commit_hash", "")
+    if isinstance(commit_hash, str) and re.fullmatch(
+        r"(?:[0-9a-fA-F]{40}|[0-9a-fA-F]{64})", commit_hash
+    ):
+        signature = verify_gpg_signature(commit_hash)
+    else:
+        signature = {
+            "status": "NOT_ATTEMPTED",
+            "commit": commit_hash if isinstance(commit_hash, str) else None,
+            "message": (
+                "Signature verification was not attempted because the manifest "
+                "does not supply a full 40- or 64-character hexadecimal commit hash."
+            ),
+        }
 
     report = {
         "verification_time": datetime.now(timezone.utc).isoformat(),
@@ -131,17 +160,36 @@ def generate_integrity_report(output_path="verification_report.json"):
         "component_checks": checks,
         "signature_verification": signature,
         "scope_note": (
-            "Structural checks and Git signature verification do not validate "
-            "the scientific claims or independently establish signer identity."
+            "Structural checks do not validate scientific claims. Git signature "
+            "verification depends on local trust configuration and does not "
+            "independently establish signer identity."
         ),
         "verification_configuration": {
-            "gpg_key_id_configured": bool(sensitive["gpg_key_id"]),
-            "signatory_configured": bool(sensitive["signatory"]),
+            "gpg_key_id_configured_informational_only": bool(sensitive["gpg_key_id"]),
+            "signatory_configured_informational_only": bool(sensitive["signatory"]),
+            "identity_pinned_or_authenticated": False,
         },
     }
 
-    path = Path(output_path)
-    path.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+    if output_path is None:
+        path = _default_report_path()
+        # Exclusive creation prevents accidental overwrite, including a timestamp collision.
+        suffix = 1
+        while True:
+            try:
+                with path.open("x", encoding="utf-8") as stream:
+                    stream.write(json.dumps(report, indent=2) + "\n")
+                break
+            except FileExistsError:
+                timestamped = path
+                path = timestamped.with_name(
+                    f"{timestamped.stem}_{suffix}{timestamped.suffix}"
+                )
+                suffix += 1
+    else:
+        path = Path(output_path)
+        path.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+
     print("Cloud-9 Research Manifest Check")
     print(f"Manifest status: {report['manifest_status']}")
     print(f"Commit signature: {signature['status']}")
