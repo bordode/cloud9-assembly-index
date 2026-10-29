@@ -89,12 +89,21 @@ def verify_gpg_signature(commit_hash: str) -> dict:
 
 def validate_manifest_integrity(manifest: dict) -> tuple[bool, dict]:
     """Check manifest shape only; this does not establish scientific validity."""
+    checks = {"manifest_is_mapping": isinstance(manifest, dict)}
+    if not checks["manifest_is_mapping"]:
+        checks.update({
+            "verification_target_has_expected_format": False,
+            "commit_reference_looks_like_hex": False,
+            "dedication_is_non_empty_list": False,
+        })
+        return False, checks
+
     target = manifest.get("verification_target", "")
     match = re.fullmatch(r"\s*(\d+(?:\.\d+)?)\s+AU\s*", target) if isinstance(target, str) else None
     commit_ref = manifest.get("commit_hash", "")
     dedication = manifest.get("dedication", [])
 
-    checks = {
+    checks.update({
         "verification_target_has_expected_format": bool(match),
         "commit_reference_looks_like_hex": bool(
             isinstance(commit_ref, str)
@@ -105,7 +114,7 @@ def validate_manifest_integrity(manifest: dict) -> tuple[bool, dict]:
             and dedication
             and all(isinstance(item, str) and item.strip() for item in dedication)
         ),
-    }
+    })
     return all(checks.values()), checks
 
 
