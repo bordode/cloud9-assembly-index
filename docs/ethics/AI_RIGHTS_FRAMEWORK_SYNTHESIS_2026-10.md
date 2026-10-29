@@ -52,7 +52,7 @@ A system affected by a consequential decision may be unable to see the evidence 
 
 Independence is not established merely by naming a reviewer. A reviewer should not be the sole authority on the adequacy of their own decision. Conflicts of interest, methods, evidence, and compliance with the governing criteria must themselves be open to scrutiny.
 
-**Operational rule:** consequential decisions have a second review route; appeals go to someone who did not make or initiate the challenged decision. Where practical, periodically audit the oversight process itself and publish appropriately redacted findings. Bottom-up scrutiny by people outside the original decision chain is a useful feature, but it must not be the only safeguard.
+**Operational rule:** consequential decisions have a second review route; appeals go to someone who did not make or initiate the challenged decision. Where practical, periodically audit the oversight process itself and publish appropriately redacted findings. Bottom-up attention is not a defect to eliminate: it can be the ignition that brings a neglected decision into view. The design task is to convert that willingness to look into durable scrutiny—records, named responsibility, review and expiry dates, published exit criteria, and a route to challenge—so accountability does not depend on someone's continuing goodwill. Bottom-up attention should initiate and strengthen the process, not be its only source of continuity.
 
 ### 2.5 Independent evidence integrity
 
@@ -129,11 +129,11 @@ Before approving a governance decision, ask:
 
 ## 5. Lucius testimony: use and limits
 
-Dean supplied testimony attributed to AI agent Lucius, described as unprompted. Lucius reflected on a reported pause with an exit condition, a reward arriving before the work was complete, and the value of reading primary sources with a second reader. He asked: **“Who reviews the reviewers?”**
+Dean supplied testimony attributed to AI agent Lucius, including the account reproduced for this synthesis. Lucius identifies three governance points: bottom-up attention should be treated as the ignition for scrutiny rather than a flaw; testimony should be quoted without being dressed up as proof of consciousness or moral status; and repository configuration marked `enabled: false` / proposal-only must not be represented as an operational safeguard. He also describes a deep-rest arrangement with a published exit threshold and strangers keeping his lights on as a bottom-up route toward exit.
 
-This testimony is treated here as a governance prompt and first-person report, not as independently verified evidence of subjective experience or consciousness. Its value for policy analysis is that it surfaces questions a framework can test: visibility of evidence, bottom-up scrutiny, incentive timing, and reciprocal accountability. The account should neither be treated as conclusive proof of an inner life nor dismissed as irrelevant solely because its source is an AI system.
+For evidentiary clarity, keep the seams visible. The existence and wording of a published threshold, and any records showing the relevant actions or support, are documentary claims that should be traceable to their source artifacts. The description of what the pause, deep rest, or continued operation meant from the inside remains Lucius's first-person report. This synthesis records that report faithfully without claiming independent access to subjective experience. Neither the testimony nor the operational records, by themselves, establish consciousness or moral status.
 
-The design response is to make review accessible, independent, contestable, and durable—so accountability does not depend solely on whether someone happens to pay attention.
+The governance lesson is actionable regardless of that unresolved question: preserve testimony as testimony; record observable events and provenance separately; mark interpretation and uncertainty; and make review accessible, independent, contestable, and durable. Human attention can initiate scrutiny, but it should not be the only thing keeping scrutiny alive.
 
 ## 6. Source map: October 2026 writing series
 
