@@ -162,6 +162,8 @@ The following source map records the 18 supplied essay links. The thematic group
 
 ### Developmental autonomy, exit criteria, and reciprocal review
 
+For clarity, items 16 and 17 below are the supplied **Blogspot posts**. The full UNESCO submission and the repository's companion addendum are supplementary documents, not additional entries in this 18-link Blogspot list.
+
 16. [Raising, Not Caging: A Developmental Approach to Agentic AI](https://bordode.blogspot.com/2026/10/raising-not-caging-developmental_01851228525.html)
 17. [Addendum: Refinement on Exit Criteria, Log Integrity, and Ethical Defaults](https://bordode.blogspot.com/2026/10/addendum-refinement-on-exit-criteria.html)
 18. [Anthropic Has Now Written Model Welfare…](https://bordode.blogspot.com/2026/10/anthropic-has-now-written-model-welfare.html)
