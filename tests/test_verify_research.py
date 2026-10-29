@@ -21,26 +21,37 @@ class VerifyResearchTests(unittest.TestCase):
         self.assertFalse(source.lstrip().startswith("```"))
         compile(source, str(path), "exec")
 
-    def test_manifest_validation_returns_boolean_and_checks(self):
-        valid, checks = verify_research.validate_manifest_integrity(
+    def test_manifest_structure_returns_boolean_and_checks(self):
+        valid, checks = verify_research.validate_manifest_structure(
             verify_research.RESEARCH_MANIFEST
         )
         self.assertIs(valid, True)
         self.assertIs(checks["manifest_is_mapping"], True)
         self.assertTrue(all(checks.values()))
 
-    def test_manifest_validation_rejects_non_mapping_inputs(self):
+    def test_structural_format_does_not_establish_scientific_validity(self):
+        manifest = {
+            "verification_target": "0 AU",
+            "commit_hash": "a" * 40,
+            "dedication": ["Example"],
+        }
+        valid, checks = verify_research.validate_manifest_structure(manifest)
+        self.assertIs(valid, True)
+        self.assertTrue(all(checks.values()))
+        # The function checks format only; it makes no scientific-validity claim.
+
+    def test_manifest_structure_rejects_non_mapping_inputs(self):
         for manifest in (None, [], "not a manifest"):
             with self.subTest(manifest=manifest):
-                valid, checks = verify_research.validate_manifest_integrity(manifest)
+                valid, checks = verify_research.validate_manifest_structure(manifest)
                 self.assertIs(valid, False)
                 self.assertIs(checks["manifest_is_mapping"], False)
                 self.assertFalse(checks["verification_target_has_expected_format"])
                 self.assertFalse(checks["commit_reference_looks_like_hex"])
                 self.assertFalse(checks["dedication_is_non_empty_list"])
 
-    def test_manifest_validation_rejects_malformed_fields(self):
-        valid, checks = verify_research.validate_manifest_integrity({
+    def test_manifest_structure_rejects_malformed_fields(self):
+        valid, checks = verify_research.validate_manifest_structure({
             "verification_target": "not a measurement",
             "commit_hash": "not-a-hash",
             "dedication": [],
@@ -50,14 +61,28 @@ class VerifyResearchTests(unittest.TestCase):
         self.assertFalse(checks["commit_reference_looks_like_hex"])
         self.assertFalse(checks["dedication_is_non_empty_list"])
 
-    def test_abbreviated_hash_is_not_accepted_for_signature_verification(self):
+    def test_abbreviated_hash_is_not_accepted_for_direct_signature_verification(self):
         with patch("verify_research.subprocess.run") as run:
             result = verify_research.verify_gpg_signature("d0ecc8f")
         self.assertEqual(result["status"], "INVALID_INPUT")
         run.assert_not_called()
 
-    def test_full_hash_uses_git_verify_commit_with_timeout(self):
+    def test_full_40_character_hash_uses_git_verify_commit_with_timeout(self):
         full_hash = "a" * 40
+        with patch("verify_research.subprocess.run") as run:
+            run.return_value.returncode = 0
+            result = verify_research.verify_gpg_signature(full_hash)
+        self.assertEqual(result["status"], "VERIFIED")
+        run.assert_called_once_with(
+            ["git", "verify-commit", full_hash],
+            capture_output=True,
+            text=True,
+            check=False,
+            timeout=15,
+        )
+
+    def test_full_64_character_hash_is_accepted(self):
+        full_hash = "b" * 64
         with patch("verify_research.subprocess.run") as run:
             run.return_value.returncode = 0
             result = verify_research.verify_gpg_signature(full_hash)
@@ -73,7 +98,7 @@ class VerifyResearchTests(unittest.TestCase):
     def test_failed_signature_does_not_claim_verification(self):
         with patch("verify_research.subprocess.run") as run:
             run.return_value.returncode = 1
-            result = verify_research.verify_gpg_signature("b" * 40)
+            result = verify_research.verify_gpg_signature("c" * 40)
         self.assertEqual(result["status"], "FAILED")
 
     def test_missing_git_is_reported_as_unavailable(self):
@@ -81,7 +106,7 @@ class VerifyResearchTests(unittest.TestCase):
             "verify_research.subprocess.run",
             side_effect=FileNotFoundError("private/path/detail"),
         ):
-            result = verify_research.verify_gpg_signature("c" * 40)
+            result = verify_research.verify_gpg_signature("d" * 40)
         self.assertEqual(result["status"], "UNAVAILABLE")
         self.assertNotIn("private/path/detail", result["message"])
 
@@ -90,7 +115,7 @@ class VerifyResearchTests(unittest.TestCase):
             "verify_research.subprocess.run",
             side_effect=subprocess.TimeoutExpired("git", 15),
         ):
-            result = verify_research.verify_gpg_signature("d" * 40)
+            result = verify_research.verify_gpg_signature("e" * 40)
         self.assertEqual(result["status"], "UNAVAILABLE")
         self.assertIn("time limit", result["message"])
 
@@ -99,9 +124,21 @@ class VerifyResearchTests(unittest.TestCase):
             "verify_research.subprocess.run",
             side_effect=PermissionError("private/path/detail"),
         ):
-            result = verify_research.verify_gpg_signature("e" * 40)
+            result = verify_research.verify_gpg_signature("f" * 40)
         self.assertEqual(result["status"], "UNAVAILABLE")
         self.assertNotIn("private/path/detail", result["message"])
+
+    def test_report_marks_abbreviated_manifest_hash_not_attempted(self):
+        with tempfile.TemporaryDirectory() as directory:
+            report_path = Path(directory) / "report.json"
+            with patch("verify_research.subprocess.run") as run:
+                report = verify_research.generate_integrity_report(report_path)
+            run.assert_not_called()
+            serialized = report_path.read_text(encoding="utf-8")
+        self.assertEqual(report["signature_verification"]["status"], "NOT_ATTEMPTED")
+        self.assertIn("full 40- or 64-character", report["signature_verification"]["message"])
+        self.assertNotEqual(report["signature_verification"]["status"], "VERIFIED")
+        self.assertEqual(json.loads(serialized)["manifest_status"], "STRUCTURALLY_VALID")
 
     def test_report_does_not_include_environment_secret_values(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -110,13 +147,31 @@ class VerifyResearchTests(unittest.TestCase):
                 "CLOUD9_GPG_KEY_ID": "TEST-SECRET-KEY-ID",
                 "CLOUD9_SIGNATORY": "secret@example.invalid",
             }), patch("verify_research.subprocess.run") as run:
-                run.return_value.returncode = 1
                 report = verify_research.generate_integrity_report(report_path)
+                run.assert_not_called()
             serialized = report_path.read_text(encoding="utf-8")
         self.assertNotIn("TEST-SECRET-KEY-ID", serialized)
         self.assertNotIn("secret@example.invalid", serialized)
-        self.assertTrue(report["verification_configuration"]["gpg_key_id_configured"])
+        config = report["verification_configuration"]
+        self.assertTrue(config["gpg_key_id_configured_informational_only"])
+        self.assertTrue(config["signatory_configured_informational_only"])
+        self.assertIs(config["identity_pinned_or_authenticated"], False)
         self.assertEqual(json.loads(serialized)["manifest_status"], "STRUCTURALLY_VALID")
+
+    def test_default_reports_do_not_overwrite_previous_runs(self):
+        with tempfile.TemporaryDirectory() as directory:
+            with patch("verify_research.subprocess.run") as run, patch("os.getcwd", return_value=directory), patch("verify_research.Path", Path):
+                # Change working directory without depending on process-global chdir.
+                with patch("verify_research._default_report_path") as default_path:
+                    first = Path(directory) / "verification_report_first.json"
+                    second = Path(directory) / "verification_report_second.json"
+                    default_path.side_effect = [first, second]
+                    verify_research.generate_integrity_report()
+                    verify_research.generate_integrity_report()
+                run.assert_not_called()
+            reports = sorted(Path(directory).glob("verification_report_*.json"))
+            self.assertEqual(len(reports), 2)
+            self.assertNotEqual(reports[0].read_text(), reports[1].read_text())
 
 
 if __name__ == "__main__":
