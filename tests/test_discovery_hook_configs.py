@@ -1,7 +1,7 @@
-"""Regression tests for proposal-only discovery-hook configuration.
+"""Regression tests for discovery-hook configuration state and policy.
 
-These tests ensure configs stay disabled until implementation and integration
-are verified. They do not prove that external runtime components are absent.
+These tests validate the declared lifecycle state. They do not prove that
+external runtime components are absent or that enabled hooks are safe.
 """
 import json
 import unittest
@@ -17,13 +17,20 @@ CONFIG_NAMES = (
     "mundane_mechanism_catalog_config.json",
 )
 
+STATUS_TO_ENABLED = {
+    "proposal_only_not_runtime_verified": False,
+    "implemented_disabled_pending_activation": False,
+    "implemented_enabled_runtime_verified": True,
+}
+
 
 class DiscoveryHookConfigTests(unittest.TestCase):
     def load_config(self, name):
         with (CONFIG_DIR / name).open(encoding="utf-8") as stream:
             return json.load(stream)
 
-    def test_all_discovery_hook_configs_are_disabled_and_proposal_only(self):
+    def test_all_existing_hooks_remain_disabled_and_proposal_only(self):
+        """Activation requires explicit policy review, not just consistent fields."""
         for name in CONFIG_NAMES:
             with self.subTest(config=name):
                 config = self.load_config(name)
@@ -31,6 +38,20 @@ class DiscoveryHookConfigTests(unittest.TestCase):
                 self.assertEqual(
                     config.get("implementation_status"),
                     "proposal_only_not_runtime_verified",
+                )
+
+    def test_all_discovery_hook_configs_have_consistent_states(self):
+        for name in CONFIG_NAMES:
+            with self.subTest(config=name):
+                config = self.load_config(name)
+                status = config.get("implementation_status")
+
+                self.assertIn(status, STATUS_TO_ENABLED)
+                self.assertIsInstance(config.get("enabled"), bool)
+                self.assertIs(
+                    config["enabled"],
+                    STATUS_TO_ENABLED[status],
+                    "enabled flag contradicts implementation_status",
                 )
 
     def test_consciousness_claim_flag_does_not_trigger_automatic_restriction(self):
