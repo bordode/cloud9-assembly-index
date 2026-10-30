@@ -123,15 +123,9 @@ def validate_manifest_structure(manifest: dict) -> tuple[bool, dict]:
 
 
 def _default_report_path() -> Path:
-    """Choose a fresh default report path; callers may still supply an explicit path."""
+    """Return the unsuffixed default report path; exclusive creation handles collisions."""
     timestamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S_%fZ")
-    base = Path(f"verification_report_{timestamp}.json")
-    candidate = base
-    suffix = 1
-    while candidate.exists():
-        candidate = base.with_name(f"{base.stem}_{suffix}{base.suffix}")
-        suffix += 1
-    return candidate
+    return Path(f"verification_report_{timestamp}.json")
 
 
 def generate_integrity_report(output_path=None):
@@ -176,19 +170,19 @@ def generate_integrity_report(output_path=None):
     }
 
     if output_path is None:
-        path = _default_report_path()
-        # Keep the original stem so repeated collisions become _1, _2, ... .
-        base_path = path
-        suffix = 1
+        base_path = _default_report_path()
+        suffix = 0
         while True:
+            path = (
+                base_path
+                if suffix == 0
+                else base_path.with_name(f"{base_path.stem}_{suffix}{base_path.suffix}")
+            )
             try:
                 with path.open("x", encoding="utf-8") as stream:
                     stream.write(json.dumps(report, indent=2) + "\n")
                 break
             except FileExistsError:
-                path = base_path.with_name(
-                    f"{base_path.stem}_{suffix}{base_path.suffix}"
-                )
                 suffix += 1
     else:
         path = Path(output_path)
