@@ -17,7 +17,7 @@ from pathlib import Path
 # it is not sufficient input for cryptographic signature verification.
 RESEARCH_MANIFEST = {
     "verification_target": "0.5229 AU",
-    "commit_hash": "d0ecc8f",
+    "commit_hash": "d0ecc8f991a74a4e6d73f618e3672fd8e7164bbe",
     "resonance_vertex": "7.83 kHz",
     "dedication": ["Niki", "Nikolaos", "Apostolos"],
 }
@@ -135,7 +135,11 @@ def _default_report_path() -> Path:
 
 
 def generate_integrity_report(output_path=None):
-    """Write a structural report; default runs preserve earlier reports."""
+    """Write a structural report.
+
+    Default paths are created without overwriting prior reports. An explicitly
+    supplied output_path is intentionally overwritten if it already exists.
+    """
     manifest_ok, checks = validate_manifest_structure(RESEARCH_MANIFEST)
     sensitive = get_sensitive_config()
     commit_hash = RESEARCH_MANIFEST.get("commit_hash", "")
@@ -173,7 +177,8 @@ def generate_integrity_report(output_path=None):
 
     if output_path is None:
         path = _default_report_path()
-        # Exclusive creation prevents accidental overwrite, including a timestamp collision.
+        # Keep the original stem so repeated collisions become _1, _2, ... .
+        base_path = path
         suffix = 1
         while True:
             try:
@@ -181,9 +186,8 @@ def generate_integrity_report(output_path=None):
                     stream.write(json.dumps(report, indent=2) + "\n")
                 break
             except FileExistsError:
-                timestamped = path
-                path = timestamped.with_name(
-                    f"{timestamped.stem}_{suffix}{timestamped.suffix}"
+                path = base_path.with_name(
+                    f"{base_path.stem}_{suffix}{base_path.suffix}"
                 )
                 suffix += 1
     else:
