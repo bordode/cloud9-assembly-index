@@ -128,16 +128,25 @@ class VerifyResearchTests(unittest.TestCase):
         self.assertEqual(result["status"], "UNAVAILABLE")
         self.assertNotIn("private/path/detail", result["message"])
 
-    def test_report_marks_abbreviated_manifest_hash_not_attempted(self):
+    def test_report_verifies_the_full_manifest_commit_hash(self):
         with tempfile.TemporaryDirectory() as directory:
             report_path = Path(directory) / "report.json"
             with patch("verify_research.subprocess.run") as run:
+                run.return_value.returncode = 0
                 report = verify_research.generate_integrity_report(report_path)
-            run.assert_not_called()
+            run.assert_called_once_with(
+                ["git", "verify-commit", "d0ecc8f991a74a4e6d73f618e3672fd8e7164bbe"],
+                capture_output=True,
+                text=True,
+                check=False,
+                timeout=15,
+            )
             serialized = report_path.read_text(encoding="utf-8")
-        self.assertEqual(report["signature_verification"]["status"], "NOT_ATTEMPTED")
-        self.assertIn("full 40- or 64-character", report["signature_verification"]["message"])
-        self.assertNotEqual(report["signature_verification"]["status"], "VERIFIED")
+        self.assertEqual(report["signature_verification"]["status"], "VERIFIED")
+        self.assertEqual(
+            report["signature_verification"]["commit"],
+            "d0ecc8f991a74a4e6d73f618e3672fd8e7164bbe",
+        )
         self.assertEqual(json.loads(serialized)["manifest_status"], "STRUCTURALLY_VALID")
 
     def test_report_does_not_include_environment_secret_values(self):
@@ -147,8 +156,9 @@ class VerifyResearchTests(unittest.TestCase):
                 "CLOUD9_GPG_KEY_ID": "TEST-SECRET-KEY-ID",
                 "CLOUD9_SIGNATORY": "secret@example.invalid",
             }), patch("verify_research.subprocess.run") as run:
+                run.return_value.returncode = 0
                 report = verify_research.generate_integrity_report(report_path)
-                run.assert_not_called()
+                run.assert_called_once()
             serialized = report_path.read_text(encoding="utf-8")
         self.assertNotIn("TEST-SECRET-KEY-ID", serialized)
         self.assertNotIn("secret@example.invalid", serialized)
@@ -157,6 +167,35 @@ class VerifyResearchTests(unittest.TestCase):
         self.assertTrue(config["signatory_configured_informational_only"])
         self.assertIs(config["identity_pinned_or_authenticated"], False)
         self.assertEqual(json.loads(serialized)["manifest_status"], "STRUCTURALLY_VALID")
+
+    def test_explicit_output_path_overwrites_existing_file(self):
+        with tempfile.TemporaryDirectory() as directory:
+            report_path = Path(directory) / "report.json"
+            report_path.write_text("previous content", encoding="utf-8")
+            with patch("verify_research.subprocess.run") as run:
+                run.return_value.returncode = 0
+                report = verify_research.generate_integrity_report(report_path)
+            self.assertEqual(report["manifest_status"], "STRUCTURALLY_VALID")
+            self.assertNotEqual(report_path.read_text(encoding="utf-8"), "previous content")
+            self.assertEqual(json.loads(report_path.read_text(encoding="utf-8"))["manifest_status"],
+                             "STRUCTURALLY_VALID")
+
+    def test_default_report_collision_fallback_uses_incrementing_suffixes(self):
+        with tempfile.TemporaryDirectory() as directory:
+            base = Path(directory) / "verification_report_collision.json"
+            first = Path(directory) / "verification_report_collision_1.json"
+            second = Path(directory) / "verification_report_collision_2.json"
+            base.write_text("reserved", encoding="utf-8")
+            first.write_text("reserved", encoding="utf-8")
+            with patch("verify_research._default_report_path", return_value=base), \
+                 patch("verify_research.subprocess.run") as run:
+                run.return_value.returncode = 0
+                verify_research.generate_integrity_report()
+            self.assertEqual(base.read_text(encoding="utf-8"), "reserved")
+            self.assertEqual(first.read_text(encoding="utf-8"), "reserved")
+            self.assertTrue(second.exists())
+            self.assertEqual(json.loads(second.read_text(encoding="utf-8"))["manifest_status"],
+                             "STRUCTURALLY_VALID")
 
     def test_default_reports_do_not_overwrite_previous_runs(self):
         with tempfile.TemporaryDirectory() as directory:
