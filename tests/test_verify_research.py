@@ -199,15 +199,15 @@ class VerifyResearchTests(unittest.TestCase):
 
     def test_default_reports_do_not_overwrite_previous_runs(self):
         with tempfile.TemporaryDirectory() as directory:
-            with patch("verify_research.subprocess.run") as run, patch("os.getcwd", return_value=directory), patch("verify_research.Path", Path):
-                # Change working directory without depending on process-global chdir.
+            with patch("verify_research.subprocess.run") as run:
+                run.return_value.returncode = 0
                 with patch("verify_research._default_report_path") as default_path:
                     first = Path(directory) / "verification_report_first.json"
                     second = Path(directory) / "verification_report_second.json"
                     default_path.side_effect = [first, second]
                     verify_research.generate_integrity_report()
                     verify_research.generate_integrity_report()
-                run.assert_not_called()
+                self.assertEqual(run.call_count, 2)
             reports = sorted(Path(directory).glob("verification_report_*.json"))
             self.assertEqual(len(reports), 2)
             self.assertNotEqual(reports[0].read_text(), reports[1].read_text())
