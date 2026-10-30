@@ -213,5 +213,15 @@ class VerifyResearchTests(unittest.TestCase):
             self.assertNotEqual(reports[0].read_text(), reports[1].read_text())
 
 
+    def test_default_report_path_returns_unsuffixed_base(self):
+        with patch("verify_research.datetime") as mocked_datetime:
+            mocked_datetime.now.return_value.strftime.return_value = "20261030T150400_123456Z"
+            with patch.object(Path, "exists", return_value=True) as exists:
+                path = verify_research._default_report_path()
+        self.assertEqual(path, Path("verification_report_20261030T150400_123456Z.json"))
+        exists.assert_not_called()
+
+
+
 if __name__ == "__main__":
     unittest.main()
