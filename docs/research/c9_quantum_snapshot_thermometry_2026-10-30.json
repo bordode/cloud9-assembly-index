@@ -1,0 +1,113 @@
+{
+  "metadata": {
+    "module": "quantum_snapshot_thermometry",
+    "chemical_potential_mu": -0.5,
+    "shots": 200,
+    "noise_level": 0.02,
+    "num_sites": 10,
+    "spatial_range": 4.0,
+    "mean_relative_error_pct": 0.5875132944622069
+  },
+  "profiles": [
+    {
+      "site_index": 0,
+      "x": -2.0,
+      "n_measured": 0.311021,
+      "n_std": 0.001457,
+      "T_true": 1.8987,
+      "T_reconstructed": 1.8782,
+      "T_uncertainty": 0.0125,
+      "energy_density_e": 0.2921
+    },
+    {
+      "site_index": 1,
+      "x": -1.5556,
+      "n_measured": 0.349655,
+      "n_std": 0.001376,
+      "T_true": 2.2327,
+      "T_reconstructed": 2.2278,
+      "T_uncertainty": 0.0131,
+      "energy_density_e": 0.3895
+    },
+    {
+      "site_index": 2,
+      "x": -1.1111,
+      "n_measured": 0.382222,
+      "n_std": 0.001405,
+      "T_true": 2.5624,
+      "T_reconstructed": 2.5505,
+      "T_uncertainty": 0.0145,
+      "energy_density_e": 0.4874
+    },
+    {
+      "site_index": 3,
+      "x": -0.6667,
+      "n_measured": 0.41031,
+      "n_std": 0.001334,
+      "T_true": 2.8299,
+      "T_reconstructed": 2.8497,
+      "T_uncertainty": 0.0147,
+      "energy_density_e": 0.5846
+    },
+    {
+      "site_index": 4,
+      "x": -0.2222,
+      "n_measured": 0.421379,
+      "n_std": 0.001563,
+      "T_true": 2.9803,
+      "T_reconstructed": 2.973,
+      "T_uncertainty": 0.0176,
+      "energy_density_e": 0.6264
+    },
+    {
+      "site_index": 5,
+      "x": 0.2222,
+      "n_measured": 0.420314,
+      "n_std": 0.00145,
+      "T_true": 2.9803,
+      "T_reconstructed": 2.961,
+      "T_uncertainty": 0.0163,
+      "energy_density_e": 0.6223
+    },
+    {
+      "site_index": 6,
+      "x": 0.6667,
+      "n_measured": 0.410639,
+      "n_std": 0.001398,
+      "T_true": 2.8299,
+      "T_reconstructed": 2.8533,
+      "T_uncertainty": 0.0154,
+      "energy_density_e": 0.5858
+    },
+    {
+      "site_index": 7,
+      "x": 1.1111,
+      "n_measured": 0.381645,
+      "n_std": 0.001407,
+      "T_true": 2.5624,
+      "T_reconstructed": 2.5445,
+      "T_uncertainty": 0.0145,
+      "energy_density_e": 0.4856
+    },
+    {
+      "site_index": 8,
+      "x": 1.5556,
+      "n_measured": 0.348008,
+      "n_std": 0.001403,
+      "T_true": 2.2327,
+      "T_reconstructed": 2.2121,
+      "T_uncertainty": 0.0133,
+      "energy_density_e": 0.3849
+    },
+    {
+      "site_index": 9,
+      "x": 2.0,
+      "n_measured": 0.313254,
+      "n_std": 0.001494,
+      "T_true": 1.8987,
+      "T_reconstructed": 1.8974,
+      "T_uncertainty": 0.0129,
+      "energy_density_e": 0.2972
+    }
+  ]
+}
