@@ -1,3 +1,21 @@
+# Cloud-9 Research Integrity Verifier — preserved draft
+
+> **Status: archival / review required.** This file is preserved as a Markdown artifact rather than an executable Python script. The original content was wrapped in Markdown code fences, and static review found that its claims exceed what the code actually verifies. Do not treat a generated report from this draft as proof of GPG authenticity or research integrity.
+
+## Review findings
+
+- The `verify_gpg_signature` function is defined but never called by the report-generation path. No GPG signature is actually checked when the script is run as written.
+- The manifest checks are only basic format/threshold checks. A seven-character commit string is not proof that a commit exists or is the intended commit.
+- The reported integrity hash is derived from the static manifest, not from the generated report or a verified signature; it does not make the report tamper-evident.
+- Environment values described as sensitive are inserted into the output report. The report may therefore disclose the configured key ID and signatory, despite the privacy note.
+- The type annotation on `validate_manifest_integrity` says it returns a boolean, but the function returns a tuple of a boolean and a checks dictionary.
+
+This change intentionally does **not** repair or execute the verifier. A future implementation should be designed and tested separately, with explicit verification targets, no sensitive values in reports by default, and clear separation between a manifest consistency check and cryptographic verification.
+
+## Original content
+
+The following is the original file content, preserved for review:
+
 ```python
 #!/usr/bin/env python3
 """
