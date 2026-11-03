@@ -22,6 +22,8 @@ A repository-tree inspection and targeted code searches found these configuratio
 4. Document logs, retention, access control, and tamper evidence; a path ending in `.jsonl` is not an immutable audit log.
 5. Only then consider enabling a hook, after review of its scientific validity and operational risks.
 
+While no implementation exists, the only coverage is the disabled-state assertion. Enabling a config requires replacing that assertion with a behavioural test (flag raised, nothing moves). Deleting the disabled-state test must be an explicit, reviewed change with a recorded reason, never a side effect.
+
 ## Special rule for consciousness-claim review
 
 The configuration is proposal-only and disabled. A flag is an allegation, not a finding; it must not itself trigger throttling or suppress expression. The config sets `throttle_autonomous_actions_when_flagged` to `false` and does not claim immutable logging. Any narrowly scoped emergency restriction would require a specific credible time-sensitive risk, recorded reasons, an expiry, independent review, notice where feasible, access to the evidence, and an appeal path.

@@ -3,6 +3,7 @@
 These tests ensure configs stay disabled until implementation and integration
 are verified. They do not prove that external runtime components are absent.
 """
+import importlib
 import json
 import unittest
 from pathlib import Path
@@ -40,6 +41,39 @@ class DiscoveryHookConfigTests(unittest.TestCase):
         self.assertIs(policy["throttle_autonomous_actions_when_flagged"], False)
         self.assertIs(policy["log_to_immutable_audit"], False)
         self.assertNotIn("notify_channels", policy)
+
+    def test_consciousness_detector_module_remains_unimplemented(self):
+        """Fail loudly if the proposal-only detector becomes importable."""
+        with self.assertRaises(
+            ModuleNotFoundError,
+            msg=(
+                "Implementation detected. Delete this test and replace it with "
+                "the behavioural test from the readiness README."
+            ),
+        ) as raised:
+            importlib.import_module(
+                "cloud9_assembly.consciousness_claim_detector"
+            )
+        self.assertEqual(
+            raised.exception.name,
+            "cloud9_assembly.consciousness_claim_detector",
+            "A dependency import error is not evidence that the detector is absent.",
+        )
+
+    def test_consciousness_claim_safeguard_paragraph_remains_verbatim(self):
+        """The no-automatic-throttling safeguard must not drift during edits."""
+        docs = (CONFIG_DIR / "README.md").read_text(encoding="utf-8")
+        safeguard = (
+            "The configuration is proposal-only and disabled. A flag is an "
+            "allegation, not a finding; it must not itself trigger throttling or "
+            "suppress expression. The config sets "
+            "`throttle_autonomous_actions_when_flagged` to `false` and does "
+            "not claim immutable logging. Any narrowly scoped emergency "
+            "restriction would require a specific credible time-sensitive risk, "
+            "recorded reasons, an expiry, independent review, notice where "
+            "feasible, access to the evidence, and an appeal path."
+        )
+        self.assertIn(safeguard, docs)
 
     def test_documentation_does_not_claim_hooks_are_operational(self):
         docs = (ROOT / "config" / "discovery_hooks" / "README.md").read_text(
