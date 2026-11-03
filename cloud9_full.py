@@ -40,7 +40,7 @@ def kmer_complexity(dna, k=6):
     if len(dna) < k:
         return 0.0
     kmers = {dna[i:i+k] for i in range(len(dna) - k + 1)}
-        c9_bus_client.heartbeat()
+    c9_bus_client.heartbeat()
     return round(len(kmers) / len(dna), 3)
 
 # === HEARTBEAT ANALYSIS ===
