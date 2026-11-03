@@ -1,6 +1,14 @@
 # Discovery Hooks — Configuration Status and Integration Limits
 
-This directory contains five JSON configuration proposals. All five are marked `enabled: false` and `implementation_status: proposal_only_not_runtime_verified`. **They are not established as operational modules.** A configuration file is not evidence that its named module exists, is imported, receives configuration, or has passed tests.
+This directory contains five JSON configuration proposals. All five are currently marked `enabled: false` and `implementation_status: proposal_only_not_runtime_verified`. **They are not established as operational modules.** A configuration file is not evidence that its named module exists, is imported, receives configuration, or has passed tests.
+
+## Lifecycle states
+
+- `proposal_only_not_runtime_verified`: disabled; the named implementation is not established as present.
+- `implemented_disabled_pending_activation`: the named module and class exist and import, but the hook remains disabled.
+- `implemented_enabled_runtime_verified`: the module and class exist, and runtime integration has been verified. Activation still requires separate review of scientific validity, safety, and operational risks.
+
+The configuration tests enforce agreement between each status and its `enabled` flag. The binding test's non-test filename-reference check is only a weak placeholder; it does not prove that a loader instantiates the class or passes configuration into it. Replace it with a test of the real loader/orchestrator entry point when that exists.
 
 ## Configurations
 
