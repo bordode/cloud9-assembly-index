@@ -31,6 +31,7 @@ def run_case(
     seed: int = 20261106,
     initialization_seed: int | None = None,
     position_bound_half_width: float | None = 0.5,
+    initialization_policy: str = "truth_jitter",
 ) -> dict:
     """Run one matched seven-source fit with one controlled perturbation."""
     if geometry_scale <= 0:
@@ -43,6 +44,8 @@ def run_case(
         raise ValueError("Gaussian read-noise standard deviation must be positive")
     if position_bound_half_width is not None and position_bound_half_width <= 0:
         raise ValueError("position_bound_half_width must be positive or None")
+    if initialization_policy not in {"truth_jitter", "detector_uniform"}:
+        raise ValueError("unsupported initialization_policy")
     truth_sigma = SIGMA_PIXELS
     assumed_sigma = truth_sigma if fit_sigma is None else float(fit_sigma)
     truth_positions = SEVEN_SOURCE_POSITIONS * geometry_scale
@@ -62,9 +65,17 @@ def run_case(
 
     init_seed = seed + 1 if initialization_seed is None else initialization_seed
     init_rng = np.random.default_rng(init_seed)
-    initial_positions = truth_positions + init_rng.normal(
-        0.0, 0.12, truth_positions.shape
-    )
+    if initialization_policy == "truth_jitter":
+        initial_positions = truth_positions + init_rng.normal(
+            0.0, 0.12, truth_positions.shape
+        )
+    else:
+        # Deliberately do not seed from known source coordinates. The seven
+        # components start independently across the detector field.
+        half_field = (IMAGE_SIZE - 1) / 2 - 1.0
+        initial_positions = init_rng.uniform(
+            -half_field, half_field, size=truth_positions.shape
+        )
     initial = np.concatenate([
         initial_positions.ravel(), np.log(truth_amplitudes), [2.0]
     ])
@@ -110,8 +121,6 @@ def run_case(
             residual, initial, bounds=(lower, upper), method="trf",
             xtol=1e-10, ftol=1e-10, gtol=1e-10, max_nfev=5000,
         )
-        if not result.success:
-            raise RuntimeError(f"{kind} fit failed: {result.message}")
         fitted_raw = result.x[:14].reshape(7, 2)
         # Match fitted positions to truth by minimum total Euclidean distance.
         # This makes label switching visible instead of treating array order
@@ -140,6 +149,7 @@ def run_case(
             "mean_signed_y_error_px": float(signed[:, 1].mean()),
             "least_squares_cost": float(result.cost),
             "optimizer_success": bool(result.success),
+            "optimizer_message": str(result.message),
             "optimizer_status": int(result.status),
             "nfev": int(result.nfev),
             "position_bound_hits": position_bound_hits,
@@ -168,6 +178,7 @@ def run_case(
         "noise_level": noise_level,
         "seed": seed,
         "initialization_seed": init_seed,
+        "initialization_policy": initialization_policy,
         "source_count": 7,
         "position_bound_half_width_px": position_bound_half_width,
         "position_bounds_policy": (
@@ -320,6 +331,82 @@ def run_initialization_trials(
         ],
     }
 
+
+
+def run_position_bound_sweep(
+    *,
+    noise_model: str = "gaussian_read",
+    noise_level: float = 1.0,
+    starts_per_bound: int = 3,
+    observation_seed: int = 20261400,
+    initialization_seed_start: int = 20261410,
+    initialization_policy: str = "truth_jitter",
+) -> dict:
+    """Execute paired fits across widening bounds and independent starts.
+
+    Failed optimizer terminations remain in the output. This is a synthetic
+    fixed-seven-component localization study, not blind source detection.
+    """
+    if starts_per_bound < 1:
+        raise ValueError("starts_per_bound must be at least one")
+    if noise_model == "gaussian_read" and noise_level <= 0:
+        raise ValueError("Gaussian read-noise standard deviation must be positive")
+    widths = (0.5, 1.0, 2.0, None)
+    records = []
+    for width_index, width in enumerate(widths):
+        for start_index in range(starts_per_bound):
+            result = run_case(
+                noise_model=noise_model,
+                noise_level=noise_level,
+                seed=observation_seed,
+                initialization_seed=initialization_seed_start + start_index,
+                position_bound_half_width=width,
+                initialization_policy=initialization_policy,
+            )
+            records.append({
+                "bound_half_width_px": width,
+                "start_index": start_index,
+                "initialization_seed": initialization_seed_start + start_index,
+                "result": result,
+            })
+    aggregate = {}
+    for width in widths:
+        selected = [r["result"] for r in records if r["bound_half_width_px"] == width]
+        aggregate[str(width)] = {}
+        for model in ("integrated", "centre"):
+            summaries = [r["summaries"][model] for r in selected]
+            values = np.asarray([x["rmse_radial_error_px"] for x in summaries])
+            aggregate[str(width)][model] = {
+                "runs": len(summaries),
+                "optimizer_successes": int(sum(x["optimizer_success"] for x in summaries)),
+                "optimizer_failures": int(sum(not x["optimizer_success"] for x in summaries)),
+                "mean_rmse_px": float(values.mean()),
+                "std_rmse_px": float(values.std(ddof=1)) if len(values) > 1 else 0.0,
+                "max_source_swaps": int(max(x["assignment_swaps"] for x in summaries)),
+                "total_position_bound_hits": int(sum(x["position_bound_hits"] for x in summaries)),
+                "max_nfev": int(max(x["nfev"] for x in summaries)),
+            }
+    return {
+        "experiment": "C9-PIXEL-RESPONSE-POSITION-BOUNDS-001",
+        "status": "synthetic_position_bound_sweep",
+        "data_kind": "synthetic",
+        "noise_model": noise_model,
+        "noise_level": noise_level,
+        "observation_seed_fixed": observation_seed,
+        "starts_per_bound": starts_per_bound,
+        "initialization_policy": initialization_policy,
+        "bound_widths_px": list(widths),
+        "paired_fit_policy": "Both models receive identical observation and initialization for every run.",
+        "source_assignment": "Hungarian minimum-total-distance assignment against seven known truth sources.",
+        "limitations": [
+            "Fixed seven-component model; no source birth/death or false-positive detection.",
+            "Hungarian assignment forces a one-to-one match and cannot alone diagnose missing or duplicated components.",
+            "truth_jitter starts remain informed by known source coordinates; detector_uniform starts are more independent but are not a complete blind-detection pipeline.",
+            "One fixed synthetic geometry, PSF, and observation realization.",
+        ],
+        "aggregate": aggregate,
+        "runs": records,
+    }
 
 def run_robustness_sweep() -> dict:
     """Run a small one-factor-at-a-time suite; no claim of exhaustive coverage."""
