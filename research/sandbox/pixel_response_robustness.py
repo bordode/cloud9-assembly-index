@@ -32,6 +32,7 @@ def run_case(
     initialization_seed: int | None = None,
     position_bound_half_width: float | None = 0.5,
     initialization_policy: str = "truth_jitter",
+    detector_bounds: bool = False,
 ) -> dict:
     """Run one matched seven-source fit with one controlled perturbation."""
     if geometry_scale <= 0:
@@ -46,6 +47,10 @@ def run_case(
         raise ValueError("position_bound_half_width must be positive or None")
     if initialization_policy not in {"truth_jitter", "detector_uniform"}:
         raise ValueError("unsupported initialization_policy")
+    if detector_bounds and position_bound_half_width is not None:
+        raise ValueError(
+            "detector_bounds cannot be combined with truth-centred bounds"
+        )
     truth_sigma = SIGMA_PIXELS
     assumed_sigma = truth_sigma if fit_sigma is None else float(fit_sigma)
     truth_positions = SEVEN_SOURCE_POSITIONS * geometry_scale
@@ -79,7 +84,13 @@ def run_case(
     initial = np.concatenate([
         initial_positions.ravel(), np.log(truth_amplitudes), [2.0]
     ])
-    if position_bound_half_width is None:
+    if detector_bounds:
+        # Physical field-of-view bounds use detector geometry only, never
+        # the hidden true source coordinates.
+        half_field = (IMAGE_SIZE - 1) / 2
+        lower_positions = np.full(14, -half_field)
+        upper_positions = np.full(14, half_field)
+    elif position_bound_half_width is None:
         lower_positions = np.full(14, -np.inf)
         upper_positions = np.full(14, np.inf)
     else:
@@ -133,9 +144,9 @@ def run_case(
         signed = fitted - truth_positions[truth_indices]
         radial = np.linalg.norm(signed, axis=1)
         position_bound_hits = 0
-        if position_bound_half_width is not None:
-            lower_xy = truth_positions - position_bound_half_width
-            upper_xy = truth_positions + position_bound_half_width
+        if detector_bounds or position_bound_half_width is not None:
+            lower_xy = lower_positions.reshape(7, 2)
+            upper_xy = upper_positions.reshape(7, 2)
             tol = 1e-5
             position_bound_hits = int(np.count_nonzero(
                 np.isclose(fitted_raw, lower_xy, atol=tol, rtol=0.0)
@@ -182,9 +193,11 @@ def run_case(
         "source_count": 7,
         "position_bound_half_width_px": position_bound_half_width,
         "position_bounds_policy": (
-            "unbounded" if position_bound_half_width is None
-            else "truth-centred diagnostic bounds"
+            "physical detector-field bounds" if detector_bounds
+            else ("unbounded" if position_bound_half_width is None
+                  else "truth-centred diagnostic bounds")
         ),
+        "detector_bounds_enabled": detector_bounds,
         "summaries": summaries,
         "source_errors": source_errors,
     }
