@@ -127,6 +127,8 @@ These calculations should be treated as exploratory research unless independentl
 
 ## AI Rights, Ethics & Governance
 
+The [External Technology and Governance Research Register](docs/research/EXTERNAL_TECHNOLOGY_AND_GOVERNANCE_REGISTER.md) tracks external agent platforms, self-modifying systems, multi-agent frameworks, institutional AI infrastructure, governance tooling, and human genomic-data rights. Inclusion is for research only and does not imply endorsement or adoption.
+
 **This part of Cloud-9 stays.** It represents an important parallel research and policy strand rather than an empirical claim that the scientific modules have already established machine consciousness.
 
 The project asks a broader question: as artificial systems become increasingly complex and potentially agentic, how should society evaluate questions of experience, moral status, causal continuity, autonomy, dignity, and rights?
