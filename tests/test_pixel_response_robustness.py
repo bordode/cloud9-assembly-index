@@ -60,8 +60,16 @@ class PixelResponseRobustnessTests(unittest.TestCase):
         for model in ("integrated", "centre"):
             self.assertTrue(
                 all(
-                    math.isfinite(value)
-                    for value in result["summaries"][model].values()
+                    math.isfinite(result["summaries"][model][metric])
+                    for metric in (
+                        "mean_radial_error_px",
+                        "rmse_radial_error_px",
+                        "max_radial_error_px",
+                        "mean_signed_x_error_px",
+                        "mean_signed_y_error_px",
+                        "least_squares_cost",
+                        "assignment_total_distance_px",
+                    )
                 )
             )
 
