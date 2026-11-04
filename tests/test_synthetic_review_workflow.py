@@ -347,6 +347,26 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
                     )
                 self.assertEqual(malformed, before)
 
+    def test_reopening_decision_rejects_missing_request_linkage_ids(self):
+        baseline = self.accepted_reopening_request()
+        for field, value in (("request_id", ""), ("original_case_id", None)):
+            malformed = deepcopy(baseline)
+            malformed[field] = value
+            before = deepcopy(malformed)
+            with self.subTest(field=field):
+                with self.assertRaisesRegex(ValueError, field):
+                    create_reopening_decision_record(
+                        malformed, decision="reopening_authorized",
+                        actor="authority-label-not-verified",
+                        reviewer_conflict_check="Not assessed; synthetic fixture only.",
+                        reason="Synthetic decision records a limited procedural review.",
+                        scope="Review the reported notice-access barrier only.",
+                        evidence_limitations="Synthetic fixture only; no external evidence verified.",
+                        next_steps="No external action; retain the original case closure.",
+                        authority_basis="Synthetic policy fixture; no verified delegation.",
+                    )
+                self.assertEqual(malformed, before)
+
     def test_reopening_decision_snapshots_are_independent_of_later_request_mutation(self):
         case = self.to_outcome(self.make_case())
         closed = transition_case(
