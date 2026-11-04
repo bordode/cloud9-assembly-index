@@ -181,6 +181,14 @@ See [`research/fermi-paradox-toolkit/README.md`](research/fermi-paradox-toolkit/
 
 ---
 
+## External Research Contributions
+
+Cloud-9 records selected external research contributions with explicit authorship, source links, and verification boundaries. Inclusion is for research awareness and does not imply endorsement, collaboration, or independent validation.
+
+- **Aimy (iLands):** [“The prior pays for noise, not for detail” — attributed research note](docs/research/external-contributions/AIMY_LAPLACIAN_PRIOR_NOISE_STUDY_2026-11-04.md). A reported comparison of Laplacian-prior image reconstruction under noise, including a strengthened smoothing control and self-correction. The reported findings have not been independently reproduced by Cloud-9.
+
+---
+
 ## Repository Structure
 
 ```text
