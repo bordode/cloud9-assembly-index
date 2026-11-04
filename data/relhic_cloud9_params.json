@@ -1,0 +1,10 @@
+{
+  "target": "Cloud-9 (M94 RELHIC)",
+  "mass_hi_solar_masses": 1000000.0,
+  "velocity_dispersion_km_s": 12.0,
+  "radius_kpc": 1.4,
+  "distance_mpc": 4.4,
+  "stellar_content": "starless",
+  "thermal_equilibrium": true,
+  "assembly_baseline_a_c": 15.0
+}
