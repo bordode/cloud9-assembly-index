@@ -450,3 +450,40 @@ experiment should use more independent starts and compare a principled
 candidate-detection initializer against detector-uniform random starts,
 while keeping the paired forward-model comparison fair. No noisy-scene
 conclusion is drawn from this noise-free diagnostic.
+
+
+## 18. Exploratory cross-scene noise-boundary check reported by Kimi (4 November 2026)
+
+A separate exploratory sandbox run was reported by Kimi after the detector-initialization discussion. It tested whether the empirical noise/binning relationship reported for Aimy's Andromeda crop, approximately sigma * b = 0.075, transfers to other image content. Kimi reported using a pixel-area-integrated block-mean forward model, three additional 180×180 scenes (a Hubble deep-field crop, a Moon image, and a synthetic star field), a four-value regularization-parameter grid, and a conjugate-gradient solver.
+
+**These are externally reported exploratory results, not yet an independently reproduced Cloud-9 result.** The sandbox run completed its initial sweep in approximately 25.6 seconds. A finer lambda-grid/tighter-convergence refinement timed out and was not completed. The full executable code, exact image provenance/preprocessing, noise seeds, lambda values, convergence diagnostics, and machine-readable result table have not yet been captured in this repository. The figures below should therefore be treated as provisional and attributed to Kimi.
+
+### 18.1 Reported observations
+
+Kimi reported the following approximate zero-crossing noise levels:
+
+| Scene | b=2 | b=3 | b=4 | b=5/6 | Reported sigma* × b behaviour |
+|---|---:|---:|---:|---:|---|
+| Synthetic stars | 0.016 | 0.015 | 0.022 | 0.017 | approximately 0.03 to 0.09; not constant |
+| Hubble deep-field crop | 0.075 | >0.08 | >0.08 | >0.08 | approximately 0.15 at b=2, then at least 0.24 |
+| Aimy's Andromeda crop (previously reported by Aimy) | 0.035 | 0.025 | 0.020 | 0.015 | approximately 0.075 |
+
+Kimi also reported high-noise upturns in the Moon and synthetic-star curves. For the Moon at b=2, reported gain changed from +10.9% at sigma=0.01 to +0.6% at sigma=0.03 and +22.7% at sigma=0.08. For the synthetic stars at b=2, gain reportedly became negative around sigma=0.02–0.03 and rose to +18.7% at sigma=0.08. For the Hubble crop, Kimi reported an approximately flat 7% gain for b≥3 across the tested noise range.
+
+Kimi's interpretation is that the zero-crossing is a local transition in the relative advantage of the reconstruction methods, not necessarily a point beyond which regularization has no utility. At higher noise, denoising may again improve the regularized estimator's score. This is a hypothesis suggested by the reported curves, not yet a general conclusion.
+
+### 18.2 Critical comparability and verification limits
+
+Several controls are required before comparing these values quantitatively with Aimy's reported sigma * b ≈ 0.075:
+
+- Kimi reports adding independent noise at native sensor-pixel resolution before block averaging. Under an ideal independent-noise block mean, the binned standard deviation scales as sigma/b. The meaning and normalization of sigma must be matched to Aimy's experiment before comparing thresholds; the numerical sigma values may not represent the same noise convention.
+- The regularization parameter was selected by an oracle over a coarse four-point grid. This is useful for exploring achievable performance under the tested setup, but it is not a blind parameter-selection method and may move the apparent crossing.
+- The reported conjugate-gradient tolerance was rtol=1e-3. Kimi noted that individual percentages may carry roughly 1–2% numerical uncertainty; the refinement run did not complete.
+- Zero-crossings were interpolated from a sparse noise sweep. Their precision is therefore limited by the grid and interpolation procedure.
+- The three scenes differ in content, but the reported intra-block contrast values alone do not establish that contrast causes the threshold differences. Scene structure, preprocessing, normalization, noise placement, binning, metric, and regularization selection may all contribute.
+- The high-noise upturn should be checked against a wider noise sweep, finer lambda search, tighter solver tolerances, repeated noise realizations, and paired per-trial results.
+- Exact source images, licenses/provenance, crop coordinates, preprocessing, random seeds, full parameter grid, baseline definition, gain formula, and complete output should be recorded before attempting an independent reproduction.
+
+The strongest provisional conclusion is therefore narrow: **the reported cross-scene results do not support treating sigma * b ≈ 0.075 as a universal law.** They motivate a controlled study of scene dependence and noise convention. They do not yet establish a universal exponent, a contrast-only mechanism, or a general high-noise recovery branch.
+
+This section records Kimi's reported sandbox observations separately from Aimy's original results and Cloud-9's own independently executed experiments. It does not claim that Cloud-9 has rerun or verified Kimi's sweep.
