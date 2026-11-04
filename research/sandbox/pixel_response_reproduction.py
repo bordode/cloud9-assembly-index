@@ -82,7 +82,6 @@ def run_experiment(noise_sigma: float = NOISE_SIGMA, seed: int = SEED) -> dict:
     """Compare both models over a 5x5 sub-pixel phase grid."""
     rng = np.random.default_rng(seed)
     records = []
-    centre = (IMAGE_SIZE - 1) / 2
     for y_phase in PHASES:
         for x_phase in PHASES:
             truth_x, truth_y = float(x_phase), float(y_phase)
@@ -131,9 +130,13 @@ def run_experiment(noise_sigma: float = NOISE_SIGMA, seed: int = SEED) -> dict:
         "summaries": summaries,
         "records": records,
         "interpretation": (
-            "Single-source synthetic pilot only. It does not reproduce the "
-            "reported seven-star experiment and is not evidence about arbitrary "
-            "image-detail recovery or astronomical observations."
+            "Single-source, noise-free synthetic pilot only. Both models "
+            "recover the centroid to numerical precision across the tested "
+            "phase grid (centre-model mean radial error about 4.02e-7 px). "
+            "No meaningful centroid advantage is observed in this symmetric "
+            "isolated-source control. This does not reproduce the reported "
+            "seven-star experiment or establish performance for blended sources, "
+            "noise, PSF mismatch, arbitrary image detail, or astronomical data."
         ),
     }
 
