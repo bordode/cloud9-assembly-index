@@ -384,3 +384,33 @@ A true blind-detection evaluation must also allow missed and spurious sources;
 a forced seven-to-seven assignment is not enough. The controlled ±0.5 to
 unbounded truth-jitter sweep remains a separate, informed-start sensitivity
 result and must not be conflated with this detector-wide diagnostic.
+
+
+## 17. Physical detector-field initialization control (4 November 2026)
+
+The detector-wide initialization diagnostic has been refined. The earlier
+unbounded experiment allowed fitted source coordinates to move arbitrarily far
+outside the detector, producing enormous coordinate errors despite successful
+optimizer termination. That result remains documented in Section 16 as a
+failure mode of unconstrained optimization, not as a valid detector-localization
+benchmark.
+
+The runner now supports a separate **physical detector-field bound**. Candidate
+source coordinates are constrained to the detector's actual coordinate extent
+(±12 pixels for the current 25×25 detector), without using the known true source
+positions. This is distinct from truth-centred ±0.5, ±1, or ±2 pixel bounds.
+The detector-uniform initialization remains independent of the true source
+coordinates. Both forward models receive the same physical bounds and paired
+starting positions.
+
+The runner also records the maximum absolute fitted coordinate, and regression
+tests check that detector-bounded fits remain inside the physical field. The
+detector-wide three-start diagnostic is now rerun under these physical bounds;
+its numerical outcomes must be reviewed before drawing conclusions. CI success
+will establish only that the implementation and checks execute correctly.
+
+**Remaining limitations:** the model is still told to fit exactly seven
+components; Hungarian assignment still forces a seven-to-seven match; the
+initialization is random rather than detection-informed; and the experiment
+does not yet allow missed or spurious sources. This is a constrained
+localization stress test, not a complete blind source-detection pipeline.
