@@ -128,3 +128,47 @@ The full staged protocol remains incomplete. The next discriminating experiment
 is a controlled multi-source scene with known positions and separations, first
 noise-free and then with specified noise, while retaining identical fitting
 conditions.
+
+
+## 10. Seven-source crowded-scene pilot (4 November 2026)
+
+The sandbox script now includes
+[`run_seven_source_experiment()`](../../../research/sandbox/pixel_response_reproduction.py).
+It generates seven circular-Gaussian sources on a 25×25 detector using the
+same pixel-area-integrated forward model as the isolated-source pilot. The
+PSF width is `sigma = 1.3` pixels. Source positions and fluxes are fixed and
+published in the script; separations are deliberately close enough for the
+profiles to overlap. The data are noiseless in this first run.
+
+Both fitting methods estimate the same 22 parameters: fourteen source
+coordinates, seven positive source amplitudes, and one shared background.
+They receive the same initial positions, bounds, optimizer, and tolerances.
+Source-specific ±0.5-pixel coordinate bounds preserve source identity and
+prevent label swaps from being counted as localization error.
+
+**Observed result for this specified geometry:**
+
+| Fit model | Mean radial position error | RMSE radial error | Maximum radial error |
+|---|---:|---:|---:|
+| Area-integrated | approximately 1.8 × 10⁻¹⁵ px | approximately 2.1 × 10⁻¹⁵ px | approximately 2.8 × 10⁻¹⁵ px |
+| Pixel-centre sampled | approximately 0.06015 px | approximately 0.06260 px | approximately 0.07266 px |
+
+The integrated fit recovers the known parameters to numerical precision.
+The centre-sampled fit has a systematic position error in this crowded,
+overlapping-source configuration. The mean error is of the same order as
+Aimy's reported 0.06 px, but this is **not** a reproduction of Aimy's
+experiment: our source geometry, fluxes, detector size, fitting setup, and
+other details are independently specified and may differ from hers.
+
+This comparison is a controlled synthetic result under a correctly specified
+integrated-data generator. It demonstrates that source overlap can make the
+choice of detector forward model consequential in this particular setup.
+It does not establish a universal 0.06-pixel error, nor does it establish
+that the integrated method will retain this advantage under noise, incorrect
+PSFs, different source separations, or different initializations.
+
+**Next controls:** repeat over multiple geometries and sub-pixel phases; add
+Gaussian read noise and Poisson counting noise as separately identified
+conditions; test PSF-width mismatch; and report convergence and source-wise
+bias distributions. Only after these controls should this be compared more
+closely with the reported seven-star case.
