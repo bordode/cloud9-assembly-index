@@ -414,7 +414,10 @@ def record_challenge(case, *, actor, reason):
     if not isinstance(case, dict) or case.get("synthetic_only") is not True:
         raise ValueError("a synthetic case record is required")
     _require_list(case, "events")
-    if case.get("status") not in {"outcome_recorded", "notice_issued"}:
+    status = case.get("status")
+    if not isinstance(status, str):
+        raise ValueError("case status must be a string")
+    if status not in {"outcome_recorded", "notice_issued"}:
         raise ValueError("a challenge requires a recorded outcome")
     if not isinstance(case.get("outcome"), dict):
         raise ValueError("a challenge requires an existing outcome record")
