@@ -225,6 +225,69 @@ def run_repeated_noise_trials(
     }
 
 
+def run_initialization_trials(
+    *,
+    noise_model: str = "gaussian_read",
+    noise_level: float = 1.0,
+    trials: int = 10,
+    observation_seed: int = 20261300,
+    initialization_seed_start: int = 20261310,
+) -> dict:
+    """Vary optimizer starts while holding the observed image fixed."""
+    if noise_model not in {"gaussian_read", "poisson", "none"}:
+        raise ValueError("unsupported noise_model")
+    if trials < 2:
+        raise ValueError("at least two trials are required")
+    if noise_model == "gaussian_read" and noise_level <= 0:
+        raise ValueError("Gaussian read-noise standard deviation must be positive")
+
+    results = [
+        run_case(
+            noise_model=noise_model,
+            noise_level=noise_level,
+            seed=observation_seed,
+            initialization_seed=initialization_seed_start + index,
+        )
+        for index in range(trials)
+    ]
+    aggregate = {}
+    for model in ("integrated", "centre"):
+        values = np.asarray(
+            [item["summaries"][model]["rmse_radial_error_px"]
+             for item in results],
+            dtype=float,
+        )
+        aggregate[model] = {
+            "mean_rmse_across_starts_px": float(values.mean()),
+            "std_rmse_across_starts_px": float(values.std(ddof=1)),
+            "min_rmse_across_starts_px": float(values.min()),
+            "max_rmse_across_starts_px": float(values.max()),
+        }
+
+    return {
+        "experiment": "C9-PIXEL-RESPONSE-INITIALIZATION-001",
+        "status": "synthetic_initialization_sensitivity",
+        "noise_model": noise_model,
+        "noise_level": noise_level,
+        "observation_seed_fixed": observation_seed,
+        "initialization_seed_start": initialization_seed_start,
+        "trial_count": trials,
+        "observation_policy": (
+            "Same generated observation in every trial; only starting "
+            "positions vary."
+        ),
+        "aggregate_metrics": aggregate,
+        "trial_results": results,
+        "limitations": [
+            "Single synthetic scene and one fixed observation.",
+            "Source-specific +/-0.5 px truth-centred bounds remain in force.",
+            "Starting positions vary, but the optimizer is not tested outside "
+            "the known source neighbourhoods.",
+            "Finite number of starts; not a global-optimum proof.",
+        ],
+    }
+
+
 def run_robustness_sweep() -> dict:
     """Run a small one-factor-at-a-time suite; no claim of exhaustive coverage."""
     cases = []
