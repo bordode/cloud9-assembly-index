@@ -37,6 +37,8 @@ def run_case(
         raise ValueError("unsupported noise_model")
     if noise_level < 0:
         raise ValueError("noise_level must be non-negative")
+    if noise_model == "gaussian_read" and noise_level <= 0:
+        raise ValueError("Gaussian read-noise standard deviation must be positive")
     truth_sigma = SIGMA_PIXELS
     assumed_sigma = truth_sigma if fit_sigma is None else float(fit_sigma)
     truth_positions = SEVEN_SOURCE_POSITIONS * geometry_scale
