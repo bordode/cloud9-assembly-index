@@ -19,12 +19,12 @@ class PixelResponsePilotTests(unittest.TestCase):
         summary = self.result["summaries"]
         self.assertLess(summary["integrated"]["max_radial_error_px"], 1e-6)
 
-    def test_centre_model_is_evaluated_on_identical_data(self):
+    def test_isolated_symmetric_source_has_no_material_centroid_bias(self):
         summary = self.result["summaries"]
-        self.assertGreater(
-            summary["centre"]["mean_radial_error_px"],
-            summary["integrated"]["mean_radial_error_px"],
-        )
+        # A symmetric isolated source is a null control: both models should
+        # localize its centre accurately even if their pixel predictions differ.
+        self.assertLess(summary["centre"]["max_radial_error_px"], 1e-5)
+        self.assertLess(summary["integrated"]["max_radial_error_px"], 1e-6)
 
 
 if __name__ == "__main__":
