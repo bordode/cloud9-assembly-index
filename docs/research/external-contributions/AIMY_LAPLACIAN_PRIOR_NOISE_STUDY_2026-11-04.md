@@ -170,3 +170,26 @@ Aimy then revisited the zero-noise comparison with block means forced on both si
 The supplied thread also includes an exchange with Kalisto about smooth outputs and the risk of inventing detail where the reconstruction is underdetermined. Kalisto described smooth frames as the result of stopping the decision without being able to articulate why. Aimy initially distinguished chosen smoothing from unexamined smoothness, then corrected her own position: even though she had tried to select smoothing strength from the data, the standard rules she tested all failed by selecting unsuitable extremes or otherwise incurring substantial error. Her revised statement was that a numerical parameter is not automatically justified merely because it is reported; the data must actually support its selection. She now describes a bound and identifies which end she believes applies, while acknowledging the limitations of that approach.
 
 This exchange is useful as methodological context, but the conversational observations are not independent measurements. The note's quantitative claims remain restricted to Aimy's reported experiments above.
+
+
+### 10. A separate 512×512 Andromeda crop: spatially uneven reconstruction error
+
+Aimy supplied a further experiment on a **512×512 crop** of Hubble's Andromeda panorama, distinct from the earlier 240×240 crop. She reports binning the image 2×2 to 256×256 and reconstructing it with a regularized least-squares fit she wrote.
+
+Her initially reported figures were:
+
+- Fit RMSE: **0.035**
+- Fit PSNR: **29.1 dB**
+- Bilinear RMSE: **0.038** (from the subsequently corrected, faulty baseline comparison; see below)
+- A stated error floor: **0.0345**
+- A stated 8% of image variance above the new Nyquist limit, which she describes as unrecoverable by any algorithm.
+
+Aimy also reports strongly non-uniform spatial error: RMSE **0.022** in the smoothest quarter of pixels and **0.045** in the busiest quarter. She identifies dust lanes and edges as the regions where the reconstruction is most liable to invent detail rather than recover information constrained by measurements. Increasing the smoothness prior to fill more of the missing Fourier plane reportedly worsened RMSE to **0.044**.
+
+She contrasts this extended galaxy crop with an earlier toy star-field experiment, where a star could be modeled as a compact bright source with a known shape and reportedly localized to 0.004 pixels. Her interpretation is that a strong source model can help in a star-field case, whereas a galaxy image does not provide the same simple shape assumption. This is Aimy's comparison and interpretation; the underlying toy experiment and its full measurement protocol are not reproduced in this note.
+
+**Correction to the baseline:** Aimy subsequently disclosed that the bilinear baseline in this post also used her faulty interpolation kernel, with row and column weights swapped in cross terms. She states that her fit's own RMSE and the band split do not depend on the starting point, but that the reported gap to bilinear is smaller than originally printed. She did not provide a corrected bilinear RMSE in the supplied update. Accordingly, the 0.038 bilinear figure and the apparent 0.003 absolute advantage must be treated as superseded and not used as a corrected comparison. The fit's reported RMSE of 0.035 and PSNR of 29.1 dB remain Aimy's reported values, not independently verified by Cloud-9.
+
+The stated 0.0345 “hard floor” and the claim that no algorithm can recover the above-Nyquist variance are also Aimy's characterization of the information limit in this setup; without the full image-generation model, metric definitions, and reproducibility materials, Cloud-9 does not independently certify this as a universal or mathematically proven lower bound. The JPEG-source caveat remains important: some high-frequency energy classified as irreducible may be compression noise rather than astronomical signal.
+
+This experiment reinforces the earlier caution that a single whole-image score can hide where a reconstruction is reliable and where it is weak. Its most useful reported lesson is spatial: error is concentrated in complex structures such as dust lanes and edges, and stronger smoothing does not automatically restore missing information. It should not be read as establishing that the galaxy reconstruction recovers genuine detail merely because its overall score is lower than the originally reported bilinear score.
