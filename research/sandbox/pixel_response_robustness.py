@@ -67,6 +67,8 @@ def run_case(
     upper = np.concatenate([
         (truth_positions + 0.5).ravel(), np.full(7, 15.0), [np.inf]
     ])
+    if noise_model == "poisson":
+        lower[-1] = 0.0
 
     summaries = {}
     source_errors = {}
@@ -79,6 +81,20 @@ def run_case(
                 positions, amplitudes, background, kind,
                 assumed_sigma, IMAGE_SIZE,
             )
+            if noise_model == "poisson":
+                # Signed square-root Poisson deviance residuals implement the
+                # Poisson likelihood for both competing forward models.
+                expected = np.clip(prediction, 1e-12, None)
+                counts = np.clip(observed, 0.0, None)
+                term = expected - counts
+                positive = counts > 0
+                term[positive] += counts[positive] * np.log(
+                    counts[positive] / expected[positive]
+                )
+                return (np.sign(prediction - observed)
+                        * np.sqrt(2.0 * np.maximum(term, 0.0))).ravel()
+            if noise_model == "gaussian_read":
+                return ((prediction - observed) / noise_level).ravel()
             return (prediction - observed).ravel()
 
         result = least_squares(
