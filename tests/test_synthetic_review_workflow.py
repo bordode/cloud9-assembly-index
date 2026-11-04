@@ -829,6 +829,30 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
                 authority_basis="Not verified.",
             )
 
+        case = self.make_case()
+        case["synthetic_only"] = 1
+        with self.assertRaisesRegex(ValueError, "synthetic case record"):
+            transition_case(
+                case, to_status="pending_human_review", actor="reviewer-a",
+                reason="Reject a truthy non-boolean marker.",
+            )
+
+        barrier_case = self.to_review(self.make_case())
+        barrier_case["synthetic_only"] = 1
+        with self.assertRaisesRegex(ValueError, "synthetic case record"):
+            record_participation_barrier(
+                barrier_case, barrier="Fictional access barrier",
+                actor="reviewer-a", reason="Reject a truthy non-boolean marker.",
+            )
+
+        notice_case = self.to_notice_issued(self.to_outcome(self.make_case()))
+        notice_case["synthetic_only"] = 1
+        with self.assertRaisesRegex(ValueError, "synthetic case record"):
+            record_notice_result(
+                notice_case, result="failed", actor="reviewer-a",
+                reason="Reject a truthy non-boolean marker.",
+            )
+
         case = self.to_outcome(self.make_case())
         case["synthetic_only"] = "yes"
         with self.assertRaisesRegex(ValueError, "synthetic case record"):
