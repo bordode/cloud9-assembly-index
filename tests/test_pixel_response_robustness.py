@@ -4,6 +4,7 @@ import unittest
 
 from research.sandbox.pixel_response_robustness import (
     run_case,
+    run_initialization_trials,
     run_repeated_noise_trials,
 )
 
@@ -52,6 +53,32 @@ class PixelResponseRobustnessTests(unittest.TestCase):
         )
         self.assertEqual(result["noise_model"], "gaussian_read")
         self.assertEqual(result["noise_level"], 1.0)
+
+    def test_initialization_trials_hold_observation_seed_fixed(self):
+        result = run_initialization_trials(
+            noise_model="gaussian_read",
+            noise_level=1.0,
+            trials=3,
+            observation_seed=20261320,
+            initialization_seed_start=20261330,
+        )
+        self.assertEqual(result["trial_count"], 3)
+        self.assertEqual(
+            {item["seed"] for item in result["trial_results"]},
+            {20261320},
+        )
+        self.assertEqual(
+            [item["initialization_seed"] for item in result["trial_results"]],
+            [20261330, 20261331, 20261332],
+        )
+        for model in ("integrated", "centre"):
+            self.assertTrue(
+                math.isfinite(
+                    result["aggregate_metrics"][model][
+                        "mean_rmse_across_starts_px"
+                    ]
+                )
+            )
 
     def test_repeated_noise_trials_hold_initialization_fixed(self):
         result = run_repeated_noise_trials(
