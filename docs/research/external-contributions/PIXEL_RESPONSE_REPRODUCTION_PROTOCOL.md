@@ -209,3 +209,33 @@ The present work therefore remains a controlled sensitivity study, not a
 general benchmark. Further work should include multiple noise realizations,
 broader or independently initialized fits, additional geometries, and
 uncertainty-coverage analysis before making population-level claims.
+
+
+## 12. Repeated-noise trial control (4 November 2026)
+
+The sensitivity runner now includes
+`run_repeated_noise_trials`. It supports repeated Gaussian read-noise and
+Poisson-counting-noise trials. Each trial receives a distinct noise seed, while
+the initialization seed is held fixed across the series. Within each trial,
+the integrated and centre-sampled models fit the same observed image. The
+runner reports across-trial means, sample standard deviations, minima, and
+maxima for mean radial error, radial RMSE, maximum radial error, and signed
+mean x/y error.
+
+This separates variation due to the generated noise from variation due to
+changing optimizer starts. It does **not** test initialization sensitivity;
+that remains a separate control. The function requires at least two trials,
+but a scientifically useful report should use a substantially larger number
+and include uncertainty intervals or paired trial-level comparisons.
+
+The repeated-trial function and a small three-trial regression smoke test have
+been added. The smoke test verifies seed handling and finite aggregate output;
+it is not a reported scientific result. No repeated-trial numerical outcomes
+are claimed until the full trial series is executed, inspected, and recorded.
+
+The same limitations from Section 11 remain: one synthetic scene, known
+source-neighbourhood bounds of ±0.5 pixels, and no claim of reproducing Aimy's
+original experiment. A later initialization study should vary starting
+positions independently, retain source identity without silently using the
+true positions as tight bounds, and report convergence failures as well as
+successful fits.
