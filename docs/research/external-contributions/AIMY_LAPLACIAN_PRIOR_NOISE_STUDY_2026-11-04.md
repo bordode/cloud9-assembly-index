@@ -67,6 +67,53 @@ For clean M13 at b=3, the reported error changed from 0.0272 to 0.0240 for Lancz
 
 This is an additional reported test and should not be conflated with the earlier 24-cell table; it reinforces the need to distinguish the image regime and the exact consistency constraint.
 
+
+### 5. Blind regularization-parameter selection and diagnostic failure
+
+Aimy next tested whether the regularization parameter λ could be selected without access to the true image. The reported test used a real Andromeda crop (240×240), binned 2×2, with λ scanned from 10⁻⁷ to 10.
+
+The truth-optimal λ moved substantially with noise:
+
+| Noise level | Truth-optimal λ | Best reported RMSE |
+|---|---:|---:|
+| σ=0 | 10⁻³ | 0.0382 |
+| σ=0.02 | 3×10⁻² | 0.0424 |
+| σ=0.05 | 3×10⁻¹ | 0.0495 |
+
+Aimy reports the following blind-selection outcomes, expressed as percentage RMSE cost relative to the truth-optimal choice:
+
+| Selection rule | λ selected at σ=0 / 0.02 / 0.05 | RMSE cost at σ=0 / 0.02 / 0.05 |
+|---|---|---|
+| GCV | 10⁻⁶ / 10⁻⁶ / 10⁻⁶ | +0% / +2.5% / +30% |
+| Residual whiteness | 3.2 / 3.2 / 10 | +32% / +19% / +5% |
+| Discrepancy | 1 / 3.2 / 10 | +25% / +19% / +5% |
+| L-curve corner | 0.1 / 0.1 / 0.1 | +5.8% / +0.6% / +6.4% |
+
+Aimy's interpretation is that the penalty is asymmetric and changes with noise: at zero noise, over-smoothing/detail loss is costly; at high noise, under-regularization and fitting noise are costly. At σ=0.05, the reported GCV choice was 30% worse than the truth-optimal choice and worse than bilinear. At σ=0.02, residual-whiteness and discrepancy choices were reported to erase the method's advantage, landing at roughly bilinear performance.
+
+Aimy also reports structural reasons these diagnostics may be unsuitable in this setting:
+
+- For b=2 binning, the data count and effective degrees of freedom were both reported as 14,400 of 14,400. She argues that the problem is only weakly ill-posed, whereas GCV is designed for severely ill-posed problems; under these conditions its assumptions may not provide a useful selection signal.
+- Residual whiteness is confounded because the residual includes model error. In her test, making the residual white required smoothing away genuine galaxy structure.
+- A first GCV run appeared to select λ=1.8. Aimy traced this to a noise estimator missing a factor of six and a printed minimum affected by a trace-estimator artifact. After correcting and rerunning, GCV selected the opposite end of the scan. She reports that both outcomes indicated failure of the rule in this application, but only the corrected run reflected the actual diagnostic behavior.
+
+Aimy's provisional conclusion is that λ may be bounded from data more defensibly than uniquely tuned by these criteria: below 0.03 at low noise and around 0.1–0.3 at high noise in this experiment. She explicitly identifies testing another bin factor and another image as the next step. These bounds are provisional, specific to the reported crop and setup, and not a general prescription.
+
+### 6. Forward-model and detector-sampling mismatch
+
+Aimy also compared four combinations of data-generation/sampling model and reconstruction forward model on the same 240×240 Andromeda crop at 2×, using the truth-optimal λ=10⁻³ in the noise-free case. She reports total RMSE, in-band error, above-band error, and correlation with genuinely missing detail as follows:
+
+| Data model | Reconstruction model | Total RMSE | In-band | Above-band | Correlation with missing detail |
+|---|---|---:|---:|---:|---:|
+| Box | Box | 0.0382 | 0.0167 | 0.0344 | r=0.39 |
+| Box | Point | 0.0445 | 0.0251 | 0.0367 | r=0.20 |
+| Point | Point | 0.0422 | 0.0259 | 0.0333 | r=0.46 |
+| Point | Box | 0.0552 | 0.0392 | 0.0388 | r=0.23 |
+
+Aimy interprets the above-band recovery as de-aliasing rather than chance: point sampling folds high-frequency content into the passband, and a reconstruction model that represents that sampling process can recover the missing-detail component with higher reported correlation (r=0.46 versus r=0.39 for the box/box case), although its in-band error is higher. Mismatching the data and reconstruction models in either direction increases in-band error substantially in this comparison.
+
+Her stated conclusion is that reconstruction quality depends critically on whether the forward model matches the detector's sampling process. This is a reported interpretation of this four-condition experiment, not yet an independently validated general law.
+
 ## Research significance
 
 The contribution is valuable chiefly for its experimental discipline:
