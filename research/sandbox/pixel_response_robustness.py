@@ -9,7 +9,7 @@ from __future__ import annotations
 import json
 
 import numpy as np
-from scipy.optimize import least_squares
+from scipy.optimize import least_squares, linear_sum_assignment
 
 from research.sandbox.pixel_response_reproduction import (
     IMAGE_SIZE,
@@ -30,6 +30,7 @@ def run_case(
     fit_sigma: float | None = None,
     seed: int = 20261106,
     initialization_seed: int | None = None,
+    position_bound_half_width: float | None = 0.5,
 ) -> dict:
     """Run one matched seven-source fit with one controlled perturbation."""
     if geometry_scale <= 0:
@@ -40,6 +41,8 @@ def run_case(
         raise ValueError("noise_level must be non-negative")
     if noise_model == "gaussian_read" and noise_level <= 0:
         raise ValueError("Gaussian read-noise standard deviation must be positive")
+    if position_bound_half_width is not None and position_bound_half_width <= 0:
+        raise ValueError("position_bound_half_width must be positive or None")
     truth_sigma = SIGMA_PIXELS
     assumed_sigma = truth_sigma if fit_sigma is None else float(fit_sigma)
     truth_positions = SEVEN_SOURCE_POSITIONS * geometry_scale
@@ -65,12 +68,14 @@ def run_case(
     initial = np.concatenate([
         initial_positions.ravel(), np.log(truth_amplitudes), [2.0]
     ])
-    lower = np.concatenate([
-        (truth_positions - 0.5).ravel(), np.full(7, -10.0), [-np.inf]
-    ])
-    upper = np.concatenate([
-        (truth_positions + 0.5).ravel(), np.full(7, 15.0), [np.inf]
-    ])
+    if position_bound_half_width is None:
+        lower_positions = np.full(14, -np.inf)
+        upper_positions = np.full(14, np.inf)
+    else:
+        lower_positions = (truth_positions - position_bound_half_width).ravel()
+        upper_positions = (truth_positions + position_bound_half_width).ravel()
+    lower = np.concatenate([lower_positions, np.full(7, -10.0), [-np.inf]])
+    upper = np.concatenate([upper_positions, np.full(7, 15.0), [np.inf]])
     if noise_model == "poisson":
         lower[-1] = 0.0
 
@@ -107,9 +112,26 @@ def run_case(
         )
         if not result.success:
             raise RuntimeError(f"{kind} fit failed: {result.message}")
-        fitted = result.x[:14].reshape(7, 2)
-        signed = fitted - truth_positions
+        fitted_raw = result.x[:14].reshape(7, 2)
+        # Match fitted positions to truth by minimum total Euclidean distance.
+        # This makes label switching visible instead of treating array order
+        # as physical source identity.
+        distances = np.linalg.norm(
+            truth_positions[:, None, :] - fitted_raw[None, :, :], axis=2
+        )
+        truth_indices, fitted_indices = linear_sum_assignment(distances)
+        fitted = fitted_raw[fitted_indices]
+        signed = fitted - truth_positions[truth_indices]
         radial = np.linalg.norm(signed, axis=1)
+        position_bound_hits = 0
+        if position_bound_half_width is not None:
+            lower_xy = truth_positions - position_bound_half_width
+            upper_xy = truth_positions + position_bound_half_width
+            tol = 1e-5
+            position_bound_hits = int(np.count_nonzero(
+                np.isclose(fitted_raw, lower_xy, atol=tol, rtol=0.0)
+                | np.isclose(fitted_raw, upper_xy, atol=tol, rtol=0.0)
+            ))
         summaries[kind] = {
             "mean_radial_error_px": float(radial.mean()),
             "rmse_radial_error_px": float(np.sqrt(np.mean(radial ** 2))),
@@ -117,6 +139,13 @@ def run_case(
             "mean_signed_x_error_px": float(signed[:, 0].mean()),
             "mean_signed_y_error_px": float(signed[:, 1].mean()),
             "least_squares_cost": float(result.cost),
+            "optimizer_success": bool(result.success),
+            "optimizer_status": int(result.status),
+            "nfev": int(result.nfev),
+            "position_bound_hits": position_bound_hits,
+            "assignment_total_distance_px": float(distances[truth_indices, fitted_indices].sum()),
+            "assignment_permutation": [int(i) for i in fitted_indices],
+            "assignment_swaps": int(sum(i != j for i, j in enumerate(fitted_indices))),
         }
         source_errors[kind] = [
             {
@@ -140,7 +169,11 @@ def run_case(
         "seed": seed,
         "initialization_seed": init_seed,
         "source_count": 7,
-        "source_specific_bounds_half_width_px": 0.5,
+        "position_bound_half_width_px": position_bound_half_width,
+        "position_bounds_policy": (
+            "unbounded" if position_bound_half_width is None
+            else "truth-centred diagnostic bounds"
+        ),
         "summaries": summaries,
         "source_errors": source_errors,
     }
