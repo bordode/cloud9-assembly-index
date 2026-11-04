@@ -263,3 +263,37 @@ bounds is not a test of blind source association or unconstrained localization.
 A later experiment should widen or remove these bounds, introduce explicit
 source-association handling, and report failures, source swaps, and convergence
 diagnostics rather than silently excluding difficult fits.
+
+
+## 13. Wider and unbounded source-position diagnostics (4 November 2026)
+
+The robustness runner now accepts an explicit source-position bound half-width
+or `None` for unbounded coordinates. The default remains the existing
+truth-centred ±0.5-pixel diagnostic bound so earlier experiments remain
+reproducible. The new option is a control mechanism, not evidence that a
+blind-localization experiment has already succeeded.
+
+For evaluation, fitted positions are matched to the known truth positions by
+minimum-total-distance assignment (Hungarian assignment). This separates
+physical source localization from arbitrary parameter-array ordering and
+makes source-label permutations countable. The runner records the assignment
+permutation, number of non-identity assignments, total assignment distance,
+optimizer status/evaluation count, and position-bound hits where bounds are
+active. Both competing forward models still receive the same observation,
+initialization, bound policy, optimizer budget, and fitting parameterization.
+
+Regression tests now cover unbounded fitting diagnostics and validation of
+invalid bound widths. These are bookkeeping and execution checks only. The
+unbounded and progressively widened fits have **not yet been run as a
+scientific sweep**, so no claim is made about source swaps, convergence rates,
+or localization accuracy outside the previous ±0.5-pixel neighbourhoods.
+
+The next execution should compare at least ±0.5, ±1, ±2 pixels, and unbounded
+coordinates over multiple independent starts. It must retain every run,
+including non-convergence and poor fits; report source-association permutations,
+bound hits, and residual diagnostics; and avoid using truth-centred starts as
+a substitute for blind source detection. A separate initialization design
+should generate starts independently of the true source coordinates. Even
+with assignment matching, a fit with missing, duplicated, or spurious sources
+requires an explicit detection/association policy rather than forcing a
+one-to-one seven-source match.
