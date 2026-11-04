@@ -93,4 +93,38 @@ The central hypothesis is narrow: when a detector integrates signal over finite 
 
 This is not a claim that pixel integration creates information absent from the measurements. Sub-pixel estimation can be possible when the source model and measurement process jointly constrain the parameters; arbitrary structure removed by sampling, blur, or noise is not thereby restored.
 
-**Current status:** protocol only. No Cloud-9 experiment has been run under this specification, and no new numerical result is asserted.
+**Current status:** the full protocol is not yet complete. A limited isolated-source pilot and its null result are recorded in Section 9; the seven-source comparison and robustness tests remain outstanding.
+
+
+## 9. Initial limited pilot (4 November 2026)
+
+A first, deliberately narrow Cloud-9 pilot is now implemented in
+[`research/sandbox/pixel_response_reproduction.py`](../../../research/sandbox/pixel_response_reproduction.py)
+with regression checks in
+[`tests/test_pixel_response_reproduction.py`](../../../tests/test_pixel_response_reproduction.py).
+
+It uses one isolated circular-Gaussian source on a 21×21 detector, a fixed
+`sigma = 1.3` pixels, noiseless area-integrated synthetic data, and a 5×5
+sub-pixel phase grid (25 positions). The integrated and centre-sampled models
+fit the same data using the same least-squares optimizer, bounds, and stopping
+tolerances. Amplitude and background are fitted nuisance parameters.
+
+**Observed pilot result:** both models recover the source centre to numerical
+precision in this isolated, symmetric, noise-free control. The centre-sampled
+model's mean radial position error is approximately
+`4.02 × 10⁻⁷` pixels (maximum approximately `5.68 × 10⁻⁷`); the
+area-integrated model's maximum is approximately `3.24 × 10⁻¹⁶` pixels.
+There is no meaningful centroid-accuracy advantage for either model in this
+specific control.
+
+This is a useful null result, not a failed test: it shows that the reported
+position difference does not follow automatically from replacing a pixel
+integral with a centre sample for an isolated symmetric source under these
+conditions. Blending, asymmetry, multiple-source fitting, noise, PSF mismatch,
+and the exact seven-star geometry remain untested. In particular, this pilot
+does **not** reproduce or refute Aimy's seven-star result.
+
+The full staged protocol remains incomplete. The next discriminating experiment
+is a controlled multi-source scene with known positions and separations, first
+noise-free and then with specified noise, while retaining identical fitting
+conditions.
