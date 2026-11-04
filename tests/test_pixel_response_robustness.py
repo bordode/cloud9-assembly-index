@@ -48,8 +48,11 @@ class PixelResponseRobustnessTests(unittest.TestCase):
             initialization_seed=20261111,
             position_bound_half_width=None,
             initialization_policy="detector_uniform",
+            detector_bounds=True,
         )
         self.assertEqual(result["initialization_policy"], "detector_uniform")
+        self.assertTrue(result["detector_bounds_enabled"])
+        self.assertEqual(result["position_bounds_policy"], "physical detector-field bounds")
         for model in ("integrated", "centre"):
             self.assertIn("optimizer_success", result["summaries"][model])
 
@@ -61,6 +64,7 @@ class PixelResponseRobustnessTests(unittest.TestCase):
                 initialization_seed=20261451 + start_index,
                 position_bound_half_width=None,
                 initialization_policy="detector_uniform",
+                detector_bounds=True,
             )
             records.append({
                 model: {
@@ -77,6 +81,10 @@ class PixelResponseRobustnessTests(unittest.TestCase):
         for record in records:
             for model in ("integrated", "centre"):
                 self.assertIn("optimizer_success", record[model])
+
+    def test_detector_bounds_cannot_be_combined_with_truth_centred_bounds(self):
+        with self.assertRaises(ValueError):
+            run_case(detector_bounds=True, position_bound_half_width=0.5)
 
     def test_position_bound_width_is_validated(self):
         with self.assertRaises(ValueError):
