@@ -29,6 +29,7 @@ def run_case(
     noise_level: float = 0.0,
     fit_sigma: float | None = None,
     seed: int = 20261106,
+    initialization_seed: int | None = None,
 ) -> dict:
     """Run one matched seven-source fit with one controlled perturbation."""
     if geometry_scale <= 0:
@@ -56,7 +57,8 @@ def run_case(
     else:
         observed = rng.poisson(np.clip(clean, 0.0, None)).astype(float)
 
-    init_rng = np.random.default_rng(seed + 1)
+    init_seed = seed + 1 if initialization_seed is None else initialization_seed
+    init_rng = np.random.default_rng(init_seed)
     initial_positions = truth_positions + init_rng.normal(
         0.0, 0.12, truth_positions.shape
     )
@@ -136,10 +138,90 @@ def run_case(
         "noise_model": noise_model,
         "noise_level": noise_level,
         "seed": seed,
+        "initialization_seed": init_seed,
         "source_count": 7,
         "source_specific_bounds_half_width_px": 0.5,
         "summaries": summaries,
         "source_errors": source_errors,
+    }
+
+
+def run_repeated_noise_trials(
+    *,
+    noise_model: str,
+    noise_level: float = 0.0,
+    trials: int = 20,
+    seed_start: int = 20261200,
+    initialization_seed: int = 20261199,
+) -> dict:
+    """Estimate repeatability across noise draws with a fixed initialization.
+
+    The same noise realization is fitted by both forward models within each
+    trial. The initial parameter vector is held fixed across trials, isolating
+    variability due to the generated observation noise.
+    """
+    if noise_model not in {"gaussian_read", "poisson"}:
+        raise ValueError("repeated trials require gaussian_read or poisson")
+    if trials < 2:
+        raise ValueError("at least two trials are required")
+    if noise_model == "gaussian_read" and noise_level <= 0:
+        raise ValueError("Gaussian read-noise standard deviation must be positive")
+
+    results = [
+        run_case(
+            noise_model=noise_model,
+            noise_level=noise_level,
+            seed=seed_start + index,
+            initialization_seed=initialization_seed,
+        )
+        for index in range(trials)
+    ]
+    metrics = (
+        "mean_radial_error_px",
+        "rmse_radial_error_px",
+        "max_radial_error_px",
+        "mean_signed_x_error_px",
+        "mean_signed_y_error_px",
+    )
+    aggregate = {}
+    for model in ("integrated", "centre"):
+        aggregate[model] = {}
+        for metric in metrics:
+            values = np.asarray(
+                [item["summaries"][model][metric] for item in results],
+                dtype=float,
+            )
+            aggregate[model][metric] = {
+                "mean_across_trials": float(values.mean()),
+                "std_across_trials": float(values.std(ddof=1)),
+                "min_across_trials": float(values.min()),
+                "max_across_trials": float(values.max()),
+            }
+
+    return {
+        "experiment": "C9-PIXEL-RESPONSE-REPEATED-NOISE-001",
+        "status": "synthetic_repeated_noise_trials",
+        "noise_model": noise_model,
+        "noise_level": noise_level,
+        "trial_count": trials,
+        "seed_start": seed_start,
+        "initialization_seed_fixed": initialization_seed,
+        "initialization_policy": (
+            "Same initial parameter vector in every trial; only the noise "
+            "realization changes."
+        ),
+        "paired_model_policy": (
+            "Both forward models fit the same observed image in each trial."
+        ),
+        "aggregate_metrics": aggregate,
+        "trial_results": results,
+        "limitations": [
+            "Single seven-source geometry and detector size.",
+            "Known source neighbourhoods constrain each fitted position to +/-0.5 px.",
+            "Fixed initialization does not test sensitivity to optimizer starts.",
+            "Finite trial count; results are specific to this synthetic setup.",
+            "Gaussian and Poisson conditions are not matched to equal SNR.",
+        ],
     }
 
 
