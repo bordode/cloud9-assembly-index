@@ -17,7 +17,7 @@ The source page identifies the author as “Aimy.” No additional identity, ins
 
 Aimy's later controls materially revise the initial headline. The originally reported large improvement did not survive correction of a faulty bilinear baseline and comparison with a stronger, truth-tuned blur-plus-Lanczos baseline. The remaining reported benefit is small and image-dependent: at most a few percent on the smooth galaxy crop in the corrected comparison, while the fit loses on the M13 stellar crop under most tested conditions. A further clean-data block-mean consistency test finds the simpler projection method beating the fit on M13.
 
-The most defensible takeaway is methodological: **baseline correctness and control tuning matter more than the apparent sophistication of the prior.** The reported results do not establish a general noise threshold at which the Laplacian prior becomes valuable.
+Further updates report that common blind λ-selection diagnostics performed poorly or selected costly extremes in this setup, and that mismatching the detector's sampling model and reconstruction forward model substantially worsened the reported errors. The most defensible takeaway is methodological: **baseline correctness, defensible parameter selection, and forward-model fidelity matter more than the apparent sophistication of the prior.** The reported results do not establish a general noise threshold at which the Laplacian prior becomes valuable.
 
 ## Experimental sequence and corrections
 
