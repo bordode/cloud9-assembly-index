@@ -26,6 +26,24 @@ class PixelResponseRobustnessTests(unittest.TestCase):
         self.assertEqual(len(result["source_errors"]["centre"]), 7)
         self.assertIn("mean_signed_x_error_px", result["summaries"]["centre"])
 
+    def test_unbounded_position_fit_reports_source_assignment(self):
+        result = run_case(
+            noise_model="none", seed=20261110,
+            initialization_seed=20261111,
+            position_bound_half_width=None,
+        )
+        self.assertIsNone(result["position_bound_half_width_px"])
+        for model in ("integrated", "centre"):
+            summary = result["summaries"][model]
+            self.assertEqual(len(summary["assignment_permutation"]), 7)
+            self.assertGreaterEqual(summary["assignment_swaps"], 0)
+            self.assertEqual(summary["position_bound_hits"], 0)
+            self.assertTrue(math.isfinite(summary["assignment_total_distance_px"]))
+
+    def test_position_bound_width_is_validated(self):
+        with self.assertRaises(ValueError):
+            run_case(position_bound_half_width=0.0)
+
     def test_psf_mismatch_is_explicit(self):
         result = run_case(fit_sigma=1.2, seed=20261110)
         self.assertEqual(result["truth_sigma_px"], 1.3)
