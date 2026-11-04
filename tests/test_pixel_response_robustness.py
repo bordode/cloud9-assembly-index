@@ -1,4 +1,5 @@
 """Regression checks for the staged pixel-response sensitivity suite."""
+import json
 import math
 import unittest
 
@@ -58,16 +59,17 @@ class PixelResponseRobustnessTests(unittest.TestCase):
 
     def test_position_bound_sweep_preserves_all_paired_runs(self):
         result = run_position_bound_sweep(
-            noise_model="none", starts_per_bound=1,
+            noise_model="none", starts_per_bound=3,
             observation_seed=20261420,
             initialization_seed_start=20261430,
         )
         self.assertEqual(result["bound_widths_px"], [0.5, 1.0, 2.0, None])
-        self.assertEqual(len(result["runs"]), 4)
+        self.assertEqual(len(result["runs"]), 12)
         self.assertEqual(result["status"], "synthetic_position_bound_sweep")
+        print("POSITION_BOUND_SWEEP_RESULT=" + json.dumps(result["aggregate"], sort_keys=True))
         for width in ("0.5", "1.0", "2.0", "None"):
             for model in ("integrated", "centre"):
-                self.assertEqual(result["aggregate"][width][model]["runs"], 1)
+                self.assertEqual(result["aggregate"][width][model]["runs"], 3)
                 self.assertGreaterEqual(
                     result["aggregate"][width][model]["optimizer_successes"], 0
                 )
