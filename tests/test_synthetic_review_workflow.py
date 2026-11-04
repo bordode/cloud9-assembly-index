@@ -315,6 +315,38 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
         self.assertIs(record["automated_restriction"], False)
         self.assertEqual(record["external_actions"], [])
 
+    def test_reopening_decision_rejects_missing_or_inconsistent_embedded_request_decision(self):
+        baseline = self.accepted_reopening_request()
+        cases = []
+
+        missing_record = deepcopy(baseline)
+        missing_record["decision_record"] = None
+        cases.append((missing_record, "embedded post-closure decision record"))
+
+        mismatched_record = deepcopy(baseline)
+        mismatched_record["decision_record"]["decision"] = "inconclusive"
+        cases.append((mismatched_record, "must match the request decision"))
+
+        closure_not_preserved = deepcopy(baseline)
+        closure_not_preserved["decision_record"]["does_not_reopen_original_case"] = False
+        cases.append((closure_not_preserved, "preserve the original case closure"))
+
+        for malformed, message in cases:
+            before = deepcopy(malformed)
+            with self.subTest(message=message):
+                with self.assertRaisesRegex(ValueError, message):
+                    create_reopening_decision_record(
+                        malformed, decision="reopening_authorized",
+                        actor="authority-label-not-verified",
+                        reviewer_conflict_check="Not assessed; synthetic fixture only.",
+                        reason="Synthetic decision records a limited procedural review.",
+                        scope="Review the reported notice-access barrier only.",
+                        evidence_limitations="Synthetic fixture only; no external evidence verified.",
+                        next_steps="No external action; retain the original case closure.",
+                        authority_basis="Synthetic policy fixture; not a verified delegation.",
+                    )
+                self.assertEqual(malformed, before)
+
     def test_reopening_decision_snapshots_are_independent_of_later_request_mutation(self):
         case = self.to_outcome(self.make_case())
         closed = transition_case(
