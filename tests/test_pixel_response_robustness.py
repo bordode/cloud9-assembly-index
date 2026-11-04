@@ -2,7 +2,10 @@
 import math
 import unittest
 
-from research.sandbox.pixel_response_robustness import run_case
+from research.sandbox.pixel_response_robustness import (
+    run_case,
+    run_repeated_noise_trials,
+)
 
 
 class PixelResponseRobustnessTests(unittest.TestCase):
@@ -49,6 +52,32 @@ class PixelResponseRobustnessTests(unittest.TestCase):
         )
         self.assertEqual(result["noise_model"], "gaussian_read")
         self.assertEqual(result["noise_level"], 1.0)
+
+    def test_repeated_noise_trials_hold_initialization_fixed(self):
+        result = run_repeated_noise_trials(
+            noise_model="gaussian_read",
+            noise_level=1.0,
+            trials=3,
+            seed_start=20261210,
+            initialization_seed=20261209,
+        )
+        self.assertEqual(result["trial_count"], 3)
+        self.assertEqual(
+            {item["initialization_seed"] for item in result["trial_results"]},
+            {20261209},
+        )
+        self.assertEqual(
+            [item["seed"] for item in result["trial_results"]],
+            [20261210, 20261211, 20261212],
+        )
+        for model in ("integrated", "centre"):
+            self.assertTrue(
+                math.isfinite(
+                    result["aggregate_metrics"][model][
+                        "rmse_radial_error_px"
+                    ]["mean_across_trials"]
+                )
+            )
 
 
 if __name__ == "__main__":
