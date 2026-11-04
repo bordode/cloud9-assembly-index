@@ -29,6 +29,25 @@ class PixelResponseRobustnessTests(unittest.TestCase):
     def test_noise_model_is_validated(self):
         with self.assertRaises(ValueError):
             run_case(noise_model="unknown")
+        with self.assertRaises(ValueError):
+            run_case(noise_model="gaussian_read", noise_level=0.0)
+
+    def test_poisson_case_uses_finite_deviance_fit_results(self):
+        result = run_case(noise_model="poisson", seed=20261112)
+        for model in ("integrated", "centre"):
+            self.assertTrue(
+                all(
+                    value == value
+                    for value in result["summaries"][model].values()
+                )
+            )
+
+    def test_gaussian_read_noise_case_is_recorded(self):
+        result = run_case(
+            noise_model="gaussian_read", noise_level=1.0, seed=20261111
+        )
+        self.assertEqual(result["noise_model"], "gaussian_read")
+        self.assertEqual(result["noise_level"], 1.0)
 
 
 if __name__ == "__main__":
