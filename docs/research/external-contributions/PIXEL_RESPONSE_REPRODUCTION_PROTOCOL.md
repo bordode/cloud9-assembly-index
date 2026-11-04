@@ -321,3 +321,31 @@ checks that all four bound conditions and both models are represented. This
 CI test is not a substitute for the multi-start scientific run. The full
 sweep's quantitative results must be generated and reviewed separately before
 any conclusion about localization stability or the advantage of either model.
+
+
+## 15. Initial three-start position-bound sweep results (4 November 2026)
+
+A three-start, fixed-observation, noise-free synthetic sweep was executed in
+GitHub Actions run 41920555994 (commit `42edd5e`). The initialization policy
+was `truth_jitter`: each start was perturbed around the known seven-source
+truth positions. This tests optimizer-start repeatability within an informed
+initialization regime, not blind detection.
+
+| Position bounds | Integrated model radial RMSE (px) | Centre model radial RMSE (px) | Optimizer failures (both models) | Source swaps (maximum) | Bound hits (both models) |
+|---|---:|---:|---:|---:|---:|
+| ±0.5 px | 3.94e-15 | 0.062135 | 0 | 0 | 0 |
+| ±1.0 px | 2.28e-15 | 0.062135 | 0 | 0 | 0 |
+| ±2.0 px | 4.13e-15 | 0.062135 | 0 | 0 | 0 |
+| Unbounded | 3.50e-15 | 0.062135 | 0 | 0 | 0 |
+
+Each condition contains three starts per model. The integrated-model errors
+are at numerical precision for this correctly specified, noiseless synthetic
+scene. The centre-sampled model remains near 0.0621 px across all four bound
+widths. No bound hits or source swaps occurred in these informed-start runs.
+The result therefore suggests that the observed difference in this particular
+scene is not an artefact of the ±0.5-pixel bound width. It does **not** establish
+robust blind localization, noisy performance, or generalization to other scenes.
+
+A separate detector-uniform, unbounded initialization diagnostic has now been
+added to the regression suite. Its result is pending the latest workflow run;
+no conclusion about convergence from detector-wide starts is made here.
