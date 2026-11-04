@@ -787,19 +787,30 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
 
     def test_malformed_choice_types_raise_value_error_without_mutation(self):
         case = self.make_case()
-        for kwargs in (
-            {"to_status": [], "outcome": None, "closure_disposition": None},
-            {"to_status": "pending_human_review", "outcome": [], "closure_disposition": None},
-            {"to_status": "closed", "outcome": None, "closure_disposition": []},
-        ):
-            before = deepcopy(case)
-            with self.subTest(kwargs=kwargs):
-                with self.assertRaises(ValueError):
-                    transition_case(
-                        case, actor="reviewer-a", reason="Malformed fixture input.",
-                        **kwargs,
-                    )
-                self.assertEqual(case, before)
+        before = deepcopy(case)
+        with self.assertRaises(ValueError):
+            transition_case(
+                case, to_status=[], actor="reviewer-a",
+                reason="Malformed transition target.",
+            )
+        self.assertEqual(case, before)
+
+        review_case = self.to_review(self.make_case())
+        before = deepcopy(review_case)
+        with self.assertRaises(ValueError):
+            transition_case(
+                review_case, to_status="outcome_recorded", outcome=[],
+                actor="reviewer-a", reason="Malformed outcome category.",
+            )
+        self.assertEqual(review_case, before)
+
+        before = deepcopy(review_case)
+        with self.assertRaises(ValueError):
+            transition_case(
+                review_case, to_status="closed", closure_disposition=[],
+                actor="reviewer-a", reason="Malformed closure disposition.",
+            )
+        self.assertEqual(review_case, before)
 
         outcome_case = self.to_outcome(self.make_case())
         for bad_result in ([], {}):
@@ -847,6 +858,43 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
                 malformed_events, actor="synthetic-subject",
                 reason="Malformed challenge event container.",
             )
+
+    def test_malformed_decisions_and_challenge_status_raise_value_error(self):
+        request = self.make_post_closure_request()
+        before = deepcopy(request)
+        with self.assertRaises(ValueError):
+            record_post_closure_review_decision(
+                request, decision=[], actor="reviewer-a",
+                reviewer_conflict_check="Synthetic fixture only.",
+                reason="Malformed decision value.",
+                evidence_limitations="Synthetic only.",
+                next_steps="None.",
+            )
+        self.assertEqual(request, before)
+
+        accepted = self.accepted_reopening_request()
+        before = deepcopy(accepted)
+        with self.assertRaises(ValueError):
+            create_reopening_decision_record(
+                accepted, decision=[], actor="reviewer-a",
+                reviewer_conflict_check="Synthetic fixture only.",
+                reason="Malformed decision value.",
+                scope="Synthetic scope.",
+                evidence_limitations="Synthetic only.",
+                next_steps="None.",
+                authority_basis="Not verified.",
+            )
+        self.assertEqual(accepted, before)
+
+        challenge_case = self.to_outcome(self.make_case())
+        challenge_case["status"] = []
+        before = deepcopy(challenge_case)
+        with self.assertRaisesRegex(ValueError, "case status must be a string"):
+            record_challenge(
+                challenge_case, actor="synthetic-subject",
+                reason="Malformed challenge status.",
+            )
+        self.assertEqual(challenge_case, before)
 
     def test_input_case_is_not_mutated(self):
         case = self.make_case()
