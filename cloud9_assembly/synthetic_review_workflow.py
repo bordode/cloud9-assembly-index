@@ -310,6 +310,13 @@ def create_reopening_decision_record(
         raise ValueError("a post-closure request decision must be recorded first")
     if request.get("decision") != "accepted_for_reopening_review":
         raise ValueError("reopening decision requires acceptance for reopening review")
+    request_decision_record = request.get("decision_record")
+    if not isinstance(request_decision_record, dict):
+        raise ValueError("reopening decision requires an embedded post-closure decision record")
+    if request_decision_record.get("decision") != request.get("decision"):
+        raise ValueError("embedded decision record must match the request decision")
+    if request_decision_record.get("does_not_reopen_original_case") is not True:
+        raise ValueError("embedded decision record must explicitly preserve the original case closure")
     closure_snapshot = request.get("original_closure_snapshot")
     if not isinstance(closure_snapshot, dict):
         raise ValueError("reopening decision requires an original closure snapshot")
