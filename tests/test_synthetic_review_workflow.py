@@ -315,6 +315,58 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
         self.assertIs(record["automated_restriction"], False)
         self.assertEqual(record["external_actions"], [])
 
+    def test_reopening_decision_rejects_missing_or_inconsistent_embedded_request_decision(self):
+        baseline = self.accepted_reopening_request()
+        cases = []
+
+        missing_record = deepcopy(baseline)
+        missing_record["decision_record"] = None
+        cases.append((missing_record, "embedded post-closure decision record"))
+
+        mismatched_record = deepcopy(baseline)
+        mismatched_record["decision_record"]["decision"] = "inconclusive"
+        cases.append((mismatched_record, "must match the request decision"))
+
+        closure_not_preserved = deepcopy(baseline)
+        closure_not_preserved["decision_record"]["does_not_reopen_original_case"] = False
+        cases.append((closure_not_preserved, "preserve the original case closure"))
+
+        for malformed, message in cases:
+            before = deepcopy(malformed)
+            with self.subTest(message=message):
+                with self.assertRaisesRegex(ValueError, message):
+                    create_reopening_decision_record(
+                        malformed, decision="reopening_authorized",
+                        actor="authority-label-not-verified",
+                        reviewer_conflict_check="Not assessed; synthetic fixture only.",
+                        reason="Synthetic decision records a limited procedural review.",
+                        scope="Review the reported notice-access barrier only.",
+                        evidence_limitations="Synthetic fixture only; no external evidence verified.",
+                        next_steps="No external action; retain the original case closure.",
+                        authority_basis="Synthetic policy fixture; not a verified delegation.",
+                    )
+                self.assertEqual(malformed, before)
+
+    def test_reopening_decision_rejects_missing_request_linkage_ids(self):
+        baseline = self.accepted_reopening_request()
+        for field, value in (("request_id", ""), ("original_case_id", None)):
+            malformed = deepcopy(baseline)
+            malformed[field] = value
+            before = deepcopy(malformed)
+            with self.subTest(field=field):
+                with self.assertRaisesRegex(ValueError, field):
+                    create_reopening_decision_record(
+                        malformed, decision="reopening_authorized",
+                        actor="authority-label-not-verified",
+                        reviewer_conflict_check="Not assessed; synthetic fixture only.",
+                        reason="Synthetic decision records a limited procedural review.",
+                        scope="Review the reported notice-access barrier only.",
+                        evidence_limitations="Synthetic fixture only; no external evidence verified.",
+                        next_steps="No external action; retain the original case closure.",
+                        authority_basis="Synthetic policy fixture; no verified delegation.",
+                    )
+                self.assertEqual(malformed, before)
+
     def test_reopening_decision_snapshots_are_independent_of_later_request_mutation(self):
         case = self.to_outcome(self.make_case())
         closed = transition_case(
@@ -777,6 +829,30 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
                 authority_basis="Not verified.",
             )
 
+        case = self.make_case()
+        case["synthetic_only"] = 1
+        with self.assertRaisesRegex(ValueError, "synthetic case record"):
+            transition_case(
+                case, to_status="pending_human_review", actor="reviewer-a",
+                reason="Reject a truthy non-boolean marker.",
+            )
+
+        barrier_case = self.to_review(self.make_case())
+        barrier_case["synthetic_only"] = 1
+        with self.assertRaisesRegex(ValueError, "synthetic case record"):
+            record_participation_barrier(
+                barrier_case, barrier="Fictional access barrier",
+                actor="reviewer-a", reason="Reject a truthy non-boolean marker.",
+            )
+
+        notice_case = self.to_notice_issued(self.to_outcome(self.make_case()))
+        notice_case["synthetic_only"] = 1
+        with self.assertRaisesRegex(ValueError, "synthetic case record"):
+            record_notice_result(
+                notice_case, result="failed", actor="reviewer-a",
+                reason="Reject a truthy non-boolean marker.",
+            )
+
         case = self.to_outcome(self.make_case())
         case["synthetic_only"] = "yes"
         with self.assertRaisesRegex(ValueError, "synthetic case record"):
@@ -784,6 +860,125 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
                 case, actor="synthetic-subject",
                 reason="Reject a truthy non-boolean marker.",
             )
+
+    def test_malformed_choice_types_raise_value_error_without_mutation(self):
+        case = self.make_case()
+        before = deepcopy(case)
+        with self.assertRaises(ValueError):
+            transition_case(
+                case, to_status=[], actor="reviewer-a",
+                reason="Malformed transition target.",
+            )
+        self.assertEqual(case, before)
+
+        review_case = self.to_review(self.make_case())
+        before = deepcopy(review_case)
+        with self.assertRaises(ValueError):
+            transition_case(
+                review_case, to_status="outcome_recorded", outcome=[],
+                actor="reviewer-a", reason="Malformed outcome category.",
+            )
+        self.assertEqual(review_case, before)
+
+        before = deepcopy(review_case)
+        with self.assertRaises(ValueError):
+            transition_case(
+                review_case, to_status="closed", closure_disposition=[],
+                actor="reviewer-a", reason="Malformed closure disposition.",
+            )
+        self.assertEqual(review_case, before)
+
+        outcome_case = self.to_outcome(self.make_case())
+        for bad_result in ([], {}):
+            before = deepcopy(outcome_case)
+            with self.subTest(result=bad_result):
+                with self.assertRaises(ValueError):
+                    record_notice_result(
+                        outcome_case, result=bad_result, actor="reviewer-a",
+                        reason="Malformed fixture result.",
+                    )
+                self.assertEqual(outcome_case, before)
+
+    def test_malformed_record_lists_raise_value_error_without_mutation(self):
+        case = self.make_case()
+        malformed = deepcopy(case)
+        malformed["events"] = None
+        before = deepcopy(malformed)
+        with self.assertRaisesRegex(ValueError, "events must be a list"):
+            transition_case(
+                malformed, to_status="pending_human_review",
+                actor="reviewer-a", reason="Malformed event container.",
+            )
+        self.assertEqual(malformed, before)
+
+        malformed_barriers = deepcopy(case)
+        malformed_barriers["participation_barriers"] = {}
+        before = deepcopy(malformed_barriers)
+        with self.assertRaisesRegex(ValueError, "participation_barriers must be a list"):
+            record_participation_barrier(
+                malformed_barriers, barrier="Fictional barrier",
+                actor="reviewer-a", reason="Malformed barrier container.",
+            )
+        self.assertEqual(malformed_barriers, before)
+
+        notice_case = self.to_notice_issued(self.to_outcome(self.make_case()))
+        malformed_history = deepcopy(notice_case)
+        malformed_history["notice_result_history"] = None
+        before = deepcopy(malformed_history)
+        with self.assertRaisesRegex(ValueError, "notice_result_history must be a list"):
+            record_notice_result(
+                malformed_history, result="failed", actor="reviewer-a",
+                reason="Malformed notice history.",
+            )
+        self.assertEqual(malformed_history, before)
+
+        challenge_case = self.to_outcome(self.make_case())
+        malformed_events = deepcopy(challenge_case)
+        malformed_events["events"] = "not-a-list"
+        before = deepcopy(malformed_events)
+        with self.assertRaisesRegex(ValueError, "events must be a list"):
+            record_challenge(
+                malformed_events, actor="synthetic-subject",
+                reason="Malformed challenge event container.",
+            )
+        self.assertEqual(malformed_events, before)
+
+    def test_malformed_decisions_and_challenge_status_raise_value_error(self):
+        request = self.make_post_closure_request()
+        before = deepcopy(request)
+        with self.assertRaises(ValueError):
+            record_post_closure_review_decision(
+                request, decision=[], actor="reviewer-a",
+                reviewer_conflict_check="Synthetic fixture only.",
+                reason="Malformed decision value.",
+                evidence_limitations="Synthetic only.",
+                next_steps="None.",
+            )
+        self.assertEqual(request, before)
+
+        accepted = self.accepted_reopening_request()
+        before = deepcopy(accepted)
+        with self.assertRaises(ValueError):
+            create_reopening_decision_record(
+                accepted, decision=[], actor="reviewer-a",
+                reviewer_conflict_check="Synthetic fixture only.",
+                reason="Malformed decision value.",
+                scope="Synthetic scope.",
+                evidence_limitations="Synthetic only.",
+                next_steps="None.",
+                authority_basis="Not verified.",
+            )
+        self.assertEqual(accepted, before)
+
+        challenge_case = self.to_outcome(self.make_case())
+        challenge_case["status"] = []
+        before = deepcopy(challenge_case)
+        with self.assertRaisesRegex(ValueError, "case status must be a string"):
+            record_challenge(
+                challenge_case, actor="synthetic-subject",
+                reason="Malformed challenge status.",
+            )
+        self.assertEqual(challenge_case, before)
 
     def test_input_case_is_not_mutated(self):
         case = self.make_case()
