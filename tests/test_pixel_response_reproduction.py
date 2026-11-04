@@ -1,7 +1,10 @@
 """Tests for the controlled synthetic pixel-response pilot."""
 import unittest
 
-from research.sandbox.pixel_response_reproduction import run_experiment
+from research.sandbox.pixel_response_reproduction import (
+    run_experiment,
+    run_seven_source_experiment,
+)
 
 
 class PixelResponsePilotTests(unittest.TestCase):
@@ -25,6 +28,17 @@ class PixelResponsePilotTests(unittest.TestCase):
         # localize its centre accurately even if their pixel predictions differ.
         self.assertLess(summary["centre"]["max_radial_error_px"], 1e-5)
         self.assertLess(summary["integrated"]["max_radial_error_px"], 1e-6)
+
+    def test_seven_source_scene_exposes_centre_sampling_position_bias(self):
+        result = run_seven_source_experiment(noise_sigma=0.0, seed=20261105)
+        self.assertEqual(result["source_count"], 7)
+        self.assertEqual(result["data_kind"], "synthetic")
+        integrated = result["summaries"]["integrated"]
+        centre = result["summaries"]["centre"]
+        self.assertLess(integrated["max_radial_error_px"], 1e-6)
+        self.assertGreater(centre["mean_radial_error_px"], 0.04)
+        self.assertLess(centre["mean_radial_error_px"], 0.08)
+        self.assertIn("does not reproduce Aimy", result["interpretation"])
 
 
 if __name__ == "__main__":
