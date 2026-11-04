@@ -903,37 +903,45 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
         case = self.make_case()
         malformed = deepcopy(case)
         malformed["events"] = None
+        before = deepcopy(malformed)
         with self.assertRaisesRegex(ValueError, "events must be a list"):
             transition_case(
                 malformed, to_status="pending_human_review",
                 actor="reviewer-a", reason="Malformed event container.",
             )
+        self.assertEqual(malformed, before)
 
         malformed_barriers = deepcopy(case)
         malformed_barriers["participation_barriers"] = {}
+        before = deepcopy(malformed_barriers)
         with self.assertRaisesRegex(ValueError, "participation_barriers must be a list"):
             record_participation_barrier(
                 malformed_barriers, barrier="Fictional barrier",
                 actor="reviewer-a", reason="Malformed barrier container.",
             )
+        self.assertEqual(malformed_barriers, before)
 
         notice_case = self.to_notice_issued(self.to_outcome(self.make_case()))
         malformed_history = deepcopy(notice_case)
         malformed_history["notice_result_history"] = None
+        before = deepcopy(malformed_history)
         with self.assertRaisesRegex(ValueError, "notice_result_history must be a list"):
             record_notice_result(
                 malformed_history, result="failed", actor="reviewer-a",
                 reason="Malformed notice history.",
             )
+        self.assertEqual(malformed_history, before)
 
         challenge_case = self.to_outcome(self.make_case())
         malformed_events = deepcopy(challenge_case)
         malformed_events["events"] = "not-a-list"
+        before = deepcopy(malformed_events)
         with self.assertRaisesRegex(ValueError, "events must be a list"):
             record_challenge(
                 malformed_events, actor="synthetic-subject",
                 reason="Malformed challenge event container.",
             )
+        self.assertEqual(malformed_events, before)
 
     def test_malformed_decisions_and_challenge_status_raise_value_error(self):
         request = self.make_post_closure_request()
