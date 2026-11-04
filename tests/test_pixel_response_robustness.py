@@ -56,7 +56,7 @@ class PixelResponseRobustnessTests(unittest.TestCase):
         for model in ("integrated", "centre"):
             self.assertIn("optimizer_success", result["summaries"][model])
 
-    def test_detector_uniform_unbounded_start_reports_diagnostics(self):
+    def test_detector_uniform_start_is_confined_to_physical_field(self):
         records = []
         for start_index in range(3):
             result = run_case(
@@ -73,6 +73,7 @@ class PixelResponseRobustnessTests(unittest.TestCase):
                     "rmse_radial_error_px": result["summaries"][model]["rmse_radial_error_px"],
                     "assignment_swaps": result["summaries"][model]["assignment_swaps"],
                     "assignment_total_distance_px": result["summaries"][model]["assignment_total_distance_px"],
+                    "max_abs_fitted_coordinate_px": result["summaries"][model]["max_abs_fitted_coordinate_px"],
                 }
                 for model in ("integrated", "centre")
             })
@@ -81,6 +82,7 @@ class PixelResponseRobustnessTests(unittest.TestCase):
         for record in records:
             for model in ("integrated", "centre"):
                 self.assertIn("optimizer_success", record[model])
+                self.assertLessEqual(record[model]["max_abs_fitted_coordinate_px"], 12.0 + 1e-8)
 
     def test_detector_bounds_cannot_be_combined_with_truth_centred_bounds(self):
         with self.assertRaises(ValueError):
