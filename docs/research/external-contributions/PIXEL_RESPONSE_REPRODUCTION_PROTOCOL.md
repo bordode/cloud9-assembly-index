@@ -414,3 +414,39 @@ components; Hungarian assignment still forces a seven-to-seven match; the
 initialization is random rather than detection-informed; and the experiment
 does not yet allow missed or spurious sources. This is a constrained
 localization stress test, not a complete blind source-detection pipeline.
+
+
+### 17.1 Three detector-bounded random-start outcomes (4 November 2026)
+
+The detector-field-bounded, detector-uniform diagnostic completed in Python
+workflow run 41925771611 (commit `a005306`; 35 tests passed). The same three
+observation/start-seed pairs were fitted by both forward models. All six
+optimizer calls reported numerical termination success, and all fitted
+coordinates remained within the detector field. However, optimizer termination
+did not imply successful recovery:
+
+| Start | Integrated radial RMSE (px) | Centre radial RMSE (px) | Integrated swaps | Centre swaps |
+|---|---:|---:|---:|---:|
+| 1 | 8.515 | 8.515 | 6 | 6 |
+| 2 | 4.959 | 4.958 | 6 | 7 |
+| 3 | approximately 0 | 4.958 | 6 | 5 |
+
+Only one of six fits (the integrated model on start 3) recovered the seven
+source positions to numerical precision. The other five fits had large
+localization errors despite remaining inside the physical detector field.
+The two models behaved similarly on starts 1 and 2; the integrated model
+recovered the truth on start 3 while the centre-sampled model did not.
+
+This small three-start diagnostic is **not enough to estimate a reliable
+success rate or claim a general advantage**. It does establish that merely
+adding physical field-of-view bounds does not solve the initialization
+problem. The repeated source-assignment swaps also show why the forced
+seven-to-seven matching must be interpreted alongside the actual spatial
+errors, not as a detection score.
+
+The result motivates a detection-informed initialization stage and a more
+complete evaluation that permits missed and spurious sources. The next
+experiment should use more independent starts and compare a principled
+candidate-detection initializer against detector-uniform random starts,
+while keeping the paired forward-model comparison fair. No noisy-scene
+conclusion is drawn from this noise-free diagnostic.
