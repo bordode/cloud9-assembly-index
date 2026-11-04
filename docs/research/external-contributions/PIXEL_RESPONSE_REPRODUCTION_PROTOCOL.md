@@ -349,3 +349,38 @@ robust blind localization, noisy performance, or generalization to other scenes.
 A separate detector-uniform, unbounded initialization diagnostic has now been
 added to the regression suite. Its result is pending the latest workflow run;
 no conclusion about convergence from detector-wide starts is made here.
+
+
+## 16. Detector-wide unbounded initialization diagnostic (4 November 2026)
+
+Three additional noiseless fits per forward model were started from independently
+uniformly distributed source coordinates across the detector, with no
+truth-centred coordinate bounds. The same observed image and each identical
+initial parameter vector were supplied to the two models in each paired run.
+GitHub Actions run 41920828422 (commit `b591e88`) passed all 34 regression
+tests and emitted the following diagnostics:
+
+| Start | Integrated-model radial RMSE (px) | Centre-model radial RMSE (px) | Integrated swaps | Centre swaps |
+|---|---:|---:|---:|---:|
+| 1 | 1,363,901.13 | 254,900.98 | 7 | 7 |
+| 2 | 509.29 | 6,176,639.56 | 7 | 6 |
+| 3 | 4.25e-15 | 11,011.20 | 6 | 5 |
+
+All six optimizer calls reported numerical termination success, but these
+position errors and assignment permutations show that **optimizer success is
+not localization success**. Only one of the six fits recovered the seven
+positions to numerical precision; the other fits were catastrophically wrong.
+The one-to-one assignment reports the best permutation among the seven fitted
+components, but cannot repair a fit that has moved components far from the
+true scene or become degenerate.
+
+This is a negative but useful result: simply removing truth-centred bounds and
+randomizing starts does not create a reliable blind source-localization method.
+The next method-development step is to constrain candidate source coordinates
+to the physical detector field (rather than to known truth neighbourhoods),
+use a defensible initialization/detection stage, monitor amplitude/background
+parameter degeneracy, and report residual norms and parameter-bound hits.
+A true blind-detection evaluation must also allow missed and spurious sources;
+a forced seven-to-seven assignment is not enough. The controlled ±0.5 to
+unbounded truth-jitter sweep remains a separate, informed-start sensitivity
+result and must not be conflated with this detector-wide diagnostic.
