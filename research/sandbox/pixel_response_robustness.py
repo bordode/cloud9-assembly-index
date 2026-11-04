@@ -10,6 +10,7 @@ import json
 
 import numpy as np
 from scipy.optimize import least_squares, linear_sum_assignment
+from scipy.ndimage import gaussian_filter, maximum_filter
 
 from research.sandbox.pixel_response_reproduction import (
     IMAGE_SIZE,
@@ -471,3 +472,147 @@ def run_robustness_sweep() -> dict:
 
 if __name__ == "__main__":
     print(json.dumps(run_robustness_sweep(), indent=2, sort_keys=True))
+
+
+def run_image_peak_detection(
+    *,
+    noise_model: str = "none",
+    noise_level: float = 0.0,
+    seed: int = 20261500,
+    smoothing_sigma_px: float = 0.8,
+    threshold_fractions: tuple[float, ...] = (0.05, 0.10, 0.20),
+    minimum_separation_px: float = 1.25,
+) -> dict:
+    """Detect candidate peaks from the observation without using source truth.
+
+    Truth coordinates are used only after detection to score candidate
+    coverage. The detector does not force a seven-candidate output and does
+    not run the seven-component fitter when the candidate count is wrong.
+    """
+    if noise_model not in {"none", "gaussian_read", "poisson"}:
+        raise ValueError("unsupported noise_model")
+    if noise_level < 0:
+        raise ValueError("noise_level must be non-negative")
+    if noise_model == "gaussian_read" and noise_level <= 0:
+        raise ValueError("Gaussian read-noise standard deviation must be positive")
+    if smoothing_sigma_px < 0:
+        raise ValueError("smoothing_sigma_px must be non-negative")
+    if minimum_separation_px <= 0:
+        raise ValueError("minimum_separation_px must be positive")
+    if not threshold_fractions or any(
+        fraction <= 0 or fraction >= 1 for fraction in threshold_fractions
+    ):
+        raise ValueError("threshold fractions must lie strictly between 0 and 1")
+
+    truth_positions = SEVEN_SOURCE_POSITIONS.copy()
+    clean = _scene_model(
+        truth_positions, SEVEN_SOURCE_AMPLITUDES.copy(), 2.0, "integrated",
+        SIGMA_PIXELS, IMAGE_SIZE,
+    )
+    rng = np.random.default_rng(seed)
+    if noise_model == "none":
+        observed = clean.copy()
+    elif noise_model == "gaussian_read":
+        observed = clean + rng.normal(0.0, noise_level, clean.shape)
+    else:
+        observed = rng.poisson(np.clip(clean, 0.0, None)).astype(float)
+
+    filtered = (
+        gaussian_filter(observed, smoothing_sigma_px)
+        if smoothing_sigma_px > 0 else observed.copy()
+    )
+    background = float(np.percentile(filtered, 20))
+    dynamic_range = float(filtered.max() - background)
+    if not np.isfinite(dynamic_range) or dynamic_range <= 0:
+        raise ValueError("observation has no positive detectable dynamic range")
+
+    threshold_results = []
+    for fraction in threshold_fractions:
+        threshold = background + fraction * dynamic_range
+        local_max = filtered == maximum_filter(filtered, size=3, mode="nearest")
+        coordinates = np.argwhere(local_max & (filtered >= threshold))
+        ranked = sorted(
+            ((float(filtered[y, x]), float(x), float(y)) for y, x in coordinates),
+            reverse=True,
+        )
+        selected = []
+        for intensity, x, y in ranked:
+            if all(
+                np.hypot(x - candidate["x_px"], y - candidate["y_px"])
+                >= minimum_separation_px
+                for candidate in selected
+            ):
+                selected.append({
+                    "x_px": x,
+                    "y_px": y,
+                    "filtered_intensity": intensity,
+                })
+
+        if selected:
+            candidate_xy = np.asarray(
+                [[item["x_px"], item["y_px"]] for item in selected], dtype=float
+            )
+            distances = np.linalg.norm(
+                truth_positions[:, None, :] - candidate_xy[None, :, :], axis=2
+            )
+            truth_idx, candidate_idx = linear_sum_assignment(distances)
+            matched = [
+                {
+                    "truth_source": int(t + 1),
+                    "candidate_index": int(c),
+                    "distance_px": float(distances[t, c]),
+                }
+                for t, c in zip(truth_idx, candidate_idx)
+                if distances[t, c] <= 1.0
+            ]
+            covered_truth = {item["truth_source"] for item in matched}
+            matched_candidates = {item["candidate_index"] for item in matched}
+        else:
+            matched = []
+            covered_truth = set()
+            matched_candidates = set()
+
+        threshold_results.append({
+            "threshold_fraction_of_dynamic_range": float(fraction),
+            "absolute_threshold": float(threshold),
+            "candidate_count": len(selected),
+            "candidates": selected,
+            "truth_matches_within_1px": matched,
+            "matched_truth_count": len(covered_truth),
+            "missed_truth_sources": [
+                index + 1 for index in range(len(truth_positions))
+                if index + 1 not in covered_truth
+            ],
+            "unmatched_candidate_indices": [
+                index for index in range(len(selected))
+                if index not in matched_candidates
+            ],
+            "fit_readiness": (
+                "candidate_count_is_seven_but_fit_not_yet_run"
+                if len(selected) == 7
+                else "not_ready_candidate_count_differs_from_seven"
+            ),
+        })
+
+    return {
+        "experiment": "C9-PIXEL-RESPONSE-IMAGE-PEAK-DETECTION-001",
+        "status": "synthetic_observation_only_candidate_detection",
+        "data_kind": "synthetic",
+        "noise_model": noise_model,
+        "noise_level": noise_level,
+        "observation_seed": seed,
+        "smoothing_sigma_px": smoothing_sigma_px,
+        "minimum_separation_px": minimum_separation_px,
+        "threshold_policy": "Fractions of observed filtered dynamic range; no truth-derived threshold.",
+        "initialization_policy": "Candidate coordinates come only from local maxima in the observed image.",
+        "truth_use_policy": "Truth coordinates are used only after detection for evaluation, never for candidate generation.",
+        "source_count_expected_for_evaluation_only": 7,
+        "threshold_results": threshold_results,
+        "limitations": [
+            "Synthetic seven-source geometry only; not astronomical-image validation.",
+            "Candidate detection is not yet a complete source birth/death fitting pipeline.",
+            "Exactly seven candidates does not prove correct source identities or reliable fit initialization.",
+            "One observation per noise condition; no repeated-noise population estimate.",
+            "The 1 px matching radius is an explicit diagnostic convention, not a physical detection guarantee.",
+        ],
+    }
