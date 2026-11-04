@@ -1,4 +1,5 @@
 """Regression checks for the staged pixel-response sensitivity suite."""
+import math
 import unittest
 
 from research.sandbox.pixel_response_robustness import run_case
@@ -37,7 +38,7 @@ class PixelResponseRobustnessTests(unittest.TestCase):
         for model in ("integrated", "centre"):
             self.assertTrue(
                 all(
-                    value == value
+                    math.isfinite(value)
                     for value in result["summaries"][model].values()
                 )
             )
