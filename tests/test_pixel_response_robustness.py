@@ -53,6 +53,29 @@ class PixelResponseRobustnessTests(unittest.TestCase):
         for model in ("integrated", "centre"):
             self.assertIn("optimizer_success", result["summaries"][model])
 
+    def test_detector_uniform_unbounded_start_reports_diagnostics(self):
+        result = run_case(
+            noise_model="none", seed=20261450,
+            initialization_seed=20261451,
+            position_bound_half_width=None,
+            initialization_policy="detector_uniform",
+        )
+        summary = {
+            model: {
+                "optimizer_success": result["summaries"][model]["optimizer_success"],
+                "nfev": result["summaries"][model]["nfev"],
+                "rmse_radial_error_px": result["summaries"][model]["rmse_radial_error_px"],
+                "assignment_swaps": result["summaries"][model]["assignment_swaps"],
+                "assignment_total_distance_px": result["summaries"][model]["assignment_total_distance_px"],
+            }
+            for model in ("integrated", "centre")
+        }
+        print("DETECTOR_UNIFORM_START_RESULT=" + json.dumps(summary, sort_keys=True))
+        self.assertEqual(result["initialization_policy"], "detector_uniform")
+        self.assertIsNone(result["position_bound_half_width_px"])
+        for model in ("integrated", "centre"):
+            self.assertGreaterEqual(result["summaries"][model]["nfev"], 1)
+
     def test_position_bound_width_is_validated(self):
         with self.assertRaises(ValueError):
             run_case(position_bound_half_width=0.0)
