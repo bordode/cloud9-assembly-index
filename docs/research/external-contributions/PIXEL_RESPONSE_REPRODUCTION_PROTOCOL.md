@@ -239,3 +239,27 @@ original experiment. A later initialization study should vary starting
 positions independently, retain source identity without silently using the
 true positions as tight bounds, and report convergence failures as well as
 successful fits.
+
+
+### 12.1 Fixed-observation initialization sensitivity
+
+A complementary function, `run_initialization_trials`, now holds the generated
+observation fixed while varying the initialization seed. This is paired with
+the repeated-noise design above:
+
+- repeated-noise trials: vary the observation/noise seed, hold initialization
+  fixed;
+- initialization trials: hold the observation seed fixed, vary the starting
+  positions.
+
+A three-start regression smoke test checks that the observation seed remains
+constant and the initialization seeds vary as intended. This test verifies
+experimental bookkeeping and finite output, not optimizer globality or
+scientific performance.
+
+**Remaining limitation:** both controls still use source-specific ±0.5-pixel
+bounds centred on the known truth. Varying starting positions within those
+bounds is not a test of blind source association or unconstrained localization.
+A later experiment should widen or remove these bounds, introduce explicit
+source-association handling, and report failures, source swaps, and convergence
+diagnostics rather than silently excluding difficult fits.
