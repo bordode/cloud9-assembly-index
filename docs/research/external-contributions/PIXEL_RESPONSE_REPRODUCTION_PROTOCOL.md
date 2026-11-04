@@ -297,3 +297,27 @@ should generate starts independently of the true source coordinates. Even
 with assignment matching, a fit with missing, duplicated, or spurious sources
 requires an explicit detection/association policy rather than forcing a
 one-to-one seven-source match.
+
+
+## 14. Position-bound sweep implementation (4 November 2026)
+
+The robustness runner now includes `run_position_bound_sweep`, which executes
+paired integrated-versus-centre fits at ±0.5, ±1, ±2 pixels, and unbounded
+coordinates. It holds the generated observation fixed and varies the
+initialization seed across starts. It records per-model optimizer success or
+failure, radial localization error, source-assignment permutations, source
+swaps, bound hits, and evaluation counts. Non-successful optimizer terminations
+are retained as records rather than causing the entire sweep to abort.
+
+An additional `detector_uniform` initialization policy starts the seven model
+components independently across the detector field, without using the true
+source coordinates to seed their positions. This is a stronger initialization
+stress test, but it is not yet a complete blind-detection experiment: the
+model is still told to fit exactly seven components, and the one-to-one
+Hungarian assignment still assumes seven true sources.
+
+The new regression test executes a small one-start-per-bound smoke sweep. It
+checks that all four bound conditions and both models are represented. This
+CI test is not a substitute for the multi-start scientific run. The full
+sweep's quantitative results must be generated and reviewed separately before
+any conclusion about localization stability or the advantage of either model.
