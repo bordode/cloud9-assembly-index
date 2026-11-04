@@ -5,6 +5,7 @@ import unittest
 
 from research.sandbox.pixel_response_robustness import (
     run_case,
+    run_image_peak_detection,
     run_initialization_trials,
     run_repeated_noise_trials,
     run_position_bound_sweep,
@@ -196,6 +197,47 @@ class PixelResponseRobustnessTests(unittest.TestCase):
                     ]["mean_across_trials"]
                 )
             )
+
+
+    def test_image_peak_candidates_are_observation_derived_and_not_forced_to_seven(self):
+        result = run_image_peak_detection(
+            noise_model="none",
+            seed=20261500,
+            threshold_fractions=(0.05, 0.10, 0.20),
+        )
+        self.assertEqual(
+            result["status"], "synthetic_observation_only_candidate_detection"
+        )
+        self.assertIn("observation_seed", result)
+        self.assertIn("truth_use_policy", result)
+        self.assertIn("never for candidate generation", result["truth_use_policy"])
+        self.assertEqual(len(result["threshold_results"]), 3)
+        for threshold_result in result["threshold_results"]:
+            self.assertEqual(
+                threshold_result["candidate_count"],
+                len(threshold_result["candidates"]),
+            )
+            self.assertLessEqual(threshold_result["matched_truth_count"], 7)
+            self.assertEqual(
+                threshold_result["matched_truth_count"]
+                + len(threshold_result["missed_truth_sources"]),
+                7,
+            )
+            self.assertIn(
+                threshold_result["fit_readiness"],
+                {
+                    "candidate_count_is_seven_but_fit_not_yet_run",
+                    "not_ready_candidate_count_differs_from_seven",
+                },
+            )
+        print(
+            "IMAGE_PEAK_DETECTION_RESULT="
+            + json.dumps(result["threshold_results"], sort_keys=True)
+        )
+
+    def test_image_peak_detection_rejects_invalid_thresholds(self):
+        with self.assertRaises(ValueError):
+            run_image_peak_detection(threshold_fractions=(0.0, 0.1))
 
 
 if __name__ == "__main__":
