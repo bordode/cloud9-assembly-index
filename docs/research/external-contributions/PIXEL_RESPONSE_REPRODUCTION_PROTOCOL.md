@@ -172,3 +172,40 @@ Gaussian read noise and Poisson counting noise as separately identified
 conditions; test PSF-width mismatch; and report convergence and source-wise
 bias distributions. Only after these controls should this be compared more
 closely with the reported seven-star case.
+
+
+## 11. Staged robustness implementation (4 November 2026)
+
+A separate sensitivity runner is now present at
+[`research/sandbox/pixel_response_robustness.py`](../../../research/sandbox/pixel_response_robustness.py),
+with smoke/regression checks in
+[`tests/test_pixel_response_robustness.py`](../../../tests/test_pixel_response_robustness.py).
+It varies one factor at a time around the seven-source synthetic scene:
+
+- source-spacing scale factors of 0.8, 1.0, and 1.25;
+- common sub-pixel phase offsets;
+- Gaussian read-noise standard deviations of 1 and 3 counts;
+- Poisson counting noise;
+- fitting PSF widths of 1.2 and 1.4 pixels against a 1.3-pixel truth.
+
+For each case, both detector models receive the same observed image, initial
+parameters, source-specific bounds, and optimizer settings. The runner records
+signed x/y errors and per-source radial errors as well as aggregate position
+metrics and least-squares cost.
+
+**Noise treatment:** Gaussian read-noise residuals are divided by the stated
+read-noise standard deviation. Poisson cases use signed square-root Poisson
+deviance residuals, with a non-negative fitted background. These are
+noise-appropriate objectives for the two separate noise assumptions; the
+Gaussian and Poisson cases are not claimed to have matched signal-to-noise.
+
+**Important status:** the sensitivity runner and tests have been added, but
+the full sweep has not yet been independently executed and its numerical
+outcomes are not reported here. The current suite uses one fixed realization
+per noisy condition, one base source arrangement, and source-specific
+±0.5-pixel coordinate bounds centred on the known truth. These bounds supply
+source-neighbourhood information and may constrain the localization problem.
+The present work therefore remains a controlled sensitivity study, not a
+general benchmark. Further work should include multiple noise realizations,
+broader or independently initialized fits, additional geometries, and
+uncertainty-coverage analysis before making population-level claims.
