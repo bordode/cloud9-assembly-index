@@ -164,6 +164,7 @@ def run_case(
             "optimizer_status": int(result.status),
             "nfev": int(result.nfev),
             "position_bound_hits": position_bound_hits,
+            "max_abs_fitted_coordinate_px": float(np.max(np.abs(fitted_raw))),
             "assignment_total_distance_px": float(distances[truth_indices, fitted_indices].sum()),
             "assignment_permutation": [int(i) for i in fitted_indices],
             "assignment_swaps": int(sum(i != j for i, j in enumerate(fitted_indices))),
