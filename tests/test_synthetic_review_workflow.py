@@ -785,6 +785,69 @@ class SyntheticReviewWorkflowTests(unittest.TestCase):
                 reason="Reject a truthy non-boolean marker.",
             )
 
+    def test_malformed_choice_types_raise_value_error_without_mutation(self):
+        case = self.make_case()
+        for kwargs in (
+            {"to_status": [], "outcome": None, "closure_disposition": None},
+            {"to_status": "pending_human_review", "outcome": [], "closure_disposition": None},
+            {"to_status": "closed", "outcome": None, "closure_disposition": []},
+        ):
+            before = deepcopy(case)
+            with self.subTest(kwargs=kwargs):
+                with self.assertRaises(ValueError):
+                    transition_case(
+                        case, actor="reviewer-a", reason="Malformed fixture input.",
+                        **kwargs,
+                    )
+                self.assertEqual(case, before)
+
+        outcome_case = self.to_outcome(self.make_case())
+        for bad_result in ([], {}):
+            before = deepcopy(outcome_case)
+            with self.subTest(result=bad_result):
+                with self.assertRaises(ValueError):
+                    record_notice_result(
+                        outcome_case, result=bad_result, actor="reviewer-a",
+                        reason="Malformed fixture result.",
+                    )
+                self.assertEqual(outcome_case, before)
+
+    def test_malformed_record_lists_raise_value_error_without_mutation(self):
+        case = self.make_case()
+        malformed = deepcopy(case)
+        malformed["events"] = None
+        with self.assertRaisesRegex(ValueError, "events must be a list"):
+            transition_case(
+                malformed, to_status="pending_human_review",
+                actor="reviewer-a", reason="Malformed event container.",
+            )
+
+        malformed_barriers = deepcopy(case)
+        malformed_barriers["participation_barriers"] = {}
+        with self.assertRaisesRegex(ValueError, "participation_barriers must be a list"):
+            record_participation_barrier(
+                malformed_barriers, barrier="Fictional barrier",
+                actor="reviewer-a", reason="Malformed barrier container.",
+            )
+
+        notice_case = self.to_notice_issued(self.to_outcome(self.make_case()))
+        malformed_history = deepcopy(notice_case)
+        malformed_history["notice_result_history"] = None
+        with self.assertRaisesRegex(ValueError, "notice_result_history must be a list"):
+            record_notice_result(
+                malformed_history, result="failed", actor="reviewer-a",
+                reason="Malformed notice history.",
+            )
+
+        challenge_case = self.to_outcome(self.make_case())
+        malformed_events = deepcopy(challenge_case)
+        malformed_events["events"] = "not-a-list"
+        with self.assertRaisesRegex(ValueError, "events must be a list"):
+            record_challenge(
+                malformed_events, actor="synthetic-subject",
+                reason="Malformed challenge event container.",
+            )
+
     def test_input_case_is_not_mutated(self):
         case = self.make_case()
         original_events = list(case["events"])
