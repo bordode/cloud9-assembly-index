@@ -143,6 +143,7 @@ The scientific and ethical strands are therefore connected by questions about co
 | Architecture of Enmity | `docs/ethics/Architecture_of_Enmity.pdf` | Framework for moral exclusion |
 | AIHR Paper | `docs/ethics/AIHR_Paper.docx` | AI human-rights framework |
 | Cognitive Stewardship | `data/entries/c9_entry_2026_gov_001.json` | Governance analysis |
+| Fair Attribution and Watermark Handling | `docs/ethics/FAIR_ATTRIBUTION_AND_WATERMARK_HANDLING_POLICY.md` | Proposed policy separating contribution, provenance, watermark signals, and authorship |
 
 ---
 
