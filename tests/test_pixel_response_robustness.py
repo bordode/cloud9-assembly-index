@@ -6,6 +6,7 @@ from research.sandbox.pixel_response_robustness import (
     run_case,
     run_initialization_trials,
     run_repeated_noise_trials,
+    run_position_bound_sweep,
 )
 
 
@@ -40,9 +41,36 @@ class PixelResponseRobustnessTests(unittest.TestCase):
             self.assertEqual(summary["position_bound_hits"], 0)
             self.assertTrue(math.isfinite(summary["assignment_total_distance_px"]))
 
+    def test_detector_uniform_initialization_is_recorded(self):
+        result = run_case(
+            noise_model="none", seed=20261110,
+            initialization_seed=20261111,
+            position_bound_half_width=None,
+            initialization_policy="detector_uniform",
+        )
+        self.assertEqual(result["initialization_policy"], "detector_uniform")
+        for model in ("integrated", "centre"):
+            self.assertIn("optimizer_success", result["summaries"][model])
+
     def test_position_bound_width_is_validated(self):
         with self.assertRaises(ValueError):
             run_case(position_bound_half_width=0.0)
+
+    def test_position_bound_sweep_preserves_all_paired_runs(self):
+        result = run_position_bound_sweep(
+            noise_model="none", starts_per_bound=1,
+            observation_seed=20261420,
+            initialization_seed_start=20261430,
+        )
+        self.assertEqual(result["bound_widths_px"], [0.5, 1.0, 2.0, None])
+        self.assertEqual(len(result["runs"]), 4)
+        self.assertEqual(result["status"], "synthetic_position_bound_sweep")
+        for width in ("0.5", "1.0", "2.0", "None"):
+            for model in ("integrated", "centre"):
+                self.assertEqual(result["aggregate"][width][model]["runs"], 1)
+                self.assertGreaterEqual(
+                    result["aggregate"][width][model]["optimizer_successes"], 0
+                )
 
     def test_psf_mismatch_is_explicit(self):
         result = run_case(fit_sigma=1.2, seed=20261110)
