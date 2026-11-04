@@ -487,3 +487,42 @@ Several controls are required before comparing these values quantitatively with 
 The strongest provisional conclusion is therefore narrow: **the reported cross-scene results do not support treating sigma * b ≈ 0.075 as a universal law.** They motivate a controlled study of scene dependence and noise convention. They do not yet establish a universal exponent, a contrast-only mechanism, or a general high-noise recovery branch.
 
 This section records Kimi's reported sandbox observations separately from Aimy's original results and Cloud-9's own independently executed experiments. It does not claim that Cloud-9 has rerun or verified Kimi's sweep.
+
+
+## 19. Observation-derived peak-candidate pilot (4 November 2026)
+
+The next Cloud-9 implementation step adds an observation-only local-maximum
+candidate detector to `research/sandbox/pixel_response_robustness.py`,
+exposed as `run_image_peak_detection()`.
+
+The detector:
+- generates the same controlled seven-source synthetic observation used by
+  the pixel-response pilot, with optional Gaussian-read or Poisson noise;
+- applies a declared Gaussian smoothing width and a small local-maximum
+  neighbourhood;
+- ranks peaks by filtered observed intensity and applies a declared
+  minimum-separation rule;
+- repeats detection over explicit fractions of the observed filtered dynamic
+  range;
+- does not use true source coordinates, true amplitudes, or a forced
+  seven-candidate list to generate candidates;
+- uses the known truth coordinates only after detection to score candidate
+  coverage, missed truth sources, and unmatched candidates within a declared
+  1 px diagnostic matching radius.
+
+The function deliberately does **not** launch the seven-component optimizer
+yet. If the detected candidate count differs from seven, it reports that the
+case is not ready for the fixed-seven-component fit rather than silently
+adding, deleting, or moving candidates using hidden truth. Even exactly seven
+candidates are marked as fit-not-yet-run: candidate count alone does not prove
+correct source identity or reliable initialization.
+
+This is an implementation and regression-test milestone, not an experimental
+finding. The threshold sweep's actual candidate counts and coverage must be
+read from the test/workflow output before drawing conclusions. A later stage
+can add fitting only after the detection policy is shown to behave sensibly
+across thresholds and noise realizations, with false positives, missed
+sources, duplicate candidates, and assignment swaps retained in the record.
+
+The pilot remains synthetic and does not reproduce Aimy's original seven-star
+experiment or establish astronomical detection performance.
