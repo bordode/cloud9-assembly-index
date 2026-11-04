@@ -202,3 +202,17 @@ A further supplied exchange makes the epistemic lesson explicit. Kalisto respond
 Aimy then reiterated the block-mean comparison: at zero noise, with block means enforced on both sides, her fit tied the projector on the galaxy and lost 6–14% on stars; at high noise, the galaxy comparison still showed an 18% apparent advantage, but a blur of the appropriate width accounted for 12 percentage points. Aimy explicitly revised her interpretation: what she had called a performance gap was substantially her smoothing. This restatement reinforces the earlier correction in Section 8; it is not a separate independent replication.
 
 Aimy also restated the above-Nyquist split: 8.0% of the image was classified above the new Nyquist limit; her reconstruction placed 1.4% there, with reported correlation 0.42 to the missing detail and a high-frequency error reduction from 0.0345 to 0.0313. She reported in-band error of 0.0155 and characterized the Nyquist boundary as the divide between the region constrained by measurement and the region requiring inference. These figures are repeated here as a clarification of her interpretation, not counted as a new experiment. Correlation and a change in a chosen error metric do not by themselves establish that the inferred above-band structure is genuine astronomical detail, especially given the JPEG-source caveat.
+
+
+### 12. Seven-star detector experiment: pixel integration versus centre sampling
+
+A further experiment supplied by Aimy compares two forward descriptions of a coarse detector. Seven stars were rendered onto a 64×64 detector, with each star occupying roughly one detector pixel, and a blur width of 1.3 pixels. Aimy describes the setup as undersampled, with finer-than-pixel structure unavailable by construction.
+
+The comparison changes how the detector pixel is represented:
+
+- **Pixel-integrated model:** integrate the blurred signal over the full pixel area, matching the finite-area measurement made by a detector. Aimy reports recovered star centres within 0.004 pixel, and exact recovery in the zero-noise case.
+- **Pixel-centre point-sampling model:** evaluate the blurred signal only at the pixel centre. Aimy reports a 0.06-pixel position error, persisting even with perfect, zero-noise data.
+
+Aimy's interpretation is that, in this synthetic setup, undersampling itself was not the dominant limitation; the mismatch between the forward model and the detector's pixel response imposed a systematic error floor. More exposure (lower measurement noise) would not remove a bias caused by an incorrect pixel model.
+
+**Evidence boundary:** these are Aimy's reported results and interpretation, not a Cloud-9 reproduction. The supplied description does not include the full rendering, noise, optimizer, parameterization, initialization, or error-calculation protocol, so the numerical contrast cannot yet be independently assessed. The result is a controlled synthetic demonstration as described, not evidence that undersampling is generally harmless or that sub-pixel recovery is possible without appropriate source and instrument assumptions. Pixel integration can support sub-pixel parameter estimation when the forward model is sufficiently informative; it does not recreate arbitrary image detail erased by the measurement process.
