@@ -622,3 +622,84 @@ def run_image_peak_detection(
             "The 1 px matching radius is an explicit diagnostic convention, not a physical detection guarantee.",
         ],
     }
+
+
+
+def run_peak_detection_sensitivity_sweep(
+    *,
+    smoothing_sigmas_px: tuple[float, ...] = (0.0, 0.4, 0.8, 1.2, 1.6),
+    minimum_separations_px: tuple[float, ...] = (0.5, 0.75, 1.0, 1.25, 1.5, 2.0),
+    threshold_fractions: tuple[float, ...] = (0.01, 0.025, 0.05, 0.10, 0.20),
+    noise_model: str = "none",
+    noise_level: float = 0.0,
+    seed: int = 20261500,
+) -> dict:
+    """Map detector behaviour over declared smoothing/separation/threshold grids.
+
+    Every candidate list is generated from the observation alone. Truth is
+    used only by run_image_peak_detection after candidate generation to score
+    coverage. This is a detector-configuration diagnostic, not a fit.
+    """
+    if not smoothing_sigmas_px or any(value < 0 for value in smoothing_sigmas_px):
+        raise ValueError("smoothing sigmas must be a non-empty non-negative grid")
+    if not minimum_separations_px or any(value <= 0 for value in minimum_separations_px):
+        raise ValueError("minimum separations must be a non-empty positive grid")
+    if not threshold_fractions:
+        raise ValueError("threshold grid must not be empty")
+
+    records = []
+    for smoothing_sigma in smoothing_sigmas_px:
+        for separation in minimum_separations_px:
+            result = run_image_peak_detection(
+                noise_model=noise_model,
+                noise_level=noise_level,
+                seed=seed,
+                smoothing_sigma_px=smoothing_sigma,
+                threshold_fractions=threshold_fractions,
+                minimum_separation_px=separation,
+            )
+            for threshold_result in result["threshold_results"]:
+                records.append({
+                    "smoothing_sigma_px": float(smoothing_sigma),
+                    "minimum_separation_px": float(separation),
+                    "threshold_fraction": threshold_result[
+                        "threshold_fraction_of_dynamic_range"
+                    ],
+                    "candidate_count": threshold_result["candidate_count"],
+                    "matched_truth_count": threshold_result["matched_truth_count"],
+                    "missed_truth_count": len(
+                        threshold_result["missed_truth_sources"]
+                    ),
+                    "unmatched_candidate_count": len(
+                        threshold_result["unmatched_candidate_indices"]
+                    ),
+                    "fit_readiness": threshold_result["fit_readiness"],
+                })
+
+    return {
+        "experiment": "C9-PIXEL-RESPONSE-PEAK-DETECTION-SENSITIVITY-001",
+        "status": "synthetic_peak_detection_sensitivity_sweep",
+        "data_kind": "synthetic",
+        "noise_model": noise_model,
+        "noise_level": noise_level,
+        "observation_seed": seed,
+        "smoothing_sigmas_px": list(smoothing_sigmas_px),
+        "minimum_separations_px": list(minimum_separations_px),
+        "threshold_fractions": list(threshold_fractions),
+        "configuration_count": len(smoothing_sigmas_px) * len(minimum_separations_px),
+        "scored_configuration_count": len(records),
+        "candidate_generation_policy": (
+            "Observed-image local maxima only; truth is excluded from candidate generation."
+        ),
+        "scoring_policy": (
+            "Hungarian one-to-one assignment with a declared 1 px matching radius."
+        ),
+        "records": records,
+        "limitations": [
+            "Single synthetic seven-source scene and one observation seed per noise condition.",
+            "Grid results are configuration diagnostics, not estimates of population detection performance.",
+            "The one-to-one 1 px scoring rule is a diagnostic convention.",
+            "No source fitting is attempted, even when seven candidates are found.",
+            "A good candidate count does not establish correct source identity or unbiased positions.",
+        ],
+    }
