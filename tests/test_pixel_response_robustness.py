@@ -218,6 +218,9 @@ class PixelResponseRobustnessTests(unittest.TestCase):
                 len(threshold_result["candidates"]),
             )
             self.assertLessEqual(threshold_result["matched_truth_count"], 7)
+            # Candidate coordinates must be converted from image-array
+            # indices to the detector-centred coordinate frame used by truth.
+            self.assertEqual(threshold_result["matched_truth_count"], 1)
             self.assertEqual(
                 threshold_result["matched_truth_count"]
                 + len(threshold_result["missed_truth_sources"]),
