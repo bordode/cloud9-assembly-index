@@ -526,3 +526,34 @@ sources, duplicate candidates, and assignment swaps retained in the record.
 
 The pilot remains synthetic and does not reproduce Aimy's original seven-star
 experiment or establish astronomical detection performance.
+
+
+## 20. Peak-detector first-run result and coordinate audit (4 November 2026)
+
+The first GitHub Actions execution of the observation-derived peak detector
+completed its regression suite successfully (37 tests). The logged detector
+output at each of the three tested dynamic-range thresholds (5%, 10%, and 20%)
+contained one candidate at image-array coordinate (10, 10), rather than seven.
+This candidate count is evidence that the initial local-maximum configuration
+does not resolve the crowded synthetic arrangement; it is not a source-fit
+result.
+
+An audit of the first output also identified a scoring-coordinate mismatch:
+detector candidates were expressed as image-array indices with the origin at
+the upper-left, whereas the synthetic source truth uses detector-centred
+coordinates. The comparison has now been corrected by subtracting the
+detector centre from candidate x and y before matching. The regression test
+now checks that the central candidate is matched to the central truth source
+under the declared 1 px scoring radius. The corrected run must pass before
+the revised missed-source and unmatched-candidate counts are treated as
+verified.
+
+The one-peak result motivates a detector-sensitivity study, not a claim that
+the scene is intrinsically undetectable. In particular, the smoothing width,
+local-maximum neighbourhood, peak-separation rule, contrast, source overlap,
+and threshold policy can all affect candidate multiplicity. The next step is
+to test a small declared grid of detector settings on the same observation,
+then repeat across noise seeds. Candidate detection and source fitting remain
+separate stages; no seven-component fit should be launched until the
+observation-derived candidate policy is evaluated without truth-based
+candidate repair.
