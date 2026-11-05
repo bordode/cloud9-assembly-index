@@ -6,6 +6,7 @@ import unittest
 from research.sandbox.pixel_response_robustness import (
     run_case,
     run_image_peak_detection,
+    run_peak_detection_sensitivity_sweep,
     run_initialization_trials,
     run_repeated_noise_trials,
     run_position_bound_sweep,
@@ -236,6 +237,31 @@ class PixelResponseRobustnessTests(unittest.TestCase):
         print(
             "IMAGE_PEAK_DETECTION_RESULT="
             + json.dumps(result["threshold_results"], sort_keys=True)
+        )
+
+
+    def test_peak_detection_sensitivity_sweep_records_all_declared_conditions(self):
+        result = run_peak_detection_sensitivity_sweep(
+            smoothing_sigmas_px=(0.0, 0.8),
+            minimum_separations_px=(0.75, 1.25),
+            threshold_fractions=(0.05, 0.20),
+            noise_model="none",
+            seed=20261500,
+        )
+        self.assertEqual(result["status"], "synthetic_peak_detection_sensitivity_sweep")
+        self.assertEqual(result["configuration_count"], 4)
+        self.assertEqual(result["scored_configuration_count"], 8)
+        self.assertEqual(len(result["records"]), 8)
+        self.assertEqual(result["candidate_generation_policy"].find("truth is excluded") >= 0, True)
+        for record in result["records"]:
+            self.assertLessEqual(record["matched_truth_count"], 7)
+            self.assertEqual(
+                record["matched_truth_count"] + record["missed_truth_count"], 7
+            )
+            self.assertGreaterEqual(record["unmatched_candidate_count"], 0)
+        print(
+            "PEAK_DETECTION_SENSITIVITY_SMOKE_RESULT="
+            + json.dumps(result["records"], sort_keys=True)
         )
 
     def test_image_peak_detection_rejects_invalid_thresholds(self):
