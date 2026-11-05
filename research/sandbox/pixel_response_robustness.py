@@ -549,8 +549,14 @@ def run_image_peak_detection(
                 })
 
         if selected:
+            # Detection coordinates are array indices (origin at the
+            # upper-left); the synthetic source model uses detector-centred
+            # coordinates. Convert before comparing with truth.
+            detector_centre = (IMAGE_SIZE - 1) / 2
             candidate_xy = np.asarray(
-                [[item["x_px"], item["y_px"]] for item in selected], dtype=float
+                [[item["x_px"] - detector_centre,
+                  item["y_px"] - detector_centre] for item in selected],
+                dtype=float,
             )
             distances = np.linalg.norm(
                 truth_positions[:, None, :] - candidate_xy[None, :, :], axis=2
