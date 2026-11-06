@@ -14,7 +14,7 @@ from research.sandbox.pixel_response_reproduction import pixel_integrated_gaussi
 class DeblendingGeometryPoissonTests(unittest.TestCase):
     def test_poisson_detector_is_reproducible_and_reports_likelihood(self):
         expected = pixel_integrated_gaussian(
-            0.4, -0.3, 120.0, 1.5, 1.3, size= nine :=  nine if False else 9
+            0.4, -0.3, 120.0, 1.5, 1.3, size=9
         )
         rng = np.random.default_rng(20261731)
         counts = rng.poisson(expected)
@@ -37,13 +37,13 @@ class DeblendingGeometryPoissonTests(unittest.TestCase):
         )
         self.assertIn("gaussian", result)
         self.assertIn("poisson", result)
-        self.assertEqual(result["gaussian"]["joint_score"]["candidate_count"],
-                         result["gaussian"]["greedy_selected_count"]
-                         if result["gaussian"]["joint_score"]["candidate_count"]
-                         == result["gaussian"]["greedy_selected_count"] else
-                         result["gaussian"]["joint_score"]["candidate_count"])
+        self.assertIsInstance(
+            result["gaussian"]["joint_score"]["candidate_count"], int
+        )
         self.assertEqual(result["poisson"]["score"]["candidate_count"],
                          result["poisson"]["selected_count"])
+        self.assertEqual(result["observation_counts_sum"],
+                         int(result["observation_counts_sum"]))
 
     def test_small_sweep_has_expected_cells_and_shared_observation_policy(self):
         result = run_geometry_poisson_sweep(
