@@ -27,7 +27,7 @@ Use iterative pixel-integrated PSF matched filtering and residual subtraction:
 5. Select the number of sources using a predeclared information criterion (primary: BIC computed from the residual sum of squares and the number of added parameters). Stop when adding a component no longer improves the criterion. Do not force seven components.
 6. As a separate secondary stage, jointly refit the retained candidates with the same pixel-integrated forward model. Use physical detector-field bounds only, not source-specific truth-centred bounds. Report optimizer convergence, parameter-bound hits, and assignment swaps.
 
-The first implementation should be deliberately simple and auditable. If residual subtraction is unstable under blends, preserve that failure rather than adding unreported heuristics.
+The first implementation is deliberately simple and auditable. The initial pilot is now implemented in `research/sandbox/iterative_psf_deblending.py`. It uses a normalized matched-filter proposal, a single-source pixel-integrated Gaussian fit, sequential residual subtraction, and a profiled Gaussian BIC stopping rule. Its tests are running; no detection-performance result is claimed yet. If residual subtraction is unstable under blends, preserve that failure rather than adding unreported heuristics.
 
 ## Comparators
 
