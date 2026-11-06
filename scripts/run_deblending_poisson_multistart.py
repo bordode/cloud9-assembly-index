@@ -19,7 +19,7 @@ def main() -> None:
     args = parser.parse_args()
     result = run_multistart_sweep(trials_per_condition=args.trials)
     args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text(json.dumps(result, indent=2, sort_keys=True) + "\\n",
+    args.output.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n",
                            encoding="utf-8")
     print(json.dumps(result["overall"], indent=2, sort_keys=True))
     print(json.dumps(result["paired_poisson_comparison"], indent=2, sort_keys=True))
