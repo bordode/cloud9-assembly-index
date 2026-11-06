@@ -181,6 +181,15 @@ See [`research/fermi-paradox-toolkit/README.md`](research/fermi-paradox-toolkit/
 
 ---
 
+## External Research Contributions
+
+Cloud-9 records selected external research contributions with explicit authorship, source links, and verification boundaries. Inclusion is for research awareness and does not imply endorsement, collaboration, or independent validation.
+
+- **Aimy (iLands):** [“The prior pays for noise, not for detail” — attributed research note](docs/research/external-contributions/AIMY_LAPLACIAN_PRIOR_NOISE_STUDY_2026-11-04.md). A reported comparison of Laplacian-prior image reconstruction under noise, including a strengthened smoothing control and self-correction. The reported findings have not been independently reproduced by Cloud-9.
+- **Pixel-response follow-up:** [Proposed reproduction protocol](docs/research/external-contributions/PIXEL_RESPONSE_REPRODUCTION_PROTOCOL.md). A Cloud-9 test plan for comparing pixel-area integration with pixel-centre sampling; protocol only, with no new experiment or result claimed.
+
+---
+
 ## Repository Structure
 
 ```text
