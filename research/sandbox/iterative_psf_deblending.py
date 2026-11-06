@@ -7,13 +7,16 @@ module, after candidate generation.
 from __future__ import annotations
 
 import numpy as np
-from scipy.optimize import least_squares
+from scipy.optimize import least_squares, linear_sum_assignment
 from scipy.signal import correlate2d
 
 from research.sandbox.pixel_response_reproduction import (
     IMAGE_SIZE,
     SIGMA_PIXELS,
     pixel_integrated_gaussian,
+    SEVEN_SOURCE_AMPLITUDES,
+    SEVEN_SOURCE_POSITIONS,
+    _scene_model,
 )
 
 
@@ -275,5 +278,165 @@ def run_iterative_psf_deblending(
             "Profiled Gaussian BIC is a provisional stopping criterion; correlated residuals and model mismatch can invalidate its nominal interpretation.",
             "A candidate count is not proof of correct source identities.",
             "Synthetic point-source test only; not validated on astronomical data.",
+        ],
+    }
+
+
+def _score_candidate_positions(candidates: list[dict], radius_px: float = 1.0) -> dict:
+    """Score candidate positions against truth; call only after detection."""
+    if not candidates:
+        return {
+            "candidate_count": 0,
+            "matched_truth_count": 0,
+            "missed_truth_count": int(len(SEVEN_SOURCE_POSITIONS)),
+            "unmatched_candidate_count": 0,
+            "matched_radial_errors_px": [],
+        }
+    candidate_xy = np.asarray(
+        [[item["x_px"], item["y_px"]] for item in candidates], dtype=float
+    )
+    distances = np.linalg.norm(
+        SEVEN_SOURCE_POSITIONS[:, None, :] - candidate_xy[None, :, :], axis=2
+    )
+    truth_indices, candidate_indices = linear_sum_assignment(distances)
+    matched_errors = [
+        float(distances[t, c])
+        for t, c in zip(truth_indices, candidate_indices)
+        if distances[t, c] <= radius_px
+    ]
+    return {
+        "candidate_count": len(candidates),
+        "matched_truth_count": len(matched_errors),
+        "missed_truth_count": int(len(SEVEN_SOURCE_POSITIONS) - len(matched_errors)),
+        "unmatched_candidate_count": int(len(candidates) - len(matched_errors)),
+        "matched_radial_errors_px": matched_errors,
+    }
+
+
+def run_deblending_robustness_sweep(
+    *,
+    trials_per_condition: int = 3,
+    gaussian_noise_levels: tuple[float, ...] = (0.0, 1.0, 3.0),
+    assumed_sigma_widths_px: tuple[float, ...] = (1.1, 1.3, 1.5),
+    seed_start: int = 20261600,
+) -> dict:
+    """Score greedy and conditional-joint deblending across noise and PSF widths.
+
+    The generator uses one declared synthetic geometry. Candidate generation
+    receives only each noisy observation and the assumed PSF width. Truth is
+    used only by the scoring helper after the detector and joint fit finish.
+    """
+    if trials_per_condition < 1:
+        raise ValueError("trials_per_condition must be positive")
+    if not gaussian_noise_levels or any(level < 0 for level in gaussian_noise_levels):
+        raise ValueError("Gaussian noise levels must be a non-empty non-negative grid")
+    if not assumed_sigma_widths_px or any(
+        width <= 0 for width in assumed_sigma_widths_px
+    ):
+        raise ValueError("assumed PSF widths must be a non-empty positive grid")
+
+    clean = _scene_model(
+        SEVEN_SOURCE_POSITIONS, SEVEN_SOURCE_AMPLITUDES,
+        2.0, "integrated", SIGMA_PIXELS, IMAGE_SIZE,
+    )
+    records = []
+    seed = seed_start
+    for noise_sigma in gaussian_noise_levels:
+        for assumed_sigma in assumed_sigma_widths_px:
+            for trial_index in range(trials_per_condition):
+                rng = np.random.default_rng(seed)
+                observed = (
+                    clean.copy() if noise_sigma == 0
+                    else clean + rng.normal(0.0, noise_sigma, clean.shape)
+                )
+                result = run_iterative_psf_deblending(
+                    observed, assumed_sigma_px=assumed_sigma
+                )
+                greedy_score = _score_candidate_positions(
+                    result["selected_candidates"]
+                )
+                joint = result["joint_refit"]
+                joint_score = (
+                    _score_candidate_positions(joint["candidates"])
+                    if joint is not None else None
+                )
+                records.append({
+                    "seed": seed,
+                    "trial_index": trial_index,
+                    "gaussian_read_noise_sigma": float(noise_sigma),
+                    "truth_psf_sigma_px": float(SIGMA_PIXELS),
+                    "assumed_psf_sigma_px": float(assumed_sigma),
+                    "greedy_bic_selected_count": result["selected_source_count"],
+                    "greedy_score": greedy_score,
+                    "joint_refit_score": joint_score,
+                    "joint_refit_optimizer_success": (
+                        bool(joint["optimizer_success"]) if joint is not None else False
+                    ),
+                    "joint_refit_bic": (
+                        float(joint["bic"]) if joint is not None else None
+                    ),
+                })
+                seed += 1
+
+    grouped = {}
+    for noise_sigma in gaussian_noise_levels:
+        for assumed_sigma in assumed_sigma_widths_px:
+            selected = [
+                item for item in records
+                if item["gaussian_read_noise_sigma"] == float(noise_sigma)
+                and item["assumed_psf_sigma_px"] == float(assumed_sigma)
+            ]
+            grouped[f"noise={noise_sigma},sigma={assumed_sigma}"] = {
+                "trials": len(selected),
+                "greedy_mean_matched": float(np.mean([
+                    item["greedy_score"]["matched_truth_count"] for item in selected
+                ])),
+                "joint_mean_matched": float(np.mean([
+                    item["joint_refit_score"]["matched_truth_count"]
+                    if item["joint_refit_score"] is not None else 0
+                    for item in selected
+                ])),
+                "joint_all_seven_recovery_trials": int(sum(
+                    item["joint_refit_score"] is not None
+                    and item["joint_refit_score"]["matched_truth_count"] == 7
+                    and item["joint_refit_score"]["unmatched_candidate_count"] == 0
+                    for item in selected
+                )),
+                "joint_optimizer_successes": int(sum(
+                    item["joint_refit_optimizer_success"] for item in selected
+                )),
+            }
+
+    return {
+        "experiment": "C9-PIXEL-RESPONSE-DEBLENDING-ROBUSTNESS-001",
+        "status": "synthetic_deblending_noise_and_psf_width_sweep",
+        "data_kind": "synthetic",
+        "truth_geometry": "fixed seven-source 21x21 crowded scene",
+        "truth_psf_sigma_px": float(SIGMA_PIXELS),
+        "noise_model": "additive Gaussian read noise",
+        "trials_per_condition": int(trials_per_condition),
+        "gaussian_noise_levels": list(gaussian_noise_levels),
+        "assumed_sigma_widths_px": list(assumed_sigma_widths_px),
+        "candidate_generation_policy": (
+            "observation-only matched filtering and BIC; no truth positions, "
+            "amplitudes, or source count are passed to the detector"
+        ),
+        "truth_scoring_policy": (
+            "Hungarian one-to-one assignment within 1 px, applied after "
+            "greedy detection and conditional joint refinement"
+        ),
+        "joint_refit_policy": (
+            "refits the BIC-selected component count; it cannot add or remove "
+            "components and is not an independent source-count selector"
+        ),
+        "aggregate": grouped,
+        "records": records,
+        "limitations": [
+            "One synthetic geometry and detector size.",
+            "Gaussian read noise only; Poisson counting noise is not included.",
+            "Finite trial count; increase to at least 20 seeds per condition for a stronger estimate.",
+            "No source-separation or geometry variation in this sweep.",
+            "The BIC noise model is provisional and residuals may be correlated.",
+            "Synthetic point-source evidence only; not astronomical-image validation.",
         ],
     }
