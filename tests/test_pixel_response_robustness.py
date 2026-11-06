@@ -366,14 +366,14 @@ class PixelResponseRobustnessTests(unittest.TestCase):
 
     def test_deblending_robustness_sweep_records_noise_and_psf_conditions(self):
         result = run_deblending_robustness_sweep(
-            trials_per_condition=2,
-            gaussian_noise_levels=(0.0, 1.0),
-            assumed_sigma_widths_px=(1.3, 1.5),
+            trials_per_condition=20,
+            gaussian_noise_levels=(0.0, 1.0, 3.0),
+            assumed_sigma_widths_px=(1.1, 1.3, 1.5),
             seed_start=20261650,
         )
         self.assertEqual(result["status"], "synthetic_deblending_noise_and_psf_width_sweep")
-        self.assertEqual(len(result["records"]), 8)
-        self.assertEqual(len(result["aggregate"]), 4)
+        self.assertEqual(len(result["records"]), 180)
+        self.assertEqual(len(result["aggregate"]), 9)
         for record in result["records"]:
             self.assertIn("greedy_score", record)
             self.assertIn("joint_refit_score", record)
