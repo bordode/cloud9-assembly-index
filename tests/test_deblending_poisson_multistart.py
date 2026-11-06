@@ -36,11 +36,15 @@ class PoissonMultiStartTests(unittest.TestCase):
             counts, exposure=1.0, max_components=1, max_nfev=500,
             proposal_start_offsets=MULTISTART_OFFSETS,
         )
-        if result["candidate_trials"]:
-            trial = result["candidate_trials"][0]
-            self.assertEqual(trial["initialization_starts_tried"], 9)
-            self.assertEqual(len(trial["winning_start_offset_px"]), 2)
-            self.assertGreaterEqual(trial["successful_initialization_starts"], 0)
+        self.assertTrue(
+            result["candidate_trials"],
+            "the diagnostic fixture must exercise at least one proposal",
+        )
+        trial = result["candidate_trials"][0]
+        self.assertEqual(trial["initialization_starts_tried"], 9)
+        self.assertEqual(len(trial["winning_start_offset_px"]), 2)
+        self.assertGreaterEqual(trial["successful_initialization_starts"], 1)
+        self.assertLessEqual(trial["successful_initialization_starts"], 9)
 
     def test_three_way_case_uses_common_observation(self):
         result = run_case(geometry_scale=1.0, exposure=1.0, seed=20261803)
