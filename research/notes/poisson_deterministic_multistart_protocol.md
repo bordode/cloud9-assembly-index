@@ -57,3 +57,59 @@ If all multi-start fits fail, the candidate is rejected. Otherwise selection amo
 ## Limitations
 
 Synthetic point sources only; fixed PSF family/width, detector size, source fluxes, and constant background. This experiment tests one deterministic local-start grid, not all possible optimizers or initializations. Findings will not establish performance on real astronomical images.
+
+
+## Results — first 90-trial run
+
+**Workflow:** [run 42282527270](https://github.com/bordode/cloud9-assembly-index/actions/runs/42282527270)  
+**Code commit tested:** `cb33a78160ef1b215885f4616f0d270bfaa0b710`  
+**Artifact:** `deblending-poisson-multistart-comparison`  
+**Artifact SHA-256:** `750033671da9b8d4d0f99cc0a7834fa71b6ba6332fe2212ce4180ebf1f981926`
+
+The test suite passed, the full 90-trial three-way comparison completed, and the artifact uploaded successfully.
+
+### Aggregate results
+
+| Metric | Gaussian baseline | Poisson single-start | Poisson nine-start |
+|---|---:|---:|---:|
+| Mean matched truth sources (of 7) | 3.68 | 3.11 | 3.16 |
+| Mean missed truth sources | 3.32 | 3.89 | 3.84 |
+| Mean selected candidate count | 4.77 | 3.43 | 3.47 |
+| Mean unmatched candidates | 1.09 | 0.32 | 0.31 |
+| Exact seven-source recoveries | 5/90 | 1/90 | 1/90 |
+| Trials with optimizer success | 90/90 | 90/90 | 90/90 |
+
+### Paired Poisson comparison
+
+- Nine-start matched more truth sources in 3/90 trials.
+- Single-start matched more in 0/90.
+- The methods tied in 87/90.
+- Mean matched-source difference (nine-start minus single-start): **+0.044 sources/trial**.
+- Exact seven-source recoveries did not change: **1/90 for each method**.
+- The selected source count differed in three trials; those changes did not alter the exact-recovery count.
+
+The multi-start method therefore produced a small positive paired difference, but not a practically meaningful improvement in this grid. It did not close the recovery gap with the Gaussian baseline.
+
+### Initialization diagnostics and cost
+
+There were 402 proposed-source fitting steps in the multi-start records. Each evaluated all nine prescribed initializations: **3,618 initialization attempts**, all reported successful optimizer status.
+
+For most proposed-source steps, the deviance spread across starts was very small (median approximately (1.28\times10^{-7})). The 99th percentile was larger (approximately 73.1), and the maximum was approximately 3,064.7, so a small number of proposals were meaningfully start-sensitive even though the selected-scene recovery metrics barely changed.
+
+The winning offset was not concentrated on one grid point; all nine offsets won at least some proposal fits. This confirms that different starts can win locally, but it does not show that those local differences materially change source recovery.
+
+The artifact counts initialization attempts but does not aggregate function evaluations across every start. The benchmark therefore establishes a ninefold number of optimizer attempts per proposal, not an exact ninefold wall-clock or function-evaluation cost.
+
+### Interpretation
+
+This result weakens the hypothesis that ordinary local initialization sensitivity is the main cause of the Poisson detector's under-recovery in this synthetic design. It does not show that initialization never matters: the deviance spread has a long tail, and three trials changed matched-source count in the multi-start method's favour.
+
+The more important unresolved bottlenecks remain the observation-derived proposal sequence, greedy source addition, the approximate Poisson BIC decision, and the fixed model assumptions. This experiment does not isolate which of those is responsible.
+
+The Gaussian baseline still recovers more truth sources on average (3.68 versus 3.16 for multi-start Poisson), at the cost of more unmatched candidates. This is a tradeoff, not an unqualified Gaussian win.
+
+### Limitations and next experiment
+
+This is one 90-trial synthetic grid, one fixed nine-offset pattern, one detector/PSF/source configuration, and one fresh seed range. The Poisson detector still uses greedy proposals and the same approximate BIC rule. Optimizer success is not evidence of a correct scene.
+
+The next discriminating experiment should preserve the Poisson likelihood and fitting machinery while testing the proposal/model-selection bottleneck separately. In particular, log the complete candidate sequence and BIC decisions, then test a predeclared alternative proposal strategy or a controlled source-count decision diagnostic without tuning against truth. Do not simply expand the start grid: the current result gives little evidence that more local starts are the highest-value next step.
