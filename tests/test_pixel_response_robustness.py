@@ -3,6 +3,13 @@ import json
 import math
 import unittest
 
+import numpy as np
+
+from research.sandbox.iterative_psf_deblending import run_iterative_psf_deblending
+from research.sandbox.pixel_response_reproduction import (
+    IMAGE_SIZE, SIGMA_PIXELS, SEVEN_SOURCE_AMPLITUDES,
+    SEVEN_SOURCE_POSITIONS, _scene_model,
+)
 from research.sandbox.pixel_response_robustness import (
     run_case,
     run_image_peak_detection,
@@ -264,6 +271,44 @@ class PixelResponseRobustnessTests(unittest.TestCase):
     def test_image_peak_detection_rejects_invalid_thresholds(self):
         with self.assertRaises(ValueError):
             run_image_peak_detection(threshold_fractions=(0.0, 0.1))
+
+
+    def test_iterative_deblender_uses_observation_and_bic_without_forcing_count(self):
+        observation = _scene_model(
+            SEVEN_SOURCE_POSITIONS, SEVEN_SOURCE_AMPLITUDES,
+            2.0, "integrated", SIGMA_PIXELS, IMAGE_SIZE,
+        )
+        result = run_iterative_psf_deblending(
+            observation, assumed_sigma_px=SIGMA_PIXELS, max_components=12,
+        )
+        self.assertEqual(
+            result["status"], "observation_only_iterative_psf_deblending"
+        )
+        self.assertEqual(result["selected_source_count"], len(result["selected_candidates"]))
+        self.assertLessEqual(result["selected_source_count"], 12)
+        self.assertIn("no truth positions", result["candidate_generation_policy"])
+        self.assertGreaterEqual(len(result["candidate_trials"]), 1)
+        for accepted in result["candidate_trials"]:
+            if accepted["accepted"]:
+                self.assertLess(accepted["bic_after"], accepted["bic_before"])
+        self.assertTrue(np.all(np.isfinite(result["residual"])))
+
+    def test_iterative_deblender_is_deterministic_for_fixed_observation(self):
+        observation = _scene_model(
+            SEVEN_SOURCE_POSITIONS, SEVEN_SOURCE_AMPLITUDES,
+            2.0, "integrated", SIGMA_PIXELS, IMAGE_SIZE,
+        )
+        first = run_iterative_psf_deblending(observation, max_components=5)
+        second = run_iterative_psf_deblending(observation, max_components=5)
+        self.assertEqual(first["selected_candidates"], second["selected_candidates"])
+        self.assertEqual(first["selected_source_count"], second["selected_source_count"])
+        self.assertEqual(first["final_bic"], second["final_bic"])
+
+    def test_iterative_deblender_validates_observation(self):
+        with self.assertRaises(ValueError):
+            run_iterative_psf_deblending(np.zeros((4, 4)))
+        with self.assertRaises(ValueError):
+            run_iterative_psf_deblending(np.zeros((7, 7)), assumed_sigma_px=0.0)
 
 
 if __name__ == "__main__":
