@@ -1,11 +1,13 @@
-name: Deblending geometry and Poisson experiment
+name: Deblending Gaussian versus Poisson likelihood experiment
 
 on:
   pull_request:
     branches: [docs/aimy-laplacian-prior-external-research]
     paths:
       - "research/sandbox/deblending_geometry_poisson.py"
+      - "research/sandbox/poisson_psf_deblending.py"
       - "scripts/run_deblending_geometry_poisson.py"
+      - "tests/test_deblending_geometry_poisson.py"
       - ".github/workflows/deblending-geometry-poisson.yml"
       - "requirements.txt"
 
@@ -26,12 +28,14 @@ jobs:
           cache: pip
       - name: Install dependencies
         run: python -m pip install -r requirements.txt
-      - name: Run 90-trial geometry and Poisson grid
+      - name: Run test suite
+        run: python -m unittest tests.test_deblending_geometry_poisson -v
+      - name: Run paired 90-trial Gaussian versus Poisson grid
         run: python scripts/run_deblending_geometry_poisson.py --trials 10
-      - name: Upload complete trial records
+      - name: Upload complete paired trial records
         uses: actions/upload-artifact@v4
         with:
-          name: deblending-geometry-poisson-results
+          name: deblending-gaussian-poisson-comparison
           path: artifacts/deblending_geometry_poisson.json
           if-no-files-found: error
           retention-days: 30
