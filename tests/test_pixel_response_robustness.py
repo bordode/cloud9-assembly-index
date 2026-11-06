@@ -293,31 +293,48 @@ class PixelResponseRobustnessTests(unittest.TestCase):
             if accepted["accepted"]:
                 self.assertLess(accepted["bic_after"], accepted["bic_before"])
         self.assertTrue(np.all(np.isfinite(result["residual"])))
-        candidates = result["selected_candidates"]
-        candidate_xy = np.asarray(
-            [[item["x_px"], item["y_px"]] for item in candidates],
-            dtype=float,
-        ).reshape((-1, 2))
-        distances = np.linalg.norm(
-            SEVEN_SOURCE_POSITIONS[:, None, :] - candidate_xy[None, :, :],
-            axis=2,
-        ) if len(candidates) else np.empty((7, 0))
-        if len(candidates):
-            truth_idx, candidate_idx = linear_sum_assignment(distances)
-            matched = [
-                float(distances[t, candidate_idx[i]])
-                for i, t in enumerate(truth_idx)
-                if distances[t, candidate_idx[i]] <= 1.0
-            ]
-        else:
-            matched = []
+        def score_candidates(candidates):
+            candidate_xy = np.asarray(
+                [[item["x_px"], item["y_px"]] for item in candidates],
+                dtype=float,
+            ).reshape((-1, 2))
+            distances = (
+                np.linalg.norm(
+                    SEVEN_SOURCE_POSITIONS[:, None, :] - candidate_xy[None, :, :],
+                    axis=2,
+                )
+                if len(candidates) else np.empty((7, 0))
+            )
+            if len(candidates):
+                truth_idx, candidate_idx = linear_sum_assignment(distances)
+                matched = [
+                    float(distances[t, candidate_idx[i]])
+                    for i, t in enumerate(truth_idx)
+                    if distances[t, candidate_idx[i]] <= 1.0
+                ]
+            else:
+                matched = []
+            return {
+                "candidate_count": len(candidates),
+                "matched_truth_count_within_1px": len(matched),
+                "missed_truth_count": 7 - len(matched),
+                "unmatched_candidate_count": len(candidates) - len(matched),
+                "matched_radial_errors_px": matched,
+            }
+
+        greedy_score = score_candidates(result["selected_candidates"])
+        joint = result["joint_refit"]
+        self.assertIsNotNone(joint)
+        self.assertTrue(np.all(np.isfinite(joint["residual"])))
+        joint_score = score_candidates(joint["candidates"])
         print("ITERATIVE_PSF_DEBLENDING_RESULT=" + json.dumps({
-            "selected_source_count": result["selected_source_count"],
-            "matched_truth_count_within_1px": len(matched),
-            "missed_truth_count": 7 - len(matched),
-            "unmatched_candidate_count": len(candidates) - len(matched),
-            "matched_radial_errors_px": matched,
-            "selected_candidates": candidates,
+            "greedy": greedy_score,
+            "joint_refit": joint_score,
+            "joint_optimizer_success": joint["optimizer_success"],
+            "joint_rss": joint["rss"],
+            "joint_bic": joint["bic"],
+            "greedy_candidates": result["selected_candidates"],
+            "joint_candidates": joint["candidates"],
             "trial_bic_sequence": [
                 {"bic_before": item["bic_before"],
                  "bic_after": item["bic_after"],
