@@ -1,6 +1,6 @@
 # Observation-only deblending protocol (C9-PIXEL-RESPONSE-DEBLENDING-001)
 
-**Status:** preregistered experiment design; no deblending result is claimed yet.
+**Status:** initial implementation and one deterministic synthetic diagnostic completed; the method has not passed the detection gate.
 
 ## Question
 
@@ -27,7 +27,7 @@ Use iterative pixel-integrated PSF matched filtering and residual subtraction:
 5. Select the number of sources using a predeclared information criterion (primary: BIC computed from the residual sum of squares and the number of added parameters). Stop when adding a component no longer improves the criterion. Do not force seven components.
 6. As a separate secondary stage, jointly refit the retained candidates with the same pixel-integrated forward model. Use physical detector-field bounds only, not source-specific truth-centred bounds. Report optimizer convergence, parameter-bound hits, and assignment swaps.
 
-The first implementation is deliberately simple and auditable. The initial pilot is now implemented in `research/sandbox/iterative_psf_deblending.py`. It uses a normalized matched-filter proposal, a single-source pixel-integrated Gaussian fit, sequential residual subtraction, and a profiled Gaussian BIC stopping rule. Its tests are running; no detection-performance result is claimed yet. If residual subtraction is unstable under blends, preserve that failure rather than adding unreported heuristics.
+The first implementation is deliberately simple and auditable. The pilot in `research/sandbox/iterative_psf_deblending.py` uses a normalized matched-filter proposal, a single-source pixel-integrated Gaussian fit, sequential residual subtraction, and a profiled Gaussian BIC stopping rule. The initial deterministic test selected seven components, but only three candidates matched a truth source within 1 px; four selected candidates were unmatched. The BIC sequence accepted seven components and rejected the eighth. This is a failed detection-gate result for the tested scene, not evidence of successful deblending. If residual subtraction is unstable under blends, preserve that failure rather than adding unreported heuristics.
 
 ## Comparators
 
@@ -85,7 +85,7 @@ A candidate count of seven is not itself a success. A successful condition requi
 
 ## Current status
 
-The existing local-maximum detector failed the tested grid: it returned one candidate in all 150 scored conditions and matched one of seven synthetic sources. The iterative PSF-subtraction method above is proposed, not yet implemented or tested. This protocol therefore records the next experiment without claiming that deblending has been solved.
+The existing local-maximum detector failed the tested grid: it returned one candidate in all 150 scored conditions and matched one of seven synthetic sources. The iterative PSF-subtraction method above is implemented and tested mechanically, but failed the first truth-scored detection diagnostic: seven components selected, three of seven truth sources matched within 1 px, and four unmatched candidates. The detector has not passed the detection gate. This single noiseless scene is a diagnostic, not a population estimate or a general performance claim.
 
 ## Interpretation limit
 
