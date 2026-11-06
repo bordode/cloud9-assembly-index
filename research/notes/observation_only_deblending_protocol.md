@@ -1,6 +1,6 @@
 # Observation-only deblending protocol (C9-PIXEL-RESPONSE-DEBLENDING-001)
 
-**Status:** initial implementation and one deterministic synthetic diagnostic completed; the method has not passed the detection gate.
+**Status:** initial implementation and one deterministic noiseless synthetic diagnostic completed; conditional joint refinement recovered all seven sources in that one scene. Noise, geometry, and PSF-mismatch robustness remain untested.
 
 ## Question
 
@@ -27,7 +27,7 @@ Use iterative pixel-integrated PSF matched filtering and residual subtraction:
 5. Select the number of sources using a predeclared information criterion (primary: BIC computed from the residual sum of squares and the number of added parameters). Stop when adding a component no longer improves the criterion. Do not force seven components.
 6. As a separate secondary stage, jointly refit the retained candidates with the same pixel-integrated forward model. Use physical detector-field bounds only, not source-specific truth-centred bounds. Report optimizer convergence, parameter-bound hits, and assignment swaps.
 
-The first implementation is deliberately simple and auditable. The pilot in `research/sandbox/iterative_psf_deblending.py` uses a normalized matched-filter proposal, a single-source pixel-integrated Gaussian fit, sequential residual subtraction, and a profiled Gaussian BIC stopping rule. The initial deterministic test selected seven components, but only three candidates matched a truth source within 1 px; four selected candidates were unmatched. The BIC sequence accepted seven components and rejected the eighth. This is a failed detection-gate result for the tested scene, not evidence of successful deblending. If residual subtraction is unstable under blends, preserve that failure rather than adding unreported heuristics.
+The first implementation is deliberately simple and auditable. The pilot in `research/sandbox/iterative_psf_deblending.py` uses a normalized matched-filter proposal, a single-source pixel-integrated Gaussian fit, sequential residual subtraction, and a profiled Gaussian BIC stopping rule. On the first deterministic noiseless scene, BIC accepted seven components and rejected the eighth. The greedy candidate coordinates alone matched only three truth sources within 1 px; four candidates were unmatched. A subsequent joint refit of those seven components, using only the observation and greedy initial candidates, recovered all seven truth sources within 1 px with no unmatched candidates. Joint-refit radial errors ranged from approximately 1.7e-10 to 7.95e-5 px. This is a promising single-scene synthetic result, not evidence of robustness: the generator and fit used the same pixel-integrated Gaussian family and the same 1.3 px PSF width, with no added noise. If residual subtraction or joint refinement fails under blends, preserve that failure rather than adding unreported heuristics.
 
 ## Comparators
 
@@ -85,7 +85,7 @@ A candidate count of seven is not itself a success. A successful condition requi
 
 ## Current status
 
-The existing local-maximum detector failed the tested grid: it returned one candidate in all 150 scored conditions and matched one of seven synthetic sources. The iterative PSF-subtraction method above is implemented and tested mechanically, but failed the first truth-scored detection diagnostic: seven components selected, three of seven truth sources matched within 1 px, and four unmatched candidates. The detector has not passed the detection gate. This single noiseless scene is a diagnostic, not a population estimate or a general performance claim.
+The existing local-maximum detector failed the tested grid: it returned one candidate in all 150 scored conditions and matched one of seven synthetic sources. The iterative PSF-subtraction method above is implemented and tested mechanically. In the first noiseless scene, greedy subtraction selected seven components by BIC; its raw candidate coordinates matched only three of seven truth sources within 1 px. Conditional joint refinement then recovered all seven within 1 px, with no unmatched candidates and maximum radial error below 0.00008 px. This passes the initial single-scene synthetic demonstration, but not the robustness or generalization gates. The result is conditional on a correct PSF family/width and one known synthetic geometry.
 
 ## Interpretation limit
 
