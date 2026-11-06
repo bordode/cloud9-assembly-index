@@ -4,6 +4,7 @@ import math
 import unittest
 
 import numpy as np
+from scipy.optimize import linear_sum_assignment
 
 from research.sandbox.iterative_psf_deblending import run_iterative_psf_deblending
 from research.sandbox.pixel_response_reproduction import (
@@ -292,6 +293,38 @@ class PixelResponseRobustnessTests(unittest.TestCase):
             if accepted["accepted"]:
                 self.assertLess(accepted["bic_after"], accepted["bic_before"])
         self.assertTrue(np.all(np.isfinite(result["residual"])))
+        candidates = result["selected_candidates"]
+        candidate_xy = np.asarray(
+            [[item["x_px"], item["y_px"]] for item in candidates],
+            dtype=float,
+        ).reshape((-1, 2))
+        distances = np.linalg.norm(
+            SEVEN_SOURCE_POSITIONS[:, None, :] - candidate_xy[None, :, :],
+            axis=2,
+        ) if len(candidates) else np.empty((7, 0))
+        if len(candidates):
+            truth_idx, candidate_idx = linear_sum_assignment(distances)
+            matched = [
+                float(distances[t, candidate_idx[i]])
+                for i, t in enumerate(truth_idx)
+                if distances[t, candidate_idx[i]] <= 1.0
+            ]
+        else:
+            matched = []
+        print("ITERATIVE_PSF_DEBLENDING_RESULT=" + json.dumps({
+            "selected_source_count": result["selected_source_count"],
+            "matched_truth_count_within_1px": len(matched),
+            "missed_truth_count": 7 - len(matched),
+            "unmatched_candidate_count": len(candidates) - len(matched),
+            "matched_radial_errors_px": matched,
+            "selected_candidates": candidates,
+            "trial_bic_sequence": [
+                {"bic_before": item["bic_before"],
+                 "bic_after": item["bic_after"],
+                 "accepted": item["accepted"]}
+                for item in result["candidate_trials"]
+            ],
+        }, sort_keys=True))
 
     def test_iterative_deblender_is_deterministic_for_fixed_observation(self):
         observation = _scene_model(
