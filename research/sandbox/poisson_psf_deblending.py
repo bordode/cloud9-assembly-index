@@ -40,6 +40,7 @@ def run_poisson_psf_deblending(
     max_components: int = 12,
     detector_half_width_px: float | None = None,
     max_nfev: int = 2500,
+    proposal_start_offsets: tuple[tuple[float, float], ...] = ((0.0, 0.0),),
 ) -> dict:
     """Detect sources and select count using Poisson likelihood/BIC.
 
@@ -60,6 +61,9 @@ def run_poisson_psf_deblending(
         raise ValueError("assumed_sigma_px must be finite and positive")
     if max_components < 1:
         raise ValueError("max_components must be positive")
+    offsets = tuple((float(dx), float(dy)) for dx, dy in proposal_start_offsets)
+    if not offsets or not np.all(np.isfinite(np.asarray(offsets, dtype=float))):
+        raise ValueError("proposal_start_offsets must be a non-empty finite sequence")
 
     size = data.shape[0]
     centre = (size - 1) / 2.0
@@ -173,12 +177,37 @@ def run_poisson_psf_deblending(
             (item["x_px"], item["y_px"], item["amplitude"])
             for item in accepted
         ]
-        starts.append((proposal_x, proposal_y, amplitude_start))
-        proposed_fit = fit_scene(starts)
+        fit_attempts = []
+        for offset_x, offset_y in offsets:
+            candidate_starts = list(starts)
+            candidate_starts.append((
+                float(np.clip(proposal_x + offset_x, -half_width, half_width)),
+                float(np.clip(proposal_y + offset_y, -half_width, half_width)),
+                amplitude_start,
+            ))
+            fit_attempts.append({
+                "offset": [offset_x, offset_y],
+                "fit": fit_scene(candidate_starts),
+            })
+        successful_attempts = [
+            item for item in fit_attempts if item["fit"]["success"]
+        ]
+        if successful_attempts:
+            winning_attempt = min(
+                successful_attempts, key=lambda item: item["fit"]["deviance"]
+            )
+            proposed_fit = winning_attempt["fit"]
+            winning_offset = winning_attempt["offset"]
+        else:
+            proposed_fit = fit_attempts[0]["fit"]
+            winning_offset = fit_attempts[0]["offset"]
+        attempt_deviances = [
+            float(item["fit"]["deviance"]) for item in fit_attempts
+        ]
         accepted_candidate = bool(
-            proposed_fit["success"] and proposed_fit["bic"] < current_bic
+            successful_attempts and proposed_fit["bic"] < current_bic
         )
-        trials.append({
+        trial_record = {
             "step": step + 1,
             "proposal_x_px": proposal_x,
             "proposal_y_px": proposal_y,
@@ -190,7 +219,17 @@ def run_poisson_psf_deblending(
             "bic_before": current_bic,
             "bic_after": proposed_fit["bic"],
             "accepted": accepted_candidate,
-        })
+        }
+        if len(offsets) > 1:
+            trial_record.update({
+                "initialization_starts_tried": len(offsets),
+                "winning_start_offset_px": winning_offset,
+                "successful_initialization_starts": len(successful_attempts),
+                "start_deviance_min": float(min(attempt_deviances)),
+                "start_deviance_max": float(max(attempt_deviances)),
+                "start_deviance_range": float(max(attempt_deviances) - min(attempt_deviances)),
+            })
+        trials.append(trial_record)
         if not accepted_candidate:
             break
 
