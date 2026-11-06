@@ -1,0 +1,41 @@
+name: Poisson deterministic multi-start deblending experiment
+
+on:
+  pull_request:
+    branches: [research/deblending-geometry-poisson]
+    paths:
+      - "research/sandbox/poisson_psf_deblending.py"
+      - "research/sandbox/deblending_poisson_multistart.py"
+      - "scripts/run_deblending_poisson_multistart.py"
+      - "tests/test_deblending_poisson_multistart.py"
+      - ".github/workflows/deblending-poisson-multistart.yml"
+      - "requirements.txt"
+
+permissions:
+  contents: read
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Run multi-start tests
+        run: python -m unittest tests.test_deblending_poisson_multistart -v
+      - name: Run fresh-seed three-way 90-trial comparison
+        run: python scripts/run_deblending_poisson_multistart.py --trials 10
+      - name: Upload full three-way trial records
+        uses: actions/upload-artifact@v4
+        with:
+          name: deblending-poisson-multistart-comparison
+          path: artifacts/deblending_poisson_multistart.json
+          if-no-files-found: error
+          retention-days: 30
