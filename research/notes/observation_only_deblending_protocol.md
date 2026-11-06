@@ -1,6 +1,6 @@
 # Observation-only deblending protocol (C9-PIXEL-RESPONSE-DEBLENDING-001)
 
-**Status:** initial implementation and one deterministic noiseless synthetic diagnostic completed; conditional joint refinement recovered all seven sources in that one scene. Noise, geometry, and PSF-mismatch robustness remain untested.
+**Status:** initial noiseless pilot plus a 180-trial Gaussian-noise / PSF-width grid completed. Joint refinement recovered all seven sources in every trial at assumed PSF widths 1.1 and 1.3 px for noise σ=0 and 1; performance declined at σ=3. A 1.5 px assumed width failed to recover all seven in every condition. Geometry and Poisson-noise robustness remain untested.
 
 ## Question
 
@@ -28,6 +28,22 @@ Use iterative pixel-integrated PSF matched filtering and residual subtraction:
 6. As a separate secondary stage, jointly refit the retained candidates with the same pixel-integrated forward model. Use physical detector-field bounds only, not source-specific truth-centred bounds. Report optimizer convergence, parameter-bound hits, and assignment swaps.
 
 The first implementation is deliberately simple and auditable. The pilot in `research/sandbox/iterative_psf_deblending.py` uses a normalized matched-filter proposal, a single-source pixel-integrated Gaussian fit, sequential residual subtraction, and a profiled Gaussian BIC stopping rule. On the first deterministic noiseless scene, BIC accepted seven components and rejected the eighth. The greedy candidate coordinates alone matched only three truth sources within 1 px; four candidates were unmatched. A subsequent joint refit of those seven components, using only the observation and greedy initial candidates, recovered all seven truth sources within 1 px with no unmatched candidates. Joint-refit radial errors ranged from approximately 1.7e-10 to 7.95e-5 px. This is a promising single-scene synthetic result, not evidence of robustness: the generator and fit used the same pixel-integrated Gaussian family and the same 1.3 px PSF width, with no added noise. If residual subtraction or joint refinement fails under blends, preserve that failure rather than adding unreported heuristics.
+
+The first robustness grid expanded this to 180 trials: 20 independent seeds for each of three Gaussian read-noise levels (σ=0, 1, 3) and three assumed PSF widths (1.1, 1.3, 1.5 px), with the generated scene fixed at σ=1.3 px. All 42 Python tests passed. Results (mean matched truth sources within 1 px; count of trials recovering all seven) were:
+
+| Gaussian noise σ | Assumed PSF σ | Mean matched after joint refit | All-seven trials |
+|---:|---:|---:|---:|
+| 0 | 1.1 | 7.00 | 20/20 |
+| 0 | 1.3 | 7.00 | 20/20 |
+| 0 | 1.5 | 3.00 | 0/20 |
+| 1 | 1.1 | 7.00 | 20/20 |
+| 1 | 1.3 | 7.00 | 20/20 |
+| 1 | 1.5 | 3.00 | 0/20 |
+| 3 | 1.1 | 6.75 | 18/20 |
+| 3 | 1.3 | 6.50 | 12/20 |
+| 3 | 1.5 | 3.00 | 0/20 |
+
+The greedy candidate positions alone matched only 2–3 sources on average in each condition; the joint fit supplied most of the localization improvement. All 180 joint optimizers reported successful numerical termination, including many trials with incorrect source recovery. Thus optimizer success is not a correctness metric. This grid indicates strong sensitivity to PSF-width mismatch and increasing Gaussian noise, but only for one fixed synthetic geometry and detector. The 1.1 px case performed well despite being narrower than the true 1.3 px width; this asymmetry should not be generalized without further tests. The BIC stopping rule is provisional and assumes an independent Gaussian residual model; its nominal statistical interpretation may be compromised by structured/correlated residuals.
 
 ## Comparators
 
@@ -85,7 +101,7 @@ A candidate count of seven is not itself a success. A successful condition requi
 
 ## Current status
 
-The existing local-maximum detector failed the tested grid: it returned one candidate in all 150 scored conditions and matched one of seven synthetic sources. The iterative PSF-subtraction method above is implemented and tested mechanically. In the first noiseless scene, greedy subtraction selected seven components by BIC; its raw candidate coordinates matched only three of seven truth sources within 1 px. Conditional joint refinement then recovered all seven within 1 px, with no unmatched candidates and maximum radial error below 0.00008 px. This passes the initial single-scene synthetic demonstration, but not the robustness or generalization gates. The result is conditional on a correct PSF family/width and one known synthetic geometry.
+The existing local-maximum detector failed the tested grid: it returned one candidate in all 150 scored conditions and matched one of seven synthetic sources. The iterative PSF-subtraction method above has passed an initial single-scene synthetic demonstration and a 180-trial Gaussian-noise / assumed-PSF-width grid. It is promising under this one geometry for assumed widths 1.1–1.3 px, but degrades sharply at 1.5 px and at the highest tested noise level. The robustness/generalization gates remain open because source geometry is fixed, Poisson noise is not tested, and the BIC residual model is provisional.
 
 ## Interpretation limit
 
