@@ -74,9 +74,13 @@ At exposure 1.0:
 
 This particular grid suggests that greater separation helps both methods, but the Gaussian detector performed better on this scene. Ten seeds per cell are exploratory, not enough to establish a general ranking.
 
-## Numerical stability observation
+## Numerical stability and repeatability
 
 A preliminary full benchmark run using the same seed grid produced 3/90 Poisson exact recoveries; the canonical test-plus-benchmark run produced 2/90. Inspection showed one borderline trial (seed 20261764, geometry scale 1.2, exposure 1.0) where the seventh proposed source was accepted in the preliminary run and rejected in the canonical run. The other 89 trials retained the same source-count decisions. This is a numerical/local-optimization sensitivity at a BIC decision boundary and should be retained as a caveat, not averaged away.
+
+A further independent repeat was completed on workflow run [42279936553](https://github.com/bordode/cloud9-assembly-index/actions/runs/42279936553), at branch head `a062067be9c93c990c00acd876164bbbb8533bd8`. This commit changed the results note only; the benchmark implementation was unchanged from the canonical code commit. The repeat's full 90-record JSON artifact was compared record-by-record with the canonical artifact: all 90 trial keys and every Gaussian and Poisson record matched exactly, including candidate decisions, source counts, fit scores, and post-fit recovery scores. Aggregate results were also identical (Gaussian 9/90 exact; Poisson 2/90). The repeat artifact SHA-256 is `d393bdcdcfff3272b6bf6302da2f3ad61be880439a0e8b5ed5388cc1a4eef98b`.
+
+This establishes exact repeatability for this second run in the same workflow environment, but does not erase the earlier one-trial discrepancy. The preliminary discrepancy remains evidence that at least one borderline decision can be sensitive to numerical execution conditions. The present result should therefore be described as repeatable in the latest rerun, not universally numerically invariant.
 
 ## Interpretation
 
