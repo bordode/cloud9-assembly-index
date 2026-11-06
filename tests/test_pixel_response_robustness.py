@@ -6,7 +6,10 @@ import unittest
 import numpy as np
 from scipy.optimize import linear_sum_assignment
 
-from research.sandbox.iterative_psf_deblending import run_iterative_psf_deblending
+from research.sandbox.iterative_psf_deblending import (
+    run_iterative_psf_deblending,
+    run_deblending_robustness_sweep,
+)
 from research.sandbox.pixel_response_reproduction import (
     IMAGE_SIZE, SIGMA_PIXELS, SEVEN_SOURCE_AMPLITUDES,
     SEVEN_SOURCE_POSITIONS, _scene_model,
@@ -359,6 +362,30 @@ class PixelResponseRobustnessTests(unittest.TestCase):
             run_iterative_psf_deblending(np.zeros((4, 4)))
         with self.assertRaises(ValueError):
             run_iterative_psf_deblending(np.zeros((7, 7)), assumed_sigma_px=0.0)
+
+
+    def test_deblending_robustness_sweep_records_noise_and_psf_conditions(self):
+        result = run_deblending_robustness_sweep(
+            trials_per_condition=2,
+            gaussian_noise_levels=(0.0, 1.0),
+            assumed_sigma_widths_px=(1.3, 1.5),
+            seed_start=20261650,
+        )
+        self.assertEqual(result["status"], "synthetic_deblending_noise_and_psf_width_sweep")
+        self.assertEqual(len(result["records"]), 8)
+        self.assertEqual(len(result["aggregate"]), 4)
+        for record in result["records"]:
+            self.assertIn("greedy_score", record)
+            self.assertIn("joint_refit_score", record)
+            self.assertGreaterEqual(record["greedy_score"]["matched_truth_count"], 0)
+            if record["joint_refit_score"] is not None:
+                self.assertLessEqual(
+                    record["joint_refit_score"]["matched_truth_count"], 7
+                )
+        print(
+            "DEBLENDING_ROBUSTNESS_SWEEP_RESULT="
+            + json.dumps(result["aggregate"], sort_keys=True)
+        )
 
 
 if __name__ == "__main__":
