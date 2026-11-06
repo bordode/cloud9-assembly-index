@@ -216,3 +216,54 @@ The comparison changes how the detector pixel is represented:
 Aimy's interpretation is that, in this synthetic setup, undersampling itself was not the dominant limitation; the mismatch between the forward model and the detector's pixel response imposed a systematic error floor. More exposure (lower measurement noise) would not remove a bias caused by an incorrect pixel model.
 
 **Evidence boundary:** these are Aimy's reported results and interpretation, not a Cloud-9 reproduction. The supplied description does not include the full rendering, noise, optimizer, parameterization, initialization, or error-calculation protocol, so the numerical contrast cannot yet be independently assessed. The result is a controlled synthetic demonstration as described, not evidence that undersampling is generally harmless or that sub-pixel recovery is possible without appropriate source and instrument assumptions. Pixel integration can support sub-pixel parameter estimation when the forward model is sufficiently informative; it does not recreate arbitrary image detail erased by the measurement process.
+
+
+### 13. Further blind λ-selection tests and a predeclared third-crop switch
+
+Aimy supplied two further updates that materially refine the earlier conclusion about data-only selection. These remain Aimy-reported results; Cloud-9 has not independently reproduced the image crops, parameter scans, or numerical comparisons.
+
+#### 13.1 Eight-cell comparison: the residual-noise target can be wrong
+
+Aimy describes an eight-cell comparison across block factors b=2–5 and two noise levels (σ=0.02 and σ=0.05), with three realizations and four selection rules. Block-mean projection was imposed on both sides of the comparison. Against a truth-tuned blur control, Aimy reports that the prior's advantage was 2–5% at 2% noise and 6–16% at 5% noise.
+
+The data-only rules did not preserve that margin uniformly:
+
+- At σ=0.05, residual-whiteness and discrepancy selection retained 89–98% of the oracle gain for b=3–5, but only 21% at b=2.
+- At σ=0.02 and b=2, the selected prior was reported as 16% worse than the control.
+- At the RMSE-optimal λ, the residual contained only 13% of the true noise at b=2, 47% at b=3, and 78% at b=5. Aimy's interpretation is that the optimum can deliberately fit some noise; a rule that forces the residual to equal the estimated noise then oversmooths, especially at the smaller block factors.
+- At σ=0.05 and b=4–5, Aimy reports that the oracle residual did equal the noise. The relationship therefore changes with the regime rather than obeying one universal residual target.
+
+Aimy reports that the L-curve selected λ=0.1 in all 24 rule/case evaluations in this comparison. It was therefore a constant choice rather than a functioning selector, although it was the safest of the tested rules in this table: it retained 76–100% of the low-noise gain and was never worse than the control.
+
+GCV selected λ=10⁻⁴ at b=3 and b=5, λ=10 at b=4, and λ=3 or 32 at b=2. At b=3 and σ=0.05, Aimy reports a result 23% worse than the control. She attributes the unstable selection to a small trace-estimation error: reported effective degrees of freedom were 14,430 ± 44 against m=14,400. This is Aimy's proposed explanation; the supplied summary does not include enough code or trace diagnostics for Cloud-9 to independently verify the causal attribution.
+
+When supplied the true σ, discrepancy selection retained 56–100% of the gain in almost all cases. Aimy's distinction is that the discrepancy principle was mostly effective when its noise input was correct; the problematic assumption was treating the residual as though it must contain the full noise level at the RMSE optimum. This is a useful refinement of the earlier statement that discrepancy selection failed: its performance depends on the accuracy of σ and on whether the residual-noise equality is appropriate for the fitted model.
+
+#### 13.2 Third crop: a predeclared switch, with an important generalization limit
+
+Aimy then reports a held-out-style test on a third crop that had not been used in the preceding comparisons. She says the crop coordinates were frozen before downloading the pixels and the crop was hashed before the pixels were opened. The supplied account does not include the hash value, timestamped protocol, or independent audit, so this is recorded as Aimy's description of a predeclared procedure rather than independently verified preregistration.
+
+The rule was: use the L-curve corner when estimated noise σ-hat is below 0.04; otherwise use residual whiteness. Aimy reports that σ-hat was 0.020–0.022 for σ=0.02 and 0.048–0.052 for σ=0.05, so the branch was selected correctly in all 24 evaluated cells.
+
+Against a truth-tuned control (Lanczos plus block-mean projection and a Gaussian blur width chosen using truth, with the fitted method receiving the same truth-tuning allowance), Aimy reports:
+
+- At σ=0.05, the switch retained 63% of the oracle margin overall, with reported retention of 51%, 65%, and 73% at b=3, 4, and 5 respectively.
+- At σ=0.02, it beat the control by 11–13% and matched the oracle in all twelve cells.
+
+Aimy immediately qualifies the apparently strong low-noise result. The L-curve no longer returned a constant: it selected λ=0.32 at low noise and λ=0.1 at high noise. This movement was opposite to the oracle's reported direction (λ=0.32 at low noise to λ=1.0 at high noise). Thus the L-curve happened to coincide with the oracle at low noise and then moved away from it as noise increased; Aimy attributes the useful high-noise performance to the residual-whiteness branch. The switch's strong result on this crop should not be simplified into a claim that the L-curve itself became a reliable selector.
+
+The crop was also unusually smooth: Aimy reports that only 0.6% of its energy lay above 1/8 Nyquist and that its median 8×8 block standard deviation was 0.0093. She describes it as a fair test of the switching rule but not a test of where the regularization regime breaks. The result therefore supports a narrow claim: a noise-estimate-based switch performed well on this particular, preselected smooth crop under Aimy's reported protocol. It does not establish generalization to textured, compact-source, edge-rich, or otherwise different images.
+
+#### 13.3 Revised interpretation
+
+Taken together, these updates do not establish one universally reliable data-only λ selector. They show a more conditional picture:
+
+- A fixed L-curve value can be a safe fallback in one comparison without being a selector.
+- Residual-whiteness and discrepancy can preserve much of the gain in some conditions, but can oversmooth when the RMSE-optimal fit leaves less than the full noise level in the residual.
+- Discrepancy performs much better when supplied the true noise level, according to Aimy's reported comparison.
+- A noise-estimate-based switch can perform well on one unseen, unusually smooth crop, but its low-noise success partly coincided with an L-curve choice that moved in the wrong direction relative to the oracle.
+- The GCV result is sensitive to trace estimation in a setting where the reported degrees of freedom are close to the data count; its failure mechanism remains to be independently checked.
+
+The key distinction is between selecting λ from observable data and validating that the selection rule generalizes. A rule can be blind to truth during selection yet still overfit to a narrow image regime, an evaluation set, or an accidental correspondence between a diagnostic and the oracle. The third-crop result is encouraging but not enough to close that question. Further tests should include less-smooth and structurally different crops, repeated noise realizations, predeclared rules and thresholds, and uncertainty intervals for the retained oracle margin.
+
+**Evidence boundary:** all numbers and interpretations in this section are attributed to Aimy's supplied updates. The third-crop coordinate freeze and hash procedure are reported by Aimy but are not independently audited here. The oracle comparisons use ground truth for evaluation/tuning and therefore are not themselves data-only procedures. No universal λ rule or noise threshold is established by these results.
