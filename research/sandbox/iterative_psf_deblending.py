@@ -165,6 +165,81 @@ def run_iterative_psf_deblending(
         current_rss = proposed_rss
         current_bic = proposed_bic
 
+    # Conditional joint refit: this cannot change the BIC-selected count.
+    # It tests whether the greedy locations can be jointly disentangled once
+    # all retained components are allowed to move together.
+    joint_refit = None
+    if accepted:
+        joint_initial = np.concatenate([
+            np.asarray([
+                value
+                for item in accepted
+                for value in (item["x_px"], item["y_px"])
+            ], dtype=float),
+            np.log(np.asarray([item["amplitude"] for item in accepted], dtype=float)),
+        ])
+        component_count = len(accepted)
+
+        def joint_residual(parameters: np.ndarray) -> np.ndarray:
+            positions = parameters[:2 * component_count].reshape(component_count, 2)
+            amplitudes = np.exp(parameters[2 * component_count:])
+            prediction = np.zeros_like(data, dtype=float)
+            for (x0, y0), amplitude in zip(positions, amplitudes):
+                prediction += _psf_template(
+                    float(x0), float(y0), assumed_sigma_px, size
+                ) * float(amplitude)
+            return (prediction - (data - background)).ravel()
+
+        joint_lower = np.concatenate([
+            np.full(2 * component_count, -half_width),
+            np.full(component_count, -30.0),
+        ])
+        joint_upper = np.concatenate([
+            np.full(2 * component_count, half_width),
+            np.full(component_count, 30.0),
+        ])
+        joint_fit = least_squares(
+            joint_residual,
+            joint_initial,
+            bounds=(joint_lower, joint_upper),
+            method="trf",
+            xtol=1e-10,
+            ftol=1e-10,
+            gtol=1e-10,
+            max_nfev=5000,
+        )
+        joint_positions = joint_fit.x[:2 * component_count].reshape(
+            component_count, 2
+        )
+        joint_amplitudes = np.exp(joint_fit.x[2 * component_count:])
+        joint_resid_image = joint_residual(joint_fit.x).reshape(data.shape)
+        joint_rss = float(np.sum(joint_resid_image**2))
+        joint_refit = {
+            "optimizer_success": bool(joint_fit.success),
+            "optimizer_message": str(joint_fit.message),
+            "nfev": int(joint_fit.nfev),
+            "rss": joint_rss,
+            "bic": _profiled_bic(
+                joint_rss, pixel_count, 3 * component_count
+            ),
+            "candidates": [
+                {
+                    "x_px": float(position[0]),
+                    "y_px": float(position[1]),
+                    "amplitude": float(amplitude),
+                }
+                for position, amplitude in zip(
+                    joint_positions, joint_amplitudes
+                )
+            ],
+            "residual": joint_resid_image,
+            "interpretation_limit": (
+                "Conditional refinement of the greedy-selected component "
+                "count; it does not reconsider source birth/death or prove "
+                "that the selected count is correct."
+            ),
+        }
+
     return {
         "experiment": "C9-PIXEL-RESPONSE-ITERATIVE-PSF-DEBLENDING-001",
         "status": "observation_only_iterative_psf_deblending",
@@ -191,9 +266,10 @@ def run_iterative_psf_deblending(
         "selected_source_count": len(accepted),
         "selected_candidates": accepted,
         "candidate_trials": trials,
+        "joint_refit": joint_refit,
         "residual": residual,
         "limitations": [
-            "Greedy sequential subtraction; accepted components are not jointly refitted.",
+            "Greedy sequential subtraction; the optional joint refit is conditional on the greedy-selected component count and cannot add or remove sources.",
             "Assumes a known PSF family and supplied/assumed PSF width.",
             "Uses a constant median background unless one is supplied.",
             "Profiled Gaussian BIC is a provisional stopping criterion; correlated residuals and model mismatch can invalidate its nominal interpretation.",
