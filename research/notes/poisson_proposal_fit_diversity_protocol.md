@@ -41,7 +41,7 @@ The corrected workflow passed on commit `83b82efe616906feae96e1a6fbcdfd02b333214
 https://github.com/bordode/cloud9-assembly-index/actions/runs/42357323218
 
 - All three fit-diversity tests passed.
-- The fresh-seed 90-trial replay completed and uploaded artifact `deblending-poisson-fit-diversity-audit` (5,568,77 bytes; GitHub digest `sha256:b99053fb932bf7661838205489784c9d0dfe6f6e90c1a6095eba2ba0b84d9482`).
+- The fresh-seed 90-trial replay completed and uploaded artifact `deblending-poisson-fit-diversity-audit` (556,877 bytes; GitHub digest `sha256:b99053fb932bf7661838205489784c9d0dfe6f6e90c1a6095eba2ba0b84d9482`).
 - 90 trials, 423 proposal steps with multiple successful fits, 4,230 pairwise candidate-fit comparisons, and 63,428 optimizer function evaluations.
 
 ### Pairwise fitted-scene differences
