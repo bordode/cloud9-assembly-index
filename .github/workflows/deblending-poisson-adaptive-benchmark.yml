@@ -1,0 +1,44 @@
+name: Poisson adaptive expansion paired benchmark
+
+on:
+  push:
+    branches: [research/poisson-adaptive-proposal-expansion]
+    paths:
+      - "research/sandbox/poisson_psf_deblending.py"
+      - "research/sandbox/deblending_poisson_adaptive_expansion.py"
+      - "scripts/run_deblending_poisson_adaptive_expansion.py"
+      - "research/notes/poisson_adaptive_expansion_protocol.md"
+      - ".github/workflows/deblending-poisson-adaptive-benchmark.yml"
+  pull_request:
+    branches: [research/poisson-proposal-fit-diversity]
+    paths:
+      - "research/sandbox/poisson_psf_deblending.py"
+      - "research/sandbox/deblending_poisson_adaptive_expansion.py"
+      - "scripts/run_deblending_poisson_adaptive_expansion.py"
+      - "research/notes/poisson_adaptive_expansion_protocol.md"
+      - ".github/workflows/deblending-poisson-adaptive-benchmark.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  paired-benchmark:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install numpy scipy
+      - name: Run paired 27-trial adaptive-expansion benchmark
+        env:
+          PYTHONPATH: .
+        run: python scripts/run_deblending_poisson_adaptive_expansion.py --trials 3
+      - name: Upload complete paired benchmark records
+        uses: actions/upload-artifact@v4
+        with:
+          name: deblending-poisson-adaptive-expansion
+          path: artifacts/deblending_poisson_adaptive_expansion.json
+          if-no-files-found: error
+          retention-days: 30

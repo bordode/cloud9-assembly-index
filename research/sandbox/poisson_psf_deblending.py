@@ -94,8 +94,10 @@ def run_poisson_psf_deblending(
     offsets = tuple((float(dx), float(dy)) for dx, dy in proposal_start_offsets)
     if not offsets or not np.all(np.isfinite(np.asarray(offsets, dtype=float))):
         raise ValueError("proposal_start_offsets must be a non-empty finite sequence")
-    if proposal_policy not in {"top_score", "best_bic_top_k"}:
-        raise ValueError("proposal_policy must be 'top_score' or 'best_bic_top_k'")
+    if proposal_policy not in {"top_score", "best_bic_top_k", "adaptive_top5_to10"}:
+        raise ValueError("unsupported proposal_policy")
+    if proposal_policy == "adaptive_top5_to10" and proposal_top_k != 5:
+        raise ValueError("adaptive_top5_to10 uses a fixed five-to-ten expansion")
     if proposal_top_k < 1:
         raise ValueError("proposal_top_k must be positive")
     if proposal_policy == "best_bic_top_k" and len(offsets) != 1:
@@ -206,7 +208,12 @@ def run_poisson_psf_deblending(
         )
         proposal_pool = []
         pool_score = score.copy()
-        pool_limit = proposal_top_k if proposal_policy == "best_bic_top_k" else 1
+        if proposal_policy == "top_score":
+            pool_limit = 1
+        elif proposal_policy == "adaptive_top5_to10":
+            pool_limit = 10
+        else:
+            pool_limit = proposal_top_k
         for _ in range(pool_limit):
             peak_row, peak_col = np.unravel_index(
                 int(np.argmax(pool_score)), pool_score.shape
@@ -220,10 +227,8 @@ def run_poisson_psf_deblending(
                 "score": peak_score,
                 "rank": len(proposal_pool) + 1,
             })
-            if proposal_policy == "best_bic_top_k":
-                suppression = np.hypot(
-                    xx - peak_col, yy - peak_row
-                ) <= 1.0
+            if proposal_policy in {"best_bic_top_k", "adaptive_top5_to10"}:
+                suppression = np.hypot(xx - peak_col, yy - peak_row) <= 1.0
                 pool_score[suppression] = -np.inf
 
         if not proposal_pool:
@@ -239,19 +244,40 @@ def run_poisson_psf_deblending(
             for item in accepted
         ]
         fit_attempts = []
-        for proposal in proposal_pool:
-            for offset_x, offset_y in offsets:
-                candidate_starts = list(starts)
-                candidate_starts.append((
-                    float(np.clip(proposal["x_px"] + offset_x, -half_width, half_width)),
-                    float(np.clip(proposal["y_px"] + offset_y, -half_width, half_width)),
-                    amplitude_start,
-                ))
-                fit_attempts.append({
-                    "proposal": proposal,
-                    "offset": [offset_x, offset_y],
-                    "fit": fit_scene(candidate_starts),
-                })
+
+        def evaluate_proposals(proposals):
+            evaluated = []
+            for proposal in proposals:
+                for offset_x, offset_y in offsets:
+                    candidate_starts = list(starts)
+                    candidate_starts.append((
+                        float(np.clip(proposal["x_px"] + offset_x, -half_width, half_width)),
+                        float(np.clip(proposal["y_px"] + offset_y, -half_width, half_width)),
+                        amplitude_start,
+                    ))
+                    evaluated.append({
+                        "proposal": proposal,
+                        "offset": [offset_x, offset_y],
+                        "fit": fit_scene(candidate_starts),
+                    })
+            return evaluated
+
+        expanded_after_top_five_failure = False
+        if proposal_policy == "adaptive_top5_to10":
+            fit_attempts.extend(evaluate_proposals(proposal_pool[:5]))
+            top_five_successes = [
+                item for item in fit_attempts if item["fit"]["success"]
+            ]
+            top_five_improves_bic = bool(
+                top_five_successes
+                and min(item["fit"]["bic"] for item in top_five_successes) < current_bic
+            )
+            if not top_five_improves_bic:
+                expanded_after_top_five_failure = True
+                fit_attempts.extend(evaluate_proposals(proposal_pool[5:10]))
+        else:
+            fit_attempts = evaluate_proposals(proposal_pool)
+
         successful_attempts = [
             item for item in fit_attempts if item["fit"]["success"]
         ]
@@ -289,6 +315,8 @@ def run_poisson_psf_deblending(
             ],
             "ranked_score_peaks_diagnostic_only": ranked_score_peaks,
             "proposal_candidates_evaluated": len(fit_attempts),
+            "adaptive_expansion_triggered": bool(expanded_after_top_five_failure),
+            "proposal_ranks_evaluated": [int(item["proposal"]["rank"]) for item in fit_attempts],
             "proposal_fit_diagnostics": [
                 {
                     "proposal_rank": item["proposal"]["rank"],
@@ -346,6 +374,7 @@ def run_poisson_psf_deblending(
         "method": "joint_poisson_deviance_mle_with_poisson_bic",
         "proposal_policy": proposal_policy,
         "proposal_top_k": int(proposal_top_k),
+        "adaptive_expansion_policy": ("expand from ranks 1-5 to 6-10 only when no successful top-five fit lowers current BIC" if proposal_policy == "adaptive_top5_to10" else None),
         "exposure": float(exposure),
         "assumed_psf_sigma_px": float(assumed_sigma_px),
         "selected_source_count": len(accepted),
