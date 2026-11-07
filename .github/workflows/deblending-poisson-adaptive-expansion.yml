@@ -1,0 +1,31 @@
+name: Poisson adaptive proposal expansion tests
+
+on:
+  push:
+    branches: [research/poisson-adaptive-proposal-expansion]
+    paths:
+      - "research/sandbox/poisson_psf_deblending.py"
+      - "tests/test_deblending_poisson_adaptive_expansion.py"
+      - ".github/workflows/deblending-poisson-adaptive-expansion.yml"
+  pull_request:
+    branches: [research/poisson-proposal-fit-diversity]
+    paths:
+      - "research/sandbox/poisson_psf_deblending.py"
+      - "tests/test_deblending_poisson_adaptive_expansion.py"
+      - ".github/workflows/deblending-poisson-adaptive-expansion.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  adaptive-expansion-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install numpy scipy pytest
+      - name: Test adaptive proposal expansion
+        run: python -m pytest -q tests/test_deblending_poisson_adaptive_expansion.py
