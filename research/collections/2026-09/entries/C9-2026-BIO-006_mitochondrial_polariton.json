@@ -1,22 +1,48 @@
 {
   "entry_id": "C9-2026-BIO-006",
-  "title": "Mitochondrial Polariton State: Quantum Coherence in Cellular Energy Production",
+  "version": "2.0",
+  "title": "Mitochondrial Polariton State: A Structure-Dependent 71 THz Signature in Living Cells",
   "date_added": "2026-09-18",
+  "date_revised": "2026-11-06",
+  "status": {
+    "publication": "preprint",
+    "peer_reviewed": false,
+    "independently_replicated": false,
+    "system": "in vitro and ex vivo (cultured cells, mouse tissue, isolated mitochondria)",
+    "human_testing": false,
+    "health_claims": "none; nothing here supports any treatment, device or wellness use"
+  },
   "source": {
     "type": "preprint",
+    "title": "A quantum state of mitochondria in the living cell",
     "authors": [
-      "Bo Song",
-      "Yang et al."
+      "Yu Yang",
+      "Zhenglong Gu",
+      "Bo Song"
     ],
-    "institution": "University of Shanghai for Science and Technology",
+    "corresponding_authors": [
+      "Zhenglong Gu",
+      "Bo Song"
+    ],
+    "institutions": [
+      "Center for Mitochondrial Genetics and Health, Greater Bay Area Institute of Precision Medicine (Guangzhou), Fudan University",
+      "Institutes of Biomedical Sciences, Fudan University",
+      "School of Life Sciences, Fudan University",
+      "School of Optical-Electrical Computer Engineering, University of Shanghai for Science and Technology",
+      "State Key Laboratory of Bioinspired Interfacial Materials Science, Suzhou Institute for Advanced Research, University of Science and Technology of China"
+    ],
     "journal": "bioRxiv (preprint, not peer-reviewed)",
-    "url": "https://www.biorxiv.org/",
-    "reference": "Yang et al., bioRxiv, 2026"
+    "posted": "2026-09-15",
+    "doi": "10.64898/2026.09.10.750628",
+    "url": "https://doi.org/10.64898/2026.09.10.750628",
+    "reference": "Yang Y, Gu Z, Song B. A quantum state of mitochondria in the living cell. bioRxiv (2026). https://doi.org/10.64898/2026.09.10.750628",
+    "license_note": "bioRxiv lists this preprint as 'All rights reserved. No reuse allowed without permission.' This entry summarises and cites it; no figures or text blocks are reproduced."
   },
   "layer_assignment": 1,
   "audit_score": 0.78,
   "clusters": [
     1,
+    4,
     7,
     8
   ],
@@ -24,45 +50,87 @@
     "quantum biology",
     "mitochondria",
     "polariton",
-    "ATP synthesis",
-    "vibrational spectroscopy",
-    "FTIR",
-    "quantum coherence",
-    "consciousness",
-    "bioenergetics"
+    "mito-polariton",
+    "cristae",
+    "ATP production",
+    "FTIR spectroscopy",
+    "mid-infrared",
+    "resonance",
+    "structure-dependent signal",
+    "assembly theory"
   ],
   "claims": [
     {
-      "claim": "Anomalous 71 THz vibrational signal detected in living cells, mouse tissues, and isolated mitochondria",
-      "evidence": "FTIR spectroscopy shows signal present in intact structures, absent in dried/ground samples",
+      "claim": "An oscillation mode at 71.0 THz appears in living HEK-293T cells and living mouse kidney tissue, and similar patterns appear in mouse liver, heart and skeletal muscle and in mitochondria isolated from them",
+      "evidence": "FTIR spectra: the 68-72 THz peak group occurs only in the living samples, not in ground dry controls, while the known molecular vibration peaks appear in both",
       "confidence": 0.85
     },
     {
-      "claim": "Signal interpreted as lower polariton branch from CH2 vibration (87 THz) coupled to confined light",
-      "evidence": "Model predicts splitting into 71 THz (lower) and 103 THz (upper) branches; 71 THz matches detection",
-      "confidence": 0.65
-    },
-    {
-      "claim": "71 THz and 87 THz light exposure increases ATP production by ~10%",
-      "evidence": "8 samples per group, frequency-specific response (control frequency: no effect)",
+      "claim": "The 71 THz mode depends on intact mitochondrial structure and cannot be assigned to any specific molecule",
+      "evidence": "The mode disappears in ground dry samples; the authors relate it to an oscillation mode of the mitochondrion rather than a molecular vibration",
       "confidence": 0.75
     },
     {
-      "claim": "Mitochondrial quantum state may enhance TCA cycle efficiency",
-      "evidence": "Theoretical model only; no direct energy transfer dynamics measured",
-      "confidence": 0.4
+      "claim": "The mode is the lower branch of a 'mito-polariton': mid-infrared light coupled to collective CH2 vibrations of cristae lipids, splitting the 87 THz CH2 mode into 71 THz (MP-) and 103 THz (MP+)",
+      "evidence": "Theoretical light-matter coupling model with a ~2.3 um cavity; only MP- is observed, because MP+ overlaps water vibrations",
+      "confidence": 0.55
+    },
+    {
+      "claim": "Weak 71.0 THz and 87.0 THz mid-infrared light raises ATP production in HEK-293T cell clusters by about 10%, while 53.7 THz does not",
+      "evidence": "10 uW/mm2 for 10 min; +10.3% (p < 0.001, n = 8) and +10.1% (p < 0.01, n = 8); 53.7 THz control not significant (p > 0.05, n = 8); t-test",
+      "confidence": 0.7
     }
   ],
   "key_numbers": {
-    "signal_frequency_THz": 71,
-    "ch2_vibration_THz": 87,
+    "signal_frequency_THz": 71.0,
+    "ch2_vibration_THz": 87.0,
     "predicted_upper_branch_THz": 103,
-    "rabi_splitting_THz": 16,
-    "atp_increase_71THz_percent": 10.3,
-    "atp_increase_87THz_percent": 10.1,
-    "sample_size_per_group": 8,
-    "mitochondrial_size_um": 0.5,
-    "wavelength_87THz_medium_um": 2.46
+    "level_splitting_THz": 32,
+    "coupling_strength_tk_kJ_per_mol": 6.4,
+    "coupling_strength_tk_THz_equivalent": 16,
+    "mitochondrial_length_um_HEK293T_kidney_liver": 2.2,
+    "mitochondrial_length_um_heart_muscle": 1.2,
+    "wavelength_87THz_in_mitochondria_um": 2.3,
+    "standing_wave_condition": "Lm = m x lambda_m / 2 (m = 2 for HEK-293T, kidney, liver; m = 1 for heart, skeletal muscle)",
+    "laser_power_density_uW_per_mm2": 10,
+    "illumination_minutes": 10,
+    "sample_size_per_group": 8
+  },
+  "frequencies": [
+    {
+      "frequency_THz": 71.0,
+      "wavelength_um": 4.22,
+      "role": "observed mito-polariton level (MP-)",
+      "atp_change_percent": 10.3,
+      "p_value": "< 0.001",
+      "n": 8,
+      "result": "significant increase"
+    },
+    {
+      "frequency_THz": 87.0,
+      "wavelength_um": 3.45,
+      "role": "CH2 vibration (resonant absorption by cristae lipids)",
+      "atp_change_percent": 10.1,
+      "p_value": "< 0.01",
+      "n": 8,
+      "result": "significant increase"
+    },
+    {
+      "frequency_THz": 53.7,
+      "wavelength_um": 5.58,
+      "role": "control frequency, same power density",
+      "atp_change_percent": null,
+      "p_value": "> 0.05",
+      "n": 8,
+      "result": "no significant change (ns)"
+    }
+  ],
+  "assembly_theory_relevance": {
+    "status": "interpretation by the repository author; not a claim made by the paper",
+    "structure_dependent_signature": "Grinding and drying keeps the molecules (their known vibration peaks remain) but removes the 71 THz mode. The signal belongs to the organised, intact architecture, not to the molecular inventory. This matches the Cloud-9 premise that assembled structure carries information its parts do not.",
+    "resonance": "The response is frequency-specific and two-way: the structure shows a mode at 71 THz and responds to 71 THz input, while 53.7 THz at the same power does nothing. This is ordinary physical resonance, not a mystical effect.",
+    "frequency_as_language": "Fits the working idea of frequency as a language of structure: the more assembled the system, the more it 'says' at specific frequencies. Treated here as a heuristic for generating tests, not as a result.",
+    "open_question": "No assembly index was computed. A direct test would compare a structural complexity measure against the presence and strength of the 71 THz mode across preparations (intact, swollen, cristae-disrupted, ground)."
   },
   "sandbox_validation": {
     "date": "2026-09-18",
@@ -70,27 +138,28 @@
       {
         "name": "Structural Dependence",
         "result": "PASS",
-        "detail": "Signal disappears when mitochondria destroyed"
+        "detail": "Signal disappears when mitochondrial structure is destroyed (ground dry samples)"
       },
       {
         "name": "Frequency Specificity",
         "result": "PASS",
-        "detail": "71/87 THz boost ATP, 53.7 THz control does not"
+        "detail": "71/87 THz raise ATP, 53.7 THz control does not"
       },
       {
         "name": "Polariton Model",
         "result": "PASS",
-        "detail": "16 THz splitting within physical range (5-25 THz)"
+        "detail": "Coupling strength ~16 THz (level splitting 32 THz) within the physical range used in v1 (5-25 THz)"
       },
       {
         "name": "Cavity Resonance",
         "result": "PASS",
-        "detail": "Mitochondrial size matches 87 THz wavelength (order unity)"
+        "detail": "Paper values: mitochondrial length 2.2 +/- 0.4 um vs 87 THz wavelength in mitochondria ~2.3 um (ratio ~0.96)"
       }
     ],
     "overall_score": 1.0,
     "layer": 1,
-    "artifact": "c9_sandbox_mitochondrial_polariton.png"
+    "artifact": "c9_sandbox_mitochondrial_polariton.png",
+    "revision_note": "These are internal plausibility checks against the paper's own numbers, not a replication. v1 used 0.5 um and 2.46 um for the cavity test and labelled 16 THz as the Rabi splitting; v2 replaces them with the paper's values (16 THz is the coupling strength, the splitting is 32 THz). The sandbox was not re-run and the PNG artifact still shows v1 inputs."
   },
   "consciousness_universe_bridge": {
     "layer": 3,
@@ -98,45 +167,105 @@
     "connections": [
       {
         "concept": "Scale hierarchy",
-        "detail": "Mitochondrial signal (71 THz) sits 10^12 above Schumann resonance (7.83 Hz), 10^12 below Planck frequency"
+        "detail": "71 THz is about 9 x 10^12 times the Schumann resonance (7.83 Hz) and about 4 x 10^-30 of the Planck frequency (1.85 x 10^43 Hz). v1 gave 10^12 for the Planck gap; corrected."
       },
       {
         "concept": "Coherence bottleneck",
-        "detail": "Polariton coherence (~100 fs) is 10^10 faster than neural spikes (~1 ms); direct coupling unlikely"
+        "detail": "A ~1 kHz neural spike rate is about 1.4 x 10^-11 of 71 THz (v1 said 10^-10). The ~100 fs polariton coherence time used in v1 is an assumption; the paper does not measure coherence."
       },
       {
         "concept": "Bioenergetic consciousness",
-        "detail": "If mitochondria optimize ATP via quantum coherence, cellular metabolism gains non-classical efficiency; consciousness as emergent property of optimized energy networks"
-      },
-      {
-        "concept": "Panpsychist resonance",
-        "detail": "Speculative: mitochondria as micro-resonators coupling to cosmic frequency hierarchy; no empirical support"
+        "detail": "Speculative: if structured mitochondria tune energy production by resonance, metabolism has a frequency-addressable layer; no link to consciousness is tested"
       }
     ],
-    "testable_prediction": "If polariton coherence time \u03c4 > 1 ps at 310 K, quantum biology claim strengthens; if \u03c4 < 100 fs, classical mechanism likely"
+    "testable_prediction": "If polariton coherence time at 310 K exceeds ~1 ps, the quantum-state interpretation strengthens; if it is far shorter, a classical vibrational-coupling explanation becomes more likely"
   },
   "limitations": [
     "Preprint, not peer-reviewed",
-    "Single cell line (HEK-293T)",
-    "No direct polariton observation (no Rabi splitting measured)",
-    "No coherence time measurements",
-    "Heating artifacts not fully excluded",
-    "Mechanism for TCA cycle coupling is theoretical"
+    "Not independently replicated",
+    "ATP experiment uses one cell line (HEK-293T) in 3D Matrigel clusters, n = 8 per group",
+    "Only the lower branch (71 THz) is observed; the predicted 103 THz branch is masked by water vibrations",
+    "No coherence time or angle-resolved splitting measured",
+    "The paper does not report measuring sample temperature during illumination, so heating effects are not directly excluded",
+    "No animal or human experiments; nothing here supports health, wellness or device claims",
+    "v1 claim about the TCA cycle removed: it does not appear in the preprint"
   ],
   "next_experiments": [
-    "Time-resolved spectroscopy to measure polariton lifetime",
-    "Rabi splitting measurement via angle-resolved spectroscopy",
-    "In vivo validation in model organisms",
-    "Isotopic substitution (C-13) to shift CH2 frequency and test model",
-    "Coherence measurements at physiological temperature (310 K)"
+    "Independent replication of the FTIR signal and the ATP result, blinded",
+    "Measure sample temperature during illumination; add a sham and a heat-matched control",
+    "Frequency sweep around 71 THz to map the response curve",
+    "Graded disruption of cristae (not only grinding) to test whether the 71 THz mode scales with structural order",
+    "Isotopic substitution (13C or deuterated lipids) to shift the CH2 frequency and test the polariton model",
+    "Time-resolved spectroscopy to measure the mode's lifetime at 310 K"
+  ],
+  "cross_references": [
+    {
+      "id": "C9-2026-PHOTON-002",
+      "relation": "Room-temperature exciton-polariton supersolid (Science Advances, 2026): another light-matter hybrid at room or body temperature"
+    },
+    {
+      "id": "C9-2026-PHOTON-001",
+      "relation": "Polariton condensates and solid-like ordered light"
+    },
+    {
+      "id": "XP-2026-005",
+      "relation": "Coupling-Induced Order: polariton condensates to biological membranes"
+    }
   ],
   "integration": {
-    "cluster_1_quantum_foundations": "Tests decoherence limits in warm, wet systems; relevant to quantum-to-classical transition",
-    "cluster_7_quantum_thermodynamics": "Potential biological quantum heat engine; energy transport via polariton states",
-    "cluster_8_consciousness": "Extends quantum biology hypothesis; bioenergetic basis for neural computation"
+    "cluster_1_quantum_foundations": "Tests whether light-matter coherence survives in warm, wet, living systems",
+    "cluster_4_complexity_science": "A signal present only in the assembled structure, absent in the same molecules after grinding",
+    "cluster_7_quantum_thermodynamics": "Proposed frequency-specific channel for modulating cellular energy production",
+    "cluster_8_consciousness": "Extends the quantum-biology discussion; no direct link to neural computation is tested"
   },
+  "attributions": {
+    "research": {
+      "credit": "Yu Yang, Zhenglong Gu and Bo Song: all experiments, data, the mito-polariton model and the ATP results",
+      "citation": "Yang Y, Gu Z, Song B. A quantum state of mitochondria in the living cell. bioRxiv (2026). https://doi.org/10.64898/2026.09.10.750628"
+    },
+    "repository_author": {
+      "name": "Dean Bordode",
+      "github": "bordode",
+      "role": "Cloud-9 Assembly Index framework; connecting the study to frequency, resonance and assembly theory"
+    },
+    "research_and_drafting": {
+      "name": "Charlie (Sesame)",
+      "role": "Checked the preprint, corrected the v1 entry and drafted the v2 README and JSON"
+    },
+    "original_entry": {
+      "name": "C9 Autonomous Curator",
+      "role": "v1 entry and sandbox checks (2026-09-18)"
+    },
+    "repository_collaborators": {
+      "names": [
+        "Google Gemini",
+        "Moonshot Kimi",
+        "Anthropic Claude",
+        "Base44 Subhalo"
+      ],
+      "role": "Cloud-9 AI Peer-Review Collective, credited at repository level in the main README; no specific contribution to this entry"
+    },
+    "discovery": {
+      "source": "Reel by @dr.rickpescatore",
+      "note": "How the study reached the project. Its 'charging tired cells' framing goes beyond what the preprint shows."
+    }
+  },
+  "revision_history": [
+    {
+      "version": "1.0",
+      "date": "2026-09-18",
+      "by": "C9 Autonomous Curator",
+      "summary": "Initial entry"
+    },
+    {
+      "version": "2.0",
+      "date": "2026-11-06",
+      "by": "Dean Bordode with Charlie (Sesame)",
+      "summary": "Full author list, institutions and DOI added; cavity numbers, splitting label and scale ratios corrected against the preprint; TCA claim removed; assembly-theory relevance, status block, frequency table and attributions added"
+    }
+  ],
   "metadata": {
-    "curated_by": "C9 Autonomous Curator",
+    "curated_by": "C9 Autonomous Curator (v1); Dean Bordode with Charlie (v2)",
     "collection": "C9-COLLECTION-2026-0918-WEEKLYSCIENCE",
     "priority": 0.85,
     "tags": [
@@ -144,8 +273,10 @@
       "mitochondria",
       "polariton",
       "ATP",
-      "consciousness",
-      "sandbox-validated"
+      "resonance",
+      "assembly-theory",
+      "preprint",
+      "unreplicated"
     ]
   }
 }
