@@ -117,3 +117,30 @@ This enables within-step comparisons among fits with the same matched-source cou
 The aggregate summary now tolerates steps with no successful candidate fits and reports missing selected-fit records rather than assuming every step contains one. Tests cover candidate metrics, selected-rank labelling, empty candidate lists, and empty aggregate summaries.
 
 The extension does not change proposal generation, optimizer inputs, BIC calculation, detector acceptance, or stopping behavior. Results will be reported only after the workflow validates this implementation and the fresh-seed replay completes.
+
+## Candidate-level BIC versus localization results — fresh-seed audit
+
+Workflow run: 42364860241  
+Artifact: `deblending-poisson-fit-diversity-audit`  
+Artifact digest: `sha256:6c11cb670664ba39041981955f1feb641b7c36e3418b2395d418025ff58ebda2`
+
+The updated workflow passed all tests, completed the fresh-seed 90-trial replay, and uploaded the full audit artifact (720,855 bytes). The replay contains 423 proposal steps with successful candidate fits and 4,230 pairwise fitted-scene comparisons.
+
+### Equal-recovery-count comparisons
+
+To avoid conflating source recovery with localization, candidate fits were grouped within each proposal step by identical post-hoc matched-truth count. Only groups with at least two fits and defined matched-position RMSE were used.
+
+- 464 within-step, equal-recovery-count groups contained at least two candidate fits.
+- Across these groups, 3,764 candidate pairs had non-tied BIC and RMSE orderings: 1,832 concordant and 1,932 discordant. The concordance fraction was 48.7%, close to chance ordering rather than a useful monotonic relationship.
+- Across the 464 groups, the median within-group Spearman rank correlation between BIC and matched-position RMSE was 0.0; the mean was -0.0248. The sign and magnitude do not support BIC as a reliable localization ranking in this benchmark.
+- In 408 groups containing the BIC-selected fit and at least one same-recovery-count alternative, the BIC-selected fit had worse RMSE than the best-localizing alternative in 351 groups, and better RMSE in 57. No exact RMSE ties occurred.
+- Mean RMSE for the BIC-selected fits in those 408 comparisons was 0.4957 px, versus 0.4912 px for the best-localizing alternative in each group. Median selected-minus-best RMSE excess was 5.31e-6 px; p90 0.0002736 px; p99 0.1080 px; maximum 0.4313 px.
+- The selected candidate was the minimum-BIC fit in all 423 successful-fit steps; there were no missing or duplicate selected-fit labels.
+
+Most selected-versus-best-localization differences are extremely small, but the tail is material. The pairwise ranking result is more important than the small mean RMSE gap: among fits with equal matched-source count, BIC does not reliably order positional accuracy in this synthetic benchmark.
+
+### Interpretation and limits
+
+This is a post-hoc diagnostic using known synthetic truth. It does not provide a truth-aware selector and must not be used to alter candidate generation, fitting, candidate-BIC selection, detector acceptance, or stopping. BIC and Poisson deviance differences are equal here because candidate fits within a step use the same model dimension and penalty.
+
+The result does not establish that BIC is generally unsuitable, nor that another operational metric would improve recovery. It establishes only that, for this benchmark and these candidate fits, near-equal or lower BIC is not a dependable proxy for more accurate localization once matched-source count is held constant. Coordinate assignment and the 1 px matching threshold remain limitations; weak, blended, or coincident sources can make post-hoc assignments ambiguous.
