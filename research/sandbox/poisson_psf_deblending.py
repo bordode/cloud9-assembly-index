@@ -20,6 +20,34 @@ def _template(x: float, y: float, sigma: float, size: int) -> np.ndarray:
     return pixel_integrated_gaussian(x, y, 1.0, 0.0, sigma, size)
 
 
+def _rank_score_peaks(
+    score_map: np.ndarray,
+    *,
+    centre: float,
+    max_peaks: int = 50,
+    suppression_radius_px: float = 1.0,
+) -> list[dict]:
+    """Record observation-only ranked score peaks without changing detection."""
+    working = np.asarray(score_map, dtype=float).copy()
+    yy, xx = np.indices(working.shape)
+    peaks = []
+    for rank in range(max_peaks):
+        flat_index = int(np.argmax(working))
+        row, col = np.unravel_index(flat_index, working.shape)
+        peak_score = float(working[row, col])
+        if not np.isfinite(peak_score):
+            break
+        peaks.append({
+            "rank": rank + 1,
+            "x_px": float(col - centre),
+            "y_px": float(row - centre),
+            "score": peak_score,
+        })
+        suppressed = np.hypot(xx - col, yy - row) <= suppression_radius_px
+        working[suppressed] = -np.inf
+    return peaks
+
+
 def _poisson_deviance_residual(observed_counts: np.ndarray,
                                expected_counts: np.ndarray) -> np.ndarray:
     """Signed square-root Poisson deviance residuals."""
@@ -170,6 +198,11 @@ def run_poisson_psf_deblending(
                                 yy - (item["y_px"] + centre))
             score[distance < 0.8] = -np.inf
 
+        # Diagnostic-only ranked peaks: this copy is never fed to the detector.
+        ranked_score_peaks = _rank_score_peaks(
+            score, centre=centre, max_peaks=50,
+            suppression_radius_px=1.0,
+        )
         proposal_pool = []
         pool_score = score.copy()
         pool_limit = proposal_top_k if proposal_policy == "best_bic_top_k" else 1
@@ -253,6 +286,7 @@ def run_poisson_psf_deblending(
                 }
                 for item in proposal_pool
             ],
+            "ranked_score_peaks_diagnostic_only": ranked_score_peaks,
             "proposal_candidates_evaluated": len(fit_attempts),
             "proposal_fit_diagnostics": [
                 {
