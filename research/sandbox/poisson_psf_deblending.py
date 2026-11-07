@@ -264,6 +264,15 @@ def run_poisson_psf_deblending(
                     "optimizer_nfev": int(item["fit"]["nfev"]),
                     "poisson_deviance": float(item["fit"]["deviance"]),
                     "poisson_bic": float(item["fit"]["bic"]),
+                    "fitted_candidates": [
+                        {
+                            "x_px": float(candidate["x_px"]),
+                            "y_px": float(candidate["y_px"]),
+                            "amplitude": float(candidate["amplitude"]),
+                        }
+                        for candidate in item["fit"]["candidates"]
+                    ],
+                    "fitted_background_rate": float(item["fit"]["background"]),
                 }
                 for item in fit_attempts
             ],
