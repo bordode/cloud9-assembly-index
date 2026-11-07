@@ -96,6 +96,49 @@ class FitDiversityTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             _posthoc_source_audit([], np.array([[0.0, 0.0]]), np.array([]), 1.0)
 
+    def test_source_audit_reports_tied_candidate_ambiguity(self):
+        rows = _posthoc_source_audit(
+            [
+                {"x_px": -0.2, "y_px": 0.0},
+                {"x_px": 0.2, "y_px": 0.0},
+            ],
+            np.array([[0.0, 0.0]]),
+            np.array([10.0]),
+            1.0,
+        )
+        self.assertAlmostEqual(rows[0]["nearest_candidate_margin_px"], 0.0)
+        self.assertTrue(rows[0]["matched_within_1_px_posthoc"])
+
+    def test_source_summary_aggregates_nested_fit_audits(self):
+        source_rows = _posthoc_source_audit(
+            [
+                {"x_px": 0.1, "y_px": 0.0},
+                {"x_px": 1.2, "y_px": 0.0},
+                {"x_px": 5.1, "y_px": 0.0},
+            ],
+            np.array([[0.0, 0.0], [1.0, 0.0], [5.0, 0.0]]),
+            np.array([100.0, 20.0, 5.0]),
+            1.0,
+        )
+        result = _summarize_source_localization([
+            {"step_audits": [{
+                "fit_audits_posthoc_only": [{
+                    "source_audits_posthoc_only": source_rows
+                }]
+            }]}
+        ])
+        self.assertEqual(result["source_observation_count"], 3)
+        self.assertEqual(
+            result["grouped_results"]["crowding_band"]
+            ["close_lt_1_5_sigma"]["matched_within_1_px"],
+            2,
+        )
+        self.assertEqual(
+            result["grouped_results"]["flux_band"]
+            ["faintest_third"]["source_observations"],
+            1,
+        )
+
     def test_source_summary_handles_empty_records(self):
         result = _summarize_source_localization([])
         self.assertEqual(result["source_observation_count"], 0)
