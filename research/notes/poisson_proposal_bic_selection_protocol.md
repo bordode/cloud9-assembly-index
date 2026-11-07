@@ -99,3 +99,46 @@ For each step, compare the maximum and minimum BIC among successful candidate fi
 Because all alternatives at a given step have the same parameter count, BIC ranking is driven by deviance. The very small spreads in most steps suggest many candidate initializations converge to effectively the same solution, with the nominal winner potentially determined by tiny numerical differences. The observed +0.133-source average is promising but small and requires a repeat run before stronger interpretation. It must not be presented as a robust improvement yet.
 
 A strengthened test now asserts that the selected proposal rank corresponds to the minimum BIC among successful candidate fits. A repeat 90-trial workflow is being triggered to assess whether the aggregate advantage persists. This experiment remains synthetic and does not establish real-image performance.
+
+
+## Independent repeat benchmark — run 42353164442
+
+**Workflow:** [run 42353164442](https://github.com/bordode/cloud9-assembly-index/actions/runs/42353164442)  
+**Code commit tested:** `4152ff308ca2d717f2cd8b281b1cc3ac272270e9`  
+**GitHub artifact digest:** `sha256:387a907f707d5fce462f8fce3e975409fab76c3448ebdf520e781686f62e93e6`  
+**Extracted JSON SHA-256:** `c729f64960893e4e1cc06a3e9bf3865531583f1bd62be401c231fd00d375e73a`
+
+The repeat passed the strengthened tests, completed all 90 trials, and uploaded the full artifact.
+
+| Metric | First run | Repeat |
+|---|---:|---:|
+| Gaussian mean matched truths | 3.78 | 3.78 |
+| Poisson single mean matched | 3.29 | 3.28 |
+| Poisson top-five/BIC mean matched | 3.42 | 3.42 |
+| Top-five paired wins | 9 | 9 |
+| Single-proposal paired wins | 0 | 0 |
+| Ties | 81 | 81 |
+| Mean paired advantage | +0.133 | +0.144 |
+| Gaussian exact recoveries | 3/90 | 3/90 |
+| Poisson single exact recoveries | 0/90 | 0/90 |
+| Poisson top-five exact recoveries | 0/90 | 0/90 |
+
+The qualitative result is repeatable on this fresh-seed grid: top-five/BIC yields a small average increase in matched sources, but no exact seven-source recoveries and no improvement in any exact-recovery count. The Gaussian baseline remains ahead by mean matched sources (3.78 versus 3.42).
+
+### Repeat cost and numerical diagnostics
+
+The repeat evaluated 2,115 proposal fits across 423 steps, with 63,428 optimizer function evaluations; 333 steps were accepted and 90 rejected. This is close to the first run's 63,244 function evaluations.
+
+Accepted proposal ranks in the repeat were: rank 1 = 77, rank 2 = 68, rank 3 = 61, rank 4 = 57, rank 5 = 70. The selected fit is often not rank 1 by residual score, but this alone does not mean it recovers more true sources.
+
+The median successful-fit BIC spread per step was (1.77\times10^{-7}); 65.5% of steps had spread below (10^{-6}), and 69.3% below 1. The 99th percentile was about 69.4, with a maximum about 100.7. This closely resembles the first run and confirms that many proposal alternatives converge to numerically near-identical fits, with a smaller tail of genuinely different outcomes.
+
+### Revised conclusion
+
+The top-five proposal pool has a small, repeatable benefit in mean matched-source count in this controlled synthetic experiment. However:
+- It does not improve exact seven-source recovery.
+- It remains below the Gaussian baseline in mean matched sources.
+- It adds roughly five full-scene fits per proposal step.
+- Most candidate fits have almost indistinguishable BIC values, so selection among them is often a numerical tie-break rather than evidence that a different proposal has found a better scene.
+
+This is a modest algorithmic signal, not yet a persuasive practical improvement. Do not merge on this result alone. The next useful work should inspect the candidate fits that materially differ, distinguish numerical near-ties from genuinely different fitted scenes, and test whether a more informative proposal mechanism can identify missed sources without multiplying optimizer cost. Keep the PR draft and unmerged.
