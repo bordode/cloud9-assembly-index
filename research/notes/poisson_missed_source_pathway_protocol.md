@@ -157,3 +157,30 @@ The pilot reports:
 The new workflow is `.github/workflows/deblending-poisson-candidate-depth.yml`. At the time of this note, the code and workflow have been committed to the PR #38 branch, but the candidate-depth pilot has **not yet completed**. No performance conclusion is available. The test and replay results will be added only after the workflow and artifact are inspected.
 
 Interpretation guardrail: even if deeper pools improve recovery, this establishes only a result for this small synthetic pilot. Increased compute cost, trial-to-trial variation, and the possibility that nearby score peaks are not identifiable sources must be reported alongside any gain.
+
+
+## Historical CI failures and resolution (7 November 2026)
+
+Six early runs of the fit-diversity audit workflow failed before the replay stage. The run IDs and root causes were inspected directly from GitHub Actions logs:
+
+| Audit run | Commit | Root cause |
+|---|---|---|
+| [#12](https://github.com/bordode/cloud9-assembly-index/actions/runs/42407643970) | `9443c22` | Test expected legacy `faintest_2`; adaptive three-band assignment returned `middle_3`. |
+| [#13](https://github.com/bordode/cloud9-assembly-index/actions/runs/42407689702) | `d0d475c` | Same stale legacy flux-band expectation. |
+| [#14](https://github.com/bordode/cloud9-assembly-index/actions/runs/42407725050) | `0614b8c` | Test expected `brightest_2`; adaptive assignment returned `brightest_third`. |
+| [#18](https://github.com/bordode/cloud9-assembly-index/actions/runs/42408481528) | `52c9846` | Two-source fixture incorrectly expected a `faintest_third` category; adaptive bands correctly do not invent a third category for two sources. |
+| [#19](https://github.com/bordode/cloud9-assembly-index/actions/runs/42408534164) | `2e6e866` | Fixture had been expanded to three truth sources, but assertion still expected two source observations (`AssertionError: 3 != 2`). |
+| [#20](https://github.com/bordode/cloud9-assembly-index/actions/runs/42408567166) | `a4966e8` | Same stale source-observation count assertion (`3 != 2`). |
+
+In all six runs, dependency installation and setup succeeded; the failing step was the diversity-audit unit-test command. The 90-trial replay and artifact upload were skipped. These failures were test/fixture expectation mismatches, not failures of the scientific replay or evidence of a detector regression.
+
+The current PR branch test fixture now uses three truth sources, expects three source observations, one matched and two unmatched, and checks the faintest-third category only where three truth sources exist. The two-source behavior is separately tested without assuming a third band.
+
+Subsequent complete workflow runs verified the correction and replay path:
+- [Run 42409714087](https://github.com/bordode/cloud9-assembly-index/actions/runs/42409714087): unit tests, 90-trial replay and artifact upload all passed.
+- [Run 42413035999](https://github.com/bordode/cloud9-assembly-index/actions/runs/42413035999): all steps passed.
+- [Run 42414013003](https://github.com/bordode/cloud9-assembly-index/actions/runs/42414013003): all steps passed.
+
+The screenshots' extracted branch label says `research/poisson-proposals`; the current PR #38 metadata identifies the head branch as `research/poisson-proposal-fit-diversity`. The six commits and workflow runs are confirmed by their exact commit hashes and run IDs above. The current branch name should be used when inspecting PR #38.
+
+The warning about Node.js 20 deprecation in runner logs was not the cause of these failures. It is a separate maintenance warning and did not fail the jobs.
