@@ -144,3 +144,18 @@ Most selected-versus-best-localization differences are extremely small, but the 
 This is a post-hoc diagnostic using known synthetic truth. It does not provide a truth-aware selector and must not be used to alter candidate generation, fitting, candidate-BIC selection, detector acceptance, or stopping. BIC and Poisson deviance differences are equal here because candidate fits within a step use the same model dimension and penalty.
 
 The result does not establish that BIC is generally unsuitable, nor that another operational metric would improve recovery. It establishes only that, for this benchmark and these candidate fits, near-equal or lower BIC is not a dependable proxy for more accurate localization once matched-source count is held constant. Coordinate assignment and the 1 px matching threshold remain limitations; weak, blended, or coincident sources can make post-hoc assignments ambiguous.
+
+
+## Source-level crowding and localization diagnostic — implementation update
+
+A further post-hoc diagnostic now records source-level outcomes for every successful candidate fit:
+
+- Each known truth source is matched one-to-one to fitted candidates using minimum-total-distance Hungarian assignment.
+- A source is counted as matched only when its assigned candidate is within the existing 1 px tolerance.
+- The audit records the truth source's amplitude and rank, nearest-neighbour truth separation in pixels and PSF-sigma units, and the number of other truth sources within 2 PSF sigma.
+- It records the assigned candidate distance and the difference between the nearest and second-nearest fitted-candidate distances as a local assignment-ambiguity indicator.
+- Aggregate descriptive summaries are grouped by nearest-neighbour crowding band and by truth-flux rank band.
+
+The diagnostic is strictly post-fit and post-selection. It does not affect proposal generation, optimizer inputs, BIC, acceptance, or stopping. The 1 px assignment rule is inherited from the existing benchmark and is not a claim that every match is physically unambiguous. The nearest-versus-second-nearest distance margin is a local ambiguity indicator, not a complete probabilistic assignment uncertainty.
+
+Repeated source observations across candidate fits are correlated; grouped counts must not be treated as independent samples or as a population-level significance test. This extension is intended to identify where to inspect the existing synthetic results, not to establish a universal blending law. Results will be interpreted only after the updated workflow tests and full replay complete.
