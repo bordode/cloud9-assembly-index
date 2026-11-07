@@ -87,6 +87,18 @@ class FitDiversityTests(unittest.TestCase):
         self.assertAlmostEqual(rows[0]["posthoc_assignment_distance_px"], 0.1)
         self.assertIsNotNone(rows[0]["nearest_candidate_margin_px"])
 
+    def test_flux_bands_do_not_invent_a_faintest_third_for_two_sources(self):
+        rows = _posthoc_source_audit(
+            [],
+            np.array([[0.0, 0.0], [3.0, 0.0]]),
+            np.array([10.0, 1.0]),
+            1.0,
+        )
+        self.assertEqual(
+            {row["flux_band"] for row in rows},
+            {"brightest_third", "middle_third"},
+        )
+
     def test_source_audit_handles_no_candidates_and_invalid_inputs(self):
         rows = _posthoc_source_audit(
             [], np.array([[0.0, 0.0]]), np.array([1.0]), 1.0
