@@ -102,3 +102,18 @@ Thus, BIC's selected candidate usually ties the best available candidate on the 
 The result answers the narrow question more positively for source count than for exact localization: BIC usually chooses a candidate that recovers as many sources as any alternative in the proposal pool, but lowest BIC is not equivalent to best truth-position reconstruction. The candidate pool itself may omit better solutions, and the benchmark remains a replay on synthetic scenes. Matched-source scoring uses a 1 px assignment tolerance and does not establish flux accuracy, calibrated uncertainty, robustness to PSF/model mismatch, or performance on real observations. Truth remains strictly evaluation-only.
 
 PR #38 remains draft and unmerged.
+
+## Candidate-level BIC versus localization audit — implementation update
+
+The next diagnostic extension records, for every successful proposal fit:
+
+- Candidate rank and whether it was selected by candidate BIC (distinct from the detector's later acceptance decision).
+- Its individual Poisson BIC and Poisson deviance.
+- Post-hoc matched-truth count using the existing 1 px one-to-one scoring rule.
+- Post-hoc matched-position RMSE in pixels, calculated only over truth/candidate matches within that 1 px tolerance. RMSE is null when there are no matched sources; it is not silently treated as zero.
+
+This enables within-step comparisons among fits with the same matched-source count: does a lower BIC tend to coincide with lower positional RMSE, or are BIC differences effectively uninformative near ties? Any truth-based localization metric remains strictly post-fit and post-selection. It is not an admissible operational selection criterion.
+
+The aggregate summary now tolerates steps with no successful candidate fits and reports missing selected-fit records rather than assuming every step contains one. Tests cover candidate metrics, selected-rank labelling, empty candidate lists, and empty aggregate summaries.
+
+The extension does not change proposal generation, optimizer inputs, BIC calculation, detector acceptance, or stopping behavior. Results will be reported only after the workflow validates this implementation and the fresh-seed replay completes.
