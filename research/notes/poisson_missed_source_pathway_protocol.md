@@ -52,20 +52,11 @@ Report both aggregate stage counts and full per-trial/per-step records. Include 
 
 Interpretation is limited to locating failure modes in this controlled synthetic setup. The audit cannot establish performance on real astronomical images, prove that BIC is generally inappropriate, or show that a proposal close to truth would be identifiable in a different scene or PSF model.
 
-## Status
-
-Implementation is in PR #38. Results are provisional until the workflow completes, all tests pass, and the complete artifact is inspected.
-
-
-## Results — unified 90-trial replay (7 November 2026)
+## Results — unified 90-trial replay, initial run (7 November 2026)
 
 Workflow [run 42413035999](https://github.com/bordode/cloud9-assembly-index/actions/runs/42413035999) completed successfully. The pathway tests passed, the full 90-trial replay completed, and the artifact uploaded.
 
-Artifact:
-- Name: `deblending-poisson-fit-diversity-audit`
-- Artifact ID: `13589964295`
-- SHA-256: `09ea2555444f36d4a2d485127996f59599b795d81ed275080a9090e21aa4eb70`
-- 90 trials; 423 steps with multiple successful candidate fits; 4,230 pairwise comparisons; 63,244 optimizer function evaluations.
+Artifact ID: `13589964295`; SHA-256: `09ea2555444f36d4a2d485127996f59599b795d81ed275080a9090e21aa4eb70`.
 
 Across 2,171 repeated missed-source/source-step observations, the mutually exclusive post-hoc labels were:
 
@@ -77,16 +68,72 @@ Across 2,171 repeated missed-source/source-step observations, the mutually exclu
 | Selected fit rejected by BIC | 63 | 2.9% |
 | Recovered by selected fit | 513 | 23.6% |
 
-The first four categories account for 1,658 unresolved source-step observations. Within that unresolved subset, proposal-generation gaps account for 82.8%, fit-recovery gaps 9.2%, BIC candidate-selection gaps 4.2%, and selected-fit BIC rejections 3.8%.
+This initial run motivated a deeper look at ranked score-map peaks.
 
-Interpretation: in this particular synthetic replay, most missed-source observations were not associated with a proposal coordinate within 1 px of the truth. Among the remaining unresolved cases, failures after a nearby proposal existed were less frequent; BIC selection and acceptance together account for a smaller share still. This makes proposal generation the clearest next investigation target. It does not establish that residual proposals are the dominant limitation for real astronomical data, other scenes, PSFs, noise models, or proposal thresholds.
+## Results — fresh rerun and ranked-peak audit (7 November 2026)
 
-The 513 recovered observations are included because those sources were absent from the current accepted scene at the start of the step but were recovered by the selected fit during that step. They are not counted as unresolved failures.
+A subsequent commit triggered [workflow run 42414013003](https://github.com/bordode/cloud9-assembly-index/actions/runs/42414013003). The test suite, fresh-seed 90-trial replay, and artifact upload all completed successfully.
 
-The denominator is repeated source/step observations over 90 trials of a fixed synthetic scene, not 2,171 independent astronomical sources. A 1 px proposal-proximity test is a diagnostic convention, not proof of source identifiability. All truth-based labels remain post-hoc and do not influence the detector.
+Artifact:
+- Name: `deblending-poisson-fit-diversity-audit`
+- Artifact ID: `13590787133`
+- SHA-256: `5c30a5e4d640473e1e2808426f640f8023bdac2fbba19cdc9459adf8e164dc2b`
+- 90 trials; seeds beginning at 20261900.
+- 423 steps with multiple successful candidate fits.
+- 4,230 pairwise fit comparisons.
+- 63,428 optimizer function evaluations.
 
-Other same-run summaries reproduce the prior fit-diversity and localization findings: 423 selected-fit comparisons; BIC-selected fit matched the best available candidate by matched-source count in 408/423 steps; mean matched count 2.648 selected versus 2.693 best available. Across all candidate fits, 5,420/14,805 repeated source observations matched within 1 px (36.6%). These are descriptive synthetic benchmark summaries, not independent-sample estimates.
+### Updated missed-source pathway counts
 
-## Next experiment
+Across 2,171 repeated missed-source/source-step observations:
 
-Investigate the observation-derived residual proposal mechanism without changing BIC first. In the same replay design, record the residual score map around every currently missed truth source, local maxima and their suppression, proposal score/rank, and distance to the nearest missed truth. Test proposal-generation diagnostics separately from any detector change. If a proposal-policy variant is later tested, preserve the original detector as a paired baseline, use fresh seeds, and keep truth strictly out of the proposal policy and all selection decisions.
+| Stage | Count | Share |
+|---|---:|---:|
+| Proposal generation gap | 1,373 | 63.2% |
+| Fit recovery gap | 153 | 7.0% |
+| BIC candidate-selection gap | 68 | 3.1% |
+| Selected fit rejected by BIC | 64 | 2.9% |
+| Recovered by selected fit | 513 | 23.6% |
+
+The first four categories account for 1,658 unresolved observations. Within those unresolved observations, proposal-generation gaps account for 82.8%, fit-recovery gaps 9.2%, BIC candidate-selection gaps 4.1%, and selected-fit rejections 3.9%.
+
+The small count changes from the initial run are retained rather than averaged: these are two fresh executions of the same declared 90-trial seed grid, and the newer artifact is the current run record.
+
+### Ranked score-map peak coverage
+
+For the 1,373 proposal-generation-gap observations, the audit checked the nearest peak within 1 px among the top 50 observation-derived score-map peaks after 1 px non-maximum suppression:
+
+| Nearest qualifying peak rank | Observations | Share of proposal-generation gaps |
+|---|---:|---:|
+| Ranks 1–5 | 0 | 0.0% |
+| Ranks 6–10 | 403 | 29.4% |
+| Ranks 11–25 | 247 | 18.0% |
+| Ranks 26–50 | 112 | 8.2% |
+| No peak within 1 px in top 50 | 611 | 44.5% |
+
+Thus 762/1,373 (55.5%) of these observations had a nearby peak somewhere in ranks 6–50, outside the existing five-proposal pool. The remaining 611 (44.5%) had no nearby peak among the top 50 under this diagnostic. No missed source in this subset had a nearby peak in ranks 1–5.
+
+This is a post-hoc coordinate-proximity result. A nearby score-map peak does not prove that it represents an identifiable source, that its fit would succeed, or that BIC would accept it. The top-50 audit does not itself test expanded candidate fitting.
+
+### Other updated summaries
+
+- BIC-selected fit matched the best available candidate by matched-source count in 410/423 steps (96.9%).
+- Mean matched truths: 2.652 for BIC-selected fits versus 2.690 for the best available candidate (gap 0.038 source per step).
+- Across all candidate fits, 5,425/14,805 repeated source observations matched within 1 px (36.6%).
+- Pairwise fitted-scene position RMS: median 3.63e-5 px; p90 3.74 px; maximum 11.94 px. 21.0% exceeded 0.05 px.
+- Absolute BIC-difference median 5.59e-8; p90 4.68; maximum 100.71. Correlation with position RMS was 0.253.
+
+These are descriptive synthetic replay summaries, not independent-sample estimates. The fixed scene and repeated source/step observations limit generalization.
+
+## Interpretation and next experiment
+
+The updated evidence separates two proposal-side issues:
+
+1. **Candidate-pool depth:** in 55.5% of proposal-generation-gap observations, a peak within 1 px existed in ranks 6–50, but not in the top-five pool.
+2. **Peak generation/localization:** in 44.5%, no peak within 1 px appeared among the top 50 after the stated suppression rule.
+
+The next experiment should therefore investigate the residual score-map mechanism before changing BIC. First, characterize the score-map value and local geometry around missed sources, the local-maxima and non-maximum-suppression behavior, and how peak rank relates to source flux, crowding, exposure, and trial. Then run a paired candidate-depth ablation (for example top 5, 10, 25, and 50) using the same observation-only proposal scores, fitting each selected proposal once and retaining the original BIC selection and acceptance rules. Keep the original top-five detector as the paired baseline, use fresh seeds, and report added optimizer cost as well as recovery.
+
+Truth must remain unavailable to proposal ranking, fitting, and selection. It may be used only after the run to evaluate which rank bands corresponded to missed truth positions. The top-50 proximity finding is a reason to test candidate depth, not evidence that deeper search will improve recovery.
+
+The experiment remains a synthetic benchmark investigation. It does not establish real-image performance or a universal proposal-ranking rule.
