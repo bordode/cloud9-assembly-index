@@ -227,6 +227,7 @@ def _audit_missed_source_path(
     fit_diagnostics: list[dict],
     selected_rank: int,
     accepted: bool,
+    ranked_score_peaks: list[dict] | None = None,
     match_radius_px: float = 1.0,
 ) -> list[dict]:
     """Trace each currently missed truth source through proposal, fit and BIC.
@@ -266,6 +267,22 @@ def _audit_missed_source_path(
             proposal_distance is not None
             and proposal_distance <= match_radius_px
         )
+        peak_distances = [
+            (
+                float(np.hypot(item["x_px"] - truth_xy[0],
+                               item["y_px"] - truth_xy[1])),
+                int(item["rank"]),
+            )
+            for item in (ranked_score_peaks or [])
+        ]
+        nearest_peak_distance, nearest_peak_rank = (
+            min(peak_distances, key=lambda item: (item[0], item[1]))
+            if peak_distances else (None, None)
+        )
+        nearby_top50_peak = (
+            nearest_peak_distance is not None
+            and nearest_peak_distance <= match_radius_px
+        )
         recovering_ranks = [
             rank for rank, distances in fit_distances.items()
             if distances[truth_index] is not None
@@ -296,6 +313,9 @@ def _audit_missed_source_path(
             "current_scene_assignment_distance_px_posthoc": current_distance,
             "nearest_proposal_distance_px_posthoc": proposal_distance,
             "nearby_proposal_within_1_px_posthoc": bool(nearby_proposal),
+            "nearest_ranked_score_peak_distance_px_posthoc": nearest_peak_distance,
+            "nearest_ranked_score_peak_rank_posthoc": nearest_peak_rank,
+            "nearby_ranked_score_peak_within_1_px_posthoc": bool(nearby_top50_peak),
             "successful_fit_ranks_recovering_source_posthoc": recovering_ranks,
             "selected_fit_assignment_distance_px_posthoc": selected_distance,
             "selected_fit_recovers_source_posthoc": bool(selected_recovers),
@@ -303,6 +323,47 @@ def _audit_missed_source_path(
             "stage": stage,
         })
     return rows
+
+
+def _summarize_ranked_peak_coverage(records: list[dict]) -> dict:
+    """Summarize how far down the ranked residual peaks missed truths appear."""
+    rows = [
+        source
+        for record in records
+        for step in record["step_audits"]
+        for source in step.get("missed_source_path_posthoc_only", [])
+    ]
+    proposal_gaps = [row for row in rows if row["stage"] == "proposal_generation_gap"]
+    bands = {
+        "ranks_1_to_5": 0,
+        "ranks_6_to_10": 0,
+        "ranks_11_to_25": 0,
+        "ranks_26_to_50": 0,
+        "no_peak_within_1_px_top50": 0,
+    }
+    for row in proposal_gaps:
+        rank = row["nearest_ranked_score_peak_rank_posthoc"]
+        distance = row["nearest_ranked_score_peak_distance_px_posthoc"]
+        if distance is None or distance > 1.0 or rank is None:
+            bands["no_peak_within_1_px_top50"] += 1
+        elif rank <= 5:
+            bands["ranks_1_to_5"] += 1
+        elif rank <= 10:
+            bands["ranks_6_to_10"] += 1
+        elif rank <= 25:
+            bands["ranks_11_to_25"] += 1
+        else:
+            bands["ranks_26_to_50"] += 1
+    return {
+        "proposal_generation_gap_observations": len(proposal_gaps),
+        "nearest_ranked_peak_bands_within_1_px": bands,
+        "warning": (
+            "This is a post-hoc coordinate-proximity audit of the top 50 "
+            "observation-derived score-map peaks after 1 px non-maximum "
+            "suppression. It does not prove source identifiability or alter "
+            "the detector. Repeated source/step observations are correlated."
+        ),
+    }
 
 
 def _summarize_source_path(records: list[dict]) -> dict:
@@ -422,6 +483,7 @@ def run_diversity_audit(*, trials_per_condition: int = 10,
                         current_scene, truth, step.get("proposal_pool", []),
                         step["proposal_fit_diagnostics"], selected_rank,
                         step["accepted"],
+                        ranked_score_peaks=step.get("ranked_score_peaks_diagnostic_only", []),
                     )
                     fit_audits = [
                         _posthoc_fit_audit(fit, truth, selected_rank)
@@ -521,6 +583,7 @@ def run_diversity_audit(*, trials_per_condition: int = 10,
         "posthoc_candidate_score_audit": _summarize_posthoc_candidate_scores(records),
         "posthoc_source_localization_audit": _summarize_source_localization(records),
         "posthoc_missed_source_path_audit": _summarize_source_path(records),
+        "posthoc_ranked_score_peak_coverage": _summarize_ranked_peak_coverage(records),
         "pairwise_records": pair_rows,
         "records": records,
         "limitations": [
