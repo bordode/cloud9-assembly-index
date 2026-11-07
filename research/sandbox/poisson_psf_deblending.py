@@ -71,8 +71,9 @@ def run_poisson_psf_deblending(
     proposal_start_offsets: tuple[tuple[float, float], ...] = ((0.0, 0.0),),
     proposal_policy: str = "top_score",
     proposal_top_k: int = 5,
+    acceptance_criterion: str = "bic",
 ) -> dict:
-    """Detect sources and select count using Poisson likelihood/BIC.
+    """Detect sources and select count using Poisson likelihood and AIC or BIC.
 
     observation_rate is the observed count image divided by exposure.
     Multiplying it by exposure recovers the integer Poisson observations.
@@ -94,6 +95,9 @@ def run_poisson_psf_deblending(
     offsets = tuple((float(dx), float(dy)) for dx, dy in proposal_start_offsets)
     if not offsets or not np.all(np.isfinite(np.asarray(offsets, dtype=float))):
         raise ValueError("proposal_start_offsets must be a non-empty finite sequence")
+    if acceptance_criterion not in {"bic", "aic"}:
+        raise ValueError("acceptance_criterion must be bic or aic")
+    criterion_key = acceptance_criterion
     if proposal_policy not in {"top_score", "best_bic_top_k", "adaptive_top5_to10"}:
         raise ValueError("unsupported proposal_policy")
     if proposal_policy == "adaptive_top5_to10" and proposal_top_k != 5:
@@ -164,6 +168,7 @@ def run_poisson_psf_deblending(
         deviance = float(np.sum(residual(result.x) ** 2))
         parameter_count = 3 * count + 1
         bic = deviance + parameter_count * np.log(pixel_count)
+        aic = deviance + 2.0 * parameter_count
         xy, amplitudes, background = decode(result.x)
         candidates = [
             {"x_px": float(position[0]), "y_px": float(position[1]),
@@ -176,6 +181,7 @@ def run_poisson_psf_deblending(
             "nfev": int(result.nfev),
             "deviance": deviance,
             "bic": float(bic),
+            "aic": float(aic),
             "background": background,
             "candidates": candidates,
             "prediction_rate": predicted_rate(result.x),
@@ -270,7 +276,7 @@ def run_poisson_psf_deblending(
             ]
             top_five_improves_bic = bool(
                 top_five_successes
-                and min(item["fit"]["bic"] for item in top_five_successes) < current_bic
+                and min(item["fit"][criterion_key] for item in top_five_successes) < current_fit[criterion_key]
             )
             if not top_five_improves_bic:
                 expanded_after_top_five_failure = True
@@ -283,7 +289,7 @@ def run_poisson_psf_deblending(
         ]
         if successful_attempts:
             winning_attempt = min(
-                successful_attempts, key=lambda item: item["fit"]["bic"]
+                successful_attempts, key=lambda item: item["fit"][criterion_key]
             )
             proposed_fit = winning_attempt["fit"]
             winning_offset = winning_attempt["offset"]
@@ -296,7 +302,7 @@ def run_poisson_psf_deblending(
             float(item["fit"]["deviance"]) for item in fit_attempts
         ]
         accepted_candidate = bool(
-            successful_attempts and proposed_fit["bic"] < current_bic
+            successful_attempts and proposed_fit[criterion_key] < current_fit[criterion_key]
         )
         trial_record = {
             "step": step + 1,
@@ -327,6 +333,7 @@ def run_poisson_psf_deblending(
                     "optimizer_nfev": int(item["fit"]["nfev"]),
                     "poisson_deviance": float(item["fit"]["deviance"]),
                     "poisson_bic": float(item["fit"]["bic"]),
+                    "poisson_aic": float(item["fit"]["aic"]),
                     "fitted_candidates": [
                         {
                             "x_px": float(candidate["x_px"]),
@@ -349,6 +356,10 @@ def run_poisson_psf_deblending(
             "bic_before": current_bic,
             "bic_after": proposed_fit["bic"],
             "bic_improvement": float(current_bic - proposed_fit["bic"]),
+            "acceptance_criterion": acceptance_criterion,
+            "criterion_before": float(current_fit[criterion_key]),
+            "criterion_after": float(proposed_fit[criterion_key]),
+            "criterion_improvement": float(current_fit[criterion_key] - proposed_fit[criterion_key]),
             "accepted": accepted_candidate,
         }
         if len(offsets) > 1:
@@ -371,7 +382,8 @@ def run_poisson_psf_deblending(
         current_prediction = proposed_fit["prediction_rate"]
 
     return {
-        "method": "joint_poisson_deviance_mle_with_poisson_bic",
+        "method": f"joint_poisson_deviance_mle_with_poisson_{acceptance_criterion}",
+        "acceptance_criterion": acceptance_criterion,
         "proposal_policy": proposal_policy,
         "proposal_top_k": int(proposal_top_k),
         "adaptive_expansion_policy": ("expand from ranks 1-5 to 6-10 only when no successful top-five fit lowers current BIC" if proposal_policy == "adaptive_top5_to10" else None),
@@ -385,6 +397,7 @@ def run_poisson_psf_deblending(
         "optimizer_nfev": current_fit["nfev"],
         "poisson_deviance": current_fit["deviance"],
         "poisson_bic": current_fit["bic"],
+        "poisson_aic": current_fit["aic"],
         "background_rate": current_fit["background"],
         "candidate_trials": trials,
         "candidate_generation_policy": (
@@ -397,7 +410,7 @@ def run_poisson_psf_deblending(
             "each proposed source"
         ),
         "stopping_policy": (
-            "accept a candidate only when Poisson BIC decreases; stop at first "
+            f"accept a candidate only when Poisson {acceptance_criterion.upper()} decreases; stop at first "
             "rejected candidate or max_components"
         ),
         "limitations": [
