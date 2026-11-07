@@ -10,7 +10,7 @@
 
 ## Executive result
 
-The benchmark completed successfully: six paired methods on the same 27 synthetic Poisson observations. AIC accepted more sources than BIC, but the additional complexity did not produce a reliable increase in recovered truths. It substantially increased unmatched candidates.
+The benchmark completed successfully: six paired methods on the same 27 synthetic Poisson observations. AIC accepted more sources, but the additional complexity did not produce a reliable increase in recovered truths. It substantially increased unmatched candidates.
 
 The result supports a narrow conclusion: in this scene family and setup, replacing BIC with AIC makes the detector more permissive, not demonstrably more accurate.
 
@@ -24,7 +24,7 @@ The result supports a narrow conclusion: in this scene family and setup, replaci
 - Same pixel-integrated PSF, Poisson deviance, parameterisation, bounds, optimizer tolerances and residual proposal map.
 - Truth withheld from detection and used only for post-run Hungarian scoring within 1 px.
 
-The model uses (k=3N+1) parameters and (n=441) pixels:
+The model uses (k=3N+1) parameters and (n=441) observed pixel counts:
 - AIC penalty per added source: (2(3)=6).
 - BIC penalty per added source: (3\ln(441)=18.2671).
 - BIC therefore charges about 12.267 more criterion units per additional source under this pixel-count convention.
@@ -69,14 +69,18 @@ Mean matched truths for top-five methods:
 
 AIC's effect is not uniformly beneficial across exposure: it improves the mean matched count at exposure 1.0, reduces it at 0.1, and changes it only slightly at 0.03. Its unmatched-candidate rate is higher in every exposure group. Three trials per cell are far too few to establish a reliable exposure interaction.
 
-## Interpretation
+## Interpretation and statistical qualification
 
 The experiment separates two issues:
 
 1. **Candidate ranking within a proposal step:** because candidates within that step have the same parameter count, AIC and BIC rank their fitted likelihoods identically.
-2. **Acceptance across model sizes:** AIC's lower penalty makes adding a source easier. In this pilot, that mainly increases model size and false extras rather than consistently recovering more withheld sources.
+2. **Acceptance across model sizes:** AIC's lower penalty makes adding a source easier. In this pilot, that mainly increases model size and unmatched candidates rather than consistently recovering more withheld sources.
 
-The BIC penalty is based on all 441 pixels. The validity of that (n) depends on the likelihood and effective-independence assumptions. PSF coupling, model misspecification, or correlated residuals could make nominal BIC calibration imperfect. This benchmark does not establish that BIC is universally correct or AIC universally wrong.
+The current likelihood treats counts in disjoint detector pixels as independent Poisson observations conditional on the expected intensity image. Under that data-generating model, PSF overlap does **not**, by itself, make observed pixel counts statistically dependent. A PSF spreads expected source intensity across pixels and couples the fitted source parameters, but parameter coupling is not the same as correlated measurement noise. Therefore, it would not be justified to reduce (n=441) merely because the PSF spans several pixels.
+
+The BIC convention (n=441) is consequently coherent with the stated independent-Poisson-pixel likelihood as a first-order choice. Its asymptotic approximation still deserves scrutiny: small sample/model regimes, weakly identified or overlapping sources, parameters near boundaries, greedy search over many proposals, and model misspecification can affect practical criterion behaviour. Genuine detector correlations, read-noise covariance, or prior resampling/rebinning would require an observation model that accounts for those dependencies; an arbitrary smaller (n) is not a substitute.
+
+This benchmark does not establish that BIC is universally correct or AIC universally wrong.
 
 ## Limitations
 
@@ -91,8 +95,17 @@ The BIC penalty is based on all 441 pixels. The validity of that (n) depends on 
 
 Do not switch the detector to AIC on this evidence. Keep BIC as the current default and preserve AIC as an explicit experimental option.
 
-The next useful study is a larger, independently seeded benchmark that varies source density, flux contrast, PSF width, background level and image size. It should also test sensitivity to the BIC observation-count convention and include model-mismatch controls. Report paired uncertainty intervals and calibration of unmatched detections, not only mean matched-source counts.
+The next study should **not** apply a PSF-width-based effective-sample-size correction. Instead, test assumptions that could genuinely alter the observation model and the practical BIC approximation:
+
+1. Retain the independent-Poisson-pixel arm as control, with (n) equal to the number of observed pixels.
+2. Add a specified detector-noise arm with known spatial covariance (for example, correlated Gaussian read noise where appropriate), and evaluate it using a likelihood that includes that covariance.
+3. Add a resampled/rebinned arm only if transformed-data covariance is propagated explicitly; compare it with fitting native pixel counts.
+4. Vary image dimensions, source separation, flux contrast, PSF width and background while controlling the underlying scene and photon budget.
+5. Measure parameter identifiability and Hessian/Jacobian conditioning as well as recovery, unmatched detections and criterion values.
+6. Compare nominal BIC with repeated-simulation model-selection calibration; do not tune (n) solely to maximise truth recovery on the same simulations.
+
+Report paired uncertainty intervals and false-extra calibration, not only mean matched-source counts. Any departure from (n=) number of independent observations must be justified by the actual observation model.
 
 ## Reproducibility
 
-The uploaded artifact contains all 27 trial records and per-method diagnostics. The GitHub Actions run reports successful criterion tests, successful six-method benchmark execution, and successful artifact upload. This note records the artifact summary; it does not alter the detector implementation.
+The uploaded artifact contains all 27 trial records and per-method diagnostics. The original GitHub Actions run reports successful criterion tests, successful six-method benchmark execution, and successful artifact upload. The PR-head workflow is separately rerunning the tests and benchmark. This note records the artifact summary; it does not alter the detector implementation.
