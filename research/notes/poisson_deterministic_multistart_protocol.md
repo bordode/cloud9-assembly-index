@@ -113,3 +113,17 @@ The Gaussian baseline still recovers more truth sources on average (3.68 versus 
 This is one 90-trial synthetic grid, one fixed nine-offset pattern, one detector/PSF/source configuration, and one fresh seed range. The Poisson detector still uses greedy proposals and the same approximate BIC rule. Optimizer success is not evidence of a correct scene.
 
 The next discriminating experiment should preserve the Poisson likelihood and fitting machinery while testing the proposal/model-selection bottleneck separately. In particular, log the complete candidate sequence and BIC decisions, then test a predeclared alternative proposal strategy or a controlled source-count decision diagnostic without tuning against truth. Do not simply expand the start grid: the current result gives little evidence that more local starts are the highest-value next step.
+
+
+### Repeat-run check and numerical reproducibility
+
+The same 90-trial seed grid was run again after strengthening the diagnostic unit test. Both repeat workflows passed their tests and full benchmark:
+
+- [Repeat run 42283945456](https://github.com/bordode/cloud9-assembly-index/actions/runs/42283945456), code commit `1bc574e4dfbe1badf52cd3869f52d328354ca8f1`.
+- [Strengthened-test run 42284012650](https://github.com/bordode/cloud9-assembly-index/actions/runs/42284012650), code commit `eca9611c0bc047853caa0cef309a4205806b1dae`.
+
+The aggregate outcomes remained qualitatively consistent: Gaussian exact recovery was 5/90 in both; both Poisson methods had 1/90 exact recovery in both. The paired multi-start advantage remained tiny. However, the two repeated artifacts were **not numerically identical**: small floating-point/optimizer differences occurred throughout the records and changed a few source-count/recovery outcomes.
+
+Run 42283945456 reported mean matched sources of 3.68 Gaussian, 3.12 Poisson single-start, and 3.13 Poisson multi-start; multi-start beat single-start in 1 trial, lost in 1, and tied in 88 (mean difference +0.011). Run 42284012650 reported 3.68, 3.11, and 3.16 respectively; multi-start beat single-start in 3, lost in 0, and tied in 87 (mean difference +0.044). Exact seven-source recoveries remained 5, 1, and 1 respectively in both runs.
+
+This confirms a stable qualitative conclusion, **not bit-for-bit deterministic numerical output**. The solver's floating-point optimization path is sufficiently sensitive that small numerical changes can affect borderline fits. Future reporting should use ranges or identify the specific run rather than implying exact reproducibility. The strengthened diagnostic test itself passed in run 42284012650 and now requires the fixture to exercise at least one proposal.
