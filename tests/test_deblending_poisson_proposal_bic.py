@@ -3,7 +3,7 @@ import unittest
 
 import numpy as np
 
-from research.sandbox.poisson_psf_deblending import run_poisson_psf_deblending
+from research.sandbox.poisson_psf_deblending import (\n    _rank_score_peaks,\n    run_poisson_psf_deblending,\n)
 from research.sandbox.pixel_response_reproduction import pixel_integrated_gaussian
 
 
@@ -70,6 +70,19 @@ class PoissonProposalBicTests(unittest.TestCase):
             trial["bic_improvement"],
             trial["bic_before"] - trial["bic_after"],
         )
+
+    def test_ranked_score_peaks_are_diagnostic_and_do_not_mutate_map(self):
+        score = np.zeros((7, 7), dtype=float)
+        score[1, 1] = 9.0
+        score[1, 2] = 8.0
+        score[5, 5] = 7.0
+        original = score.copy()
+        peaks = _rank_score_peaks(score, centre=3.0, max_peaks=5)
+        self.assertEqual(score.tolist(), original.tolist())
+        self.assertEqual([item["rank"] for item in peaks], [1, 2])
+        self.assertEqual(peaks[0]["x_px"], -2.0)
+        self.assertEqual(peaks[0]["y_px"], -2.0)
+        self.assertEqual(peaks[1]["score"], 7.0)
 
     def test_invalid_policy_and_top_k_rejected(self):
         with self.assertRaises(ValueError):
