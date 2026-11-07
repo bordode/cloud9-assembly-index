@@ -75,3 +75,85 @@ Emitter Type
 	Linear Frequency Chirp
 	Sweep: 100.0 Hz – 2000.0 Hz
 	coil_frequency_sweep.wav
+	
+
+Quantum Snapshot Thermometry
+Module: Quantum Snapshot Thermometry Module
+Regime: Thermal semi-classical (mu <= 0)
+Chemical Potential (µ): -0.5
+Lattice Sites: 10
+Shots: 200
+Noise Level: 0.02
+Mean Relative Temperature Error: 0.47%
+Density Function EOS: n(T) = sqrt(m*T/(2*pi)) * ln(1 + exp(mu/T))
+Energy Density Reconstruction: e(x) = 0.5 * n(x) * T(x)
+Uncertainty Propagation: Delta_T(x) = Delta_n(x) / |dn/dT|
+
+
+Site Results
+Position (x)
+	n(x)
+	True T
+	Reconstructed T
+	T Error
+	Energy Density e
+	-2.00
+	0.3841
+	1.8987
+	1.8782
+	0.0125
+	0.2921
+	-1.56
+	0.4377
+	2.2327
+	2.2278
+	0.0131
+	0.3895
+	-1.11
+	0.4851
+	2.5624
+	2.5505
+	0.0145
+	0.4874
+	-0.67
+	0.5222
+	2.8299
+	2.8497
+	0.0147
+	0.5846
+	-0.22
+	0.5408
+	2.9803
+	2.9730
+	0.0176
+	0.6264
+	0.22
+	0.5408
+	2.9803
+	2.9610
+	0.0163
+	0.6223
+	0.67
+	0.5222
+	2.8299
+	2.8533
+	0.0154
+	0.5858
+	1.11
+	0.4851
+	2.5624
+	2.5445
+	0.0145
+	0.4856
+	1.56
+	0.4377
+	2.2327
+	2.2121
+	0.0133
+	0.3849
+	2.00
+	0.3841
+	1.8987
+	1.8974
+	0.0129
+	0.2972
