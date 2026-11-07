@@ -39,7 +39,7 @@ def run_diversity_audit(*, trials_per_condition: int = 10,
             for index in range(trials_per_condition):
                 case = run_case(geometry_scale=float(scale), exposure=float(exposure), seed=seed)
                 seed += 1
-                method = case["poisson_top5_bic"]
+                method = case["poisson_topk_bic"]
                 steps = method["candidate_trials"]
                 step_audits = []
                 for step in steps:
