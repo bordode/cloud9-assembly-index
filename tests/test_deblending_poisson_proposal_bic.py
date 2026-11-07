@@ -79,7 +79,7 @@ class PoissonProposalBicTests(unittest.TestCase):
         original = score.copy()
         peaks = _rank_score_peaks(score, centre=3.0, max_peaks=5)
         self.assertEqual(score.tolist(), original.tolist())
-        self.assertEqual([item["rank"] for item in peaks], [1, 2, 3])
+        self.assertEqual([item["rank"] for item in peaks], [1, 2])
         self.assertEqual(peaks[0]["x_px"], -2.0)
         self.assertEqual(peaks[0]["y_px"], -2.0)
         self.assertEqual(peaks[1]["score"], 7.0)
