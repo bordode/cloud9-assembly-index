@@ -159,3 +159,12 @@ A further post-hoc diagnostic now records source-level outcomes for every succes
 The diagnostic is strictly post-fit and post-selection. It does not affect proposal generation, optimizer inputs, BIC, acceptance, or stopping. The 1 px assignment rule is inherited from the existing benchmark and is not a claim that every match is physically unambiguous. The nearest-versus-second-nearest distance margin is a local ambiguity indicator, not a complete probabilistic assignment uncertainty.
 
 Repeated source observations across candidate fits are correlated; grouped counts must not be treated as independent samples or as a population-level significance test. This extension is intended to identify where to inspect the existing synthetic results, not to establish a universal blending law. Results will be interpreted only after the updated workflow tests and full replay complete.
+
+
+## Unified missed-source pathway instrumentation
+
+The current PR #38 follow-on adds a same-replay audit of missed-source pathways. See [the dedicated pathway protocol](poisson_missed_source_pathway_protocol.md).
+
+For each truth source not already localized in the current accepted scene, the audit records whether a nearby proposal existed, whether any successful alternative fit localized the source, whether the BIC-selected fit localized it, and whether the selected fit passed the unchanged BIC acceptance test. This avoids the unreliable cross-artifact join attempted between PR #37 and PR #38.
+
+The pathway labels are strictly post-hoc. They are not used by the detector. Counts are repeated source/step observations within the fixed synthetic benchmark, not independent astronomical samples. Results remain provisional until the full updated replay artifact is inspected.
