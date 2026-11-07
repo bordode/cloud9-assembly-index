@@ -180,6 +180,7 @@ def run_poisson_psf_deblending(
         }
 
     current_fit = fit_scene([])
+    initial_fit_nfev = int(current_fit["nfev"])
     current_background = current_fit["background"]
     current_bic = current_fit["bic"]
     current_prediction = current_fit["prediction_rate"]
@@ -349,6 +350,7 @@ def run_poisson_psf_deblending(
         "assumed_psf_sigma_px": float(assumed_sigma_px),
         "selected_source_count": len(accepted),
         "candidates": accepted,
+        "initial_optimizer_nfev": int(fit_scene([])["nfev"]) if False else int(initial_fit_nfev),
         "optimizer_success": bool(current_fit["success"]),
         "optimizer_message": current_fit["message"],
         "optimizer_nfev": current_fit["nfev"],
