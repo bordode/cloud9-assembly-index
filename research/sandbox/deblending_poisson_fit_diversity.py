@@ -127,7 +127,7 @@ def _posthoc_source_audit(
 
 
 def _summarize_source_localization(records: list[dict]) -> dict:
-    """Aggregate source-level audit rows by crowding and truth-flux bands."""
+    """Aggregate source-level localization, retaining misses in denominators."""
     rows = [
         source
         for record in records
@@ -141,24 +141,58 @@ def _summarize_source_localization(records: list[dict]) -> dict:
         groups[dimension] = {}
         for label in labels:
             selected = [row for row in rows if row[dimension] == label]
-            errors = np.asarray([
+            matched = [
                 row["posthoc_assignment_distance_px"]
                 for row in selected
                 if row["matched_within_1_px_posthoc"]
-            ], dtype=float)
+            ]
+            unmatched = [
+                row for row in selected
+                if not row["matched_within_1_px_posthoc"]
+            ]
+            unmatched_assigned = [
+                row["posthoc_assignment_distance_px"]
+                for row in unmatched
+                if row["posthoc_assignment_distance_px"] is not None
+            ]
             groups[dimension][label] = {
                 "source_observations": len(selected),
-                "matched_within_1_px": int(len(errors)),
-                "match_fraction": float(len(errors) / len(selected)) if selected else None,
-                "median_matched_error_px": float(np.median(errors)) if len(errors) else None,
-                "p90_matched_error_px": float(np.percentile(errors, 90)) if len(errors) else None,
+                "matched_within_1_px": len(matched),
+                "unmatched": len(unmatched),
+                "match_fraction": (
+                    float(len(matched) / len(selected)) if selected else None
+                ),
+                "median_matched_error_px": (
+                    float(np.median(matched)) if matched else None
+                ),
+                "p90_matched_error_px": (
+                    float(np.percentile(matched, 90)) if matched else None
+                ),
+                "unmatched_with_assigned_candidate": len(unmatched_assigned),
+                "unmatched_without_assigned_candidate": (
+                    len(unmatched) - len(unmatched_assigned)
+                ),
+                "median_unmatched_assigned_distance_px": (
+                    float(np.median(unmatched_assigned))
+                    if unmatched_assigned else None
+                ),
             }
+    matched_total = sum(
+        bool(row["matched_within_1_px_posthoc"]) for row in rows
+    )
+    unmatched_total = len(rows) - matched_total
     return {
         "source_observation_count": len(rows),
+        "matched_within_1_px": int(matched_total),
+        "unmatched": int(unmatched_total),
+        "match_fraction": (
+            float(matched_total / len(rows)) if rows else None
+        ),
         "grouped_results": groups,
         "warning": (
             "These are repeated post-hoc source observations across candidate "
-            "fits, not independent astronomical sources or trials. Group "
+            "fits, not independent astronomical sources or trials. Unmatched "
+            "truth sources remain in each group's denominator. Group "
             "differences are descriptive and are not detector selection rules."
         ),
     }
