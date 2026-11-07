@@ -7,6 +7,7 @@ from research.sandbox.deblending_poisson_fit_diversity import (
     _posthoc_fit_audit,
     _posthoc_source_audit,
     _summarize_source_localization,
+    _audit_missed_source_path,
     _scene_distance,
     _summarize_posthoc_candidate_scores,
     run_diversity_audit,
@@ -187,6 +188,58 @@ class FitDiversityTests(unittest.TestCase):
         self.assertEqual(result["seed_start"], 20261990)
         self.assertIn("position_rms_px", result)
         self.assertIn("pairwise_records", result)
+
+
+    def test_missed_source_path_distinguishes_proposal_fit_and_bic_stages(self):
+        truth = np.array([[0.0, 0.0]])
+        nearby = [{"x_px": 0.2, "y_px": 0.0, "rank": 1}]
+        distant = [{"x_px": 4.0, "y_px": 0.0, "rank": 1}]
+        recovered = [{"x_px": 0.1, "y_px": 0.0}]
+        missed = [{"x_px": 4.0, "y_px": 0.0}]
+
+        no_proposal = _audit_missed_source_path(
+            [], truth, distant,
+            [{"proposal_rank": 1, "optimizer_success": True,
+              "fitted_candidates": missed}],
+            1, False,
+        )
+        self.assertEqual(no_proposal[0]["stage"], "proposal_generation_gap")
+
+        no_fit_recovery = _audit_missed_source_path(
+            [], truth, nearby,
+            [{"proposal_rank": 1, "optimizer_success": True,
+              "fitted_candidates": missed}],
+            1, False,
+        )
+        self.assertEqual(no_fit_recovery[0]["stage"], "fit_recovery_gap")
+
+        selection_gap = _audit_missed_source_path(
+            [], truth, nearby,
+            [
+                {"proposal_rank": 1, "optimizer_success": True,
+                 "fitted_candidates": recovered},
+                {"proposal_rank": 2, "optimizer_success": True,
+                 "fitted_candidates": missed},
+            ],
+            2, True,
+        )
+        self.assertEqual(selection_gap[0]["stage"], "bic_candidate_selection_gap")
+
+        rejected = _audit_missed_source_path(
+            [], truth, nearby,
+            [{"proposal_rank": 1, "optimizer_success": True,
+              "fitted_candidates": recovered}],
+            1, False,
+        )
+        self.assertEqual(rejected[0]["stage"], "selected_fit_rejected_by_bic")
+
+        accepted = _audit_missed_source_path(
+            [], truth, nearby,
+            [{"proposal_rank": 1, "optimizer_success": True,
+              "fitted_candidates": recovered}],
+            1, True,
+        )
+        self.assertEqual(accepted[0]["stage"], "recovered_by_selected_fit")
 
 
 if __name__ == "__main__":
