@@ -254,6 +254,19 @@ def run_poisson_psf_deblending(
                 for item in proposal_pool
             ],
             "proposal_candidates_evaluated": len(fit_attempts),
+            "proposal_fit_diagnostics": [
+                {
+                    "proposal_rank": item["proposal"]["rank"],
+                    "proposal_x_px": item["proposal"]["x_px"],
+                    "proposal_y_px": item["proposal"]["y_px"],
+                    "proposal_score": item["proposal"]["score"],
+                    "optimizer_success": bool(item["fit"]["success"]),
+                    "optimizer_nfev": int(item["fit"]["nfev"]),
+                    "poisson_deviance": float(item["fit"]["deviance"]),
+                    "poisson_bic": float(item["fit"]["bic"]),
+                }
+                for item in fit_attempts
+            ],
             "optimizer_success": proposed_fit["success"],
             "optimizer_nfev": proposed_fit["nfev"],
             "total_optimizer_nfev": int(sum(
