@@ -27,7 +27,7 @@ on:
 # A push and its corresponding PR update share one concurrency group.
 # New commits supersede older, redundant pilot runs on the same branch.
 concurrency:
-  group: ${{ github.workflow }}-${{ github.event.pull_request.head.ref || github.ref }}
+  group: ${{ github.workflow }}-${{ github.event.pull_request.head.ref || github.ref_name }}
   cancel-in-progress: true
 
 permissions:
