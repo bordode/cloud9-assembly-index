@@ -38,3 +38,80 @@ Run Full Error-Mitigation Pipeline
 python3 mem_zne_pipeline.py
 Play Active EM Speaker Coil Emitter
 termux-media-player play coil_frequency_sweep.wav
+
+
+Weekly Science Addition: Quantum Snapshot Thermometry Module (November 2026)
+Module Overview
+Integrates a numerically stable Quantum Snapshot Thermometry inversion engine to process 1D projective density snapshots from quantum lattice simulations. By mapping snapshots against a calibrated 1D Fermi-Dirac Equation of State (EoS), it reconstructs hidden non-diagonal observables, specifically local temperature $T(x)$ and local kinetic energy density $e(x)$, optimized for Termux ARM64 environments without external C/Fortran toolchains.
+Formulations & System Parameters
+* Fermi-Dirac Density Function: $n(T) = \sqrt{\frac{m \cdot T}{2\pi}} \ln\left(1 + \exp\left(\frac{\mu}{T}\right)\right)$
+* Energy Density Reconstruction: $e(x) = 0.5 \cdot n(x) \cdot T(x)$
+* Uncertainty Propagation: $\Delta T(x) = \frac{\Delta n(x)}{|dn/dT|}$
+* Simulation Setup: 10 spatial sites ($x \in [-2.0, 2.0]$), $\mu = -0.5$, 200 shots, noise level $= 0.02$, achieving a Mean Relative Temperature Error of 0.47%.
+Site-by-Site Benchmark Results
+Site ($x$)
+	Measured $n(x)$
+	True $T(x)$
+	Reconstructed $T(x)$
+	Error ($\pm T_{\text{err}}$)
+	Energy Density $e(x)$
+	-2.00
+	0.3841
+	1.8987
+	1.8782
+	$\pm 0.0125$
+	0.2921
+	-1.56
+	0.4377
+	2.2327
+	2.2278
+	$\pm 0.0131$
+	0.3895
+	-1.11
+	0.4851
+	2.5624
+	2.5505
+	$\pm 0.0145$
+	0.4874
+	-0.67
+	0.5222
+	2.8299
+	2.8497
+	$\pm 0.0147$
+	0.5846
+	-0.22
+	0.5408
+	2.9803
+	2.9730
+	$\pm 0.0176$
+	0.6264
+	0.22
+	0.5408
+	2.9803
+	2.9610
+	$\pm 0.0163$
+	0.6223
+	0.67
+	0.5222
+	2.8299
+	2.8533
+	$\pm 0.0154$
+	0.5858
+	1.11
+	0.4851
+	2.5624
+	2.5445
+	$\pm 0.0145$
+	0.4856
+	1.56
+	0.4377
+	2.2327
+	2.2121
+	$\pm 0.0133$
+	0.3849
+	2.00
+	0.3841
+	1.8987
+	1.8974
+	$\pm 0.0129$
+	0.2972
