@@ -24,6 +24,12 @@ on:
       - ".github/workflows/deblending-poisson-candidate-depth.yml"
       - "requirements.txt"
 
+# A push and its corresponding PR update share one concurrency group.
+# New commits supersede older, redundant pilot runs on the same branch.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.head.ref || github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: read
 
