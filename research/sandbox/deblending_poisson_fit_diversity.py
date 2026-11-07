@@ -279,7 +279,7 @@ def _audit_missed_source_path(
             selected_distance is not None
             and selected_distance <= match_radius_px
         )
-        if not nearby_proposal:
+        if not recovering_ranks and not nearby_proposal:
             stage = "proposal_generation_gap"
         elif not recovering_ranks:
             stage = "fit_recovery_gap"
