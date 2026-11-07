@@ -1,6 +1,17 @@
 name: Poisson candidate-depth ablation
 
 on:
+  push:
+    branches: [research/poisson-proposal-fit-diversity]
+    paths:
+      - "research/sandbox/deblending_poisson_candidate_depth.py"
+      - "research/sandbox/poisson_psf_deblending.py"
+      - "research/sandbox/deblending_geometry_poisson.py"
+      - "research/sandbox/pixel_response_reproduction.py"
+      - "scripts/run_deblending_poisson_candidate_depth.py"
+      - "tests/test_deblending_poisson_candidate_depth.py"
+      - ".github/workflows/deblending-poisson-candidate-depth.yml"
+      - "requirements.txt"
   pull_request:
     branches: [research/poisson-proposal-bic-selection]
     paths:
