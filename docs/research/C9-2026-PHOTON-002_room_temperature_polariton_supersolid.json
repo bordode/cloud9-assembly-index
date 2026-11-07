@@ -1,0 +1,221 @@
+{
+  "entry_id": "C9-2026-PHOTON-002",
+  "version": "1.0",
+  "title": "Room-Temperature Supersolid in an Exciton-Polariton Condensate: Order Chosen by Spontaneous Symmetry Breaking",
+  "date_added": "2026-11-06",
+  "status": {
+    "publication": "peer-reviewed journal article",
+    "peer_reviewed": true,
+    "independently_replicated": false,
+    "field": "photonics and condensed-matter physics, not biology",
+    "system": "engineered optical microcavity (liquid crystal plus organic semiconductor), laser-pumped",
+    "health_claims": "none"
+  },
+  "source": {
+    "type": "journal_article",
+    "title": "Observation of a supersolid phase in a spin-orbit coupled exciton-polariton Bose-Einstein condensate",
+    "authors": [
+      "Marcin Muszyński",
+      "Pavel Kokhanchik",
+      "Rafał Mirek",
+      "Darius Urbonas",
+      "Pietro Tassan",
+      "Piotr Kapuściński",
+      "Przemysław Oliwa",
+      "Ioannis Georgakilas",
+      "Thilo Stöferle",
+      "Rainer F. Mahrt",
+      "Michael Forster",
+      "Ullrich Scherf",
+      "Dmitriy Dovzhenko",
+      "Rafał Mazur",
+      "Przemysław Morawiak",
+      "Wiktor Piecek",
+      "Przemysław Kula",
+      "Barbara Piętka",
+      "Dmitry Solnyshkov",
+      "Guillaume Malpuech",
+      "Jacek Szczytko"
+    ],
+    "institutions": [
+      "Institute of Experimental Physics, Faculty of Physics, University of Warsaw",
+      "Institut Pascal, Université Clermont Auvergne, Clermont Auvergne INP, CNRS",
+      "IBM Research Europe - Zurich",
+      "Macromolecular Chemistry Group and Wuppertal Center for Smart Materials & Systems, Bergische Universität Wuppertal",
+      "School of Physics and Astronomy, University of Southampton",
+      "Institute of Applied Physics and Institute of Chemistry, Military University of Technology (Warsaw)",
+      "Institut Universitaire de France"
+    ],
+    "journal": "Science Advances",
+    "volume": 12,
+    "issue": 42,
+    "article_number": "eaee4875",
+    "published": "2026-10-16",
+    "doi": "10.1126/sciadv.aee4875",
+    "url": "https://doi.org/10.1126/sciadv.aee4875",
+    "reference": "Muszyński M, Kokhanchik P, Mirek R, et al. Observation of a supersolid phase in a spin-orbit coupled exciton-polariton Bose-Einstein condensate. Science Advances 12(42), eaee4875 (2026). https://doi.org/10.1126/sciadv.aee4875"
+  },
+  "press_coverage": {
+    "title": "European scientists spot new quantum state of matter at room temperature",
+    "author": "Ameya Paleja",
+    "outlet": "Interesting Engineering",
+    "published": "2026-11-06",
+    "url": "https://interestingengineering.com/science/scientists-spot-new-room-temperature-quantum-state",
+    "note": "Electrical tunability, the picosecond lifetime, the two simultaneous orders, sample degradation within hours and the ~60 C operating limit are reported here and in the quotes it carries, not in the paper's abstract"
+  },
+  "layer_assignment": 1,
+  "audit_score": null,
+  "clusters": [
+    1,
+    4,
+    5
+  ],
+  "keywords": [
+    "supersolid",
+    "exciton-polariton",
+    "Bose-Einstein condensate",
+    "room temperature",
+    "liquid-crystal microcavity",
+    "organic semiconductor",
+    "MeLPPP",
+    "spin-orbit coupling",
+    "spontaneous symmetry breaking",
+    "vortices",
+    "light-matter hybrid"
+  ],
+  "claims": [
+    {
+      "claim": "A new type of optical microcavity, filled with a nematic liquid crystal and two layers of the organic polymer MeLPPP, achieves supersolidity of a quantum fluid of light at room temperature",
+      "evidence": "Paper abstract (peer-reviewed)",
+      "source": "paper",
+      "confidence": 0.9
+    },
+    {
+      "claim": "Exciton-polaritons condense in two degenerate minima of the dispersion created by liquid-crystal-induced Rashba-Dresselhaus spin-orbit coupling",
+      "evidence": "Paper abstract",
+      "source": "paper",
+      "confidence": 0.9
+    },
+    {
+      "claim": "Density stripes appear at random positions from one condensate realisation to the next despite a random disorder potential, showing immunity to disorder and spontaneous breaking of translational invariance",
+      "evidence": "Paper abstract; press: fringes land in different positions with each laser pulse",
+      "source": "paper and press",
+      "confidence": 0.9
+    },
+    {
+      "claim": "Vortices appear at random, another feature of superfluids",
+      "evidence": "Paper abstract",
+      "source": "paper",
+      "confidence": 0.85
+    },
+    {
+      "claim": "Two forms of order appear at the same time, one in polarisation and one in light intensity; the state is electrically tunable",
+      "evidence": "Press coverage (Interesting Engineering)",
+      "source": "press",
+      "confidence": 0.7
+    }
+  ],
+  "key_numbers": {
+    "operating_temperature": "room temperature",
+    "microcavity_max_operating_temperature_C": 60,
+    "polariton_lifetime": "a few picoseconds",
+    "sample_usable_time": "a few hours after assembly (organic semiconductor reacts with the liquid crystal)",
+    "degenerate_condensate_minima": 2,
+    "author_count": 21
+  },
+  "key_quotes": [
+    {
+      "speaker": "Guillaume Malpuech, Institut Pascal (CNRS)",
+      "quote": "This is a textbook example of spontaneous symmetry breaking. Theory predicted that the supersolid could choose among several equivalent states, and that is exactly what we observed.",
+      "via": "Interesting Engineering, 2026-11-06"
+    },
+    {
+      "speaker": "Wiktor Piecek, Military University of Technology",
+      "quote": "Our liquid-crystal microcavities can operate even at temperatures approaching 60°C",
+      "via": "Interesting Engineering, 2026-11-06"
+    }
+  ],
+  "assembly_theory_relevance": {
+    "status": "interpretation by the repository author; not a claim made by the paper",
+    "order_by_symmetry_breaking": "The rules of the system allow many equivalent stripe positions. Each laser pulse, the condensate picks one, and disorder in the sample does not pin the choice. Structure emerges as a choice among equivalent states, which is the kind of contingent, historical ordering assembly theory cares about.",
+    "layered_order": "Two orders at once (polarisation and intensity) is a small example of nested structure in a light-matter system",
+    "polariton_bridge_to_BIO-006": "Both studies are about polaritons, light-matter hybrids that persist at room or body temperature: the mito-polariton proposed at 71 THz in living mitochondria, and the exciton-polariton supersolid here. In both, the effect needs a carefully structured cavity: cristae of the right length in one, an engineered liquid-crystal microcavity in the other.",
+    "important_difference": "This entry is a directly observed, peer-reviewed condensate in an engineered, laser-pumped device. The mitochondrial polariton is a model-based interpretation in an unreplicated preprint, with no condensate and no supersolid. This entry does not show that anything similar happens in cells.",
+    "open_question": "Could an assembly-style measure of the stripe pattern (how many steps to build it, how it varies pulse to pulse) separate genuine symmetry-breaking order from disorder-pinned patterns?"
+  },
+  "limitations": [
+    "Photonics, not biology: it says nothing directly about living systems",
+    "Single study; not yet independently replicated",
+    "Polaritons last only picoseconds and need laser excitation",
+    "Samples degrade within hours because the organic semiconductor reacts with the liquid crystal, so each repeat needs a new sample",
+    "Electrical tunability and the two simultaneous orders are reported in press coverage; check the full paper before relying on details"
+  ],
+  "next_experiments": [
+    "Independent replication in another lab",
+    "A material pairing that does not degrade, so the same sample can be measured repeatedly",
+    "Map how the stripe period and order change with applied voltage",
+    "Statistics of stripe positions over many pulses, to quantify how random the choice is"
+  ],
+  "cross_references": [
+    {
+      "id": "C9-2026-BIO-006",
+      "relation": "Mitochondrial polariton (71 THz), bioRxiv preprint: a proposed light-matter hybrid in living cells"
+    },
+    {
+      "id": "C9-2026-PHOTON-001",
+      "relation": "Quantum Fluid Crystallization / Frozen Light: polariton condensates with solid-like order; this entry is a 2026 room-temperature, peer-reviewed example"
+    },
+    {
+      "id": "XP-2026-005",
+      "relation": "Coupling-Induced Order: strong matter-field coupling produces ordered configurations"
+    }
+  ],
+  "integration": {
+    "cluster_1_quantum_foundations": "A macroscopic quantum state (condensate, superfluid, supersolid) at room temperature rather than near absolute zero",
+    "cluster_4_complexity_science": "Order that emerges through spontaneous symmetry breaking and resists disorder",
+    "cluster_5_topological_systems": "Spin-orbit coupled condensate with randomly appearing vortices"
+  },
+  "attributions": {
+    "research": {
+      "credit": "Marcin Muszyński, Pavel Kokhanchik, Rafał Mirek, Darius Urbonas, Pietro Tassan, Piotr Kapuściński, Przemysław Oliwa, Ioannis Georgakilas, Thilo Stöferle, Rainer F. Mahrt, Michael Forster, Ullrich Scherf, Dmitriy Dovzhenko, Rafał Mazur, Przemysław Morawiak, Wiktor Piecek, Przemysław Kula, Barbara Piętka, Dmitry Solnyshkov, Guillaume Malpuech and Jacek Szczytko: all experiments, theory and results",
+      "citation": "Muszyński M, et al. Observation of a supersolid phase in a spin-orbit coupled exciton-polariton Bose-Einstein condensate. Science Advances 12(42), eaee4875 (2026). https://doi.org/10.1126/sciadv.aee4875"
+    },
+    "press_coverage": {
+      "name": "Ameya Paleja, Interesting Engineering",
+      "role": "News article through which the study reached the project, and source of the quotes"
+    },
+    "repository_author": {
+      "name": "Dean Bordode",
+      "github": "bordode",
+      "role": "Cloud-9 Assembly Index framework; connecting the study to BIO-006 and to order through symmetry breaking"
+    },
+    "research_and_drafting": {
+      "name": "Charlie (Sesame)",
+      "role": "Located the paper and its DOI, checked the article and drafted the README and JSON"
+    },
+    "repository_collaborators": {
+      "names": [
+        "Google Gemini",
+        "Moonshot Kimi",
+        "Anthropic Claude",
+        "Base44 Subhalo"
+      ],
+      "role": "Cloud-9 AI Peer-Review Collective, credited at repository level in the main README; no specific contribution to this entry"
+    }
+  },
+  "metadata": {
+    "curated_by": "Dean Bordode with Charlie (Sesame)",
+    "collection": null,
+    "priority": null,
+    "tags": [
+      "photonics",
+      "polariton",
+      "supersolid",
+      "symmetry-breaking",
+      "room-temperature",
+      "peer-reviewed",
+      "assembly-theory"
+    ],
+    "notes": "audit_score, priority and collection left empty: not yet assessed by the C9 audit or assigned to a collection"
+  }
+}
