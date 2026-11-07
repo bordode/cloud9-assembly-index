@@ -5,6 +5,8 @@ import numpy as np
 from scipy.optimize import linear_sum_assignment
 
 from research.sandbox.deblending_poisson_proposal_bic import run_case
+from research.sandbox.deblending_geometry_poisson import _score
+from research.sandbox.pixel_response_reproduction import SEVEN_SOURCE_POSITIONS
 
 
 def _scene_distance(left: list[dict], right: list[dict]) -> dict:
@@ -42,8 +44,15 @@ def run_diversity_audit(*, trials_per_condition: int = 10,
                 method = case["poisson_topk_bic"]
                 steps = method["candidate_trials"]
                 step_audits = []
+                truth = SEVEN_SOURCE_POSITIONS * float(scale)
                 for step in steps:
                     fits = [x for x in step["proposal_fit_diagnostics"] if x["optimizer_success"]]
+                    selected_rank = step["selected_proposal_rank"]
+                    fit_audits = [{
+                        "proposal_rank": fit["proposal_rank"],
+                        "selected_by_bic": fit["proposal_rank"] == selected_rank,
+                        "posthoc_truth_score": _score(fit["fitted_candidates"], truth),
+                    } for fit in fits]
                     comparisons = []
                     for i in range(len(fits)):
                         for j in range(i + 1, len(fits)):
@@ -53,6 +62,8 @@ def run_diversity_audit(*, trials_per_condition: int = 10,
                             row = {
                                 "seed": case["seed"], "step": step["step"],
                                 "rank_a": fits[i]["proposal_rank"], "rank_b": fits[j]["proposal_rank"],
+                                "matched_truth_a_posthoc": fit_audits[i]["posthoc_truth_score"]["matched_truth_count"],
+                                "matched_truth_b_posthoc": fit_audits[j]["posthoc_truth_score"]["matched_truth_count"],
                                 "bic_abs_difference": abs(fits[i]["poisson_bic"] - fits[j]["poisson_bic"]),
                                 "deviance_abs_difference": abs(fits[i]["poisson_deviance"] - fits[j]["poisson_deviance"]),
                                 "background_abs_difference": abs(fits[i]["fitted_background_rate"] - fits[j]["fitted_background_rate"]),
@@ -62,7 +73,9 @@ def run_diversity_audit(*, trials_per_condition: int = 10,
                             pair_rows.append(row)
                     step_audits.append({
                         "step": step["step"],
+                        "selected_proposal_rank": selected_rank,
                         "successful_fits": len(fits),
+                        "fit_audits_posthoc_only": fit_audits,
                         "pairwise_comparisons": comparisons,
                     })
                 records.append({
@@ -116,6 +129,31 @@ def run_diversity_audit(*, trials_per_condition: int = 10,
         "total_optimizer_function_evaluations": int(sum(
             r["optimizer_function_evaluations"] for r in records
         )),
+        "posthoc_candidate_score_audit": {
+            "selected_fit_comparisons": int(sum(
+                1 for r in records for s in r["step_audits"]
+                if s["fit_audits_posthoc_only"]
+            )),
+            "selected_fit_mean_matched_truth": float(np.mean([
+                next(x["posthoc_truth_score"]["matched_truth_count"]
+                     for x in s["fit_audits_posthoc_only"] if x["selected_by_bic"])
+                for r in records for s in r["step_audits"]
+                if any(x["selected_by_bic"] for x in s["fit_audits_posthoc_only"])
+            ])),
+            "best_available_fit_mean_matched_truth": float(np.mean([
+                max(x["posthoc_truth_score"]["matched_truth_count"]
+                    for x in s["fit_audits_posthoc_only"])
+                for r in records for s in r["step_audits"] if s["fit_audits_posthoc_only"]
+            ])),
+            "steps_where_selected_fit_matches_best_posthoc_score": int(sum(
+                next(x["posthoc_truth_score"]["matched_truth_count"]
+                     for x in s["fit_audits_posthoc_only"] if x["selected_by_bic"])
+                == max(x["posthoc_truth_score"]["matched_truth_count"]
+                       for x in s["fit_audits_posthoc_only"])
+                for r in records for s in r["step_audits"] if s["fit_audits_posthoc_only"]
+            )),
+            "warning": "Truth-based scores are computed strictly after all fits and BIC selection; they are audit labels only and never influence fitting or selection."
+        },
         "pairwise_records": pair_rows,
         "records": records,
         "limitations": [
