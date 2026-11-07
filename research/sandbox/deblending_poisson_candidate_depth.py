@@ -110,9 +110,14 @@ def run_candidate_depth_ablation(
                         "proposal_fits_evaluated": int(sum(
                             step["proposal_candidates_evaluated"] for step in steps
                         )),
-                        "optimizer_function_evaluations": int(sum(
-                            step["total_optimizer_nfev"] for step in steps
-                        )),
+                        "initial_optimizer_function_evaluations": int(
+                            result["initial_optimizer_nfev"]
+                        ),
+                        "optimizer_function_evaluations": int(
+                            result["initial_optimizer_nfev"] + sum(
+                                step["total_optimizer_nfev"] for step in steps
+                            )
+                        ),
                         "accepted_steps": int(sum(step["accepted"] for step in steps)),
                         "rejected_steps": int(sum(not step["accepted"] for step in steps)),
                         "optimizer_success": bool(result["optimizer_success"]),
