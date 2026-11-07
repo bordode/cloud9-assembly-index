@@ -5,6 +5,8 @@ import numpy as np
 
 from research.sandbox.deblending_poisson_fit_diversity import (
     _posthoc_fit_audit,
+    _posthoc_source_audit,
+    _summarize_source_localization,
     _scene_distance,
     _summarize_posthoc_candidate_scores,
     run_diversity_audit,
@@ -66,6 +68,38 @@ class FitDiversityTests(unittest.TestCase):
         self.assertEqual(result["steps_with_successful_candidate_fits"], 0)
         self.assertIsNone(result["selected_fit_mean_matched_truth"])
         self.assertIsNone(result["best_available_fit_mean_matched_truth"])
+
+    def test_source_audit_labels_crowding_flux_and_assignment(self):
+        truth = np.array([[0.0, 0.0], [1.0, 0.0], [5.0, 0.0]])
+        amplitudes = np.array([100.0, 20.0, 5.0])
+        candidates = [
+            {"x_px": 0.1, "y_px": 0.0},
+            {"x_px": 1.2, "y_px": 0.0},
+            {"x_px": 5.1, "y_px": 0.0},
+        ]
+        rows = _posthoc_source_audit(candidates, truth, amplitudes, 1.0)
+        self.assertEqual(len(rows), 3)
+        self.assertEqual(rows[0]["crowding_band"], "close_lt_1_5_sigma")
+        self.assertEqual(rows[2]["crowding_band"], "separated_ge_2_5_sigma")
+        self.assertEqual(rows[0]["flux_band"], "brightest_2")
+        self.assertEqual(rows[2]["flux_band"], "faintest_2")
+        self.assertTrue(all(row["matched_within_1_px_posthoc"] for row in rows))
+        self.assertAlmostEqual(rows[0]["posthoc_assignment_distance_px"], 0.1)
+        self.assertIsNotNone(rows[0]["nearest_candidate_margin_px"])
+
+    def test_source_audit_handles_no_candidates_and_invalid_inputs(self):
+        rows = _posthoc_source_audit(
+            [], np.array([[0.0, 0.0]]), np.array([1.0]), 1.0
+        )
+        self.assertIsNone(rows[0]["posthoc_assignment_distance_px"])
+        self.assertFalse(rows[0]["matched_within_1_px_posthoc"])
+        with self.assertRaises(ValueError):
+            _posthoc_source_audit([], np.array([[0.0, 0.0]]), np.array([]), 1.0)
+
+    def test_source_summary_handles_empty_records(self):
+        result = _summarize_source_localization([])
+        self.assertEqual(result["source_observation_count"], 0)
+        self.assertEqual(result["grouped_results"]["crowding_band"], {})
 
     def test_small_audit_has_expected_grid(self):
         result = run_diversity_audit(
