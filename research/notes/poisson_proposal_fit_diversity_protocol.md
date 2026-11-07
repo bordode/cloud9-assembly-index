@@ -64,3 +64,41 @@ The result motivates a careful next step: inspect whether materially distinct fi
 ## Status
 
 Completed diagnostic replay; PR remains draft and unmerged. Results are descriptive and do not establish real-image performance or identify a scientifically correct fit.
+
+
+## Post-hoc truth-score extension — workflow 42358783962
+
+Commit tested: `8182dac1bdbdf304cafb11bef46da61f2a31d4e4`.
+
+The extension completed successfully:
+https://github.com/bordode/cloud9-assembly-index/actions/runs/42358783962
+
+- All three tests passed; the fresh-seed 90-trial replay completed.
+- Artifact: `deblending-poisson-fit-diversity-audit`, 657,058 bytes; GitHub digest `sha256:badd58e144e48b2d2949e6db474642851e95dda341b6bf856ea04418cf9c3dea`.
+- The audit scored each successful candidate fit against the known synthetic source positions only after fitting and BIC selection. These truth scores are labels for evaluation; they do not feed back into proposal generation, fitting, or selection.
+
+### Matched-source count
+
+Across 423 proposal steps with successful fits:
+
+- BIC-selected fit matched the maximum post-hoc candidate source count in 408/423 steps (96.45%).
+- In 15/423 steps (3.55%), another candidate matched more truths: 11 cases by one source and 4 cases by two.
+- Mean matched truths: 2.648 for the BIC-selected fit versus 2.693 for the best candidate by matched-source count (mean gap 0.045 source per step).
+
+This suggests BIC usually selects a candidate with the strongest source-count recovery among the available fits in this particular synthetic replay. It is not a universal statement about BIC or real images.
+
+### Positional accuracy conditional on matched-source count
+
+A second, explicitly oracle-style diagnostic was calculated after the run: among candidate fits tied for the maximum matched-source count in a step, select the one with the lowest post-hoc matched-position RMSE. This comparator uses truth and is not an admissible detector rule.
+
+- In 407 steps with at least one matched truth where the BIC-selected fit attained the maximum candidate matched-source count, its mean per-step matched-position RMSE was 0.4945 px; the lowest-RMSE candidate among the same-count alternatives averaged 0.4889 px.
+- The BIC-selected fit had a higher RMSE than that post-hoc comparator in 342/407 steps (84.0%).
+- The median per-step RMSE excess was only 4.99e-6 px, but the 90th percentile was 1.50e-4 px and the 99th percentile 0.108 px; the maximum was 0.431 px.
+
+Thus, BIC's selected candidate usually ties the best available candidate on the coarse matched-source count, but it does not generally minimize truth-based positional error among candidates with that same count. The distribution is highly skewed: typical differences are tiny, while a small tail contains materially larger positional penalties. This is a post-hoc diagnostic, not evidence that the oracle comparator could be used operationally.
+
+### Interpretation and limits
+
+The result answers the narrow question more positively for source count than for exact localization: BIC usually chooses a candidate that recovers as many sources as any alternative in the proposal pool, but lowest BIC is not equivalent to best truth-position reconstruction. The candidate pool itself may omit better solutions, and the benchmark remains a replay on synthetic scenes. Matched-source scoring uses a 1 px assignment tolerance and does not establish flux accuracy, calibrated uncertainty, robustness to PSF/model mismatch, or performance on real observations. Truth remains strictly evaluation-only.
+
+PR #38 remains draft and unmerged.
