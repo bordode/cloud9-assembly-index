@@ -190,6 +190,28 @@ class FitDiversityTests(unittest.TestCase):
         self.assertIn("pairwise_records", result)
 
 
+    def test_missed_source_path_records_nearest_ranked_score_peak(self):
+        truth = np.array([[0.0, 0.0]])
+        rows = _audit_missed_source_path(
+            [], truth, [],
+            [{"proposal_rank": 1, "optimizer_success": True,
+              "fitted_candidates": [{"x_px": 5.0, "y_px": 5.0}]}],
+            1, False,
+            ranked_score_peaks=[
+                {"rank": 1, "x_px": 4.0, "y_px": 4.0, "score": 10.0},
+                {"rank": 8, "x_px": 0.5, "y_px": 0.0, "score": 3.0},
+            ],
+        )
+        self.assertEqual(
+            rows[0]["nearest_ranked_score_peak_rank_posthoc"], 8
+        )
+        self.assertAlmostEqual(
+            rows[0]["nearest_ranked_score_peak_distance_px_posthoc"], 0.5
+        )
+        self.assertTrue(
+            rows[0]["nearby_ranked_score_peak_within_1_px_posthoc"]
+        )
+
     def test_missed_source_path_distinguishes_proposal_fit_and_bic_stages(self):
         truth = np.array([[0.0, 0.0]])
         nearby = [{"x_px": 0.2, "y_px": 0.0, "rank": 1}]
