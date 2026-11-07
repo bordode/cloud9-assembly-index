@@ -104,8 +104,10 @@ def _posthoc_source_audit(
         else:
             crowding_band = "separated_ge_2_5_sigma"
         rank = int(flux_ranks[index])
-        flux_band = "brightest_2" if rank <= 2 else (
-            "middle_3" if rank <= 5 else "faintest_2"
+        bright_cutoff = max(1, int(np.ceil(len(amplitudes) / 3.0)))
+        middle_cutoff = max(bright_cutoff + 1, int(np.ceil(2.0 * len(amplitudes) / 3.0)))
+        flux_band = "brightest_third" if rank <= bright_cutoff else (
+            "middle_third" if rank <= middle_cutoff else "faintest_third"
         )
         rows.append({
             "truth_source_index": int(index),
