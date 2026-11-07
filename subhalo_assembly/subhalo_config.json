@@ -1,0 +1,23 @@
+{
+  "project": "Cloud 9 Assembly",
+  "version": "1.0.0",
+  "target_agent": "subhalo.AI",
+  "scheduled_pickup": "2026-11-07 (Saturday)",
+  "publication_status": "Sanitized - Public Ready",
+  "hardware_anonymized": true,
+  "data_specification": {
+    "simulation_source": "TNG100-1",
+    "snapshot": 99,
+    "input_features": ["mass", "velocity_dispersion", "radius", "circular_velocity"],
+    "target": "total_subhalo_mass",
+    "evaluation": {
+      "anomaly_metric": "XDM_score",
+      "threshold": 0.05
+    }
+  },
+  "execution_modes": {
+    "default": "local_simulator",
+    "remote": "managed_cloud_backend",
+    "fallback_enabled": true
+  }
+}
