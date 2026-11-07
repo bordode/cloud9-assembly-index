@@ -274,11 +274,11 @@ def run_poisson_psf_deblending(
             top_five_successes = [
                 item for item in fit_attempts if item["fit"]["success"]
             ]
-            top_five_improves_bic = bool(
+            top_five_improves_criterion = bool(
                 top_five_successes
                 and min(item["fit"][criterion_key] for item in top_five_successes) < current_fit[criterion_key]
             )
-            if not top_five_improves_bic:
+            if not top_five_improves_criterion:
                 expanded_after_top_five_failure = True
                 fit_attempts.extend(evaluate_proposals(proposal_pool[5:10]))
         else:
@@ -386,7 +386,7 @@ def run_poisson_psf_deblending(
         "acceptance_criterion": acceptance_criterion,
         "proposal_policy": proposal_policy,
         "proposal_top_k": int(proposal_top_k),
-        "adaptive_expansion_policy": ("expand from ranks 1-5 to 6-10 only when no successful top-five fit lowers current BIC" if proposal_policy == "adaptive_top5_to10" else None),
+        "adaptive_expansion_policy": ("expand from ranks 1-5 to 6-10 only when no successful top-five fit lowers the selected criterion" if proposal_policy == "adaptive_top5_to10" else None),
         "exposure": float(exposure),
         "assumed_psf_sigma_px": float(assumed_sigma_px),
         "selected_source_count": len(accepted),
