@@ -68,3 +68,35 @@ The result suggests that, for these terminal steps, the unchanged BIC acceptance
 ## Decision
 
 Keep the adaptive policy as an optional, tested research branch, but do not promote it as a recovery improvement. The evidence supports a modest computational-efficiency claim relative to fixed top-ten, not a scientific-performance gain. A broader scene-family benchmark would be needed before making a general recommendation.
+
+
+## Post-hoc decomposition of the terminal BIC rejections
+
+The detector computes
+
+`BIC = Poisson deviance + parameter_count × ln(pixel_count)`.
+
+The detector image is 21×21 (441 pixels). Adding one source adds three fitted parameters (x, y and amplitude), so the BIC complexity increment is:
+
+`3 × ln(441) = 18.2671346`.
+
+Across all 27 terminal expanded steps:
+
+- The best proposed fit reduced Poisson deviance in every case.
+- Deviance change ranged from −17.881 to −4.168 (mean −11.274).
+- The fixed three-parameter BIC penalty was +18.267 in every case.
+- The resulting BIC change was therefore positive in all 27 cases, ranging from +0.386 to +14.099.
+
+This confirms that the final candidates were not rejected because they failed to improve the likelihood fit. They were rejected because their deviance improvement did not offset the BIC complexity penalty.
+
+### AIC-only counterfactual (not a detector result)
+
+For one added source, the corresponding AIC complexity increment would be 2 × 3 = 6. Applying that threshold to the same 27 terminal best-fit proposals, without rerunning the detector:
+
+- 23/27 proposals would pass the one-step AIC comparison.
+- 4/27 would still be rejected.
+- Post-hoc matching of those proposed scenes against the withheld synthetic truth found 6 cases with one more matched truth, 2 with one fewer, and 15 unchanged among the 23 AIC-passing proposals.
+
+This is strictly a one-step counterfactual. It is **not** an AIC detector benchmark: accepting a proposal would change the scene, residual map, subsequent proposals and later decisions. No claim about the final recovery rate under AIC can be made from this calculation.
+
+The decomposition motivates a separate controlled experiment of AIC versus BIC acceptance, with identical data and proposal policies, and explicit tracking of both recovered sources and unmatched extras. It does not justify replacing BIC.
