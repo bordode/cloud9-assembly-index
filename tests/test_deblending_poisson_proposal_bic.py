@@ -53,6 +53,19 @@ class PoissonProposalBicTests(unittest.TestCase):
             "poisson_bic" in item and "poisson_deviance" in item
             for item in trial["proposal_fit_diagnostics"]
         ))
+        successful = [
+            item for item in trial["proposal_fit_diagnostics"]
+            if item["optimizer_success"]
+        ]
+        selected = next(
+            item for item in successful
+            if item["proposal_rank"] == trial["selected_proposal_rank"]
+        )
+        self.assertAlmostEqual(
+            selected["poisson_bic"],
+            min(item["poisson_bic"] for item in successful),
+            places=10,
+        )
         self.assertAlmostEqual(
             trial["bic_improvement"],
             trial["bic_before"] - trial["bic_after"],
