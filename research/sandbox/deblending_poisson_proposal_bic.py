@@ -208,11 +208,6 @@ def run_proposal_bic_sweep(*, trials_per_condition: int = 10,
             )),
             "accepted_steps": int(sum(t["accepted"] for t in candidate_steps)),
             "rejected_steps": int(sum(not t["accepted"] for t in candidate_steps)),
-            "posthoc_truth_near_proposal_count": int(sum(
-                label["within_one_pixel_posthoc"]
-                for t in candidate_steps
-                for label in _proposal_truth_audit([t], np.zeros((0, 2)))[0]["proposal_pool_posthoc_truth_audit"]
-            )) if False else None,
         },
         "records": records,
         "limitations": [
