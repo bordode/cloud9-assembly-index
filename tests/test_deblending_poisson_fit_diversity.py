@@ -142,8 +142,8 @@ class FitDiversityTests(unittest.TestCase):
     def test_source_summary_retains_unmatched_sources_in_denominator(self):
         source_rows = _posthoc_source_audit(
             [{"x_px": 0.1, "y_px": 0.0}],
-            np.array([[0.0, 0.0], [5.0, 0.0]]),
-            np.array([10.0, 1.0]),
+            np.array([[0.0, 0.0], [2.5, 0.0], [5.0, 0.0]]),
+            np.array([10.0, 5.0, 1.0]),
             1.0,
         )
         result = _summarize_source_localization([
