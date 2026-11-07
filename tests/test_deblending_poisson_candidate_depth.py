@@ -25,7 +25,13 @@ class CandidateDepthTests(unittest.TestCase):
             row = result["records"][0]["depths"][depth]
             self.assertIn("matched_truth_count", row["score"])
             self.assertGreaterEqual(row["proposal_fits_evaluated"], 0)
-            self.assertGreaterEqual(row["optimizer_function_evaluations"], 0)
+            self.assertGreaterEqual(
+                row["initial_optimizer_function_evaluations"], 0
+            )
+            self.assertGreaterEqual(
+                row["optimizer_function_evaluations"],
+                row["initial_optimizer_function_evaluations"],
+            )
         self.assertEqual(
             result["fixed_detector_rules"][0],
             "Same Poisson count observation for every depth within a trial.",
