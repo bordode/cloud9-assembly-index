@@ -1,0 +1,39 @@
+name: Poisson proposal fit diversity audit
+
+on:
+  pull_request:
+    branches: [research/poisson-proposal-bic-selection]
+    paths:
+      - "research/sandbox/poisson_psf_deblending.py"
+      - "research/sandbox/deblending_poisson_proposal_bic.py"
+      - "research/sandbox/deblending_poisson_fit_diversity.py"
+      - "scripts/run_deblending_poisson_fit_diversity.py"
+      - "tests/test_deblending_poisson_fit_diversity.py"
+      - ".github/workflows/deblending-poisson-fit-diversity.yml"
+      - "requirements.txt"
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: python -m pip install -r requirements.txt
+      - name: Run diversity audit tests
+        run: python -m unittest tests.test_deblending_poisson_fit_diversity -v
+      - name: Run fresh-seed 90-trial replay audit
+        run: python scripts/run_deblending_poisson_fit_diversity.py --trials 10
+      - name: Upload complete audit records
+        uses: actions/upload-artifact@v4
+        with:
+          name: deblending-poisson-fit-diversity-audit
+          path: artifacts/deblending_poisson_fit_diversity.json
+          if-no-files-found: error
+          retention-days: 30
