@@ -165,10 +165,10 @@ class FitDiversityTests(unittest.TestCase):
                 }]
             }]}
         ])
-        self.assertEqual(result["source_observation_count"], 2)
+        self.assertEqual(result["source_observation_count"], 3)
         self.assertEqual(result["matched_within_1_px"], 1)
-        self.assertEqual(result["unmatched"], 1)
-        self.assertAlmostEqual(result["match_fraction"], 0.5)
+        self.assertEqual(result["unmatched"], 2)
+        self.assertAlmostEqual(result["match_fraction"], 1.0 / 3.0)
         faint = result["grouped_results"]["flux_band"]["faintest_third"]
         self.assertEqual(faint["unmatched_without_assigned_candidate"], 1)
         self.assertIsNone(faint["median_matched_error_px"])
