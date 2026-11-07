@@ -32,20 +32,31 @@ class PoissonProposalBicTests(unittest.TestCase):
             proposal_policy="best_bic_top_k", proposal_top_k=5,
         )
         self.assertEqual(result["proposal_policy"], "best_bic_top_k")
-        if result["candidate_trials"]:
-            trial = result["candidate_trials"][0]
-            self.assertGreaterEqual(len(trial["proposal_pool"]), 2)
-            self.assertLessEqual(len(trial["proposal_pool"]), 5)
-            self.assertGreaterEqual(trial["selected_proposal_rank"], 1)
-            self.assertLessEqual(trial["selected_proposal_rank"], len(trial["proposal_pool"]))
-            self.assertEqual(
-                trial["proposal_candidates_evaluated"],
-                len(trial["proposal_pool"]),
-            )
-            self.assertAlmostEqual(
-                trial["bic_improvement"],
-                trial["bic_before"] - trial["bic_after"],
-            )
+        self.assertTrue(
+            result["candidate_trials"],
+            "the test fixture must exercise a proposal step",
+        )
+        trial = result["candidate_trials"][0]
+        self.assertGreaterEqual(len(trial["proposal_pool"]), 2)
+        self.assertLessEqual(len(trial["proposal_pool"]), 5)
+        self.assertGreaterEqual(trial["selected_proposal_rank"], 1)
+        self.assertLessEqual(trial["selected_proposal_rank"], len(trial["proposal_pool"]))
+        self.assertEqual(
+            trial["proposal_candidates_evaluated"],
+            len(trial["proposal_pool"]),
+        )
+        self.assertEqual(
+            len(trial["proposal_fit_diagnostics"]),
+            len(trial["proposal_pool"]),
+        )
+        self.assertTrue(all(
+            "poisson_bic" in item and "poisson_deviance" in item
+            for item in trial["proposal_fit_diagnostics"]
+        ))
+        self.assertAlmostEqual(
+            trial["bic_improvement"],
+            trial["bic_before"] - trial["bic_after"],
+        )
 
     def test_invalid_policy_and_top_k_rejected(self):
         with self.assertRaises(ValueError):
