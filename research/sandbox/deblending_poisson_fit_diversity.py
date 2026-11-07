@@ -6,7 +6,9 @@ from scipy.optimize import linear_sum_assignment
 
 from research.sandbox.deblending_poisson_proposal_bic import run_case
 from research.sandbox.deblending_geometry_poisson import _score
-from research.sandbox.pixel_response_reproduction import SEVEN_SOURCE_POSITIONS
+from research.sandbox.pixel_response_reproduction import (
+    SEVEN_SOURCE_AMPLITUDES, SEVEN_SOURCE_POSITIONS, SIGMA_PIXELS,
+)
 
 
 def _posthoc_fit_audit(fit: dict, truth: np.ndarray, selected_rank: int) -> dict:
@@ -22,6 +24,141 @@ def _posthoc_fit_audit(fit: dict, truth: np.ndarray, selected_rank: int) -> dict
         "posthoc_matched_truth_count": int(score["matched_truth_count"]),
         "posthoc_matched_position_rmse_px": rmse,
         "posthoc_truth_score": score,
+    }
+
+
+
+def _posthoc_source_audit(
+    fitted_candidates: list[dict],
+    truth: np.ndarray,
+    truth_amplitudes: np.ndarray,
+    sigma_px: float,
+    match_radius_px: float = 1.0,
+) -> list[dict]:
+    """Describe source-level localization, crowding and assignment ambiguity.
+
+    This diagnostic is evaluation-only. It is called after a candidate fit and
+    candidate-BIC selection; none of its outputs enter detector decisions.
+    """
+    truth = np.asarray(truth, dtype=float).reshape((-1, 2))
+    amplitudes = np.asarray(truth_amplitudes, dtype=float).reshape((-1,))
+    if len(amplitudes) != len(truth):
+        raise ValueError("truth_amplitudes must have one value per truth position")
+    if sigma_px <= 0 or match_radius_px <= 0:
+        raise ValueError("sigma_px and match_radius_px must be positive")
+
+    if len(truth) > 1:
+        truth_distances = np.linalg.norm(
+            truth[:, None, :] - truth[None, :, :], axis=2
+        )
+        np.fill_diagonal(truth_distances, np.inf)
+        nearest_separation = np.min(truth_distances, axis=1)
+        neighbours_within_two_sigma = np.sum(
+            truth_distances <= 2.0 * sigma_px, axis=1
+        )
+    else:
+        nearest_separation = np.full(len(truth), np.inf)
+        neighbours_within_two_sigma = np.zeros(len(truth), dtype=int)
+
+    if fitted_candidates:
+        candidate_xy = np.asarray(
+            [[item["x_px"], item["y_px"]] for item in fitted_candidates],
+            dtype=float,
+        ).reshape((-1, 2))
+        distances = np.linalg.norm(
+            truth[:, None, :] - candidate_xy[None, :, :], axis=2
+        )
+        truth_indices, candidate_indices = linear_sum_assignment(distances)
+        assignments = {
+            int(t): (int(c), float(distances[t, c]))
+            for t, c in zip(truth_indices, candidate_indices)
+        }
+    else:
+        candidate_xy = np.empty((0, 2), dtype=float)
+        distances = np.empty((len(truth), 0), dtype=float)
+        assignments = {}
+
+    flux_order = np.argsort(-amplitudes, kind="stable")
+    flux_ranks = np.empty(len(amplitudes), dtype=int)
+    flux_ranks[flux_order] = np.arange(1, len(amplitudes) + 1)
+
+    rows = []
+    for index, truth_xy in enumerate(truth):
+        assignment = assignments.get(index)
+        assigned_candidate_index = assignment[0] if assignment else None
+        assigned_distance = assignment[1] if assignment else None
+        matched = assigned_distance is not None and assigned_distance <= match_radius_px
+        if distances.shape[1] >= 2:
+            nearest_two = np.sort(distances[index])[:2]
+            candidate_margin = float(nearest_two[1] - nearest_two[0])
+        elif distances.shape[1] == 1:
+            candidate_margin = None
+        else:
+            candidate_margin = None
+        separation = float(nearest_separation[index])
+        separation_sigma = separation / sigma_px
+        if separation_sigma < 1.5:
+            crowding_band = "close_lt_1_5_sigma"
+        elif separation_sigma < 2.5:
+            crowding_band = "intermediate_1_5_to_2_5_sigma"
+        else:
+            crowding_band = "separated_ge_2_5_sigma"
+        rank = int(flux_ranks[index])
+        flux_band = "brightest_2" if rank <= 2 else (
+            "middle_3" if rank <= 5 else "faintest_2"
+        )
+        rows.append({
+            "truth_source_index": int(index),
+            "truth_amplitude": float(amplitudes[index]),
+            "truth_flux_rank_brightest_first": rank,
+            "flux_band": flux_band,
+            "nearest_truth_separation_px": separation,
+            "nearest_truth_separation_sigma": float(separation_sigma),
+            "truth_neighbours_within_2_sigma": int(neighbours_within_two_sigma[index]),
+            "crowding_band": crowding_band,
+            "assigned_candidate_index": assigned_candidate_index,
+            "posthoc_assignment_distance_px": assigned_distance,
+            "matched_within_1_px_posthoc": bool(matched),
+            "nearest_candidate_margin_px": candidate_margin,
+        })
+    return rows
+
+
+def _summarize_source_localization(records: list[dict]) -> dict:
+    """Aggregate source-level audit rows by crowding and truth-flux bands."""
+    rows = [
+        source
+        for record in records
+        for step in record["step_audits"]
+        for fit in step["fit_audits_posthoc_only"]
+        for source in fit.get("source_audits_posthoc_only", [])
+    ]
+    groups = {}
+    for dimension in ("crowding_band", "flux_band"):
+        labels = sorted({row[dimension] for row in rows})
+        groups[dimension] = {}
+        for label in labels:
+            selected = [row for row in rows if row[dimension] == label]
+            errors = np.asarray([
+                row["posthoc_assignment_distance_px"]
+                for row in selected
+                if row["matched_within_1_px_posthoc"]
+            ], dtype=float)
+            groups[dimension][label] = {
+                "source_observations": len(selected),
+                "matched_within_1_px": int(len(errors)),
+                "match_fraction": float(len(errors) / len(selected)) if selected else None,
+                "median_matched_error_px": float(np.median(errors)) if len(errors) else None,
+                "p90_matched_error_px": float(np.percentile(errors, 90)) if len(errors) else None,
+            }
+    return {
+        "source_observation_count": len(rows),
+        "grouped_results": groups,
+        "warning": (
+            "These are repeated post-hoc source observations across candidate "
+            "fits, not independent astronomical sources or trials. Group "
+            "differences are descriptive and are not detector selection rules."
+        ),
     }
 
 
@@ -110,6 +247,11 @@ def run_diversity_audit(*, trials_per_condition: int = 10,
                         _posthoc_fit_audit(fit, truth, selected_rank)
                         for fit in fits
                     ]
+                    for fit_audit, fit in zip(fit_audits, fits):
+                        fit_audit["source_audits_posthoc_only"] = _posthoc_source_audit(
+                            fit["fitted_candidates"], truth,
+                            SEVEN_SOURCE_AMPLITUDES, SIGMA_PIXELS,
+                        )
                     comparisons = []
                     for i in range(len(fits)):
                         for j in range(i + 1, len(fits)):
@@ -187,6 +329,7 @@ def run_diversity_audit(*, trials_per_condition: int = 10,
             r["optimizer_function_evaluations"] for r in records
         )),
         "posthoc_candidate_score_audit": _summarize_posthoc_candidate_scores(records),
+        "posthoc_source_localization_audit": _summarize_source_localization(records),
         "pairwise_records": pair_rows,
         "records": records,
         "limitations": [
