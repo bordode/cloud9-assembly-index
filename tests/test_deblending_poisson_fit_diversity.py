@@ -139,6 +139,28 @@ class FitDiversityTests(unittest.TestCase):
             1,
         )
 
+    def test_source_summary_retains_unmatched_sources_in_denominator(self):
+        source_rows = _posthoc_source_audit(
+            [{"x_px": 0.1, "y_px": 0.0}],
+            np.array([[0.0, 0.0], [5.0, 0.0]]),
+            np.array([10.0, 1.0]),
+            1.0,
+        )
+        result = _summarize_source_localization([
+            {"step_audits": [{
+                "fit_audits_posthoc_only": [{
+                    "source_audits_posthoc_only": source_rows
+                }]
+            }]}
+        ])
+        self.assertEqual(result["source_observation_count"], 2)
+        self.assertEqual(result["matched_within_1_px"], 1)
+        self.assertEqual(result["unmatched"], 1)
+        self.assertAlmostEqual(result["match_fraction"], 0.5)
+        faint = result["grouped_results"]["flux_band"]["faintest_third"]
+        self.assertEqual(faint["unmatched_without_assigned_candidate"], 1)
+        self.assertIsNone(faint["median_matched_error_px"])
+
     def test_source_summary_handles_empty_records(self):
         result = _summarize_source_localization([])
         self.assertEqual(result["source_observation_count"], 0)
