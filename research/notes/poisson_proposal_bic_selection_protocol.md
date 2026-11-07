@@ -52,3 +52,50 @@ This experiment changes both proposal choice and the number of candidate fits pe
 ## Status
 
 Predeclared protocol. No benchmark results are available until the workflow completes and the full artifact is inspected. The PR remains draft and unmerged.
+
+
+## First benchmark results — run 42352555123
+
+**Workflow:** [run 42352555123](https://github.com/bordode/cloud9-assembly-index/actions/runs/42352555123)  
+**Code commit:** `4a4d746dec08f7020a489f450e60f56c6a421f86`  
+**Artifact:** `deblending-poisson-proposal-bic-comparison`  
+**GitHub artifact digest:** `sha256:0e5ba020a82d93a29bb21ede5d464f548b94ab0247f3f4af7b54958170659fd3`  
+**Extracted JSON SHA-256:** `07cf0519b3e011079a2a71a3464e20df11a3bd3bb7069d204aecd292f5df7bc6`
+
+Tests passed, all 90 trials completed, and the full artifact uploaded.
+
+### Aggregate results
+
+| Metric | Gaussian | Poisson single proposal | Poisson top-five/BIC |
+|---|---:|---:|---:|
+| Mean matched truths (of 7) | 3.78 | 3.29 | 3.42 |
+| Mean missed truths | 3.22 | 3.71 | 3.58 |
+| Mean selected candidates | 4.78 | 3.59 | 3.70 |
+| Mean unmatched extra candidates | 1.00 | 0.30 | 0.28 |
+| Exact seven-source recoveries | 3/90 | 0/90 | 0/90 |
+| Optimizer-success trials | 90/90 | 90/90 | 90/90 |
+
+Paired top-five/BIC versus single-proposal Poisson:
+- Top-five matched more truths in 9/90 trials.
+- Single-proposal matched more in 0/90.
+- Tie in 81/90.
+- Mean difference: +0.133 matched truths per trial.
+- Exact recovery remained zero for both.
+
+By exposure and geometry, the top-five method's gains were modest and not universal. Its largest mean differences appeared at geometry 1.0/exposure 0.1 (+0.4 sources) and geometry 1.2/exposure 0.1 (+0.2); most cells differed by 0.0–0.2. The Gaussian baseline still had higher mean recovery overall and achieved all three exact recoveries, all at geometry 1.2/exposure 1.0.
+
+### Cost and proposal diagnostics
+
+Across 423 greedy proposal steps, top-five evaluated 2,115 complete-scene candidate fits and used 63,244 optimizer function evaluations. There were 333 accepted steps and 90 rejected steps. This is a substantial computational premium over one proposal fit per step.
+
+Across the 2,115 proposed coordinates, 286 (13.5%) fell within 1 px of any truth source in the post-detection audit. At least one proposal was within 1 px of some truth source in 112/423 steps (26.5%). This audit does not distinguish already-recovered sources from still-missed sources, so it cannot by itself show that a missing source was available to be recovered.
+
+The chosen proposal rank was spread across the pool: rank 1 was selected 97 times, rank 2 94, rank 3 79, rank 4 79, and rank 5 74. This indicates that the highest residual peak was not always the lowest-BIC fitted proposal.
+
+### Important numerical caution
+
+For each step, compare the maximum and minimum BIC among successful candidate fits. Across 423 steps, the median spread was approximately (1.70\times10^{-7}); 64.8% of steps had a spread below (10^{-6}), and 68.8% below 1. A small number had much larger spreads (99th percentile about 82.9; maximum about 103.3).
+
+Because all alternatives at a given step have the same parameter count, BIC ranking is driven by deviance. The very small spreads in most steps suggest many candidate initializations converge to effectively the same solution, with the nominal winner potentially determined by tiny numerical differences. The observed +0.133-source average is promising but small and requires a repeat run before stronger interpretation. It must not be presented as a robust improvement yet.
+
+A strengthened test now asserts that the selected proposal rank corresponds to the minimum BIC among successful candidate fits. A repeat 90-trial workflow is being triggered to assess whether the aggregate advantage persists. This experiment remains synthetic and does not establish real-image performance.
