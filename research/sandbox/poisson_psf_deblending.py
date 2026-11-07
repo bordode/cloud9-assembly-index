@@ -35,7 +35,7 @@ def _rank_score_peaks(
         flat_index = int(np.argmax(working))
         row, col = np.unravel_index(flat_index, working.shape)
         peak_score = float(working[row, col])
-        if not np.isfinite(peak_score):
+        if not np.isfinite(peak_score) or peak_score <= 0:
             break
         peaks.append({
             "rank": rank + 1,
