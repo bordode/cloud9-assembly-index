@@ -34,6 +34,33 @@ After detection, compare candidate fitted scenes within each greedy step:
 - The thresholds classify numerical similarity only; they do not establish scientific equivalence.
 - Results do not establish performance on real astronomical images.
 
+
+## Completed audit — 7 November 2026
+
+The corrected workflow passed on commit `83b82efe616906feae96e1a6fbcdfd02b3332140`:
+https://github.com/bordode/cloud9-assembly-index/actions/runs/42357323218
+
+- All three fit-diversity tests passed.
+- The fresh-seed 90-trial replay completed and uploaded artifact `deblending-poisson-fit-diversity-audit` (5,568,77 bytes; GitHub digest `sha256:b99053fb932bf7661838205489784c9d0dfe6f6e90c1a6095eba2ba0b84d9482`).
+- 90 trials, 423 proposal steps with multiple successful fits, 4,230 pairwise candidate-fit comparisons, and 63,428 optimizer function evaluations.
+
+### Pairwise fitted-scene differences
+
+- Positional RMS median: 3.63e-5 px; 90th percentile: 3.737 px; maximum: 11.936 px.
+- 78.46% of comparisons were <= 1e-3 px; 78.98% were <= 1e-2 px.
+- 21.02% were > 0.05 px.
+- Relative amplitude RMS median: 4.25e-6.
+- Absolute background difference median: 2.21e-6.
+- Absolute BIC difference median: 5.59e-8; 90th percentile: 4.678; maximum: 100.705.
+- Correlation between absolute BIC difference and positional RMS: 0.253.
+- All 4,230 pairs had the same fitted source count, so the large positional differences are not explained by comparing different-sized scenes.
+
+### Interpretation
+
+The alternatives do **not** all converge to the same fitted scene. The distribution is strongly mixed: roughly 79% of pairwise comparisons are numerically near-identical under the predeclared positional bins, while about 21% are separated by more than 0.05 px, with a long tail of much larger configuration differences. The median BIC difference is tiny, but the upper tail is substantial; BIC spread and positional spread are only weakly/moderately associated in this sample (r about 0.25). Thus, a near-tied BIC can coexist with materially different fitted coordinates. This audit does not establish which alternative is scientifically correct, nor whether the differences improve recovery. It is a replay of the PR #37 synthetic benchmark, not an independent benchmark; Hungarian coordinate matching can also be ambiguous for weak or coincident sources.
+
+The result motivates a careful next step: inspect whether materially distinct fits are genuinely different local solutions or coordinate-matching pathologies, and compare their post-hoc recovery scores without allowing truth to affect proposal selection.
+
 ## Status
 
-Predeclared diagnostic audit. No conclusions until tests, full benchmark and artifact inspection complete.
+Completed diagnostic replay; PR remains draft and unmerged. Results are descriptive and do not establish real-image performance or identify a scientifically correct fit.
