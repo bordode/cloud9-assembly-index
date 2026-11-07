@@ -137,3 +137,23 @@ The next experiment should therefore investigate the residual score-map mechanis
 Truth must remain unavailable to proposal ranking, fitting, and selection. It may be used only after the run to evaluate which rank bands corresponded to missed truth positions. The top-50 proximity finding is a reason to test candidate depth, not evidence that deeper search will improve recovery.
 
 The experiment remains a synthetic benchmark investigation. It does not establish real-image performance or a universal proposal-ranking rule.
+
+
+## Candidate-depth ablation — protocol added (7 November 2026)
+
+The next paired experiment is implemented in `research/sandbox/deblending_poisson_candidate_depth.py`, with runner `scripts/run_deblending_poisson_candidate_depth.py` and tests in `tests/test_deblending_poisson_candidate_depth.py`.
+
+It compares proposal pool depths 5, 10, 25 and 50 on the same synthetic Poisson count image for each trial. The 90-trial 3×3 scene/exposure grid is reduced to an explicitly exploratory pilot of three trials per cell (27 paired observations) because top-50 fitting can substantially increase optimizer work.
+
+The detector retains the same observation-derived residual score map, 1 px non-maximum suppression, Poisson deviance, model parameterization, bounds, optimizer tolerances, BIC penalty, BIC candidate selection, acceptance and stopping rules. Only the maximum number of ranked proposals sent to fitting changes. Truth is withheld until after each depth-specific run and is used only for Hungarian scoring within 1 px.
+
+The pilot reports:
+- matched, missed and unmatched candidate counts;
+- exact seven-source recoveries;
+- paired per-trial differences versus top-five;
+- optimizer function evaluations and number of proposal fits;
+- accepted and rejected steps.
+
+The new workflow is `.github/workflows/deblending-poisson-candidate-depth.yml`. At the time of this note, the code and workflow have been committed to the PR #38 branch, but the candidate-depth pilot has **not yet completed**. No performance conclusion is available. The test and replay results will be added only after the workflow and artifact are inspected.
+
+Interpretation guardrail: even if deeper pools improve recovery, this establishes only a result for this small synthetic pilot. Increased compute cost, trial-to-trial variation, and the possibility that nearby score peaks are not identifiable sources must be reported alongside any gain.
