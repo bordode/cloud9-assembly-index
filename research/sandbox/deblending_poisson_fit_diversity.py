@@ -198,6 +198,144 @@ def _summarize_source_localization(records: list[dict]) -> dict:
     }
 
 
+def _truth_assignment_distances(
+    fitted_candidates: list[dict], truth: np.ndarray
+) -> dict[int, float | None]:
+    """Return one-to-one post-hoc truth-to-candidate assignment distances."""
+    truth = np.asarray(truth, dtype=float).reshape((-1, 2))
+    if not fitted_candidates:
+        return {index: None for index in range(len(truth))}
+    candidate_xy = np.asarray(
+        [[item["x_px"], item["y_px"]] for item in fitted_candidates],
+        dtype=float,
+    ).reshape((-1, 2))
+    distances = np.linalg.norm(
+        truth[:, None, :] - candidate_xy[None, :, :], axis=2
+    )
+    truth_indices, candidate_indices = linear_sum_assignment(distances)
+    assigned = {
+        int(t): float(distances[t, candidate])
+        for t, candidate in zip(truth_indices, candidate_indices)
+    }
+    return {index: assigned.get(index) for index in range(len(truth))}
+
+
+def _audit_missed_source_path(
+    current_candidates: list[dict],
+    truth: np.ndarray,
+    proposal_pool: list[dict],
+    fit_diagnostics: list[dict],
+    selected_rank: int,
+    accepted: bool,
+    match_radius_px: float = 1.0,
+) -> list[dict]:
+    """Trace each currently missed truth source through proposal, fit and BIC.
+
+    This is post-hoc only. Truth labels never enter proposal generation,
+    optimization, candidate-BIC selection, or the acceptance decision.
+    """
+    truth = np.asarray(truth, dtype=float).reshape((-1, 2))
+    current_distances = _truth_assignment_distances(current_candidates, truth)
+    proposal_xy = np.asarray(
+        [[item["x_px"], item["y_px"]] for item in proposal_pool], dtype=float
+    ).reshape((-1, 2)) if proposal_pool else np.empty((0, 2), dtype=float)
+    successful = [
+        item for item in fit_diagnostics if item["optimizer_success"]
+    ]
+    selected_fit = next(
+        (item for item in successful
+         if int(item["proposal_rank"]) == int(selected_rank)),
+        None,
+    )
+    fit_distances = {
+        int(item["proposal_rank"]): _truth_assignment_distances(
+            item["fitted_candidates"], truth
+        )
+        for item in successful
+    }
+    rows = []
+    for truth_index, truth_xy in enumerate(truth):
+        current_distance = current_distances[truth_index]
+        if current_distance is not None and current_distance <= match_radius_px:
+            continue
+        proposal_distance = (
+            float(np.min(np.linalg.norm(proposal_xy - truth_xy, axis=1)))
+            if len(proposal_xy) else None
+        )
+        nearby_proposal = (
+            proposal_distance is not None
+            and proposal_distance <= match_radius_px
+        )
+        recovering_ranks = [
+            rank for rank, distances in fit_distances.items()
+            if distances[truth_index] is not None
+            and distances[truth_index] <= match_radius_px
+        ]
+        selected_distance = (
+            fit_distances.get(int(selected_rank), {}).get(truth_index)
+            if int(selected_rank) in fit_distances else None
+        )
+        selected_recovers = (
+            selected_distance is not None
+            and selected_distance <= match_radius_px
+        )
+        if not nearby_proposal:
+            stage = "proposal_generation_gap"
+        elif not recovering_ranks:
+            stage = "fit_recovery_gap"
+        elif selected_recovers and accepted:
+            stage = "recovered_by_selected_fit"
+        elif selected_recovers and not accepted:
+            stage = "selected_fit_rejected_by_bic"
+        elif recovering_ranks and not selected_recovers:
+            stage = "bic_candidate_selection_gap"
+        else:
+            stage = "fit_recovery_gap"
+        rows.append({
+            "truth_source_index": int(truth_index),
+            "current_scene_assignment_distance_px_posthoc": current_distance,
+            "nearest_proposal_distance_px_posthoc": proposal_distance,
+            "nearby_proposal_within_1_px_posthoc": bool(nearby_proposal),
+            "successful_fit_ranks_recovering_source_posthoc": recovering_ranks,
+            "selected_fit_assignment_distance_px_posthoc": selected_distance,
+            "selected_fit_recovers_source_posthoc": bool(selected_recovers),
+            "step_accepted_by_bic": bool(accepted),
+            "stage": stage,
+        })
+    return rows
+
+
+def _summarize_source_path(records: list[dict]) -> dict:
+    """Count post-hoc missed-source pathways across the replay."""
+    rows = [
+        source
+        for record in records
+        for step in record["step_audits"]
+        for source in step.get("missed_source_path_posthoc_only", [])
+    ]
+    stages = (
+        "proposal_generation_gap",
+        "fit_recovery_gap",
+        "bic_candidate_selection_gap",
+        "selected_fit_rejected_by_bic",
+        "recovered_by_selected_fit",
+    )
+    counts = {stage: sum(row["stage"] == stage for row in rows)
+              for stage in stages}
+    return {
+        "missed_source_step_observations": len(rows),
+        "stage_counts": counts,
+        "warning": (
+            "These are repeated post-hoc source/step observations within a "
+            "fixed synthetic scene, not independent sources or trials. A "
+            "nearby proposal is defined by coordinate proximity within 1 px; "
+            "a fit recovery uses one-to-one Hungarian assignment within 1 px. "
+            "All truth-based labels are diagnostic only and never affect the "
+            "observation-only detector."
+        ),
+    }
+
+
 def _scene_distance(left: list[dict], right: list[dict]) -> dict:
     if len(left) != len(right):
         return {"same_source_count": False, "rms_position_px": None,
@@ -276,9 +414,15 @@ def run_diversity_audit(*, trials_per_condition: int = 10,
                 steps = method["candidate_trials"]
                 step_audits = []
                 truth = SEVEN_SOURCE_POSITIONS * float(scale)
+                current_scene = []
                 for step in steps:
                     fits = [x for x in step["proposal_fit_diagnostics"] if x["optimizer_success"]]
                     selected_rank = step["selected_proposal_rank"]
+                    path_audits = _audit_missed_source_path(
+                        current_scene, truth, step.get("proposal_pool", []),
+                        step["proposal_fit_diagnostics"], selected_rank,
+                        step["accepted"],
+                    )
                     fit_audits = [
                         _posthoc_fit_audit(fit, truth, selected_rank)
                         for fit in fits
@@ -311,8 +455,18 @@ def run_diversity_audit(*, trials_per_condition: int = 10,
                         "selected_proposal_rank": selected_rank,
                         "successful_fits": len(fits),
                         "fit_audits_posthoc_only": fit_audits,
+                        "missed_source_path_posthoc_only": path_audits,
                         "pairwise_comparisons": comparisons,
                     })
+                    if step["accepted"]:
+                        selected_scene_fit = next(
+                            (item for item in step["proposal_fit_diagnostics"]
+                             if item["optimizer_success"]
+                             and int(item["proposal_rank"]) == int(selected_rank)),
+                            None,
+                        )
+                        if selected_scene_fit is not None:
+                            current_scene = selected_scene_fit["fitted_candidates"]
                 records.append({
                     "seed": case["seed"], "geometry_scale": float(scale),
                     "exposure": float(exposure),
@@ -366,6 +520,7 @@ def run_diversity_audit(*, trials_per_condition: int = 10,
         )),
         "posthoc_candidate_score_audit": _summarize_posthoc_candidate_scores(records),
         "posthoc_source_localization_audit": _summarize_source_localization(records),
+        "posthoc_missed_source_path_audit": _summarize_source_path(records),
         "pairwise_records": pair_rows,
         "records": records,
         "limitations": [
