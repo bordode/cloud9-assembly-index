@@ -164,3 +164,49 @@ def adjoint_relative_error(
     rhs = float(np.vdot(scene, backprojected))
     scale = max(abs(lhs), abs(rhs), np.finfo(float).tiny)
     return abs(lhs - rhs) / scale
+
+
+def forward_stack(
+    highres_scene: np.ndarray,
+    bin_factor: int,
+    phases_yx: tuple[tuple[float, float], ...] | list[tuple[float, float]],
+) -> np.ndarray:
+    """Apply the frame operator to a sequence of known detector phases.
+
+    Returns an array with shape (number_of_frames, detector_height,
+    detector_width). Each frame is a separate observation; this function does
+    not sum frames or apply exposure/noise scaling.
+    """
+    phases = np.asarray(phases_yx, dtype=float)
+    if phases.ndim != 2 or phases.shape[1] != 2 or phases.shape[0] == 0:
+        raise ValueError("phases_yx must be a non-empty sequence of (row, column) pairs")
+    return np.stack(
+        [forward_operator(highres_scene, bin_factor, tuple(phase)) for phase in phases],
+        axis=0,
+    )
+
+
+def adjoint_stack(
+    detector_frames: np.ndarray,
+    highres_shape: tuple[int, int],
+    bin_factor: int,
+    phases_yx: tuple[tuple[float, float], ...] | list[tuple[float, float]],
+) -> np.ndarray:
+    """Apply the exact transpose of :func:`forward_stack`.
+
+    The transpose sums the individual frame adjoints into the common
+    high-resolution scene space.
+    """
+    phases = np.asarray(phases_yx, dtype=float)
+    if phases.ndim != 2 or phases.shape[1] != 2 or phases.shape[0] == 0:
+        raise ValueError("phases_yx must be a non-empty sequence of (row, column) pairs")
+    frames = np.asarray(detector_frames, dtype=float)
+    height, width = _validate_highres_shape(highres_shape, bin_factor)
+    expected_frame_shape = (height // bin_factor, width // bin_factor)
+    expected_shape = (len(phases),) + expected_frame_shape
+    if frames.shape != expected_shape:
+        raise ValueError(f"detector_frames shape must be {expected_shape}, got {frames.shape}")
+    result = np.zeros((height, width), dtype=float)
+    for frame, phase in zip(frames, phases):
+        result += adjoint_operator(frame, highres_shape, bin_factor, tuple(phase))
+    return result
