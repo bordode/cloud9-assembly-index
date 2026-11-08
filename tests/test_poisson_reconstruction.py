@@ -1,0 +1,62 @@
+"""Tests for the photon-limited reconstruction control experiment."""
+import unittest
+
+import numpy as np
+
+from research.sandbox.poisson_reconstruction import (
+    poisson_richardson_lucy,
+    simulate_reconstruction_trial,
+)
+
+
+class PoissonReconstructionTests(unittest.TestCase):
+    def test_single_long_and_stationary_stack_are_equivalent(self):
+        result = simulate_reconstruction_trial(
+            sources_yx=[[10.35, 11.20], [16.10, 19.65]],
+            fluxes=[900.0, 650.0],
+            sigma_yx_px=[[0.8, 0.9], [1.0, 0.85]],
+            science_shape=(12, 14),
+            padding_pixels=3,
+            bin_factor=3,
+            seed=20261108,
+            iterations=(1, 2),
+        )
+        for row in result["results"]:
+            self.assertLess(row["stationary_long_max_abs_difference"], 2e-12)
+            self.assertAlmostEqual(
+                row["single_long"]["relative_rmse"],
+                row["nine_stationary"]["relative_rmse"],
+                places=12,
+            )
+
+    def test_dither_reconstruction_is_finite_and_nonnegative(self):
+        result = simulate_reconstruction_trial(
+            sources_yx=[[10.35, 11.20], [16.10, 19.65]],
+            fluxes=[900.0, 650.0],
+            sigma_yx_px=[[0.8, 0.9], [1.0, 0.85]],
+            science_shape=(12, 14),
+            padding_pixels=3,
+            bin_factor=3,
+            seed=17,
+            iterations=(2,),
+        )
+        row = result["results"][0]
+        self.assertTrue(np.isfinite(row["nine_dithered"]["relative_rmse"]))
+        self.assertTrue(np.isfinite(row["nine_dithered"]["mean_source_centroid_error_px"]))
+        self.assertTrue(np.isfinite(row["nine_dithered"]["mean_aperture_flux_ratio"]))
+
+    def test_solver_rejects_invalid_data_and_iteration_count(self):
+        with self.assertRaises(ValueError):
+            poisson_richardson_lucy(
+                np.ones((1, 4, 4)), [(0.0, 0.0)], [1.0],
+                (8, 8), 2, iterations=0,
+            )
+        with self.assertRaises(ValueError):
+            poisson_richardson_lucy(
+                -np.ones((1, 4, 4)), [(0.0, 0.0)], [1.0],
+                (8, 8), 2,
+            )
+
+
+if __name__ == "__main__":
+    unittest.main()
