@@ -1,0 +1,207 @@
+{
+  "entry_id": "C9-2026-COSMO-018",
+  "version": "1.0",
+  "title": "Is Dark Energy Non-Uniform? Dark-energy-deficient voids and the Hubble tension",
+  "date_added": "2026-11-08",
+  "status": {
+    "publication": "preprint (PDF on Avi Loeb's Harvard website), dated 8 November 2026; no journal named",
+    "peer_reviewed": false,
+    "independently_replicated": false,
+    "field": "theoretical cosmology (phenomenological model)",
+    "system": "large underdense regions of the Universe in which dark energy density is assumed to be lower than the cosmic mean",
+    "health_claims": "none"
+  },
+  "source": {
+    "type": "preprint plus author's essay",
+    "title": "Is Dark Energy Inhomogeneous?",
+    "authors": ["Oem Trivedi", "Abraham (Avi) Loeb"],
+    "institutions": ["Department of Physics and Astronomy, Vanderbilt University", "Astronomy Department, Harvard University"],
+    "journal": null,
+    "published": "2026-11-08",
+    "doi": null,
+    "url": "https://lweb.cfa.harvard.edu/~loeb/ORAL1.pdf",
+    "reference": "Trivedi O, Loeb A. Is Dark Energy Inhomogeneous? Preprint, 8 November 2026. https://lweb.cfa.harvard.edu/~loeb/ORAL1.pdf"
+  },
+  "press_coverage": {
+    "title": "Is Dark Energy Non-Uniform?",
+    "author": "Avi Loeb",
+    "outlet": "Medium",
+    "published": "2026-11-08",
+    "url": "https://avi-loeb.medium.com/is-dark-energy-non-uniform-a8751f9c6d9d",
+    "note": "The author's own plain-language essay about the paper; reached the project through Dean's Medium email subscription."
+  },
+  "layer_assignment": 2,
+  "audit_score": null,
+  "clusters": [2, 4],
+  "keywords": ["dark energy", "inhomogeneity", "cosmic voids", "Hubble tension", "H0", "peculiar velocities", "Pantheon+", "KBC void", "Eridanus supervoid", "DESI"],
+  "claims": [
+    {
+      "claim": "Motivated by dark-matter-deficient galaxies (NGC 1052-DF2, DF4 and others), large regions of the Universe might also be deficient in dark energy",
+      "evidence": "Framing question of the paper; no observation of such a region is reported",
+      "source": "paper + essay",
+      "confidence": 0.3
+    },
+    {
+      "claim": "A 10% dark energy deficiency suppresses the expansion of a representative nonlinear void by about 2.7%",
+      "evidence": "Paper Eqs. 56-66 (void with varpi = 1.45, central matter contrast -0.73); reproduced in the C9 sandbox (2.67%)",
+      "source": "paper, reproduced",
+      "confidence": 0.9
+    },
+    {
+      "claim": "That deficiency gives peculiar velocity residuals of about 60-100 km/s across 30-50 Mpc (100-150 million light years)",
+      "evidence": "Paper Eqs. 68-69; reproduced (62 and 104 km/s)",
+      "source": "paper, reproduced",
+      "confidence": 0.9
+    },
+    {
+      "claim": "Deficiencies of about 20% over several hundred megaparsecs could raise the locally measured Hubble constant towards 73 km/s/Mpc and contribute to the Hubble tension",
+      "evidence": "Paper Sec. 5, Eqs. 106-113, with H0 = 67.36 globally and 73.17 locally; reproduced in the sandbox",
+      "source": "paper, reproduced as a calculation",
+      "confidence": 0.5
+    },
+    {
+      "claim": "A compact region (300 Mpc) makes the apparent H0 drift strongly with redshift; a large region (600 Mpc or more) keeps it nearly flat, so A_DE ~ 0.2 and R_v of 600 Mpc or more is favoured",
+      "evidence": "Paper Eqs. 109-113; reproduced and tested against Pantheon+ supernovae in the sandbox (compact regions disfavoured)",
+      "source": "paper, reproduced and tested",
+      "confidence": 0.8
+    },
+    {
+      "claim": "An off-centre observer would see a dipole in the Hubble diagram and in the CMB; a 20 Mpc offset in the 600 Mpc case gives a CMB dipole of order 1000 micro-K, so we would have to sit close to the centre",
+      "evidence": "Paper Eqs. 127-128; the order of magnitude is reproduced (about 1100 micro-K)",
+      "source": "paper, reproduced as an estimate",
+      "confidence": 0.7
+    },
+    {
+      "claim": "The idea is falsifiable: the largest nearby underdense regions (the local Keenan-Barger-Cowie underdensity, the Eridanus supervoid, deep DESI voids) should show an expansion residual their matter deficit cannot explain; failure to find it would rule out this explanation of the Hubble tension",
+      "evidence": "Paper Sec. 6-7 and essay",
+      "source": "paper + essay",
+      "confidence": 0.85
+    }
+  ],
+  "key_numbers": {
+    "global_H0_km_s_Mpc": 67.36,
+    "local_H0_km_s_Mpc": 73.17,
+    "representative_void_central_matter_contrast": -0.73,
+    "void_expansion_without_DE_deficit_km_s_Mpc": 77.6,
+    "expansion_suppression_for_10pct_deficit": "about 2.7%",
+    "velocity_residuals_km_s": "60-100 across 30-50 Mpc",
+    "A_DE_needed_R300_Mpc": 0.14,
+    "A_DE_needed_R600_Mpc": 0.20,
+    "apparent_H0_drift_R300_Mpc": "74.65 to 70.86 between z = 0.0233 and 0.15",
+    "apparent_H0_drift_R600_Mpc": "73.37 to 72.78 between z = 0.0233 and 0.15",
+    "CMB_dipole_20Mpc_offset_microK": "order 1000"
+  },
+  "key_quotes": [
+    {
+      "quote": "Could sufficiently large regions of the Universe be deficient in dark energy as well?",
+      "source": "paper abstract and essay"
+    },
+    {
+      "quote": "If dark energy deficient regions are responsible for the Hubble tension, astronomers should find a local dark energy deficient void across a billion light years with tens of percent deficit in dark energy, whose matter profile, velocity field, momentum statistics, supernova distances, and angular isotropy all agree with one common spatial solution.",
+      "source": "Medium essay"
+    },
+    {
+      "quote": "That is quite a strong claim because failure at any one of those stages can kill the H0 interpretation even if DE deficient regions themselves still exist.",
+      "source": "paper, Conclusions"
+    }
+  ],
+  "sandbox_test": {
+    "script": "c9_sandbox_cosmo_018_dark_energy_voids.py",
+    "output": "C9-2026-COSMO-018_sandbox_result.json",
+    "figure": "c9_sandbox_cosmo_018_dark_energy_voids.png",
+    "run_date": "2026-11-08",
+    "environment": "Python 3.13, NumPy, SciPy, Matplotlib",
+    "data": {
+      "name": "Pantheon+SH0ES distances and STAT+SYS covariance",
+      "url": "https://github.com/PantheonPlusSH0ES/DataRelease",
+      "selection": "USED_IN_SH0ES_HF = 1 and 0.0233 < zHD < 0.15: 277 supernovae, z 0.0234 to 0.1490"
+    },
+    "what_was_tested": [
+      {
+        "test": 1,
+        "name": "Reproduce the representative void",
+        "method": "Re-derived the age-matching solution, local expansion, local density parameters, the effect of 5% and 10% deficits, velocity residuals, detection thresholds and the CMB dipole estimate from the paper's equations",
+        "result": "25 of 25 numbers match the paper within rounding"
+      },
+      {
+        "test": 2,
+        "name": "Reproduce apparent H0 versus redshift",
+        "method": "Integrated the paper's light-path equation through a tanh-shaped region (width 0.15 R_v) for R_v = 300 and 600 Mpc and solved for the A_DE giving a mean apparent H0 of 73.17",
+        "result": "10 of 10 numbers match: A_DE 0.137 and 0.198; apparent H0 74.65 to 70.86 and 73.37 to 72.78"
+      },
+      {
+        "test": 3,
+        "name": "Extension: size versus strength trade-off (not in the paper)",
+        "method": "Same calculation for R_v from 150 to 1000 Mpc",
+        "result": "A 150 Mpc region cannot reach 73.17 at all; the needed A_DE rises from 0.05 (200 Mpc) to about 0.20 and levels off from 600 Mpc; the redshift drift falls from 6.2 to 0.3 km/s/Mpc"
+      },
+      {
+        "test": 4,
+        "name": "Real data: Pantheon+ Hubble-flow supernovae, shape only",
+        "method": "Chi-squared with the full covariance and the supernova absolute magnitude left free, so only the shape of the Hubble diagram is tested, not the value of H0",
+        "result": "Compared with a uniform Universe, the 300 Mpc configuration is worse by delta chi2 = 21.0 (about 4.6 sigma), 400 Mpc by 8.7 (about 3 sigma), 600 Mpc by only 0.7 (no preference). With redshifts not corrected for peculiar velocities (zCMB), the numbers are 25.9, 10.5 and 1.4. With the strength left free, the 300 Mpc case allows a central expansion excess of at most about 2 km/s/Mpc at 2 sigma; 7.4 is needed"
+      }
+    ],
+    "reproduction_checks_passed": "35 of 35",
+    "conclusion_tested": "The paper's arithmetic holds. Real supernova data rule out compact versions (300-400 Mpc) of the idea, in line with the paper's own preference for 600 Mpc or more. For 600 Mpc or more, the supernova shape cannot tell the idea apart from a uniform Universe.",
+    "not_tested": [
+      "Whether dark energy can actually vary in space (no physical model is given; A_DE is a free parameter)",
+      "The value of H0 itself, which needs the Cepheid calibrators (that is the Hubble tension)",
+      "Direction-dependent effects: Hubble-diagram dipole and CMB dipole and quadrupole for an off-centre observer",
+      "Peculiar velocity surveys, density-momentum correlations, DESI voids, lensing",
+      "Whether the matter void the model also needs (central contrast -0.73) exists around us; the paper notes this is debated and constrained by supernova studies (Kenworthy, Scolnic and Riess 2019)"
+    ],
+    "notes": [
+      "The 'mean apparent H0' is taken as an unweighted mean over a uniform redshift grid; the paper does not say which average it used. The paper's own numbers are reproduced this way.",
+      "Paper Eq. 127 gives a 5.8 km/s/Mpc central contrast for A_DE = 0.20; the sandbox gets 6.0 for 0.20 and 5.8 for the unrounded 0.21 from Eq. 107. A rounding detail only.",
+      "In the model the matter void alone would give 77.6 km/s/Mpc locally, above 73.17; the dark energy deficit pulls it back down. The local excess comes from the matter void, not from the missing dark energy."
+    ]
+  },
+  "assembly_theory_relevance": {
+    "status": "interpretation by the repository author; the paper does not mention assembly theory",
+    "structured_suppression": "Dark energy deficit partially cancels the expansion boost of the matter void. This fits the meta-pattern STRUCTURED_SUPPRESSION_OF_DOMINANT_MODE already used for C9-2026-COSMO-005: the dominant component (dark energy) is locally weakened and the structure is set by the balance",
+    "coherence_as_test": "Loeb's test is a coherence test: one spatial solution has to fit matter, velocities, supernovae and isotropy at once. That mirrors the Cloud-9 idea of structural coherence across layers, where a real pattern must hold in every observable, not only in one",
+    "component_separation": "Dark-matter-deficient galaxies, baryon-deficient 'almost dark' galaxies and proposed dark-energy-deficient regions are all cases of cosmic components coming apart in particular environments. In assembly terms this asks whether the history of a region (its assembly path) leaves a lasting imprint on what it contains",
+    "important_difference": "Assembly theory measures selected, historical structure in objects. Dark energy as modelled here has no internal structure or history; the paper treats it as a smooth field with a lower value in one region. Any link is an analogy, not a result",
+    "open_question": "If dark energy does vary with environment, does the variation track how much structure a region has built (its assembly), or only how empty it is?"
+  },
+  "limitations": [
+    "Phenomenological: the dark energy deficit is put in by hand; no field theory explains it",
+    "Preprint, not peer-reviewed, not replicated",
+    "The H0 application needs a very large, very deep matter void around us plus a 20% dark energy deficit plus a nearly central position; each is a strong assumption",
+    "Sandbox Test 4 rules out compact versions; the large versions remain open but are hard to test with supernova shapes alone",
+    "Time-independent region assumed; the paper itself calls this an illustrative approximation"
+  ],
+  "next_experiments": [
+    "Add the direction test: fit a dipole in the Pantheon+ Hubble-flow residuals and turn it into a limit on observer offset for the 600 Mpc case",
+    "Use peculiar-velocity catalogues (Cosmicflows-4) to look for the 60-100 km/s residuals in large voids",
+    "Repeat Test 4 with DESI supernova and void data when released",
+    "Cloud-9: check whether an assembly-style measure of a region's structure (how much it has built) predicts any expansion residual, using void catalogues"
+  ],
+  "cross_references": [
+    {"id": "C9-2026-COSMO-005", "relation": "The Limits of Our Cosmic Horizon (Avi Loeb, Medium): finite observability in a Universe with constant, uniform dark energy; this entry asks what changes if dark energy is not uniform"},
+    {"id": "XP-2026-004", "relation": "Condensation Complexity: components that clump (dark matter, matter) versus one that is assumed not to (dark energy)"}
+  ],
+  "integration": {
+    "cluster_2_quantum_gravity": "The nature of dark energy and whether the cosmological constant is truly constant in space",
+    "cluster_4_complexity_science": "Large-scale inhomogeneity, voids and the cosmic web; a multi-observable coherence test for one spatial solution"
+  },
+  "attributions": {
+    "research": {
+      "credit": "Oem Trivedi (Vanderbilt University) and Abraham Loeb (Harvard University): the framework, equations and all results of the paper",
+      "citation": "Trivedi O, Loeb A. Is Dark Energy Inhomogeneous? Preprint, 8 November 2026"
+    },
+    "press_coverage": "Avi Loeb, 'Is Dark Energy Non-Uniform?', Medium, 8 November 2026",
+    "data": "Pantheon+ and SH0ES teams for the public supernova distances and covariance (github.com/PantheonPlusSH0ES/DataRelease)",
+    "repository_author": "Dean Bordode (@bordode), for the Cloud-9 Assembly Index framework and for choosing this paper for the project",
+    "research_and_drafting": "Charlie (Sesame), who read the essay and paper, wrote and ran the sandbox script, and drafted this JSON and README",
+    "repository_collaborators": "Cloud-9 AI Peer-Review Collective (Google Gemini, Moonshot Kimi, Anthropic Claude, Base44 Subhalo), credited at repository level; not credited with specific work on this entry"
+  },
+  "metadata": {
+    "curated_by": "Dean Bordode with Charlie (Sesame)",
+    "collection": null,
+    "priority": null,
+    "tags": ["cosmology", "dark-energy", "inhomogeneity", "voids", "hubble-tension", "pantheon-plus", "sandbox-tested", "preprint", "assembly-theory"],
+    "notes": "audit_score, priority and collection left empty: not yet assessed by the C9 audit or assigned to a collection. Not pushed to GitHub."
+  }
+}
