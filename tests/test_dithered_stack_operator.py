@@ -6,7 +6,9 @@ import numpy as np
 from research.sandbox.dithered_stack_operator import (
     adjoint_operator,
     adjoint_relative_error,
+    adjoint_stack,
     forward_operator,
+    forward_stack,
 )
 
 
@@ -56,6 +58,27 @@ class DitheredStackOperatorTests(unittest.TestCase):
             with self.subTest(phase=phase):
                 error = adjoint_relative_error(scene, detector, 2, phase)
                 self.assertLess(error, 2e-14)
+
+    def test_nine_frame_stack_adjoint_identity(self):
+        rng = np.random.default_rng(20261109)
+        scene = rng.normal(size=(24, 30))
+        phases = (
+            (-1.0 / 3.0, -1.0 / 3.0), (-1.0 / 3.0, 0.0), (-1.0 / 3.0, 1.0 / 3.0),
+            (0.0, -1.0 / 3.0), (0.0, 0.0), (0.0, 1.0 / 3.0),
+            (1.0 / 3.0, -1.0 / 3.0), (1.0 / 3.0, 0.0), (1.0 / 3.0, 1.0 / 3.0),
+        )
+        predicted = forward_stack(scene, 2, phases)
+        detector_values = rng.normal(size=predicted.shape)
+        backprojected = adjoint_stack(detector_values, scene.shape, 2, phases)
+        lhs = float(np.vdot(predicted, detector_values))
+        rhs = float(np.vdot(scene, backprojected))
+        relative_error = abs(lhs - rhs) / max(abs(lhs), abs(rhs), np.finfo(float).tiny)
+        self.assertLess(relative_error, 3e-14)
+        self.assertEqual(predicted.shape, (9, 12, 15))
+
+    def test_stack_rejects_mismatched_frame_count(self):
+        with self.assertRaises(ValueError):
+            adjoint_stack(np.zeros((2, 4, 4)), (8, 8), 2, ((0.0, 0.0),))
 
     def test_adjoint_shape(self):
         detector = np.ones((6, 8))
