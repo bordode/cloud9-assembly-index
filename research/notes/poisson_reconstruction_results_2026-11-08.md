@@ -2,8 +2,8 @@
 
 **Date:** 8 November 2026  
 **Related PR:** https://github.com/bordode/cloud9-assembly-index/pull/41  
-**Benchmark workflow:** https://github.com/bordode/cloud9-assembly-index/actions/runs/42524365879  
-**Python test workflow:** https://github.com/bordode/cloud9-assembly-index/actions/runs/42524369756  
+**Benchmark workflow:** https://github.com/bordode/cloud9-assembly-index/actions/runs/42524571798  
+**Python test workflow:** https://github.com/bordode/cloud9-assembly-index/actions/runs/42524574297  
 **Status:** first controlled pilot completed; broader validation still required
 
 ## Protocol actually run
@@ -50,8 +50,8 @@ The large RMSE gain should not be generalized. The phase grid is deliberately al
 - Benchmark workflow run: 42524365879 (success).
 - Python tests workflow run: 42524369756 (success; 41 tests passed).
 - Artifact: dither-reconstruction-benchmark, 30 seeds × 5 iteration counts × 3 arms.
-- Artifact SHA-256 (ZIP): 3cf86fe88c6728968d5b4b2bf77fdb591aa45153f179fb511141427897fb9055.
-- Extracted JSON SHA-256: d16dd51f5dfaeab59d36f3bb0c600db9b0d4bbb7c0411edadfddd8ed854561f8.
+- Artifact SHA-256 (ZIP): f3bfbbca9424b72de1bd5b437b99d40a220eaa69a8cb8f607453f7adc34a5659.
+- Extracted JSON SHA-256: edb947a0b5fd85cf0977bb17ebc09110d1fb7c41c8c2fa06b75a192bd36dc972.
 - Artifact expires 6 February 2027.
 
 ## Next tests
