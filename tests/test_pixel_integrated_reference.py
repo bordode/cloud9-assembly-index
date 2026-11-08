@@ -74,10 +74,11 @@ class PixelIntegratedReferenceTests(unittest.TestCase):
 
     def test_off_grid_phase_error_decreases_with_supersampling(self):
         phase = (0.23, -0.17)
-        errors = [self._comparison(factor, phase)[0] for factor in (2, 4, 8)]
+        errors = [self._comparison(factor, phase)[0] for factor in (2, 4, 8, 16)]
         self.assertLess(errors[1], errors[0])
         self.assertLess(errors[2], errors[1])
-        self.assertLess(errors[2], 2e-3)
+        self.assertLess(errors[3], errors[2])
+        self.assertLess(errors[3], 1e-3)
 
     def test_common_interior_crop_is_fixed_and_validated(self):
         padded = np.arange(self.detector_shape[0] * self.detector_shape[1]).reshape(
