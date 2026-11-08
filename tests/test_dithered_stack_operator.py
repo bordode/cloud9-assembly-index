@@ -10,12 +10,43 @@ from research.sandbox.dithered_stack_operator import (
 )
 
 
+def explicit_bilinear_reference(scene, bin_factor, phase_yx):
+    """Small, slow reference implementation independent of the axis helpers."""
+    shift_y, shift_x = (phase_yx[0] * bin_factor, phase_yx[1] * bin_factor)
+    height, width = scene.shape
+    shifted = np.zeros_like(scene, dtype=float)
+    for out_y in range(height):
+        source_y = out_y - shift_y
+        y0 = int(np.floor(source_y))
+        fy = source_y - y0
+        for out_x in range(width):
+            source_x = out_x - shift_x
+            x0 = int(np.floor(source_x))
+            fx = source_x - x0
+            for iy, wy in ((y0, 1.0 - fy), (y0 + 1, fy)):
+                for ix, wx in ((x0, 1.0 - fx), (x0 + 1, fx)):
+                    if 0 <= iy < height and 0 <= ix < width:
+                        shifted[out_y, out_x] += scene[iy, ix] * wy * wx
+    return shifted.reshape(
+        height // bin_factor, bin_factor, width // bin_factor, bin_factor
+    ).sum(axis=(1, 3))
+
+
 class DitheredStackOperatorTests(unittest.TestCase):
     def test_zero_phase_is_exact_block_sum(self):
         scene = np.arange(8 * 12, dtype=float).reshape(8, 12)
         observed = forward_operator(scene, bin_factor=2)
         expected = scene.reshape(4, 2, 6, 2).sum(axis=(1, 3))
         np.testing.assert_allclose(observed, expected, rtol=0, atol=0)
+
+    def test_fractional_phase_matches_explicit_bilinear_reference(self):
+        rng = np.random.default_rng(20261108)
+        scene = rng.normal(size=(12, 16))
+        for phase in ((0.25, -0.375), (-0.4, 0.2), (0.5, 0.5)):
+            with self.subTest(phase=phase):
+                actual = forward_operator(scene, 2, phase)
+                expected = explicit_bilinear_reference(scene, 2, phase)
+                np.testing.assert_allclose(actual, expected, rtol=2e-15, atol=2e-15)
 
     def test_fractional_phase_adjoint_identity(self):
         rng = np.random.default_rng(20261108)
