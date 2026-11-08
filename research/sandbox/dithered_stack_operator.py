@@ -15,7 +15,7 @@ from __future__ import annotations
 import numpy as np
 
 
-def _axis_stencil(length: int, shift: float) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+def _axis_stencil(length: int, shift: float):
     """Return source indices, weights and validity masks for output samples.
 
     Output index i samples the input at i - shift. Out-of-bounds samples are
@@ -32,6 +32,10 @@ def _axis_stencil(length: int, shift: float) -> tuple[np.ndarray, np.ndarray, np
     return lower, upper, 1.0 - fraction, fraction, lower_valid, upper_valid
 
 
+def _weight_shape(length: int, ndim: int) -> tuple[int, ...]:
+    return (length,) + (1,) * (ndim - 1)
+
+
 def _shift_axis_forward(array: np.ndarray, axis: int, shift: float) -> np.ndarray:
     moved = np.moveaxis(array, axis, 0)
     lower, upper, w_lower, w_upper, valid_lower, valid_upper = _axis_stencil(
@@ -40,8 +44,12 @@ def _shift_axis_forward(array: np.ndarray, axis: int, shift: float) -> np.ndarra
     result = np.zeros_like(moved, dtype=np.result_type(moved.dtype, np.float64))
     out_lower = np.flatnonzero(valid_lower)
     out_upper = np.flatnonzero(valid_upper)
-    result[out_lower] += moved[lower[out_lower]] * w_lower[out_lower, None, None]
-    result[out_upper] += moved[upper[out_upper]] * w_upper[out_upper, None, None]
+    result[out_lower] += moved[lower[out_lower]] * w_lower[out_lower].reshape(
+        _weight_shape(len(out_lower), moved.ndim)
+    )
+    result[out_upper] += moved[upper[out_upper]] * w_upper[out_upper].reshape(
+        _weight_shape(len(out_upper), moved.ndim)
+    )
     return np.moveaxis(result, 0, axis)
 
 
@@ -53,8 +61,20 @@ def _shift_axis_adjoint(array: np.ndarray, axis: int, shift: float) -> np.ndarra
     result = np.zeros_like(moved, dtype=np.result_type(moved.dtype, np.float64))
     out_lower = np.flatnonzero(valid_lower)
     out_upper = np.flatnonzero(valid_upper)
-    np.add.at(result, lower[out_lower], moved[out_lower] * w_lower[out_lower, None, None])
-    np.add.at(result, upper[out_upper], moved[out_upper] * w_upper[out_upper, None, None])
+    np.add.at(
+        result,
+        lower[out_lower],
+        moved[out_lower] * w_lower[out_lower].reshape(
+            _weight_shape(len(out_lower), moved.ndim)
+        ),
+    )
+    np.add.at(
+        result,
+        upper[out_upper],
+        moved[out_upper] * w_upper[out_upper].reshape(
+            _weight_shape(len(out_upper), moved.ndim)
+        ),
+    )
     return np.moveaxis(result, 0, axis)
 
 
@@ -95,8 +115,10 @@ def forward_operator(
     _validate_highres_shape(scene.shape, bin_factor)
     if len(phase_yx) != 2:
         raise ValueError("phase_yx must contain (row_phase, column_phase)")
-    shift_y, shift_x = (float(phase_yx[0]) * bin_factor,
-                        float(phase_yx[1]) * bin_factor)
+    shift_y, shift_x = (
+        float(phase_yx[0]) * bin_factor,
+        float(phase_yx[1]) * bin_factor,
+    )
     shifted = _shift_axis_forward(scene, 0, shift_y)
     shifted = _shift_axis_forward(shifted, 1, shift_x)
     height, width = scene.shape
@@ -119,8 +141,10 @@ def adjoint_operator(
         raise ValueError(f"detector_frame shape must be {expected}, got {frame.shape}")
     if len(phase_yx) != 2:
         raise ValueError("phase_yx must contain (row_phase, column_phase)")
-    shift_y, shift_x = (float(phase_yx[0]) * bin_factor,
-                        float(phase_yx[1]) * bin_factor)
+    shift_y, shift_x = (
+        float(phase_yx[0]) * bin_factor,
+        float(phase_yx[1]) * bin_factor,
+    )
     expanded = np.repeat(np.repeat(frame, bin_factor, axis=0), bin_factor, axis=1)
     # Reverse the forward composition: x-shift transpose, then y-shift transpose.
     result = _shift_axis_adjoint(expanded, 1, shift_x)
