@@ -12,7 +12,7 @@ from research.sandbox.poisson_reconstruction import (
 class PoissonReconstructionTests(unittest.TestCase):
     def test_single_long_and_stationary_stack_are_equivalent(self):
         result = simulate_reconstruction_trial(
-            sources_yx=[[10.35, 11.20], [16.10, 19.65]],
+            sources_yx=[[6.35, 7.20], [11.10, 12.65]],
             fluxes=[900.0, 650.0],
             sigma_yx_px=[[0.8, 0.9], [1.0, 0.85]],
             science_shape=(12, 14),
@@ -31,7 +31,7 @@ class PoissonReconstructionTests(unittest.TestCase):
 
     def test_dither_reconstruction_is_finite_and_nonnegative(self):
         result = simulate_reconstruction_trial(
-            sources_yx=[[10.35, 11.20], [16.10, 19.65]],
+            sources_yx=[[6.35, 7.20], [11.10, 12.65]],
             fluxes=[900.0, 650.0],
             sigma_yx_px=[[0.8, 0.9], [1.0, 0.85]],
             science_shape=(12, 14),
