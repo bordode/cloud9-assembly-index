@@ -98,6 +98,31 @@ class PixelIntegratedReferenceTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             crop_common_interior(padded[:-1], self.padding, self.science_shape)
 
+
+    def test_padding_extension_does_not_change_fixed_interior(self):
+        phase = (0.23, -0.17)
+        interior_results = []
+        for padding in (4, 8):
+            detector_shape = (
+                self.science_shape[0] + 2 * padding,
+                self.science_shape[1] + 2 * padding,
+            )
+            sources = self.sources - self.padding + padding
+            highres = gaussian_scene_subpixel_integrals(
+                (detector_shape[0] * 4, detector_shape[1] * 4),
+                4,
+                sources,
+                self.fluxes,
+                self.sigmas,
+            )
+            frame = forward_operator(highres, 4, phase)
+            interior_results.append(
+                crop_common_interior(frame, padding, self.science_shape)
+            )
+        np.testing.assert_allclose(
+            interior_results[0], interior_results[1], rtol=1e-11, atol=1e-10
+        )
+
     def test_invalid_source_parameters_rejected(self):
         with self.assertRaises(ValueError):
             gaussian_scene_subpixel_integrals(
