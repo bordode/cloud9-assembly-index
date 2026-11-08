@@ -4,6 +4,11 @@ on:
   push:
     branches:
       - research/dithered-stack-control-protocol
+    paths:
+      - 'research/sandbox/poisson_reconstruction.py'
+      - 'scripts/run_dither_reconstruction_benchmark.py'
+      - 'tests/test_poisson_reconstruction.py'
+      - '.github/workflows/dither-reconstruction-benchmark.yml'
 
 jobs:
   benchmark:
