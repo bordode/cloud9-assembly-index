@@ -1,7 +1,7 @@
 # Independent pixel-integrated reference and common scoring region
 
 **Date:** 8 November 2026  
-**Status:** analytic reference implemented; numerical CI validation pending  
+**Status:** analytic reference implemented; 38-test CI validation passed  
 **Related PR:** https://github.com/bordode/cloud9-assembly-index/pull/41
 
 ## Why this validation is needed
@@ -29,7 +29,8 @@ This is a controlled synthetic boundary test, not yet a proof that four pixels i
 
 1. At zero phase, block-summing integrated subpixel cells should reproduce exact detector pixel integrals to floating-point precision.
 2. At bin factor three, phases of ±1/3 pixel align exactly to one high-resolution cell. The discrete shift should then reproduce the analytic pixel-area integral to floating-point precision.
-3. Off-grid phases such as (0.23, -0.17) require interpolation. Their error should decrease as the high-resolution sampling factor increases.
+3. Off-grid phases such as (0.23, -0.17) require interpolation. In this fixed three-source control, relative RMSE was approximately 5.52% at 2×, 0.812% at 4×, 0.259% at 8×, and 0.0790% at 16×. This is a measured convergence example for this scene and phase, not a universal error bound.
+4. Extending the padding from four to eight detector pixels leaves the fixed scored interior unchanged to the test tolerance (relative tolerance 1e-11; absolute tolerance 1e-10).
 
 The aligned-phase result is an exactness check for this analytic Gaussian control, not evidence that arbitrary bilinear phases are exact.
 
@@ -37,5 +38,5 @@ The aligned-phase result is an exactness check for this analytic Gaussian contro
 
 - The analytic reference uses a separable, axis-aligned Gaussian mixture. It does not yet cover Airy diffraction, asymmetric or spatially varying PSFs, detector intrapixel sensitivity, charge diffusion, optical distortion, or wavelength dependence.
 - The scene is continuous and noiseless in this validation. The Poisson acquisition simulator remains a separate stage.
-- Four-pixel padding is fixed for the chosen validation geometry; the next test should increase padding and verify that the scored interior is unchanged.
+- The padding-extension test covers four versus eight detector pixels for this geometry and phase. Wider PSFs, longer wings, larger shifts, or different scene placements still require their own guard-region checks.
 - No reconstruction or blind-lambda comparison is included. No dither benefit is claimed.
