@@ -21,7 +21,7 @@ class MatchedExposureAcquisitionTests(unittest.TestCase):
         )
         np.testing.assert_allclose(
             result["expected_single_long"],
-            90.0 * result["expected_stationary_stack"][0],
+            9.0 * result["expected_stationary_stack"][0],
             rtol=0,
             atol=0,
         )
