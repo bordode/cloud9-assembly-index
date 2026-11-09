@@ -45,6 +45,27 @@ class PoissonReconstructionTests(unittest.TestCase):
         self.assertTrue(np.isfinite(row["nine_dithered"]["mean_source_centroid_error_px"]))
         self.assertTrue(np.isfinite(row["nine_dithered"]["mean_aperture_flux_ratio"]))
 
+    def test_offgrid_dither_phases_are_supported_and_reproducible(self):
+        phases = [
+            (y, x)
+            for y in (-0.29, 0.0, 0.29)
+            for x in (-0.23, 0.0, 0.23)
+        ]
+        result = simulate_reconstruction_trial(
+            sources_yx=[[6.35, 7.20], [11.10, 12.65]],
+            fluxes=[900.0, 650.0],
+            sigma_yx_px=[[0.8, 0.9], [1.0, 0.85]],
+            science_shape=(12, 14),
+            padding_pixels=3,
+            bin_factor=3,
+            seed=23,
+            iterations=(2,),
+            dither_phases_yx=phases,
+        )
+        self.assertEqual(result["metadata"]["dither_phases_yx"], [list(p) for p in phases])
+        self.assertLess(result["results"][0]["stationary_long_max_abs_difference"], 2e-12)
+        self.assertTrue(np.isfinite(result["results"][0]["nine_dithered"]["relative_rmse"]))
+
     def test_solver_rejects_invalid_data_and_iteration_count(self):
         with self.assertRaises(ValueError):
             poisson_richardson_lucy(
