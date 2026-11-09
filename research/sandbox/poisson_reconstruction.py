@@ -4,9 +4,9 @@ The data generator uses the independent continuous Gaussian pixel-integral
 reference. Reconstruction estimates a non-negative high-resolution cell-flux
 image with the discrete shift-and-bin operator. These are separate code paths.
 
-The solver is unregularized Poisson Richardson-Lucy maximum likelihood.
-Iteration count is reported as an early-stopping regularizer. Read noise is
-excluded from this first experiment.
+The solver is unregularized Poisson Richardson-Lucy maximum likelihood with
+an optional known, spatially uniform additive Poisson background. Iteration
+count is reported as an early-stopping regularizer. Read noise is excluded.
 """
 from __future__ import annotations
 
@@ -26,7 +26,8 @@ def poisson_richardson_lucy(
 ):
     """Reconstruct a non-negative high-resolution rate image from Poisson data.
 
-    Each frame has mean exposure times the shift-and-bin prediction. The
+    Each frame has mean exposure times the sum of the shift-and-bin source
+    prediction and a known uniform detector-pixel background rate. The
     multiplicative update uses the exact discrete adjoint. No smoothness prior
     or read-noise model is included.
     """
@@ -157,12 +158,12 @@ def simulate_reconstruction_trial(
     iterations=(1, 2, 3, 5, 10), dither_phases_yx=None,
     background_rate=0.0,
 ):
-    """Run paired photon-only long, stationary, and dithered reconstruction arms.
+    """Run matched-exposure long, stationary, and dithered reconstruction arms.
 
-    The nine stationary Poisson frames are summed to form the single-long
-    image. This couples the controls exactly and preserves the Poisson
-    additivity identity. Dithered observations are generated independently
-    from exact continuous pixel-area integrals.
+    A known uniform Poisson background rate may be added to every detector
+    pixel. The nine stationary frames are summed to form the single-long
+    image, preserving Poisson additivity. Dithered source observations are
+    generated independently from exact continuous pixel-area integrals.
     """
     if not isinstance(bin_factor, (int, np.integer)) or bin_factor <= 0:
         raise ValueError("bin_factor must be a positive integer")
@@ -284,7 +285,7 @@ def simulate_reconstruction_trial(
                 "controlled Gaussian scene, not a general optical PSF",
                 "known source centres define aperture metrics; this is not blind detection",
                 "no read noise, background, PSF mismatch, or blind lambda selection",
-                "dither phases should align to the high-resolution grid for this exact cell-shift model",
+                "off-grid phase shifts are approximated by bilinear high-resolution cell interpolation",
             ],
         },
     }
