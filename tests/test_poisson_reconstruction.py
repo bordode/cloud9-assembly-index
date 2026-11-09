@@ -66,6 +66,43 @@ class PoissonReconstructionTests(unittest.TestCase):
         self.assertLess(result["results"][0]["stationary_long_max_abs_difference"], 2e-12)
         self.assertTrue(np.isfinite(result["results"][0]["nine_dithered"]["relative_rmse"]))
 
+    def test_known_uniform_background_preserves_long_stationary_control(self):
+        result = simulate_reconstruction_trial(
+            sources_yx=[[6.35, 7.20], [11.10, 12.65]],
+            fluxes=[900.0, 650.0],
+            sigma_yx_px=[[0.8, 0.9], [1.0, 0.85]],
+            science_shape=(12, 14),
+            padding_pixels=3,
+            bin_factor=3,
+            seed=29,
+            iterations=(1, 2),
+            background_rate=0.5,
+        )
+        for row in result["results"]:
+            self.assertLess(row["stationary_long_max_abs_difference"], 2e-12)
+            self.assertAlmostEqual(
+                row["single_long"]["relative_rmse"],
+                row["nine_stationary"]["relative_rmse"],
+                places=12,
+            )
+        self.assertEqual(
+            result["metadata"]["background_rate_counts_per_detector_pixel_per_exposure_unit"],
+            0.5,
+        )
+
+    def test_negative_background_rate_is_rejected(self):
+        with self.assertRaises(ValueError):
+            simulate_reconstruction_trial(
+                sources_yx=[[6.35, 7.20]],
+                fluxes=[900.0],
+                sigma_yx_px=[[0.8, 0.9]],
+                science_shape=(12, 14),
+                padding_pixels=3,
+                bin_factor=3,
+                iterations=(1,),
+                background_rate=-0.1,
+            )
+
     def test_solver_rejects_invalid_data_and_iteration_count(self):
         with self.assertRaises(ValueError):
             poisson_richardson_lucy(
