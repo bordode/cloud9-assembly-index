@@ -1,3 +1,14 @@
+# Cloud-9 Assembly v2.2 report artifact
+
+> **Status: preserved report text, not executable Python.** The original file contains a Python import followed by report-like output, Unicode decorations, and tabular metrics. It is not a valid Python module. This conversion preserves the content for historical review and removes the misleading `.py` extension; it does not validate the scientific claims or imply that the reported systems were deployed or measured.
+
+## Review note
+
+The figures below are preserved as supplied, not independently verified. In particular, the report's statements about quantum systems, axion detection, time-crystal coherence, and system status should be treated as claims in an artifact rather than confirmed experimental results.
+
+## Original content
+
+```text
 import c9_bus_client  # C9 bus injection
 --- Deploying Cloud-9 v2.2 Research Suite ---
 
@@ -70,15 +81,8 @@ Generated Files:
 Final A_c: 1.191
 Axion Resonance: 44.0 GHz
 DTC Coherence: 5.00e+40 cycles
-
-
-Metric	Value	
-Final A_c	1.191	
-Classical A_c	0.340	
-Improvement	3.51x	
-Axion Resonance	44.0 GHz	
-DTC Coherence	5.00e+40 cycles	
-TQSG Lifetime	1.00e+39 cycles	
-IPNN Efficiency	160 TOPS/W	
-SOEN Energy	20 aJ/synapse	
-Quantum Volume	2^200	
+TQSG Lifetime: 1.00e+39 cycles
+IPNN Efficiency: 160 TOPS/W
+SOEN Energy: 20 aJ/synapse
+Quantum Volume: 2^200
+```
