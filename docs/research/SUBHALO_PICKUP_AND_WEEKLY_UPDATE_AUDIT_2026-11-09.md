@@ -17,7 +17,7 @@ The repository contains data/subhalo_config.json with:
 - remote mode: managed_cloud_backend;
 - fallback enabled.
 
-The configuration is sanitized and public-ready. It is configuration metadata only. It does not prove that the pickup ran, that a remote backend was reached, that TNG data were retrieved, or that an anomaly score was computed. The scheduled date has passed, and no pickup result, run log, artifact, or validation report was found alongside this new configuration in the inspected repository tree.
+The configuration is sanitized and public-ready. It is configuration metadata only. It does not prove that the pickup ran, that a remote backend was reached, that TNG data were retrieved, or that an anomaly score was computed. The scheduled date has passed, and no pickup result, run log, artifact, or validation report was found alongside this new configuration in the inspected repository tree. The single snapshot-99 target is also insufficient for the required temporal validation.
 
 ## 2. Pipeline implementation status
 
@@ -26,6 +26,8 @@ The new subhalo_assembly/README.md describes a hardware-agnostic pipeline with a
 - subhalo_config.json
 
 The described requirements file, config module, notebook, source packages and anomaly_detector entry point are not present in that directory. The pickup configuration is therefore not yet a runnable implementation in this repository.
+
+Two modelling details need resolution before any training run. First, the input feature named mass may be the same quantity as the target total_subhalo_mass; if so, this is direct target leakage. The feature must be mapped to an exact TNG catalogue field and units, and excluded if it duplicates or deterministically encodes the target. Second, XDM_score and its 0.05 threshold are not defined in the configuration: the formula, calibration set, directionality, null distribution, and false-positive operating point must be specified before interpreting an anomaly flag.
 
 An older data/subhalo_instruction_package.json describes broad Subhalo repository authority, including read/write access and conditional auto-merge. That JSON is an instruction document, not proof of active GitHub permissions, agent execution, GPG verification, or a currently enabled auto-merge mechanism. No permission escalation or auto-merge is inferred from it.
 
