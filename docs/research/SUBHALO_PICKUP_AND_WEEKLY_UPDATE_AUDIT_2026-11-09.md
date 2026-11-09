@@ -25,7 +25,7 @@ The new subhalo_assembly/README.md describes a hardware-agnostic pipeline with a
 - README.md
 - subhalo_config.json
 
-The described requirements file, config module, notebook, source packages and anomaly_detector entry point are not present in that directory. The pickup configuration is therefore not yet a runnable implementation in this repository.
+The described requirements file, config module, notebook, source packages and anomaly_detector entry point are not present in that directory. The inspected master branch has only the general Python test workflow under .github/workflows; no Subhalo pickup schedule or Subhalo-specific execution workflow is present. The pickup configuration is therefore not yet a runnable implementation in this repository.
 
 Two modelling details need resolution before any training run. First, the input feature named mass may be the same quantity as the target total_subhalo_mass; if so, this is direct target leakage. The feature must be mapped to an exact TNG catalogue field and units, and excluded if it duplicates or deterministically encodes the target. Second, XDM_score and its 0.05 threshold are not defined in the configuration: the formula, calibration set, directionality, null distribution, and false-positive operating point must be specified before interpreting an anomaly flag.
 
