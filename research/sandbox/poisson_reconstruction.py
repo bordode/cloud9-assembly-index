@@ -22,7 +22,7 @@ from research.sandbox.pixel_integrated_reference import (
 
 def poisson_richardson_lucy(
     frames, phases_yx, frame_exposures, highres_shape, bin_factor,
-    iterations=10, epsilon=1e-12,
+    iterations=10, epsilon=1e-12, background_rate=0.0,
 ):
     """Reconstruct a non-negative high-resolution rate image from Poisson data.
 
@@ -58,6 +58,8 @@ def poisson_richardson_lucy(
         raise ValueError("iterations must be a positive integer")
     if not np.isfinite(epsilon) or epsilon <= 0:
         raise ValueError("epsilon must be finite and positive")
+    if not np.isfinite(background_rate) or background_rate < 0:
+        raise ValueError("background_rate must be finite and non-negative")
 
     detector_shape = observations.shape[1:]
     sensitivity = np.zeros(shape, dtype=float)
@@ -77,7 +79,9 @@ def poisson_richardson_lucy(
     for _ in range(int(iterations)):
         numerator = np.zeros_like(estimate)
         for frame, phase, exposure in zip(observations, phases, exposures):
-            predicted = exposure * forward_operator(estimate, bin_factor, tuple(phase))
+            predicted = exposure * (
+                forward_operator(estimate, bin_factor, tuple(phase)) + background_rate
+            )
             ratio = frame / np.maximum(predicted, epsilon)
             numerator += exposure * adjoint_operator(
                 ratio, shape, bin_factor, tuple(phase)
@@ -151,6 +155,7 @@ def simulate_reconstruction_trial(
     sources_yx, fluxes, sigma_yx_px, science_shape=(20, 22),
     padding_pixels=4, bin_factor=3, total_exposure=1.0, seed=20261108,
     iterations=(1, 2, 3, 5, 10), dither_phases_yx=None,
+    background_rate=0.0,
 ):
     """Run paired photon-only long, stationary, and dithered reconstruction arms.
 
@@ -163,6 +168,8 @@ def simulate_reconstruction_trial(
         raise ValueError("bin_factor must be a positive integer")
     if not np.isfinite(total_exposure) or total_exposure <= 0:
         raise ValueError("total_exposure must be finite and positive")
+    if not np.isfinite(background_rate) or background_rate < 0:
+        raise ValueError("background_rate must be finite and non-negative")
     if not isinstance(padding_pixels, (int, np.integer)) or padding_pixels < 0:
         raise ValueError("padding_pixels must be a non-negative integer")
     if len(science_shape) != 2 or min(science_shape) <= 0:
@@ -205,7 +212,10 @@ def simulate_reconstruction_trial(
     stationary_mean = frame_exposure * pixel_integrated_gaussian_frame(
         detector_shape, source_positions, fluxes, sigma_yx_px, (0.0, 0.0)
     )
-    stationary_frames = rng.poisson(stationary_mean, size=(9,) + detector_shape)
+    stationary_frames = rng.poisson(
+        stationary_mean + frame_exposure * background_rate,
+        size=(9,) + detector_shape,
+    )
     single_long = stationary_frames.sum(axis=0)
 
     dithered_means = np.stack([
@@ -214,21 +224,26 @@ def simulate_reconstruction_trial(
         )
         for phase in phases
     ])
-    dithered_frames = rng.poisson(dithered_means)
+    dithered_frames = rng.poisson(
+        dithered_means + frame_exposure * background_rate
+    )
 
     results = []
     for count in iteration_values:
         single_estimate = poisson_richardson_lucy(
             single_long[None, :, :], [(0.0, 0.0)], [total_exposure],
             highres_shape, bin_factor, iterations=count,
+            background_rate=background_rate,
         )
         stationary_estimate = poisson_richardson_lucy(
             stationary_frames, np.zeros((9, 2)), np.full(9, frame_exposure),
             highres_shape, bin_factor, iterations=count,
+            background_rate=background_rate,
         )
         dithered_estimate = poisson_richardson_lucy(
             dithered_frames, phases, np.full(9, frame_exposure),
             highres_shape, bin_factor, iterations=count,
+            background_rate=background_rate,
         )
         results.append({
             "iterations": int(count),
@@ -255,6 +270,8 @@ def simulate_reconstruction_trial(
             "seed": int(seed),
             "bin_factor": int(bin_factor),
             "total_exposure": float(total_exposure),
+            "background_rate_counts_per_detector_pixel_per_exposure_unit": float(background_rate),
+            "background_model": "known spatially uniform additive Poisson background rate per detector pixel",
             "frame_count_stationary": 9,
             "frame_count_dithered": 9,
             "noise": "independent Poisson photon counts; no read noise",
