@@ -46,7 +46,7 @@ def summarize(values):
 
 
 def metric_row(result, arm):
-    values = result[arm]
+    values = result["nine_dithered"] if arm in ("aligned_dithered", "offgrid_dithered") else result[arm]
     ratios = np.asarray(values["source_aperture_flux_ratios"], dtype=float)
     return {
         "relative_rmse": values["relative_rmse"],
