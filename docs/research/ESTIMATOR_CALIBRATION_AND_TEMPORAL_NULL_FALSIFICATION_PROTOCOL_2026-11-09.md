@@ -274,3 +274,24 @@ from strict/inclusive marginal counting; (3) specify and test tie/duplicate
 handling; (4) assess spatially correlated fields and effective sample size;
 (5) test temporal null processes T0–T5, with held-out seeds and ablations.
 Only after those stages should physical-data validation be considered.
+
+
+## Factorial boundary-convention audit — implementation added (2026-11-10)
+
+The prior paired comparison changed the radius offset and marginal boundary
+rule together, so it could not attribute the observed shift to either factor.
+A new factorial harness, `scripts/audit_ksg_boundary_factorial.py`, now
+compares four variants on identical Gaussian samples:
+
+1. uninflated kth radius + strict marginal counts;
+2. kth radius plus the configured 1e-12 offset + strict counts;
+3. uninflated kth radius + inclusive marginal counts;
+4. offset radius + inclusive counts (the historical combined convention).
+
+The harness reports per-variant bias/RMSE and paired average effects for the
+radius offset, inclusive counting, and their interaction. Focused tests and a
+dedicated workflow step have been added. The full grid is configured for the
+same five N values, four k values, four correlations, and 100 replicates per
+condition. It has not yet been interpreted; results must be checked after CI
+completes. The zero-radius tie guard remains explicit. This audit does not
+change historical v3 or authorize a correction factor.
