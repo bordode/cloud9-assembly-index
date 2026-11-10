@@ -1,5 +1,9 @@
 # Cloud-9 / THEORIA Unified Ecosystem
 
+> **ARCHIVED LEGACY OVERVIEW — NOT THE CURRENT SCIENTIFIC RESULTS AUTHORITY (review in progress, 2026-11-09).** This document preserves an earlier description of the Cloud-9/THEORIA ecosystem. Its “FINAL-VALIDATED” version label and several numerical, physical, and consciousness-related claims are not current validation statements. In particular, the listed **1,137.753σ** value is withdrawn from scientific interpretation because the inspected source contains a hard-coded value in legacy/demo code with no supporting statistical derivation located; the **1,011.53σ** comparison is invalid because it compares non-equivalent temporal and spatial quantities. The historical **2.99σ** result remains unverified pending reconstruction. Do not cite this page as evidence of a detection, validated physical mechanism, or established consciousness theory. Consult the [current repository README](../README.md), [statistical claims audit](audits/CLOUD9_STATISTICAL_CLAIMS_AUDIT_2026-11-09.md), [withdrawal methodology note](audits/LEGACY_SIGNIFICANCE_WITHDRAWAL_METHODOLOGY_NOTE_2026-11-09.md), and [evidence status](EVIDENCE_STATUS.md). Historical content below is retained for provenance, not endorsed as current findings.
+
+---
+
 **Version:** 1.4.0-FINAL-VALIDATED  
 **Repository:** [github.com/bordode/cloud9-assembly-index](https://github.com/bordode/cloud9-assembly-index)  
 **THEORIA Repository:** [github.com/bordode/THEORIA](https://github.com/bordode/THEORIA)  
