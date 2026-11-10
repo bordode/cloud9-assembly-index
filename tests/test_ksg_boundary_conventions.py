@@ -18,6 +18,10 @@ class KSGBoundaryConventionTests(unittest.TestCase):
         counts = audit.strict_marginal_counts(values, radii)
         self.assertEqual(counts.tolist(), [0, 0, 0])
 
+    def test_zero_radius_requires_explicit_tie_policy(self):
+        with self.assertRaises(ValueError):
+            audit.strict_marginal_counts(np.array([0.0, 0.0]), np.array([0.0, 0.0]))
+
     def test_strict_counts_include_points_inside_radius(self):
         values = np.array([0.0, 0.5, -0.5, 2.0])
         radii = np.ones(4)
