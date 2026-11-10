@@ -295,3 +295,33 @@ same five N values, four k values, four correlations, and 100 replicates per
 condition. It has not yet been interpreted; results must be checked after CI
 completes. The zero-radius tie guard remains explicit. This audit does not
 change historical v3 or authorize a correction factor.
+
+
+## Factorial boundary audit — completed; attribution not achieved (2026-11-10)
+
+Workflow #31 completed on PR head
+`cdf866b4f6c45c4a8693876c67e5d946977920d8`: all focused tests, Gaussian and
+nonlinear known-MI grids, paired boundary audit, factorial audit, and artifact
+upload passed. The factorial JSON contains 80 conditions × 100 replicates,
+with four nominal variants per paired sample.
+
+Inspection showed that the three variants using (a) +1e-12 with strict
+counts, (b) uninflated radius with inclusive counts, and (c) +1e-12 with
+inclusive counts had identical summary values in every condition. Thus the
+positive radius offset effectively admitted the boundary observations in
+this tested grid, making it observationally equivalent to inclusive counting.
+The factorial main effects are therefore aliased; they do not separately
+attribute the observed change to radius offset versus count convention.
+
+The uninflated-radius/strict-count variant had lower mean RMSE than the other
+three variants at each tested N (0.1247 at N=64 down to 0.0354 at N=1,200,
+averaged equally across k and rho). This is evidence limited to the tested
+independent Gaussian grid. It is not universal validation and does not
+authorize changing historical v3 or archived values.
+
+**Next correction to the design:** replace the misleading independent-factor
+interpretation with direct controlled tests of boundary distances and
+floating-point perturbations. Explicitly establish when radius inflation and
+inclusive counting are equivalent, and construct cases where they differ
+before estimating separate effects. Preserve the tie/duplicate policy as a
+separate validation gate.
