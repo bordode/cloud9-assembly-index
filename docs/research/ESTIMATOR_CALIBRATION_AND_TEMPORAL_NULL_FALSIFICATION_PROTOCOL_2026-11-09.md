@@ -186,3 +186,24 @@ the repository's pinned Python dependency constraints and a fixed seed.
 **Status:** harness, tests, and automated calibration workflow added.
 Execution results and estimator-adequacy assessment remain pending. No
 calibration result or claim of estimator adequacy is made here.
+
+
+## First calibration results — 2026-11-10
+
+The first 100-replicate Gaussian known-MI grid has completed successfully:
+80 conditions and 8,000 replicate estimates. The full artifact is attached
+to GitHub Actions workflow run #6. A descriptive analysis is recorded in
+`docs/research/KNOWN_MI_GAUSSIAN_KSG_CALIBRATION_RESULTS_2026-11-10.md`.
+
+The first result is a caution, not a pass: the raw estimator showed negative
+finite-sample bias across the tested Gaussian conditions. Zero-clipping
+substantially changed the null distribution by setting roughly 85–90% of
+independent-control estimates to exactly zero. At N=1,200, residual mean raw
+bias across k was approximately -0.028 bits for rho=0 and remained negative
+for all tested nonzero correlations. These findings are limited to the
+independent-observation bivariate Gaussian grid.
+
+**Status:** initial Gaussian calibration executed; estimator adequacy not
+established. Before spatial/temporal controls, audit the strict/inclusive
+marginal-neighbour counting convention and radius offset, add nonlinear and
+non-Gaussian known-MI controls, and implement interval-coverage evaluation.
