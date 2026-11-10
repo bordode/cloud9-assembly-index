@@ -24,8 +24,12 @@ class SubsamplingCoverageTests(unittest.TestCase):
         self.assertEqual(row["outer_replicates_requested"], 3)
         self.assertEqual(row["subsamples_per_outer_dataset"], 20)
         self.assertEqual(row["raw_strict_primary"]["90"]["valid_outer_datasets"], 3)
-        self.assertIn("coverage_monte_carlo_se",
+        self.assertIn("coverage_monte_carlo_se_plugin",
                       row["raw_strict_primary"]["95"])
+        wilson = row["raw_strict_primary"]["95"]["coverage_wilson_95pct_interval"]
+        self.assertLess(wilson[0], wilson[1])
+        self.assertGreaterEqual(wilson[0], 0.0)
+        self.assertLessEqual(wilson[1], 1.0)
         self.assertEqual(row["true_mi_bits"], 0.0)
 
     def test_subsample_must_exceed_k_plus_one(self):
