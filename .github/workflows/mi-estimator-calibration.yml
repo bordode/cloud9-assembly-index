@@ -8,12 +8,14 @@ on:
       - "scripts/audit_ksg_boundary_conventions.py"
       - "scripts/audit_ksg_boundary_factorial.py"
       - "scripts/audit_ksg_boundary_distance_sensitivity.py"
+      - "scripts/run_mi_nongaussian_calibration.py"
+      - "scripts/run_mi_subsampling_coverage.py"
       - "tests/test_ksg_boundary_distance_sensitivity.py"
       - "tests/test_mi_estimator_calibration.py"
       - "tests/test_ksg_boundary_conventions.py"
       - "tests/test_ksg_boundary_factorial.py"
-      - "scripts/run_mi_nongaussian_calibration.py"
       - "tests/test_mi_nongaussian_calibration.py"
+      - "tests/test_mi_subsampling_coverage.py"
       - "docs/research/ESTIMATOR_CALIBRATION_AND_TEMPORAL_NULL_FALSIFICATION_PROTOCOL_2026-11-09.md"
       - ".github/workflows/mi-estimator-calibration.yml"
   pull_request:
@@ -23,12 +25,14 @@ on:
       - "scripts/audit_ksg_boundary_conventions.py"
       - "scripts/audit_ksg_boundary_factorial.py"
       - "scripts/audit_ksg_boundary_distance_sensitivity.py"
+      - "scripts/run_mi_nongaussian_calibration.py"
+      - "scripts/run_mi_subsampling_coverage.py"
       - "tests/test_ksg_boundary_distance_sensitivity.py"
       - "tests/test_mi_estimator_calibration.py"
       - "tests/test_ksg_boundary_conventions.py"
       - "tests/test_ksg_boundary_factorial.py"
-      - "scripts/run_mi_nongaussian_calibration.py"
       - "tests/test_mi_nongaussian_calibration.py"
+      - "tests/test_mi_subsampling_coverage.py"
       - "docs/research/ESTIMATOR_CALIBRATION_AND_TEMPORAL_NULL_FALSIFICATION_PROTOCOL_2026-11-09.md"
       - ".github/workflows/mi-estimator-calibration.yml"
 
@@ -65,6 +69,19 @@ jobs:
           --output ksg_boundary_distance_sensitivity.json
       - name: Run nonlinear and non-Gaussian known-MI calibration tests
         run: python -m unittest discover -s tests -p 'test_mi_nongaussian_calibration.py' -v
+      - name: Run subsampling interval-coverage screening tests
+        run: python -m unittest discover -s tests -p 'test_mi_subsampling_coverage.py' -v
+      - name: Run subsampling interval-coverage screening pilot
+        run: >-
+          python scripts/run_mi_subsampling_coverage.py
+          --sample-sizes 256
+          --ks 3
+          --rhos 0.0 0.5
+          --b-exponents 0.8
+          --outer-replicates 10
+          --subsamples 20
+          --seed 20261113
+          --output mi_subsampling_coverage_screening.json
       - name: Run nonlinear and non-Gaussian known-MI calibration grid
         run: >-
           python scripts/run_mi_nongaussian_calibration.py
@@ -99,5 +116,6 @@ jobs:
             mi_nongaussian_calibration.json
             ksg_boundary_factorial_audit.json
             ksg_boundary_distance_sensitivity.json
+            mi_subsampling_coverage_screening.json
           if-no-files-found: error
           retention-days: 90
