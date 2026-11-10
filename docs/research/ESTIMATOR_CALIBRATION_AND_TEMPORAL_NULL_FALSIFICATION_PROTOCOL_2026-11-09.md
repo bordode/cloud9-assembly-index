@@ -177,6 +177,12 @@ the independent-observation stage only. Spatially correlated fields, nonlinear
 controls, and temporal nulls remain unimplemented and must not be inferred
 from this first harness.
 
-**Status:** implementation added; scientific calibration results pending
-execution and review. CI test completion is pending. No calibration result or
-claim of estimator adequacy is made here.
+A dedicated workflow, `.github/workflows/mi-estimator-calibration.yml`, now
+runs the focused calibration tests and the full 100-replicate Gaussian grid
+on relevant review-branch pushes and pull-request updates. It uploads the
+machine-readable JSON result as a 90-day workflow artifact. The workflow uses
+the repository's pinned Python dependency constraints and a fixed seed.
+
+**Status:** harness, tests, and automated calibration workflow added.
+Execution results and estimator-adequacy assessment remain pending. No
+calibration result or claim of estimator adequacy is made here.
