@@ -118,10 +118,30 @@ def run_coverage(sample_sizes: list[int], ks: list[int], rhos: list[float],
                                 float(np.sqrt(coverage * (1.0 - coverage) / count))
                                 if count and coverage is not None else None
                             )
+                            # Wilson interval remains informative when all outer
+                            # datasets cover (or all fail); the plug-in MCSE alone
+                            # would misleadingly collapse to zero in those cases.
+                            if count:
+                                z = 1.959963984540054
+                                denom = 1.0 + z * z / count
+                                center = (coverage + z * z / (2.0 * count)) / denom
+                                half = (
+                                    z * np.sqrt(
+                                        coverage * (1.0 - coverage) / count
+                                        + z * z / (4.0 * count * count)
+                                    ) / denom
+                                )
+                                wilson = [
+                                    float(max(0.0, center - half)),
+                                    float(min(1.0, center + half)),
+                                ]
+                            else:
+                                wilson = None
                             return {
                                 "valid_outer_datasets": count,
                                 "empirical_coverage": coverage,
-                                "coverage_monte_carlo_se": mc_se,
+                                "coverage_monte_carlo_se_plugin": mc_se,
+                                "coverage_wilson_95pct_interval": wilson,
                                 "mean_interval_width_bits": (
                                     float(np.mean(widths)) if widths else None
                                 ),
