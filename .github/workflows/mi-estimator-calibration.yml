@@ -1,0 +1,121 @@
+name: MI estimator known-information calibration
+
+on:
+  push:
+    branches: ["review/**"]
+    paths:
+      - "scripts/run_mi_estimator_calibration.py"
+      - "scripts/audit_ksg_boundary_conventions.py"
+      - "scripts/audit_ksg_boundary_factorial.py"
+      - "scripts/audit_ksg_boundary_distance_sensitivity.py"
+      - "scripts/run_mi_nongaussian_calibration.py"
+      - "scripts/run_mi_subsampling_coverage.py"
+      - "tests/test_ksg_boundary_distance_sensitivity.py"
+      - "tests/test_mi_estimator_calibration.py"
+      - "tests/test_ksg_boundary_conventions.py"
+      - "tests/test_ksg_boundary_factorial.py"
+      - "tests/test_mi_nongaussian_calibration.py"
+      - "tests/test_mi_subsampling_coverage.py"
+      - "docs/research/ESTIMATOR_CALIBRATION_AND_TEMPORAL_NULL_FALSIFICATION_PROTOCOL_2026-11-09.md"
+      - ".github/workflows/mi-estimator-calibration.yml"
+  pull_request:
+    branches: [master]
+    paths:
+      - "scripts/run_mi_estimator_calibration.py"
+      - "scripts/audit_ksg_boundary_conventions.py"
+      - "scripts/audit_ksg_boundary_factorial.py"
+      - "scripts/audit_ksg_boundary_distance_sensitivity.py"
+      - "scripts/run_mi_nongaussian_calibration.py"
+      - "scripts/run_mi_subsampling_coverage.py"
+      - "tests/test_ksg_boundary_distance_sensitivity.py"
+      - "tests/test_mi_estimator_calibration.py"
+      - "tests/test_ksg_boundary_conventions.py"
+      - "tests/test_ksg_boundary_factorial.py"
+      - "tests/test_mi_nongaussian_calibration.py"
+      - "tests/test_mi_subsampling_coverage.py"
+      - "docs/research/ESTIMATOR_CALIBRATION_AND_TEMPORAL_NULL_FALSIFICATION_PROTOCOL_2026-11-09.md"
+      - ".github/workflows/mi-estimator-calibration.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  calibrate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Run focused calibration tests
+        run: python -m unittest discover -s tests -p 'test_mi_estimator_calibration.py' -v
+      - name: Run boundary-convention audit tests
+        run: python -m unittest discover -s tests -p 'test_ksg_boundary_conventions.py' -v
+      - name: Run factorial KSG boundary audit tests
+        run: python -m unittest discover -s tests -p 'test_ksg_boundary_factorial.py' -v
+      - name: Run controlled boundary-distance sensitivity tests
+        run: python -m unittest discover -s tests -p 'test_ksg_boundary_distance_sensitivity.py' -v
+      - name: Run controlled boundary-distance sensitivity audit
+        run: >-
+          python scripts/audit_ksg_boundary_distance_sensitivity.py
+          --radius 1.0
+          --offset 1e-12
+          --output ksg_boundary_distance_sensitivity.json
+      - name: Run nonlinear and non-Gaussian known-MI calibration tests
+        run: python -m unittest discover -s tests -p 'test_mi_nongaussian_calibration.py' -v
+      - name: Run subsampling interval-coverage screening tests
+        run: python -m unittest discover -s tests -p 'test_mi_subsampling_coverage.py' -v
+      - name: Run subsampling interval-coverage screening pilot
+        run: >-
+          python scripts/run_mi_subsampling_coverage.py
+          --sample-sizes 256
+          --ks 3
+          --rhos 0.0 0.5
+          --b-exponents 0.8
+          --outer-replicates 10
+          --subsamples 20
+          --seed 20261113
+          --output mi_subsampling_coverage_screening.json
+      - name: Run nonlinear and non-Gaussian known-MI calibration grid
+        run: >-
+          python scripts/run_mi_nongaussian_calibration.py
+          --replicates 100
+          --seed 20261111
+          --output mi_nongaussian_calibration.json
+      - name: Run preregistered Gaussian calibration grid
+        run: >-
+          python scripts/run_mi_estimator_calibration.py
+          --replicates 100
+          --seed 20261109
+          --output mi_estimator_calibration.json
+      - name: Run paired KSG boundary-convention audit
+        run: >-
+          python scripts/audit_ksg_boundary_conventions.py
+          --replicates 100
+          --seed 20261110
+          --output ksg_boundary_convention_audit.json
+      - name: Run factorial KSG radius/count audit
+        run: >-
+          python scripts/audit_ksg_boundary_factorial.py
+          --replicates 100
+          --seed 20261112
+          --output ksg_boundary_factorial_audit.json
+      - name: Upload calibration and boundary-audit results
+        uses: actions/upload-artifact@v4
+        with:
+          name: mi-estimator-calibration-${{ github.sha }}
+          path: |
+            mi_estimator_calibration.json
+            ksg_boundary_convention_audit.json
+            mi_nongaussian_calibration.json
+            ksg_boundary_factorial_audit.json
+            ksg_boundary_distance_sensitivity.json
+            mi_subsampling_coverage_screening.json
+          if-no-files-found: error
+          retention-days: 90

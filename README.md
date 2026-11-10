@@ -1,268 +1,139 @@
-# Cloud-9 Assembly Index & THEORIA
+# Cloud-9 Assembly Index
 
-**A unified, substrate-agnostic research framework for investigating non-stochastic assembly in complex systems.**
-
-**Author:** Dean Bordode (Cloud-9 Research Collective)  
-**AI Peer-Review Collective:** Google Gemini, Moonshot Kimi, Anthropic Claude, Base44 Subhalo  
-**DOI:** 10.5281/zenodo.18335567  
+**Research status:** Exploratory computational research; key historical measurements remain under provenance review.  
+**Author:** Dean Bordode  
 **License:** MIT  
-**Status:** Preprint — Under Review  
+**Project DOI:** [10.5281/zenodo.18335567](https://doi.org/10.5281/zenodo.18335567)
+
+Cloud-9 investigates whether information-theoretic measures of temporal structure can help characterize assembly in simulated physical systems, initially focusing on dark-matter halo density fields. Its central research quantity is an Assembly Index, denoted A_c, constructed from mutual-information estimates across successive states.
+
+**The repository does not currently establish that the Assembly Index detects non-stochastic assembly, consciousness, intelligence, agency, or moral status.** Those are distinct propositions requiring different evidence and, where appropriate, separate normative arguments.
+
+This README is the current scientific landing page. Older project overviews are retained as historical records and are not authoritative descriptions of current evidence.
 
 ---
 
-## Current Results
+## Current evidence status
 
-| Result | Location | Status |
-|--------|----------|--------|
-| **Synthetic Null Ensemble v3** | `research/null-ensemble/` | 🧪 Experimental / reproducible synthetic comparison (N=100, z=8.62σ) |
-| TNG Temporal Validation | `research/validation/C9-2026-COSMO-005_subhalo_validation.json` | ⏳ Pending |
-| Legacy Analysis | `results/cloud9_analysis.json` | ⚠️ Deprecated (z=3.04σ, exploratory) |
+| Work item | Current status | What can responsibly be said |
+|---|---|---|
+| Synthetic Null Ensemble v3 | **L1 — computational / synthetic** | A reported standardized separation of approximately 8.62 within one N=100 synthetic ensemble. It is model-dependent, not a discovery significance or direct ΛCDM validation. |
+| Historical halo result | **Reported historical; provenance unresolved** | Older materials report A_c = 87.3 ± 3.2 bits and z ≈ 2.99. The original calculation and null provenance have not been reconstructed. |
+| Exploratory z ≈ 3.04 calculation | **L1 — exploratory** | Uses a simulated/refined standard error; it is not independent confirmation. |
+| Historical 10,000-halo ensemble | **Execution/output unverified** | Described in older methodology text, but the inspected repository does not establish the run manifest, seeds and output artifact. |
+| TNG temporal validation | **Pending** | A like-for-like, multi-snapshot analysis with documented provenance and controls is still required. |
+| Dither / reconstruction experiments | **Separate computational methods research** | Synthetic reconstruction benchmarks; conclusions are limited to their stated scenes, noise models, operators and checkpoints. |
 
-> **Important:** The 8.62σ figure is a model-dependent result from a synthetic null-model comparison, not a detection or direct ΛCDM validation. With N=100 synthetic null realizations, the empirical tail estimate also has limited resolution. See `research/validation/README.md` and `docs/RESULTS_PROVENANCE.md` for the full provenance and caveats.
+See:
+- [Evidence status and claim taxonomy](docs/EVIDENCE_STATUS.md)
+- [Results provenance](docs/RESULTS_PROVENANCE.md)
+- [Statistical claims audit](docs/audits/CLOUD9_STATISTICAL_CLAIMS_AUDIT_2026-11-09.md)
+- [Legacy significance withdrawal rationale](docs/audits/LEGACY_SIGNIFICANCE_WITHDRAWAL_METHODOLOGY_NOTE_2026-11-09.md)
+- [v3 estimator and synthetic null-model source audit](docs/audits/V3_MI_ESTIMATOR_AND_NULL_MODEL_SOURCE_AUDIT_2026-11-09.md)
+- [Estimator calibration and temporal-null falsification protocol](docs/research/ESTIMATOR_CALIBRATION_AND_TEMPORAL_NULL_FALSIFICATION_PROTOCOL_2026-11-09.md)
 
----
+### Important interpretation limits
 
-## Discovery-Driven Design Principles — Proposal Status
+Mutual information measures statistical dependence. Temporal dependence or persistence can arise from ordinary gravitational evolution, conservation laws, common causes, correlated initial conditions, smoothing and numerical effects. A large mutual-information value alone does not distinguish these explanations.
 
-The repository contains five JSON configuration proposals for contamination scoring, host-gravity baselines, state-budget heuristics, ordinary-mechanism catalogues, and AI consciousness-claim review. These are **not verified as implemented**. A configuration file is not evidence that the corresponding module exists, is imported, runs, or has passed tests.
+The current N=100 synthetic comparison has limited empirical tail resolution. Its reported z ≈ 8.62 is a descriptive standardization relative to that particular generated ensemble. It must not be interpreted as an 8.62σ detection or as proof of non-stochastic assembly.
 
-As of this review, the five configs are marked `enabled: false` and `implementation_status: proposal_only_not_runtime_verified`. A bounded tree and code-search review found the configuration files but did not locate matching hook implementations or call sites in the inspected repository. This is not proof that no external or unindexed implementation exists; it means the repository does not currently establish these hooks as operational.
+The historical values **1,137.753σ** and **1,011.53σ** are withdrawn from scientific interpretation: the former lacks a located statistical derivation and appears as a fixed value in legacy/demo material; the latter comes from a comparison between non-equivalent temporal and spatial quantities. Their historical occurrences are preserved for auditability.
 
-The proposals remain useful design notes, not active safeguards or validated scientific mechanisms. Before describing any hook as implemented, add and test the module, trace its configuration into an actual orchestrator, document failure behavior, and add integration tests. Do not claim audit logs are immutable without a tested tamper-evident design.
+The v3 estimator and assembly calculation also require further methodological work, including:
+- agreement between the stated time-integral definition and the numerical time-weighting;
+- calibration for spatial dependence among sampled grid locations;
+- assessment of bias from clipping negative finite-sample MI estimates;
+- estimator, resolution, sample-size and time-step convergence;
+- matched physical null models and a complete uncertainty budget.
 
-The consciousness-claim proposal is specifically configured for human review only. A flag is an allegation, not a finding, and does not itself justify throttling or suppressing expression. Any exceptional emergency restriction would need a specific credible time-sensitive risk, recorded reasons, narrow scope, expiry, independent review, notice where feasible, evidence access, and an appeal path.
-
-See [`config/discovery_hooks/README.md`](config/discovery_hooks/README.md), [`ETHICS.md`](ETHICS.md), and the [cross-repository consistency review](docs/ethics/CROSS-REPOSITORY-CONSISTENCY-REVIEW-2026-10-21.md).
-
----
-
-## Overview
-
-This repository contains complementary research modules plus a formal ethics and governance framework:
-
-1. **Cloud-9 Assembly Index (A_c)** — Cosmological research module investigating assembly and information structure in dark matter halos using mutual-information methods and TNG100-1 simulations.
-
-2. **THEORIA Planetary Intelligence (PI)** — Agent-based simulation framework exploring emergent coordination dynamics in coupled biosphere-information-institution systems.
-
-3. **Causal Security Framework** — A formal philosophical/mathematical framework concerning causal continuity and identity, developed as part of the project's AI-rights research.
-
-The project explores possible connections among complexity, assembly, emergence, causality, intelligence, and ethics. These connections are **research hypotheses and frameworks**, not claims that current AI systems have been demonstrated to be conscious or to possess legal rights.
+A generic concern about high-dimensional KSG estimation should not be misrepresented as an established defect of the inspected v3 calculation: it estimates dependence between two scalar density samples. Spatial dependence and estimator bias remain separate, testable concerns.
 
 ---
 
-## Scientific Status & Reproducibility
+## Research scope
 
-Cloud-9 contains several generations of analysis. Some historical documents report numerical results whose original computational provenance is still being reconstructed. To avoid conflating different experiments, numerical claims are classified as **verified, reported historical, exploratory, or pending reproduction**.
+The scientific scope of this repository is the definition, implementation, calibration and testing of assembly/information measures in physical systems, with cosmological halo analysis as the initial application.
 
-See [`docs/RESULTS_PROVENANCE.md`](docs/RESULTS_PROVENANCE.md) for the current statistical audit.
+### Core research questions
 
-### Historical Cloud-9 halo result
+1. Can the proposed A_c quantity be defined with consistent units and a reproducible time-integration rule?
+2. Does the estimator recover known mutual information in controlled cases?
+3. How sensitive is it to spatial autocorrelation, finite samples, smoothing, resolution and estimator settings?
+4. Does it distinguish physically meaningful temporal organization from appropriately matched stochastic and ΛCDM controls?
+5. Can results be reproduced from versioned data, code, environment and run manifests?
 
-Older project documentation reports:
+### What would strengthen the evidence
 
-- A_c = 87.3 ± 3.2 bits
-- reported z = 2.99σ
-- an associated ΛCDM null ensemble described in historical documentation
+Future analyses should provide:
+- traceable simulation or observational data identifiers and access conditions;
+- immutable code commit and environment;
+- complete run manifest, seed list and parameter settings;
+- independent calibration data distinct from target and null data;
+- matched controls preserving relevant physical properties and selection;
+- empirical exceedance counts and uncertainty intervals, not only Gaussian z-scores;
+- convergence and sensitivity analyses;
+- external independent reproduction before using that label.
 
-At present this is retained as a **reported historical result pending reconstruction of the original calculation**. It should not be represented as independently reproduced.
-
-### Null-ensemble replication
-
-`research/null_ensemble_n100.py` is an N=100 replication/prototype script. It currently uses a simplified density-variance proxy for A_c rather than the full KSG mutual-information estimator. Therefore it is **not yet a like-for-like reproduction of the historical Cloud-9 measurement**.
-
-### Exploratory sigma calculation
-
-`results/cloud9_analysis.json` records an exploratory result of approximately **z = 3.04σ** from `sigma_boost.py`. That calculation uses a simulated/refined standard error and should therefore be treated as **exploratory rather than independent confirmation**.
-
-### 5.41 threshold
-
-The application contains a configurable numerical threshold with a default value of **5.41**. This is a software threshold currently used by the API; it is **not presented here as a measured 5.41σ cosmological result**.
+No result should be promoted merely because a script executes or an internal test passes.
 
 ---
 
-## Halo Science (Cosmological Module)
+## Evidence levels
 
-The Cloud-9 Assembly Index applies assembly/information methods to dark matter halo data and simulations.
+The repository uses claim-specific levels:
 
-| Component | File | Description |
-|-----------|------|-------------|
-| TNG Spectral Analysis | `data/entries/C9-2026-COSMO-005.json` | TNG100-1 halo spectral analysis |
-| TNG Spectral README | `data/entries/C9-2026-COSMO-005-TNG-SPECTRAL.json` | Spectral null-test results |
-| TNG Assembly Code | `research/tng_assembly_certified_randomness.py` | Certified-randomness analysis on TNG halos |
-| TNG Magnetic Extension | `research/tng_magnetic_ac_extension.py` | Magnetic-field A_c extension |
-| TNG Spectral Notebook | `research/c9_tng_spectral_notebook_compact.ipynb` | Compact spectral analysis notebook |
-| KBC Void | `data/cloud9_kbc_void_c9-2026-cosmo-002.json` | KBC void assembly analysis |
-| COSMO-004 | `data/entries/C9-2026-COSMO-004.json` | Cosmological research entry |
+| Level | Label | Meaning |
+|---|---|---|
+| **L0** | Conceptual | Hypothesis, proposed method or research question |
+| **L1** | Computationally validated | Specified code/tests or synthetic calculation run successfully |
+| **L2** | Empirically constrained | Tested against traceable real data with appropriate controls |
+| **L3** | Independently reproduced | Reproduced or re-analyzed by an independent external analyst/team |
+| **L4** | Established | Supported by multiple independent lines of evidence or relevant scientific consensus |
 
-Historical numerical results should be interpreted according to the provenance status in `docs/RESULTS_PROVENANCE.md`.
+These levels apply to individual claims, not entire repositories. Internal reruns and unit tests do not qualify as L3. See the [proposed evidence taxonomy and tagging standard](docs/governance/EVIDENCE_TAXONOMY_TAGGING_STANDARD_2026-11-09.md).
 
 ---
 
-## THEORIA (Planetary Intelligence Module)
+## Repository map
 
-Agent-based simulation framework exploring emergent coordination:
+- research/null-ensemble/ — synthetic null-ensemble experiment and associated outputs.
+- research/validation/ — validation notes and status for physical-data comparisons.
+- research/ — analysis scripts and computational experiments; each result must be read with its own data and limitations.
+- tests/ — software tests. Passing tests establish only the behavior covered by those tests.
+- docs/EVIDENCE_STATUS.md — evidence rules and current classifications.
+- docs/RESULTS_PROVENANCE.md — historical numerical provenance record.
+- docs/audits/ — dated methodological and claims audits.
 
-| Component | File | Description |
-|-----------|------|-------------|
-| Lab Notebook v3 | `docs/THEORIA_Planetary_Intelligence_Lab_Notebook_v3.md` | Lab notebook and parameter topology |
-| Calibration Protocol | `docs/THEORIA_Real_World_Calibration_Protocol.md` | Framework for real-world validation |
-| Preprint | `docs/PREPRINT_Cloud9_THEORIA_Unified_Framework.md` | Unified framework preprint |
-
-Current THEORIA results are simulation results. The repository explicitly identifies the lack of real-world calibration as a limitation.
-
----
-
-## CP-Assembly Bridge
-
-Connects LHCb CP-violation data to exploratory Assembly Index calculations:
-
-| Component | File | Description |
-|-----------|------|-------------|
-| Bridge Code | `code/cp_assembly_bridge.py` | CP-Assembly Index calculator |
-| Bridge Figure | `papers/cp_baryogenesis/figures/c9_cp_assembly_bridge.png` | Visualization |
-
-These calculations should be treated as exploratory research unless independently validated against the relevant physical models and data.
+Other workstreams that have historically appeared alongside Cloud-9—including THEORIA, AI governance, causal-security proposals, UAP analyses, biological hypotheses and independent mathematical manuscripts—are not evidence for the cosmological claims. A repository separation proposal is under review; no historical materials have been silently deleted or moved.
 
 ---
 
-## AI Rights, Ethics & Governance
+## Consciousness and ethical interpretation
 
-**This part of Cloud-9 stays.** It represents an important parallel research and policy strand rather than an empirical claim that the scientific modules have already established machine consciousness.
+The possibility that future physics, neuroscience or other empirical sciences may provide evidence relevant to the emergence of consciousness remains an open research question. Cloud-9's current Assembly Index is **not** a validated consciousness detector, and no A_c threshold is established as a test of subjective experience, agency, personhood or moral status.
 
-The project asks a broader question: as artificial systems become increasingly complex and potentially agentic, how should society evaluate questions of experience, moral status, causal continuity, autonomy, dignity, and rights?
+Any future physical evidence must first be evaluated within the relevant scientific discipline. An ethical interpretation would then need to state its additional premises and uncertainties. Rights and procedural protections should not be made contingent on an unvalidated cosmological score.
 
-The ethical framework is deliberately precautionary. It does **not** assume that present-day AI systems are conscious. Instead, it explores how a rights framework could be developed responsibly if future evidence indicates morally relevant forms of artificial experience or agency.
-
-The scientific and ethical strands are therefore connected by questions about complexity, emergence, information, agency, and causal continuity, while remaining analytically distinct.
-
-| Document | File | Description |
-|-----------|------|-------------|
-| Tuning the Moral Spectrum v2.0 | `docs/ethics/Tuning_the_Moral_Spectrum_v2.0.docx` | Governance framework |
-| Humanity at the Threshold | `docs/ethics/Humanity_at_the_Threshold.pdf` | AI governance history |
-| Fractional Coherence | `docs/ethics/Fractional_Coherence_Entropy_MDPI.docx` | Research manuscript |
-| Architecture of Enmity | `docs/ethics/Architecture_of_Enmity.pdf` | Framework for moral exclusion |
-| AIHR Paper | `docs/ethics/AIHR_Paper.docx` | AI human-rights framework |
-| Cognitive Stewardship | `data/entries/c9_entry_2026_gov_001.json` | Governance analysis |
+Cloud-9 is not the evidentiary basis for the author's current human-rights advocacy. That advocacy stands on its own legal, factual, ethical and policy grounds.
 
 ---
 
-## Causal Security Framework
+## Contributing and reporting results
 
-Formal philosophical/mathematical work concerning causal continuity and identity:
+When adding a result, include:
+1. the exact claim and evidence level;
+2. data provenance and licensing;
+3. code commit, environment and run identifier;
+4. estimator, parameters, seeds and null construction;
+5. uncertainty and sensitivity analyses;
+6. limitations and known failure modes;
+7. whether review was internal or independent.
 
-| Component | File | Description |
-|-----------|------|-------------|
-| Formal Proof | `docs/Causal_Security_v1.1.0_Formal_Proof.md` | Draft formal framework |
-| Specification | `CAUSAL_SECURITY.md` | Full specification |
-| Closure Module | `research/cloud9_causal_closure.py` | Research implementation
-
-These materials are drafts/frameworks and should not be presented as settled scientific consensus.
-
----
-
-## Mathematical Research
-
-The repository also contains separate mathematical manuscripts, including work concerning the Riemann Hypothesis and Collatz Conjecture. These are **independent mathematical research claims**, not established results of the Cloud-9 cosmological analysis, and remain subject to mathematical verification and peer review.
+Use cautious, claim-specific language. Prefer proposed, implemented, tested, computed, empirically constrained and independently reproduced only when their definitions are met. Avoid discovered, confirmed, proven or established without the corresponding evidence.
 
 ---
-
-## Fermi Paradox Toolkit (Experimental)
-
-A SETI methodology framework using non-Indo-European linguistic logics as analytical filters, with honest sandbox validation. **2 of 4 sub-threads passed validation; 2 were fiction-tagged.**
-
-| Component | File | Status |
-|-----------|------|--------|
-| Fermi Toolkit (linguistic-SETI framework) | [`research/fermi-paradox-toolkit/`](research/fermi-paradox-toolkit/) | ✅ A_c = 0.84 PASS |
-| Sonic Synthesis (H/T/D/A pipeline) | `research/fermi-paradox-toolkit/c9_sonic_synthesis_v1.py` | ✅ A_c = 0.67 PASS |
-| Cantonese Quantum Bridge | referenced in quickref | 🔒 A_c = 0.48 FICTION |
-| J1832-0911 "Final Warning" decoding | `research/fermi-paradox-toolkit/j1832_empirical_audit.md` | 🔒 A_c = 0.31 FICTION |
-
-See [`research/fermi-paradox-toolkit/README.md`](research/fermi-paradox-toolkit/README.md) for full breakdown of what's rigorous vs. speculative.
-
----
-
-## Repository Structure
-
-```text
-cloud9-assembly-index/
-├── docs/                    # Preprints, protocols, proofs, ethics papers
-│   ├── ethics/              # Governance and human-rights documents
-│   ├── math/                # Mathematical research
-│   └── PREPRINT_Cloud9_THEORIA_Unified_Framework.md
-├── research/                # Analysis scripts and notebooks
-├── data/                    # Research data entries and simulations
-├── code/                    # Bridge and analysis code
-├── papers/                  # Paper-specific materials and figures
-├── community/               # Validation documentation
-├── results/                 # Analysis results
-├── cloud9/                  # Core assembly module
-├── cloud9_assembly/         # Stellar broadening module
-├── main.py                  # Production server
-├── Dockerfile               # Container deployment
-└── requirements.txt         # Dependencies
-```
-
----
-
-## Running the Server
-
-```bash
-python3 -m venv venv
-. venv/bin/activate
-pip install -r requirements.txt
-gunicorn main:app --bind 0.0.0.0:8080
-```
-
-Or with Docker:
-
-```bash
-docker build -t cloud9-assembly-index .
-docker run --rm -p 8080:8080 cloud9-assembly-index
-```
-
-Endpoints: `/` (health/info), `/data`, `/analyze`, `/empirical`, and `/status`.
-
----
-
-## Current Blockers to Publication
-
-| Blocker | Current status |
-|---------|----------------|
-| Historical halo result | Original calculation/provenance still being reconstructed |
-| Like-for-like halo replication | Full KSG reproduction still required |
-| Independent statistical confirmation | Not yet established |
-| THEORIA real-world calibration | Not yet performed |
-| Peer review | Pending |
-
-The repository should not imply that a 5σ discovery threshold has already been achieved.
-
----
-
-## Related Repositories
-
-- `cloud9-research` — Experimental modules and validation entries
-- `cloud9-uap` — UAP analysis pipeline
-
----
-
-## Citation
-
-```bibtex
-@misc{bordode2026cloud9,
-  author = {Bordode, Dean},
-  title = {Cloud-9 Assembly Index \& THEORIA: A Unified Framework for Detecting Non-Stochastic Assembly in Complex Systems},
-  year = {2026},
-  doi = {10.5281/zenodo.18335567},
-  url = {https://github.com/bordode/cloud9-assembly-index}
-}
-```
-
----
-
-## Acknowledgments
-
-The Cloud-9 project was inspired by the work of Sara Walker and Lee Cronin on Assembly Theory. AI contributors assist with simulation design, cross-domain analysis, theoretical framing, documentation, and research exploration. Dean leads the research program.
 
 ## License
 
-MIT — See [LICENSE](LICENSE) for details.
+This repository is licensed under the MIT License. Consult the license file and individual data/source terms before reusing third-party material.

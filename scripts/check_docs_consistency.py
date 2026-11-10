@@ -3,8 +3,8 @@ from pathlib import Path
 
 CHECKS = {
     "README.md": [
-        "configuration proposals",
-        "not verified as implemented",
+        "does not currently establish that the assembly index detects",
+        "not a discovery significance",
     ],
     "ETHICS_MANIFESTO.md": [
         "neither, by itself, establishes consciousness",
