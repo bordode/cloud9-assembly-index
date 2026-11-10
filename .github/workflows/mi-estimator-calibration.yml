@@ -8,6 +8,8 @@ on:
       - "scripts/audit_ksg_boundary_conventions.py"
       - "tests/test_mi_estimator_calibration.py"
       - "tests/test_ksg_boundary_conventions.py"
+      - "scripts/run_mi_nongaussian_calibration.py"
+      - "tests/test_mi_nongaussian_calibration.py"
       - "docs/research/ESTIMATOR_CALIBRATION_AND_TEMPORAL_NULL_FALSIFICATION_PROTOCOL_2026-11-09.md"
       - ".github/workflows/mi-estimator-calibration.yml"
   pull_request:
@@ -17,6 +19,8 @@ on:
       - "scripts/audit_ksg_boundary_conventions.py"
       - "tests/test_mi_estimator_calibration.py"
       - "tests/test_ksg_boundary_conventions.py"
+      - "scripts/run_mi_nongaussian_calibration.py"
+      - "tests/test_mi_nongaussian_calibration.py"
       - "docs/research/ESTIMATOR_CALIBRATION_AND_TEMPORAL_NULL_FALSIFICATION_PROTOCOL_2026-11-09.md"
       - ".github/workflows/mi-estimator-calibration.yml"
 
@@ -41,6 +45,14 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_mi_estimator_calibration.py' -v
       - name: Run boundary-convention audit tests
         run: python -m unittest discover -s tests -p 'test_ksg_boundary_conventions.py' -v
+      - name: Run nonlinear and non-Gaussian known-MI calibration tests
+        run: python -m unittest discover -s tests -p 'test_mi_nongaussian_calibration.py' -v
+      - name: Run nonlinear and non-Gaussian known-MI calibration grid
+        run: >-
+          python scripts/run_mi_nongaussian_calibration.py
+          --replicates 100
+          --seed 20261111
+          --output mi_nongaussian_calibration.json
       - name: Run preregistered Gaussian calibration grid
         run: >-
           python scripts/run_mi_estimator_calibration.py
@@ -60,5 +72,6 @@ jobs:
           path: |
             mi_estimator_calibration.json
             ksg_boundary_convention_audit.json
+            mi_nongaussian_calibration.json
           if-no-files-found: error
           retention-days: 90
