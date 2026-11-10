@@ -147,3 +147,36 @@ This protocol does not assume that:
 - any (A_c) threshold establishes subjective experience, agency or moral standing.
 
 The protocol is designed to falsify overinterpretation as readily as it is designed to identify a useful statistic. A null or negative result is a valid and informative outcome.
+
+
+## Implementation status — first calibration harness
+
+A standalone known-MI calibration harness has been added at
+`scripts/run_mi_estimator_calibration.py`, with focused tests in
+`tests/test_mi_estimator_calibration.py`.
+
+The first implementation covers independent and correlated bivariate Gaussian
+controls, using the exact reference
+(I(X;Y)=-\frac{1}{2}\log_2(1-\rho^2)). It reports the raw estimate and
+the zero-clipped estimate side by side, including bias, RMSE, dispersion,
+negative-estimate fraction, clipping fraction, and a replicate-level
+bootstrap interval for mean bias. The neighbourhood-count radius follows the
+existing v3 implementation (`epsilon = kth_distance + 1e-12)); the historical
+v3 source itself remains unchanged.
+
+Default run:
+
+```bash
+python scripts/run_mi_estimator_calibration.py
+```
+
+This produces `mi_estimator_calibration.json`. The default grid is 100
+independent replicates for each combination of sample size 64, 128, 256, 512,
+and 1200; k=2, 3, 5, and 10; and correlation 0, 0.2, 0.5, and 0.8. This is
+the independent-observation stage only. Spatially correlated fields, nonlinear
+controls, and temporal nulls remain unimplemented and must not be inferred
+from this first harness.
+
+**Status:** implementation added; scientific calibration results pending
+execution and review. CI test completion is pending. No calibration result or
+claim of estimator adequacy is made here.
