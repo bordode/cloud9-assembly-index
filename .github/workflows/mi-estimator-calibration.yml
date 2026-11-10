@@ -1,0 +1,43 @@
+name: MI estimator known-information calibration
+
+on:
+  pull_request:
+    branches: [master]
+    paths:
+      - "scripts/run_mi_estimator_calibration.py"
+      - "tests/test_mi_estimator_calibration.py"
+      - "docs/research/ESTIMATOR_CALIBRATION_AND_TEMPORAL_NULL_FALSIFICATION_PROTOCOL_2026-11-09.md"
+      - ".github/workflows/mi-estimator-calibration.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  calibrate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Run focused calibration tests
+        run: python -m unittest tests.test_mi_estimator_calibration -v
+      - name: Run preregistered Gaussian calibration grid
+        run: >-
+          python scripts/run_mi_estimator_calibration.py
+          --replicates 100
+          --seed 20261109
+          --output mi_estimator_calibration.json
+      - name: Upload calibration results
+        uses: actions/upload-artifact@v4
+        with:
+          name: mi-estimator-calibration-${{ github.sha }}
+          path: mi_estimator_calibration.json
+          if-no-files-found: error
+          retention-days: 90
