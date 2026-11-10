@@ -441,3 +441,38 @@ spatial dependence, temporal dependence, arbitrary distributions, or the
 historical v3 pipeline. It does not authorize retrospective confidence
 intervals or corrections for archived Cloud-9 values. Spatial block
 uncertainty and temporal-null validation remain separate future gates.
+
+
+## Interval-coverage harness implementation — screening only (2026-11-10)
+
+A separate harness, `scripts/run_mi_subsampling_coverage.py`, and focused
+tests, `tests/test_mi_subsampling_coverage.py`, now implement the proposed
+without-replacement subsampling-root procedure. The primary intervals use
+raw strict KSG estimates. Zero-clipped intervals are emitted only as
+diagnostics and are explicitly not assigned a nominal-coverage claim.
+
+The default command is deliberately a small screening run:
+
+```bash
+python scripts/run_mi_subsampling_coverage.py
+```
+
+It evaluates n=256, k=3, rho=0 and 0.5, both transformed-Gaussian
+families, b=floor(n^0.8), 10 independent outer datasets per condition, and
+20 without-replacement subsets per outer dataset. This is a runtime/method
+screen, not the 100-outer-dataset/200-subset preregistered pilot. The full
+grid remains selectable through command-line arguments, but should not be
+treated as a confirmation study without a separate precision-based plan.
+
+The output reports empirical coverage, outer-dataset Monte Carlo standard
+error, mean and median interval width, raw outer-dataset bias, and failures.
+The Monte Carlo standard error is calculated from independent outer datasets;
+the overlapping subsets are not counted as independent coverage trials.
+With only 20 subsets, the tail quantiles are extremely coarse, so the
+screening output is not suitable for judging nominal 90% or 95% coverage.
+
+The calibration workflow now runs the focused tests and screening command
+and uploads the JSON output. Execution and artifact inspection remain
+pending. No coverage result or estimator-adequacy claim is made by adding
+this harness. Spatial dependence, temporal dependence, and historical v3
+validation remain separate gates.
