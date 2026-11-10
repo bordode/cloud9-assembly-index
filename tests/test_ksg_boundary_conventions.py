@@ -26,7 +26,7 @@ class KSGBoundaryConventionTests(unittest.TestCase):
         values = np.array([0.0, 0.5, -0.5, 2.0])
         radii = np.ones(4)
         counts = audit.strict_marginal_counts(values, radii)
-        self.assertEqual(counts.tolist(), [2, 2, 2, 0])
+        self.assertEqual(counts.tolist(), [2, 1, 1, 0])
 
     def test_strict_estimator_is_finite_and_reproducible(self):
         rng1 = np.random.default_rng(2026)
