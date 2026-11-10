@@ -325,3 +325,27 @@ floating-point perturbations. Explicitly establish when radius inflation and
 inclusive counting are equivalent, and construct cases where they differ
 before estimating separate effects. Preserve the tie/duplicate policy as a
 separate validation gate.
+
+
+## Controlled boundary-distance sensitivity — implementation added (2026-11-10)
+
+The factorial Gaussian grid showed that a positive radius offset and inclusive
+counting were observationally equivalent in its random samples. A deterministic
+follow-up now constructs float64 marginal distances at one ULP inside the
+radius, exactly on the radius, one ULP outside, halfway through the configured
+offset, exactly at the offset boundary, one ULP beyond it, and two offsets
+outside.
+
+For a target point at zero, the harness reports whether each constructed
+neighbour is admitted by: (a) uninflated strict counting, (b) uninflated
+inclusive counting, (c) offset-radius strict counting, and (d) offset-radius
+inclusive counting. It records the offset in ULPs at the chosen radius and
+rejects offsets that do not change the radius in float64.
+
+This is a deterministic geometry/representation diagnostic, not an estimator
+bias study, statistical calibration, or confidence-interval test. Its initial
+configured case is radius=1.0, offset=1e-12. Focused tests and a dedicated
+workflow step/artifact have been added; CI verification and artifact
+inspection are pending. Results must be interpreted as specific to float64,
+the tested radius and offset, and the marginal-count geometry. Historical v3
+and archived outputs remain unchanged.
