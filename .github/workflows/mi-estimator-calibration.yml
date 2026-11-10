@@ -1,6 +1,13 @@
 name: MI estimator known-information calibration
 
 on:
+  push:
+    branches: ["review/**"]
+    paths:
+      - "scripts/run_mi_estimator_calibration.py"
+      - "tests/test_mi_estimator_calibration.py"
+      - "docs/research/ESTIMATOR_CALIBRATION_AND_TEMPORAL_NULL_FALSIFICATION_PROTOCOL_2026-11-09.md"
+      - ".github/workflows/mi-estimator-calibration.yml"
   pull_request:
     branches: [master]
     paths:
