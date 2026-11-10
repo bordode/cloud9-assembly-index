@@ -15,8 +15,8 @@ class KSGBoundaryDistanceSensitivityTests(unittest.TestCase):
         self.assertEqual(result["target_neighbour_counts"], {
             "uninflated_strict": 1,
             "uninflated_inclusive": 2,
-            "inflated_strict": 3,
-            "inflated_inclusive": 4,
+            "inflated_strict": 4,
+            "inflated_inclusive": 5,
         })
 
     def test_offset_must_be_representable_at_radius(self):
