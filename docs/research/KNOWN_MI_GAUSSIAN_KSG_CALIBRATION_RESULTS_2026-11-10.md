@@ -91,3 +91,82 @@ A successful software workflow establishes that the experiment ran and produced 
 ## 6. Reproducibility
 
 The full result file is retained as the GitHub Actions artifact for workflow run #6 (90-day retention). The workflow is linked from PR #44. All 80 condition rows, replicate counts, bootstrap intervals, raw estimates summaries, clipped summaries, seed and limitations are included in the JSON artifact.
+
+
+## 7. Paired KSG boundary-convention audit — 2026-11-10
+
+A follow-up paired audit completed on the same review-branch commit,
+`b8b68b57164166ff5b87068a57ce0b2c3c1af3cd`. It evaluated 80 Gaussian
+conditions (N=64, 128, 256, 512, 1,200; k=2, 3, 5, 10; rho=0, 0.2, 0.5,
+0.8), with 100 paired replicate datasets per condition: 8,000 paired
+comparisons.
+
+The comparison was between two **combined implementation conventions**:
+
+- Historical harness/v3-style: kth joint radius plus (10^{-12}), with
+  inclusive marginal ball counts.
+- Strict KSG-1-style: uninflated kth joint max-norm radius, with marginal
+  distances counted strictly below that radius.
+
+Because the radius offset and marginal inclusion rule change together, this
+audit does not separately identify the contribution of each change. The
+historical v3 implementation and archived outputs were not modified.
+
+### 7.1 Aggregate results
+
+| N | Historical mean bias (bits) | Strict mean bias (bits) | Historical mean RMSE (bits) | Strict mean RMSE (bits) |
+|---:|---:|---:|---:|---:|
+| 64 | -0.1427 | -0.0140 | 0.1848 | 0.1279 |
+| 128 | -0.0920 | +0.0003 | 0.1280 | 0.0936 |
+| 256 | -0.0635 | +0.0023 | 0.0907 | 0.0658 |
+| 512 | -0.0472 | -0.0003 | 0.0692 | 0.0510 |
+| 1,200 | -0.0265 | +0.0043 | 0.0429 | 0.0339 |
+
+Across all 80 condition cells, the strict convention had lower RMSE in 79
+cells and lower absolute bias in 79 cells. The one exception was
+N=1,200, k=10, rho=0.8: the historical convention was already very close to
+the known MI (bias -0.00034 bits; RMSE 0.0347), while the strict convention
+had bias +0.0198 bits and RMSE 0.0401.
+
+The average paired shift (strict minus historical estimate) was positive
+across the tested grid, declining from about +0.129 bits at N=64 to +0.031
+bits at N=1,200. The direction and magnitude varied by condition.
+
+### 7.2 Interpretation and limits
+
+This is strong evidence that the **combined strict convention tested here**
+behaves better on this particular independent bivariate-Gaussian grid than
+the historical inclusive-plus-offset convention. It is not proof that the
+strict implementation is universally superior, unbiased for other
+distributions, or valid for spatially/temporally dependent data. The
+N=1,200, k=10, rho=0.8 exception also cautions against describing the
+strict convention as uniformly better.
+
+The audit does not justify retroactively correcting historical (A_c)
+values, applying a universal offset, or replacing the historical v3
+estimator silently. Preserve the archived estimator and results. Any future
+candidate estimator change should be separately versioned and tested against
+non-Gaussian, nonlinear, tie/duplicate, spatial-dependence, and temporal-null
+controls, with held-out evaluation.
+
+### 7.3 Reproducibility and duplicate workflow check
+
+The paired audit and original Gaussian calibration both completed and
+uploaded artifacts in workflow runs #15 and #16. The two runs were triggered
+against the same commit and used fixed seeds. Their corresponding JSON files
+were byte-for-byte identical (SHA-256):
+
+- Gaussian calibration:
+  `cca7f2c4431c2e34001019db64c77237fae54fc63d4d5ea6565ce50abf26cb88`
+- Paired convention audit:
+  `0b07fe0b7d3967a3f8997da3a827f6ac322be7235ec9d40b7fa99320c736de40`
+
+Each artifact contains 80 condition rows with 100 replicates per condition;
+all reported numeric fields were finite. Identical outputs demonstrate
+deterministic reproduction under the same code, seed, and environment. They
+are not two statistically independent replications.
+
+**Decision:** the paired audit supports advancing the strict convention as a
+candidate for further validation, not changing v3 or promoting the estimator
+to a calibrated scientific measurement. Nonlinear/non-Gaussian controls,
+interval coverage, and spatial/temporal null tests remain outstanding.
