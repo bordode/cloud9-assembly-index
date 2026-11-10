@@ -5,14 +5,18 @@ on:
     branches: ["review/**"]
     paths:
       - "scripts/run_mi_estimator_calibration.py"
+      - "scripts/audit_ksg_boundary_conventions.py"
       - "tests/test_mi_estimator_calibration.py"
+      - "tests/test_ksg_boundary_conventions.py"
       - "docs/research/ESTIMATOR_CALIBRATION_AND_TEMPORAL_NULL_FALSIFICATION_PROTOCOL_2026-11-09.md"
       - ".github/workflows/mi-estimator-calibration.yml"
   pull_request:
     branches: [master]
     paths:
       - "scripts/run_mi_estimator_calibration.py"
+      - "scripts/audit_ksg_boundary_conventions.py"
       - "tests/test_mi_estimator_calibration.py"
+      - "tests/test_ksg_boundary_conventions.py"
       - "docs/research/ESTIMATOR_CALIBRATION_AND_TEMPORAL_NULL_FALSIFICATION_PROTOCOL_2026-11-09.md"
       - ".github/workflows/mi-estimator-calibration.yml"
 
@@ -35,16 +39,26 @@ jobs:
         run: python -m pip install -r requirements.txt
       - name: Run focused calibration tests
         run: python -m unittest discover -s tests -p 'test_mi_estimator_calibration.py' -v
+      - name: Run boundary-convention audit tests
+        run: python -m unittest discover -s tests -p 'test_ksg_boundary_conventions.py' -v
       - name: Run preregistered Gaussian calibration grid
         run: >-
           python scripts/run_mi_estimator_calibration.py
           --replicates 100
           --seed 20261109
           --output mi_estimator_calibration.json
-      - name: Upload calibration results
+      - name: Run paired KSG boundary-convention audit
+        run: >-
+          python scripts/audit_ksg_boundary_conventions.py
+          --replicates 100
+          --seed 20261110
+          --output ksg_boundary_convention_audit.json
+      - name: Upload calibration and boundary-audit results
         uses: actions/upload-artifact@v4
         with:
           name: mi-estimator-calibration-${{ github.sha }}
-          path: mi_estimator_calibration.json
+          path: |
+            mi_estimator_calibration.json
+            ksg_boundary_convention_audit.json
           if-no-files-found: error
           retention-days: 90
