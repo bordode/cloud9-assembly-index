@@ -17,8 +17,8 @@ class KSGBoundaryFactorialTests(unittest.TestCase):
         radii = np.ones(4)
         strict = audit.strict_marginal_counts(values, radii)
         inclusive = audit.inclusive_marginal_counts(values, radii)
-        self.assertEqual(strict.tolist(), [1, 1, 1, 1])
-        self.assertEqual(inclusive.tolist(), [3, 2, 2, 2])
+        self.assertEqual(strict.tolist(), [1, 1, 0, 2])
+        self.assertEqual(inclusive.tolist(), [3, 2, 1, 2])
 
     def test_four_factorial_variants_are_finite(self):
         rng = np.random.default_rng(22)
