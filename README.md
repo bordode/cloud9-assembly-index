@@ -29,6 +29,7 @@ See:
 - [Results provenance](docs/RESULTS_PROVENANCE.md)
 - [Statistical claims audit](docs/audits/CLOUD9_STATISTICAL_CLAIMS_AUDIT_2026-11-09.md)
 - [Legacy significance withdrawal rationale](docs/audits/LEGACY_SIGNIFICANCE_WITHDRAWAL_METHODOLOGY_NOTE_2026-11-09.md)
+- [v3 estimator and synthetic null-model source audit](docs/audits/V3_MI_ESTIMATOR_AND_NULL_MODEL_SOURCE_AUDIT_2026-11-09.md)
 
 ### Important interpretation limits
 
