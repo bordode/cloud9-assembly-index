@@ -236,3 +236,41 @@ replication.
 coverage; an experiment separating radius-offset and strict/inclusive
 counting effects; explicit tie/duplicate handling beyond the current
 zero-radius guard; then spatial-dependence and temporal-null controls.
+
+
+## Nonlinear and non-Gaussian known-MI controls — completed (2026-11-10)
+
+The expanded workflow #21 completed successfully on commit
+`9de5ec07dc975a3a00be3a26558f8c2715905c31`. In addition to rerunning the
+Gaussian grid and paired boundary audit, it ran 16,000 estimates over two
+known-MI transformed-Gaussian families (80 conditions × 100 replicates per
+family): nonlinear sinh/exp marginals and uniform marginals with a Gaussian
+copula. Coordinate-wise strictly monotone invertible transformations
+preserve the analytic population MI.
+
+Mean raw RMSE declined with sample size in both families. At N=1,200, the
+mean RMSE across k and rho was approximately 0.0334 bits for the nonlinear
+family and 0.0357 bits for the copula family. Bias differed between families:
+the nonlinear family approached zero aggregate bias, while the copula family
+showed a small positive aggregate bias at larger N. Larger k reduced average
+RMSE in these grids but increased negative bias in the nonlinear family,
+illustrating a bias/variance trade-off rather than a universal k optimum.
+
+Zero-clipping produced positive mean bias under known-zero MI (approximately
++0.023 to +0.025 bits averaged over N and k at rho=0), with about half of
+null estimates clipped to zero. A clipped mean near zero is therefore not a
+valid calibration argument.
+
+**Status:** the strict KSG candidate has now passed software execution and
+finite-output checks on these two transformed-Gaussian families. This is
+limited synthetic calibration evidence, not proof of universal unbiasedness
+or validity for arbitrary non-Gaussian data. No spatial or temporal
+dependence is included. No individual-estimate interval-coverage study has
+been completed. Historical v3 and archived outputs remain unchanged.
+
+**Next gates remain:** (1) empirically evaluate interval coverage using
+independent datasets and predeclared intervals; (2) isolate radius offset
+from strict/inclusive marginal counting; (3) specify and test tie/duplicate
+handling; (4) assess spatially correlated fields and effective sample size;
+(5) test temporal null processes T0–T5, with held-out seeds and ablations.
+Only after those stages should physical-data validation be considered.
