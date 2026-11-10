@@ -1,7 +1,7 @@
 # Research Protocol: Estimator Calibration and Temporal-Null Falsification
 
 **Date:** 2026-11-09  
-**Status:** Proposed preregistered computational protocol; no experiment results claimed  
+**Status:** Proposed preregistered computational protocol; initial Gaussian calibration and paired KSG convention audit executed; further validation pending  
 **Purpose:** Determine what the Cloud-9 v3 temporal mutual-information statistic measures under controlled conditions before applying it to physical simulation histories.
 
 ## 1. Research question
@@ -207,3 +207,32 @@ independent-observation bivariate Gaussian grid.
 established. Before spatial/temporal controls, audit the strict/inclusive
 marginal-neighbour counting convention and radius offset, add nonlinear and
 non-Gaussian known-MI controls, and implement interval-coverage evaluation.
+
+
+## Paired KSG convention audit — execution status (2026-11-10)
+
+The paired Gaussian audit has now completed: 80 conditions, 100 paired
+replicates per condition (8,000 paired comparisons). It compares the
+historical kth-radius-plus-`1e-12`/inclusive-count convention against an
+uninflated-radius/strict-count convention. These are two combined
+implementation choices; the experiment does not isolate the radius-offset
+effect from the marginal-boundary inclusion effect.
+
+On this tested grid, the strict convention had lower RMSE in 79 of 80
+condition cells and lower absolute bias in 79 of 80. Mean strict bias was
+close to zero across most sample sizes, but a notable exception occurred at
+N=1,200, k=10, rho=0.8, where the historical convention was already more
+accurate. This result supports further evaluation of the strict convention
+as a candidate; it does not establish universal superiority or justify
+changing the historical v3 estimator or correcting archived outputs.
+
+The two workflow runs on commit
+`b8b68b57164166ff5b87068a57ce0b2c3c1af3cd` produced byte-identical
+calibration and audit JSON artifacts. This confirms deterministic output
+under the same seed and environment, not independent statistical
+replication.
+
+**Remaining gates:** nonlinear and non-Gaussian known-MI controls; interval
+coverage; an experiment separating radius-offset and strict/inclusive
+counting effects; explicit tie/duplicate handling beyond the current
+zero-radius guard; then spatial-dependence and temporal-null controls.
