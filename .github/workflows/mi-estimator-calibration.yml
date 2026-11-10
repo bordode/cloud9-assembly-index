@@ -6,8 +6,10 @@ on:
     paths:
       - "scripts/run_mi_estimator_calibration.py"
       - "scripts/audit_ksg_boundary_conventions.py"
+      - "scripts/audit_ksg_boundary_factorial.py"
       - "tests/test_mi_estimator_calibration.py"
       - "tests/test_ksg_boundary_conventions.py"
+      - "tests/test_ksg_boundary_factorial.py"
       - "scripts/run_mi_nongaussian_calibration.py"
       - "tests/test_mi_nongaussian_calibration.py"
       - "docs/research/ESTIMATOR_CALIBRATION_AND_TEMPORAL_NULL_FALSIFICATION_PROTOCOL_2026-11-09.md"
@@ -45,6 +47,8 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_mi_estimator_calibration.py' -v
       - name: Run boundary-convention audit tests
         run: python -m unittest discover -s tests -p 'test_ksg_boundary_conventions.py' -v
+      - name: Run factorial KSG boundary audit tests
+        run: python -m unittest discover -s tests -p 'test_ksg_boundary_factorial.py' -v
       - name: Run nonlinear and non-Gaussian known-MI calibration tests
         run: python -m unittest discover -s tests -p 'test_mi_nongaussian_calibration.py' -v
       - name: Run nonlinear and non-Gaussian known-MI calibration grid
@@ -65,6 +69,12 @@ jobs:
           --replicates 100
           --seed 20261110
           --output ksg_boundary_convention_audit.json
+      - name: Run factorial KSG radius/count audit
+        run: >-
+          python scripts/audit_ksg_boundary_factorial.py
+          --replicates 100
+          --seed 20261112
+          --output ksg_boundary_factorial_audit.json
       - name: Upload calibration and boundary-audit results
         uses: actions/upload-artifact@v4
         with:
@@ -73,5 +83,6 @@ jobs:
             mi_estimator_calibration.json
             ksg_boundary_convention_audit.json
             mi_nongaussian_calibration.json
+            ksg_boundary_factorial_audit.json
           if-no-files-found: error
           retention-days: 90
