@@ -26,6 +26,7 @@ on:
       - "tests/test_ksg_boundary_distance_sensitivity.py"
       - "tests/test_mi_estimator_calibration.py"
       - "tests/test_ksg_boundary_conventions.py"
+      - "tests/test_ksg_boundary_factorial.py"
       - "scripts/run_mi_nongaussian_calibration.py"
       - "tests/test_mi_nongaussian_calibration.py"
       - "docs/research/ESTIMATOR_CALIBRATION_AND_TEMPORAL_NULL_FALSIFICATION_PROTOCOL_2026-11-09.md"
