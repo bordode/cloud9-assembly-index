@@ -170,3 +170,99 @@ are not two statistically independent replications.
 candidate for further validation, not changing v3 or promoting the estimator
 to a calibrated scientific measurement. Nonlinear/non-Gaussian controls,
 interval coverage, and spatial/temporal null tests remain outstanding.
+
+
+## 8. Nonlinear and non-Gaussian known-MI controls — 2026-11-10
+
+The expanded calibration workflow completed successfully on commit
+`9de5ec07dc975a3a00be3a26558f8c2715905c31`. The new harness evaluated two
+coordinate-wise invertible transformations of bivariate Gaussian pairs with
+known population MI:
+
+- `monotone_nonlinear`: nonlinear sinh/exp marginal transformations.
+- `uniform_gaussian_copula`: uniform marginals linked by a Gaussian copula.
+
+The transformations preserve population MI because each coordinate map is
+strictly monotone and invertible. The strict KSG-1 candidate was evaluated at
+N=64, 128, 256, 512, and 1,200; k=2, 3, 5, and 10; rho=0, 0.2, 0.5, and 0.8;
+100 replicates per cell. This gives 80 cells and 8,000 estimates per family,
+16,000 estimates total.
+
+### 8.1 Aggregate results
+
+Mean raw bias and RMSE below are averaged equally over the 16 (k, rho)
+conditions at each sample size within each transformation family. They are
+descriptive summaries, not a pooled estimator guarantee.
+
+**Monotone nonlinear family**
+
+| N | Mean raw bias (bits) | Mean raw RMSE (bits) |
+|---:|---:|---:|
+| 64 | -0.0464 | 0.1341 |
+| 128 | -0.0201 | 0.0984 |
+| 256 | -0.0117 | 0.0719 |
+| 512 | -0.0022 | 0.0494 |
+| 1,200 | -0.0001 | 0.0334 |
+
+**Uniform-marginal Gaussian-copula family**
+
+| N | Mean raw bias (bits) | Mean raw RMSE (bits) |
+|---:|---:|---:|
+| 64 | -0.0066 | 0.1328 |
+| 128 | +0.0058 | 0.0967 |
+| 256 | +0.0070 | 0.0720 |
+| 512 | +0.0059 | 0.0522 |
+| 1,200 | +0.0051 | 0.0357 |
+
+Across both families, average RMSE declined as N increased. Averaged across
+all conditions, RMSE was about 0.1334 bits at N=64 and 0.0346 bits at
+N=1,200. Bias behavior differed by family and correlation: the nonlinear
+family showed increasingly small aggregate bias with N, while the copula
+family had a small positive aggregate bias at larger N. At rho=0, 18/20
+nonlinear-family and 17/20 copula-family bootstrap intervals for mean bias
+included zero; this is not an individual-estimate interval-coverage test.
+
+The k comparison also illustrates a bias/variance trade-off. In the
+monotone nonlinear family, average RMSE across the grid declined from about
+0.0976 bits at k=2 to 0.0628 at k=10, while average bias became more negative
+(from about -0.0080 to -0.0304 bits). In the copula family, average RMSE
+also declined with k (about 0.1007 at k=2 to 0.0570 at k=10), with aggregate
+bias near zero across k. This does not justify selecting k=10 universally;
+selection must be assessed on held-out conditions and the target data regime.
+
+### 8.2 Clipping and interpretation
+
+Zero-clipping again changes the estimand and can create positive bias under
+known-zero MI. At rho=0, the mean clipped bias across N and k was about
++0.0230 bits for the nonlinear family and +0.0246 bits for the copula family;
+about half of the rho=0 replicate estimates were clipped to exactly zero.
+Thus a clipped mean close to zero cannot be treated as evidence of unbiased
+estimation. At nonzero correlations, clipping effects depended on the
+condition and became negligible when estimates were almost always positive.
+
+These controls support the limited conclusion that the strict candidate
+produces finite, improving-with-N estimates on these two transformed
+Gaussian families. They do not establish universal calibration, unbiasedness,
+validity for arbitrary non-Gaussian distributions, or adequacy under spatial
+or temporal dependence. The controls are still independent-observation
+experiments, and the transformations are not a substitute for a broad
+non-Gaussian benchmark suite.
+
+### 8.3 Reproducibility
+
+The expanded workflow #21 completed successfully. Its artifact contains all
+three JSON outputs. SHA-256 for `mi_nongaussian_calibration.json`:
+
+`88f124513d5112b98ab972757642c30eb8c46dc9a263a9af00832c1ae55f750a`
+
+The Gaussian and paired-boundary artifacts matched the previously verified
+fixed-seed outputs byte-for-byte (SHA-256 values recorded in sections 3 and
+7). All 160 nonlinear/non-Gaussian condition rows contain 100 replicates;
+all numeric fields in all three JSON artifacts were finite.
+
+**Decision:** the strict KSG-1 candidate remains a promising candidate for
+further calibration, not a validated replacement. Do not alter historical
+v3, apply a retrospective correction, or promote Cloud-9 scientific claims
+on the basis of these synthetic controls. Interval coverage, isolated
+radius-offset/counting experiments, explicit tie/duplicate policy, spatial
+dependence, and temporal-null falsification remain outstanding.
