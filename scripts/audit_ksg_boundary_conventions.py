@@ -31,8 +31,8 @@ def strict_marginal_counts(values: np.ndarray, radii: np.ndarray) -> np.ndarray:
         raise ValueError("values and radii must have the same length")
     if not np.all(np.isfinite(values)) or not np.all(np.isfinite(radii)):
         raise ValueError("values and radii must be finite")
-    if np.any(radii < 0):
-        raise ValueError("radii must be non-negative")
+    if np.any(radii <= 0):
+        raise ValueError("radii must be strictly positive; tied zero-radius neighbours need an explicit tie policy")
 
     tree = cKDTree(values[:, None])
     candidates = tree.query_ball_point(values[:, None], r=radii, p=np.inf)
