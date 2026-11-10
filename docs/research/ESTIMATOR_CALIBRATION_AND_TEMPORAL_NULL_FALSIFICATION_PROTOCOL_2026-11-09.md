@@ -349,3 +349,95 @@ workflow step/artifact have been added; CI verification and artifact
 inspection are pending. Results must be interpreted as specific to float64,
 the tested radius and offset, and the marginal-count geometry. Historical v3
 and archived outputs remain unchanged.
+
+## Controlled boundary-distance sensitivity — completed (2026-11-10)
+
+The dedicated calibration workflow #41 completed successfully on PR head
+`e784fb1565819097f6546eeaae2d50dbfc63ee6f`. Its deterministic float64
+artifact contains seven constructed distances at radius 1.0 and offset
+1e-12. The target-point counts were: uninflated strict = 1, uninflated
+inclusive = 2, inflated strict = 4, and inflated inclusive = 5.
+
+The exact offset-boundary point is excluded by the inflated strict comparison
+and included by the inflated inclusive comparison. Thus a positive radius
+offset and inclusive counting can be observationally equivalent for ordinary
+sampled distances while remaining mathematically distinct at the inflated
+boundary itself. The result is specific to this float64 geometry, radius and
+offset; it is not an estimator-bias or uncertainty-coverage result.
+
+Artifact SHA-256:
+`57bf3a5311b1ca460558ff6e3c31584e48d180c56f3d9a52cac5598d46050bc4`.
+The complete calibration artifact also passed finite-value checks. The
+historical v3 implementation and archived outputs remain unchanged.
+
+**Status:** deterministic boundary-distance test passed. This closes the
+geometry diagnostic for the configured case, not the separate tie/duplicate
+policy or estimator-adequacy gates.
+
+
+## Proposed individual-estimate interval-coverage study — design frozen for pilot
+
+The next study evaluates whether subsampling intervals for the **raw strict
+KSG-1 candidate** achieve their nominal coverage across independently
+generated datasets. It is not a bootstrap of individual observations with
+replacement. That distinction matters because replacement resampling can
+create duplicate points and zero-radius ties that trigger the estimator's
+explicit tie guard.
+
+For each independent outer dataset of size n:
+
+1. Compute the full-sample raw estimate `theta_hat_n`.
+2. Draw B subsets of size b without replacement and compute
+   `theta_hat_b` for each.
+3. Form the subsampling root
+   `T_b = sqrt(b) * (theta_hat_b - theta_hat_n)`.
+4. Let q(alpha/2) and q(1-alpha/2) be its empirical quantiles. Construct
+   `[theta_hat_n - q(1-alpha/2)/sqrt(n),
+   theta_hat_n - q(alpha/2)/sqrt(n)]`.
+5. Record whether the known population MI lies in the interval.
+
+Coverage is estimated only across independent outer datasets. The B
+overlapping subsets within one outer dataset are not counted as independent
+coverage trials. Monte Carlo uncertainty for the estimated coverage must be
+reported using the number of outer datasets.
+
+### Pilot grid
+
+- Distribution families: the existing monotone-nonlinear and
+  uniform-marginal Gaussian-copula families, with their known analytic MI.
+- Outer sample sizes: n = 256, 512, 1,200.
+- Neighbour counts: k = 3 and 5.
+- Correlations: rho = 0, 0.5, 0.8. The rho = 0 condition is reported as a
+  boundary/null stress test, separately from positive-MI conditions.
+- Subsample sizes: b = floor(n^0.70) and floor(n^0.80), rounded down and
+  checked to remain greater than k+1.
+- Initial pilot replication: 100 independent outer datasets per condition;
+  B = 200 without-replacement subsets per outer dataset.
+- Nominal interval levels: 90% and 95%.
+
+The pilot will report empirical coverage, average and median interval width,
+outer-dataset bias, interval-construction failures, and Monte Carlo
+uncertainty for coverage. Raw and zero-clipped point estimates will be
+reported separately. The primary interval is based on raw estimates.
+
+Zero clipping is a non-smooth transformation at the MI=0 boundary. Therefore
+clipped-estimate intervals are diagnostic only and will not be presented as
+having nominal coverage unless separately validated. Null-condition
+undercoverage or instability is a substantive result, not a reason to tune
+the interval after seeing the data.
+
+The two b rules are sensitivity conditions, not candidates from which to
+select the better-looking result. No interval method will be declared
+validated from this pilot alone. If results are unstable across b, k,
+distribution family or sample size, the method fails this gate pending a
+predeclared redesign. A later confirmation stage must use new seeds and a
+larger number of independent outer datasets chosen from a precision analysis.
+
+### Interpretation limits
+
+This is a finite-sample empirical coverage experiment for the tested
+independent-observation distributions. It does not establish coverage under
+spatial dependence, temporal dependence, arbitrary distributions, or the
+historical v3 pipeline. It does not authorize retrospective confidence
+intervals or corrections for archived Cloud-9 values. Spatial block
+uncertainty and temporal-null validation remain separate future gates.
