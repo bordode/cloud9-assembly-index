@@ -9,6 +9,7 @@ the exact same Gaussian samples in every replicate.
 from __future__ import annotations
 
 import argparse
+import importlib.util
 import json
 from pathlib import Path
 
@@ -16,11 +17,16 @@ import numpy as np
 from scipy.spatial import cKDTree
 from scipy.special import digamma
 
-from run_mi_estimator_calibration import (
-    draw_pair,
-    gaussian_mi_bits,
-    ksg_mi_2d_raw as legacy_inclusive_estimator,
-)
+_LEGACY_PATH = Path(__file__).with_name("run_mi_estimator_calibration.py")
+_LEGACY_SPEC = importlib.util.spec_from_file_location("mi_calibration_legacy", _LEGACY_PATH)
+if _LEGACY_SPEC is None or _LEGACY_SPEC.loader is None:
+    raise ImportError(f"cannot load legacy calibration module from {_LEGACY_PATH}")
+_LEGACY = importlib.util.module_from_spec(_LEGACY_SPEC)
+_LEGACY_SPEC.loader.exec_module(_LEGACY)
+
+draw_pair = _LEGACY.draw_pair
+gaussian_mi_bits = _LEGACY.gaussian_mi_bits
+legacy_inclusive_estimator = _LEGACY.ksg_mi_2d_raw
 
 
 def strict_marginal_counts(values: np.ndarray, radii: np.ndarray) -> np.ndarray:
