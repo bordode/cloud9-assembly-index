@@ -14,6 +14,7 @@ on:
       - 'scripts/run_dither_background_benchmark.py'
       - 'tests/test_poisson_reconstruction.py'
       - '.github/workflows/dither-background-benchmark.yml'
+  workflow_dispatch:
 
 jobs:
   benchmark:
