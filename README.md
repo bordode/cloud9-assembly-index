@@ -14,11 +14,11 @@
 
 | Result | Location | Status |
 |--------|----------|--------|
-| **Synthetic Null Ensemble v3** | `research/null-ensemble/` | 🧪 Experimental / reproducible synthetic comparison (N=100, z=8.62σ) |
+| **Synthetic Null Ensemble v3** | `research/null-ensemble/` | 🧪 Experimental synthetic comparison (N=100; descriptive standardized separation ≈8.62 null SD) |
 | TNG Temporal Validation | `research/validation/C9-2026-COSMO-005_subhalo_validation.json` | ⏳ Pending |
 | Legacy Analysis | `results/cloud9_analysis.json` | ⚠️ Deprecated (z=3.04σ, exploratory) |
 
-> **Important:** The 8.62σ figure is a model-dependent result from a synthetic null-model comparison, not a detection or direct ΛCDM validation. With N=100 synthetic null realizations, the empirical tail estimate also has limited resolution. See `research/validation/README.md` and `docs/RESULTS_PROVENANCE.md` for the full provenance and caveats.
+> **Important:** The ≈8.62 standardized separation is a descriptive, model-dependent comparison against one N=100 synthetic ensemble. It is not a discovery significance, empirical detection, or direct ΛCDM validation; zero exceedances in 100 trials do not establish an extreme Gaussian tail probability. The target uncertainty is also not included in the reported standardization. See `docs/audits/CLOUD9_STATISTICAL_CLAIMS_AUDIT_2026-11-09.md`, `docs/audits/LEGACY_SIGNIFICANCE_WITHDRAWAL_METHODOLOGY_NOTE_2026-11-09.md`, and `docs/RESULTS_PROVENANCE.md`.
 
 ---
 
@@ -54,7 +54,7 @@ The project explores possible connections among complexity, assembly, emergence,
 
 Cloud-9 contains several generations of analysis. Some historical documents report numerical results whose original computational provenance is still being reconstructed. To avoid conflating different experiments, numerical claims are classified as **verified, reported historical, exploratory, or pending reproduction**.
 
-See [`docs/RESULTS_PROVENANCE.md`](docs/RESULTS_PROVENANCE.md) for the current statistical audit.
+See [`docs/RESULTS_PROVENANCE.md`](docs/RESULTS_PROVENANCE.md), the [statistical claims audit](docs/audits/CLOUD9_STATISTICAL_CLAIMS_AUDIT_2026-11-09.md), the [legacy significance withdrawal rationale](docs/audits/LEGACY_SIGNIFICANCE_WITHDRAWAL_METHODOLOGY_NOTE_2026-11-09.md), and the [evidence taxonomy standard](docs/governance/EVIDENCE_TAXONOMY_TAGGING_STANDARD_2026-11-09.md) for current claim classifications and limitations.
 
 ### Historical Cloud-9 halo result
 
