@@ -266,3 +266,61 @@ v3, apply a retrospective correction, or promote Cloud-9 scientific claims
 on the basis of these synthetic controls. Interval coverage, isolated
 radius-offset/counting experiments, explicit tie/duplicate policy, spatial
 dependence, and temporal-null falsification remain outstanding.
+
+
+## 9. Factorial KSG radius/count audit — execution and interpretation (2026-11-10)
+
+The dedicated calibration workflow #31 completed successfully on PR head
+`cdf866b4f6c45c4a8693876c67e5d946977920d8`. The factorial harness evaluated
+80 Gaussian conditions (N=64, 128, 256, 512, 1,200; k=2, 3, 5, 10;
+rho=0, 0.2, 0.5, 0.8), with 100 paired replicates per condition and four
+nominal variants. All 32,000 estimates and reported numeric fields were
+finite.
+
+**Important identification result:** the three variants that apply either
+the +1e-12 radius offset, inclusive marginal counting, or both produced
+identical summary values in every condition. The only distinct variant was
+the uninflated-radius/strict-count combination. In this finite sample grid,
+adding 1e-12 before a strict comparison had the same observed effect as using
+an inclusive comparison at the uninflated radius. Consequently, the nominal
+2×2 design did **not** independently identify a radius-offset effect and a
+count-inclusion effect. Its equal average main effects and corresponding
+interaction are an aliasing pattern, not evidence for two separately
+quantified causal contributions.
+
+Equally averaged across the 16 (k, rho) cells at each N, the distinct
+uninflated/strict variant had mean bias/RMSE of:
+
+| N | Bias (bits) | RMSE (bits) |
+|---:|---:|---:|
+| 64 | -0.0179 | 0.1247 |
+| 128 | -0.0000 | 0.0936 |
+| 256 | -0.0016 | 0.0714 |
+| 512 | +0.0059 | 0.0516 |
+| 1,200 | +0.0056 | 0.0354 |
+
+The other three nominal variants shared these aggregate results:
+
+| N | Bias (bits) | RMSE (bits) |
+|---:|---:|---:|
+| 64 | -0.1461 | 0.1854 |
+| 128 | -0.0924 | 0.1289 |
+| 256 | -0.0674 | 0.0968 |
+| 512 | -0.0411 | 0.0656 |
+| 1,200 | -0.0254 | 0.0433 |
+
+These are descriptive summaries of this independent Gaussian grid. They do
+not establish universal superiority or justify a correction to historical
+v3. The factorial contrasts must not be interpreted as separately estimated
+effects. A follow-up should test the equivalence/aliasing directly with
+controlled boundary-distance cases and representable perturbations before
+claiming that the two implementation conventions have been isolated.
+
+Artifact SHA-256 for `ksg_boundary_factorial_audit.json`:
+`f0c98dbd888d0b32ff0fcb69457ac69ee30efa74d1191d0cd726e5697b697742`.
+
+**Decision:** software execution passed, but the planned attribution failed:
+the chosen 1e-12 offset and inclusive-count rule were observationally
+indistinguishable on this grid. Retain the uninflated/strict variant as a
+candidate for further testing only. No historical estimator or archived
+output is changed.
