@@ -37,7 +37,7 @@ def ksg_mi_2d_raw(x: np.ndarray, y: np.ndarray, k: int = 3) -> float:
 
     joint = np.column_stack((x, y))
     distances, _ = cKDTree(joint).query(joint, k=k + 1, p=np.inf)
-    eps = np.nextafter(distances[:, k], 0.0)
+    eps = distances[:, k] + 1e-12
     tx, ty = cKDTree(x[:, None]), cKDTree(y[:, None])
     nx = np.fromiter(
         (tx.query_ball_point([x[i]], r=eps[i], p=np.inf, return_length=True) - 1
