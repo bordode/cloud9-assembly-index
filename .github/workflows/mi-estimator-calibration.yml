@@ -7,6 +7,8 @@ on:
       - "scripts/run_mi_estimator_calibration.py"
       - "scripts/audit_ksg_boundary_conventions.py"
       - "scripts/audit_ksg_boundary_factorial.py"
+      - "scripts/audit_ksg_boundary_distance_sensitivity.py"
+      - "tests/test_ksg_boundary_distance_sensitivity.py"
       - "tests/test_mi_estimator_calibration.py"
       - "tests/test_ksg_boundary_conventions.py"
       - "tests/test_ksg_boundary_factorial.py"
@@ -20,6 +22,8 @@ on:
       - "scripts/run_mi_estimator_calibration.py"
       - "scripts/audit_ksg_boundary_conventions.py"
       - "scripts/audit_ksg_boundary_factorial.py"
+      - "scripts/audit_ksg_boundary_distance_sensitivity.py"
+      - "tests/test_ksg_boundary_distance_sensitivity.py"
       - "tests/test_mi_estimator_calibration.py"
       - "tests/test_ksg_boundary_conventions.py"
       - "scripts/run_mi_nongaussian_calibration.py"
@@ -50,6 +54,14 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_ksg_boundary_conventions.py' -v
       - name: Run factorial KSG boundary audit tests
         run: python -m unittest discover -s tests -p 'test_ksg_boundary_factorial.py' -v
+      - name: Run controlled boundary-distance sensitivity tests
+        run: python -m unittest discover -s tests -p 'test_ksg_boundary_distance_sensitivity.py' -v
+      - name: Run controlled boundary-distance sensitivity audit
+        run: >-
+          python scripts/audit_ksg_boundary_distance_sensitivity.py
+          --radius 1.0
+          --offset 1e-12
+          --output ksg_boundary_distance_sensitivity.json
       - name: Run nonlinear and non-Gaussian known-MI calibration tests
         run: python -m unittest discover -s tests -p 'test_mi_nongaussian_calibration.py' -v
       - name: Run nonlinear and non-Gaussian known-MI calibration grid
@@ -85,5 +97,6 @@ jobs:
             ksg_boundary_convention_audit.json
             mi_nongaussian_calibration.json
             ksg_boundary_factorial_audit.json
+            ksg_boundary_distance_sensitivity.json
           if-no-files-found: error
           retention-days: 90
