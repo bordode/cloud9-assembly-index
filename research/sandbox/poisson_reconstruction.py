@@ -284,7 +284,7 @@ def simulate_reconstruction_trial(
             "limitations": [
                 "controlled Gaussian scene, not a general optical PSF",
                 "known source centres define aperture metrics; this is not blind detection",
-                "no read noise, background, PSF mismatch, or blind lambda selection",
+                "no read noise, background gradients, dark-current drift, PSF mismatch, or blind background estimation",
                 "off-grid phase shifts are approximated by bilinear high-resolution cell interpolation",
             ],
         },
