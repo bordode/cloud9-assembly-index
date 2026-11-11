@@ -8,7 +8,7 @@
 - Executed commit: `50eb05e906e25d8f1e46cf76d0b83a8d7a103710`
 - Workflow conclusion: success; both benchmark and independent-validation steps and artifact uploads passed.
 - Independent artifact: `dither-background-independent-validation` (450 trial records).
-- Protocol: fixed at two Richardson–Lucy iterations before validation; 30 fresh seeds (`2026111200–2026111229)), disjoint from development seeds (`2026111000–2026111029)); five background levels; nine frames per arm.
+- Protocol: fixed at two Richardson–Lucy iterations before validation; 30 fresh seeds (`2026111200–2026111229`, disjoint from development seeds (`2026111000–2026111029`); five background levels; nine frames per arm.
 - Pairing: same validation seed across aligned/off-grid dither conditions and stationary controls at each background level.
 
 ## Primary outcome: relative RMSE
