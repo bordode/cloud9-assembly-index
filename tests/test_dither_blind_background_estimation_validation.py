@@ -21,7 +21,7 @@ class BlindBackgroundEstimationTests(unittest.TestCase):
 
     def test_estimator_recovers_noise_free_linear_map_from_border(self):
         truth = make_background_map((18, 20), 0.25)
-        frames = np.broadcast_to(truth, (9, 18, 20)).copy()
+        frames = np.broadcast_to(truth / 9.0, (9, 18, 20)).copy()
         estimate, info = estimate_horizontal_background(frames, np.full(9, 1 / 9))
         np.testing.assert_allclose(estimate, truth, atol=1e-5)
         self.assertTrue(info["fit_success"])
