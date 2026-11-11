@@ -59,8 +59,17 @@ def poisson_richardson_lucy(
         raise ValueError("iterations must be a positive integer")
     if not np.isfinite(epsilon) or epsilon <= 0:
         raise ValueError("epsilon must be finite and positive")
-    if not np.isfinite(background_rate) or background_rate < 0:
-        raise ValueError("background_rate must be finite and non-negative")
+    background = np.asarray(background_rate, dtype=float)
+    if background.ndim == 0:
+        if not np.isfinite(background) or background < 0:
+            raise ValueError("background_rate must be finite and non-negative")
+        background_image = float(background)
+    elif background.ndim == 2 and background.shape == observations.shape[1:]:
+        if not np.all(np.isfinite(background)) or np.any(background < 0):
+            raise ValueError("background map must be finite and non-negative")
+        background_image = background
+    else:
+        raise ValueError("background_rate must be a non-negative scalar or detector-shaped 2-D map")
 
     detector_shape = observations.shape[1:]
     sensitivity = np.zeros(shape, dtype=float)
@@ -81,7 +90,7 @@ def poisson_richardson_lucy(
         numerator = np.zeros_like(estimate)
         for frame, phase, exposure in zip(observations, phases, exposures):
             predicted = exposure * (
-                forward_operator(estimate, bin_factor, tuple(phase)) + background_rate
+                forward_operator(estimate, bin_factor, tuple(phase)) + background_image
             )
             ratio = frame / np.maximum(predicted, epsilon)
             numerator += exposure * adjoint_operator(
@@ -169,8 +178,17 @@ def simulate_reconstruction_trial(
         raise ValueError("bin_factor must be a positive integer")
     if not np.isfinite(total_exposure) or total_exposure <= 0:
         raise ValueError("total_exposure must be finite and positive")
-    if not np.isfinite(background_rate) or background_rate < 0:
-        raise ValueError("background_rate must be finite and non-negative")
+    background = np.asarray(background_rate, dtype=float)
+    if background.ndim == 0:
+        if not np.isfinite(background) or background < 0:
+            raise ValueError("background_rate must be finite and non-negative")
+        background_image = float(background)
+    elif background.ndim == 2:
+        if not np.all(np.isfinite(background)) or np.any(background < 0):
+            raise ValueError("background map must be finite and non-negative")
+        background_image = background
+    else:
+        raise ValueError("background_rate must be a non-negative scalar or 2-D detector map")
     if not isinstance(padding_pixels, (int, np.integer)) or padding_pixels < 0:
         raise ValueError("padding_pixels must be a non-negative integer")
     if len(science_shape) != 2 or min(science_shape) <= 0:
@@ -203,6 +221,8 @@ def simulate_reconstruction_trial(
         detector_shape[0] * bin_factor,
         detector_shape[1] * bin_factor,
     )
+    if isinstance(background_image, np.ndarray) and background_image.shape != detector_shape:
+        raise ValueError(f"background map must have detector shape {detector_shape}")
     source_positions = np.asarray(sources_yx, dtype=float)
     truth = gaussian_scene_subpixel_integrals(
         highres_shape, bin_factor, source_positions, fluxes, sigma_yx_px
@@ -214,7 +234,7 @@ def simulate_reconstruction_trial(
         detector_shape, source_positions, fluxes, sigma_yx_px, (0.0, 0.0)
     )
     stationary_frames = rng.poisson(
-        stationary_mean + frame_exposure * background_rate,
+        stationary_mean + frame_exposure * background_image,
         size=(9,) + detector_shape,
     )
     single_long = stationary_frames.sum(axis=0)
@@ -226,7 +246,7 @@ def simulate_reconstruction_trial(
         for phase in phases
     ])
     dithered_frames = rng.poisson(
-        dithered_means + frame_exposure * background_rate
+        dithered_means + frame_exposure * background_image
     )
 
     results = []
@@ -271,8 +291,22 @@ def simulate_reconstruction_trial(
             "seed": int(seed),
             "bin_factor": int(bin_factor),
             "total_exposure": float(total_exposure),
-            "background_rate_counts_per_detector_pixel_per_exposure_unit": float(background_rate),
-            "background_model": "known spatially uniform additive Poisson background rate per detector pixel",
+            "background_rate_counts_per_detector_pixel_per_exposure_unit": (
+                float(background_image) if np.ndim(background_image) == 0 else None
+            ),
+            "background_map_summary": (
+                None if np.ndim(background_image) == 0 else {
+                    "shape": list(background_image.shape),
+                    "minimum": float(np.min(background_image)),
+                    "maximum": float(np.max(background_image)),
+                    "mean": float(np.mean(background_image)),
+                }
+            ),
+            "background_model": (
+                "known spatially uniform additive Poisson background rate per detector pixel"
+                if np.ndim(background_image) == 0 else
+                "known detector-fixed spatially varying additive Poisson background map"
+            ),
             "frame_count_stationary": 9,
             "frame_count_dithered": 9,
             "noise": "independent Poisson photon counts; no read noise",
