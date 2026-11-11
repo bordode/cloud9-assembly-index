@@ -12,7 +12,10 @@ on:
       - 'research/sandbox/dithered_stack_operator.py'
       - 'research/sandbox/pixel_integrated_reference.py'
       - 'scripts/run_dither_background_benchmark.py'
+      - 'scripts/run_dither_background_validation.py'
       - 'tests/test_poisson_reconstruction.py'
+      - 'tests/test_dither_background_validation.py'
+      - 'research/notes/dither_background_validation_protocol_2026-11-11.md'
       - '.github/workflows/dither-background-benchmark.yml'
   workflow_dispatch:
 
@@ -35,4 +38,12 @@ jobs:
         with:
           name: dither-background-sensitivity-benchmark
           path: dither_background_sensitivity_benchmark.json
+          if-no-files-found: error
+      - name: Run independent pre-registered validation
+        run: python -m scripts.run_dither_background_validation
+      - name: Upload independent validation results
+        uses: actions/upload-artifact@v4
+        with:
+          name: dither-background-independent-validation
+          path: dither_background_independent_validation.json
           if-no-files-found: error
