@@ -124,13 +124,27 @@ def summarize(values):
             "ci95_mean": [mean - half, mean + half]}
 
 
-def trial(seed, amplitude):
+def trial(seed, amplitude, contamination_fraction=0.0, contamination_rate=1.0):
     detector_shape = (
         SCIENCE_SHAPE[0] + 2 * PADDING_PIXELS,
         SCIENCE_SHAPE[1] + 2 * PADDING_PIXELS,
     )
     highres_shape = (detector_shape[0] * BIN_FACTOR, detector_shape[1] * BIN_FACTOR)
     truth_background = make_background_map(detector_shape, amplitude)
+    if not 0.0 <= contamination_fraction < 1.0:
+        raise ValueError("contamination_fraction must be in [0, 1)")
+    border_mask = np.zeros(detector_shape, dtype=bool)
+    border_mask[:BORDER_WIDTH, :] = True
+    border_mask[-BORDER_WIDTH:, :] = True
+    border_mask[:, :BORDER_WIDTH] = True
+    border_mask[:, -BORDER_WIDTH:] = True
+    border_indices = np.flatnonzero(border_mask)
+    n_contaminated = int(round(contamination_fraction * len(border_indices)))
+    mask_rng = np.random.default_rng(seed + 700000)
+    selected = mask_rng.choice(border_indices, size=n_contaminated, replace=False)
+    contamination_map = np.zeros(detector_shape, dtype=float)
+    contamination_map.flat[selected] = contamination_rate
+    observed_background = truth_background + contamination_map
     truth = gaussian_scene_subpixel_integrals(
         highres_shape, BIN_FACTOR, SOURCES, FLUXES, SIGMAS
     )
@@ -140,7 +154,7 @@ def trial(seed, amplitude):
     )
     stationary_rng = np.random.default_rng(seed)
     stationary_frames = stationary_rng.poisson(
-        stationary_mean + frame_exposure * truth_background,
+        stationary_mean + frame_exposure * observed_background,
         size=(9,) + detector_shape,
     )
 
@@ -183,6 +197,9 @@ def trial(seed, amplitude):
                 estimated_background.mean() - truth_background.mean()
             )),
             "background_fit": fit_info,
+            "calibration_contamination_fraction": float(contamination_fraction),
+            "calibration_contamination_rate": float(contamination_rate),
+            "calibration_contaminated_pixel_count": int(n_contaminated),
         }
     return records
 
