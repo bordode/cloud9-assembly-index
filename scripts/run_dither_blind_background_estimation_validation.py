@@ -164,7 +164,7 @@ def trial(seed, amplitude, contamination_fraction=0.0, contamination_rate=1.0):
         means = np.stack([
             frame_exposure * pixel_integrated_gaussian_frame(
                 detector_shape, SOURCES, FLUXES, SIGMAS, tuple(phase)
-            ) + frame_exposure * truth_background
+            ) + frame_exposure * observed_background
             for phase in phases
         ])
         rng = np.random.default_rng(seed + (1 if name == "aligned_dithered" else 2))
