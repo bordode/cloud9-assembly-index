@@ -15,13 +15,16 @@ on:
       - 'scripts/run_dither_background_validation.py'
       - 'scripts/run_dither_spatial_background_gradient_validation.py'
       - 'scripts/run_dither_blind_background_estimation_validation.py'
+      - 'scripts/run_dither_calibration_border_contamination_stress_test.py'
       - 'tests/test_poisson_reconstruction.py'
       - 'tests/test_dither_background_validation.py'
       - 'tests/test_dither_spatial_background_gradient_validation.py'
       - 'tests/test_dither_blind_background_estimation_validation.py'
+      - 'tests/test_dither_calibration_border_contamination_stress_test.py'
       - 'research/notes/dither_background_validation_protocol_2026-11-11.md'
       - 'research/notes/dither_spatial_background_gradient_validation_protocol_2026-11-11.md'
       - 'research/notes/dither_blind_background_estimation_validation_protocol_2026-11-11.md'
+      - 'research/notes/dither_calibration_border_contamination_stress_test_protocol_2026-11-12.md'
       - '.github/workflows/dither-background-benchmark.yml'
   workflow_dispatch:
 
@@ -68,4 +71,12 @@ jobs:
         with:
           name: dither-blind-background-estimation-validation
           path: dither_blind_background_estimation_validation.json
+          if-no-files-found: error
+      - name: Run calibration-border contamination stress test
+        run: python -m scripts.run_dither_calibration_border_contamination_stress_test
+      - name: Upload calibration-border contamination results
+        uses: actions/upload-artifact@v4
+        with:
+          name: dither-calibration-border-contamination-stress-test
+          path: dither_calibration_border_contamination_stress_test.json
           if-no-files-found: error
