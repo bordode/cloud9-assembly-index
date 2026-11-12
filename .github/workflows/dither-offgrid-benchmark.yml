@@ -1,0 +1,37 @@
+name: Off-grid dither reconstruction benchmark
+
+permissions:
+  contents: read
+
+on:
+  push:
+    branches:
+      - research/dithered-stack-control-protocol
+    paths:
+      - 'research/sandbox/poisson_reconstruction.py'
+      - 'research/sandbox/dithered_stack_operator.py'
+      - 'research/sandbox/pixel_integrated_reference.py'
+      - 'scripts/run_dither_offgrid_benchmark.py'
+      - 'tests/test_poisson_reconstruction.py'
+      - '.github/workflows/dither-offgrid-benchmark.yml'
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Run off-grid paired benchmark
+        run: python -m scripts.run_dither_offgrid_benchmark
+      - name: Upload off-grid benchmark results
+        uses: actions/upload-artifact@v4
+        with:
+          name: dither-offgrid-reconstruction-benchmark
+          path: dither_offgrid_reconstruction_benchmark.json
+          if-no-files-found: error

@@ -1,0 +1,38 @@
+name: Dither read-noise pilot
+
+permissions:
+  contents: read
+
+on:
+  push:
+    branches:
+      - research/dithered-stack-control-protocol
+    paths:
+      - 'research/sandbox/poisson_gaussian_reconstruction.py'
+      - 'research/sandbox/dithered_stack_operator.py'
+      - 'research/sandbox/pixel_integrated_reference.py'
+      - 'research/sandbox/poisson_reconstruction.py'
+      - 'scripts/run_dither_read_noise_pilot.py'
+      - 'tests/test_poisson_gaussian_reconstruction.py'
+      - '.github/workflows/dither-read-noise-pilot.yml'
+
+jobs:
+  pilot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Run read-noise pilot
+        run: python -m scripts.run_dither_read_noise_pilot
+      - name: Upload read-noise pilot results
+        uses: actions/upload-artifact@v4
+        with:
+          name: dither-read-noise-pilot
+          path: dither_read_noise_pilot.json
+          if-no-files-found: error
