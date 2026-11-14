@@ -185,3 +185,10 @@ These are review findings and a proposed protocol, not completed corrections or 
 ### Strict comparator integrity rerun (2026-11-14)
 
 The reproduction comparator now performs strict archive/schema/seed/value checks and writes source, archive and comparator SHA-256 hashes plus runtime versions into its output artifact. The strict rerun succeeded: 100/100 members matched, including all 15 MI estimates per member. See the [strict reproduction manifest](V3_STRICT_REPRODUCTION_MANIFEST_2026-11-14.json), [methods review](CLOUD9_V3_METHODS_REVIEW_2026-11-14.md), and [workflow run 43653944821](https://github.com/bordode/cloud9-assembly-index/actions/runs/43653944821).
+
+
+### KSG estimator Gaussian diagnostic (2026-11-14)
+
+The recovered v3 KSG estimator was compared with analytic bivariate-Gaussian mutual information at correlations 0.0, 0.5 and 0.8, with N=1,200 and 3,000 and three deterministic replicates per condition. Estimates were close in this small diagnostic; the largest absolute median error was approximately 0.0393 bits. This is preliminary only: more replicates, permutation controls, nonlinear and tie-heavy cases, and reference-implementation comparisons remain necessary.
+
+See [KSG Gaussian diagnostic report](KSG_ESTIMATOR_GAUSSIAN_DIAGNOSTIC_2026-11-14.md) and [workflow run 43654133609](https://github.com/bordode/cloud9-assembly-index/actions/runs/43654133609). The same workflow reran and passed the strict 100-member ensemble reproduction.
