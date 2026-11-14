@@ -47,6 +47,14 @@ The empirical tail probability is limited by the ensemble size. If a finite-samp
 
 ---
 
+### Reproduction provenance note (2026-11-14)
+
+The 100-member synthetic ensemble (seeds 1000–1099) has now been independently regenerated from the recovered historical `3.0-KSG-fast` implementation using a separate copy with the documented constructor-keyword mapping correction. All 100 members matched the archived JSON across all nine compared fields, including the complete per-member mutual-information vectors, at tolerance 1e-10. The reproduced mean and population SD match the archived aggregate values; the population-SD standardized separation is 8.6232720812.
+
+This result establishes reproducibility from the corrected recovered implementation, **not** successful execution of the unmodified historical script as committed, nor identification of the exact source revision originally used to produce the JSON. The correction and comparison are documented in the [full source-recovery and reproducibility audit](NULL_ENSEMBLE_V3_REPRODUCIBILITY_AUDIT.md) and [GitHub Actions run](https://github.com/bordode/cloud9-assembly-index/actions/runs/43584743288). The scientific caveat below is unchanged: real TNG multi-snapshot temporal validation remains pending.
+
+---
+
 ## 2. TNG100-1 Subhalo Comparison (Snapshot 99)
 
 **Method:** Radial-shell KSG-MI on z=0 gas cutouts  
