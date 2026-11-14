@@ -6,6 +6,7 @@ on:
     paths:
       - 'research/validation/recovered_cloud9_null_ensemble_v3_corrected.py'
       - 'scripts/reproduce_cloud9_null_ensemble_v3_single_seed.py'
+      - 'scripts/reproduce_cloud9_null_ensemble_v3_full_ensemble.py'
       - '.github/workflows/v3-single-seed-reproduction.yml'
 
 jobs:
@@ -21,11 +22,11 @@ jobs:
           python-version: '3.12'
       - name: Install numerical dependencies
         run: python -m pip install numpy scipy matplotlib
-      - name: Run one-seed historical comparison
-        run: python -m scripts.reproduce_cloud9_null_ensemble_v3_single_seed
+      - name: Run full 100-seed historical comparison
+        run: python -m scripts.reproduce_cloud9_null_ensemble_v3_full_ensemble
       - name: Upload comparison
         uses: actions/upload-artifact@v4
         with:
-          name: v3-single-seed-reproduction
-          path: v3_single_seed_reproduction.json
+          name: v3-full-ensemble-reproduction
+          path: v3_full_ensemble_reproduction.json
           if-no-files-found: error
