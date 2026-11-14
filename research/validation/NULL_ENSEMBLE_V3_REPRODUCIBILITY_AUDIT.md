@@ -7,9 +7,9 @@
 
 ## Executive finding
 
-The v3 generator is recoverable from Git history, but the committed JSON cannot currently be reproduced from either recovered source snapshot as written. The JSON is internally arithmetically consistent under a population-standard-deviation calculation. However, the historical scripts contain an argument-name defect, and the later script snapshot also specifies a sample-standard-deviation calculation that does not match the committed JSON.
+The v3 generator is recoverable from Git history. The recovered historical snapshots contain a constructor argument-name defect, and the later snapshot specifies a sample-standard-deviation calculation that does not match the committed JSON. A separate reproduction using the recovered `3.0-KSG-fast` source with only the constructor keyword mapping corrected has now regenerated all 100 archived realizations and matched every compared field within 1e-10. The JSON aggregate statistics also match exactly under population SD.
 
-This audit does not invalidate the stored synthetic ensemble values. It means the exact source-to-artifact execution path remains unverified.
+This establishes reproducibility of the archived ensemble from the documented corrected recovery implementation. It does not establish that either unmodified historical source snapshot executed as committed, nor does it identify the exact uncommitted runtime source used to create the original JSON.
 
 ## Recovered historical records
 
@@ -71,5 +71,44 @@ The existing caveat that real TNG temporal validation remains pending should be 
 **Source recovered:** yes.  
 **Historical source executes as committed:** no, due to the constructor keyword mismatch.  
 **JSON aggregate arithmetic checked:** yes, under population SD.  
-**Exact source-to-JSON regeneration established:** no.  
+**Exact source-to-JSON regeneration from an unmodified historical snapshot:** no.  
+**100-member reproduction from recovered source with documented constructor-keyword correction:** yes; all 100 members matched across all nine compared fields at tolerance 1e-10.  
 **Real TNG temporal validation:** pending.
+
+
+## Reproduction addendum — full 100-member comparison
+
+**Run date:** 2026-11-14  
+**Audit branch commit containing the reproduction implementation:** `a1310a4a8bfe268ba7fa1e7cdd8634a621f4af84`  
+**GitHub Actions run:** [43584743288](https://github.com/bordode/cloud9-assembly-index/actions/runs/43584743288)  
+**Artifact:** `v3-full-ensemble-reproduction` (artifact ID `14109801648`)
+
+### Method
+
+A separate recovered implementation was created from the 419-line historical `3.0-KSG-fast` snapshot. The sole change to the recovered generator was the constructor keyword mapping required to connect the existing `TARGET` values to the constructor's declared parameters:
+
+- `M_vir_msun` → `target_M_vir`
+- `R_vir_kpc` → `target_R_vir_kpc`
+
+The historical source snapshot was not edited. A separate reproduction script reran the archived seeds 1000–1099 and compared the resulting values against the committed JSON. The comparison covered nine fields for each realization: `A_c_bits`, the complete `mi_values` vector, `collapse_z`, `z_form`, `peak_height_sigma`, `env_bias`, `n_mergers`, `spin_lambda`, and `gas_frac`. The declared numerical tolerance was 1e-10.
+
+### Results
+
+- 100 of 100 realizations matched.
+- 0 mismatching realizations.
+- All nine compared fields matched for every seed, including the full mutual-information value vectors.
+- Reproduced mean: 58.062223091098055 bits.
+- Reproduced population SD: 3.39056643855244 bits.
+- Reproduced sample SD: 3.4076474858939516 bits.
+- Z using population SD: 8.623272081164304.
+- Z using sample SD: 8.58004738751074.
+
+The reproduced mean and both standard-deviation calculations agree with the values recomputed from the archived JSON. The archived reported Z value corresponds to population SD.
+
+### Interpretation and boundary
+
+This is a successful full-ensemble reproduction from the recovered historical `3.0-KSG-fast` implementation after an explicit constructor-keyword correction. It resolves the earlier uncertainty about whether the stored 100 member realizations can be regenerated from that recovered implementation: they can, within the stated tolerance.
+
+It does **not** show that the historical script, unchanged and exactly as committed, ran successfully. It also does not prove which source file or runtime environment generated the original August JSON; the metadata gap remains. The corrected reproduction should remain separately identified and must not be represented as an unmodified historical execution.
+
+This result strengthens computational reproducibility of the synthetic ensemble. It does not change the scientific interpretation: 8.62 remains a model-dependent standardized comparison against 100 synthetic null realizations, not a calibrated discovery significance or direct real-data ΛCDM / IllustrisTNG temporal validation. Real TNG temporal validation remains pending.
