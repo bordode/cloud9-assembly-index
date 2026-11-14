@@ -177,7 +177,7 @@ def main():
         },
         "member_results": member_results,
     }
-    OUTPUT.write_text(json.dumps(summary, indent=2) + "\\n", encoding="utf-8")
+    OUTPUT.write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({k: v for k, v in summary.items()
                       if k != "member_results"}, indent=2))
     if not summary["all_members_match"]:
