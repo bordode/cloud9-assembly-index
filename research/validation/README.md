@@ -170,3 +170,13 @@ See `research/tng_assembly_certified_randomness.py` for the merger-tree fetcher.
 *Generated: 2026-08-26*  
 *Pipeline: 3.0-KSG-fast*  
 *Validator: Independent audit suite v2*
+
+
+## 8. Methods review and TNG protocol draft (2026-11-14)
+
+A static code-level methods review has identified issues that must be addressed before the synthetic score is interpreted as a physically validated time-integrated cosmological statistic. In particular, the current implementation sums adjacent-snapshot MI values without time weighting on a non-uniform cosmic-time grid; its cosmic-time helper uses a fixed approximate Hubble conversion rather than the supplied H0; the synthetic density evolution is phenomenological rather than a TNG simulation; and the KSG estimator requires independent calibration. The reproduction comparator also needs stronger archive/schema integrity assertions.
+
+- [Cloud-9 v3 methods review](CLOUD9_V3_METHODS_REVIEW_2026-11-14.md)
+- [IllustrisTNG temporal validation protocol draft](ILLUSTRISTNG_TEMPORAL_VALIDATION_PROTOCOL_DRAFT.md)
+
+These are review findings and a proposed protocol, not completed corrections or TNG results. The archived v3 implementation and JSON remain unchanged. The protocol requires the Cloud-9 observable and the mathematical estimand to be defined before any like-for-like TNG comparison is attempted.
