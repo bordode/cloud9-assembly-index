@@ -59,7 +59,7 @@ The implementation uses a joint-space k-nearest-neighbour radius, marginal neigh
 
 **Implication:** deterministic reproduction of the archived values does not establish estimator accuracy or absence of finite-sample bias. Normalizing each snapshot's sample to zero mean and unit variance also does not remove dependence induced by spatial sampling, repeated locations, or shared field structure.
 
-**Required resolution:** create a separate estimator-validation suite with known independent and dependent distributions, Gaussian cases with analytic mutual information, permutation/shuffle nulls, sample-size sweeps, tie-heavy cases, and cross-checks against a maintained reference implementation. Predeclare estimator settings and report bias/uncertainty.
+**Progress and remaining resolution:** a preliminary Gaussian diagnostic has now been run at N=1,200 and 3,000 for correlations 0.0, 0.5 and 0.8, with three deterministic replicates per condition. Estimates were close to analytic Gaussian MI in this small test (largest absolute median error approximately 0.0393 bits). See [KSG Gaussian diagnostic report](KSG_ESTIMATOR_GAUSSIAN_DIAGNOSTIC_2026-11-14.md) and workflow [43654133609](https://github.com/bordode/cloud9-assembly-index/actions/runs/43654133609). This is preliminary, not certification. The remaining work is larger replicate counts, permutation/shuffle nulls, nonlinear and tie-heavy cases, and cross-checks against a maintained reference implementation. Predeclare estimator settings and report bias/uncertainty.
 
 ### Finding 5 — The reproduction comparator should harden archive integrity checks
 
