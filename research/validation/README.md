@@ -180,3 +180,8 @@ A static code-level methods review has identified issues that must be addressed 
 - [IllustrisTNG temporal validation protocol draft](ILLUSTRISTNG_TEMPORAL_VALIDATION_PROTOCOL_DRAFT.md)
 
 These are review findings and a proposed protocol, not completed corrections or TNG results. The archived v3 implementation and JSON remain unchanged. The protocol requires the Cloud-9 observable and the mathematical estimand to be defined before any like-for-like TNG comparison is attempted.
+
+
+### Strict comparator integrity rerun (2026-11-14)
+
+The reproduction comparator now performs strict archive/schema/seed/value checks and writes source, archive and comparator SHA-256 hashes plus runtime versions into its output artifact. The strict rerun succeeded: 100/100 members matched, including all 15 MI estimates per member. See the [strict reproduction manifest](V3_STRICT_REPRODUCTION_MANIFEST_2026-11-14.json), [methods review](CLOUD9_V3_METHODS_REVIEW_2026-11-14.md), and [workflow run 43653944821](https://github.com/bordode/cloud9-assembly-index/actions/runs/43653944821).
