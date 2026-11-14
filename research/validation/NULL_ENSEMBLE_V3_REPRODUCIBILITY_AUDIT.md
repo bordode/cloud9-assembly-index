@@ -112,3 +112,21 @@ This is a successful full-ensemble reproduction from the recovered historical `3
 It does **not** show that the historical script, unchanged and exactly as committed, ran successfully. It also does not prove which source file or runtime environment generated the original August JSON; the metadata gap remains. The corrected reproduction should remain separately identified and must not be represented as an unmodified historical execution.
 
 This result strengthens computational reproducibility of the synthetic ensemble. It does not change the scientific interpretation: 8.62 remains a model-dependent standardized comparison against 100 synthetic null realizations, not a calibrated discovery significance or direct real-data ΛCDM / IllustrisTNG temporal validation. Real TNG temporal validation remains pending.
+
+
+## Strict comparator integrity rerun — 2026-11-14
+
+The full-ensemble comparator was hardened after the initial 100-member reproduction. The strict version validates the archive schema, exactly 100 unique seeds (1000–1099), all required fields, finite numeric values, 15 MI estimates per member, and the generated member count and seed sequence. It also records SHA-256 hashes for the archived JSON, corrected recovered source and comparator, together with the GitHub commit and Python / NumPy / SciPy versions.
+
+The strict workflow completed successfully:
+
+- Workflow run: [43653944821](https://github.com/bordode/cloud9-assembly-index/actions/runs/43653944821)
+- Commit: `12a4f251d1932af839cce803ad1c1740fdf6427a`
+- Artifact ID: `14137650986`
+- Result: 100/100 matching; zero mismatches.
+- Comparison tolerance: `1e-10`.
+- All 15 MI values per member and all other eight fields matched.
+
+The artifact was downloaded and parsed independently after the workflow. Its JSON was valid and contained 100 member records. The reproduced mean was 58.062223091098055 bits, population SD 3.39056643855244 bits, sample SD 3.4076474858939516 bits, population-SD Z 8.623272081164304 and sample-SD Z 8.58004738751074.
+
+The manifest records the input and source hashes and execution environment. This strengthens the audit trail; it does not change the scientific claim boundary or resolve the exact original August runtime provenance gap.
