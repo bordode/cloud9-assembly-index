@@ -1,0 +1,56 @@
+{
+  "manifest_type": "strict_full_ensemble_reproduction",
+  "date": "2026-11-14",
+  "repository": "bordode/cloud9-assembly-index",
+  "branch": "audit/null-ensemble-v3-provenance",
+  "commit": "12a4f251d1932af839cce803ad1c1740fdf6427a",
+  "workflow": {
+    "name": "Historical v3 single-seed reproduction audit",
+    "run_id": 43653944821,
+    "url": "https://github.com/bordode/cloud9-assembly-index/actions/runs/43653944821",
+    "conclusion": "success",
+    "artifact_id": 14137650986,
+    "artifact_name": "v3-full-ensemble-reproduction",
+    "downloaded_zip_sha256": "16df15db4de20642d665ba7302a59df906cab68094e778bbbc14454b53fc0a97"
+  },
+  "comparison": {
+    "archive_members": 100,
+    "expected_seeds": [
+      1000,
+      1099
+    ],
+    "matching_members": 100,
+    "mismatching_members": 0,
+    "fields_per_member": [
+      "A_c_bits",
+      "mi_values",
+      "collapse_z",
+      "z_form",
+      "peak_height_sigma",
+      "env_bias",
+      "n_mergers",
+      "spin_lambda",
+      "gas_frac"
+    ],
+    "mi_values_per_member": 15,
+    "tolerance": 1e-10
+  },
+  "statistics": {
+    "mean_bits": 58.062223091098055,
+    "population_sd_bits": 3.39056643855244,
+    "sample_sd_bits": 3.4076474858939516,
+    "z_population_sd": 8.623272081164304,
+    "z_sample_sd": 8.58004738751074
+  },
+  "hashes": {
+    "archived_json_sha256": "b9fb31cd208506e3126d521201bc8000a6f5c56cc60406ebb21b08bb448d065e",
+    "corrected_recovered_source_sha256": "90cec585f3dd309d1d6f1d4607fb592d90b31d077167c4b6092f5278a1cc89c3",
+    "strict_comparator_sha256": "d8c22b04f8f00f9eabd306b28d94502ef8730cbdc7bb1a7991a30df9ce114c7c"
+  },
+  "environment": {
+    "python": "3.12.16",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1"
+  },
+  "interpretation": "Computational reproduction of the archived synthetic ensemble from the recovered 3.0-KSG-fast implementation with the documented constructor-keyword correction. This is not execution of the unmodified historical script and is not real IllustrisTNG temporal validation."
+}
