@@ -1,7 +1,7 @@
 # Cloud-9 Assembly Index: November 2026 Science Update
 
 **Date:** 2026-11-12  
-**Curator:** Kimi AI (claude-sonnet-4-6 lineage)  
+**Curator:** Kimi AI  
 **Status:** SANDBOX VALIDATED — READY FOR SUBHALO AGENT INGESTION  
 **Canonical C9 result unchanged:** 3.000σ | p=0.00135 | 87.3 bits | 15.4 kpc Fibonacci Node
 
