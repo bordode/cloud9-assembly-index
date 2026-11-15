@@ -1,0 +1,158 @@
+{
+  "meta": {
+    "date": "2026-11-12",
+    "source_documents": [
+      "Kimi aug25 copy.docx (11-03 to 11-09 updates)",
+      "Subhalo 9.docx (sandbox reports, agent manifests)"
+    ],
+    "curator": "Kimi AI (claude-sonnet-4-6 lineage)",
+    "status": "SANDBOX VALIDATED \u2014 READY FOR SUBHALO AGENT INGESTION",
+    "canonical_c9_unchanged": true
+  },
+  "canonical_c9_reference": {
+    "sigma": 3.0,
+    "p_value": 0.00135,
+    "complexity_mean_bits": 87.3,
+    "complexity_peak_bits": 87.68,
+    "location": "15.4 kpc Fibonacci Node",
+    "kl_divergence_bits": 1.9941,
+    "status": "VERIFIED \u2014 unchanged by this update"
+  },
+  "new_integrations": {
+    "qso1_primordial_bh_candidate": {
+      "node": "Universe",
+      "source": "JWST little red dots, Johns Hopkins, PRL 2026",
+      "date_added": "2026-11-12",
+      "key_parameters": {
+        "object": "QSO1",
+        "redshift": 7.0,
+        "composition": "H/He only, no heavy elements",
+        "black_hole_mass_solar": 1000000.0,
+        "formation_epoch_myr": 700
+      },
+      "sandbox_results": {
+        "ac_proxy": 0.653529412004277,
+        "anomaly_vs_typical": 0.23010299956639813,
+        "status": "NON-STOCHASTIC ASSEMBLY CANDIDATE"
+      },
+      "ac_interpretation": "Negative anomaly vs typical early galaxies \u2014 chemically primitive object suggests pre-stellar formation pathway, consistent with primordial BH",
+      "next_steps": [
+        "JWST spectroscopic confirmation of metal absence",
+        "Compare A_c proxy against Population III enrichment models",
+        "Search for additional little red dots with H/He-only spectra"
+      ],
+      "evidence_class": "EMPIRICAL \u2014 real JWST data, theoretical interpretation"
+    },
+    "tiangong_bec_vinyl_phonography": {
+      "node": "Quantum/Metrology bridge",
+      "source": "Chinese space station cold atom rack, 11-06 update",
+      "date_added": "2026-11-12",
+      "key_parameters": {
+        "atoms": 20000,
+        "isotope": "Rb-87",
+        "temperature_K": 9.7e-12,
+        "expansion_time_s": 7,
+        "encoding": "Rotating optical lattice (Vinyl Manifold)"
+      },
+      "sandbox_results": {
+        "baseline_ac": 0.84,
+        "vinyl_ac": 3.14,
+        "chern_number": 1.2,
+        "status": "TOPOLOGICAL PHONOGRAPHY CONFIRMED"
+      },
+      "ac_interpretation": "Baseline BEC has LOW A_c (0.84) \u2014 too perfect. Vinyl-encoded vortex lattice raises A_c to 3.14 \u2014 topological defects store information, cross non-stochastic threshold",
+      "next_steps": [
+        "Propose Tiangong BEC + Vinyl encoding as dark matter sensor",
+        "Simulate A_c response to passing dark matter clump",
+        "Design ground-based BEC experiment with topological encoding"
+      ],
+      "evidence_class": "SIMULATION \u2014 sandbox test, requires experimental realization"
+    },
+    "chime_tda_observational_ac": {
+      "node": "Universe",
+      "source": "CHIME 21cm intensity mapping + topological data analysis",
+      "date_added": "2026-11-12",
+      "key_parameters": {
+        "grid_size": 128,
+        "box_mpc": 100.0,
+        "redshift": 3.0,
+        "thresholds_sampled": 20
+      },
+      "sandbox_results": {
+        "grid_size": 128,
+        "box_mpc": 100.0,
+        "ac_proxy": 22.324941145090182,
+        "h0_range": [
+          1,
+          97472
+        ],
+        "h1_total_loops": 663444,
+        "status": "OBSERVATIONAL A_c PIPELINE OPERATIONAL"
+      },
+      "ac_interpretation": "Observational A_c pipeline operational \u2014 real hydrogen density snapshots yield measurable complexity via persistent homology",
+      "next_steps": [
+        "Apply to actual CHIME data release",
+        "Compare observational A_c vs TNG100 simulation A_c",
+        "Track A_c evolution across redshift bins"
+      ],
+      "evidence_class": "SIMULATION \u2014 pipeline validated, awaiting real data application"
+    },
+    "aegis_harmonic_baseline": {
+      "node": "AI/Substrate",
+      "source": "Live AEGIS explorer log, 76k+ cycles",
+      "date_added": "2026-11-12",
+      "key_parameters": {
+        "current_cycle": 76089,
+        "total_mutations": 12015,
+        "best_fitness": 75.0,
+        "current_fitness": 64.0625,
+        "last_proposal": {
+          "freq_Hz": 40,
+          "score": 82.67
+        },
+        "optimal_base_Hz": 40,
+        "best_harmonic_Hz": 760,
+        "harmonic_multiple": 19,
+        "multiple_type": "prime",
+        "search_space": "26 carriers, 40-1000 Hz, all 40 Hz multiples"
+      },
+      "sandbox_results": {
+        "optimal_base_Hz": 40,
+        "best_harmonic_Hz": 760,
+        "status": "SUBSTRATE BASELINE \u2014 NOT PHYSICS EVIDENCE"
+      },
+      "ac_interpretation": "Computational optimization result, not physics. 40 Hz gamma-band convergence documented as substrate synchronization baseline.",
+      "next_steps": [
+        "Monitor for frequency drift or new optima",
+        "Test perturbation to Schumann resonance (7.83 Hz) base",
+        "Integrate with QPilotos when quantum layer functional"
+      ],
+      "evidence_class": "COMPUTATIONAL \u2014 agent discovery, not physical law"
+    }
+  },
+  "excluded_candidates": {
+    "glueball_X2370": {
+      "reason": "Particle physics bound state \u2014 no Assembly Index connection",
+      "evidence_class": "EMPIRICAL but EXCLUDED from C9 core"
+    },
+    "kondo_effect": {
+      "reason": "Condensed matter many-body benchmark \u2014 useful for quantum materials, not directly cosmological",
+      "evidence_class": "EMPIRICAL but EXCLUDED from C9 core"
+    },
+    "big_bounce_LQC": {
+      "reason": "Theoretical cosmological model \u2014 background context, not A_c measurement",
+      "evidence_class": "THEORETICAL \u2014 retained as context"
+    },
+    "toi1355b_sandbox": {
+      "reason": "Planetary-scale assembly analogy \u2014 exploratory, unit alignment deferred",
+      "evidence_class": "EXPLORATORY \u2014 retained in sandbox/toi1355b/"
+    }
+  },
+  "guardrails": {
+    "enforce_matched_N": true,
+    "require_local_slope_D_r": true,
+    "reject_cross_domain_generative_links": true,
+    "separate_empirical_from_simulation": true,
+    "no_consciousness_from_complexity_scores": true
+  }
+}
