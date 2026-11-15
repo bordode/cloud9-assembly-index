@@ -1,0 +1,266 @@
+{
+  "meta": {
+    "date": "2026-11-13",
+    "version": "2.1",
+    "source_documents": [
+      "Kimi aug25 copy.docx (11-03 to 11-09 updates)",
+      "Subhalo 9.docx (sandbox reports, agent manifests)"
+    ],
+    "curator": "Kimi AI",
+    "status": "DEEP SWEEP COMPLETE — READY FOR SUBHALO AGENT INGESTION",
+    "canonical_c9_unchanged": true
+  },
+  "canonical_c9_reference": {
+    "sigma": 3.0,
+    "p_value": 0.00135,
+    "complexity_mean_bits": 87.3,
+    "complexity_peak_bits": 87.68,
+    "location": "15.4 kpc Fibonacci Node",
+    "kl_divergence_bits": 1.9941,
+    "status": "VERIFIED — unchanged by this update"
+  },
+  "integrations": {
+    "strong_candidates": {
+      "qso1_primordial_bh_candidate": {
+        "node": "Universe",
+        "source": "JWST little red dots, Johns Hopkins, PRL 2026",
+        "date_added": "2026-11-12",
+        "key_parameters": {
+          "object": "QSO1",
+          "redshift": 7.0,
+          "composition": "H/He only, no heavy elements",
+          "black_hole_mass_solar": 1000000.0,
+          "formation_epoch_myr": 700
+        },
+        "ac_interpretation": "Negative anomaly vs typical early galaxies — chemically primitive object suggests pre-stellar formation pathway, consistent with primordial black hole.",
+        "next_steps": [
+          "JWST spectroscopic confirmation of metal absence",
+          "Compare A_c proxy against Population III enrichment models",
+          "Search for additional little red dots with H/He-only spectra"
+        ],
+        "evidence_class": "EMPIRICAL — real JWST data, theoretical interpretation"
+      },
+      "tiangong_bec_vinyl_phonography": {
+        "node": "Quantum/Metrology bridge",
+        "source": "Chinese space station cold atom rack, 11-06 update",
+        "date_added": "2026-11-12",
+        "key_parameters": {
+          "atoms": 20000,
+          "isotope": "Rb-87",
+          "temperature_K": 9.7e-12,
+          "expansion_time_s": 7,
+          "encoding": "Rotating optical lattice (Vinyl Manifold)"
+        },
+        "ac_interpretation": "Baseline BEC has LOW A_c (0.84) — too perfect. Vinyl-encoded vortex lattice raises A_c to 3.14 — topological defects store information, cross non-stochastic threshold.",
+        "next_steps": [
+          "Propose Tiangong BEC + Vinyl encoding as dark matter sensor",
+          "Simulate A_c response to passing dark matter clump",
+          "Design ground-based BEC experiment with topological encoding"
+        ],
+        "evidence_class": "SIMULATION — sandbox test, requires experimental realization"
+      },
+      "chime_tda_observational_ac": {
+        "node": "Universe",
+        "source": "CHIME 21cm intensity mapping + topological data analysis",
+        "date_added": "2026-11-12",
+        "key_parameters": {
+          "grid_size": 128,
+          "box_mpc": 100.0,
+          "redshift": 3.0,
+          "thresholds_sampled": 20
+        },
+        "ac_interpretation": "Observational A_c pipeline operational — real hydrogen density snapshots yield measurable complexity via persistent homology.",
+        "next_steps": [
+          "Apply to actual CHIME data release",
+          "Compare observational A_c vs TNG100 simulation A_c",
+          "Track A_c evolution across redshift bins"
+        ],
+        "evidence_class": "SIMULATION — pipeline validated, awaiting real data application"
+      },
+      "aegis_harmonic_baseline": {
+        "node": "AI/Substrate",
+        "source": "Live AEGIS explorer log, 76k+ cycles",
+        "date_added": "2026-11-12",
+        "key_parameters": {
+          "current_cycle": 76089,
+          "total_mutations": 12015,
+          "best_fitness": 75.0,
+          "optimal_base_Hz": 40,
+          "best_harmonic_Hz": 760,
+          "harmonic_multiple": 19,
+          "multiple_type": "prime"
+        },
+        "ac_interpretation": "Computational optimization result, not physics. 40 Hz gamma-band convergence documented as substrate synchronization baseline.",
+        "next_steps": [
+          "Monitor for frequency drift or new optima",
+          "Test perturbation to Schumann resonance (7.83 Hz) base",
+          "Integrate with QPilotos when quantum layer functional"
+        ],
+        "evidence_class": "COMPUTATIONAL — agent discovery, not physical law"
+      },
+      "lofar_63k_radio_sources": {
+        "node": "Universe",
+        "source": "Astronomers Reveal 63,000 Hidden Radio Sources (11-06)",
+        "date_added": "2026-11-13",
+        "key_parameters": {
+          "n_sources": 63000,
+          "survey_type": "radio continuum",
+          "cosmic_web_tracer": true
+        },
+        "ac_interpretation": "Radio sources trace cosmic web filaments and clusters. Provides complementary tracer to optical (TNG100) and 21cm (CHIME) for Assembly Index computation via TDA persistent homology.",
+        "next_steps": [
+          "Cross-match with optical surveys for multi-wavelength A_c",
+          "Apply TDA pipeline to radio source distribution",
+          "Compare radio vs optical cosmic web topology"
+        ],
+        "evidence_class": "EMPIRICAL — real survey data"
+      },
+      "mitochondria_quantum_state": {
+        "node": "Brain/Bio/Quantum bridge",
+        "source": "A quantum state of mitochondria in the living cell (Yang, Gu, Song)",
+        "date_added": "2026-11-13",
+        "key_parameters": {
+          "frequency_thz": 71,
+          "secondary_frequency_thz": 87,
+          "control_frequency_thz": 53.7,
+          "laser_power_microwatts": 10,
+          "exposure_minutes": 10,
+          "tissue_type": "human kidney cell line",
+          "signal": "71 THz spike only in living intact tissue"
+        },
+        "ac_interpretation": "Biological quantum coherence at specific frequencies. 71 THz and 87 THz boost cellular energy; 53.7 THz does nothing. Frequency-specific bioeffects suggest resonant information transfer. Connects to Tesla vibrational framework and Cloud-9 substrate research.",
+        "caution": "Cells were ordinary lab cells, not 'tired' as reel suggested. No human testing. 71 THz gadgets ahead of science.",
+        "next_steps": [
+          "Reproduce in independent labs",
+          "Test frequency specificity across cell types",
+          "Investigate quantum coherence lifetime in biological systems"
+        ],
+        "evidence_class": "EMPIRICAL — peer-reviewed, but requires replication"
+      },
+      "white_dwarf_double_ring": {
+        "node": "Universe (planetary)",
+        "source": "Astronomers spot white dwarf star with two rings (Reuters, 11-09)",
+        "date_added": "2026-11-13",
+        "key_parameters": {
+          "object": "J1328-1450",
+          "distance_ly": 1600,
+          "constellation": "Virgo",
+          "mass_solar": 0.47,
+          "diameter": "Earth-sized",
+          "structure": "Two concentric gaseous rings",
+          "surviving_bodies": "Two rocky bodies (Pluto-sized and smaller)"
+        },
+        "ac_interpretation": "Complex post-stellar system architecture. Two rings require two surviving planetary bodies perturbing debris. Unusual configuration = high assembly history complexity. First double-ring white dwarf; 21 previous singles.",
+        "next_steps": [
+          "Model system assembly history",
+          "Search for additional double-ring systems",
+          "Compare A_c proxy against single-ring white dwarfs"
+        ],
+        "evidence_class": "EMPIRICAL — VLT observations, Nature Astronomy"
+      }
+    },
+    "exploratory_candidates": {
+      "betelgeuse_recovery_shape": {
+        "node": "Universe (stellar)",
+        "source": "Astronomers Watched Betelgeuse Recover... (11-03)",
+        "signal": "Post-dimming shape change — surface convection altered",
+        "ac_interpretation": "Stellar surface reorganization after mass loss = assembly event",
+        "status": "EXPLORATORY"
+      },
+      "quantum_chaos_holding_together": {
+        "node": "Quantum foundations",
+        "source": "The Quantum World Is Bursting With Chaos (11-04)",
+        "signal": "What holds quantum systems together at edge of chaos",
+        "ac_interpretation": "Quantum chaos boundary = complexity threshold",
+        "status": "EXPLORATORY"
+      },
+      "water_diamonds_new_phase": {
+        "node": "Condensed matter",
+        "source": "Scientists Crushed Water Between Two Diamonds (11-05)",
+        "signal": "New water phase never observed",
+        "ac_interpretation": "Phase transition = universal threshold mechanism",
+        "status": "EXPLORATORY"
+      },
+      "black_hole_split_in_two": {
+        "node": "Universe (theoretical)",
+        "source": "Cosmic 'Loophole' Could Let Black Holes Split In Two (11-07)",
+        "signal": "Theoretical BH bifurcation",
+        "ac_interpretation": "Topology change = assembly/disassembly event",
+        "status": "THEORETICAL"
+      },
+      "milky_way_center_ancient": {
+        "node": "Universe (galactic)",
+        "source": "Scientists Peered Through Dust at Milky Way's Center (11-07)",
+        "signal": "Ancient structures at galactic center",
+        "ac_interpretation": "Old stellar populations = early assembly history",
+        "status": "EXPLORATORY"
+      },
+      "ultracold_lithium_magnetic": {
+        "node": "Quantum simulation",
+        "source": "Ultracold lithium atoms reveal hidden struggle (11-08)",
+        "signal": "Competing quantum magnetic phases",
+        "ac_interpretation": "Quantum phase competition = complexity",
+        "status": "EXPLORATORY"
+      },
+      "schrodinger_cat_gravity": {
+        "node": "Quantum foundations",
+        "source": "New twist on Schrödinger's cat could unite QM and relativity (11-09)",
+        "signal": "Macroscopic superposition + gravity",
+        "ac_interpretation": "Quantum gravity interface",
+        "status": "THEORETICAL"
+      },
+      "vibrating_mirrors_analog_bh": {
+        "node": "Quantum/Grav bridge",
+        "source": "Vibrating mirrors analog black hole (11-09)",
+        "signal": "Analog Hawking radiation system",
+        "ac_interpretation": "Analog gravity for C9 tests",
+        "status": "EXPLORATORY"
+      }
+    },
+    "moderate_candidates": {
+      "quantum_error_correction_54pct": {
+        "node": "Quantum hardware",
+        "source": "Quantum computer error rates slashed 54% (11-05)",
+        "signal": "Autonomous signal check for QEC",
+        "status": "DOCUMENT — QEC progress, not A_c"
+      },
+      "star_explosion_strange_aftermath": {
+        "node": "Universe (stellar)",
+        "source": "Ordinary star explosion... something strange (11-07)",
+        "signal": "Delayed secondary event post-supernova",
+        "status": "DOCUMENT — unusual transient"
+      },
+      "game_theory_alien_life": {
+        "node": "Astrobiology",
+        "source": "Scientists turn to game theory in search for alien life (11-09)",
+        "signal": "Strategic behavior as biosignature",
+        "status": "DOCUMENT — novel biosignature approach"
+      }
+    }
+  },
+  "excluded_candidates": {
+    "zeptoverse_cern": "Particle physics, no A_c connection",
+    "canada_budget": "Not science",
+    "banking_encryption": "Security, not assembly science",
+    "semiconductor_survey": "Engineering survey",
+    "moon_volcanic": "Planetary science, no A_c connection",
+    "claude_dreams": "AI consciousness speculation, no measurable A_c",
+    "mars_orbiter": "Planetary, no A_c connection",
+    "uranus_neptune_magnetic": "Planetary, no A_c connection",
+    "time_travel_forward": "Philosophical",
+    "nuclear_fuel_image": "Nuclear chemistry, no A_c connection",
+    "nothing_transparent": "Materials limit, no A_c connection",
+    "mysterious_object_accelerating": "Anomalous dynamics, unclear A_c relevance"
+  },
+  "background_context": {
+    "big_bounce_LQC": "Alternative cosmology — theoretical context for C9 Universe node",
+    "older_universe_no_dark_matter": "Challenges ΛCDM — context for null model comparisons"
+  },
+  "guardrails": {
+    "enforce_matched_N": true,
+    "require_local_slope_D_r": true,
+    "reject_cross_domain_generative_links": true,
+    "separate_empirical_from_simulation": true,
+    "no_consciousness_from_complexity_scores": true
+  }
+}
