@@ -1,0 +1,3152 @@
+{
+ "meta": {
+  "N": 72,
+  "lams": [
+   1e-06,
+   3.162277660168379e-06,
+   9.999999999999999e-06,
+   3.1622776601683795e-05,
+   0.0001,
+   0.00031622776601683794,
+   0.001,
+   0.0031622776601683794,
+   0.01,
+   0.03162277660168379,
+   0.1,
+   0.31622776601683794,
+   1.0
+  ],
+  "seeds": 5,
+  "scenes": [
+   "nebula",
+   "stars",
+   "mixed"
+  ],
+  "numpy": "2.5.4",
+  "scipy": "1.18.1",
+  "python": "3.12.3",
+  "noise_model": "sensor-pixel sigma; binned noise = sigma/b",
+  "dither": "all b*b integer fine-pixel phases; matched = per-frame noise x sqrt(K)",
+  "runtime_s": 227.5404441356659
+ },
+ "E1": [
+  {
+   "scene": "nebula",
+   "b": 2,
+   "sigma": 0.02,
+   "seed": 0,
+   "oracle_lam": 0.0031622776601683794,
+   "picked_lam": {
+    "whiteness": 0.31622776601683794,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.03162277660168379
+   },
+   "cost": {
+    "whiteness": 0.3244763780184674,
+    "lcurve": 0.003148007498048555,
+    "gcv": 0.03294202917466427
+   },
+   "basin_decades": 4.5
+  },
+  {
+   "scene": "nebula",
+   "b": 2,
+   "sigma": 0.02,
+   "seed": 1,
+   "oracle_lam": 0.0031622776601683794,
+   "picked_lam": {
+    "whiteness": 0.31622776601683794,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.03162277660168379
+   },
+   "cost": {
+    "whiteness": 0.31962956508785356,
+    "lcurve": 0.0027615485717251698,
+    "gcv": 0.03571039411285826
+   },
+   "basin_decades": 4.5
+  },
+  {
+   "scene": "nebula",
+   "b": 2,
+   "sigma": 0.02,
+   "seed": 2,
+   "oracle_lam": 0.0031622776601683794,
+   "picked_lam": {
+    "whiteness": 0.31622776601683794,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.03162277660168379
+   },
+   "cost": {
+    "whiteness": 0.3193164872096732,
+    "lcurve": 0.003485209881416873,
+    "gcv": 0.029658787657484753
+   },
+   "basin_decades": 4.5
+  },
+  {
+   "scene": "nebula",
+   "b": 2,
+   "sigma": 0.02,
+   "seed": 3,
+   "oracle_lam": 0.0031622776601683794,
+   "picked_lam": {
+    "whiteness": 0.31622776601683794,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.03162277660168379
+   },
+   "cost": {
+    "whiteness": 0.3203899242128945,
+    "lcurve": 0.002070671635559851,
+    "gcv": 0.03396579632247332
+   },
+   "basin_decades": 4.5
+  },
+  {
+   "scene": "nebula",
+   "b": 2,
+   "sigma": 0.02,
+   "seed": 4,
+   "oracle_lam": 0.01,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.03162277660168379
+   },
+   "cost": {
+    "whiteness": 0.5709414133843398,
+    "lcurve": 0.00467507650276211,
+    "gcv": 0.029017646790791884
+   },
+   "basin_decades": 4.5
+  },
+  {
+   "scene": "nebula",
+   "b": 2,
+   "sigma": 0.05,
+   "seed": 0,
+   "oracle_lam": 0.03162277660168379,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.1
+   },
+   "cost": {
+    "whiteness": 0.3315418730878277,
+    "lcurve": 0.06154820351676471,
+    "gcv": 0.03206634921710716
+   },
+   "basin_decades": 0.5
+  },
+  {
+   "scene": "nebula",
+   "b": 2,
+   "sigma": 0.05,
+   "seed": 1,
+   "oracle_lam": 0.03162277660168379,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.1
+   },
+   "cost": {
+    "whiteness": 0.33726714989312545,
+    "lcurve": 0.06028372780876201,
+    "gcv": 0.030798801101809214
+   },
+   "basin_decades": 0.5
+  },
+  {
+   "scene": "nebula",
+   "b": 2,
+   "sigma": 0.05,
+   "seed": 2,
+   "oracle_lam": 0.03162277660168379,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.1
+   },
+   "cost": {
+    "whiteness": 0.34913649119465995,
+    "lcurve": 0.05054253414083809,
+    "gcv": 0.03783621542100524
+   },
+   "basin_decades": 1.0
+  },
+  {
+   "scene": "nebula",
+   "b": 2,
+   "sigma": 0.05,
+   "seed": 3,
+   "oracle_lam": 0.03162277660168379,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.1
+   },
+   "cost": {
+    "whiteness": 0.33215080994096224,
+    "lcurve": 0.06539126956473451,
+    "gcv": 0.030212835291988593
+   },
+   "basin_decades": 0.5
+  },
+  {
+   "scene": "nebula",
+   "b": 2,
+   "sigma": 0.05,
+   "seed": 4,
+   "oracle_lam": 0.03162277660168379,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.1
+   },
+   "cost": {
+    "whiteness": 0.34012389701014145,
+    "lcurve": 0.057699386126485175,
+    "gcv": 0.03418855717147995
+   },
+   "basin_decades": 0.5
+  },
+  {
+   "scene": "nebula",
+   "b": 3,
+   "sigma": 0.02,
+   "seed": 0,
+   "oracle_lam": 0.0031622776601683794,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.03162277660168379
+   },
+   "cost": {
+    "whiteness": 0.3901970434959976,
+    "lcurve": 0.001282160633419016,
+    "gcv": 0.015762419834091546
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "nebula",
+   "b": 3,
+   "sigma": 0.02,
+   "seed": 1,
+   "oracle_lam": 0.0031622776601683794,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.01
+   },
+   "cost": {
+    "whiteness": 0.3852960938839627,
+    "lcurve": 0.001453762954606752,
+    "gcv": 0.0016814202497084096
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "nebula",
+   "b": 3,
+   "sigma": 0.02,
+   "seed": 2,
+   "oracle_lam": 0.0031622776601683794,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.03162277660168379
+   },
+   "cost": {
+    "whiteness": 0.38241961841954075,
+    "lcurve": 0.0012079192016272167,
+    "gcv": 0.013692241566385599
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "nebula",
+   "b": 3,
+   "sigma": 0.02,
+   "seed": 3,
+   "oracle_lam": 0.0031622776601683794,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.03162277660168379
+   },
+   "cost": {
+    "whiteness": 0.38419704486713013,
+    "lcurve": 0.0011654357385937342,
+    "gcv": 0.015566299846379916
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "nebula",
+   "b": 3,
+   "sigma": 0.02,
+   "seed": 4,
+   "oracle_lam": 0.0031622776601683794,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.01
+   },
+   "cost": {
+    "whiteness": 0.3838462665694997,
+    "lcurve": 0.0016366409076051802,
+    "gcv": 0.001330391218040905
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "nebula",
+   "b": 3,
+   "sigma": 0.05,
+   "seed": 0,
+   "oracle_lam": 0.03162277660168379,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.03162277660168379
+   },
+   "cost": {
+    "whiteness": 0.3048509962765307,
+    "lcurve": 0.00806997624336736,
+    "gcv": 0.0
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "nebula",
+   "b": 3,
+   "sigma": 0.05,
+   "seed": 1,
+   "oracle_lam": 0.01,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.03162277660168379
+   },
+   "cost": {
+    "whiteness": 0.31381970961567074,
+    "lcurve": 0.006404322992628275,
+    "gcv": 0.002883814896476933
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "nebula",
+   "b": 3,
+   "sigma": 0.05,
+   "seed": 2,
+   "oracle_lam": 0.01,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.1
+   },
+   "cost": {
+    "whiteness": 0.30411800065745886,
+    "lcurve": 0.00800817418527533,
+    "gcv": 0.03416142511349629
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "nebula",
+   "b": 3,
+   "sigma": 0.05,
+   "seed": 3,
+   "oracle_lam": 0.03162277660168379,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.03162277660168379
+   },
+   "cost": {
+    "whiteness": 0.3019540162813572,
+    "lcurve": 0.009431237027833994,
+    "gcv": 0.0
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "nebula",
+   "b": 3,
+   "sigma": 0.05,
+   "seed": 4,
+   "oracle_lam": 0.01,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.03162277660168379
+   },
+   "cost": {
+    "whiteness": 0.3088481241946448,
+    "lcurve": 0.009548756007428327,
+    "gcv": 0.00020221833261557798
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "nebula",
+   "b": 4,
+   "sigma": 0.02,
+   "seed": 0,
+   "oracle_lam": 3.162277660168379e-06,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.03162277660168379
+   },
+   "cost": {
+    "whiteness": 0.29101799581287024,
+    "lcurve": 0.0,
+    "gcv": 0.0050404052981440906
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "nebula",
+   "b": 4,
+   "sigma": 0.02,
+   "seed": 1,
+   "oracle_lam": 3.162277660168379e-06,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.03162277660168379
+   },
+   "cost": {
+    "whiteness": 0.293845573799677,
+    "lcurve": 0.0,
+    "gcv": 0.007308396831628761
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "nebula",
+   "b": 4,
+   "sigma": 0.02,
+   "seed": 2,
+   "oracle_lam": 3.162277660168379e-06,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.1
+   },
+   "cost": {
+    "whiteness": 0.2968883149945776,
+    "lcurve": 0.0,
+    "gcv": 0.03874627202426817
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "nebula",
+   "b": 4,
+   "sigma": 0.02,
+   "seed": 3,
+   "oracle_lam": 3.162277660168379e-06,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.1
+   },
+   "cost": {
+    "whiteness": 0.29711203798593266,
+    "lcurve": 0.0,
+    "gcv": 0.04019376941573105
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "nebula",
+   "b": 4,
+   "sigma": 0.02,
+   "seed": 4,
+   "oracle_lam": 3.162277660168379e-06,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.03162277660168379
+   },
+   "cost": {
+    "whiteness": 0.29663906738361834,
+    "lcurve": 0.0,
+    "gcv": 0.007101273893088456
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "nebula",
+   "b": 4,
+   "sigma": 0.05,
+   "seed": 0,
+   "oracle_lam": 0.03162277660168379,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.03162277660168379
+   },
+   "cost": {
+    "whiteness": 0.2612551763369182,
+    "lcurve": 0.0008839880154596358,
+    "gcv": 0.0
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "nebula",
+   "b": 4,
+   "sigma": 0.05,
+   "seed": 1,
+   "oracle_lam": 0.03162277660168379,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.03162277660168379
+   },
+   "cost": {
+    "whiteness": 0.25435506490828286,
+    "lcurve": 0.00483960980988396,
+    "gcv": 0.0
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "nebula",
+   "b": 4,
+   "sigma": 0.05,
+   "seed": 2,
+   "oracle_lam": 0.03162277660168379,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.1
+   },
+   "cost": {
+    "whiteness": 0.2584857934439613,
+    "lcurve": 0.0027914744712169703,
+    "gcv": 0.022518467053179947
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "nebula",
+   "b": 4,
+   "sigma": 0.05,
+   "seed": 3,
+   "oracle_lam": 0.03162277660168379,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.1
+   },
+   "cost": {
+    "whiteness": 0.26655516338103213,
+    "lcurve": 0.002618610569039115,
+    "gcv": 0.02545916649264579
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "nebula",
+   "b": 4,
+   "sigma": 0.05,
+   "seed": 4,
+   "oracle_lam": 0.01,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.1
+   },
+   "cost": {
+    "whiteness": 0.2603934251776998,
+    "lcurve": 0.0008465995999311637,
+    "gcv": 0.025220112929318583
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "stars",
+   "b": 2,
+   "sigma": 0.02,
+   "seed": 0,
+   "oracle_lam": 0.01,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 1.0
+   },
+   "cost": {
+    "whiteness": 0.20595020937951602,
+    "lcurve": 0.018264662552149202,
+    "gcv": 0.20595020937951602
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "stars",
+   "b": 2,
+   "sigma": 0.02,
+   "seed": 1,
+   "oracle_lam": 0.01,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 1.0
+   },
+   "cost": {
+    "whiteness": 0.2094649003560507,
+    "lcurve": 0.02038905124707946,
+    "gcv": 0.2094649003560507
+   },
+   "basin_decades": 2.5
+  },
+  {
+   "scene": "stars",
+   "b": 2,
+   "sigma": 0.02,
+   "seed": 2,
+   "oracle_lam": 0.01,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 1.0
+   },
+   "cost": {
+    "whiteness": 0.2191375240416087,
+    "lcurve": 0.01673950653497891,
+    "gcv": 0.2191375240416087
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "stars",
+   "b": 2,
+   "sigma": 0.02,
+   "seed": 3,
+   "oracle_lam": 0.03162277660168379,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 1.0
+   },
+   "cost": {
+    "whiteness": 0.20574827683358987,
+    "lcurve": 0.027448197904947458,
+    "gcv": 0.20574827683358987
+   },
+   "basin_decades": 1.5
+  },
+  {
+   "scene": "stars",
+   "b": 2,
+   "sigma": 0.02,
+   "seed": 4,
+   "oracle_lam": 0.01,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 1.0
+   },
+   "cost": {
+    "whiteness": 0.214737304018644,
+    "lcurve": 0.021719990690551638,
+    "gcv": 0.214737304018644
+   },
+   "basin_decades": 2.0
+  },
+  {
+   "scene": "stars",
+   "b": 2,
+   "sigma": 0.05,
+   "seed": 0,
+   "oracle_lam": 0.31622776601683794,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 1.0
+   },
+   "cost": {
+    "whiteness": 0.023405555742891604,
+    "lcurve": 0.262083844651801,
+    "gcv": 0.023405555742891604
+   },
+   "basin_decades": 1.0
+  },
+  {
+   "scene": "stars",
+   "b": 2,
+   "sigma": 0.05,
+   "seed": 1,
+   "oracle_lam": 0.31622776601683794,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 1.0
+   },
+   "cost": {
+    "whiteness": 0.018364148573955852,
+    "lcurve": 0.258787866494532,
+    "gcv": 0.018364148573955852
+   },
+   "basin_decades": 1.5
+  },
+  {
+   "scene": "stars",
+   "b": 2,
+   "sigma": 0.05,
+   "seed": 2,
+   "oracle_lam": 0.31622776601683794,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 1.0
+   },
+   "cost": {
+    "whiteness": 0.017724550790490845,
+    "lcurve": 0.2607115840390999,
+    "gcv": 0.017724550790490845
+   },
+   "basin_decades": 1.5
+  },
+  {
+   "scene": "stars",
+   "b": 2,
+   "sigma": 0.05,
+   "seed": 3,
+   "oracle_lam": 0.31622776601683794,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 1.0
+   },
+   "cost": {
+    "whiteness": 0.023480670742728638,
+    "lcurve": 0.245714672470688,
+    "gcv": 0.023480670742728638
+   },
+   "basin_decades": 1.0
+  },
+  {
+   "scene": "stars",
+   "b": 2,
+   "sigma": 0.05,
+   "seed": 4,
+   "oracle_lam": 0.31622776601683794,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 1.0
+   },
+   "cost": {
+    "whiteness": 0.02360167692848636,
+    "lcurve": 0.22117709295067423,
+    "gcv": 0.02360167692848636
+   },
+   "basin_decades": 1.0
+  },
+  {
+   "scene": "stars",
+   "b": 3,
+   "sigma": 0.02,
+   "seed": 0,
+   "oracle_lam": 0.03162277660168379,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 1.0
+   },
+   "cost": {
+    "whiteness": 0.07353582641534384,
+    "lcurve": 0.018077803354466626,
+    "gcv": 0.07353582641534384
+   },
+   "basin_decades": 5.5
+  },
+  {
+   "scene": "stars",
+   "b": 3,
+   "sigma": 0.02,
+   "seed": 1,
+   "oracle_lam": 0.03162277660168379,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 1.0
+   },
+   "cost": {
+    "whiteness": 0.07398896225398999,
+    "lcurve": 0.012381912974239073,
+    "gcv": 0.07398896225398999
+   },
+   "basin_decades": 5.5
+  },
+  {
+   "scene": "stars",
+   "b": 3,
+   "sigma": 0.02,
+   "seed": 2,
+   "oracle_lam": 0.03162277660168379,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 1.0
+   },
+   "cost": {
+    "whiteness": 0.06649558327020944,
+    "lcurve": 0.014943518971165304,
+    "gcv": 0.06649558327020944
+   },
+   "basin_decades": 5.5
+  },
+  {
+   "scene": "stars",
+   "b": 3,
+   "sigma": 0.02,
+   "seed": 3,
+   "oracle_lam": 0.03162277660168379,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 1.0
+   },
+   "cost": {
+    "whiteness": 0.07147923177285609,
+    "lcurve": 0.009032373191235177,
+    "gcv": 0.07147923177285609
+   },
+   "basin_decades": 5.5
+  },
+  {
+   "scene": "stars",
+   "b": 3,
+   "sigma": 0.02,
+   "seed": 4,
+   "oracle_lam": 0.03162277660168379,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 1.0
+   },
+   "cost": {
+    "whiteness": 0.06799615861770114,
+    "lcurve": 0.01916914026576122,
+    "gcv": 0.06799615861770114
+   },
+   "basin_decades": 5.5
+  },
+  {
+   "scene": "stars",
+   "b": 3,
+   "sigma": 0.05,
+   "seed": 0,
+   "oracle_lam": 0.31622776601683794,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 1.0
+   },
+   "cost": {
+    "whiteness": 0.007667433255055478,
+    "lcurve": 0.10760492622729712,
+    "gcv": 0.007667433255055478
+   },
+   "basin_decades": 1.5
+  },
+  {
+   "scene": "stars",
+   "b": 3,
+   "sigma": 0.05,
+   "seed": 1,
+   "oracle_lam": 0.31622776601683794,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 1.0
+   },
+   "cost": {
+    "whiteness": 0.004143768195979058,
+    "lcurve": 0.12037918041194651,
+    "gcv": 0.004143768195979058
+   },
+   "basin_decades": 1.5
+  },
+  {
+   "scene": "stars",
+   "b": 3,
+   "sigma": 0.05,
+   "seed": 2,
+   "oracle_lam": 0.31622776601683794,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 1.0
+   },
+   "cost": {
+    "whiteness": 0.00488518393656201,
+    "lcurve": 0.13092186201876466,
+    "gcv": 0.00488518393656201
+   },
+   "basin_decades": 1.5
+  },
+  {
+   "scene": "stars",
+   "b": 3,
+   "sigma": 0.05,
+   "seed": 3,
+   "oracle_lam": 0.31622776601683794,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 1.0
+   },
+   "cost": {
+    "whiteness": 0.002574940321682373,
+    "lcurve": 0.09915617636201968,
+    "gcv": 0.002574940321682373
+   },
+   "basin_decades": 1.5
+  },
+  {
+   "scene": "stars",
+   "b": 3,
+   "sigma": 0.05,
+   "seed": 4,
+   "oracle_lam": 0.31622776601683794,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 1.0
+   },
+   "cost": {
+    "whiteness": 0.004785938698735004,
+    "lcurve": 0.13372983705582397,
+    "gcv": 0.004785938698735004
+   },
+   "basin_decades": 1.5
+  },
+  {
+   "scene": "stars",
+   "b": 4,
+   "sigma": 0.02,
+   "seed": 0,
+   "oracle_lam": 0.03162277660168379,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 1.0
+   },
+   "cost": {
+    "whiteness": 0.0388412432526315,
+    "lcurve": 0.00649597224611842,
+    "gcv": 0.0388412432526315
+   },
+   "basin_decades": 6.0
+  },
+  {
+   "scene": "stars",
+   "b": 4,
+   "sigma": 0.02,
+   "seed": 1,
+   "oracle_lam": 0.03162277660168379,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 1.0
+   },
+   "cost": {
+    "whiteness": 0.04220128611466656,
+    "lcurve": 0.006174127845848254,
+    "gcv": 0.04220128611466656
+   },
+   "basin_decades": 5.5
+  },
+  {
+   "scene": "stars",
+   "b": 4,
+   "sigma": 0.02,
+   "seed": 2,
+   "oracle_lam": 0.03162277660168379,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 1.0
+   },
+   "cost": {
+    "whiteness": 0.04445938658742632,
+    "lcurve": 0.0032868789115998442,
+    "gcv": 0.04445938658742632
+   },
+   "basin_decades": 5.5
+  },
+  {
+   "scene": "stars",
+   "b": 4,
+   "sigma": 0.02,
+   "seed": 3,
+   "oracle_lam": 0.03162277660168379,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 1.0
+   },
+   "cost": {
+    "whiteness": 0.04456537660394422,
+    "lcurve": 0.005333507639694757,
+    "gcv": 0.04456537660394422
+   },
+   "basin_decades": 5.5
+  },
+  {
+   "scene": "stars",
+   "b": 4,
+   "sigma": 0.02,
+   "seed": 4,
+   "oracle_lam": 0.03162277660168379,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 1.0
+   },
+   "cost": {
+    "whiteness": 0.04225023608450251,
+    "lcurve": 0.007760197717687101,
+    "gcv": 0.04225023608450251
+   },
+   "basin_decades": 5.5
+  },
+  {
+   "scene": "stars",
+   "b": 4,
+   "sigma": 0.05,
+   "seed": 0,
+   "oracle_lam": 0.31622776601683794,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 1.0
+   },
+   "cost": {
+    "whiteness": 0.003354213722444488,
+    "lcurve": 0.06665275473969001,
+    "gcv": 0.003354213722444488
+   },
+   "basin_decades": 1.5
+  },
+  {
+   "scene": "stars",
+   "b": 4,
+   "sigma": 0.05,
+   "seed": 1,
+   "oracle_lam": 0.31622776601683794,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 1.0
+   },
+   "cost": {
+    "whiteness": 0.006110261394149719,
+    "lcurve": 0.06759437715054517,
+    "gcv": 0.006110261394149719
+   },
+   "basin_decades": 1.5
+  },
+  {
+   "scene": "stars",
+   "b": 4,
+   "sigma": 0.05,
+   "seed": 2,
+   "oracle_lam": 0.31622776601683794,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 1.0
+   },
+   "cost": {
+    "whiteness": 0.003858244195090288,
+    "lcurve": 0.06439727926767258,
+    "gcv": 0.003858244195090288
+   },
+   "basin_decades": 1.5
+  },
+  {
+   "scene": "stars",
+   "b": 4,
+   "sigma": 0.05,
+   "seed": 3,
+   "oracle_lam": 1.0,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 1.0
+   },
+   "cost": {
+    "whiteness": 0.0,
+    "lcurve": 0.06495545779329293,
+    "gcv": 0.0
+   },
+   "basin_decades": 1.5
+  },
+  {
+   "scene": "stars",
+   "b": 4,
+   "sigma": 0.05,
+   "seed": 4,
+   "oracle_lam": 0.31622776601683794,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 1.0
+   },
+   "cost": {
+    "whiteness": 0.0018437418127439376,
+    "lcurve": 0.05097238913962476,
+    "gcv": 0.0018437418127439376
+   },
+   "basin_decades": 1.5
+  },
+  {
+   "scene": "mixed",
+   "b": 2,
+   "sigma": 0.02,
+   "seed": 0,
+   "oracle_lam": 0.0031622776601683794,
+   "picked_lam": {
+    "whiteness": 0.31622776601683794,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.03162277660168379
+   },
+   "cost": {
+    "whiteness": 0.3267825020381385,
+    "lcurve": 0.005968173324274684,
+    "gcv": 0.03335253534100224
+   },
+   "basin_decades": 4.0
+  },
+  {
+   "scene": "mixed",
+   "b": 2,
+   "sigma": 0.02,
+   "seed": 1,
+   "oracle_lam": 0.0031622776601683794,
+   "picked_lam": {
+    "whiteness": 0.31622776601683794,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.03162277660168379
+   },
+   "cost": {
+    "whiteness": 0.3288458840348092,
+    "lcurve": 0.005145065860139297,
+    "gcv": 0.03497106754835544
+   },
+   "basin_decades": 4.5
+  },
+  {
+   "scene": "mixed",
+   "b": 2,
+   "sigma": 0.02,
+   "seed": 2,
+   "oracle_lam": 0.0031622776601683794,
+   "picked_lam": {
+    "whiteness": 0.31622776601683794,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.03162277660168379
+   },
+   "cost": {
+    "whiteness": 0.32794082580677286,
+    "lcurve": 0.0054601020808595635,
+    "gcv": 0.03436669446551055
+   },
+   "basin_decades": 4.5
+  },
+  {
+   "scene": "mixed",
+   "b": 2,
+   "sigma": 0.02,
+   "seed": 3,
+   "oracle_lam": 0.0031622776601683794,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.03162277660168379
+   },
+   "cost": {
+    "whiteness": 0.5828860249796401,
+    "lcurve": 0.007103635394664742,
+    "gcv": 0.033469237101267924
+   },
+   "basin_decades": 4.0
+  },
+  {
+   "scene": "mixed",
+   "b": 2,
+   "sigma": 0.02,
+   "seed": 4,
+   "oracle_lam": 0.0031622776601683794,
+   "picked_lam": {
+    "whiteness": 0.31622776601683794,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.03162277660168379
+   },
+   "cost": {
+    "whiteness": 0.33008485798998755,
+    "lcurve": 0.006601208465352837,
+    "gcv": 0.033014129714146856
+   },
+   "basin_decades": 4.0
+  },
+  {
+   "scene": "mixed",
+   "b": 2,
+   "sigma": 0.05,
+   "seed": 0,
+   "oracle_lam": 0.03162277660168379,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.1
+   },
+   "cost": {
+    "whiteness": 0.30578434512155117,
+    "lcurve": 0.06908432978998968,
+    "gcv": 0.019826675450471898
+   },
+   "basin_decades": 1.0
+  },
+  {
+   "scene": "mixed",
+   "b": 2,
+   "sigma": 0.05,
+   "seed": 1,
+   "oracle_lam": 0.03162277660168379,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.1
+   },
+   "cost": {
+    "whiteness": 0.31809748983265607,
+    "lcurve": 0.058770532497367745,
+    "gcv": 0.028489319371810318
+   },
+   "basin_decades": 0.5
+  },
+  {
+   "scene": "mixed",
+   "b": 2,
+   "sigma": 0.05,
+   "seed": 2,
+   "oracle_lam": 0.03162277660168379,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.1
+   },
+   "cost": {
+    "whiteness": 0.3170134433470244,
+    "lcurve": 0.0721847104413802,
+    "gcv": 0.024042593539559842
+   },
+   "basin_decades": 0.5
+  },
+  {
+   "scene": "mixed",
+   "b": 2,
+   "sigma": 0.05,
+   "seed": 3,
+   "oracle_lam": 0.03162277660168379,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.1
+   },
+   "cost": {
+    "whiteness": 0.3254919184386442,
+    "lcurve": 0.07033695244698634,
+    "gcv": 0.028277670740758376
+   },
+   "basin_decades": 0.5
+  },
+  {
+   "scene": "mixed",
+   "b": 2,
+   "sigma": 0.05,
+   "seed": 4,
+   "oracle_lam": 0.03162277660168379,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.03162277660168379
+   },
+   "cost": {
+    "whiteness": 0.33990986071064966,
+    "lcurve": 0.06823109677293848,
+    "gcv": 0.0
+   },
+   "basin_decades": 0.5
+  },
+  {
+   "scene": "mixed",
+   "b": 3,
+   "sigma": 0.02,
+   "seed": 0,
+   "oracle_lam": 0.01,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.03162277660168379
+   },
+   "cost": {
+    "whiteness": 0.378694035812996,
+    "lcurve": 0.0017967762060946413,
+    "gcv": 0.012592180833311373
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "mixed",
+   "b": 3,
+   "sigma": 0.02,
+   "seed": 1,
+   "oracle_lam": 0.0031622776601683794,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.03162277660168379
+   },
+   "cost": {
+    "whiteness": 0.3810365688351782,
+    "lcurve": 0.0016618685757687768,
+    "gcv": 0.014127937642596233
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "mixed",
+   "b": 3,
+   "sigma": 0.02,
+   "seed": 2,
+   "oracle_lam": 0.0031622776601683794,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.1
+   },
+   "cost": {
+    "whiteness": 0.3767501713184096,
+    "lcurve": 0.0011266028788783355,
+    "gcv": 0.06993501744620478
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "mixed",
+   "b": 3,
+   "sigma": 0.02,
+   "seed": 3,
+   "oracle_lam": 0.0031622776601683794,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.03162277660168379
+   },
+   "cost": {
+    "whiteness": 0.3804842679142364,
+    "lcurve": 0.0014815615976830898,
+    "gcv": 0.015412703767483826
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "mixed",
+   "b": 3,
+   "sigma": 0.02,
+   "seed": 4,
+   "oracle_lam": 0.0031622776601683794,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.03162277660168379
+   },
+   "cost": {
+    "whiteness": 0.3856837523676191,
+    "lcurve": 0.0013774091569458413,
+    "gcv": 0.017431417623193113
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "mixed",
+   "b": 3,
+   "sigma": 0.05,
+   "seed": 0,
+   "oracle_lam": 0.01,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.1
+   },
+   "cost": {
+    "whiteness": 0.2975567177775438,
+    "lcurve": 0.009528502869548205,
+    "gcv": 0.0369258419661449
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "mixed",
+   "b": 3,
+   "sigma": 0.05,
+   "seed": 1,
+   "oracle_lam": 0.03162277660168379,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.03162277660168379
+   },
+   "cost": {
+    "whiteness": 0.3029526029613714,
+    "lcurve": 0.01460652345090363,
+    "gcv": 0.0
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "mixed",
+   "b": 3,
+   "sigma": 0.05,
+   "seed": 2,
+   "oracle_lam": 0.03162277660168379,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.1
+   },
+   "cost": {
+    "whiteness": 0.28584728774323453,
+    "lcurve": 0.012610466092983774,
+    "gcv": 0.0330366689990258
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "mixed",
+   "b": 3,
+   "sigma": 0.05,
+   "seed": 3,
+   "oracle_lam": 0.03162277660168379,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.1
+   },
+   "cost": {
+    "whiteness": 0.27258215837307587,
+    "lcurve": 0.016038136126125035,
+    "gcv": 0.02865416387335107
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "mixed",
+   "b": 3,
+   "sigma": 0.05,
+   "seed": 4,
+   "oracle_lam": 0.03162277660168379,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.03162277660168379
+   },
+   "cost": {
+    "whiteness": 0.29398912978355995,
+    "lcurve": 0.013353011937573545,
+    "gcv": 0.0
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "mixed",
+   "b": 4,
+   "sigma": 0.02,
+   "seed": 0,
+   "oracle_lam": 9.999999999999999e-06,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.03162277660168379
+   },
+   "cost": {
+    "whiteness": 0.2709079228397757,
+    "lcurve": 0.0003972007007333467,
+    "gcv": 0.007860717036558107
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "mixed",
+   "b": 4,
+   "sigma": 0.02,
+   "seed": 1,
+   "oracle_lam": 9.999999999999999e-06,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.03162277660168379
+   },
+   "cost": {
+    "whiteness": 0.272605562408478,
+    "lcurve": 0.000740684928059121,
+    "gcv": 0.009039737919781965
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "mixed",
+   "b": 4,
+   "sigma": 0.02,
+   "seed": 2,
+   "oracle_lam": 9.999999999999999e-06,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.1
+   },
+   "cost": {
+    "whiteness": 0.2695735972411286,
+    "lcurve": 0.00044713907584448265,
+    "gcv": 0.04153153970335821
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "mixed",
+   "b": 4,
+   "sigma": 0.02,
+   "seed": 3,
+   "oracle_lam": 9.999999999999999e-06,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.1
+   },
+   "cost": {
+    "whiteness": 0.26957466696439947,
+    "lcurve": 0.00015243267930098447,
+    "gcv": 0.04039365403264594
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "mixed",
+   "b": 4,
+   "sigma": 0.02,
+   "seed": 4,
+   "oracle_lam": 9.999999999999999e-06,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.1
+   },
+   "cost": {
+    "whiteness": 0.2759112534118833,
+    "lcurve": 0.0002844447087029245,
+    "gcv": 0.04163991085011487
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "mixed",
+   "b": 4,
+   "sigma": 0.05,
+   "seed": 0,
+   "oracle_lam": 0.01,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.03162277660168379
+   },
+   "cost": {
+    "whiteness": 0.23173790314603604,
+    "lcurve": 0.0013416714008285258,
+    "gcv": 0.002601668488698472
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "mixed",
+   "b": 4,
+   "sigma": 0.05,
+   "seed": 1,
+   "oracle_lam": 0.03162277660168379,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.1
+   },
+   "cost": {
+    "whiteness": 0.22263693453683375,
+    "lcurve": 0.0033333526574399475,
+    "gcv": 0.01968668562468623
+   },
+   "basin_decades": 5.5
+  },
+  {
+   "scene": "mixed",
+   "b": 4,
+   "sigma": 0.05,
+   "seed": 2,
+   "oracle_lam": 0.01,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.1
+   },
+   "cost": {
+    "whiteness": 0.22122505555171856,
+    "lcurve": 0.0018648916924322023,
+    "gcv": 0.020532632686315777
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "mixed",
+   "b": 4,
+   "sigma": 0.05,
+   "seed": 3,
+   "oracle_lam": 0.03162277660168379,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.1
+   },
+   "cost": {
+    "whiteness": 0.22378309475762892,
+    "lcurve": 0.0028113611153470774,
+    "gcv": 0.019753410863993848
+   },
+   "basin_decades": 5.5
+  },
+  {
+   "scene": "mixed",
+   "b": 4,
+   "sigma": 0.05,
+   "seed": 4,
+   "oracle_lam": 3.162277660168379e-06,
+   "picked_lam": {
+    "whiteness": 1.0,
+    "lcurve": 3.162277660168379e-06,
+    "gcv": 0.1
+   },
+   "cost": {
+    "whiteness": 0.23712822279009727,
+    "lcurve": 0.0,
+    "gcv": 0.028509182264223165
+   },
+   "basin_decades": 5.0
+  }
+ ],
+ "E2": [
+  {
+   "scene": "nebula",
+   "sigma": 0.02,
+   "seed": 0,
+   "mode": "single",
+   "oracle_rmse": 0.0423567332260058,
+   "oracle_lam": 0.0031622776601683794,
+   "cost": {
+    "whiteness": 0.3851980287418111,
+    "lcurve": 0.001526863960749525,
+    "gcv": 0.015176166567064442
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "nebula",
+   "sigma": 0.02,
+   "seed": 0,
+   "mode": "dither_full",
+   "oracle_rmse": 0.024925972515756404,
+   "oracle_lam": 0.00031622776601683794,
+   "cost": {
+    "whiteness": 0.060127454487609366,
+    "lcurve": 0.060127454487609366,
+    "gcv": 0.0
+   },
+   "basin_decades": 0.5
+  },
+  {
+   "scene": "nebula",
+   "sigma": 0.02,
+   "seed": 0,
+   "mode": "dither_matched",
+   "oracle_rmse": 0.032434003522547,
+   "oracle_lam": 0.0031622776601683794,
+   "cost": {
+    "whiteness": 0.0,
+    "lcurve": 0.059000439172461006,
+    "gcv": 0.0
+   },
+   "basin_decades": 0.5
+  },
+  {
+   "scene": "nebula",
+   "sigma": 0.02,
+   "seed": 1,
+   "mode": "single",
+   "oracle_rmse": 0.04215601442824158,
+   "oracle_lam": 0.0031622776601683794,
+   "cost": {
+    "whiteness": 0.38878819453613245,
+    "lcurve": 0.0022759950649051675,
+    "gcv": 0.0013874462518219666
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "nebula",
+   "sigma": 0.02,
+   "seed": 1,
+   "mode": "dither_full",
+   "oracle_rmse": 0.024761136636984007,
+   "oracle_lam": 0.00031622776601683794,
+   "cost": {
+    "whiteness": 0.06352086044178828,
+    "lcurve": 0.06352086044178828,
+    "gcv": 0.0
+   },
+   "basin_decades": 0.5
+  },
+  {
+   "scene": "nebula",
+   "sigma": 0.02,
+   "seed": 1,
+   "mode": "dither_matched",
+   "oracle_rmse": 0.032291855773016305,
+   "oracle_lam": 0.0031622776601683794,
+   "cost": {
+    "whiteness": 0.0,
+    "lcurve": 0.06462573791476345,
+    "gcv": 0.0
+   },
+   "basin_decades": 0.5
+  },
+  {
+   "scene": "nebula",
+   "sigma": 0.02,
+   "seed": 2,
+   "mode": "single",
+   "oracle_rmse": 0.04222533532827451,
+   "oracle_lam": 0.0031622776601683794,
+   "cost": {
+    "whiteness": 0.38499992283534934,
+    "lcurve": 0.0016920161230722375,
+    "gcv": 0.07160631454104749
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "nebula",
+   "sigma": 0.02,
+   "seed": 2,
+   "mode": "dither_full",
+   "oracle_rmse": 0.024607544940524657,
+   "oracle_lam": 0.00031622776601683794,
+   "cost": {
+    "whiteness": 0.06634994559080232,
+    "lcurve": 0.06634994559080232,
+    "gcv": 0.0
+   },
+   "basin_decades": 0.5
+  },
+  {
+   "scene": "nebula",
+   "sigma": 0.02,
+   "seed": 2,
+   "mode": "dither_matched",
+   "oracle_rmse": 0.03204727055283727,
+   "oracle_lam": 0.0031622776601683794,
+   "cost": {
+    "whiteness": 0.0,
+    "lcurve": 0.06499596020930265,
+    "gcv": 0.0
+   },
+   "basin_decades": 0.5
+  },
+  {
+   "scene": "nebula",
+   "sigma": 0.02,
+   "seed": 3,
+   "mode": "single",
+   "oracle_rmse": 0.04227992640931682,
+   "oracle_lam": 0.0031622776601683794,
+   "cost": {
+    "whiteness": 0.38339074385149563,
+    "lcurve": 0.001550009829271115,
+    "gcv": 0.014760323186238544
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "nebula",
+   "sigma": 0.02,
+   "seed": 3,
+   "mode": "dither_full",
+   "oracle_rmse": 0.02484897844659427,
+   "oracle_lam": 0.00031622776601683794,
+   "cost": {
+    "whiteness": 0.06396384211908424,
+    "lcurve": 0.06396384211908424,
+    "gcv": 0.0
+   },
+   "basin_decades": 0.5
+  },
+  {
+   "scene": "nebula",
+   "sigma": 0.02,
+   "seed": 3,
+   "mode": "dither_matched",
+   "oracle_rmse": 0.032615486030710794,
+   "oracle_lam": 0.0031622776601683794,
+   "cost": {
+    "whiteness": 0.05653621077150994,
+    "lcurve": 0.05653621077150994,
+    "gcv": 0.0
+   },
+   "basin_decades": 0.5
+  },
+  {
+   "scene": "nebula",
+   "sigma": 0.02,
+   "seed": 4,
+   "mode": "single",
+   "oracle_rmse": 0.042376507399057115,
+   "oracle_lam": 0.0031622776601683794,
+   "cost": {
+    "whiteness": 0.3867819784705331,
+    "lcurve": 0.001451101997013593,
+    "gcv": 0.0011315921452397237
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "nebula",
+   "sigma": 0.02,
+   "seed": 4,
+   "mode": "dither_full",
+   "oracle_rmse": 0.024467375373456744,
+   "oracle_lam": 0.00031622776601683794,
+   "cost": {
+    "whiteness": 0.0705577847980492,
+    "lcurve": 0.0705577847980492,
+    "gcv": 0.0
+   },
+   "basin_decades": 0.5
+  },
+  {
+   "scene": "nebula",
+   "sigma": 0.02,
+   "seed": 4,
+   "mode": "dither_matched",
+   "oracle_rmse": 0.03216361813176187,
+   "oracle_lam": 0.0031622776601683794,
+   "cost": {
+    "whiteness": 0.0,
+    "lcurve": 0.06554696328882992,
+    "gcv": 0.0
+   },
+   "basin_decades": 0.5
+  },
+  {
+   "scene": "nebula",
+   "sigma": 0.05,
+   "seed": 0,
+   "mode": "single",
+   "oracle_rmse": 0.04512542729216151,
+   "oracle_lam": 0.03162277660168379,
+   "cost": {
+    "whiteness": 0.3021705295019854,
+    "lcurve": 0.00901791805445229,
+    "gcv": 0.0
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "nebula",
+   "sigma": 0.05,
+   "seed": 0,
+   "mode": "dither_full",
+   "oracle_rmse": 0.031531644633667255,
+   "oracle_lam": 0.001,
+   "cost": {
+    "whiteness": 0.001168397150510092,
+    "lcurve": 0.08007386832441421,
+    "gcv": 0.001168397150510092
+   },
+   "basin_decades": 1.0
+  },
+  {
+   "scene": "nebula",
+   "sigma": 0.05,
+   "seed": 0,
+   "mode": "dither_matched",
+   "oracle_rmse": 0.04181707581544394,
+   "oracle_lam": 0.03162277660168379,
+   "cost": {
+    "whiteness": 0.07770151161634309,
+    "lcurve": 0.07770151161634309,
+    "gcv": 0.0015979016138540914
+   },
+   "basin_decades": 1.0
+  },
+  {
+   "scene": "nebula",
+   "sigma": 0.05,
+   "seed": 1,
+   "mode": "single",
+   "oracle_rmse": 0.045293134807087014,
+   "oracle_lam": 0.01,
+   "cost": {
+    "whiteness": 0.30218511220087585,
+    "lcurve": 0.009430197146671038,
+    "gcv": 0.0005351280812488923
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "nebula",
+   "sigma": 0.05,
+   "seed": 1,
+   "mode": "dither_full",
+   "oracle_rmse": 0.03104939480309402,
+   "oracle_lam": 0.001,
+   "cost": {
+    "whiteness": 0.0059397283492539366,
+    "lcurve": 0.09261385080016615,
+    "gcv": 0.0
+   },
+   "basin_decades": 1.0
+  },
+  {
+   "scene": "nebula",
+   "sigma": 0.05,
+   "seed": 1,
+   "mode": "dither_matched",
+   "oracle_rmse": 0.04175546742483869,
+   "oracle_lam": 0.01,
+   "cost": {
+    "whiteness": 0.0,
+    "lcurve": 0.09053609789259598,
+    "gcv": 0.009968159324907466
+   },
+   "basin_decades": 1.0
+  },
+  {
+   "scene": "nebula",
+   "sigma": 0.05,
+   "seed": 2,
+   "mode": "single",
+   "oracle_rmse": 0.04500476913360255,
+   "oracle_lam": 0.03162277660168379,
+   "cost": {
+    "whiteness": 0.3057484555113392,
+    "lcurve": 0.01032054283413153,
+    "gcv": 0.03530288463273523
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "nebula",
+   "sigma": 0.05,
+   "seed": 2,
+   "mode": "dither_full",
+   "oracle_rmse": 0.031378582021014914,
+   "oracle_lam": 0.001,
+   "cost": {
+    "whiteness": 0.00101270351779581,
+    "lcurve": 0.07961185923234826,
+    "gcv": 0.0
+   },
+   "basin_decades": 1.0
+  },
+  {
+   "scene": "nebula",
+   "sigma": 0.05,
+   "seed": 2,
+   "mode": "dither_matched",
+   "oracle_rmse": 0.04138607827908007,
+   "oracle_lam": 0.01,
+   "cost": {
+    "whiteness": 0.0,
+    "lcurve": 0.08835048659083533,
+    "gcv": 0.0
+   },
+   "basin_decades": 1.0
+  },
+  {
+   "scene": "nebula",
+   "sigma": 0.05,
+   "seed": 3,
+   "mode": "single",
+   "oracle_rmse": 0.045037169129120466,
+   "oracle_lam": 0.01,
+   "cost": {
+    "whiteness": 0.30897684474169407,
+    "lcurve": 0.009176143346655063,
+    "gcv": 0.03702043161996471
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "nebula",
+   "sigma": 0.05,
+   "seed": 3,
+   "mode": "dither_full",
+   "oracle_rmse": 0.03119004877029739,
+   "oracle_lam": 0.001,
+   "cost": {
+    "whiteness": 0.0010387893427377115,
+    "lcurve": 0.0864247074225537,
+    "gcv": 0.0
+   },
+   "basin_decades": 1.0
+  },
+  {
+   "scene": "nebula",
+   "sigma": 0.05,
+   "seed": 3,
+   "mode": "dither_matched",
+   "oracle_rmse": 0.04144637352563089,
+   "oracle_lam": 0.01,
+   "cost": {
+    "whiteness": 0.0,
+    "lcurve": 0.09347630425497888,
+    "gcv": 0.010205980556119876
+   },
+   "basin_decades": 1.0
+  },
+  {
+   "scene": "nebula",
+   "sigma": 0.05,
+   "seed": 4,
+   "mode": "single",
+   "oracle_rmse": 0.04529105181551586,
+   "oracle_lam": 0.03162277660168379,
+   "cost": {
+    "whiteness": 0.3018465600332376,
+    "lcurve": 0.013286011531145503,
+    "gcv": 0.014531132719518336
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "nebula",
+   "sigma": 0.05,
+   "seed": 4,
+   "mode": "dither_full",
+   "oracle_rmse": 0.031045885445841068,
+   "oracle_lam": 0.001,
+   "cost": {
+    "whiteness": 0.010869338604850842,
+    "lcurve": 0.09553522922816815,
+    "gcv": 0.010869338604850842
+   },
+   "basin_decades": 1.0
+  },
+  {
+   "scene": "nebula",
+   "sigma": 0.05,
+   "seed": 4,
+   "mode": "dither_matched",
+   "oracle_rmse": 0.041856544324306716,
+   "oracle_lam": 0.01,
+   "cost": {
+    "whiteness": 0.0015700591514984374,
+    "lcurve": 0.0781161098801173,
+    "gcv": 0.0015700591514984374
+   },
+   "basin_decades": 1.0
+  },
+  {
+   "scene": "stars",
+   "sigma": 0.02,
+   "seed": 0,
+   "mode": "single",
+   "oracle_rmse": 0.025302999953185617,
+   "oracle_lam": 0.03162277660168379,
+   "cost": {
+    "whiteness": 0.0617076238624763,
+    "lcurve": 0.017683419886444618,
+    "gcv": 0.0617076238624763
+   },
+   "basin_decades": 5.5
+  },
+  {
+   "scene": "stars",
+   "sigma": 0.02,
+   "seed": 0,
+   "mode": "dither_full",
+   "oracle_rmse": 0.01754703468489275,
+   "oracle_lam": 0.001,
+   "cost": {
+    "whiteness": 0.07168354112548947,
+    "lcurve": 0.07168354112548947,
+    "gcv": 0.0
+   },
+   "basin_decades": 1.0
+  },
+  {
+   "scene": "stars",
+   "sigma": 0.02,
+   "seed": 0,
+   "mode": "dither_matched",
+   "oracle_rmse": 0.02262541818472618,
+   "oracle_lam": 0.01,
+   "cost": {
+    "whiteness": 0.0,
+    "lcurve": 0.0,
+    "gcv": 0.0
+   },
+   "basin_decades": 0.5
+  },
+  {
+   "scene": "stars",
+   "sigma": 0.02,
+   "seed": 1,
+   "mode": "single",
+   "oracle_rmse": 0.02508940738730988,
+   "oracle_lam": 0.03162277660168379,
+   "cost": {
+    "whiteness": 0.07251162345021678,
+    "lcurve": 0.016789279198868856,
+    "gcv": 0.07251162345021678
+   },
+   "basin_decades": 5.5
+  },
+  {
+   "scene": "stars",
+   "sigma": 0.02,
+   "seed": 1,
+   "mode": "dither_full",
+   "oracle_rmse": 0.017599096670689592,
+   "oracle_lam": 0.001,
+   "cost": {
+    "whiteness": 0.06913344814741418,
+    "lcurve": 0.06913344814741418,
+    "gcv": 0.0
+   },
+   "basin_decades": 0.5
+  },
+  {
+   "scene": "stars",
+   "sigma": 0.02,
+   "seed": 1,
+   "mode": "dither_matched",
+   "oracle_rmse": 0.022714269529397247,
+   "oracle_lam": 0.01,
+   "cost": {
+    "whiteness": 0.0,
+    "lcurve": 0.034085359987094055,
+    "gcv": 0.0
+   },
+   "basin_decades": 0.5
+  },
+  {
+   "scene": "stars",
+   "sigma": 0.02,
+   "seed": 2,
+   "mode": "single",
+   "oracle_rmse": 0.02504763503919003,
+   "oracle_lam": 0.03162277660168379,
+   "cost": {
+    "whiteness": 0.07283532830193962,
+    "lcurve": 0.01434875381041345,
+    "gcv": 0.07283532830193962
+   },
+   "basin_decades": 5.5
+  },
+  {
+   "scene": "stars",
+   "sigma": 0.02,
+   "seed": 2,
+   "mode": "dither_full",
+   "oracle_rmse": 0.017623720736303135,
+   "oracle_lam": 0.001,
+   "cost": {
+    "whiteness": 0.06821062123238741,
+    "lcurve": 0.06821062123238741,
+    "gcv": 0.0
+   },
+   "basin_decades": 0.5
+  },
+  {
+   "scene": "stars",
+   "sigma": 0.02,
+   "seed": 2,
+   "mode": "dither_matched",
+   "oracle_rmse": 0.022753457347496474,
+   "oracle_lam": 0.01,
+   "cost": {
+    "whiteness": 0.0,
+    "lcurve": 0.032136615041467254,
+    "gcv": 0.0
+   },
+   "basin_decades": 0.5
+  },
+  {
+   "scene": "stars",
+   "sigma": 0.02,
+   "seed": 3,
+   "mode": "single",
+   "oracle_rmse": 0.025240997392446698,
+   "oracle_lam": 0.03162277660168379,
+   "cost": {
+    "whiteness": 0.06571591801224708,
+    "lcurve": 0.014604354407162345,
+    "gcv": 0.06571591801224708
+   },
+   "basin_decades": 5.5
+  },
+  {
+   "scene": "stars",
+   "sigma": 0.02,
+   "seed": 3,
+   "mode": "dither_full",
+   "oracle_rmse": 0.017300422125215605,
+   "oracle_lam": 0.001,
+   "cost": {
+    "whiteness": 0.07957359193163094,
+    "lcurve": 0.07957359193163094,
+    "gcv": 0.0
+   },
+   "basin_decades": 1.0
+  },
+  {
+   "scene": "stars",
+   "sigma": 0.02,
+   "seed": 3,
+   "mode": "dither_matched",
+   "oracle_rmse": 0.022434558757972827,
+   "oracle_lam": 0.01,
+   "cost": {
+    "whiteness": 0.0,
+    "lcurve": 0.154932578721086,
+    "gcv": 0.0
+   },
+   "basin_decades": 1.0
+  },
+  {
+   "scene": "stars",
+   "sigma": 0.02,
+   "seed": 4,
+   "mode": "single",
+   "oracle_rmse": 0.025083083597427645,
+   "oracle_lam": 0.03162277660168379,
+   "cost": {
+    "whiteness": 0.07074513979029984,
+    "lcurve": 0.016506545002942907,
+    "gcv": 0.07074513979029984
+   },
+   "basin_decades": 5.5
+  },
+  {
+   "scene": "stars",
+   "sigma": 0.02,
+   "seed": 4,
+   "mode": "dither_full",
+   "oracle_rmse": 0.017587186734410284,
+   "oracle_lam": 0.001,
+   "cost": {
+    "whiteness": 0.0,
+    "lcurve": 0.07000376346909731,
+    "gcv": 0.0
+   },
+   "basin_decades": 0.5
+  },
+  {
+   "scene": "stars",
+   "sigma": 0.02,
+   "seed": 4,
+   "mode": "dither_matched",
+   "oracle_rmse": 0.02262463386637432,
+   "oracle_lam": 0.01,
+   "cost": {
+    "whiteness": 0.0,
+    "lcurve": 0.0317986234751757,
+    "gcv": 0.0
+   },
+   "basin_decades": 0.5
+  },
+  {
+   "scene": "stars",
+   "sigma": 0.05,
+   "seed": 0,
+   "mode": "single",
+   "oracle_rmse": 0.02803763672531943,
+   "oracle_lam": 1.0,
+   "cost": {
+    "whiteness": 0.0,
+    "lcurve": 0.1319201887112944,
+    "gcv": 0.0
+   },
+   "basin_decades": 1.0
+  },
+  {
+   "scene": "stars",
+   "sigma": 0.05,
+   "seed": 0,
+   "mode": "dither_full",
+   "oracle_rmse": 0.021546572956699962,
+   "oracle_lam": 0.0031622776601683794,
+   "cost": {
+    "whiteness": 0.010921805938566731,
+    "lcurve": 0.010921805938566731,
+    "gcv": 0.010921805938566731
+   },
+   "basin_decades": 1.0
+  },
+  {
+   "scene": "stars",
+   "sigma": 0.05,
+   "seed": 0,
+   "mode": "dither_matched",
+   "oracle_rmse": 0.02739459464826608,
+   "oracle_lam": 0.31622776601683794,
+   "cost": {
+    "whiteness": 0.001166467324341891,
+    "lcurve": 0.0,
+    "gcv": 0.009845611491395845
+   },
+   "basin_decades": 1.5
+  },
+  {
+   "scene": "stars",
+   "sigma": 0.05,
+   "seed": 1,
+   "mode": "single",
+   "oracle_rmse": 0.02722505040307062,
+   "oracle_lam": 0.31622776601683794,
+   "cost": {
+    "whiteness": 0.009201478913302141,
+    "lcurve": 0.13847967392755622,
+    "gcv": 0.009201478913302141
+   },
+   "basin_decades": 1.5
+  },
+  {
+   "scene": "stars",
+   "sigma": 0.05,
+   "seed": 1,
+   "mode": "dither_full",
+   "oracle_rmse": 0.021942383360163856,
+   "oracle_lam": 0.01,
+   "cost": {
+    "whiteness": 0.0,
+    "lcurve": 0.0,
+    "gcv": 0.0
+   },
+   "basin_decades": 1.0
+  },
+  {
+   "scene": "stars",
+   "sigma": 0.05,
+   "seed": 1,
+   "mode": "dither_matched",
+   "oracle_rmse": 0.027360641859447213,
+   "oracle_lam": 0.31622776601683794,
+   "cost": {
+    "whiteness": 0.04866017118994814,
+    "lcurve": 0.0,
+    "gcv": 0.0
+   },
+   "basin_decades": 1.5
+  },
+  {
+   "scene": "stars",
+   "sigma": 0.05,
+   "seed": 2,
+   "mode": "single",
+   "oracle_rmse": 0.027215950170504297,
+   "oracle_lam": 0.31622776601683794,
+   "cost": {
+    "whiteness": 0.009824536544642992,
+    "lcurve": 0.11126778423756734,
+    "gcv": 0.009824536544642992
+   },
+   "basin_decades": 1.5
+  },
+  {
+   "scene": "stars",
+   "sigma": 0.05,
+   "seed": 2,
+   "mode": "dither_full",
+   "oracle_rmse": 0.02165674530633381,
+   "oracle_lam": 0.0031622776601683794,
+   "cost": {
+    "whiteness": 0.010854246405577861,
+    "lcurve": 0.010854246405577861,
+    "gcv": 0.010854246405577861
+   },
+   "basin_decades": 1.0
+  },
+  {
+   "scene": "stars",
+   "sigma": 0.05,
+   "seed": 2,
+   "mode": "dither_matched",
+   "oracle_rmse": 0.027415700880677702,
+   "oracle_lam": 0.31622776601683794,
+   "cost": {
+    "whiteness": 0.0033396705560602147,
+    "lcurve": 0.0,
+    "gcv": 0.011684822090989977
+   },
+   "basin_decades": 1.5
+  },
+  {
+   "scene": "stars",
+   "sigma": 0.05,
+   "seed": 3,
+   "mode": "single",
+   "oracle_rmse": 0.027658219109248438,
+   "oracle_lam": 0.31622776601683794,
+   "cost": {
+    "whiteness": 0.004237176447441149,
+    "lcurve": 0.12783405690991678,
+    "gcv": 0.004237176447441149
+   },
+   "basin_decades": 1.5
+  },
+  {
+   "scene": "stars",
+   "sigma": 0.05,
+   "seed": 3,
+   "mode": "dither_full",
+   "oracle_rmse": 0.021988117389699864,
+   "oracle_lam": 0.01,
+   "cost": {
+    "whiteness": 0.0,
+    "lcurve": 0.0,
+    "gcv": 0.004477337087648969
+   },
+   "basin_decades": 1.0
+  },
+  {
+   "scene": "stars",
+   "sigma": 0.05,
+   "seed": 3,
+   "mode": "dither_matched",
+   "oracle_rmse": 0.027497645976934788,
+   "oracle_lam": 0.31622776601683794,
+   "cost": {
+    "whiteness": 0.0592350409582727,
+    "lcurve": 0.0,
+    "gcv": 0.0
+   },
+   "basin_decades": 1.5
+  },
+  {
+   "scene": "stars",
+   "sigma": 0.05,
+   "seed": 4,
+   "mode": "single",
+   "oracle_rmse": 0.027636523300371883,
+   "oracle_lam": 0.31622776601683794,
+   "cost": {
+    "whiteness": 0.010167716494227319,
+    "lcurve": 0.11351463651434535,
+    "gcv": 0.010167716494227319
+   },
+   "basin_decades": 1.5
+  },
+  {
+   "scene": "stars",
+   "sigma": 0.05,
+   "seed": 4,
+   "mode": "dither_full",
+   "oracle_rmse": 0.0216887323581849,
+   "oracle_lam": 0.0031622776601683794,
+   "cost": {
+    "whiteness": 0.003753139714566922,
+    "lcurve": 0.003753139714566922,
+    "gcv": 0.003753139714566922
+   },
+   "basin_decades": 1.0
+  },
+  {
+   "scene": "stars",
+   "sigma": 0.05,
+   "seed": 4,
+   "mode": "dither_matched",
+   "oracle_rmse": 0.027185337569476352,
+   "oracle_lam": 0.1,
+   "cost": {
+    "whiteness": 0.019555079206174275,
+    "lcurve": 0.0036923553698187117,
+    "gcv": 0.0036923553698187117
+   },
+   "basin_decades": 1.5
+  },
+  {
+   "scene": "mixed",
+   "sigma": 0.02,
+   "seed": 0,
+   "mode": "single",
+   "oracle_rmse": 0.04022235393638096,
+   "oracle_lam": 0.0031622776601683794,
+   "cost": {
+    "whiteness": 0.37965946975259723,
+    "lcurve": 0.0018712148959438846,
+    "gcv": 0.014597261876864165
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "mixed",
+   "sigma": 0.02,
+   "seed": 0,
+   "mode": "dither_full",
+   "oracle_rmse": 0.023422884603427875,
+   "oracle_lam": 0.00031622776601683794,
+   "cost": {
+    "whiteness": 0.055095201893957224,
+    "lcurve": 0.055095201893957224,
+    "gcv": 0.0
+   },
+   "basin_decades": 0.5
+  },
+  {
+   "scene": "mixed",
+   "sigma": 0.02,
+   "seed": 0,
+   "mode": "dither_matched",
+   "oracle_rmse": 0.030865342516562217,
+   "oracle_lam": 0.0031622776601683794,
+   "cost": {
+    "whiteness": 0.0,
+    "lcurve": 0.05332601498980849,
+    "gcv": 0.0
+   },
+   "basin_decades": 0.5
+  },
+  {
+   "scene": "mixed",
+   "sigma": 0.02,
+   "seed": 1,
+   "mode": "single",
+   "oracle_rmse": 0.04027967614662924,
+   "oracle_lam": 0.0031622776601683794,
+   "cost": {
+    "whiteness": 0.3778731664022912,
+    "lcurve": 0.002037963453337621,
+    "gcv": 0.013645409693931576
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "mixed",
+   "sigma": 0.02,
+   "seed": 1,
+   "mode": "dither_full",
+   "oracle_rmse": 0.02337288361486711,
+   "oracle_lam": 0.00031622776601683794,
+   "cost": {
+    "whiteness": 0.054528210807146316,
+    "lcurve": 0.054528210807146316,
+    "gcv": 0.0
+   },
+   "basin_decades": 0.5
+  },
+  {
+   "scene": "mixed",
+   "sigma": 0.02,
+   "seed": 1,
+   "mode": "dither_matched",
+   "oracle_rmse": 0.030686978726780396,
+   "oracle_lam": 0.0031622776601683794,
+   "cost": {
+    "whiteness": 0.0,
+    "lcurve": 0.05602127747130137,
+    "gcv": 0.0
+   },
+   "basin_decades": 0.5
+  },
+  {
+   "scene": "mixed",
+   "sigma": 0.02,
+   "seed": 2,
+   "mode": "single",
+   "oracle_rmse": 0.04028740999607574,
+   "oracle_lam": 0.0031622776601683794,
+   "cost": {
+    "whiteness": 0.3741896369228077,
+    "lcurve": 0.0015832838313094566,
+    "gcv": 0.06829122616023575
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "mixed",
+   "sigma": 0.02,
+   "seed": 2,
+   "mode": "dither_full",
+   "oracle_rmse": 0.023019713239148275,
+   "oracle_lam": 0.00031622776601683794,
+   "cost": {
+    "whiteness": 0.06188119016216853,
+    "lcurve": 0.06188119016216853,
+    "gcv": 0.0
+   },
+   "basin_decades": 0.5
+  },
+  {
+   "scene": "mixed",
+   "sigma": 0.02,
+   "seed": 2,
+   "mode": "dither_matched",
+   "oracle_rmse": 0.030255754365724415,
+   "oracle_lam": 0.0031622776601683794,
+   "cost": {
+    "whiteness": 0.0,
+    "lcurve": 0.06267858834945583,
+    "gcv": 0.0
+   },
+   "basin_decades": 0.5
+  },
+  {
+   "scene": "mixed",
+   "sigma": 0.02,
+   "seed": 3,
+   "mode": "single",
+   "oracle_rmse": 0.04028365600775378,
+   "oracle_lam": 0.0031622776601683794,
+   "cost": {
+    "whiteness": 0.38135498830524006,
+    "lcurve": 0.001881008674262885,
+    "gcv": 0.013646574291823033
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "mixed",
+   "sigma": 0.02,
+   "seed": 3,
+   "mode": "dither_full",
+   "oracle_rmse": 0.02316536458434005,
+   "oracle_lam": 0.00031622776601683794,
+   "cost": {
+    "whiteness": 0.06046557229554095,
+    "lcurve": 0.06046557229554095,
+    "gcv": 0.0
+   },
+   "basin_decades": 0.5
+  },
+  {
+   "scene": "mixed",
+   "sigma": 0.02,
+   "seed": 3,
+   "mode": "dither_matched",
+   "oracle_rmse": 0.030790099352801786,
+   "oracle_lam": 0.0031622776601683794,
+   "cost": {
+    "whiteness": 0.0,
+    "lcurve": 0.061063295551357255,
+    "gcv": 0.0
+   },
+   "basin_decades": 0.5
+  },
+  {
+   "scene": "mixed",
+   "sigma": 0.02,
+   "seed": 4,
+   "mode": "single",
+   "oracle_rmse": 0.04036101381280313,
+   "oracle_lam": 0.0031622776601683794,
+   "cost": {
+    "whiteness": 0.37466439886612046,
+    "lcurve": 0.001109081924717259,
+    "gcv": 0.014185106630917987
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "mixed",
+   "sigma": 0.02,
+   "seed": 4,
+   "mode": "dither_full",
+   "oracle_rmse": 0.023318933449809596,
+   "oracle_lam": 0.00031622776601683794,
+   "cost": {
+    "whiteness": 0.0554101564250582,
+    "lcurve": 0.0554101564250582,
+    "gcv": 0.0
+   },
+   "basin_decades": 0.5
+  },
+  {
+   "scene": "mixed",
+   "sigma": 0.02,
+   "seed": 4,
+   "mode": "dither_matched",
+   "oracle_rmse": 0.03072100347012501,
+   "oracle_lam": 0.0031622776601683794,
+   "cost": {
+    "whiteness": 0.055508110437285874,
+    "lcurve": 0.055508110437285874,
+    "gcv": 0.0
+   },
+   "basin_decades": 0.5
+  },
+  {
+   "scene": "mixed",
+   "sigma": 0.05,
+   "seed": 0,
+   "mode": "single",
+   "oracle_rmse": 0.043312000355249236,
+   "oracle_lam": 0.03162277660168379,
+   "cost": {
+    "whiteness": 0.28827224242034033,
+    "lcurve": 0.018569669637971353,
+    "gcv": 0.030846195829744794
+   },
+   "basin_decades": 4.0
+  },
+  {
+   "scene": "mixed",
+   "sigma": 0.05,
+   "seed": 0,
+   "mode": "dither_full",
+   "oracle_rmse": 0.029321802994185187,
+   "oracle_lam": 0.0031622776601683794,
+   "cost": {
+    "whiteness": 0.0,
+    "lcurve": 0.08403954738662311,
+    "gcv": 0.0
+   },
+   "basin_decades": 1.0
+  },
+  {
+   "scene": "mixed",
+   "sigma": 0.05,
+   "seed": 0,
+   "mode": "dither_matched",
+   "oracle_rmse": 0.03942024558006723,
+   "oracle_lam": 0.03162277660168379,
+   "cost": {
+    "whiteness": 0.00041938327543911136,
+    "lcurve": 0.08261212666938755,
+    "gcv": 0.0
+   },
+   "basin_decades": 1.0
+  },
+  {
+   "scene": "mixed",
+   "sigma": 0.05,
+   "seed": 1,
+   "mode": "single",
+   "oracle_rmse": 0.04351201872729981,
+   "oracle_lam": 0.03162277660168379,
+   "cost": {
+    "whiteness": 0.29044889963249276,
+    "lcurve": 0.010796815630480072,
+    "gcv": 0.0
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "mixed",
+   "sigma": 0.05,
+   "seed": 1,
+   "mode": "dither_full",
+   "oracle_rmse": 0.02940779152004509,
+   "oracle_lam": 0.0031622776601683794,
+   "cost": {
+    "whiteness": 0.0,
+    "lcurve": 0.0842110673074119,
+    "gcv": 0.006901614461362504
+   },
+   "basin_decades": 1.0
+  },
+  {
+   "scene": "mixed",
+   "sigma": 0.05,
+   "seed": 1,
+   "mode": "dither_matched",
+   "oracle_rmse": 0.03958699359657333,
+   "oracle_lam": 0.01,
+   "cost": {
+    "whiteness": 0.0036571877142956843,
+    "lcurve": 0.08814745472448893,
+    "gcv": 0.0036571877142956843
+   },
+   "basin_decades": 1.0
+  },
+  {
+   "scene": "mixed",
+   "sigma": 0.05,
+   "seed": 2,
+   "mode": "single",
+   "oracle_rmse": 0.043606480480010174,
+   "oracle_lam": 0.03162277660168379,
+   "cost": {
+    "whiteness": 0.28621543149471185,
+    "lcurve": 0.017158733589488273,
+    "gcv": 0.02938681735826898
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "mixed",
+   "sigma": 0.05,
+   "seed": 2,
+   "mode": "dither_full",
+   "oracle_rmse": 0.029565984005556354,
+   "oracle_lam": 0.0031622776601683794,
+   "cost": {
+    "whiteness": 0.0,
+    "lcurve": 0.07953837278696851,
+    "gcv": 0.0
+   },
+   "basin_decades": 1.0
+  },
+  {
+   "scene": "mixed",
+   "sigma": 0.05,
+   "seed": 2,
+   "mode": "dither_matched",
+   "oracle_rmse": 0.039393769386615096,
+   "oracle_lam": 0.03162277660168379,
+   "cost": {
+    "whiteness": 0.0,
+    "lcurve": 0.08669602516091501,
+    "gcv": 0.0
+   },
+   "basin_decades": 1.0
+  },
+  {
+   "scene": "mixed",
+   "sigma": 0.05,
+   "seed": 3,
+   "mode": "single",
+   "oracle_rmse": 0.042983534933915254,
+   "oracle_lam": 0.03162277660168379,
+   "cost": {
+    "whiteness": 0.30522586960773657,
+    "lcurve": 0.016709907110207478,
+    "gcv": 0.035594030877553084
+   },
+   "basin_decades": 5.0
+  },
+  {
+   "scene": "mixed",
+   "sigma": 0.05,
+   "seed": 3,
+   "mode": "dither_full",
+   "oracle_rmse": 0.029720438016052765,
+   "oracle_lam": 0.0031622776601683794,
+   "cost": {
+    "whiteness": 0.0,
+    "lcurve": 0.07631166094454,
+    "gcv": 0.0
+   },
+   "basin_decades": 1.0
+  },
+  {
+   "scene": "mixed",
+   "sigma": 0.05,
+   "seed": 3,
+   "mode": "dither_matched",
+   "oracle_rmse": 0.04005976170439666,
+   "oracle_lam": 0.03162277660168379,
+   "cost": {
+    "whiteness": 0.0,
+    "lcurve": 0.07738156754238346,
+    "gcv": 0.0
+   },
+   "basin_decades": 1.0
+  },
+  {
+   "scene": "mixed",
+   "sigma": 0.05,
+   "seed": 4,
+   "mode": "single",
+   "oracle_rmse": 0.04310340214878195,
+   "oracle_lam": 0.03162277660168379,
+   "cost": {
+    "whiteness": 0.2945216956816492,
+    "lcurve": 0.018112989117805567,
+    "gcv": 0.03211675034536876
+   },
+   "basin_decades": 3.5
+  },
+  {
+   "scene": "mixed",
+   "sigma": 0.05,
+   "seed": 4,
+   "mode": "dither_full",
+   "oracle_rmse": 0.029521514838942896,
+   "oracle_lam": 0.0031622776601683794,
+   "cost": {
+    "whiteness": 0.0,
+    "lcurve": 0.08080945038441278,
+    "gcv": 0.010740805550344845
+   },
+   "basin_decades": 1.0
+  },
+  {
+   "scene": "mixed",
+   "sigma": 0.05,
+   "seed": 4,
+   "mode": "dither_matched",
+   "oracle_rmse": 0.03985479322598201,
+   "oracle_lam": 0.01,
+   "cost": {
+    "whiteness": 0.0,
+    "lcurve": 0.08418294370503188,
+    "gcv": 0.0011093016121532795
+   },
+   "basin_decades": 1.0
+  }
+ ],
+ "E3": [
+  {
+   "scene": "nebula",
+   "b": 2,
+   "sigmas": [
+    0,
+    0.005,
+    0.01,
+    0.02,
+    0.03,
+    0.04,
+    0.06,
+    0.08
+   ],
+   "gain": [
+    0.1809576678168901,
+    0.17881642219873048,
+    0.17029862832937678,
+    0.1457767180485406,
+    0.11362274297541053,
+    0.07752389779675425,
+    0.020778511826050124,
+    0.008776424393721565
+   ],
+   "sigma_star": null,
+   "sigma_star_times_b": null
+  },
+  {
+   "scene": "nebula",
+   "b": 3,
+   "sigmas": [
+    0,
+    0.005,
+    0.01,
+    0.02,
+    0.03,
+    0.04,
+    0.06,
+    0.08
+   ],
+   "gain": [
+    0.1334041189156881,
+    0.1329635689969019,
+    0.13067321121602898,
+    0.12283178258245299,
+    0.11458158480678188,
+    0.09903200227350087,
+    0.07199062823179998,
+    0.0419092410708412
+   ],
+   "sigma_star": null,
+   "sigma_star_times_b": null
+  },
+  {
+   "scene": "nebula",
+   "b": 4,
+   "sigmas": [
+    0,
+    0.005,
+    0.01,
+    0.02,
+    0.03,
+    0.04,
+    0.06,
+    0.08
+   ],
+   "gain": [
+    0.14566543558029132,
+    0.1456053264465321,
+    0.14432482705378416,
+    0.1399984399151851,
+    0.13646971862026547,
+    0.13141043185209536,
+    0.11657645577539583,
+    0.09829801447664684
+   ],
+   "sigma_star": null,
+   "sigma_star_times_b": null
+  },
+  {
+   "scene": "stars",
+   "b": 2,
+   "sigmas": [
+    0,
+    0.005,
+    0.01,
+    0.02,
+    0.03,
+    0.04,
+    0.06,
+    0.08
+   ],
+   "gain": [
+    0.0945934464044503,
+    0.0884929506250277,
+    0.07066332263665201,
+    0.02230163653173948,
+    -0.014003173037308296,
+    -0.02418835514436368,
+    0.012906801328196955,
+    0.10663438737015635
+   ],
+   "sigma_star": 0.02614288762190701,
+   "sigma_star_times_b": 0.05228577524381402
+  },
+  {
+   "scene": "stars",
+   "b": 3,
+   "sigmas": [
+    0,
+    0.005,
+    0.01,
+    0.02,
+    0.03,
+    0.04,
+    0.06,
+    0.08
+   ],
+   "gain": [
+    0.014640567841974794,
+    0.013331984160822997,
+    0.009290065302418632,
+    -0.002780699409993242,
+    -0.010943046014092142,
+    -0.01775506696493475,
+    0.009192202897773557,
+    0.06125590640935247
+   ],
+   "sigma_star": 0.01769633533894173,
+   "sigma_star_times_b": 0.05308900601682519
+  },
+  {
+   "scene": "stars",
+   "b": 4,
+   "sigmas": [
+    0,
+    0.005,
+    0.01,
+    0.02,
+    0.03,
+    0.04,
+    0.06,
+    0.08
+   ],
+   "gain": [
+    0.009961341295783053,
+    0.00909265690267422,
+    0.006007543701573223,
+    -0.003370219630949389,
+    -0.01354645804578654,
+    -0.02163088434189086,
+    -0.01802426197022654,
+    0.003282479645769418
+   ],
+   "sigma_star": 0.01640615836479763,
+   "sigma_star_times_b": 0.06562463345919052
+  },
+  {
+   "scene": "mixed",
+   "b": 2,
+   "sigmas": [
+    0,
+    0.005,
+    0.01,
+    0.02,
+    0.03,
+    0.04,
+    0.06,
+    0.08
+   ],
+   "gain": [
+    0.19180298458626316,
+    0.1887966842235855,
+    0.18182256683849196,
+    0.15049213031168523,
+    0.11414424500279127,
+    0.0750751925046353,
+    0.0206874625676719,
+    0.010872113762039236
+   ],
+   "sigma_star": null,
+   "sigma_star_times_b": null
+  },
+  {
+   "scene": "mixed",
+   "b": 3,
+   "sigmas": [
+    0,
+    0.005,
+    0.01,
+    0.02,
+    0.03,
+    0.04,
+    0.06,
+    0.08
+   ],
+   "gain": [
+    0.13306502600861736,
+    0.1327215646390903,
+    0.1302652542025573,
+    0.12298898350647508,
+    0.1110624696866806,
+    0.09536582255968723,
+    0.06752967232457743,
+    0.03734981034972823
+   ],
+   "sigma_star": null,
+   "sigma_star_times_b": null
+  },
+  {
+   "scene": "mixed",
+   "b": 4,
+   "sigmas": [
+    0,
+    0.005,
+    0.01,
+    0.02,
+    0.03,
+    0.04,
+    0.06,
+    0.08
+   ],
+   "gain": [
+    0.14032573987612282,
+    0.14028970977210073,
+    0.13860027311147016,
+    0.13520510248135714,
+    0.1307317277242779,
+    0.12552103294172226,
+    0.10221029863586525,
+    0.0905194390513588
+   ],
+   "sigma_star": null,
+   "sigma_star_times_b": null
+  }
+ ]
+}
