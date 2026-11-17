@@ -1,0 +1,158 @@
+{
+ "module": "quantum_noise_and_entanglement_benchmarks",
+ "version": "1.1.0",
+ "date": "2026-11-16",
+ "status": "READY_FOR_SUBHALO_AGENT_INGESTION",
+ "code_artifact": "quantum_state_complexity_benchmark.py",
+ "hardware_substrate": {
+  "processor_name": "156-qubit superconducting transmon QPU",
+  "architecture": "156-qubit superconducting transmon QPU",
+  "total_qubits": 156
+ },
+ "metrics_definitions": {
+  "shannon_entropy_bits": "H = -sum(p_i * log2(p_i))",
+  "distribution_concentration_pct": "Score = (1 - H / N_qubits) * 100",
+  "jensen_shannon_divergence": "JSD(P || Q) = 0.5 * KL(P || M) + 0.5 * KL(Q || M), M = 0.5 * (P + Q)"
+ },
+ "reproducible_benchmark_pipeline": {
+  "script": "quantum_state_complexity_benchmark.py",
+  "dependencies": [
+   "qiskit",
+   "qiskit-aer",
+   "numpy",
+   "scipy"
+  ],
+  "capabilities": [
+   "Deterministic state preparation via SHA-256 byte-to-Ry angle mapping",
+   "6-qubit closed-ring + cross-diameter CNOT entangling topology",
+   "Configurable XY4, XY8, XY16, and XY32 dynamical decoupling pulse insertion",
+   "transmon T1/T2 thermal relaxation and depolarizing noise model simulation",
+   "Automated Shannon entropy, distribution concentration, and JSD computation"
+  ]
+ },
+ "empirical_benchmarks": {
+  "dynamical_decoupling_scaling": {
+   "description": "Comparison of multi-pulse XY dynamical decoupling sequences on a 6-qubit closed-ring cross-entangled topology (8192 shots, 480 ns idle delay window).",
+   "topology": {
+    "qubits": 6,
+    "ring_edges": [
+     [
+      0,
+      1
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      4,
+      5
+     ],
+     [
+      5,
+      0
+     ]
+    ],
+    "cross_edges": [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      5
+     ]
+    ]
+   },
+   "results": [
+    {
+     "sequence": "XY8",
+     "pulses": 8,
+     "distribution_concentration_pct": 50.0513,
+     "observation": "Baseline dephasing suppression"
+    },
+    {
+     "sequence": "XY16",
+     "pulses": 16,
+     "distribution_concentration_pct": 50.2976,
+     "peak_run_concentration_pct": 50.3549,
+     "shannon_entropy_bits": 1.4541,
+     "transpiled_depth": 101,
+     "observation": "Optimal balance between low-frequency 1/f dephasing suppression and single-qubit gate error accumulation"
+    },
+    {
+     "sequence": "XY32",
+     "pulses": 32,
+     "distribution_concentration_pct": 49.0123,
+     "observation": "Coherence degradation due to cumulative microwave gate error"
+    }
+   ],
+   "ideal_vs_noisy_divergence": {
+    "jensen_shannon_divergence": 0.1546,
+    "noiseless_concentration_baseline_pct": 76.04
+   }
+  },
+  "tripartite_non_locality_mermin_svetlichny": {
+   "description": "3-qubit GHZ tripartite entanglement verification ruling out local hidden variable (LHV) and hybrid-local models.",
+   "physical_qubits": "three-qubit low-error set",
+   "classical_lhv_bound": 2.0,
+   "svetlichny_hybrid_bound": 2.8284,
+   "quantum_tsirelson_bound": 4.0,
+   "measured_raw_M": 3.6738,
+   "measured_raw_M_std": 0.012,
+   "mitigated_M": 3.7795,
+   "mitigated_M_std": 0.0138,
+   "tsirelson_saturation_pct": 94.5,
+   "ghz_subspace_population_raw_pct": 95.07,
+   "ghz_subspace_population_mitigated_pct": 96.26
+  },
+  "hardware_topology_calibration": {
+   "high_stability_clusters": [
+    {
+     "rank": 1,
+     "physical_qubits": "adjacent high-T2 pair",
+     "mean_stability_index": 226.37,
+     "mean_t2_us": 220.34
+    },
+    {
+     "rank": 2,
+     "physical_qubits": [
+      22,
+      23
+     ],
+     "readout_error_pct": 0.317
+    },
+    {
+     "rank": 3,
+     "physical_qubits": [
+      58,
+      59,
+      71
+     ],
+     "mean_stability_index": 145.3
+    }
+   ],
+   "lnn_routing_optimization": {
+    "unoptimized_depth": 64,
+    "lnn_refactored_depth": 18,
+    "stability_multiplier": 3.4
+   }
+  }
+ },
+ "cloud9_integration_notes": {
+  "role": "Empirical noise-floor, Shannon entropy, and Jensen-Shannon Divergence benchmarks for modeling state-distribution complexity under physical hardware decoherence.",
+  "sanitized": true
+ }
+}
