@@ -204,3 +204,12 @@ The expanded KSG diagnostic completed successfully in [GitHub Actions run 439861
 - The strict 100-member historical ensemble reproduction passed again in the same workflow.
 
 See [KSG permutation and nonlinear diagnostic report](KSG_ESTIMATOR_PERMUTATION_NONLINEAR_DIAGNOSTIC_2026-11-17.md). These tests are preliminary diagnostics, not estimator certification, cosmological validation, or TNG validation. Next priorities are a convention-matched independent reference implementation, raw unclipped estimates, broader N/rho/k calibration, and tie-heavy inputs.
+
+### KSG permutation, nonlinear and reference-estimator diagnostics (2026-11-17)
+
+The 20-replicate permutation study found clear separation between paired and shuffled Gaussian samples and between paired and shuffled sinusoidal samples. However, the rho=0.5 Gaussian median estimates (0.1796 bits at N=1,200; 0.1772 bits at N=3,000) remained below the analytic value of 0.2075 bits. Between 65% and 90% of shuffled estimates were exactly zero after the recovered estimator's nonnegative clipping. This is preliminary evidence of dependence discrimination alongside an unresolved quantitative calibration concern.
+
+- [KSG permutation and nonlinear diagnostic report](KSG_ESTIMATOR_PERMUTATION_NONLINEAR_DIAGNOSTIC_2026-11-17.md)
+- [Workflow 43986162321](https://github.com/bordode/cloud9-assembly-index/actions/runs/43986162321)
+
+A separate implementation cross-check against scikit-learn's continuous-feature nearest-neighbour MI estimator has been added. It compares both implementations on identical deterministic Gaussian, shuffled and nonlinear samples, with output units harmonized to bits. The implementations are related but not assumed to use identical estimator conventions; results must be interpreted as a cross-check, not a ground-truth contest. The run and report are pending.
