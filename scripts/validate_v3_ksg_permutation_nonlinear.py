@@ -115,7 +115,7 @@ def main():
         ],
     }
     Path("v3_ksg_permutation_nonlinear_diagnostic.json").write_text(
-        json.dumps(output, indent=2) + "\\n", encoding="utf-8"
+        json.dumps(output, indent=2) + "\n", encoding="utf-8"
     )
     print(json.dumps(output, indent=2))
 
