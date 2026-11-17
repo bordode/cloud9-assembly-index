@@ -1,6 +1,7 @@
 name: Historical v3 single-seed reproduction audit
 
 on:
+  workflow_dispatch:
   push:
     branches: [audit/null-ensemble-v3-provenance]
     paths:
@@ -8,6 +9,7 @@ on:
       - 'scripts/reproduce_cloud9_null_ensemble_v3_single_seed.py'
       - 'scripts/reproduce_cloud9_null_ensemble_v3_full_ensemble.py'
       - 'scripts/validate_v3_ksg_gaussian_diagnostic.py'
+      - 'scripts/validate_v3_ksg_permutation_nonlinear.py'
       - '.github/workflows/v3-single-seed-reproduction.yml'
 
 jobs:
@@ -27,11 +29,14 @@ jobs:
         run: python -m scripts.reproduce_cloud9_null_ensemble_v3_full_ensemble
       - name: Run KSG Gaussian diagnostic
         run: python -m scripts.validate_v3_ksg_gaussian_diagnostic
-      - name: Upload comparison and estimator diagnostic
+      - name: Run KSG permutation and nonlinear diagnostics
+        run: python -m scripts.validate_v3_ksg_permutation_nonlinear
+      - name: Upload comparison and estimator diagnostics
         uses: actions/upload-artifact@v4
         with:
           name: v3-full-ensemble-reproduction
           path: |
             v3_full_ensemble_reproduction.json
             v3_ksg_gaussian_diagnostic.json
+            v3_ksg_permutation_nonlinear_diagnostic.json
           if-no-files-found: error
