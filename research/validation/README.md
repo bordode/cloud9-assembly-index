@@ -192,3 +192,15 @@ The reproduction comparator now performs strict archive/schema/seed/value checks
 The recovered v3 KSG estimator was compared with analytic bivariate-Gaussian mutual information at correlations 0.0, 0.5 and 0.8, with N=1,200 and 3,000 and three deterministic replicates per condition. Estimates were close in this small diagnostic; the largest absolute median error was approximately 0.0393 bits. This is preliminary only: more replicates, permutation controls, nonlinear and tie-heavy cases, and reference-implementation comparisons remain necessary.
 
 See [KSG Gaussian diagnostic report](KSG_ESTIMATOR_GAUSSIAN_DIAGNOSTIC_2026-11-14.md) and [workflow run 43654133609](https://github.com/bordode/cloud9-assembly-index/actions/runs/43654133609). The same workflow reran and passed the strict 100-member ensemble reproduction.
+
+
+## 9. KSG permutation and nonlinear diagnostic (2026-11-17)
+
+The expanded KSG diagnostic completed successfully in [GitHub Actions run 43986162321](https://github.com/bordode/cloud9-assembly-index/actions/runs/43986162321). It tested 20 deterministic replicates at N=1,200 and 3,000, using shuffled-pair controls that preserve each marginal sample.
+
+- Gaussian rho=0.5 paired estimates separated from shuffled controls, but median estimates (0.1796 and 0.1772 bits) were below analytic MI (0.2075 bits) by approximately 0.028–0.030 bits. This persistent discrepancy requires investigation.
+- A nonlinear sinusoidal paired-sample stress test also separated strongly from its shuffled controls. No analytic MI is claimed for that construction.
+- Between 65% and 90% of shuffled estimates were exactly zero after the recovered estimator's nonnegative clipping. Clipping therefore materially shapes the null distributions and must be examined using raw, unclipped estimates in a separate diagnostic.
+- The strict 100-member historical ensemble reproduction passed again in the same workflow.
+
+See [KSG permutation and nonlinear diagnostic report](KSG_ESTIMATOR_PERMUTATION_NONLINEAR_DIAGNOSTIC_2026-11-17.md). These tests are preliminary diagnostics, not estimator certification, cosmological validation, or TNG validation. Next priorities are a convention-matched independent reference implementation, raw unclipped estimates, broader N/rho/k calibration, and tie-heavy inputs.
