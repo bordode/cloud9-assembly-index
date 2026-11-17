@@ -10,12 +10,13 @@ on:
       - 'scripts/reproduce_cloud9_null_ensemble_v3_full_ensemble.py'
       - 'scripts/validate_v3_ksg_gaussian_diagnostic.py'
       - 'scripts/validate_v3_ksg_permutation_nonlinear.py'
+      - 'scripts/validate_v3_ksg_reference_crosscheck.py'
       - '.github/workflows/v3-single-seed-reproduction.yml'
 
 jobs:
   reproduce:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 40
     steps:
       - name: Check out audit branch
         uses: actions/checkout@v4
@@ -31,6 +32,8 @@ jobs:
         run: python -m scripts.validate_v3_ksg_gaussian_diagnostic
       - name: Run KSG permutation and nonlinear diagnostics
         run: python -m scripts.validate_v3_ksg_permutation_nonlinear
+      - name: Run independent KSG implementation cross-check
+        run: python -m scripts.validate_v3_ksg_reference_crosscheck
       - name: Upload comparison and estimator diagnostics
         uses: actions/upload-artifact@v4
         with:
@@ -39,4 +42,5 @@ jobs:
             v3_full_ensemble_reproduction.json
             v3_ksg_gaussian_diagnostic.json
             v3_ksg_permutation_nonlinear_diagnostic.json
+            v3_ksg_reference_crosscheck.json
           if-no-files-found: error
