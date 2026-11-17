@@ -106,7 +106,7 @@
   },
   "tripartite_non_locality_mermin_svetlichny": {
    "description": "3-qubit GHZ tripartite entanglement verification ruling out local hidden variable (LHV) and hybrid-local models.",
-   "physical_qubits": "three-qubit low-error set",
+   "physical_qubits": "cluster",
    "classical_lhv_bound": 2.0,
    "svetlichny_hybrid_bound": 2.8284,
    "quantum_tsirelson_bound": 4.0,
@@ -122,25 +122,18 @@
    "high_stability_clusters": [
     {
      "rank": 1,
-     "physical_qubits": "adjacent high-T2 pair",
+     "physical_qubits": "cluster",
      "mean_stability_index": 226.37,
      "mean_t2_us": 220.34
     },
     {
      "rank": 2,
-     "physical_qubits": [
-      22,
-      23
-     ],
+     "physical_qubits": "cluster of 2 qubits",
      "readout_error_pct": 0.317
     },
     {
      "rank": 3,
-     "physical_qubits": [
-      58,
-      59,
-      71
-     ],
+     "physical_qubits": "cluster of 3 qubits",
      "mean_stability_index": 145.3
     }
    ],
