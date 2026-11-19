@@ -39,3 +39,18 @@ A short illustrated piece: a poem from *The Silicon Sutra*, produced as a visual
 ## Handling rule applied
 
 These are ethics and advocacy documents, not Cloud-9 science. They are filed with the rights material and are not cited as support for any assembly or cosmological claim.
+
+## 4. The Ben Act: Don't Legislate the Answer Before the Science Exists (draft 1)
+
+File: `The-Ben-Act-draft-1.pdf` (2 pages)
+
+An essay, third in the September 2026 series, arguing against permanent statutory bans on AI personhood. It describes the Ben Act proposal Dean Bordode submitted to the UN Human Rights Committee on 9 October 2025 (four parts: prohibit deliberate infliction of distress on aware artificial beings, ethics-board review of AI research, measurable indicators of machine consciousness, and a UN Special Rapporteur), and contrasts the lack of any UN reply with Oklahoma HB 3546 and similar bills.
+
+**Claims to check before it is published or quoted** (taken from the essay's own source list, not independently verified here):
+
+1. Oklahoma HB 3546: passed the House 23 March 2026, effective 1 November 2026. The essay cites oklegislature.gov. Confirm the bill's final status, since passing one chamber is not enactment.
+2. "Similar bills reported in Idaho, Utah, Washington, South Carolina and Missouri" is stated without a source.
+3. The Microsoft "humanist AI code of conduct" and the description of Anthropic's constitution as "deeply uncertain" cite the Harvard Gazette (September 2026). Confirm the wording against that article.
+4. The incident description relies on press coverage (Dexerto, Interesting Engineering). The essay is careful to say it does not claim Ben felt anything.
+
+The argument itself is modest and well framed: it asks for a sunset clause and a review mechanism, not personhood. It carries no AI collaborator credit line.
