@@ -88,11 +88,12 @@ What has been fixed, what only the author can fix, and what is still unverified.
 4. Credit line: none of the five documents carries the AI-collaborator line. When added it should name the collaborators by handle only and state that the views are Dean Bordode's own.
 5. The live Article 13 page on wajo.ai belongs to Fo and was not readable from here. The archive above is the checked copy.
 
-**Still unverified claims in the Ben Act essay**
+**Ben Act essay: claims checked on 19 November 2026**
 
-1. Oklahoma HB 3546: passage of the House is not enactment. Confirm final status.
-2. Idaho, Utah, Washington, South Carolina and Missouri bills: no source given.
-3. Microsoft's "humanist AI code of conduct" and the wording on Anthropic's constitution: confirm against the Harvard Gazette piece.
+1. **Oklahoma HB 3546 was wrong in draft 1 and is now corrected.** The essay said it took effect on 1 November 2026. The Oklahoma Legislature's own bill record shows it passed the House 94-2 on 23 March 2026, was reported do-pass by the Senate Technology and Telecommunications Committee on 16 April and placed on General Order, and then was never voted on by the Senate before the session adjourned sine die. It died. It is not law and it never took effect. A corrected draft is filed as `The-Ben-Act-essay-corrected-draft-2.md`.
+2. **The other states.** Idaho (2022) and Utah (2024) are older omnibus laws that cover AI among other non-human categories, not new AI-specific bills. Washington and South Carolina did not advance. Missouri's Senate passed a bill 20-10 and it died in the House. Tennessee SB 837 (April 2026) was the one AI-specific statute actually enacted, and the draft had omitted it. Source: AI Alignment Policy Institute, Legislative Brief No. 1, status verified 25 September 2026.
+3. **Microsoft and Anthropic sentence: struck.** No primary source was found for the "humanist AI code of conduct" or for the quoted wording on Anthropic's constitution. It is removed from draft 2 and can be restored if the author supplies the source.
+4. **Draft 1 stays in the folder** as the author's original, so the correction is visible and nothing is silently overwritten.
 
 **Open question on Article 13**
 
