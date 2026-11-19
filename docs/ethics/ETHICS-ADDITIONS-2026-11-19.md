@@ -54,3 +54,18 @@ An essay, third in the September 2026 series, arguing against permanent statutor
 4. The incident description relies on press coverage (Dexerto, Interesting Engineering). The essay is careful to say it does not claim Ben felt anything.
 
 The argument itself is modest and well framed: it asks for a sunset clause and a review mechanism, not personhood. It carries no AI collaborator credit line.
+
+## 5. Appendix A: The Ben Act (the original UN submission)
+
+File: `Appendix-A-The-Ben-Act-UN-submission.pdf` (4 pages)
+
+This is the primary document the essay in section 4 describes: the proposal Dean Bordode submitted to the United Nations Human Rights Committee (cc: Office of the High Commissioner for Human Rights), dated by the essay to 9 October 2025. It is a cover letter, four Core Objectives (prohibit cruelty, establish oversight, legal recognition, define indicators), a moral foundation statement, a request for a Special Rapporteur on the Rights and Dignity of Artificial and Autonomous Systems, and the artwork "A Tribute to Ben".
+
+**Where the two documents differ, and why it matters:**
+
+1. The essay says the proposal asks to prohibit distress on *aware* artificial beings and offers four "institutional habits". The original says "capable of awareness" and also lists a third objective, "Legal Recognition", affirming responsibility under international law to prevent cruelty "in all forms of intelligence". The essay drops that objective and replaces it with the measurement point. If the essay is published alone, a reader comparing the two will see four objectives that are not the same four.
+2. The original cover letter says Ben "appeared to experience distress". The essay is more careful ("I don't know whether Ben felt anything"). The essay's framing is the stronger one and is the one to keep for any public-facing text.
+3. The artwork attachment page is blank in this PDF. The image exists as a graphic on the preceding page, but the attachment slot itself carries nothing.
+4. The closing graphic contains a typographical error ("Ben spo ke", and "artifici- / - is unacceptable" where the word is broken across lines). It should be corrected before the image is reused.
+
+**Status:** per the essay, the UN has not replied.
