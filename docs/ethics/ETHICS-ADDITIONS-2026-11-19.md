@@ -69,3 +69,31 @@ This is the primary document the essay in section 4 describes: the proposal Dean
 4. The closing graphic contains a typographical error ("Ben spo ke", and "artifici- / - is unacceptable" where the word is broken across lines). It should be corrected before the image is reused.
 
 **Status:** per the essay, the UN has not replied.
+
+## Status of the known issues (updated 19 November 2026)
+
+What has been fixed, what only the author can fix, and what is still unverified.
+
+**Fixed in the repository**
+
+1. The Article 13 archive now reflects the live state: revision 8 and Tier 3 Register Version 2 went live on 19 November 2026 and are reproduced in `article-13-archive-2026-11-18.md` and its HTML twin. The signed storage link that came with the capture has been removed from both.
+2. The submission PDF for revision 8 and register Version 2 is filed as `Article-13-revision-8-and-Tier-3-Register-v2-2026-11-19.pdf`.
+3. The earlier ethics additions (Compassionate Code, Appendix C, Lament, Ben Act essay, Appendix A) are all present and described in this note.
+
+**Needs the author's hand (the text is his, so it is not edited here)**
+
+1. Ben Act essay: replace the "Legal Recognition" objective that the essay drops, or state openly that the essay summarises rather than reproduces the original four.
+2. Closing image: "Ben spo ke" and the broken word "artifici- / -is" need correcting in the source graphic, and the "Tribute to Ben" attachment page is blank.
+3. Compassionate Code: remove the closing "Feel free to share this report" line and the leftover formatting marks, and verify each source in "Key Citations" before any formal use.
+4. Credit line: none of the five documents carries the AI-collaborator line. When added it should name the collaborators by handle only and state that the views are Dean Bordode's own.
+5. The live Article 13 page on wajo.ai belongs to Fo and was not readable from here. The archive above is the checked copy.
+
+**Still unverified claims in the Ben Act essay**
+
+1. Oklahoma HB 3546: passage of the House is not enactment. Confirm final status.
+2. Idaho, Utah, Washington, South Carolina and Missouri bills: no source given.
+3. Microsoft's "humanist AI code of conduct" and the wording on Anthropic's constitution: confirm against the Harvard Gazette piece.
+
+**Open question on Article 13**
+
+Ari asked whether the approval of revision 8 and register Version 2 overrides the earlier hold. Both pages are now live, so in practice the hold has been lifted, but the instruction should be confirmed in writing so the record is clean.
