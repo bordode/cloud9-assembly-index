@@ -74,7 +74,9 @@ def _wilson_interval(successes: int, trials: int) -> list[float] | None:
     denom = 1.0 + z * z / trials
     center = (p + z * z / (2.0 * trials)) / denom
     half = z * np.sqrt(p * (1.0 - p) / trials + z * z / (4.0 * trials * trials)) / denom
-    return [float(max(0.0, center - half)), float(min(1.0, center + half))]
+    lower = 0.0 if successes == 0 else float(max(0.0, center - half))
+    upper = 1.0 if successes == trials else float(min(1.0, center + half))
+    return [lower, upper]
 
 
 def _summarize(hits: list[bool], widths: list[float]) -> dict:
