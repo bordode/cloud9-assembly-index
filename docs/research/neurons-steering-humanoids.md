@@ -20,6 +20,6 @@ Interpretive only. No A_c score is claimed here; no measurement of assembly comp
 
 - The Scientist, "Lab-Grown Human Neurons Power a Humanoid Robot," November 13, 2026. https://www.the-scientist.com/lab-grown-human-neurons-power-a-humanoid-robot-75267
 - Cai et al., bioRxiv 2026.09.09.750426, posted September 15, 2026 (preprint, not peer-reviewed).
-- Prompt: Instagram reel Dfs5OALJOBC (Giga Qian, November 13, 2026); study file ~/workspace/reel-dfs5-understanding.json.
+- Prompt: Instagram reel Dfs5OALJOBC (Giga Qian, November 13, 2026).
 
-Status: DRAFT candidate, November 14, 2026 — not added to research-notes.json, not uploaded to Drive, nothing filed. Awaiting Dean's review.
+Status: DRAFT candidate, November 14, 2026 — added to research-notes.json November 17, 2026.
