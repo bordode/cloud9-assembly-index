@@ -25,6 +25,6 @@ Interpretive only. No A_c score is claimed here.
 - Templeton et al., "Scaling Monosemanticity," Anthropic, May 2024.
 - Gao et al., "Scaling and Evaluating Sparse Autoencoders," OpenAI, June 2024.
 - Anthropic, "On the Biology of a Large Language Model" and "Circuit Tracing" methods paper, March 27, 2025 (transformer-circuits.pub).
-- Prompt: Instagram reel DfCgMirFQro (AI Unpacked, October 28, 2026); study file ~/workspace/reel-dfcg-understanding.json.
+- Prompt: Instagram reel DfCgMirFQro (AI Unpacked, October 28, 2026).
 
-Status: DRAFT candidate, November 14, 2026 — not added to research-notes.json, not uploaded to Drive, nothing filed. Awaiting Dean's review.
+Status: DRAFT candidate, November 14, 2026 — added to research-notes.json November 17, 2026.
