@@ -51,7 +51,8 @@ def raw_ksg(x, y, strict_boundary=False):
     # Exact recovered-v3 digamma expression, but without max(0, ...).
     raw_nats = digamma(K) - np.mean(digamma(nx + 1) + digamma(ny + 1)) + digamma(n)
     diagnostics = {
-        "boundary_count_changes": int(np.sum(nx != 0) * 0 + np.sum(ny != 0) * 0),
+        "nx_values": nx,
+        "ny_values": ny,
         "mean_nx": float(np.mean(nx)),
         "mean_ny": float(np.mean(ny)),
     }
@@ -69,8 +70,8 @@ def summary(values):
         "q975_bits": float(np.quantile(a, 0.975)),
         "min_bits": float(np.min(a)),
         "max_bits": float(np.max(a)),
-        "fraction_negative_raw": float(np.mean(a < 0.0)),
-        "fraction_exactly_zero_raw": float(np.mean(a == 0.0)),
+        "fraction_negative_values": float(np.mean(a < 0.0)),
+        "fraction_exactly_zero_values": float(np.mean(a == 0.0)),
     }
 
 
@@ -108,6 +109,8 @@ def main():
             current_mean_nx, current_mean_ny = [], []
             strict_mean_nx, strict_mean_ny = [], []
             boundary_changed_replicates = 0
+            boundary_changed_point_fraction = []
+            delta_nx, delta_ny = [], []
             for x, y in zip(samples["x"], samples["y"]):
                 raw_current, diag_current = raw_ksg(x, y, strict_boundary=False)
                 raw_strict, diag_strict = raw_ksg(x, y, strict_boundary=True)
@@ -123,6 +126,13 @@ def main():
                 strict_mean_ny.append(diag_strict["mean_ny"])
                 if raw_current != raw_strict:
                     boundary_changed_replicates += 1
+                nx_current = diag_current["nx_values"]
+                ny_current = diag_current["ny_values"]
+                nx_strict = diag_strict["nx_values"]
+                ny_strict = diag_strict["ny_values"]
+                boundary_changed_point_fraction.append(float(np.mean((nx_current != nx_strict) | (ny_current != ny_strict))))
+                delta_nx.append(float(np.mean(nx_current - nx_strict)))
+                delta_ny.append(float(np.mean(ny_current - ny_strict)))
 
             condition_results[name] = {
                 "historical_clipped_output": summary(historical_clipped),
@@ -137,6 +147,9 @@ def main():
                     "ny": float(np.mean(strict_mean_ny)),
                 },
                 "replicates_where_strict_and_current_estimate_differ": boundary_changed_replicates,
+                "mean_fraction_points_with_any_marginal_count_change": float(np.mean(boundary_changed_point_fraction)),
+                "mean_nx_current_minus_strict": float(np.mean(delta_nx)),
+                "mean_ny_current_minus_strict": float(np.mean(delta_ny)),
             }
 
         records.append({
