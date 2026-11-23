@@ -12,6 +12,7 @@ on:
       - 'scripts/validate_v3_ksg_permutation_nonlinear.py'
       - 'scripts/validate_v3_ksg_reference_crosscheck.py'
       - 'scripts/validate_v3_ksg_raw_unclipped_boundary.py'
+      - 'scripts/validate_v3_ksg_type_i_type_ii_hybrid.py'
       - '.github/workflows/v3-single-seed-reproduction.yml'
 
 jobs:
@@ -37,6 +38,8 @@ jobs:
         run: python -m scripts.validate_v3_ksg_reference_crosscheck
       - name: Run raw unclipped KSG and radius-boundary diagnostic
         run: python -m scripts.validate_v3_ksg_raw_unclipped_boundary
+      - name: Compare complete KSG Type I, Type II and recovered hybrid conventions
+        run: python -m scripts.validate_v3_ksg_type_i_type_ii_hybrid
       - name: Upload comparison and estimator diagnostics
         uses: actions/upload-artifact@v4
         with:
@@ -47,4 +50,5 @@ jobs:
             v3_ksg_permutation_nonlinear_diagnostic.json
             v3_ksg_reference_crosscheck.json
             v3_ksg_raw_unclipped_boundary_diagnostic.json
+            v3_ksg_type_i_type_ii_hybrid_comparison.json
           if-no-files-found: error
