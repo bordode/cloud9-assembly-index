@@ -1,0 +1,82 @@
+name: Dither background sensitivity benchmark
+
+permissions:
+  contents: read
+
+on:
+  push:
+    branches:
+      - research/dithered-stack-control-protocol
+    paths:
+      - 'research/sandbox/poisson_reconstruction.py'
+      - 'research/sandbox/dithered_stack_operator.py'
+      - 'research/sandbox/pixel_integrated_reference.py'
+      - 'scripts/run_dither_background_benchmark.py'
+      - 'scripts/run_dither_background_validation.py'
+      - 'scripts/run_dither_spatial_background_gradient_validation.py'
+      - 'scripts/run_dither_blind_background_estimation_validation.py'
+      - 'scripts/run_dither_calibration_border_contamination_stress_test.py'
+      - 'tests/test_poisson_reconstruction.py'
+      - 'tests/test_dither_background_validation.py'
+      - 'tests/test_dither_spatial_background_gradient_validation.py'
+      - 'tests/test_dither_blind_background_estimation_validation.py'
+      - 'tests/test_dither_calibration_border_contamination_stress_test.py'
+      - 'research/notes/dither_background_validation_protocol_2026-11-11.md'
+      - 'research/notes/dither_spatial_background_gradient_validation_protocol_2026-11-11.md'
+      - 'research/notes/dither_blind_background_estimation_validation_protocol_2026-11-11.md'
+      - 'research/notes/dither_calibration_border_contamination_stress_test_protocol_2026-11-12.md'
+      - '.github/workflows/dither-background-benchmark.yml'
+  workflow_dispatch:
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Run paired background sensitivity benchmark
+        run: python -m scripts.run_dither_background_benchmark
+      - name: Upload background sensitivity results
+        uses: actions/upload-artifact@v4
+        with:
+          name: dither-background-sensitivity-benchmark
+          path: dither_background_sensitivity_benchmark.json
+          if-no-files-found: error
+      - name: Run independent pre-registered validation
+        run: python -m scripts.run_dither_background_validation
+      - name: Upload independent validation results
+        uses: actions/upload-artifact@v4
+        with:
+          name: dither-background-independent-validation
+          path: dither_background_independent_validation.json
+          if-no-files-found: error
+      - name: Run spatial background gradient validation
+        run: python -m scripts.run_dither_spatial_background_gradient_validation
+      - name: Upload spatial background gradient results
+        uses: actions/upload-artifact@v4
+        with:
+          name: dither-spatial-background-gradient-validation
+          path: dither_spatial_background_gradient_validation.json
+          if-no-files-found: error
+      - name: Run blind background estimation validation
+        run: python -m scripts.run_dither_blind_background_estimation_validation
+      - name: Upload blind background estimation results
+        uses: actions/upload-artifact@v4
+        with:
+          name: dither-blind-background-estimation-validation
+          path: dither_blind_background_estimation_validation.json
+          if-no-files-found: error
+      - name: Run calibration-border contamination stress test
+        run: python -m scripts.run_dither_calibration_border_contamination_stress_test
+      - name: Upload calibration-border contamination results
+        uses: actions/upload-artifact@v4
+        with:
+          name: dither-calibration-border-contamination-stress-test
+          path: dither_calibration_border_contamination_stress_test.json
+          if-no-files-found: error
