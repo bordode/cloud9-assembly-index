@@ -215,3 +215,10 @@ The 20-replicate permutation study found clear separation between paired and shu
 A separate implementation cross-check against scikit-learn 1.9.1 completed in [workflow 43987689799](https://github.com/bordode/cloud9-assembly-index/actions/runs/43987689799). Across 20 paired Gaussian replicates, recovered-v3 medians were 0.1796 bits (N=1,200) and 0.1766 bits (N=3,000), below the analytic 0.2075 bits. The recovered-v3 minus scikit-learn paired median difference was -0.0344 and -0.0217 bits, respectively. This is a convention-aware cross-check, not proof that either implementation is ground truth. The persistent numerical difference makes raw unclipped output and neighbour-count convention tests the next priority.
 
 See [KSG independent reference cross-check report](KSG_ESTIMATOR_REFERENCE_CROSSCHECK_2026-11-17.md). The diagnostic artifact is attached to workflow 43987689799.
+
+
+### KSG raw output and radius-boundary sensitivity (2026-11-23)
+
+A separate diagnostic reconstructed the recovered v3 KSG expression without clipping and compared the existing inclusive `kth_radius + 1e-12` marginal counts with a strict-below-kth-radius sensitivity variant. The strict variant shifted Gaussian rho=0.5 means from 0.1808 to 0.2151 bits at N=1,200 and from 0.1830 to 0.2047 bits at N=3,000, against analytic MI 0.2075 bits. The current and strict conventions differed in all 20 replicates; approximately 0.5 marginal neighbours per dimension were included on average by the current boundary convention. Shuffled raw estimates also show how nonnegative clipping masks negative finite-sample estimates.
+
+This makes boundary handling a leading explanation for the prior Gaussian calibration shortfall, but the strict variant is not yet certified or adopted. The historical source remains unchanged. See [raw KSG and radius-boundary diagnostic report](KSG_ESTIMATOR_RAW_BOUNDARY_DIAGNOSTIC_2026-11-23.md) and [workflow 45095297552](https://github.com/bordode/cloud9-assembly-index/actions/runs/45095297552). Next: verify the exact KSG Algorithm 1 count convention, add hand-checkable boundary and tie-heavy tests, then expand the Gaussian N/rho/k grid.
