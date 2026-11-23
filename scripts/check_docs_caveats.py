@@ -8,7 +8,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 REQUIRED = {
-    "README.md": ["not verified as implemented", "configuration proposal"],
+    "README.md": ["does not currently establish that the assembly index detects", "not a discovery significance"],
     "ETHICS_MANIFESTO.md": ["neither, by itself, establishes consciousness", "hypotheses or conceptual proposals"],
     "SPECULATIVE_FRAMEWORK.md": ["not a validated empirical core", "reported historical or exploratory claims"],
     "config/discovery_hooks/README.md": ["A configuration file is not evidence"],

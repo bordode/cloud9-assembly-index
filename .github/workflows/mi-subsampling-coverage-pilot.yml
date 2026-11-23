@@ -1,0 +1,47 @@
+name: MI subsampling interval-coverage preregistered pilot
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: mi-subsampling-coverage-pilot-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  coverage-pilot:
+    name: Frozen 72-condition coverage pilot
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Run focused subsampling coverage tests
+        run: python -m unittest discover -s tests -p 'test_mi_subsampling_coverage.py' -v
+      - name: Run frozen preregistered interval-coverage pilot
+        run: >-
+          python scripts/run_mi_subsampling_coverage.py
+          --sample-sizes 256 512 1200
+          --ks 3 5
+          --rhos 0.0 0.5 0.8
+          --b-exponents 0.7 0.8
+          --outer-replicates 100
+          --subsamples 200
+          --seed 20261121
+          --output mi_subsampling_coverage_preregistered_pilot.json
+      - name: Upload preregistered pilot results
+        uses: actions/upload-artifact@v4
+        with:
+          name: mi-subsampling-coverage-preregistered-pilot-${{ github.sha }}
+          path: mi_subsampling_coverage_preregistered_pilot.json
+          if-no-files-found: error
+          retention-days: 90

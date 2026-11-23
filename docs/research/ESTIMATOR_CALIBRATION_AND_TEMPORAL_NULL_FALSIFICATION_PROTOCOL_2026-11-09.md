@@ -1,0 +1,478 @@
+# Research Protocol: Estimator Calibration and Temporal-Null Falsification
+
+**Date:** 2026-11-09  
+**Status:** Proposed preregistered computational protocol; initial Gaussian calibration and paired KSG convention audit executed; further validation pending  
+**Purpose:** Determine what the Cloud-9 v3 temporal mutual-information statistic measures under controlled conditions before applying it to physical simulation histories.
+
+## 1. Research question
+
+Can the current KSG-style estimator and the proposed time-integrated statistic distinguish a specified assembly-like temporal process from ordinary persistence, shared initial conditions, and spatially correlated stochastic evolution?
+
+The null hypothesis is not “the universe is random.” The operational null is narrower:
+
+> Given matched spatial statistics, shared initial conditions where appropriate, temporal autocorrelation, and the same observation/sampling pipeline, the proposed statistic does not reliably distinguish the assembly-like process from ordinary correlated evolution.
+
+A positive result would establish discrimination only for the tested generative families. It would not establish a cosmological detection or consciousness.
+
+## 2. Freeze the analysis before simulation
+
+Before generating the calibration data, record:
+- immutable commit SHA and environment lock;
+- exact estimator implementation and k;
+- spatial grid, sample locations and boundary handling;
+- normalization and clipping choices;
+- time points and integration rule;
+- primary endpoint and secondary diagnostics;
+- number of independent realizations and random seed list;
+- all exclusion, failure and convergence rules.
+
+Do not tune the estimator or choose thresholds on the final held-out seeds.
+
+## 3. Estimator calibration independent of halo simulation
+
+### 3.1 Known-information controls
+
+Generate paired scalar samples with known population mutual information:
+- independent Gaussian variables (MI = 0);
+- bivariate Gaussian variables with predeclared correlations, using (I=-\frac12\log_2(1-r^2));
+- nonlinear dependent pairs with known or independently numerically evaluated MI.
+
+For each condition, vary sample size (e.g. 64, 128, 256, 512, 1,200), k (2, 3, 5, 10), marginal distributions and noise. Report bias, variance, median absolute error, interval coverage and fraction of estimates clipped to zero.
+
+The primary estimator should be evaluated both with the current nonnegative clipping and with an unclipped diagnostic. Do not silently treat clipped estimates as unbiased.
+
+### 3.2 Spatial dependence controls
+
+Create 2-D/3-D random fields with controlled correlation lengths and matched power spectra. Sample the same fixed spatial locations used by the v3 design. Compare:
+- independent spatial samples;
+- spatially correlated samples;
+- block subsampling at several separations;
+- spatial block bootstrap uncertainty.
+
+The effective sample size must not be assumed to equal the raw count of 1,200 locations. Quantify how bias and uncertainty change with spatial correlation length and sampling separation.
+
+## 4. Temporal process controls
+
+Use matched spatial fields and predeclared temporal processes:
+
+| Control | Construction | What it tests |
+|---|---|---|
+| T0 Independent | Independent spatial field each time | Estimator baseline near zero temporal dependence |
+| T1 Shared field | Same base field with known deterministic scaling | Dependence caused by shared initial structure |
+| T2 AR process | Spatially correlated innovations with known temporal coefficient | Ordinary stochastic temporal persistence |
+| T3 Smooth deterministic evolution | Known smooth deformation/growth without a special assembly event | Dependence due to smooth evolution |
+| T4 Assembly-like intervention | Predefined localized structure-growth event added to matched baseline | Whether statistic detects the specified intervention |
+| T5 V3 reproduction | Reproduce current generator exactly | Benchmark against existing synthetic design |
+
+For T0–T4, match spatial power spectrum, marginal distributions, sample geometry, time grid and signal-to-noise as closely as possible. State where exact matching is impossible.
+
+The T4 intervention must be defined before simulation and must not be tuned to maximize the MI statistic. Include negative controls in which the intervention is absent or its timing is randomized.
+
+## 5. Ablation plan for the existing v3 generator
+
+Run the existing v3 construction with one feature removed at a time:
+1. shared `delta_unit` component;
+2. correlated `delta_ss_corr` component;
+3. collapse trigger and NFW-like profile blending;
+4. merger perturbations;
+5. substructure;
+6. gas contribution;
+7. fixed spatial sample locations (replace with independent locations only as a diagnostic, not as the primary paired design).
+
+Ablation results identify which design features drive temporal MI. They do not establish that any component is physically realistic.
+
+## 6. Time integration and units
+
+The source currently computes an unweighted sum of adjacent-step MI values. This is not the stated time integral when intervals are unequal.
+
+Define the intended statistic explicitly. If (I_i) is the MI estimate at interval midpoint (t_i^*=(t_i+t_{i+1})/2), a first-order interval sum is:
+
+[
+A_c^{(1)}=\sum_i I_i\,(t_{i+1}-t_i)
+]
+
+This has units of bits·Gyr when time is measured in Gyr. If a dimensionless or bits-only index is desired, specify the normalization timescale in advance.
+
+Compare this with:
+- the legacy unweighted sum (reported only as a distinct statistic);
+- trapezoidal integration if MI is defined at time nodes rather than intervals;
+- alternative snapshot grids with matched endpoints.
+
+Require convergence under time-grid refinement. Do not retrofit a corrected value to the historical target without reconstructing its original density history and applying the same definition to target and null.
+
+## 7. Statistical analysis plan
+
+Primary outcomes:
+- estimator bias and variance under known-MI controls;
+- false-positive rate for T0–T3 under a predeclared threshold;
+- sensitivity and specificity for the predeclared T4 intervention;
+- calibration of uncertainty intervals under spatial dependence;
+- difference in A_c between T4 and each matched null, with paired intervals where seeds/design permit.
+
+Report raw distributions, effect sizes, confidence intervals, exceedance counts and all failed runs. Do not convert a small finite-ensemble exceedance count into an extreme Gaussian sigma value. If a tail model is used, justify it and show sensitivity to alternatives.
+
+Use independent training/calibration seeds and a held-out evaluation set. Predeclare sample size based on precision/power simulations, not on an expected significance outcome.
+
+## 8. Pass/fail criteria
+
+The estimator is not ready for physical interpretation if any of the following hold:
+- material positive bias under known-zero MI after the intended correction;
+- confidence intervals materially under-cover under spatial dependence;
+- false-positive rates exceed the predeclared tolerance for T0–T3;
+- results change qualitatively with reasonable k, sample size or block separation;
+- temporal-grid refinement does not converge;
+- T4 cannot be distinguished from matched T1–T3 controls under held-out seeds.
+
+A pass means only that the method discriminates the specified synthetic processes under tested conditions. Physical interpretation still requires traceable multi-snapshot simulations and external review.
+
+## 9. Reproducibility outputs
+
+Each run should produce:
+- machine-readable configuration and seed manifest;
+- raw per-realization MI time series and integrated statistics;
+- estimator calibration tables;
+- temporal-process labels and intervention parameters;
+- paired comparison summaries and confidence intervals;
+- software/environment metadata;
+- plots of calibration, residuals, distributions and convergence;
+- a concise limitations record.
+
+## 10. Explicit non-claims
+
+This protocol does not assume that:
+- high mutual information means non-stochastic assembly;
+- temporal persistence is anomalous;
+- an assembly-like synthetic intervention represents real cosmological physics;
+- information integration is a measure of consciousness;
+- any (A_c) threshold establishes subjective experience, agency or moral standing.
+
+The protocol is designed to falsify overinterpretation as readily as it is designed to identify a useful statistic. A null or negative result is a valid and informative outcome.
+
+
+## Implementation status — first calibration harness
+
+A standalone known-MI calibration harness has been added at
+`scripts/run_mi_estimator_calibration.py`, with focused tests in
+`tests/test_mi_estimator_calibration.py`.
+
+The first implementation covers independent and correlated bivariate Gaussian
+controls, using the exact reference
+(I(X;Y)=-\frac{1}{2}\log_2(1-\rho^2)). It reports the raw estimate and
+the zero-clipped estimate side by side, including bias, RMSE, dispersion,
+negative-estimate fraction, clipping fraction, and a replicate-level
+bootstrap interval for mean bias. The neighbourhood-count radius follows the
+existing v3 implementation (`epsilon = kth_distance + 1e-12)); the historical
+v3 source itself remains unchanged.
+
+Default run:
+
+```bash
+python scripts/run_mi_estimator_calibration.py
+```
+
+This produces `mi_estimator_calibration.json`. The default grid is 100
+independent replicates for each combination of sample size 64, 128, 256, 512,
+and 1200; k=2, 3, 5, and 10; and correlation 0, 0.2, 0.5, and 0.8. This is
+the independent-observation stage only. Spatially correlated fields, nonlinear
+controls, and temporal nulls remain unimplemented and must not be inferred
+from this first harness.
+
+A dedicated workflow, `.github/workflows/mi-estimator-calibration.yml`, now
+runs the focused calibration tests and the full 100-replicate Gaussian grid
+on relevant review-branch pushes and pull-request updates. It uploads the
+machine-readable JSON result as a 90-day workflow artifact. The workflow uses
+the repository's pinned Python dependency constraints and a fixed seed.
+
+**Status:** harness, tests, and automated calibration workflow added.
+Execution results and estimator-adequacy assessment remain pending. No
+calibration result or claim of estimator adequacy is made here.
+
+
+## First calibration results — 2026-11-10
+
+The first 100-replicate Gaussian known-MI grid has completed successfully:
+80 conditions and 8,000 replicate estimates. The full artifact is attached
+to GitHub Actions workflow run #6. A descriptive analysis is recorded in
+`docs/research/KNOWN_MI_GAUSSIAN_KSG_CALIBRATION_RESULTS_2026-11-10.md`.
+
+The first result is a caution, not a pass: the raw estimator showed negative
+finite-sample bias across the tested Gaussian conditions. Zero-clipping
+substantially changed the null distribution by setting roughly 85–90% of
+independent-control estimates to exactly zero. At N=1,200, residual mean raw
+bias across k was approximately -0.028 bits for rho=0 and remained negative
+for all tested nonzero correlations. These findings are limited to the
+independent-observation bivariate Gaussian grid.
+
+**Status:** initial Gaussian calibration executed; estimator adequacy not
+established. Before spatial/temporal controls, audit the strict/inclusive
+marginal-neighbour counting convention and radius offset, add nonlinear and
+non-Gaussian known-MI controls, and implement interval-coverage evaluation.
+
+
+## Paired KSG convention audit — execution status (2026-11-10)
+
+The paired Gaussian audit has now completed: 80 conditions, 100 paired
+replicates per condition (8,000 paired comparisons). It compares the
+historical kth-radius-plus-`1e-12`/inclusive-count convention against an
+uninflated-radius/strict-count convention. These are two combined
+implementation choices; the experiment does not isolate the radius-offset
+effect from the marginal-boundary inclusion effect.
+
+On this tested grid, the strict convention had lower RMSE in 79 of 80
+condition cells and lower absolute bias in 79 of 80. Mean strict bias was
+close to zero across most sample sizes, but a notable exception occurred at
+N=1,200, k=10, rho=0.8, where the historical convention was already more
+accurate. This result supports further evaluation of the strict convention
+as a candidate; it does not establish universal superiority or justify
+changing the historical v3 estimator or correcting archived outputs.
+
+The two workflow runs on commit
+`b8b68b57164166ff5b87068a57ce0b2c3c1af3cd` produced byte-identical
+calibration and audit JSON artifacts. This confirms deterministic output
+under the same seed and environment, not independent statistical
+replication.
+
+**Remaining gates:** nonlinear and non-Gaussian known-MI controls; interval
+coverage; an experiment separating radius-offset and strict/inclusive
+counting effects; explicit tie/duplicate handling beyond the current
+zero-radius guard; then spatial-dependence and temporal-null controls.
+
+
+## Nonlinear and non-Gaussian known-MI controls — completed (2026-11-10)
+
+The expanded workflow #21 completed successfully on commit
+`9de5ec07dc975a3a00be3a26558f8c2715905c31`. In addition to rerunning the
+Gaussian grid and paired boundary audit, it ran 16,000 estimates over two
+known-MI transformed-Gaussian families (80 conditions × 100 replicates per
+family): nonlinear sinh/exp marginals and uniform marginals with a Gaussian
+copula. Coordinate-wise strictly monotone invertible transformations
+preserve the analytic population MI.
+
+Mean raw RMSE declined with sample size in both families. At N=1,200, the
+mean RMSE across k and rho was approximately 0.0334 bits for the nonlinear
+family and 0.0357 bits for the copula family. Bias differed between families:
+the nonlinear family approached zero aggregate bias, while the copula family
+showed a small positive aggregate bias at larger N. Larger k reduced average
+RMSE in these grids but increased negative bias in the nonlinear family,
+illustrating a bias/variance trade-off rather than a universal k optimum.
+
+Zero-clipping produced positive mean bias under known-zero MI (approximately
++0.023 to +0.025 bits averaged over N and k at rho=0), with about half of
+null estimates clipped to zero. A clipped mean near zero is therefore not a
+valid calibration argument.
+
+**Status:** the strict KSG candidate has now passed software execution and
+finite-output checks on these two transformed-Gaussian families. This is
+limited synthetic calibration evidence, not proof of universal unbiasedness
+or validity for arbitrary non-Gaussian data. No spatial or temporal
+dependence is included. No individual-estimate interval-coverage study has
+been completed. Historical v3 and archived outputs remain unchanged.
+
+**Next gates remain:** (1) empirically evaluate interval coverage using
+independent datasets and predeclared intervals; (2) isolate radius offset
+from strict/inclusive marginal counting; (3) specify and test tie/duplicate
+handling; (4) assess spatially correlated fields and effective sample size;
+(5) test temporal null processes T0–T5, with held-out seeds and ablations.
+Only after those stages should physical-data validation be considered.
+
+
+## Factorial boundary-convention audit — implementation added (2026-11-10)
+
+The prior paired comparison changed the radius offset and marginal boundary
+rule together, so it could not attribute the observed shift to either factor.
+A new factorial harness, `scripts/audit_ksg_boundary_factorial.py`, now
+compares four variants on identical Gaussian samples:
+
+1. uninflated kth radius + strict marginal counts;
+2. kth radius plus the configured 1e-12 offset + strict counts;
+3. uninflated kth radius + inclusive marginal counts;
+4. offset radius + inclusive counts (the historical combined convention).
+
+The harness reports per-variant bias/RMSE and paired average effects for the
+radius offset, inclusive counting, and their interaction. Focused tests and a
+dedicated workflow step have been added. The full grid is configured for the
+same five N values, four k values, four correlations, and 100 replicates per
+condition. It has not yet been interpreted; results must be checked after CI
+completes. The zero-radius tie guard remains explicit. This audit does not
+change historical v3 or authorize a correction factor.
+
+
+## Factorial boundary audit — completed; attribution not achieved (2026-11-10)
+
+Workflow #31 completed on PR head
+`cdf866b4f6c45c4a8693876c67e5d946977920d8`: all focused tests, Gaussian and
+nonlinear known-MI grids, paired boundary audit, factorial audit, and artifact
+upload passed. The factorial JSON contains 80 conditions × 100 replicates,
+with four nominal variants per paired sample.
+
+Inspection showed that the three variants using (a) +1e-12 with strict
+counts, (b) uninflated radius with inclusive counts, and (c) +1e-12 with
+inclusive counts had identical summary values in every condition. Thus the
+positive radius offset effectively admitted the boundary observations in
+this tested grid, making it observationally equivalent to inclusive counting.
+The factorial main effects are therefore aliased; they do not separately
+attribute the observed change to radius offset versus count convention.
+
+The uninflated-radius/strict-count variant had lower mean RMSE than the other
+three variants at each tested N (0.1247 at N=64 down to 0.0354 at N=1,200,
+averaged equally across k and rho). This is evidence limited to the tested
+independent Gaussian grid. It is not universal validation and does not
+authorize changing historical v3 or archived values.
+
+**Next correction to the design:** replace the misleading independent-factor
+interpretation with direct controlled tests of boundary distances and
+floating-point perturbations. Explicitly establish when radius inflation and
+inclusive counting are equivalent, and construct cases where they differ
+before estimating separate effects. Preserve the tie/duplicate policy as a
+separate validation gate.
+
+
+## Controlled boundary-distance sensitivity — implementation added (2026-11-10)
+
+The factorial Gaussian grid showed that a positive radius offset and inclusive
+counting were observationally equivalent in its random samples. A deterministic
+follow-up now constructs float64 marginal distances at one ULP inside the
+radius, exactly on the radius, one ULP outside, halfway through the configured
+offset, exactly at the offset boundary, one ULP beyond it, and two offsets
+outside.
+
+For a target point at zero, the harness reports whether each constructed
+neighbour is admitted by: (a) uninflated strict counting, (b) uninflated
+inclusive counting, (c) offset-radius strict counting, and (d) offset-radius
+inclusive counting. It records the offset in ULPs at the chosen radius and
+rejects offsets that do not change the radius in float64.
+
+This is a deterministic geometry/representation diagnostic, not an estimator
+bias study, statistical calibration, or confidence-interval test. Its initial
+configured case is radius=1.0, offset=1e-12. Focused tests and a dedicated
+workflow step/artifact have been added; CI verification and artifact
+inspection are pending. Results must be interpreted as specific to float64,
+the tested radius and offset, and the marginal-count geometry. Historical v3
+and archived outputs remain unchanged.
+
+## Controlled boundary-distance sensitivity — completed (2026-11-10)
+
+The dedicated calibration workflow #41 completed successfully on PR head
+`e784fb1565819097f6546eeaae2d50dbfc63ee6f`. Its deterministic float64
+artifact contains seven constructed distances at radius 1.0 and offset
+1e-12. The target-point counts were: uninflated strict = 1, uninflated
+inclusive = 2, inflated strict = 4, and inflated inclusive = 5.
+
+The exact offset-boundary point is excluded by the inflated strict comparison
+and included by the inflated inclusive comparison. Thus a positive radius
+offset and inclusive counting can be observationally equivalent for ordinary
+sampled distances while remaining mathematically distinct at the inflated
+boundary itself. The result is specific to this float64 geometry, radius and
+offset; it is not an estimator-bias or uncertainty-coverage result.
+
+Artifact SHA-256:
+`57bf3a5311b1ca460558ff6e3c31584e48d180c56f3d9a52cac5598d46050bc4`.
+The complete calibration artifact also passed finite-value checks. The
+historical v3 implementation and archived outputs remain unchanged.
+
+**Status:** deterministic boundary-distance test passed. This closes the
+geometry diagnostic for the configured case, not the separate tie/duplicate
+policy or estimator-adequacy gates.
+
+
+## Proposed individual-estimate interval-coverage study — design frozen for pilot
+
+The next study evaluates whether subsampling intervals for the **raw strict
+KSG-1 candidate** achieve their nominal coverage across independently
+generated datasets. It is not a bootstrap of individual observations with
+replacement. That distinction matters because replacement resampling can
+create duplicate points and zero-radius ties that trigger the estimator's
+explicit tie guard.
+
+For each independent outer dataset of size n:
+
+1. Compute the full-sample raw estimate `theta_hat_n`.
+2. Draw B subsets of size b without replacement and compute
+   `theta_hat_b` for each.
+3. Form the subsampling root
+   `T_b = sqrt(b) * (theta_hat_b - theta_hat_n)`.
+4. Let q(alpha/2) and q(1-alpha/2) be its empirical quantiles. Construct
+   `[theta_hat_n - q(1-alpha/2)/sqrt(n),
+   theta_hat_n - q(alpha/2)/sqrt(n)]`.
+5. Record whether the known population MI lies in the interval.
+
+Coverage is estimated only across independent outer datasets. The B
+overlapping subsets within one outer dataset are not counted as independent
+coverage trials. Monte Carlo uncertainty for the estimated coverage must be
+reported using the number of outer datasets.
+
+### Pilot grid
+
+- Distribution families: the existing monotone-nonlinear and
+  uniform-marginal Gaussian-copula families, with their known analytic MI.
+- Outer sample sizes: n = 256, 512, 1,200.
+- Neighbour counts: k = 3 and 5.
+- Correlations: rho = 0, 0.5, 0.8. The rho = 0 condition is reported as a
+  boundary/null stress test, separately from positive-MI conditions.
+- Subsample sizes: b = floor(n^0.70) and floor(n^0.80), rounded down and
+  checked to remain greater than k+1.
+- Initial pilot replication: 100 independent outer datasets per condition;
+  B = 200 without-replacement subsets per outer dataset.
+- Nominal interval levels: 90% and 95%.
+
+The pilot will report empirical coverage, average and median interval width,
+outer-dataset bias, interval-construction failures, and Monte Carlo
+uncertainty for coverage. Raw and zero-clipped point estimates will be
+reported separately. The primary interval is based on raw estimates.
+
+Zero clipping is a non-smooth transformation at the MI=0 boundary. Therefore
+clipped-estimate intervals are diagnostic only and will not be presented as
+having nominal coverage unless separately validated. Null-condition
+undercoverage or instability is a substantive result, not a reason to tune
+the interval after seeing the data.
+
+The two b rules are sensitivity conditions, not candidates from which to
+select the better-looking result. No interval method will be declared
+validated from this pilot alone. If results are unstable across b, k,
+distribution family or sample size, the method fails this gate pending a
+predeclared redesign. A later confirmation stage must use new seeds and a
+larger number of independent outer datasets chosen from a precision analysis.
+
+### Interpretation limits
+
+This is a finite-sample empirical coverage experiment for the tested
+independent-observation distributions. It does not establish coverage under
+spatial dependence, temporal dependence, arbitrary distributions, or the
+historical v3 pipeline. It does not authorize retrospective confidence
+intervals or corrections for archived Cloud-9 values. Spatial block
+uncertainty and temporal-null validation remain separate future gates.
+
+
+## Interval-coverage harness implementation — screening only (2026-11-10)
+
+A separate harness, `scripts/run_mi_subsampling_coverage.py`, and focused
+tests, `tests/test_mi_subsampling_coverage.py`, now implement the proposed
+without-replacement subsampling-root procedure. The primary intervals use
+raw strict KSG estimates. Zero-clipped intervals are emitted only as
+diagnostics and are explicitly not assigned a nominal-coverage claim.
+
+The default command is deliberately a small screening run:
+
+```bash
+python scripts/run_mi_subsampling_coverage.py
+```
+
+It evaluates n=256, k=3, rho=0 and 0.5, both transformed-Gaussian
+families, b=floor(n^0.8), 10 independent outer datasets per condition, and
+20 without-replacement subsets per outer dataset. This is a runtime/method
+screen, not the 100-outer-dataset/200-subset preregistered pilot. The full
+grid remains selectable through command-line arguments, but should not be
+treated as a confirmation study without a separate precision-based plan.
+
+The output reports empirical coverage, outer-dataset Monte Carlo standard
+error, mean and median interval width, raw outer-dataset bias, and failures.
+The Monte Carlo standard error is calculated from independent outer datasets;
+the overlapping subsets are not counted as independent coverage trials.
+With only 20 subsets, the tail quantiles are extremely coarse, so the
+screening output is not suitable for judging nominal 90% or 95% coverage.
+
+The calibration workflow now runs the focused tests and screening command
+and uploads the JSON output. Execution and artifact inspection remain
+pending. No coverage result or estimator-adequacy claim is made by adding
+this harness. Spatial dependence, temporal dependence, and historical v3
+validation remain separate gates.

@@ -1,4 +1,19 @@
+> [!WARNING]
+> **HISTORICAL DOCUMENT — NOT THE CURRENT SCIENTIFIC STATUS OR RESULTS AUTHORITY**
+>
+> This file is retained to preserve the project's documentation history. It contains superseded claims, including the former “FINAL-VALIDATED” label, unsupported significance values, unverified null-model descriptions, and physical/consciousness interpretations that are not established by the current evidence. Do not cite its numerical or validation claims as current results.
+>
+> For the current scope and evidence status, use the repository root [README](../README.md), [Evidence Status](EVIDENCE_STATUS.md), [Results Provenance](RESULTS_PROVENANCE.md), and the dated [Statistical Claims Audit](audits/CLOUD9_STATISTICAL_CLAIMS_AUDIT_2026-11-09.md). Historical material below is preserved for auditability, not endorsed as current findings.
+>
+> **No historical content below this notice has been silently deleted or rewritten as part of this archival marking.**
+>
+> ---
+>
 # Cloud-9 / THEORIA Unified Ecosystem
+
+> **ARCHIVED LEGACY OVERVIEW — NOT THE CURRENT SCIENTIFIC RESULTS AUTHORITY (review in progress, 2026-11-09).** This document preserves an earlier description of the Cloud-9/THEORIA ecosystem. Its “FINAL-VALIDATED” version label and several numerical, physical, and consciousness-related claims are not current validation statements. In particular, the listed **1,137.753σ** value is withdrawn from scientific interpretation because the inspected source contains a hard-coded value in legacy/demo code with no supporting statistical derivation located; the **1,011.53σ** comparison is invalid because it compares non-equivalent temporal and spatial quantities. The historical **2.99σ** result remains unverified pending reconstruction. Do not cite this page as evidence of a detection, validated physical mechanism, or established consciousness theory. Consult the [current repository README](../README.md), [statistical claims audit](audits/CLOUD9_STATISTICAL_CLAIMS_AUDIT_2026-11-09.md), [withdrawal methodology note](audits/LEGACY_SIGNIFICANCE_WITHDRAWAL_METHODOLOGY_NOTE_2026-11-09.md), and [evidence status](EVIDENCE_STATUS.md). Historical content below is retained for provenance, not endorsed as current findings.
+
+---
 
 **Version:** 1.4.0-FINAL-VALIDATED  
 **Repository:** [github.com/bordode/cloud9-assembly-index](https://github.com/bordode/cloud9-assembly-index)  
