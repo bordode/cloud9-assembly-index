@@ -81,3 +81,17 @@ The 2.5th and 97.5th percentiles in the artifact are empirical quantiles across 
 ## Claim boundary
 
 This diagnostic identifies radius-boundary handling as a plausible and quantitatively important source of the recovered estimator's Gaussian calibration discrepancy. It does not by itself establish which convention should be used, certify the KSG implementation, or validate Cloud-9's cosmological interpretation. The historical estimator remains unchanged.
+
+
+## Convention mapping against the published KSG variants
+
+A further check of the estimator definitions clarifies the interpretation of the sensitivity test. The maintained `infomeasure` KSG documentation, describing Kraskov et al. (2004), distinguishes:
+
+- **Type I / Algorithm 1:** strict marginal inequality (`distance < epsilon`), with the `psi(n_x + 1) + psi(n_y + 1)` expression and no `-1/k) term.
+- **Type II / Algorithm 2:** inclusive marginal inequality (`distance <= epsilon`), with counts including the point itself and a modified expression containing `-1/k).
+
+The strict-boundary sensitivity calculation above corresponds to the Type-I boundary/count convention. The recovered implementation, however, uses inclusive marginal counts (plus a small epsilon) while retaining the Type-I digamma expression and omitting the Type-II `-1/k` correction. It therefore appears to be a **hybrid of the two published conventions**, rather than a faithful implementation of either complete variant.
+
+Sources: [Kraskov, Stögbauer & Grassberger (2004), *Estimating mutual information*, Physical Review E 69, 066138](https://doi.org/10.1103/PhysRevE.69.066138); [infomeasure KSG documentation, Type I and Type II definitions](https://infomeasure.readthedocs.io/en/0.6.0/guide/mutual_information/kraskov_stoegbauer_grassberger/).
+
+A dedicated follow-up script, `scripts/validate_v3_ksg_type_i_type_ii_hybrid.py`, now compares complete Type-I, Type-II and recovered-hybrid formula/count combinations on identical deterministic samples. Its workflow is [45095685382](https://github.com/bordode/cloud9-assembly-index/actions/runs/45095685382) and was still running at the time this addendum was written. No result from that complete-variant comparison is claimed here.
