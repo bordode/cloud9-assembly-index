@@ -212,4 +212,6 @@ The 20-replicate permutation study found clear separation between paired and shu
 - [KSG permutation and nonlinear diagnostic report](KSG_ESTIMATOR_PERMUTATION_NONLINEAR_DIAGNOSTIC_2026-11-17.md)
 - [Workflow 43986162321](https://github.com/bordode/cloud9-assembly-index/actions/runs/43986162321)
 
-A separate implementation cross-check against scikit-learn's continuous-feature nearest-neighbour MI estimator has been added. It compares both implementations on identical deterministic Gaussian, shuffled and nonlinear samples, with output units harmonized to bits. The implementations are related but not assumed to use identical estimator conventions; results must be interpreted as a cross-check, not a ground-truth contest. The run and report are pending.
+A separate implementation cross-check against scikit-learn 1.9.1 completed in [workflow 43987689799](https://github.com/bordode/cloud9-assembly-index/actions/runs/43987689799). Across 20 paired Gaussian replicates, recovered-v3 medians were 0.1796 bits (N=1,200) and 0.1766 bits (N=3,000), below the analytic 0.2075 bits. The recovered-v3 minus scikit-learn paired median difference was -0.0344 and -0.0217 bits, respectively. This is a convention-aware cross-check, not proof that either implementation is ground truth. The persistent numerical difference makes raw unclipped output and neighbour-count convention tests the next priority.
+
+See [KSG independent reference cross-check report](KSG_ESTIMATOR_REFERENCE_CROSSCHECK_2026-11-17.md). The diagnostic artifact is attached to workflow 43987689799.
