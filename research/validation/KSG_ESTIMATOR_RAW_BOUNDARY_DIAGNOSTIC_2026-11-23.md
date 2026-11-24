@@ -114,7 +114,7 @@ Analytic MI for a bivariate Gaussian with rho=0.5 is 0.207519 bits.
 | 3,000 | Type II | **Withdrawn** | **Withdrawn** |
 | 3,000 | Recovered hybrid | 0.1830 | 0.1766 |
 
-The Type-I means are close to the analytic Gaussian value in this preliminary test. The recovered hybrid is lower. The Type-II figures from the first comparison are withdrawn: that implementation incorrectly used the joint-space kth radius for both marginal counts. The published Type-II algorithm uses separate marginal radii, each given by the coordinate distance to the same kth joint neighbour. No Type-II numerical conclusion should be drawn from the withdrawn values.
+The Type-I means are close to the analytic Gaussian value in this preliminary test. The recovered hybrid is lower. The Type-II figures from the first comparison are withdrawn: that implementation incorrectly used the joint-space kth radius for both marginal counts. The published Type-II algorithm uses separate marginal radii defined by the maximum projected distances across the k joint-space neighbours; the X and Y radii may be determined by different neighbours. No Type-II numerical conclusion should be drawn from the withdrawn values.
 
 ### Shuffled controls and nonlinear stress test
 
@@ -133,8 +133,17 @@ The JSON artifact records all means, medians, sample standard deviations, empiri
 
 ## Correction: Type-II marginal radii (2026-11-24)
 
-A closer reading of the primary KSG paper identified an implementation error in the first Type-II comparison. Algorithm 2 does **not** apply the joint-space kth-neighbour radius to both marginal spaces. It uses separate marginal radii: for each sample, the X radius is the X-coordinate distance to its kth joint-space neighbour, and the Y radius is the Y-coordinate distance to that same neighbour. The marginal counts include points at or within those respective radii, including the point itself, and the estimator includes the -1/k correction.
+A closer reading of the primary KSG paper identified an implementation error in the first Type-II comparison. Algorithm 2 does **not** apply the joint-space kth-neighbour radius to both marginal spaces, nor does it use only the single point returned as the kth neighbour. It uses separate marginal radii defined by the maximum projected distances across the k joint-space neighbours. The maximum X and maximum Y projections may be determined by different neighbours, as illustrated in Fig. 1(b,c) of the paper. The marginal counts include points at or within those respective radii, including the point itself, and the estimator includes the -1/k correction.
 
-Accordingly, all Type-II numbers produced by workflow 45095685382 are withdrawn. The Type-I and recovered-hybrid calculations in that run are unaffected by this Type-II-specific error. The Type-II implementation in `scripts/validate_v3_ksg_type_i_type_ii_hybrid.py` has been corrected, and the hand-constructed boundary/tie test now checks separate Type-II marginal radii. A fresh workflow is running; no corrected Type-II result is claimed until its artifact has been inspected.
+Accordingly, all Type-II numbers produced by workflow 45095685382 are withdrawn. The Type-I and recovered-hybrid calculations in that run are unaffected by this Type-II-specific error. The Type-II implementation in `scripts/validate_v3_ksg_type_i_type_ii_hybrid.py` was first corrected to use the single kth neighbour's projected coordinates, but the independent-data control still produced a large positive estimate. That exposed a second radius-definition error: the correct marginal radii are the maximum X and Y projections across all k joint neighbours, and the two maxima can come from different neighbours. The implementation and hand-constructed tie test have now been corrected to this interpretation. A fresh workflow is required; no corrected Type-II result is claimed until its artifact has been inspected.
 
 Primary source: Kraskov, Stögbauer & Grassberger (2004), especially the Algorithm 2 definition and Eq. (9): [Physical Review E 69, 066138](https://doi.org/10.1103/PhysRevE.69.066138); full paper [PDF](https://juser.fz-juelich.de/record/42907/files/60015.pdf). The paper defines the two marginal neighbourhoods using their own coordinate radii derived from the same kth joint neighbour.
+
+
+### Second Type-II correction: projected maxima over the k-neighbour set (2026-11-24)
+
+The first corrected Type-II attempt still used only the single kth-neighbour point's X and Y coordinate differences. Re-reading the paper's geometrical construction and Fig. 1(b,c) showed that this is incomplete: `epsilon_x` and `epsilon_y` are the marginal widths of the rectangle containing the k joint-space neighbours. The maximum X projection and maximum Y projection across those k neighbours define the two marginal radii, and they may be set by different neighbours. The previous Type-II artifact (including its large positive independent-control estimates) is withdrawn.
+
+The implementation now computes the maxima independently across the k joint neighbours. The hand-built tie case explicitly checks a configuration where the projected maxima are set by distinct neighbours. The new workflow must still pass and its artifact must be inspected before reporting any Type-II numerical result.
+
+Primary source: Kraskov, Stögbauer & Grassberger (2004), Fig. 1(b,c), Eq. (9), and the derivation in Sec. II C: [Physical Review E 69, 066138](https://doi.org/10.1103/PhysRevE.69.066138), [full text PDF](https://juser.fz-juelich.de/record/42907/files/60015.pdf).
