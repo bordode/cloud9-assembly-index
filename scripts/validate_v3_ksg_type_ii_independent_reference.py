@@ -59,7 +59,10 @@ def brute_force_type_ii(x, y, k_values):
         joint_distance[rows_local, np.arange(start, stop)] = np.inf
         nearest = np.argpartition(joint_distance, kth=max_k - 1, axis=1)[:, :max_k]
         selected_distances = np.take_along_axis(joint_distance, nearest, axis=1)
-        kth = np.max(selected_distances, axis=1)
+        order = np.argsort(selected_distances, axis=1)
+        nearest = np.take_along_axis(nearest, order, axis=1)
+        selected_distances = np.take_along_axis(selected_distances, order, axis=1)
+        kth = selected_distances[:, max_k - 1]
         next_outside = np.partition(joint_distance, kth=max_k, axis=1)[:, max_k]
         if np.any(np.isclose(kth, next_outside, rtol=0.0, atol=1e-14)):
             raise AssertionError("Reference sample has an ambiguous kth-neighbour tie")
