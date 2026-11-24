@@ -69,6 +69,59 @@ def check_case(name, x, y, k, expected):
     }
 
 
+def brute_force_type_ii_counts(x, y, k):
+    """Independent O(N^2) reference for Type-II radii and inclusive counts."""
+    n = len(x)
+    dx = np.abs(x[:, None] - x[None, :])
+    dy = np.abs(y[:, None] - y[None, :])
+    joint_distance = np.maximum(dx, dy)
+    np.fill_diagonal(joint_distance, np.inf)
+    neighbour_indices = np.argsort(joint_distance, axis=1)[:, :k]
+    radius_x = np.max(np.take_along_axis(dx, neighbour_indices, axis=1), axis=1)
+    radius_y = np.max(np.take_along_axis(dy, neighbour_indices, axis=1), axis=1)
+    nx = np.count_nonzero(dx <= radius_x[:, None], axis=1)
+    ny = np.count_nonzero(dy <= radius_y[:, None], axis=1)
+    return radius_x, radius_y, nx, ny
+
+
+def tree_type_ii_counts(x, y, k):
+    """cKDTree implementation under test, returning radii and inclusive counts."""
+    joint = np.column_stack([x, y])
+    _, indices = cKDTree(joint).query(joint, k=k + 1, p=np.inf)
+    neighbours = indices[:, 1 : k + 1]
+    radius_x = np.max(np.abs(x[:, None] - x[neighbours]), axis=1)
+    radius_y = np.max(np.abs(y[:, None] - y[neighbours]), axis=1)
+    tx, ty = cKDTree(x[:, None]), cKDTree(y[:, None])
+    nx = np.array([
+        tx.query_ball_point([x[i]], r=radius_x[i], p=np.inf, return_length=True)
+        for i in range(len(x))
+    ])
+    ny = np.array([
+        ty.query_ball_point([y[i]], r=radius_y[i], p=np.inf, return_length=True)
+        for i in range(len(y))
+    ])
+    return radius_x, radius_y, nx, ny
+
+
+def check_type_ii_against_brute_force(name, x, y, k):
+    reference = brute_force_type_ii_counts(x, y, k)
+    observed = tree_type_ii_counts(x, y, k)
+    for label, expected, actual in zip(
+        ("radius_x", "radius_y", "nx", "ny"), reference, observed
+    ):
+        if not np.allclose(expected, actual, rtol=0.0, atol=1e-12):
+            raise AssertionError(
+                f"{name}: {label} differs; reference={expected}, tree={actual}"
+            )
+    return {
+        "samples": len(x),
+        "k": k,
+        "status": "matched",
+        "radius_x_range": [float(np.min(observed[0])), float(np.max(observed[0]))],
+        "radius_y_range": [float(np.min(observed[1])), float(np.max(observed[1]))],
+    }
+
+
 def main():
     # Unique kth boundary: k=1, one neighbour lies exactly at radius 1.
     unique, unique_type_ii = check_case(
@@ -101,12 +154,23 @@ def main():
     assert tied_type_ii["type_ii_marginal_radii"] == [1.0, 1.0]
     assert tied_type_ii["type_ii_counts_including_self"] == [3, 3]
 
+    rng = np.random.default_rng(20261124)
+    random_x = rng.normal(size=40)
+    random_y = 0.4 * random_x + rng.normal(size=40)
+    random_reference = check_type_ii_against_brute_force(
+        "random_continuous", random_x, random_y, 3
+    )
+    tied_reference = check_type_ii_against_brute_force(
+        "tie_heavy", xt, yt, 2
+    )
+
     print({
         "status": "passed",
         "unique_boundary": unique,
         "unique_type_ii": unique_type_ii,
         "tied_kth_boundary": tied,
         "tied_type_ii": tied_type_ii,
+        "type_ii_brute_force_crosschecks": [random_reference, tied_reference],
         "interpretation": (
             "Strict and inclusive inequalities produce the expected counts; "
             "self-count conversion for the Type-I digamma term is algebraically consistent."
