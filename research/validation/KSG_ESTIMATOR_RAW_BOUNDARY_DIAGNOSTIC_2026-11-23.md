@@ -88,13 +88,13 @@ This diagnostic identifies radius-boundary handling as a plausible and quantitat
 A further check of the estimator definitions clarifies the interpretation of the sensitivity test. The maintained `infomeasure` KSG documentation, describing Kraskov et al. (2004), distinguishes:
 
 - **Type I / Algorithm 1:** strict marginal inequality (`distance < epsilon`), with the `psi(n_x + 1) + psi(n_y + 1)` expression and no `-1/k) term.
-- **Type II / Algorithm 2:** inclusive marginal inequality (`distance <= epsilon`), with counts including the point itself and a modified expression containing `-1/k).
+- **Type II / Algorithm 2:** inclusive counts in separate marginal radii. Each radius is the maximum projection across the k joint-space neighbours; the X and Y maxima may be determined by different neighbours. Counts include the point itself and the expression contains `-1/k`.
 
 The strict-boundary sensitivity calculation above corresponds to the Type-I boundary/count convention. The recovered implementation, however, uses inclusive marginal counts (plus a small epsilon) while retaining the Type-I digamma expression and omitting the Type-II `-1/k` correction. It therefore appears to be a **hybrid of the two published conventions**, rather than a faithful implementation of either complete variant.
 
 Sources: [Kraskov, Stögbauer & Grassberger (2004), *Estimating mutual information*, Physical Review E 69, 066138](https://doi.org/10.1103/PhysRevE.69.066138); [infomeasure KSG documentation, Type I and Type II definitions](https://infomeasure.readthedocs.io/en/0.6.0/guide/mutual_information/kraskov_stoegbauer_grassberger/).
 
-A dedicated follow-up script, `scripts/validate_v3_ksg_type_i_type_ii_hybrid.py`, now compares complete Type-I, Type-II and recovered-hybrid formula/count combinations on identical deterministic samples. Its workflow is [45095685382](https://github.com/bordode/cloud9-assembly-index/actions/runs/45095685382) and was still running at the time this addendum was written. No result from that complete-variant comparison is claimed here.
+A dedicated follow-up script, `scripts/validate_v3_ksg_type_i_type_ii_hybrid.py`, compares complete Type-I, Type-II and recovered-hybrid formula/count combinations on identical deterministic samples. The Type-II results from the initial workflows are withdrawn because their marginal radii were not implemented correctly. A corrected rerun is in progress; no corrected Type-II numerical result is claimed here.
 
 
 ## Complete Type-I / Type-II / recovered-hybrid comparison (2026-11-23)
@@ -137,7 +137,7 @@ A closer reading of the primary KSG paper identified an implementation error in 
 
 Accordingly, all Type-II numbers produced by workflow 45095685382 are withdrawn. The Type-I and recovered-hybrid calculations in that run are unaffected by this Type-II-specific error. The Type-II implementation in `scripts/validate_v3_ksg_type_i_type_ii_hybrid.py` was first corrected to use the single kth neighbour's projected coordinates, but the independent-data control still produced a large positive estimate. That exposed a second radius-definition error: the correct marginal radii are the maximum X and Y projections across all k joint neighbours, and the two maxima can come from different neighbours. The implementation and hand-constructed tie test have now been corrected to this interpretation. A fresh workflow is required; no corrected Type-II result is claimed until its artifact has been inspected.
 
-Primary source: Kraskov, Stögbauer & Grassberger (2004), especially the Algorithm 2 definition and Eq. (9): [Physical Review E 69, 066138](https://doi.org/10.1103/PhysRevE.69.066138); full paper [PDF](https://juser.fz-juelich.de/record/42907/files/60015.pdf). The paper defines the two marginal neighbourhoods using their own coordinate radii derived from the same kth joint neighbour.
+Primary source: Kraskov, Stögbauer & Grassberger (2004), especially Fig. 1(b,c), Eq. (9), and Sec. II C: [Physical Review E 69, 066138](https://doi.org/10.1103/PhysRevE.69.066138); full paper [PDF](https://juser.fz-juelich.de/record/42907/files/60015.pdf). The paper's rectangle construction defines each marginal radius by the maximum projection across the k joint-space neighbours; the X and Y maxima may be set by different neighbours.
 
 
 ### Second Type-II correction: projected maxima over the k-neighbour set (2026-11-24)
