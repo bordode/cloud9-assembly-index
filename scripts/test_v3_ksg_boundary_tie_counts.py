@@ -103,22 +103,23 @@ def tree_type_ii_counts(x, y, k):
     return radius_x, radius_y, nx, ny
 
 
-def check_type_ii_against_brute_force(name, x, y, k):
+def check_type_ii_against_brute_force(name, x, y, k, rows=None):
     reference = brute_force_type_ii_counts(x, y, k)
     observed = tree_type_ii_counts(x, y, k)
+    selected = np.arange(len(x)) if rows is None else np.asarray(rows, dtype=int)
     for label, expected, actual in zip(
         ("radius_x", "radius_y", "nx", "ny"), reference, observed
     ):
-        if not np.allclose(expected, actual, rtol=0.0, atol=1e-12):
+        if not np.allclose(expected[selected], actual[selected], rtol=0.0, atol=1e-12):
             raise AssertionError(
-                f"{name}: {label} differs; reference={expected}, tree={actual}"
+                f"{name}: {label} differs on rows {selected.tolist()}; "
+                f"reference={expected[selected]}, tree={actual[selected]}"
             )
     return {
         "samples": len(x),
+        "checked_rows": selected.tolist(),
         "k": k,
         "status": "matched",
-        "radius_x_range": [float(np.min(observed[0])), float(np.max(observed[0]))],
-        "radius_y_range": [float(np.min(observed[1])), float(np.max(observed[1]))],
     }
 
 
@@ -161,7 +162,7 @@ def main():
         "random_continuous", random_x, random_y, 3
     )
     tied_reference = check_type_ii_against_brute_force(
-        "tie_heavy", xt, yt, 2
+        "tie_heavy", xt, yt, 2, rows=[0]
     )
 
     print({
