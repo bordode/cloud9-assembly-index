@@ -22,25 +22,34 @@ BASE_SEED = 20261117
 def counts(x, y, radius_mode):
     n = len(x)
     joint = np.column_stack([x, y])
-    distances, _ = cKDTree(joint).query(joint, k=K + 1, p=np.inf)
+    distances, indices = cKDTree(joint).query(joint, k=K + 1, p=np.inf)
     kth = distances[:, K]
     if radius_mode == "strict":
-        radii = np.nextafter(kth, -np.inf)
+        radii_x = np.nextafter(kth, -np.inf)
+        radii_y = np.nextafter(kth, -np.inf)
     elif radius_mode == "inclusive":
-        radii = kth
+        radii_x = kth
+        radii_y = kth
+    elif radius_mode == "type_ii_marginal":
+        # KSG Algorithm 2 uses separate marginal radii: the X and Y
+        # coordinate distances to the same kth joint-space neighbour.
+        kth_indices = indices[:, K]
+        radii_x = np.abs(np.asarray(x) - np.asarray(x)[kth_indices])
+        radii_y = np.abs(np.asarray(y) - np.asarray(y)[kth_indices])
     elif radius_mode == "historical_inclusive_epsilon":
-        radii = kth + 1e-12
+        radii_x = kth + 1e-12
+        radii_y = kth + 1e-12
     else:
         raise ValueError(radius_mode)
 
     tx = cKDTree(np.asarray(x).reshape(-1, 1))
     ty = cKDTree(np.asarray(y).reshape(-1, 1))
     nx = np.asarray([
-        tx.query_ball_point([x[i]], r=radii[i], p=np.inf, return_length=True)
+        tx.query_ball_point([x[i]], r=radii_x[i], p=np.inf, return_length=True)
         for i in range(n)
     ], dtype=int)
     ny = np.asarray([
-        ty.query_ball_point([y[i]], r=radii[i], p=np.inf, return_length=True)
+        ty.query_ball_point([y[i]], r=radii_y[i], p=np.inf, return_length=True)
         for i in range(n)
     ], dtype=int)
     return nx, ny
@@ -64,7 +73,7 @@ def estimate(x, y, variant):
         )
     elif variant == "ksg_type_ii":
         # Algorithm 2: inclusive counts include self; subtract 1/k.
-        nx, ny = counts(x, y, "inclusive")
+        nx, ny = counts(x, y, "type_ii_marginal")
         value_nats = digamma(K) - 1.0 / K + digamma(n) - np.mean(
             digamma(nx) + digamma(ny)
         )
@@ -147,7 +156,7 @@ def main():
         "historical_source_modified": False,
         "definitions": {
             "ksg_type_i": "Strict marginal radius < kth joint distance; counts exclude self; psi(nx+1)+psi(ny+1); no -1/k term.",
-            "ksg_type_ii": "Inclusive marginal radius <= kth joint distance; counts include self; psi(nx)+psi(ny); includes -1/k term.",
+            "ksg_type_ii": "Separate inclusive marginal radii equal to the X and Y coordinate distances of the kth joint neighbour; counts include self; psi(nx)+psi(ny); includes -1/k term.",
             "recovered_hybrid": "Inclusive kth_distance+1e-12 counts; psi(inclusive_nx)+psi(inclusive_ny); omits Type-II -1/k correction.",
         },
         "conditions": [
