@@ -31,11 +31,20 @@ def counts(x, y, radius_mode):
         radii_x = kth
         radii_y = kth
     elif radius_mode == "type_ii_marginal":
-        # KSG Algorithm 2 uses separate marginal radii: the X and Y
-        # coordinate distances to the same kth joint-space neighbour.
-        kth_indices = indices[:, K]
-        radii_x = np.abs(np.asarray(x) - np.asarray(x)[kth_indices])
-        radii_y = np.abs(np.asarray(y) - np.asarray(y)[kth_indices])
+        # KSG Algorithm 2 uses separate marginal radii from the projections
+        # of the k joint-space neighbours. The maximum X projection and
+        # maximum Y projection may be determined by different neighbours
+        # (the two cases shown in Fig. 1(b,c) of Kraskov et al. 2004).
+        # Using only the single kth-neighbour point for both radii is wrong.
+        kth_neighbour_indices = indices[:, 1 : K + 1]
+        radii_x = np.max(
+            np.abs(np.asarray(x)[:, None] - np.asarray(x)[kth_neighbour_indices]),
+            axis=1,
+        )
+        radii_y = np.max(
+            np.abs(np.asarray(y)[:, None] - np.asarray(y)[kth_neighbour_indices]),
+            axis=1,
+        )
     elif radius_mode == "historical_inclusive_epsilon":
         radii_x = kth + 1e-12
         radii_y = kth + 1e-12
