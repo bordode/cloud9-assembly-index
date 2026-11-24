@@ -108,24 +108,24 @@ Analytic MI for a bivariate Gaussian with rho=0.5 is 0.207519 bits.
 | N | Variant | Mean (bits) | Median (bits) |
 |---:|---|---:|---:|
 | 1,200 | Type I | 0.2151 | 0.2145 |
-| 1,200 | Type II | **Withdrawn** | **Withdrawn** |
+| 1,200 | Type II | 0.1324 | 0.1403 |
 | 1,200 | Recovered hybrid | 0.1808 | 0.1796 |
 | 3,000 | Type I | 0.2047 | 0.1979 |
-| 3,000 | Type II | **Withdrawn** | **Withdrawn** |
+| 3,000 | Type II | 0.1537 | 0.1506 |
 | 3,000 | Recovered hybrid | 0.1830 | 0.1766 |
 
-The Type-I means are close to the analytic Gaussian value in this preliminary test. The recovered hybrid is lower. The Type-II figures from the first comparison are withdrawn: that implementation incorrectly used the joint-space kth radius for both marginal counts. The published Type-II algorithm uses separate marginal radii defined by the maximum projected distances across the k joint-space neighbours; the X and Y radii may be determined by different neighbours. No Type-II numerical conclusion should be drawn from the withdrawn values.
+The Type-I means are close to the analytic Gaussian value in this preliminary test. The recovered hybrid is lower. The Type-II figures from the first comparison and the intermediate single-kth-point attempt are withdrawn. The final implementation uses the published rectangle construction: separate X and Y radii are the maximum projected distances across all k joint-space neighbours, and the maxima may come from different neighbours. The verified final Type-II means are below the analytic Gaussian value in this preliminary finite-sample grid; shuffled controls are modestly negative. These results are diagnostics, not evidence of estimator certification.
 
 ### Shuffled controls and nonlinear stress test
 
-For shuffled Gaussian controls, Type-I means were 0.0038 bits (N=1,200) and -0.0020 bits (N=3,000); hybrid means were -0.0283 and -0.0222 bits. Shuffled nonlinear means were near zero for Type I (0.0043 and 0.0015 bits) and negative for the hybrid (-0.0258 and -0.0177 bits). All Type-II values from the first run are withdrawn pending corrected marginal radii. The nonlinear paired construction has no analytic MI asserted; its Type-I means were 1.1265 and 1.1220 bits.
+For shuffled Gaussian controls, Type-I means were 0.0038 bits (N=1,200) and -0.0020 bits (N=3,000); Type-II means were -0.0709 and -0.0487 bits; hybrid means were -0.0283 and -0.0222 bits. Shuffled nonlinear means were 0.0043 and 0.0015 bits for Type I, -0.0724 and -0.0533 bits for Type II, and -0.0258 and -0.0177 bits for the hybrid. The negative raw values are retained; unlike the historical function, these diagnostic variants are not clipped. The nonlinear paired construction has no analytic MI asserted; its Type-I means were 1.1265 and 1.1220 bits.
 
 ### Interpretation and limits
 
 1. The recovered estimator's inclusive marginal counts plus Type-I digamma expression, without the Type-II -1/k correction, are consistent with a hybrid convention.
 2. In this Gaussian grid, the complete Type-I convention is better calibrated to the analytic value than the recovered hybrid.
 3. This is not sufficient to certify Type I for the cosmological application. The test covers only two sample sizes, one k, one nonzero Gaussian correlation, and 20 replicates.
-4. Type-II numerical results must be rerun with separate marginal radii.
+4. In this preliminary 20-replicate grid, Type II has a larger downward bias than Type I against the analytic Gaussian target and modestly negative shuffled-control means. More calibration is needed before deciding whether this reflects finite-sample behaviour or an implementation/convention issue.
 5. No result validates spatially structured cosmological fields, temporal dependence, or IllustrisTNG.
 
 The JSON artifact records all means, medians, sample standard deviations, empirical quantiles and negative-estimate fractions. The empirical quantiles across 20 replicates are not confidence intervals.
@@ -135,7 +135,7 @@ The JSON artifact records all means, medians, sample standard deviations, empiri
 
 A closer reading of the primary KSG paper identified an implementation error in the first Type-II comparison. Algorithm 2 does **not** apply the joint-space kth-neighbour radius to both marginal spaces, nor does it use only the single point returned as the kth neighbour. It uses separate marginal radii defined by the maximum projected distances across the k joint-space neighbours. The maximum X and maximum Y projections may be determined by different neighbours, as illustrated in Fig. 1(b,c) of the paper. The marginal counts include points at or within those respective radii, including the point itself, and the estimator includes the -1/k correction.
 
-Accordingly, all Type-II numbers produced by workflow 45095685382 are withdrawn. The Type-I and recovered-hybrid calculations in that run are unaffected by this Type-II-specific error. The Type-II implementation in `scripts/validate_v3_ksg_type_i_type_ii_hybrid.py` was first corrected to use the single kth neighbour's projected coordinates, but the independent-data control still produced a large positive estimate. That exposed a second radius-definition error: the correct marginal radii are the maximum X and Y projections across all k joint neighbours, and the two maxima can come from different neighbours. The implementation and hand-constructed tie test have now been corrected to this interpretation. A fresh workflow is required; no corrected Type-II result is claimed until its artifact has been inspected.
+Accordingly, all Type-II numbers produced by workflow 45095685382 are withdrawn. The Type-I and recovered-hybrid calculations in that run are unaffected by this Type-II-specific error. The Type-II implementation in `scripts/validate_v3_ksg_type_i_type_ii_hybrid.py` was corrected to use the maximum X and Y projections across all k joint neighbours, independently. The hand-constructed tie test verifies a case where different neighbours determine the two radii. The corrected comparison and test completed successfully in [workflow 45366627801](https://github.com/bordode/cloud9-assembly-index/actions/runs/45366627801), commit `1456226e793adac670a36b9b2b6c4ee33bb5188d`; the artifact was inspected. Its Type-II estimates are now reported below, with preliminary finite-sample limits stated explicitly.
 
 Primary source: Kraskov, Stögbauer & Grassberger (2004), especially Fig. 1(b,c), Eq. (9), and Sec. II C: [Physical Review E 69, 066138](https://doi.org/10.1103/PhysRevE.69.066138); full paper [PDF](https://juser.fz-juelich.de/record/42907/files/60015.pdf). The paper's rectangle construction defines each marginal radius by the maximum projection across the k joint-space neighbours; the X and Y maxima may be set by different neighbours.
 
@@ -144,6 +144,24 @@ Primary source: Kraskov, Stögbauer & Grassberger (2004), especially Fig. 1(b,c)
 
 The first corrected Type-II attempt still used only the single kth-neighbour point's X and Y coordinate differences. Re-reading the paper's geometrical construction and Fig. 1(b,c) showed that this is incomplete: `epsilon_x` and `epsilon_y` are the marginal widths of the rectangle containing the k joint-space neighbours. The maximum X projection and maximum Y projection across those k neighbours define the two marginal radii, and they may be set by different neighbours. The previous Type-II artifact (including its large positive independent-control estimates) is withdrawn.
 
-The implementation now computes the maxima independently across the k joint neighbours. The hand-built tie case explicitly checks a configuration where the projected maxima are set by distinct neighbours. The new workflow must still pass and its artifact must be inspected before reporting any Type-II numerical result.
+The implementation now computes the maxima independently across the k joint neighbours. The hand-built tie case explicitly checks a configuration where the projected maxima are set by distinct neighbours. The corrected workflow passed and its artifact was inspected. The verified summary is recorded in the comparison section above and below.
 
 Primary source: Kraskov, Stögbauer & Grassberger (2004), Fig. 1(b,c), Eq. (9), and the derivation in Sec. II C: [Physical Review E 69, 066138](https://doi.org/10.1103/PhysRevE.69.066138), [full text PDF](https://juser.fz-juelich.de/record/42907/files/60015.pdf).
+
+
+## Verified Type-II projected-maxima comparison (2026-11-24)
+
+Workflow [45366627801](https://github.com/bordode/cloud9-assembly-index/actions/runs/45366627801) completed successfully on commit `1456226e793adac670a36b9b2b6c4ee33bb5188d`. All workflow steps passed, including the 100-seed reproduction, estimator diagnostics, the corrected complete Type-I/Type-II/hybrid comparison, and the hand-constructed boundary/tie tests. Artifact `v3-full-ensemble-reproduction` (ID `14906313602`; SHA-256 `adf33cdb7824f0d9e5a1518200b7cd727111a0c2c1c1b50b1f5bf5367fbb2fe7`) was downloaded and inspected. Its metadata describes the final Type-II radii as separate inclusive maxima of X and Y projections across the k joint-space neighbours.
+
+| N | Variant | Gaussian rho=0.5 mean (bits) | Median (bits) | Shuffled Gaussian mean (bits) |
+|---:|---|---:|---:|---:|
+| 1,200 | Type I | 0.2151 | 0.2145 | 0.0038 |
+| 1,200 | Type II | 0.1324 | 0.1403 | -0.0709 |
+| 1,200 | Recovered hybrid | 0.1808 | 0.1796 | -0.0283 |
+| 3,000 | Type I | 0.2047 | 0.1979 | -0.0020 |
+| 3,000 | Type II | 0.1537 | 0.1506 | -0.0487 |
+| 3,000 | Recovered hybrid | 0.1830 | 0.1766 | -0.0222 |
+
+The analytic MI for Gaussian rho=0.5 is 0.207519 bits. In this grid, Type I is closest to that value; the recovered hybrid is lower; and Type II is lower still. The Type-II shuffled estimates are modestly negative, consistent with retaining the estimator's raw finite-sample output rather than clipping it. Type-II shuffled nonlinear means were -0.0724 bits (N=1,200) and -0.0533 bits (N=3,000); the paired nonlinear means were 1.0197 and 1.0520 bits, respectively. No analytic MI is asserted for the nonlinear stress test.
+
+These are 20-replicate diagnostics at k=3 and two sample sizes, not a comprehensive calibration. The original paper notes the two algorithms can have different systematic-error behaviour; the present results warrant further replication, k-sensitivity checks, and an independent implementation-level cross-check before selecting an estimator for Cloud-9. Neither Type I nor Type II is certified for spatially structured cosmological fields, temporally dependent samples, or IllustrisTNG. The recovered historical estimator and archived score remain unchanged.
