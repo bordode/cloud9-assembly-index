@@ -58,16 +58,11 @@ def counts(x, y, radius_mode):
 def estimate(x, y, variant):
     n = len(x)
     if variant == "ksg_type_i":
-        # Algorithm 1: strict marginal counts exclude self; use psi(n_x+1).
+        # Algorithm 1: strict marginal counts exclude boundary points.
+        # query_ball_point includes the reference point itself, so the
+        # effective neighbour counts excluding self are nx-1 and ny-1.
+        # The published psi(n_x+1) term is therefore psi(nx) here.
         nx, ny = counts(x, y, "strict")
-        value_nats = digamma(K) + digamma(n) - np.mean(digamma(nx) + digamma(ny))
-        # nx,ny here include no self; psi(nx) would be wrong for Type I.
-        # Re-express the strict counts explicitly as neighbour counts excluding self.
-        value_nats = digamma(K) + digamma(n) - np.mean(
-            digamma(nx) + digamma(ny)
-        )
-        # The query counts include self even at strict radius; remove self
-        # before applying the Type-I +1 convention.
         value_nats = digamma(K) + digamma(n) - np.mean(
             digamma((nx - 1) + 1) + digamma((ny - 1) + 1)
         )
