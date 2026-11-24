@@ -44,7 +44,6 @@ def tree_type_ii(x, y, k_values):
 
 def brute_force_type_ii(x, y, k_values):
     n = len(x)
-    sx, sy = np.sort(x), np.sort(y)
     max_k = max(k_values)
     eps_x = {k: np.empty(n) for k in k_values}
     eps_y = {k: np.empty(n) for k in k_values}
@@ -72,8 +71,8 @@ def brute_force_type_ii(x, y, k_values):
             rx = np.max(np.take_along_axis(dx, selected, axis=1), axis=1)
             ry = np.max(np.take_along_axis(dy, selected, axis=1), axis=1)
             eps_x[k][rows], eps_y[k][rows] = rx, ry
-            nx[k][rows] = np.searchsorted(sx, x[rows] + rx, side="right") - np.searchsorted(sx, x[rows] - rx, side="left")
-            ny[k][rows] = np.searchsorted(sy, y[rows] + ry, side="right") - np.searchsorted(sy, y[rows] - ry, side="left")
+            nx[k][rows] = np.count_nonzero(dx <= rx[:, None], axis=1)
+            ny[k][rows] = np.count_nonzero(dy <= ry[:, None], axis=1)
     results = {}
     for k in k_values:
         mi_nats = digamma(k) - 1.0 / k + digamma(n) - np.mean(digamma(nx[k]) + digamma(ny[k]))
