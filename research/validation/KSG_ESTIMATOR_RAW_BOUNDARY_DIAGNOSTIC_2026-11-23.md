@@ -108,24 +108,33 @@ Analytic MI for a bivariate Gaussian with rho=0.5 is 0.207519 bits.
 | N | Variant | Mean (bits) | Median (bits) |
 |---:|---|---:|---:|
 | 1,200 | Type I | 0.2151 | 0.2145 |
-| 1,200 | Type II | -0.3001 | -0.3013 |
+| 1,200 | Type II | **Withdrawn** | **Withdrawn** |
 | 1,200 | Recovered hybrid | 0.1808 | 0.1796 |
 | 3,000 | Type I | 0.2047 | 0.1979 |
-| 3,000 | Type II | -0.2979 | -0.3043 |
+| 3,000 | Type II | **Withdrawn** | **Withdrawn** |
 | 3,000 | Recovered hybrid | 0.1830 | 0.1766 |
 
-The Type-I means are close to the analytic Gaussian value in this preliminary test. The recovered hybrid is lower. Type II differs from the hybrid by exactly the -1/k correction in nats (approximately -0.4809 bits at k=3), because both use the same inclusive marginal counts. Its negative estimates are not evidence of a coding failure; they are the output of the specified estimator convention on these finite samples. The result must be checked against the primary paper and an independent implementation before making a broader conclusion.
+The Type-I means are close to the analytic Gaussian value in this preliminary test. The recovered hybrid is lower. The Type-II figures from the first comparison are withdrawn: that implementation incorrectly used the joint-space kth radius for both marginal counts. The published Type-II algorithm uses separate marginal radii, each given by the coordinate distance to the same kth joint neighbour. No Type-II numerical conclusion should be drawn from the withdrawn values.
 
 ### Shuffled controls and nonlinear stress test
 
-For shuffled Gaussian controls, Type-I means were 0.0038 bits (N=1,200) and -0.0020 bits (N=3,000); hybrid means were -0.0283 and -0.0222 bits. Type-II means were -0.5092 and -0.5031 bits. Shuffled nonlinear means were near zero for Type I (0.0043 and 0.0015 bits) and negative for the hybrid (-0.0258 and -0.0177 bits). The nonlinear paired construction has no analytic MI asserted; its Type-I means were 1.1265 and 1.1220 bits.
+For shuffled Gaussian controls, Type-I means were 0.0038 bits (N=1,200) and -0.0020 bits (N=3,000); hybrid means were -0.0283 and -0.0222 bits. Shuffled nonlinear means were near zero for Type I (0.0043 and 0.0015 bits) and negative for the hybrid (-0.0258 and -0.0177 bits). All Type-II values from the first run are withdrawn pending corrected marginal radii. The nonlinear paired construction has no analytic MI asserted; its Type-I means were 1.1265 and 1.1220 bits.
 
 ### Interpretation and limits
 
 1. The recovered estimator's inclusive marginal counts plus Type-I digamma expression, without the Type-II -1/k correction, are consistent with a hybrid convention.
 2. In this Gaussian grid, the complete Type-I convention is better calibrated to the analytic value than the recovered hybrid.
 3. This is not sufficient to certify Type I for the cosmological application. The test covers only two sample sizes, one k, one nonzero Gaussian correlation, and 20 replicates.
-4. Type-II values are expected to be lower than the hybrid by 1/(k ln 2) bits when counts are identical; this arithmetic identity is not an independent validation of Type II.
+4. Type-II numerical results must be rerun with separate marginal radii.
 5. No result validates spatially structured cosmological fields, temporal dependence, or IllustrisTNG.
 
 The JSON artifact records all means, medians, sample standard deviations, empirical quantiles and negative-estimate fractions. The empirical quantiles across 20 replicates are not confidence intervals.
+
+
+## Correction: Type-II marginal radii (2026-11-24)
+
+A closer reading of the primary KSG paper identified an implementation error in the first Type-II comparison. Algorithm 2 does **not** apply the joint-space kth-neighbour radius to both marginal spaces. It uses separate marginal radii: for each sample, the X radius is the X-coordinate distance to its kth joint-space neighbour, and the Y radius is the Y-coordinate distance to that same neighbour. The marginal counts include points at or within those respective radii, including the point itself, and the estimator includes the -1/k correction.
+
+Accordingly, all Type-II numbers produced by workflow 45095685382 are withdrawn. The Type-I and recovered-hybrid calculations in that run are unaffected by this Type-II-specific error. The Type-II implementation in `scripts/validate_v3_ksg_type_i_type_ii_hybrid.py` has been corrected, and the hand-constructed boundary/tie test now checks separate Type-II marginal radii. A fresh workflow is running; no corrected Type-II result is claimed until its artifact has been inspected.
+
+Primary source: Kraskov, Stögbauer & Grassberger (2004), especially the Algorithm 2 definition and Eq. (9): [Physical Review E 69, 066138](https://doi.org/10.1103/PhysRevE.69.066138); full paper [PDF](https://juser.fz-juelich.de/record/42907/files/60015.pdf). The paper defines the two marginal neighbourhoods using their own coordinate radii derived from the same kth joint neighbour.
