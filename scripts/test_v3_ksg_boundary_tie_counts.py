@@ -90,7 +90,7 @@ def main():
         2,
         {
             "radius": 1.0,
-            "strict_including_self": [1, 2],
+            "strict_including_self": [2, 2],
             "inclusive_including_self": [3, 3],
         },
     )
