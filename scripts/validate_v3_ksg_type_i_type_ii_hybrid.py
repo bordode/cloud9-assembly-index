@@ -160,7 +160,7 @@ def main():
         "historical_source_modified": False,
         "definitions": {
             "ksg_type_i": "Strict marginal radius < kth joint distance; counts exclude self; psi(nx+1)+psi(ny+1); no -1/k term.",
-            "ksg_type_ii": "Separate inclusive marginal radii equal to the X and Y coordinate distances of the kth joint neighbour; counts include self; psi(nx)+psi(ny); includes -1/k term.",
+            "ksg_type_ii": "Separate inclusive marginal radii are the maximum X and Y projected distances across the k joint-space neighbours; the maxima may come from different neighbours; counts include self; psi(nx)+psi(ny); includes -1/k term.",
             "recovered_hybrid": "Inclusive kth_distance+1e-12 counts; psi(inclusive_nx)+psi(inclusive_ny); omits Type-II -1/k correction.",
         },
         "conditions": [
