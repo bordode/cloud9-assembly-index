@@ -49,13 +49,14 @@ def check_case(name, x, y, k, expected):
     assert np.isclose(digamma(strict_other_y + 1), digamma(strict[2]))
     assert inclusive[1] >= 1 and inclusive[2] >= 1
 
-    # Type II uses separate marginal radii taken from the same kth joint
-    # neighbour, not the joint-space max radius in both marginals.
+    # Type II uses separate marginal radii: maximum X and Y projections
+    # across the k nearest joint-space neighbours. Different neighbours may
+    # determine the two radii.
     joint = np.column_stack([x, y])
     _, indices = cKDTree(joint).query(joint, k=k + 1, p=np.inf)
-    kth_index = int(indices[0, k])
-    radius_x = abs(float(x[0] - x[kth_index]))
-    radius_y = abs(float(y[0] - y[kth_index]))
+    neighbour_indices = indices[0, 1 : k + 1]
+    radius_x = float(np.max(np.abs(x[0] - x[neighbour_indices])))
+    radius_y = float(np.max(np.abs(y[0] - y[neighbour_indices])))
     type_ii_x = int(cKDTree(x.reshape(-1, 1)).query_ball_point(
         [x[0]], r=radius_x, p=np.inf, return_length=True
     ))
@@ -97,8 +98,8 @@ def main():
 
     assert unique_type_ii["type_ii_marginal_radii"] == [1.0, 0.0]
     assert unique_type_ii["type_ii_counts_including_self"] == [2, 2]
-    assert tied_type_ii["type_ii_marginal_radii"] in ([1.0, 0.0], [0.0, 1.0])
-    assert tied_type_ii["type_ii_counts_including_self"] in ([3, 2], [2, 3])
+    assert tied_type_ii["type_ii_marginal_radii"] == [1.0, 1.0]
+    assert tied_type_ii["type_ii_counts_including_self"] == [3, 3]
 
     print({
         "status": "passed",
