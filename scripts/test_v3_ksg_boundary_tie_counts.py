@@ -138,10 +138,12 @@ def main():
     )
 
     # Tie-heavy kth boundary: two neighbours tie at radius 1 for k=2.
+    xt = np.array([0.0, 1.0, 0.0, 2.0, -2.0])
+    yt = np.array([0.0, 0.0, 1.0, 2.0, -2.0])
     tied, tied_type_ii = check_case(
         "tied_kth_boundary",
-        np.array([0.0, 1.0, 0.0, 2.0, -2.0]),
-        np.array([0.0, 0.0, 1.0, 2.0, -2.0]),
+        xt,
+        yt,
         2,
         {
             "radius": 1.0,
