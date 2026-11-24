@@ -1,7 +1,7 @@
 # Poisson source-count model-selection calibration protocol
 
 **Experiment ID:** `C9-DEBLENDING-POISSON-MODEL-ORDER-CALIBRATION-001`  
-**Status:** preregistered protocol; no results yet  
+**Status:** draft protocol; preregistration pending a frozen implementation manifest; no results yet  
 **Parent research:** paired AIC/BIC acceptance pilot (PR #42)  
 **Data:** synthetic, with truth withheld from all detector and model-selection decisions
 
@@ -145,4 +145,28 @@ Before confirmatory execution, commit:
 
 The output artifact must preserve per-trial observations' metadata, truth identifiers, blind predictions, candidate ladders, criterion values, diagnostics and post-hoc scores. Store aggregate summaries alongside—not instead of—the per-trial records.
 
-**Current status:** protocol only. No new benchmark has been run, no result is implied, and no detector behaviour or default has changed.
+
+## 11. Preregistration gate — required before confirmatory runs
+
+This document is a research protocol, but it is **not yet a complete preregistration**. The factor levels above define the intended design space; they do not uniquely define the actual fractional-factorial scenario matrix. No confirmatory results may be described as preregistered until a versioned manifest is committed and reviewed.
+
+The implementation manifest must freeze, at minimum:
+
+- the exact list of scenario rows and the assignment of factor levels to each row;
+- numerical background rates, exposure values and the source-flux normalization rule;
+- exact source coordinates/layouts for every scenario, including how separation is measured for irregular layouts;
+- image dimensions and the exact crop/padding relationships for matched image-window controls;
+- maximum fitted source count and the candidate-generation rank/depth limits;
+- optimizer, bounds, initialization, convergence and failure-handling rules;
+- the truth-matching algorithm and localization tolerance;
+- the pilot and confirmatory seed-generation rules, with disjoint seed ranges;
+- the primary estimands and the exact uncertainty-interval procedure;
+- the rule for handling failed fits and incomplete trials.
+
+The manifest should be generated and committed before pilot outcomes are inspected if the pilot is intended to validate implementation only. If pilot outcomes are used to revise scenarios or analysis choices, record the revision and freeze a new manifest before drawing confirmatory observations. Confirmatory seeds must remain untouched until that freeze.
+
+The scenario matrix should be balanced enough to support the prespecified comparisons, and its construction should be inspectable rather than described only as “fractional factorial.” For zero-source scenes, separation and flux-contrast factors are not applicable; encode them as not applicable rather than assigning artificial values. Likewise, report which factors are deliberately crossed and which are held fixed in each contrast.
+
+Only after this gate is satisfied should the status be changed to **preregistered**. Until then, the protocol is a design specification under development.
+
+**Current status:** draft protocol only. No new benchmark has been run, no result is implied, and no detector behaviour or default has changed.
