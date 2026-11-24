@@ -95,3 +95,37 @@ The strict-boundary sensitivity calculation above corresponds to the Type-I boun
 Sources: [Kraskov, Stögbauer & Grassberger (2004), *Estimating mutual information*, Physical Review E 69, 066138](https://doi.org/10.1103/PhysRevE.69.066138); [infomeasure KSG documentation, Type I and Type II definitions](https://infomeasure.readthedocs.io/en/0.6.0/guide/mutual_information/kraskov_stoegbauer_grassberger/).
 
 A dedicated follow-up script, `scripts/validate_v3_ksg_type_i_type_ii_hybrid.py`, now compares complete Type-I, Type-II and recovered-hybrid formula/count combinations on identical deterministic samples. Its workflow is [45095685382](https://github.com/bordode/cloud9-assembly-index/actions/runs/45095685382) and was still running at the time this addendum was written. No result from that complete-variant comparison is claimed here.
+
+
+## Complete Type-I / Type-II / recovered-hybrid comparison (2026-11-23)
+
+The completed comparison used 20 paired replicates per condition, k=3, N=1,200 and 3,000. It compared the strict Type-I convention, inclusive Type-II convention (including the -1/k term), and the recovered hybrid. The historical source was not modified.
+
+### Gaussian calibration
+
+Analytic MI for a bivariate Gaussian with rho=0.5 is 0.207519 bits.
+
+| N | Variant | Mean (bits) | Median (bits) |
+|---:|---|---:|---:|
+| 1,200 | Type I | 0.2151 | 0.2145 |
+| 1,200 | Type II | -0.3001 | -0.3013 |
+| 1,200 | Recovered hybrid | 0.1808 | 0.1796 |
+| 3,000 | Type I | 0.2047 | 0.1979 |
+| 3,000 | Type II | -0.2979 | -0.3043 |
+| 3,000 | Recovered hybrid | 0.1830 | 0.1766 |
+
+The Type-I means are close to the analytic Gaussian value in this preliminary test. The recovered hybrid is lower. Type II differs from the hybrid by exactly the -1/k correction in nats (approximately -0.4809 bits at k=3), because both use the same inclusive marginal counts. Its negative estimates are not evidence of a coding failure; they are the output of the specified estimator convention on these finite samples. The result must be checked against the primary paper and an independent implementation before making a broader conclusion.
+
+### Shuffled controls and nonlinear stress test
+
+For shuffled Gaussian controls, Type-I means were 0.0038 bits (N=1,200) and -0.0020 bits (N=3,000); hybrid means were -0.0283 and -0.0222 bits. Type-II means were -0.5092 and -0.5031 bits. Shuffled nonlinear means were near zero for Type I (0.0043 and 0.0015 bits) and negative for the hybrid (-0.0258 and -0.0177 bits). The nonlinear paired construction has no analytic MI asserted; its Type-I means were 1.1265 and 1.1220 bits.
+
+### Interpretation and limits
+
+1. The recovered estimator's inclusive marginal counts plus Type-I digamma expression, without the Type-II -1/k correction, are consistent with a hybrid convention.
+2. In this Gaussian grid, the complete Type-I convention is better calibrated to the analytic value than the recovered hybrid.
+3. This is not sufficient to certify Type I for the cosmological application. The test covers only two sample sizes, one k, one nonzero Gaussian correlation, and 20 replicates.
+4. Type-II values are expected to be lower than the hybrid by 1/(k ln 2) bits when counts are identical; this arithmetic identity is not an independent validation of Type II.
+5. No result validates spatially structured cosmological fields, temporal dependence, or IllustrisTNG.
+
+The JSON artifact records all means, medians, sample standard deviations, empirical quantiles and negative-estimate fractions. The empirical quantiles across 20 replicates are not confidence intervals.
