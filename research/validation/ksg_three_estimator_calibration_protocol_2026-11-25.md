@@ -1,0 +1,154 @@
+# Three-estimator KSG calibration protocol
+
+**Status:** draft protocol; implementation manifest and preregistration pending  
+**Date opened:** 2026-11-25  
+**Scope:** synthetic statistical calibration of the recovered historical v3 KSG-style estimator against complete KSG Type I and Type II implementations  
+**Non-goal:** changing the historical v3 estimator, archived ensemble, or archived (A_c) values
+
+## 1. Research question
+
+How do the recovered historical estimator, complete KSG Type I, and complete KSG Type II behave under controlled distributions with known mutual information, especially as sample size, neighbourhood parameter, ties, and quantization change?
+
+The study separates:
+
+1. implementation agreement (whether independent implementations compute the same defined algorithm);
+2. statistical calibration (bias, variance, and error relative to known mutual information);
+3. robustness under ties/quantization (where continuous-data estimator assumptions may no longer apply);
+4. consequences of the historical non-negative clipping operation.
+
+A passing implementation cross-check is not statistical validation. A good Gaussian result is not validation on spatially structured cosmological fields.
+
+## 2. Methods under comparison
+
+All three methods receive exactly the same paired ((X,Y)) observations for each replicate.
+
+### H — historical v3 implementation
+
+Use the recovered historical function unchanged, including its inclusive marginal-radius queries, small epsilon addition, Type-I-style digamma expression, and final non-negative clipping. Preserve the source and record its commit and SHA-256. Do not repair, reinterpret, or silently normalize its behaviour inside this arm.
+
+For diagnosis, a separate wrapper may expose the pre-clipping raw value if the underlying expression is computed before clipping. The wrapper must not alter neighbour selection or counts. If the existing function does not expose that value, reproduce the exact historical calculation in a separately named diagnostic function and verify equality of its clipped output against the original on a frozen test set.
+
+### I — complete KSG Type I
+
+Implement the complete Type-I algorithm from Kraskov, Stögbauer & Grassberger (2004), not a hybrid. Use the joint-space maximum norm kth-neighbour distance and strict marginal counts as specified by the paper. Document whether the kth-neighbour boundary is represented by an open interval and how exact ties are treated. Record raw MI before any optional clipping.
+
+### II — complete KSG Type II
+
+Implement the complete Type-II algorithm from Kraskov et al. (2004), including separate marginal radii obtained from the maximum absolute X and Y projections across the selected joint-space neighbours, the corresponding marginal-count convention, and the Type-II estimator correction. Do not substitute the joint radius for both marginal radii or use only the single kth-neighbour point's projections.
+
+Before code is frozen, transcribe the exact count definitions and estimator expression from the paper's Type-II equation and figure into the implementation manifest. In particular, specify whether counts include the anchor point and whether boundary comparisons are strict or inclusive. The implementation and independent reference must use the same declared convention for the same algorithm.
+
+Primary reference: Kraskov, Stögbauer & Grassberger (2004), “ ಸಮ? ”, Physical Review E 69, 066138, DOI: 10.1103/PhysRevE.69.066138. The paper's algorithm definitions, Fig. 1 and equations are authoritative for distinguishing Type I and Type II.
+
+## 3. Distribution families
+
+### A. Independent continuous Gaussian (null)
+
+Generate independent standard normal X and Y. The population mutual information is zero. This arm measures finite-sample offset and spread under independence; report negative raw estimates rather than hiding them.
+
+### B. Correlated bivariate Gaussian (known positive MI)
+
+Generate standard normal pairs with Pearson correlation ρ in {0.25, 0.50, 0.75}. The population MI in bits is:
+
+`I(X;Y) = -0.5 log2(1-ρ^2)`.
+
+This is the primary quantitative calibration family.
+
+### C. Invertibly transformed Gaussian copula controls
+
+Apply fixed, strictly monotone transformations independently to X and Y from the correlated Gaussian family (for example, exponential to one margin and a monotone logistic map to the other, with numerically stable generation). Mutual information is invariant under one-to-one transformations. This tests sensitivity to marginal shape without changing the population MI. Transform definitions and numerical clipping, if any, must be frozen.
+
+### D. Quantized/tie-heavy stress controls
+
+Quantize the continuous Gaussian observations using predeclared bin widths and/or finite-level rounding. These data are discrete or mixed, so the continuous KSG estimators do not automatically retain the same target or assumptions. Treat this arm as a robustness/stress diagnostic, not as a direct ranking against the continuous-data truth unless the exact discrete joint distribution and its discrete MI are computed and the estimand is explicitly defined.
+
+Include exact duplicate pairs and constructed kth-boundary ties as implementation unit tests, separately from random quantized samples.
+
+## 4. Sample sizes and neighbourhood values
+
+Proposed primary sample sizes: N in {1,200, 3,000}.  
+Proposed k values: {3, 10, 25, 50}; omit any k that violates the minimum sample-size requirements of a method.
+
+The k grid deliberately includes the historical k=3 and larger neighbourhoods because earlier diagnostics showed substantial finite-sample dependence on k. Do not select a best k after seeing confirmatory results.
+
+## 5. Replication and randomization
+
+- Pilot: 20 independent replicates per continuous distribution/sample-size cell.
+- Confirmatory: at least 100 fresh replicates per continuous distribution/sample-size cell, using seed values disjoint from all pilot seeds.
+- Use a single frozen seed manifest shared by all three estimators.
+- Generate each observation array once and pass the identical arrays to H, I, II and their independent references.
+- Keep the random-number generator family and version in the manifest.
+- Do not discard difficult, negative, tied, or high-error replicates. Any numerical failure is logged and counted; report failure rates by method.
+
+## 6. Independent implementation checks
+
+Before statistical calibration, validate each complete algorithm against an independently written reference on small deterministic arrays.
+
+Required fixtures:
+1. continuous sample with no ties;
+2. exact duplicate observations;
+3. kth-neighbour distance tied across multiple observations;
+4. different joint neighbours setting the maximum X and maximum Y projections for Type II;
+5. points exactly on each marginal boundary;
+6. anchor-point inclusion/exclusion fixture;
+7. permutation of row order, which must not change the estimate except where the declared tie-breaking convention explicitly makes a result non-unique.
+
+For small N, use an O(N²) pairwise-distance implementation as the reference. It must not call cKDTree or share helper functions with the production implementation. For each observation, compare selected joint-neighbour distances/sets, marginal radii, integer marginal counts, and final raw MI. Exact agreement is expected for integer counts and defined radii; floating-point tolerances must be declared for distances and final arithmetic.
+
+Do not use one implementation as its own oracle. Keep production and reference code paths separate.
+
+## 7. Outcomes
+
+For each estimator, distribution, N and k, report:
+
+- mean raw MI and standard deviation;
+- median, interquartile range and selected quantiles;
+- signed bias against population MI;
+- RMSE and mean absolute error;
+- fraction of negative raw estimates;
+- mean after non-negative clipping, reported separately;
+- clipping-induced change in bias and RMSE;
+- numerical failure rate;
+- sensitivity to row permutation and tie handling;
+- for quantized controls, tie frequency and the explicitly defined discrete target where available.
+
+For continuous null controls, do not describe the mean estimate as a calibrated false-positive rate: an MI estimator is not itself a hypothesis test. If a separate permutation-based test is later added, preregister its statistic, exchangeability assumptions, permutation count, and type-I error analysis separately.
+
+## 8. Analysis plan
+
+Primary comparisons are paired within each generated dataset. Report paired differences in absolute error and squared error between estimators, with uncertainty intervals obtained by resampling replicate-level paired differences. Use a fixed bootstrap procedure and replicate count in the frozen manifest.
+
+Do not compare raw BIC-style quantities or unrelated datasets here; the estimand is mutual information in bits.
+
+Present estimator-by-N-by-k results, not only a pooled average. Distinguish implementation agreement from estimator accuracy. A method may agree exactly with its independent reference and still be statistically biased.
+
+Do not declare a universal winner based on one Gaussian family or one k value. Treat quantized/tie-heavy cases as a separate stress domain.
+
+## 9. Historical archive protection
+
+- The archived v3 JSON and historical recovered source remain immutable.
+- No new estimator may overwrite historical (A_c) or the archived 100-member results.
+- Any future cosmological estimator must receive a new name/version and its own outputs.
+- Do not recompute or reinterpret the historical significance claim using a replacement estimator without a separately documented analysis.
+- The study is synthetic calibration only; it does not establish validity on IllustrisTNG, JWST observations, or temporally dependent spatial fields.
+
+## 10. Preregistration gate
+
+Before confirmatory runs, freeze and commit a machine-readable manifest containing:
+
+- exact distribution parameter rows and transformations;
+- exact sample sizes and k values;
+- exact pilot and confirmatory seed lists;
+- generator family/version and data-generation code hash;
+- exact Type-I and Type-II equations, neighbour and count conventions, tie policy, self-count convention, and units;
+- exact historical source hash and raw/clipped diagnostic procedure;
+- deterministic fixture arrays and expected outputs;
+- bootstrap method, interval level, resample count and primary paired estimands;
+- failure and missing-run handling;
+- software versions, numerical tolerances and execution command.
+
+The status may be changed from “draft protocol” to “preregistered” only after this manifest exists and is frozen before confirmatory results are inspected.
+
+## 11. Current status
+
+Draft protocol only. No estimator implementation, calibration run, new statistical result, or change to the historical v3 estimator has been made in this branch. The prior Type-II cKDTree-versus-pairwise cross-check remains a computational agreement result on its tested continuous Gaussian inputs; it is not a replacement for this three-estimator calibration study.
