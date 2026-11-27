@@ -20,7 +20,7 @@ A passing implementation cross-check is not statistical validation. A good Gauss
 
 ## 2. Methods under comparison
 
-All three methods receive exactly the same paired ((X,Y)) observations for each replicate.
+All three methods receive exactly the same paired ((X,Y)) observations for each replicate. KSG equations (8) and (9) use natural logarithms and therefore return nats. Convert every estimator raw result to bits by dividing by ln(2) before comparing it with the Gaussian population MI in bits; retain native-nat values as audit fields. Apply optional non-negative clipping only after recording the unmodified raw value, and report both units consistently.
 
 ### H — historical v3 implementation
 
@@ -30,13 +30,11 @@ For diagnosis, a separate wrapper may expose the pre-clipping raw value if the u
 
 ### I — complete KSG Type I
 
-Implement the complete Type-I algorithm from Kraskov, Stögbauer & Grassberger (2004), not a hybrid. Use the joint-space maximum norm kth-neighbour distance and strict marginal counts as specified by the paper. Document whether the kth-neighbour boundary is represented by an open interval and how exact ties are treated. Record raw MI before any optional clipping.
+Implement the complete Type-I algorithm from Kraskov, Stögbauer & Grassberger (2004), not a hybrid. Use the joint-space maximum-norm kth-neighbour radius ε(i)/2. For each anchor i, count other observations (exclude the anchor itself) with |x_j−x_i| < ε(i)/2 and |y_j−y_i| < ε(i)/2. Denote these counts n_x(i), n_y(i). The paper equation (8) is: I^(1) = ψ(k) + ψ(N) − mean_i[ψ(n_x(i)+1) + ψ(n_y(i)+1)]. The strict marginal boundary is part of this estimator. Exact kth-distance ties have probability zero under the continuous model assumed in the derivation; do not silently resolve them by random jitter. Record raw MI before any optional clipping.
 
 ### II — complete KSG Type II
 
-Implement the complete Type-II algorithm from Kraskov et al. (2004), including separate marginal radii obtained from the maximum absolute X and Y projections across the selected joint-space neighbours, the corresponding marginal-count convention, and the Type-II estimator correction. Do not substitute the joint radius for both marginal radii or use only the single kth-neighbour point's projections.
-
-Before code is frozen, transcribe the exact count definitions and estimator expression from the paper's Type-II equation and figure into the implementation manifest. In particular, specify whether counts include the anchor point and whether boundary comparisons are strict or inclusive. The implementation and independent reference must use the same declared convention for the same algorithm.
+Implement the complete Type-II algorithm from Kraskov et al. (2004). For each anchor, determine ε_x(i)/2 and ε_y(i)/2 as the maximum absolute X and Y projections, respectively, among the k selected joint-space neighbours. These radii can be set by different neighbours. Count other observations (exclude the anchor itself) satisfying |x_j−x_i| ≤ ε_x(i)/2 and |y_j−y_i| ≤ ε_y(i)/2, respectively. Denote these counts n_x(i), n_y(i). The paper equation (9) is: I^(2) = ψ(k) − 1/k + ψ(N) − mean_i[ψ(n_x(i)) + ψ(n_y(i))]. The marginal boundary is inclusive for Type II. The paper notes that additional exact boundary coincidences have zero probability under its continuous-data assumptions; constructed ties must therefore be treated as a separately specified stress/fixture policy, not as ordinary continuous observations. Do not substitute the joint radius for both marginal radii or use only the single kth-neighbour point projections. The production implementation and independent reference must use the same declared anchor exclusion, boundary and tie conventions.
 
 Primary reference: Kraskov, Stögbauer & Grassberger (2004), “ ಸಮ? ”, Physical Review E 69, 066138, DOI: 10.1103/PhysRevE.69.066138. The paper's algorithm definitions, Fig. 1 and equations are authoritative for distinguishing Type I and Type II.
 
@@ -140,7 +138,7 @@ Before confirmatory runs, freeze and commit a machine-readable manifest containi
 - exact sample sizes and k values;
 - exact pilot and confirmatory seed lists;
 - generator family/version and data-generation code hash;
-- exact Type-I and Type-II equations, neighbour and count conventions, tie policy, self-count convention, and units;
+- exact Type-I and Type-II equations, neighbour and count conventions, tie policy, self-count convention, native nats and conversion to bits;
 - exact historical source hash and raw/clipped diagnostic procedure;
 - deterministic fixture arrays and expected outputs;
 - bootstrap method, interval level, resample count and primary paired estimands;
