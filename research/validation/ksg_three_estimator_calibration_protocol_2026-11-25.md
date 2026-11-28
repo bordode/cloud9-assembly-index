@@ -44,7 +44,7 @@ A related calibration harness exists on the separate evidence-boundary review br
 
 Consequently, results produced by that harness must be attributed to the historical-radius/inclusive-count convention unless a separate source-level audit establishes otherwise. They must not be relabelled as Type-I calibration results merely because the file or result metadata uses the label “KSG-1”. The harness is useful prior known-MI evidence for H's unclipped form, but it does not replace the paired H/I/II comparison defined here. Do not duplicate its Gaussian calibration grid; reuse its established generation and summary design where compatible, while implementing and independently checking the missing complete Type-I and Type-II arms.
 
-## 5. Distribution families
+## 4. Distribution families
 
 ### A. Independent continuous Gaussian (null)
 
