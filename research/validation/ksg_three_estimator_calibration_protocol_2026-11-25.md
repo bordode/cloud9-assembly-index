@@ -38,7 +38,13 @@ Implement the complete Type-II algorithm from Kraskov et al. (2004). For each an
 
 Primary reference: Kraskov, Stögbauer & Grassberger (2004), “Estimating mutual information,” Physical Review E 69, 066138, DOI: 10.1103/PhysRevE.69.066138. Also record the published erratum, Physical Review E 83, 019903 (2011). The paper defines both estimators using natural logarithms, so their native output is in nats.
 
-## 3. Distribution families
+## 3. Relationship to earlier known-MI calibration work
+
+A related calibration harness exists on the separate evidence-boundary review branch, `review/cloud9-evidence-boundary-audit-2026-11-09`, at `scripts/run_mi_estimator_calibration.py`. Its function `ksg_mi_2d_raw` is explicitly unclipped, but its estimator geometry and equation use the same historical convention described for H: joint L-infinity kth-neighbour radius, addition of `1e-12`, inclusive marginal ball queries, anchor subtraction followed by ψ(n_x+1) and ψ(n_y+1), and conversion from nats to bits. It is therefore **not a complete strict-boundary KSG Type-I implementation** as specified in this protocol. It is an unclipped diagnostic implementation of the historical H convention.
+
+Consequently, results produced by that harness must be attributed to the historical-radius/inclusive-count convention unless a separate source-level audit establishes otherwise. They must not be relabelled as Type-I calibration results merely because the file or result metadata uses the label “KSG-1”. The harness is useful prior known-MI evidence for H's unclipped form, but it does not replace the paired H/I/II comparison defined here. Do not duplicate its Gaussian calibration grid; reuse its established generation and summary design where compatible, while implementing and independently checking the missing complete Type-I and Type-II arms.
+
+## 5. Distribution families
 
 ### A. Independent continuous Gaussian (null)
 
@@ -62,14 +68,14 @@ Quantize the continuous Gaussian observations using predeclared bin widths and/o
 
 Include exact duplicate pairs and constructed kth-boundary ties as implementation unit tests, separately from random quantized samples.
 
-## 4. Sample sizes and neighbourhood values
+## 5. Sample sizes and neighbourhood values
 
 Proposed primary sample sizes: N in {1,200, 3,000}.  
 Proposed k values: {3, 10, 25, 50}; omit any k that violates the minimum sample-size requirements of a method.
 
 The k grid deliberately includes the historical k=3 and larger neighbourhoods because earlier diagnostics showed substantial finite-sample dependence on k. Do not select a best k after seeing confirmatory results.
 
-## 5. Replication and randomization
+## 6. Replication and randomization
 
 - Pilot: 20 independent replicates per continuous distribution/sample-size cell.
 - Confirmatory: at least 100 fresh replicates per continuous distribution/sample-size cell, using seed values disjoint from all pilot seeds.
@@ -78,7 +84,7 @@ The k grid deliberately includes the historical k=3 and larger neighbourhoods be
 - Keep the random-number generator family and version in the manifest.
 - Do not discard difficult, negative, tied, or high-error replicates. Any numerical failure is logged and counted; report failure rates by method.
 
-## 6. Independent implementation checks
+## 7. Independent implementation checks
 
 Before statistical calibration, validate each complete algorithm against an independently written reference on small deterministic arrays.
 
@@ -95,7 +101,7 @@ For small N, use an O(N²) pairwise-distance implementation as the reference. It
 
 Do not use one implementation as its own oracle. Keep production and reference code paths separate.
 
-## 7. Outcomes
+## 8. Outcomes
 
 For each estimator, distribution, N and k, report:
 
@@ -112,7 +118,7 @@ For each estimator, distribution, N and k, report:
 
 For continuous null controls, do not describe the mean estimate as a calibrated false-positive rate: an MI estimator is not itself a hypothesis test. If a separate permutation-based test is later added, preregister its statistic, exchangeability assumptions, permutation count, and type-I error analysis separately.
 
-## 8. Analysis plan
+## 9. Analysis plan
 
 Primary comparisons are paired within each generated dataset. Report paired differences in absolute error and squared error between estimators, with uncertainty intervals obtained by resampling replicate-level paired differences. Use a fixed bootstrap procedure and replicate count in the frozen manifest.
 
@@ -122,7 +128,7 @@ Present estimator-by-N-by-k results, not only a pooled average. Distinguish impl
 
 Do not declare a universal winner based on one Gaussian family or one k value. Treat quantized/tie-heavy cases as a separate stress domain.
 
-## 9. Historical archive protection
+## 10. Historical archive protection
 
 - The archived v3 JSON and historical recovered source remain immutable.
 - No new estimator may overwrite historical (A_c) or the archived 100-member results.
@@ -130,7 +136,7 @@ Do not declare a universal winner based on one Gaussian family or one k value. T
 - Do not recompute or reinterpret the historical significance claim using a replacement estimator without a separately documented analysis.
 - The study is synthetic calibration only; it does not establish validity on IllustrisTNG, JWST observations, or temporally dependent spatial fields.
 
-## 10. Preregistration gate
+## 11. Preregistration gate
 
 Before confirmatory runs, freeze and commit a machine-readable manifest containing:
 
@@ -147,6 +153,6 @@ Before confirmatory runs, freeze and commit a machine-readable manifest containi
 
 The status may be changed from “draft protocol” to “preregistered” only after this manifest exists and is frozen before confirmatory results are inspected.
 
-## 11. Current status
+## 12. Current status
 
 Draft protocol only. No estimator implementation, calibration run, new statistical result, or change to the historical v3 estimator has been made in this branch. The prior Type-II cKDTree-versus-pairwise cross-check remains a computational agreement result on its tested continuous Gaussian inputs; it is not a replacement for this three-estimator calibration study.
