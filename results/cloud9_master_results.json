@@ -1,0 +1,120 @@
+{
+  "generated_at": "2026-11-27T20:47:00-07:00",
+  "primary_candidates": [
+    {
+      "id": "phase5_assembly_nielsen",
+      "metrics": {
+        "assembly_index": 7,
+        "nielsen_max": 4.72,
+        "nielsen_min": 2.16,
+        "samples": 15
+      },
+      "output": "results/phase5_assembly_nielsen.json",
+      "priority": 1,
+      "status": "ready_to_implement",
+      "title": "Assembly Index vs. Nielsen Complexity"
+    },
+    {
+      "goal": "Find states with equal assembly depth but lowest geometric distance",
+      "id": "phase6_high_stability_motifs",
+      "output": "results/phase6_motifs.json",
+      "priority": 2,
+      "status": "next_experiment",
+      "title": "High-Stability Quantum Motifs"
+    },
+    {
+      "id": "phase8_noise_transition",
+      "output": "results/phase8_noise_transition.json",
+      "priority": 3,
+      "status": "ready_to_implement",
+      "title": "Noise-Phase Transition Analysis"
+    },
+    {
+      "id": "aura9_snp_quantum",
+      "metrics": {
+        "chromosomes": [
+          1,
+          12,
+          19
+        ],
+        "entanglement_entropy_bits": 1.7892,
+        "snps_indexed": 98873,
+        "target_triplet_sum": 451
+      },
+      "output": "results/aura9_quantum_results.json",
+      "priority": 4,
+      "status": "needs_qiskit_update",
+      "title": "AURA-9 SNP Quantum Analysis"
+    },
+    {
+      "id": "veteran_assembly_simulation",
+      "metrics": {
+        "background_average_complexity": 11.95,
+        "veteran_average_complexity": 22.03,
+        "veteran_fraction": 0.136
+      },
+      "output": "results/veteran_assembly.json",
+      "priority": 5,
+      "status": "ready_to_implement",
+      "title": "Veteran Complexity Persistence"
+    },
+    {
+      "id": "cosmic_web_topology",
+      "output": "results/cosmic_web_topology.json",
+      "priority": 6,
+      "status": "future_module",
+      "title": "Cosmic-Web Topology Analysis"
+    },
+    {
+      "id": "qcd_instanton_vacuum_topology",
+      "title": "QCD Instanton Vacuum Topology",
+      "priority": 7,
+      "status": "candidate_hint",
+      "source": "ATLAS Collaboration, arXiv:2611.22092",
+      "published": "2026-11-17",
+      "evidence": {
+        "observed_significance_sigma": 3.5,
+        "collision_energy_tev": 13,
+        "dataset_luminosity": "1.6 nb^-1",
+        "signal_characteristics": [
+          "low-mass isotropic events",
+          "broader mean pseudorapidity than soft-QCD background",
+          "localized pseudorapidity band within events",
+          "isotropic sphericity-D event shape"
+        ]
+      },
+      "cloud9_connection": {
+        "assembly_concept": "vacuum topology as a structural background for particle interactions",
+        "measurable_features": [
+          "event isotropy",
+          "particle multiplicity",
+          "pseudorapidity distribution",
+          "sphericity-D",
+          "heavy-flavor signature",
+          "mass spectrum"
+        ],
+        "research_question": "Can topological vacuum transitions be represented as stable assembly motifs in high-energy collision data?"
+      },
+      "validation_required": [
+        "Repeat analysis using other collision categories",
+        "Test alternative analysis methods",
+        "Characterize heavy-flavor signature",
+        "Analyze mass spectrum",
+        "Independent replication"
+      ],
+      "output": "results/qcd_instanton_vacuum_topology.json",
+      "attribution": "Candidate brought by Dean Bordode; Cloud-9 record prepared by Ari from ATLAS Collaboration arXiv:2611.22092 and University of Bonn release."
+    }
+  ],
+  "project": "Cloud 9 Assembly Index",
+  "status": "active",
+  "test_plan": {
+    "json_validation": "python -m json.tool results/*.json",
+    "smoke_tests": [
+      "python main.py",
+      "python cloud9_assembly_v2.2.py"
+    ],
+    "test_command": "python -m pytest -q"
+  },
+  "version": "1.0.0"
+}
